@@ -273,8 +273,10 @@
 
 		if(extreme)
 			var/client/cli = user.client
+			var/list/pref_data = list()
+			pref_data["extreme_erp_verbs"] = cli?.prefs.cit_toggles & EXTREME_ERP_VERBS
 			if(cli)
-				if(cli.prefs.extremepref == "No")
+				if(pref_data["extreme_erp_verbs"])
 					if(!silent)
 						to_chat(user, "<span class='warning'>That's way too much for you.</span>")
 					return FALSE
@@ -491,8 +493,10 @@
 
 		if(extreme)
 			var/client/cli = target.client
+			var/list/pref_data = list()
+			pref_data["extreme_erp_verbs"] = cli?.prefs.cit_toggles & EXTREME_ERP_VERBS
 			if(cli)
-				if(target.client.prefs.extremepref == "No")
+				if(pref_data["extreme_erp_verbs"])
 					if(!silent)
 						to_chat(user, "<span class='warning'>For some reason, you don't want to do this to [target].</span>")
 					return FALSE
@@ -536,8 +540,12 @@
 	if(client)
 		var/client/cli = client
 		var/client/ucli = LM.client
-		if(cli.prefs.extremepref != "No")
-			if(!ucli || (ucli.prefs.extremepref != "No"))
+		var/list/pref_data = list()
+		var/list/upref_data = list()
+		pref_data["extreme_erp_verbs"] = cli?.prefs.cit_toggles & EXTREME_ERP_VERBS
+		upref_data["extreme_erp_verbs"] = ucli?.prefs.cit_toggles & EXTREME_ERP_VERBS
+		if(pref_data["extreme_erp_verbs"])
+			if(!ucli || (upref_data["extreme_erp_verbs"]))
 				if(!get_item_by_slot(ITEM_SLOT_EARS))
 					if(has_ears())
 						dat += "...have unprotected ears."

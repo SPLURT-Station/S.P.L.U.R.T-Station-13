@@ -129,12 +129,6 @@
 
 	var/datum/preferences/prefs = usr?.client.prefs
 	if(prefs)
-	//Getting char prefs
-		data["erp_pref"] = 			prefs.erppref == "Ask" ? 2 : prefs.erppref == "Yes" ? 1 : 0
-		data["noncon_pref"] = 		prefs.nonconpref == "Ask" ? 2 : prefs.nonconpref == "Yes" ? 1 : 0
-		data["vore_pref"] = 		prefs.vorepref == "Ask" ? 2 : prefs.vorepref == "Yes" ? 1 : 0
-		data["extreme_pref"] = 		prefs.extremepref == "Ask" ? 2 : prefs.extremepref == "Yes" ? 1 : 0
-		data["extreme_harm"] = 		prefs.extremeharm == "Yes" ? 1 : 0
 
 	//Getting preferences
 		data["verb_consent"] = 		CHECK_BITFIELD(prefs.toggles, VERB_CONSENT)
@@ -156,6 +150,11 @@
 		data["no_aphro"] = 			!CHECK_BITFIELD(prefs.cit_toggles, NO_APHRO)
 		data["no_ass_slap"] = 		!CHECK_BITFIELD(prefs.cit_toggles, NO_ASS_SLAP)
 		data["no_auto_wag"] = 		!CHECK_BITFIELD(prefs.cit_toggles, NO_AUTO_WAG)
+		data["extreme_erp_verbs"] =	CHECK_BITFIELD(prefs.cit_toggles, EXTREME_ERP_VERBS)
+		data["harmful_erp_verbs"] =	CHECK_BITFIELD(prefs.cit_toggles, HARMFUL_ERP_VERBS)
+		data["vore_pref"] = 		CHECK_BITFIELD(prefs.cit_toggles, VORE)
+		data["erp_pref"] = 			CHECK_BITFIELD(prefs.cit_toggles, ERP)
+		data["noncon_pref"] = 		CHECK_BITFIELD(prefs.cit_toggles, NON_CON)
 
 	return data
 
@@ -187,44 +186,15 @@
 			var/datum/preferences/prefs = usr.client.prefs
 			switch(params["char_pref"])
 				if("erp_pref")
-					switch(prefs.erppref)
-						if("Yes")
-							prefs.erppref = "Ask"
-						if("Ask")
-							prefs.erppref = "No"
-						if("No")
-							prefs.erppref = "Yes"
+					TOGGLE_BITFIELD(prefs.cit_toggles, ERP)
 				if("noncon_pref")
-					switch(prefs.nonconpref)
-						if("Yes")
-							prefs.nonconpref = "Ask"
-						if("Ask")
-							prefs.nonconpref = "No"
-						if("No")
-							prefs.nonconpref = "Yes"
+					TOGGLE_BITFIELD(prefs.cit_toggles, NON_CON)
 				if("vore_pref")
-					switch(prefs.vorepref)
-						if("Yes")
-							prefs.vorepref = "Ask"
-						if("Ask")
-							prefs.vorepref = "No"
-						if("No")
-							prefs.vorepref = "Yes"
-				if("extreme_pref")
-					switch(prefs.extremepref)
-						if("Yes")
-							prefs.extremepref = "Ask"
-						if("Ask")
-							prefs.extremepref = "No"
-							prefs.extremeharm = "No"
-						if("No")
-							prefs.extremepref = "Yes"
-				if("extreme_harm")
-					switch(prefs.extremeharm)
-						if("Yes")
-							prefs.extremeharm = "No"
-						if("No")
-							prefs.extremeharm = "Yes"
+					TOGGLE_BITFIELD(prefs.cit_toggles, VORE)
+				if("extreme_erp_verbs")
+					TOGGLE_BITFIELD(prefs.cit_toggles, EXTREME_ERP_VERBS)
+				if("harmful_erp_verbs")
+					TOGGLE_BITFIELD(prefs.cit_toggles, HARMFUL_ERP_VERBS)
 				else
 					return FALSE
 			prefs.save_character()

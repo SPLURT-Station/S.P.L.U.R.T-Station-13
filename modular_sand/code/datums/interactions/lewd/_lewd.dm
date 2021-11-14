@@ -1567,9 +1567,11 @@
 	for(var/mob/M in range(7, src))
 		if(M.client)
 			var/client/cli = M.client
+			var/list/pref_data = list()
+			pref_data["extreme_erp_verbs"] = cli?.prefs.cit_toggles & EXTREME_ERP_VERBS
 			if(!(cli.prefs.toggles & VERB_CONSENT)) //Note: This probably could do with a specific preference
 				nope += M
-			else if(extreme && (cli.prefs.extremepref == "No"))
+			else if(extreme && (pref_data["extreme_erp_verbs"]))
 				nope += M
 		else
 			nope += M
@@ -1586,9 +1588,11 @@
 			"thrusts in and out of \the <b>[partner]</b>'s [has_eyes() ? "eye":"eyesocket"].",
 			"goes balls deep into \the <b>[partner]</b>'s cranium over and over again.")]"
 		var/client/cli = partner.client
+		var/list/pref_data = list()
+		pref_data["harmful_erp_verbs"] = cli?.prefs.cit_toggles & HARMFUL_ERP_VERBS
 		var/mob/living/carbon/C = partner
 		if(cli && istype(C))
-			if(cli.prefs.extremeharm != "No")
+			if(pref_data["harmful_erp_verbs"])
 				if(prob(15))
 					C.bleed(2)
 				if(prob(25))
@@ -1615,8 +1619,10 @@
 			"goes balls deep into \the <b>[partner]</b>'s cranium over and over again.")]"
 		var/client/cli = partner.client
 		var/mob/living/carbon/C = partner
+		var/list/pref_data = list()
+		pref_data["harmful_erp_verbs"] = cli?.prefs.cit_toggles & HARMFUL_ERP_VERBS
 		if(cli && istype(C))
-			if(cli.prefs.extremeharm != "No")
+			if(pref_data["harmful_erp_verbs"])
 				if(prob(15))
 					C.bleed(2)
 				if(prob(25))

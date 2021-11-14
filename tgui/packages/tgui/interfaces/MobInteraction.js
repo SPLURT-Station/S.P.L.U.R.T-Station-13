@@ -115,46 +115,53 @@ const CharacterPrefsTab = (props, context) => {
     erp_pref,
     noncon_pref,
     vore_pref,
-    extreme_pref,
-    extreme_harm,
+    extreme_erp_verbs,
+    harmful_erp_verbs,
   } = data;
   return (
     <Flex direction="column">
       <Button
         content="ERP"
-        icon={erp_pref === 2 ? "question" : erp_pref === 1 ? "check" : "times"}
-        color={erp_pref === 2 ? "yellow" : erp_pref === 1 ? "green" : "red"}
+        icon={erp_pref ? "check" : "times"}
+        color={erp_pref ? "green" : "red"}
+        selected={erp_pref}
         onClick={() => act('char_pref', {
           char_pref: 'erp_pref',
         })} />
       <Button
         content="Non-Con"
-        icon={noncon_pref === 2 ? "question" : noncon_pref === 1 ? "check" : "times"}
-        color={noncon_pref === 2 ? "yellow" : noncon_pref === 1 ? "green" : "red"}
+        icon={noncon_pref ? "check" : "times"}
+        color={noncon_pref ? "green" : "red"}
+        selected={noncon_pref}
         onClick={() => act('char_pref', {
           char_pref: 'noncon_pref',
         })} />
       <Button
         content="Vore"
-        icon={vore_pref === 2 ? "question" : vore_pref === 1 ? "check" : "times"}
-        color={vore_pref === 2 ? "yellow" : vore_pref === 1 ? "green" : "red"}
+        icon={vore_pref ? "check" : "times"}
+        color={vore_pref ? "green" : "red"}
+        selected={vore_pref}
         onClick={() => act('char_pref', {
           char_pref: 'vore_pref',
-        })} />
+        })}
+      />
       <Button
         content="Extreme ERP verbs"
-        icon={extreme_pref === 2 ? "question" : extreme_pref === 1 ? "check" : "times"}
-        color={extreme_pref === 2 ? "yellow" : extreme_pref === 1 ? "green" : "red"}
+        icon={extreme_erp_verbs ? "check" : "times"}
+        color={extreme_erp_verbs ? "green" : "red"}
+        selected={extreme_erp_verbs}
         onClick={() => act('char_pref', {
-          char_pref: 'extreme_pref',
-        })} />
-      {extreme_pref ? (
+          char_pref: 'extreme_erp_verbs',
+        })}
+      />
+      {extreme_erp_verbs ? (
         <Button
           content="Harmful ERP verbs"
-          icon={extreme_harm ? "toggle-on" : "toggle-off"}
-          color={extreme_harm ? "red" : "orange"}
+          icon={harmful_erp_verbs ? "toggle-on" : "toggle-off"}
+          color={harmful_erp_verbs ? "green" : "red"}
+          selected={harmful_erp_verbs}
           onClick={() => act('char_pref', {
-            char_pref: 'extreme_harm',
+            char_pref: 'harmful_erp_verbs',
           })} />
       ) : (null)}
     </Flex>

@@ -109,11 +109,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/gender = MALE					//gender of character (well duh)
 	var/age = 30						//age of character
 	//SKYRAT CHANGES BEGIN
-	var/erppref = "Ask"
-	var/nonconpref = "Ask"
-	var/vorepref = "Ask"
-	var/extremepref = "No" //This is for extreme shit, maybe even literal shit, better to keep it on no by default
-	var/extremeharm = "No" //If "extreme content" is enabled, this option serves as a toggle for the related interactions to cause damage or not
 	var/see_chat_emotes = TRUE
 	var/enable_personal_chat_color = FALSE
 	var/personal_chat_color = "#ffffff"
@@ -416,9 +411,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			else
 				dat += "[TextPreview(features["ooc_notes"])]...<BR>"
 			//SKYRAT EDIT
-			dat += 	"ERP : <a href='?_src_=prefs;preference=erp_pref'>[erppref]</a><br>"
-			dat += 	"Non-Con : <a href='?_src_=prefs;preference=noncon_pref'>[nonconpref]</a><br>"
-			dat += 	"Vore : <a href='?_src_=prefs;preference=vore_pref'>[vorepref]</a><br>"
+			dat += 	"ERP : <a href='?_src_=prefs;preference=erp_pref'>[(cit_toggles & ERP) ? "On" : "Off"]</a><br>"
+			dat += 	"Non-Con : <a href='?_src_=prefs;preference=noncon_pref'>[(cit_toggles & NON_CON) ? "On" : "Off"]</a><br>"
+			dat += 	"Vore : <a href='?_src_=prefs;preference=vore_pref'>[(cit_toggles & VORE) ? "On" : "Off"]</a><br>"
+
 			//END OF SKYRAT EDIT
 
 			dat += "<h2>Records</h2><br>"
@@ -1146,10 +1142,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Hypno:</b> <a href='?_src_=prefs;preference=never_hypno'>[(cit_toggles & NEVER_HYPNO) ? "Disallowed" : "Allowed"]</a><br>"
 			dat += "<b>Aphrodisiacs:</b> <a href='?_src_=prefs;preference=aphro'>[(cit_toggles & NO_APHRO) ? "Disallowed" : "Allowed"]</a><br>"
 			dat += "<b>Ass Slapping:</b> <a href='?_src_=prefs;preference=ass_slap'>[(cit_toggles & NO_ASS_SLAP) ? "Disallowed" : "Allowed"]</a><br>"
-			//SKYRAT EDIT
-			dat += 	"<b>Extreme ERP verbs :</b> <a href='?_src_=prefs;preference=extremepref'>[extremepref]</a><br>" // https://youtu.be/0YrU9ASVw6w
-			if(extremepref != "No")
-				dat += "<b><span style='color: #e60000;'>Harmful ERP verbs :</b> <a href='?_src_=prefs;preference=extremeharm'>[extremeharm]</a><br>"
+			//SKYRAT EDITCHECK_BITFIELD(prefs.cit_toggles, NO_AUTO_WAG)
+			dat += 	"<b>Extreme ERP verbs :</b> <a href='?_src_=prefs;preference=extreme_erp_verbs'>[(cit_toggles & EXTREME_ERP_VERBS) ? "On" : "Off"]</a><br>" // https://youtu.be/0YrU9ASVw6w
+			if (cit_toggles & EXTREME_ERP_VERBS)
+				dat += "<b><span style='color: #e60000;'>Harmful ERP verbs :</b> <a href='?_src_=prefs;preference=harmful_erp_verbs'>[(cit_toggles & HARMFUL_ERP_VERBS) ? "On" : "Off"]</a><br>"
 			//END OF SKYRAT EDIT
 			dat += "<b>Automatic Wagging:</b> <a href='?_src_=prefs;preference=auto_wag'>[(cit_toggles & NO_AUTO_WAG) ? "Disabled" : "Enabled"]</a><br>"
 			dat += "</tr></table>"
@@ -2785,49 +2781,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("nameless")
 					nameless = !nameless
 
-				//Skyrat begin
-				if("erp_pref")
-					switch(erppref)
-						if("Yes")
-							erppref = "Ask"
-						if("Ask")
-							erppref = "No"
-						if("No")
-							erppref = "Yes"
-				if("noncon_pref")
-					switch(nonconpref)
-						if("Yes")
-							nonconpref = "Ask"
-						if("Ask")
-							nonconpref = "No"
-						if("No")
-							nonconpref = "Yes"
-				if("vore_pref")
-					switch(vorepref)
-						if("Yes")
-							vorepref = "Ask"
-						if("Ask")
-							vorepref = "No"
-						if("No")
-							vorepref = "Yes"
-				//Skyrat edit - *someone* offered me actual money for this shit
-				if("extremepref") //i hate myself for doing this
-					switch(extremepref) //why the fuck did this need to use cycling instead of input from a list
-						if("Yes")		//seriously this confused me so fucking much
-							extremepref = "Ask"
-						if("Ask")
-							extremepref = "No"
-							extremeharm = "No"
-						if("No")
-							extremepref = "Yes"
-				if("extremeharm")
-					switch(extremeharm)
-						if("Yes")	//this is cursed code
-							extremeharm = "No"
-						if("No")
-							extremeharm = "Yes"
-					if(extremepref == "No")
-						extremeharm = "No"
 				//END CITADEL EDIT
 				if("publicity")
 					if(unlock_content)
@@ -3079,6 +3032,22 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("auto_wag")
 					cit_toggles ^= NO_AUTO_WAG
+
+				if("extreme_erp_verbs")
+					cit_toggles ^= EXTREME_ERP_VERBS
+					cit_toggles &= ~(HARMFUL_ERP_VERBS)
+
+				if("harmful_erp_verbs")
+					cit_toggles ^= HARMFUL_ERP_VERBS
+
+				if("erp_pref")
+					cit_toggles ^= ERP
+
+				if("noncon_pref")
+					cit_toggles ^= NON_CON
+
+				if("vore_pref")
+					cit_toggles ^= VORE
 
 				//END CITADEL EDIT
 

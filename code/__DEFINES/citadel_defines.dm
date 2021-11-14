@@ -107,6 +107,11 @@
 #define VORE_EXAMINE		(1<<14)
 #define TRASH_FORCEFEED		(1<<15)
 #define BUTT_ENLARGEMENT	(1<<16)
+#define EXTREME_ERP_VERBS	(1<<17) //This is for extreme shit, maybe even literal shit, better to keep it on no by default
+#define HARMFUL_ERP_VERBS	(1<<18) //If "extreme content" is enabled, this option serves as a toggle for the related interactions to cause damage or not
+#define VORE				(1<<19)
+#define NON_CON				(1<<20)
+#define ERP					(1<<21)
 //Note: reminder, if you're a coder adding more bitflags here in the event we add more horny things, the maximum is (1<<23).
 #define TOGGLES_CITADEL 0
 

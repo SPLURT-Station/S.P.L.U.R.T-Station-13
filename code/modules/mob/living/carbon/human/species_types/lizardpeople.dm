@@ -63,7 +63,6 @@
 /datum/species/lizard/ashwalker/on_species_gain(mob/living/carbon/human/C, datum/species/old_species)
 	if((C.dna.features["spines"] != "None" ) && (C.dna.features["tail_lizard"] == "None")) //tbh, it's kinda ugly for them not to have a tail yet have floating spines
 		C.dna.features["tail_lizard"] = "Smooth"
-		C.update_body()
 	if(C.dna.features["legs"] != "Digitigrade")
 		C.dna.features["legs"] = "Digitigrade"
 		for(var/obj/item/bodypart/leggie in C.bodyparts)
@@ -71,5 +70,29 @@
 				leggie.update_limb(FALSE, C)
 	if(C.dna.features["mam_snouts"] != "Sharp")
 		C.dna.features["mam_snouts"] = "Sharp"
-		C.update_body()
+	C.dna.features["mcolor2"] = C.dna.features["mcolor"] //for no funne rainbows
+	C.dna.features["mcolor3"] = C.dna.features["mcolor"]
+	/*
+	ADD_TRAIT(C, TRAIT_HEAT_DETECT, SPECIES_TRAIT)
+	var/temp = text2num(GLOB.round_id)
+	var/tempish = ((temp + (HEAT_CYCLE_OFFSET + 2)) % HEAT_CYCLE_LENGTH)
+	if(tempish <= 2 && tempish >= 0)
+		to_chat(C, "<span class='userlove'>It's this time again.. Your loins lay restless as they await a potential mate.</span>")
+		ADD_TRAIT(C, TRAIT_HEAT, SPECIES_TRAIT)
+	*/
+	if(C.gender == MALE)
+		C.dna.features["has_cock"] = TRUE
+		C.dna.features["has_balls"] = TRUE
+		C.dna.features["cock_color"] = "A50021"
+		C.dna.features["cock_girth"] = 0.78 + (0.02 * rand(-4, prob(10) ? 5 : 1)) //chance for a bigger pleasure
+		C.dna.features["cock_shape"] = "Tapered"
+		C.dna.features["cock_length"] = 0.5 + rand(4, prob(10) ? 9 : 6) + rand()
+		C.dna.features["balls_shape"] = "Hidden"
+	else
+		C.dna.features["has_vag"] = TRUE
+		C.dna.features["has_womb"] = TRUE
+		C.dna.features["vag_color"] = C.dna.features["mcolor"]
+		C.dna.features["vag_shape"] = "Cloaca"
+	C.give_genitals(1)
+	C.update_body()
 	return ..()

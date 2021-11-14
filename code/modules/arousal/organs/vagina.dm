@@ -42,6 +42,8 @@
 			details = "It is a plush canine spade, it "
 		if("furred")
 			details = "It has neatly groomed fur around the outer folds, it "
+		if("cloaca")
+			details = "It it a tight, small horizontal vent and "
 		else
 			details = "It has an exotic shape and "
 	if(aroused_state)

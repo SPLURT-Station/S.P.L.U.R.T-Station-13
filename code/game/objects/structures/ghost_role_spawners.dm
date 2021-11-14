@@ -44,7 +44,6 @@
 	icon = 'icons/mob/lavaland/lavaland_monsters.dmi'
 	icon_state = "large_egg"
 	mob_species = /datum/species/lizard/ashwalker
-	outfit = /datum/outfit/ashwalker
 	roundstart = FALSE
 	death = FALSE
 	anchored = FALSE
@@ -59,19 +58,17 @@
 /obj/effect/mob_spawn/human/ash_walker/special(mob/living/new_spawn)
 	new_spawn.real_name = random_unique_lizard_name(gender)
 	if(is_mining_level(z))
-		to_chat(new_spawn, "<b>Drag the corpses of men and beasts to your nest. It will absorb them to create more of your kind. Glory to the Necropolis!</b>")
-		to_chat(new_spawn, "<b>You can expand the weather proof area provided by your shelters by using the 'New Area' key near the bottom right of your HUD.</b>")
+		to_chat(new_spawn, "<b>Drag the corpses of men and beasts to your nest. It will absorb them to create more of your kind.</b>")
 	else
 		to_chat(new_spawn, "<span class='userdanger'>You have been born outside of your natural home! Whether you decide to return home, or make due with your new home is your own decision.</span>")
 
-//Ash walkers on birth understand how to make bone bows, bone arrows and ashen arrows
-
-	if(ishuman(new_spawn))
-		var/mob/living/carbon/human/H = new_spawn
-		H.underwear = "Nude"
-		H.undershirt = "Nude"
-		H.socks = "Nude"
-		H.update_body()
+	if(!ishuman(new_spawn))
+		return
+	var/mob/living/carbon/human/H = new_spawn
+	H.underwear = "Nude"
+	H.undershirt = "Nude"
+	H.socks = "Nude"
+	H.update_body()
 
 /obj/effect/mob_spawn/human/ash_walker/Initialize(mapload)
 	. = ..()

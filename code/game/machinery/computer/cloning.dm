@@ -289,9 +289,9 @@
 
 /obj/machinery/computer/cloning/ui_data(mob/user)
 	var/list/data = list()
-	//EROS EDIT BEGIN
+	//SPLURT EDIT BEGIN
 	data["sleeving_implant"] = (inserted_implant?.associated_mind ? inserted_implant.associated_mind.name : null)
-	//EROS EDIT END
+	//SPLURT EDIT END
 	data["useRecords"] = use_records
 	var/list/records_to_send = list()
 	if(use_records)

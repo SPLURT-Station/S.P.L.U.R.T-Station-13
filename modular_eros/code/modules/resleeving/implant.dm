@@ -31,3 +31,7 @@
 /obj/item/implant/resleeving/proc/kill_associated_mind()
 	if(associated_mind)
 		associated_mind_deleted()
+
+/obj/item/implanter/resleeving
+	name = "implanter (resleeving)"
+	imp_type = /obj/item/implant/resleeving

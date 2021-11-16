@@ -11,6 +11,16 @@
 	if(!no_bodyparts)
 		spread_bodyparts(no_brain, no_organs, was_explosion)
 
+	//SPLURT EDIT BEGIN
+	for(var/obj/item/implant/resleeving/resleeving_implant in implants)
+		resleeving_implant.removed(src, TRUE)
+		var/turf/drop_location = drop_location()
+		if(istype(drop_location))
+			resleeving_implant.forceMove(drop_location)
+		else
+			qdel(resleeving_implant)
+	//SPLURT EDIT END
+
 	for(var/X in implants)
 		var/obj/item/implant/I = X
 		qdel(I)

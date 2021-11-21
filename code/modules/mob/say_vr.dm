@@ -100,7 +100,7 @@
 	user.log_message(message, LOG_SUBTLER)
 	message = "<span class='emote'><b>[user]</b> <i>[user.say_emphasis(message)]</i></span>"
 
-	user.visible_message(message = message, self_message = message, vision_distance = 1, ignored_mobs = GLOB.dead_mob_list, omni = TRUE)
+	user.visible_message(message = message, self_message = message, vision_distance = 1, omni = TRUE)
 
 ///////////////// SUBTLE 3: DARE DICE
 
@@ -150,7 +150,7 @@
 			continue
 		for(var/obj/structure/table/T2 in T.connected_floodfill(25))
 			processed[T2] = TRUE
-			for(var/mob/living/L in range(T2, 1))
+			for(var/mob/L in range(T2, 1))
 				show_to |= L
 
 	for(var/i in show_to)

@@ -2567,18 +2567,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if (!isnull(desiredlength))
 						max_chat_length = clamp(desiredlength, 1, CHAT_MESSAGE_MAX_LENGTH)
 
-				//Skyrat changes begin
+				//Sandstorm changes begin
 				if("personal_chat_color")
 					var/new_chat_color = input(user, "Choose your character's runechat color:", "Character Preference",personal_chat_color) as color|null
 					if(new_chat_color)
-						var/list/temp_hsl = rgb2hsl(ReadRGB(new_chat_color)[1],ReadRGB(new_chat_color)[2],ReadRGB(new_chat_color)[3])
-						if(new_chat_color == "#000000")
-							personal_chat_color = "#FFFFFF"
-						else if(temp_hsl[3] >= 0.65 && temp_hsl[2] >= 0.15)
-							personal_chat_color = sanitize_hexcolor(new_chat_color, 6, 1)
+						if(color_hex2num(new_chat_color) > 200)
+							personal_chat_color = sanitize_hexcolor(new_chat_color, 6, TRUE)
 						else
 							to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")
-				//End of skyrat changes
+				//End of sandstorm changes
 
 				if("hud_toggle_color")
 					var/new_toggle_color = input(user, "Choose your HUD toggle flash color:", "Game Preference",hud_toggle_color) as color|null

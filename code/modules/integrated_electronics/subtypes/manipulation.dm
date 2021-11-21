@@ -74,7 +74,7 @@
 	if(istype(TR))
 		switch(get_pin_data(IC_INPUT, 2))
 			if(0)
-				var/list/harvest_output = TR.myseed.harvest_userless()
+				var/list/harvest_output = harvest(TR)
 				for(var/i in 1 to length(harvest_output))
 					harvest_output[i] = WEAKREF(harvest_output[i])
 
@@ -113,6 +113,13 @@
 						O.forceMove(TR)
 						TR.update_icon()
 	activate_pin(2)
+
+/obj/item/integrated_circuit/manipulation/plant_module/proc/harvest(obj/machinery/hydroponics/TR)
+	if(TR.dead)
+		TR.harvest_dead()
+		return list()
+	else
+		return TR.myseed.harvest_userless()
 
 /obj/item/integrated_circuit/manipulation/seed_extractor
 	name = "seed extractor module"

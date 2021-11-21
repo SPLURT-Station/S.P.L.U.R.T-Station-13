@@ -70,11 +70,13 @@
 
 /datum/interaction/lewd/evaluate_user(mob/living/user, silent = TRUE, action_check = TRUE)
 	if(..(user, silent, action_check))
+		/* Temporarily closed
 		if(user_not_tired && user.get_refraction_dif())
 			if(!silent) //bye spam
 				to_chat(user, "<span class='warning'>You're still exhausted from the last time. You need to wait [DisplayTimeText(user.get_refraction_dif(), TRUE)] until you can do that!</span>")
 			if(action_check)
 				return FALSE
+		*/
 
 		if(require_user_bottomless && !user.is_bottomless())
 			if(!silent)

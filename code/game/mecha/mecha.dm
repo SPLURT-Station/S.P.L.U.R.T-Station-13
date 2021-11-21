@@ -825,6 +825,9 @@
 		return
 	if(!ishuman(user)) // no silicons or drones in mechas.
 		return
+	if(HAS_TRAIT(M, TRAIT_PRIMITIVE)) //no lavalizards either.
+		to_chat(M, span_warning("The knowledge to use this device eludes you!"))
+		return
 	mecha_log_message("[user] tries to move in.")
 	if (occupant)
 		to_chat(usr, "<span class='warning'>The [name] is already occupied!</span>")

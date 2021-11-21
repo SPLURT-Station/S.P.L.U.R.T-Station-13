@@ -656,12 +656,7 @@
 		return
 
 	else if(dead)
-		dead = FALSE
-		to_chat(user, "<span class='notice'>You remove the dead plant from [src].</span>")
-		qdel(myseed)
-		myseed = null
-		update_icon()
-		TRAY_NAME_UPDATE
+		harvest_dead(user)
 	else
 		if(user)
 			examine(user)

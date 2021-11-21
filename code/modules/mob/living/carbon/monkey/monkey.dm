@@ -32,6 +32,7 @@
 
 	. = ..()
 
+	ADD_TRAIT(src, TRAIT_PRIMITIVE, ROUNDSTART_TRAIT)
 	if (cubespawned)
 		var/cap = CONFIG_GET(number/monkeycap)
 		if (LAZYLEN(SSmobs.cubemonkeys) > cap)

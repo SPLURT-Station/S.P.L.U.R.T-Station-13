@@ -17,10 +17,10 @@
 				holder.remove_movespeed_modifier(/datum/movespeed_modifier/small_stride) //remove the slowdown
 
 /datum/dna/proc/resize(multiplier = RESIZE_DEFAULT_SIZE)
+	holder.resize = multiplier
+	holder.update_transform()
 	var/old_size = LAZYACCESS(features, "body_size")
 	if(!old_size)
 		old_size = RESIZE_DEFAULT_SIZE
-	holder.resize = multiplier
-	holder.update_transform()
 	LAZYSET(features, "body_size", old_size * multiplier)
 	update_body_size(old_size)

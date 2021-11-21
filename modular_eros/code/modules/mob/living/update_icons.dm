@@ -21,17 +21,15 @@
 
 	if(resize != RESIZE_DEFAULT_SIZE)
 		changed++
-		//reset translation if possible
-		var/old_translation = ((current_size_multiplier - RESIZE_DEFAULT_SIZE)*world.icon_size)/4
-		ntransform.Translate(0, -old_translation)
-		to_chat(src, "old translation: [old_translation]")
-		//translate upwards just enough to not go past the southern bounds
-		var/new_translation = (((resize * current_size_multiplier) - RESIZE_DEFAULT_SIZE)*world.icon_size)/4
-		ntransform.Translate(0, new_translation)
 		to_chat(src, "new translation: [new_translation]")
 		ntransform.Scale(resize)
 		current_size_multiplier *= resize
 		resize = RESIZE_DEFAULT_SIZE
+
+	if(current_size_multiplier - RESIZE_DEFAULT_SIZE)
+		changed++
+		var/translation = ((resize * current_size_multiplier) - RESIZE_DEFAULT_SIZE)*(world.icon_size/2)
+		final_pixel_y += new_translation
 
 	if(changed)
 		animate(src, transform = ntransform, time = 2, pixel_y = final_pixel_y, easing = EASE_IN|EASE_OUT)

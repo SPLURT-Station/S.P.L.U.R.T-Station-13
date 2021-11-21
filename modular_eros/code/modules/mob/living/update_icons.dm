@@ -22,8 +22,8 @@
 	if(resize != RESIZE_DEFAULT_SIZE)
 		changed++
 		ntransform.Scale(resize)
-		ntransform.Translate(0, (-8 * current_size_multiplier)/2)
-		ntransform.Translate(0, (8 * resize)/2)
+		ntransform.Translate(0, -8 * current_size_multiplier)
+		ntransform.Translate(0, 8 * resize)
 		current_size_multiplier = resize
 		resize = RESIZE_DEFAULT_SIZE
 

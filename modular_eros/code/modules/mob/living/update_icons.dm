@@ -21,8 +21,14 @@
 
 	if(resize != RESIZE_DEFAULT_SIZE)
 		changed++
-		ntransform.Translate(0, -(world.icon_size/2) * (current_size_multiplier - RESIZE_DEFAULT_SIZE))
-		ntransform.Translate(0, (world.icon_size/2) * ((resize*current_size_multiplier) - RESIZE_DEFAULT_SIZE))
+		//reset translation if possible
+		var/old_translation = ((current_size_multiplier - RESIZE_DEFAULT_SIZE)*world.icon_size)/4
+		ntransform.Translate(0, -old_translation)
+		to_chat(src, "old translation: [old_translation]")
+		//translate upwards just enough to not go past the southern bounds
+		var/new_translation = (((resize * current_size_multiplier) - RESIZE_DEFAULT_SIZE)*world.icon_size)/4
+		ntransform.Translate(0, new_translation)
+		to_chat(src, "new translation: [new_translation]")
 		ntransform.Scale(resize)
 		current_size_multiplier *= resize
 		resize = RESIZE_DEFAULT_SIZE
@@ -31,6 +37,6 @@
 		animate(src, transform = ntransform, time = 2, pixel_y = final_pixel_y, easing = EASE_IN|EASE_OUT)
 		floating_need_update = TRUE
 
-/mob/living/proc/new_body_size(new_size = RESIZE_DEFAULT_SIZE)
-	resize = new_size
+/mob/living/proc/resize(multiplier = RESIZE_DEFAULT_SIZE)
+	resize = multiplier
 	update_transform()

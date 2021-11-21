@@ -1027,7 +1027,7 @@
 	H.update_transform()
 	*/
 	//SPLURT EDIT BEGIN
-	H.new_body_size(newsize/current_size)
+	H.resize(newsize/current_size)
 	current_size = newsize
 	//SPLURT EDIT END
 	if(prob(40))
@@ -1041,7 +1041,7 @@
 	M.update_transform()
 	*/
 	//SPLURT EDIT BEGIN
-	M.new_body_size(RESIZE_DEFAULT_SIZE/current_size)
+	M.resize(RESIZE_DEFAULT_SIZE/current_size)
 	current_size = RESIZE_DEFAULT_SIZE
 	//SPLURT EDIT END
 	..()

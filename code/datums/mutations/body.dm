@@ -346,7 +346,7 @@
 	owner.update_transform()
 	*/
 	//SPLURT EDIT BEGIN
-	owner.new_body_size(1.25 * RESIZE_DEFAULT_SIZE)
+	owner.resize(1.25)
 	//SPLURT EDIT END
 	owner.visible_message("<span class='danger'>[owner] suddenly grows!</span>", "<span class='notice'>Everything around you seems to shrink..</span>")
 
@@ -359,7 +359,7 @@
 	owner.update_transform()
 	*/
 	//SPLURT EDIT BEGIN
-	owner.new_body_size(0.8 * RESIZE_DEFAULT_SIZE)
+	owner.resize(0.8)
 	//SPLURT EDIT END
 	owner.visible_message("<span class='danger'>[owner] suddenly shrinks!</span>", "<span class='notice'>Everything around you seems to grow..</span>")
 

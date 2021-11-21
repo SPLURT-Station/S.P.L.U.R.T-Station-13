@@ -21,10 +21,10 @@
 
 	if(resize != RESIZE_DEFAULT_SIZE)
 		changed++
+		ntransform.Translate(0, -(world.icon_size/2) * (current_size_multiplier - RESIZE_DEFAULT_SIZE))
+		ntransform.Translate(0, (world.icon_size/2) * ((resize*current_size_multiplier) - RESIZE_DEFAULT_SIZE))
 		ntransform.Scale(resize)
-		ntransform.Translate(0, -8 * current_size_multiplier)
-		ntransform.Translate(0, 8 * resize)
-		current_size_multiplier = resize
+		current_size_multiplier *= resize
 		resize = RESIZE_DEFAULT_SIZE
 
 	if(changed)

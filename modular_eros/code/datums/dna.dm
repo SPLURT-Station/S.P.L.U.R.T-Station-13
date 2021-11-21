@@ -1,8 +1,9 @@
-/datum/dna/update_body_size(old_size = world.icon_size)
+/datum/dna/update_body_size(old_size = RESIZE_DEFAULT_SIZE)
 	if(!holder || (features["body_size"] == old_size))
 		return
 	//new size detected
-	holder.resize = features["body_size"] / old_size
+	holder.current_size_multiplier = old_size
+	holder.resize = features["body_size"]
 	holder.update_transform()
 	if(iscarbon(holder))
 		var/mob/living/carbon/carbon_holder = holder
@@ -21,6 +22,6 @@
 /datum/dna/proc/new_body_size(new_size = RESIZE_DEFAULT_SIZE)
 	var/old_size = LAZYACCESS(features, "body_size")
 	if(!old_size)
-		old_size = world.icon_size
+		old_size = RESIZE_DEFAULT_SIZE
 	LAZYSET(features, "body_size", old_size * new_size)
 	update_body_size(old_size)

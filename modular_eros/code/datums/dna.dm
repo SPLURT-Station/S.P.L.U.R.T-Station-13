@@ -2,7 +2,7 @@
 	if(!holder || (features["body_size"] == old_size))
 		return
 	//new size detected
-	holder.resize = features["body_size"]
+	holder.resize = features["body_size"]/old_size
 	holder.update_transform()
 	if(iscarbon(holder))
 		var/mob/living/carbon/carbon_holder = holder

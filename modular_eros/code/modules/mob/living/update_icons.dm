@@ -1,4 +1,8 @@
-/mob/living/update_transform(old_body_size = 32)
+/mob/living
+	// Current size multiplier, compared to world.icon_size
+	var/current_size_multiplier = 1
+
+/mob/living/update_transform()
 	//aka transform.Copy()
 	var/matrix/ntransform = matrix(transform)
 	var/final_pixel_y = pixel_y
@@ -18,10 +22,15 @@
 	if(resize != RESIZE_DEFAULT_SIZE)
 		changed++
 		ntransform.Scale(resize)
-		ntransform.Translate(0, (-8 * (old_body_size/world.icon_size))/2)
+		ntransform.Translate(0, (-8 * current_size_multiplier)/2)
 		ntransform.Translate(0, (8 * resize)/2)
+		current_size_multiplier = resize
 		resize = RESIZE_DEFAULT_SIZE
 
 	if(changed)
 		animate(src, transform = ntransform, time = 2, pixel_y = final_pixel_y, easing = EASE_IN|EASE_OUT)
 		floating_need_update = TRUE
+
+/mob/living/proc/new_body_size(new_size = RESIZE_DEFAULT_SIZE)
+	resize = new_size
+	update_transform()

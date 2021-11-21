@@ -1,9 +1,9 @@
-/datum/dna/update_body_size(old_size)
-	if(!holder || features["body_size"] == old_size)
+/datum/dna/update_body_size(old_size = world.icon_size)
+	if(!holder || (features["body_size"] == old_size))
 		return
 	//new size detected
 	holder.resize = features["body_size"] / old_size
-	holder.update_transform(old_size)
+	holder.update_transform()
 	if(iscarbon(holder))
 		var/mob/living/carbon/carbon_holder = holder
 		var/penalty_threshold = CONFIG_GET(number/threshold_body_size_penalty)
@@ -18,3 +18,9 @@
 				carbon_holder.maxHealth  += 10
 				holder.remove_movespeed_modifier(/datum/movespeed_modifier/small_stride) //remove the slowdown
 
+/datum/dna/proc/new_body_size(new_size = RESIZE_DEFAULT_SIZE)
+	var/old_size = LAZYACCESS(features, "body_size")
+	if(!old_size)
+		old_size = world.icon_size
+	LAZYSET(features, "body_size", old_size * new_size)
+	update_body_size(old_size)

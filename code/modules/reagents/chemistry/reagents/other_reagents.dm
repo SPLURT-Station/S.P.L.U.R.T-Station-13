@@ -2161,16 +2161,27 @@
 			newsize = 2.5*RESIZE_DEFAULT_SIZE
 		if(200 to INFINITY)
 			newsize = 3.5*RESIZE_DEFAULT_SIZE
-
+	/* SPLURT EDIT REMOVAL
 	H.resize = newsize/current_size
 	current_size = newsize
 	H.update_transform()
+	*/
+	//SPLURT EDIT BEGIN
+	H.new_body_size(newsize/current_size)
+	current_size = newsize
+	//SPLURT EDIT END
 	..()
 
 /datum/reagent/growthserum/on_mob_end_metabolize(mob/living/M)
+	/* SPLURT EDIT REMOVAL
 	M.resize = RESIZE_DEFAULT_SIZE/current_size
 	current_size = RESIZE_DEFAULT_SIZE
 	M.update_transform()
+	*/
+	//SPLURT EDIT BEGIN
+	M.new_body_size(RESIZE_DEFAULT_SIZE/current_size)
+	current_size = RESIZE_DEFAULT_SIZE
+	//SPLURT EDIT END
 	..()
 
 /datum/reagent/plastic_polymers

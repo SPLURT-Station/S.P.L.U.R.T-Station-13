@@ -1021,17 +1021,29 @@
 		return ..()
 	var/newsize = pick(0.5, 0.75, 1, 1.50, 2)
 	newsize *= RESIZE_DEFAULT_SIZE
+	/* SPLURT EDIT REMOVAL
 	H.resize = newsize/current_size
 	current_size = newsize
 	H.update_transform()
+	*/
+	//SPLURT EDIT BEGIN
+	H.new_body_size(newsize/current_size)
+	current_size = newsize
+	//SPLURT EDIT END
 	if(prob(40))
 		H.emote("sneeze")
 	..()
 
 /datum/reagent/consumable/red_queen/on_mob_end_metabolize(mob/living/M)
+	/* SPLURT EDIT REMOVAL
 	M.resize = RESIZE_DEFAULT_SIZE/current_size
 	current_size = RESIZE_DEFAULT_SIZE
 	M.update_transform()
+	*/
+	//SPLURT EDIT BEGIN
+	M.new_body_size(RESIZE_DEFAULT_SIZE/current_size)
+	current_size = RESIZE_DEFAULT_SIZE
+	//SPLURT EDIT END
 	..()
 
 /datum/reagent/consumable/pinkmilk

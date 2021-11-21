@@ -2,7 +2,6 @@
 	if(!holder || (features["body_size"] == old_size))
 		return
 	//new size detected
-	holder.current_size_multiplier = old_size
 	holder.resize = features["body_size"]
 	holder.update_transform()
 	if(iscarbon(holder))

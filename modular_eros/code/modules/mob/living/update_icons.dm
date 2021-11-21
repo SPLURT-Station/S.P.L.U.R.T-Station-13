@@ -21,7 +21,6 @@
 
 	if(resize != RESIZE_DEFAULT_SIZE)
 		changed++
-		to_chat(src, "new translation: [new_translation]")
 		ntransform.Scale(resize)
 		current_size_multiplier *= resize
 		resize = RESIZE_DEFAULT_SIZE
@@ -29,7 +28,7 @@
 	if(current_size_multiplier - RESIZE_DEFAULT_SIZE)
 		changed++
 		var/translation = ((resize * current_size_multiplier) - RESIZE_DEFAULT_SIZE)*(world.icon_size/2)
-		final_pixel_y += new_translation
+		final_pixel_y += translation
 
 	if(changed)
 		animate(src, transform = ntransform, time = 2, pixel_y = final_pixel_y, easing = EASE_IN|EASE_OUT)

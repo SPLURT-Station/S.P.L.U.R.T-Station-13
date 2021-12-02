@@ -167,7 +167,7 @@
 	tools = list(TOOL_CROWBAR)
 	subcategory = CAT_MISCELLANEOUS
 	category = CAT_MISCELLANEOUS
-	
+
 /datum/crafting_recipe/manlyanvil
 	name = "Manly Anvil"
 	result = /obj/structure/anvil/obtainable/dwarfvil
@@ -180,7 +180,7 @@
 	tools = list(TOOL_CROWBAR)
 	subcategory = CAT_MISCELLANEOUS
 	category = CAT_MISCELLANEOUS
-	
+
 ///////////////////
 //Tools & Storage//
 ///////////////////

@@ -160,6 +160,11 @@
 	L.default_toggle_sprint()
 	return TRUE
 
+/datum/keybinding/living/toggle_sprint/up(client/user)
+	var/mob/living/L = user.mob
+	L.default_toggle_sprint()
+	return TRUE
+
 /datum/keybinding/mob/toggle_move_intent
 	hotkey_keys = list("Alt")
 	name = "toggle_move_intent"

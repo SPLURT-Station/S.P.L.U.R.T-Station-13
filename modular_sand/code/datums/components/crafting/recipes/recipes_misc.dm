@@ -1,4 +1,4 @@
-/*sandpoot you on crack
+/* Becasue ashies having futuristic tech without interacting with an actually advanced civilization is bad.
 /datum/crafting_recipe/rnd_board
 	name = "RnD Console Board"
 	result = /obj/item/circuitboard/computer/rdconsole

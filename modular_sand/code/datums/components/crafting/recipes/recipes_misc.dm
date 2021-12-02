@@ -1,3 +1,4 @@
+/*sandpoot you on crack
 /datum/crafting_recipe/rnd_board
 	name = "RnD Console Board"
 	result = /obj/item/circuitboard/computer/rdconsole
@@ -45,6 +46,7 @@
 	time = 20
 	subcategory = CAT_TOOL
 	category = CAT_MISCELLANEOUS
+*/
 
 /datum/crafting_recipe/crowbar
 	name = "Makeshift Crowbar"

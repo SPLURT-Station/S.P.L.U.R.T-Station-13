@@ -24,6 +24,7 @@
 	category = list("initial", "Electronics")
 	departmental_flags = DEPARTMENTAL_FLAG_SERVICE | DEPARTMENTAL_FLAG_ENGINEERING
 
+/*
 /datum/design/board/autodoc
 	name = "Machine Design (Autodoc)"
 	desc = "The circuit board for an Autodoc."
@@ -31,6 +32,7 @@
 	build_path = /obj/item/circuitboard/machine/autodoc
 	category = list("Medical Machinery")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+*/
 
 //Cryptocurrency Miners
 /datum/design/board/cryptominer

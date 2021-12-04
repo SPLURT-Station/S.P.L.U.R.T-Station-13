@@ -39,7 +39,7 @@
 		H.facial_hair_style = new_style
 		H.update_hair()
 
-/obj/item/razor/straightrazor
+/obj/item/razor/straightrazor1
 	name = "straight razor"
 	icon = 'modular_sand/icons/obj/items_and_weapons.dmi'
 	icon_state = "straightrazor"

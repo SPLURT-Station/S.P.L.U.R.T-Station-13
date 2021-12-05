@@ -159,7 +159,7 @@
 	key_third_person = "caws"
 	message = "caws!"
 	sound = 'modular_eros/sound/voice/caw.ogg'
-	
+
 /datum/emote/living/carbon/moan/run_emote(mob/living/user, params) //I can't not port this shit, come on.
 	if(user.nextsoundemote >= world.time || user.stat != CONSCIOUS)
 		return

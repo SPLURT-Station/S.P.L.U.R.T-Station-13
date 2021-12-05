@@ -184,3 +184,23 @@
 		user.nextsoundemote = world.time + 7
 		playsound(user, 'modular_eros/sound/voice/bleat.ogg', 50, 1, -1)
 	. = ..()
+
+/datum/emote/living/carbon/moan/run_emote(mob/living/user, params) //I can't not port this shit, come on.
+	if(user.nextsoundemote >= world.time || user.stat != CONSCIOUS)
+		return
+	var/sound
+	var/miming = user.mind ? user.mind.miming : 0
+	if(!user.is_muzzled() && !miming)
+		user.nextsoundemote = world.time + 7
+		sound = pick('modular_eros/sound/voice/moan_m1.ogg', 'modular_eros/sound/voice/moan_m2.ogg', 'modular_eros/sound/voice/moan_m3.ogg')
+		if(user.gender == FEMALE)
+			sound = pick('modular_eros/sound/voice/moan_f1.ogg', 'modular_eros/sound/voice/moan_f2.ogg', 'modular_eros/sound/voice/moan_f3.ogg', 'modular_eros/sound/voice/moan_f4.ogg', 'modular_eros/sound/voice/moan_f5.ogg', 'modular_eros/sound/voice/moan_f6.ogg', 'modular_eros/sound/voice/moan_f7.ogg')
+		if(isalien(user))
+			sound = 'sound/voice/hiss6.ogg'
+		playsound(user.loc, sound, 50, 1, 4, 1.2)
+		message = "moans!"
+	else if(miming)
+		message = "acts out a moan."
+	else
+		message = "makes a very loud noise."
+	. = ..()

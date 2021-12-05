@@ -13,7 +13,7 @@
 					/obj/item/gun/ballistic/automatic/pistol/deagle/camo = 2,
 					/obj/item/gun/ballistic/automatic/pistol/m1911 = 2,
 					/obj/item/gun/ballistic/automatic/proto/unrestricted = 2,
-					/obj/item/gun/ballistic/shotgun/automatic/combat = 2,
+					/obj/item/gun/ballistic/shotgun/combat = 2,
 					/obj/item/gun/ballistic/automatic/gyropistol = 1,
 					/obj/item/gun/ballistic/shotgun = 2,
 					/obj/item/gun/ballistic/automatic/ar = 2)

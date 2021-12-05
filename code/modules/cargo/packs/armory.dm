@@ -41,9 +41,9 @@
 	name = "Combat Shotguns Crate"
 	desc = "For when the enemy absolutely needs to be replaced with lead. Contains three Aussec-designed Combat Shotguns, with three Shotgun Bandoliers, as well as seven buchshot and 12g shotgun slugs. Requires Armory access to open."
 	cost = 8000
-	contains = list(/obj/item/gun/ballistic/shotgun/automatic/combat,
-					/obj/item/gun/ballistic/shotgun/automatic/combat,
-					/obj/item/gun/ballistic/shotgun/automatic/combat,
+	contains = list(/obj/item/gun/ballistic/shotgun/combat,
+					/obj/item/gun/ballistic/shotgun/combat,
+					/obj/item/gun/ballistic/shotgun/combat,
 					/obj/item/storage/belt/bandolier,
 					/obj/item/storage/belt/bandolier,
 					/obj/item/storage/belt/bandolier,

@@ -25,11 +25,6 @@
 	//heart attack stuff
 	handle_heart()
 
-	// HYPER CHANGE //adds cumdrip
-	if(cumdrip_rate > 0 && stat != DEAD)
-		handle_creampie()
-	// HYPER CHANGE
-
 	dna.species.spec_life(src) // for mutantraces
 	return (stat != DEAD) && !QDELETED(src)
 

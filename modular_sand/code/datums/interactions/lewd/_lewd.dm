@@ -456,6 +456,14 @@
 /mob/living/proc/cum(mob/living/partner, target_orifice)
 	var/message
 	var/cumin = FALSE
+	var/partner_carbon_check = FALSE
+	var/obj/item/organ/genital/target_gen = null
+	var/mob/living/carbon/c_partner = null
+	//Carbon checks
+	if(iscarbon(partner))
+		c_partner = partner
+		partner_carbon_check = TRUE
+
 	if(src != partner)
 		if(!last_genital)
 			if(has_penis())
@@ -476,6 +484,8 @@
 							message = "cums on \the <b>[partner]</b>'s face."
 					if(CUM_TARGET_VAGINA)
 						if(partner.has_vagina(REQUIRE_EXPOSED))
+							if(partner_carbon_check)
+								target_gen = c_partner.getorganslot(ORGAN_SLOT_VAGINA)
 							message = "cums in \the <b>[partner]</b>'s pussy."
 							cumin = TRUE
 						else
@@ -638,6 +648,8 @@
 								message = "cums on \the <b>[partner]</b>'s face."
 						if(CUM_TARGET_VAGINA)
 							if(partner.has_vagina(REQUIRE_EXPOSED))
+								if(partner_carbon_check)
+									target_gen = c_partner.getorganslot(ORGAN_SLOT_VAGINA)
 								message = "cums in \the <b>[partner]</b>'s pussy."
 								cumin = TRUE
 							else
@@ -810,7 +822,7 @@
 			if(!partner)
 				H.mob_climax(TRUE, "masturbation", "none")
 			else
-				H.mob_climax(TRUE, "sex", partner, !cumin)
+				H.mob_climax(TRUE, "sex", partner, !cumin, target_gen)
 	set_lust(0)
 
 /mob/living/proc/is_fucking(mob/living/partner, orifice)

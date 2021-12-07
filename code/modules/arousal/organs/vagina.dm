@@ -4,7 +4,7 @@
 	icon = 'icons/obj/genitals/vagina.dmi'
 	icon_state = ORGAN_SLOT_VAGINA
 	zone = BODY_ZONE_PRECISE_GROIN
-	slot = "vagina"
+	slot = ORGAN_SLOT_VAGINA
 	size = 1 //There is only 1 size right now
 	shape = DEF_VAGINA_SHAPE
 	genital_flags = CAN_MASTURBATE_WITH|CAN_CLIMAX_WITH|GENITAL_CAN_AROUSE|GENITAL_UNDIES_HIDDEN|CAN_CUM_INTO

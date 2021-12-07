@@ -336,6 +336,8 @@ Doesn't work on other aliens/AI.*/
 	vessel.storedPlasma = min(vessel.storedPlasma, vessel.max_plasma) //upper limit of max_plasma, lower limit of 0
 	for(var/X in abilities)
 		var/obj/effect/proc_holder/alien/APH = X
+		if(!APH)
+			continue
 		if(APH.has_action)
 			APH.action.UpdateButtonIcon()
 	return 1

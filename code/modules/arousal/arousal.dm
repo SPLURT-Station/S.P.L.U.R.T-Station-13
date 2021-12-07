@@ -65,6 +65,10 @@
 		to_chat(H, "<span class='warning'>Your [name] is unable to produce it's own fluids, it's missing the organs for it.</span>")
 
 /mob/living/carbon/human/proc/do_climax(datum/reagents/R, atom/target, obj/item/organ/genital/G, spill = TRUE)
+	//Sandstorm edit
+	set_lust(0)
+	SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
+	//Sandstorm edit
 	if(!G)
 		return
 	if(!target || !R)
@@ -109,14 +113,12 @@
 	if(spillage)
 		to_chat(src,"<span class='userlove'>You orgasm with [L], spilling out of [(Lgen) ? "[L.p_their()] [Lgen.name]" : "[L.p_them()]"], using your [G.name].</span>")
 		to_chat(L,"<span class='userlove'>[src] climaxes [(Lgen) ? "in your [Lgen.name]" : "with you"], overflowing and spilling, using [p_their()] [G.name]!</span>")
-		var/mob/living/carbon/human/H = L
-		if(H)
-			H.cumdrip_rate += rand(5,10)
 	else //knots and other non-spilling orgasms
 		to_chat(src,"<span class='userlove'>You climax [(Lgen) ? "in [L]'s [Lgen.name]" : "with [L]"], your [G.name] spilling nothing.</span>")
 		to_chat(L,"<span class='userlove'>[src] climaxes [(Lgen) ? "in your [Lgen.name]" : "with you"], [p_their()] [G.name] spilling nothing!</span>")
-	SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
+	//SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm) //Sandstorm edit
 	do_climax(fluid_source, spillage ? loc : L, G, spillage)
+	L.receive_climax(src, Lgen, G, spillage)
 
 /mob/living/carbon/human/proc/mob_fill_container(obj/item/organ/genital/G, obj/item/reagent_containers/container, mb_time = 30) //For beaker-filling, beware the bartender
 	var/datum/reagents/fluid_source = G.climaxable(src)
@@ -128,19 +130,6 @@
 			return
 	to_chat(src,"<span class='userlove'>You used your [G.name] to fill [container].</span>")
 	do_climax(fluid_source, container, G, FALSE)
-
-/mob/living/carbon/human/proc/pick_receiving_organ(mob/living/L)
-	if (!iscarbon(L))
-		return
-	var/mob/living/carbon/C = L
-	var/list/receivers_list
-	var/list/other_worn = C.get_equipped_items()
-	for(var/obj/item/organ/genital/G in C.internal_organs)
-		if((G.genital_flags & CAN_CUM_INTO) && G.is_exposed(other_worn)) //filter out what you can't cum into
-			LAZYADD(receivers_list, G)
-	if(LAZYLEN(receivers_list))
-		var/obj/item/organ/genital/ret_organ = input(src, "in what hole?", "Climax", null) as null|obj in receivers_list
-		return ret_organ
 
 /mob/living/carbon/human/proc/pick_climax_genitals(silent = FALSE)
 	var/list/genitals_list
@@ -220,7 +209,7 @@
 
 //Here's the main proc itself
 //skyrat edit - forced partner and spillage
-/mob/living/carbon/human/proc/mob_climax(forced_climax=FALSE,cause = "", var/mob/living/forced_partner = null, var/forced_spillage = TRUE) //Forced is instead of the other proc, makes you cum if you have the tools for it, ignoring restraints
+/mob/living/carbon/human/proc/mob_climax(forced_climax=FALSE,cause = "", var/mob/living/forced_partner = null, var/forced_spillage = TRUE, var/obj/item/organ/genital/forced_receiving_genital = null) //Forced is instead of the other proc, makes you cum if you have the tools for it, ignoring restraints
 	set waitfor = FALSE
 	if(mb_cd_timer > world.time)
 		if(!forced_climax) //Don't spam the message to the victim if forced to come too fast
@@ -266,7 +255,7 @@
 				//
 				if(partner) //Did they pass the clothing checks?
 					//skyrat edit
-					mob_climax_partner(G, partner, spillage = forced_spillage, mb_time = 0) //Instant climax due to forced
+					mob_climax_partner(G, partner, spillage = forced_spillage, mb_time = 0, Lgen = forced_receiving_genital) //Instant climax due to forced
 					//
 					continue //You've climaxed once with this organ, continue on
 			//not exposed OR if no partner was found while exposed, climax alone

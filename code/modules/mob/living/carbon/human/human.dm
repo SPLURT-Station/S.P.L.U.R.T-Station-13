@@ -813,13 +813,6 @@
 	else
 		..()
 
-/mob/living/carbon/human/resist_restraints()
-	if(w_underwear && w_underwear.breakouttime)
-		MarkResistTime()
-		cuff_resist(w_underwear)
-	else
-		..()
-
 /mob/living/carbon/human/replace_records_name(oldname,newname) // Only humans have records right now, move this up if changed.
 	for(var/list/L in list(GLOB.data_core.general,GLOB.data_core.medical,GLOB.data_core.security,GLOB.data_core.locked))
 		var/datum/data/record/R = find_record("name", oldname, L)

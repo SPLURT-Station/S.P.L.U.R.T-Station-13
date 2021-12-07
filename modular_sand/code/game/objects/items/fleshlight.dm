@@ -251,15 +251,6 @@
 	equip_delay_self = 2 SECONDS
 	equip_delay_other = 5 SECONDS
 
-/obj/item/clothing/underwear/briefs/panties/portalpanties/chastitybelt_p
-	name = "strange armor panties"
-	desc = "Panties made of solid metal. The locking mechanism is located at the back. They cannot be removed without assistance. Something strange about them..."
-	icon = 'modular_sand/icons/obj/fleshlight.dmi'
-	icon_state = "chastitybelt"
-	item_state = "fleshlight"
-	strip_delay = 60 SECONDS
-	breakouttime = 3000 HOURS // Good luck, little slut
-
 /obj/item/clothing/underwear/briefs/panties/portalpanties/attack_self(mob/user)
 	. = ..()
 	targetting = targetting == "anus" ? "vagina" : "anus"

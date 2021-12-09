@@ -19,6 +19,36 @@
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
 	qdel(src)
 
+/obj/structure/dresser/Initialize(mapload)
+	. = ..()
+	var/datum/component/storage/STR = AddComponent(/datum/component/storage/concrete)
+	STR.max_w_class = WEIGHT_CLASS_SMALL
+	STR.max_combined_w_class = 80
+	STR.max_items = 40
+
+	if(mapload)
+		generate_underwear()
+
+#define UNDIE_AMOUNT 11
+/obj/structure/dresser/proc/generate_underwear()
+	var/static/list/possible_underwear = subtypesof(/obj/item/clothing/underwear/briefs)
+	var/static/list/possible_undershirt = subtypesof(/obj/item/clothing/underwear/shirt)
+	var/static/list/possible_socks = subtypesof(/obj/item/clothing/underwear/socks)
+
+	for(var/i in 1 to UNDIE_AMOUNT)
+		var/underwear = pick(possible_underwear)
+		new underwear(src)
+
+	for(var/i in 1 to UNDIE_AMOUNT)
+		var/shirt = pick(possible_undershirt)
+		new shirt(src)
+
+	for(var/i in 1 to UNDIE_AMOUNT)
+		var/socks = pick(possible_socks)
+		new socks(src)
+
+#undef UNDIE_AMOUNT
+
 /* skyrat edit - the dresser is useless with our inventory system
 /obj/structure/dresser/on_attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
 	. = ..()

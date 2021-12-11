@@ -151,6 +151,8 @@
 	if(ishuman(O))
 		var/mob/living/carbon/human/H = O
 		var/obj/item/clothing/shoes/S = H.shoes
+		if(!istype(S))
+			return
 		if(S && S.bloody_shoes[blood_state])
 			if(color != S.last_blood_color)
 				return
@@ -164,6 +166,8 @@
 	if(ishuman(O))
 		var/mob/living/carbon/human/H = O
 		var/obj/item/clothing/shoes/S = H.shoes
+		if(!istype(S))
+			return
 		if(S && S.bloody_shoes[blood_state])
 			if(color != S.last_blood_color)//last entry - we check its color
 				return

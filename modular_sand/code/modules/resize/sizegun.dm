@@ -13,52 +13,48 @@
 /obj/item/projectile/sizelaser/growthray
 	icon_state = "laser"
 
-/obj/item/projectile/sizelaser/shrinkray/on_hit(var/atom/target, var/blocked = 0)
-	if(istype(target, /mob/living/carbon))
-		var/mob/living/carbon/M = target
-		if(!M?.dna)
-			return ..()
-		var/old_size = M.dna.features["body_size"]
-		switch(M.dna.features["body_size"])
+/obj/item/projectile/sizelaser/shrinkray/on_hit(atom/target, blocked = 0)
+	if(isliving(target))
+		var/mob/living/living = target
+		var/new_size = RESIZE_NORMAL
+		switch(get_size(target))
 			if(RESIZE_MACRO to INFINITY)
-				M.dna.features["body_size"] = RESIZE_HUGE
+				new_size = RESIZE_HUGE
 			if(RESIZE_HUGE to RESIZE_MACRO)
-				M.dna.features["body_size"] = RESIZE_BIG
+				new_size = RESIZE_BIG
 			if(RESIZE_BIG to RESIZE_HUGE)
-				M.dna.features["body_size"] = RESIZE_NORMAL
+				new_size = RESIZE_NORMAL
 			if(RESIZE_NORMAL to RESIZE_BIG)
-				M.dna.features["body_size"] = RESIZE_SMALL
+				new_size = RESIZE_SMALL
 			if(RESIZE_SMALL to RESIZE_NORMAL)
-				M.dna.features["body_size"] = RESIZE_TINY
+				new_size = RESIZE_TINY
 			if(RESIZE_TINY to RESIZE_SMALL)
-				M.dna.features["body_size"] = RESIZE_MICRO
+				new_size = RESIZE_MICRO
 			if((0 - INFINITY) to RESIZE_NORMAL)
-				M.dna.features["body_size"] = RESIZE_MICRO
-		M.dna.update_body_size(old_size)
+				new_size = RESIZE_MICRO
+		living.update_size(new_size)
 	return 1
 
-/obj/item/projectile/sizelaser/growthray/on_hit(var/atom/target, var/blocked = 0 )
-	if(istype(target, /mob/living/carbon))
-		var/mob/living/carbon/M = target
-		if(!M?.dna)
-			return ..()
-		var/old_size = M.dna.features["body_size"]
-		switch(M.dna.features["body_size"])
+/obj/item/projectile/sizelaser/growthray/on_hit(atom/target, blocked = 0 )
+	if(isliving(target))
+		var/mob/living/living = target
+		var/new_size = RESIZE_NORMAL
+		switch(get_size(target))
 			if(RESIZE_HUGE to RESIZE_MACRO)
-				M.dna.features["body_size"] = RESIZE_MACRO
+				new_size = RESIZE_MACRO
 			if(RESIZE_BIG to RESIZE_HUGE)
-				M.dna.features["body_size"] = RESIZE_HUGE
+				new_size = RESIZE_HUGE
 			if(RESIZE_NORMAL to RESIZE_BIG)
-				M.dna.features["body_size"] = RESIZE_BIG
+				new_size = RESIZE_BIG
 			if(RESIZE_SMALL to RESIZE_NORMAL)
-				M.dna.features["body_size"] = RESIZE_NORMAL
+				new_size = RESIZE_NORMAL
 			if(RESIZE_TINY to RESIZE_SMALL)
-				M.dna.features["body_size"] = RESIZE_SMALL
+				new_size = RESIZE_SMALL
 			if(RESIZE_MICRO to RESIZE_TINY)
-				M.dna.features["body_size"] = RESIZE_TINY
+				new_size = RESIZE_TINY
 			if((0 - INFINITY) to RESIZE_MICRO)
-				M.dna.features["body_size"] = RESIZE_MICRO
-		M.dna.update_body_size(old_size)
+				new_size = RESIZE_MICRO
+		living.update_size(new_size)
 	return 1
 
 /obj/item/ammo_casing/energy/laser/growthray
@@ -88,4 +84,3 @@
 		icon_state = "redtag"
 	else
 		icon_state = "bluetag"
-

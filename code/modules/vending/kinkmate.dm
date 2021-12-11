@@ -5,6 +5,7 @@
 	product_slogans = "Kinky!;Sexy!;Check me out, big boy!"
 	vend_reply = "Have fun, you shameless pervert!"
 	products = list(
+				/obj/item/condom = 10,
 				/obj/item/clothing/head/maid = 5,
 				/obj/item/clothing/under/costume/maid = 5,
 				/obj/item/clothing/under/rank/civilian/janitor/maid = 5,
@@ -46,7 +47,10 @@
 				/obj/item/clothing/shoes/latex_socks = 10,
 				/obj/item/clothing/shoes/latexheels = 10,
 				/obj/item/clothing/shoes/dominaheels = 10,
-				/obj/item/clothing/gloves/latex_gloves = 10
+				/obj/item/clothing/gloves/latex_gloves = 10,
+				/obj/item/electropack/vibrator/small = 2,
+				/obj/item/electropack/vibrator = 2
+				///obj/item/leash = 3
 				)
 	contraband = list(
 				/obj/item/clothing/neck/petcollar/locked = 2,

@@ -1,3 +1,4 @@
+/*crack distilled
 /datum/supply_pack/emergency/syndicate
 	name = "NULL_ENTRY"
 	desc = "(#@&^$THIS PACKAGE CONTAINS 30TC WORTH OF SOME RANDOM SYNDICATE GEAR WE HAD LYING AROUND THE WAREHOUSE. GIVE EM HELL, OPERATIVE@&!*() "
@@ -20,3 +21,4 @@
 			continue
 		crate_value -= I.cost
 		new I.item(C)
+*/

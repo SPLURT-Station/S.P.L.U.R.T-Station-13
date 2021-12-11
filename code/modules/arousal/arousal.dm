@@ -74,12 +74,20 @@
 	if(!target || !R)
 		return
 	var/turfing = isturf(target)
+	var/condomning = FALSE
+	if(istype(G, /obj/item/organ/genital/penis))
+		var/obj/item/organ/genital/penis/P = G
+		condomning = P.condom
 	G.generate_fluid(R)
 	log_message("Climaxed using [G] with [target]", LOG_EMOTE)
-	if(spill && R.total_volume >= 5)
-		R.reaction(turfing ? target : target.loc, TOUCH, 1, 0)
-	if(!turfing)
-		R.trans_to(target, R.total_volume * (spill ? G.fluid_transfer_factor : 1))
+	if(condomning)
+		to_chat(src, "<span class='userlove'>You feel the condom bubble outwards and fill up with your spunk, plopping on the floor</span>")
+		R.trans_to(condomclimax(), R.total_volume)
+	else
+		if(spill && R.total_volume >= 5)
+			R.reaction(turfing ? target : target.loc, TOUCH, 1, 0)
+		if(!turfing)
+			R.trans_to(target, R.total_volume * (spill ? G.fluid_transfer_factor : 1))
 	G.last_orgasmed = world.time
 	R.clear_reagents()
 	//skyrat edit - chock i am going to beat you to death

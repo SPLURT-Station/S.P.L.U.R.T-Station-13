@@ -774,7 +774,7 @@
 		for(var/obj/effect/decal/cleanable/trail_holder/TH in view(T, 2))
 			qdel(TH)
 		var/obj/item/clothing/shoes/shoecheck = user.shoes
-		if(shoecheck && shoecheck.bloody_shoes["blood"])
+		if(shoecheck && istype(shoecheck) && shoecheck.bloody_shoes["blood"])
 			temp += shoecheck.bloody_shoes["blood"]/20
 			shoecheck.bloody_shoes["blood"] = 0
 		if(temp)

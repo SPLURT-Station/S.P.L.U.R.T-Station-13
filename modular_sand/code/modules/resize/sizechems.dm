@@ -70,18 +70,14 @@
 	PurityMin 			= 0.2
 
 //Growthchem effects
-/datum/reagent/growthchem/on_mob_add(mob/living/carbon/M)
+/datum/reagent/growthchem/on_mob_add(mob/living/M)
 	. = ..()
-	if(ishuman(M))
-		log_game("SIZECODE: [M] ckey: [M.key] has ingested growthchem.")
+	log_game("SIZECODE: [M] ckey: [M.key] has ingested growthchem.")
 
-/datum/reagent/growthchem/on_mob_life(mob/living/carbon/M)
-	if(!M?.dna)
-		return ..()
-	if(M.dna.features["body_size"] < RESIZE_MACRO)
-		var/old_size = M.dna.features["body_size"]
-		M.dna.features["body_size"] += 0.025
-		M.dna.update_body_size(old_size)
+/datum/reagent/growthchem/on_mob_life(mob/living/M)
+	var/size = get_size(M)
+	if(size < RESIZE_MACRO)
+		M.update_size(size + 0.025)
 		M.visible_message("<span class='danger'>[pick("[M] grows!", "[M] expands in size!", "[M] pushes outwards in stature!")]</span>", "<span class='danger'>[pick("You feel your body fighting for space and growing!", "The world contracts inwards in every direction!", "You feel your muscles expand, and your surroundings shrink!")]</span>")
 	..()
 	. = 1
@@ -121,18 +117,14 @@
 	PurityMin 			= 0.2
 
 //Shrinkchem effects
-/datum/reagent/shrinkchem/on_mob_add(mob/living/carbon/M)
+/datum/reagent/shrinkchem/on_mob_add(mob/living/M)
 	. = ..()
-	if(ishuman(M))
-		log_game("SIZECODE: [M] ckey: [M.key] has ingested shrinkchem.")
+	log_game("SIZECODE: [M] ckey: [M.key] has ingested shrinkchem.")
 
-/datum/reagent/shrinkchem/on_mob_life(mob/living/carbon/M)
-	if(!M?.dna)
-		return ..()
-	if(M.dna.features["body_size"] > RESIZE_MICRO)
-		var/old_size = M.dna.features["body_size"]
-		M.dna.features["body_size"] -= 0.025
-		M.dna.update_body_size(old_size)
+/datum/reagent/shrinkchem/on_mob_life(mob/living/M)
+	var/size = get_size(M)
+	if(size > RESIZE_MICRO)
+		M.update_size(size - 0.025)
 		M.visible_message("<span class='danger'>[pick("[M] shrinks down!", "[M] dwindles in size!", "[M] compresses down!")]</span>", "<span class='danger'>[pick("You feel your body compressing in size!", "The world pushes outwards in every direction!", "You feel your muscles contract, and your surroundings grow!")]</span>")
 	..()
 	. = 1

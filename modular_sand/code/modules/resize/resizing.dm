@@ -1,172 +1,162 @@
-//I am not a coder. Please fucking tear apart my code, and insult me for how awful I am at coding. Please and thank you. -Dahlular
-//alright bet -BoxBoy
-var/const/RESIZE_MACRO = 6
-var/const/RESIZE_HUGE = 4
-var/const/RESIZE_BIG = 2
-var/const/RESIZE_NORMAL = 1
-var/const/RESIZE_SMALL = 0.75
-var/const/RESIZE_TINY = 0.50
-var/const/RESIZE_MICRO = 0.25
-
-//averages
-var/const/RESIZE_A_MACROHUGE = (RESIZE_MACRO + RESIZE_HUGE) / 2
-var/const/RESIZE_A_HUGEBIG = (RESIZE_HUGE + RESIZE_BIG) / 2
-var/const/RESIZE_A_BIGNORMAL = (RESIZE_BIG + RESIZE_NORMAL) / 2
-var/const/RESIZE_A_NORMALSMALL = (RESIZE_NORMAL + RESIZE_SMALL) / 2
-var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
-var/const/RESIZE_A_TINYMICRO = (RESIZE_TINY + RESIZE_MICRO) / 2
-
 //handle the big steppy, except nice
-/mob/living/proc/handle_micro_bump_helping(var/mob/living/carbon/tmob)
+/mob/living/proc/handle_micro_bump_helping(mob/living/target)
 	if(ishuman(src))
-		var/mob/living/carbon/human/H = src
+		var/mob/living/carbon/human/user = src
 
-		if(tmob.pulledby == H)
-			return 0
+		if(target.pulledby == user)
+			return FALSE
 
 		//Micro is on a table.
-		var/turf/steppyspot = tmob.loc
+		var/turf/steppyspot = target.loc
 		for(var/thing in steppyspot.contents)
 			if(istype(thing, /obj/structure/table))
-				return 1
+				return TRUE
 
 		//Both small.
-		if(H.dna?.features["body_size"] <= RESIZE_A_TINYMICRO && tmob.dna.features["body_size"] <= RESIZE_A_TINYMICRO)
+		if(get_size(user) <= RESIZE_A_TINYMICRO && get_size(target) <= RESIZE_A_TINYMICRO)
 			now_pushing = 0
-			H.forceMove(tmob.loc)
-			return 1
+			user.forceMove(target.loc)
+			return TRUE
 
 		//Doing messages
-		if(abs(H.dna?.features["body_size"]/tmob.dna.features["body_size"] >= 2)) //if the initiator is twice the size of the micro
+		if(abs(get_size(user)/get_size(target) >= 2)) //if the initiator is twice the size of the micro
 			now_pushing = 0
-			H.forceMove(tmob.loc)
+			user.forceMove(target.loc)
 
 			//Smaller person being stepped on
-			if(H.dna?.features["body_size"] > tmob.dna.features["body_size"] && iscarbon(src))
-				if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
-					tmob.visible_message("<span class='notice'>[src] carefully slithers around [tmob].</span>", "<span class='notice'>[src]'s huge tail slithers besides you.</span>")
+			if(get_size(user) > get_size(target) && iscarbon(src))
+				if(istype(user) && user.dna.features["taur"] == "Naga" || user.dna.features["taur"] == "Tentacle")
+					target.visible_message("<span class='notice'>[src] carefully slithers around [target].</span>", "<span class='notice'>[src]'s huge tail slithers besides you.</span>")
 				else
-					tmob.visible_message("<span class='notice'>[src] carefully steps over [tmob].</span>", "<span class='notice'>[src] steps over you carefully.</span>")
-				return 1
+					target.visible_message("<span class='notice'>[src] carefully steps over [target].</span>", "<span class='notice'>[src] steps over you carefully.</span>")
+				return TRUE
 
 		//Smaller person stepping under a larger person
-		if(abs(tmob.dna.features["body_size"]/H.dna?.features["body_size"]) >= 2)
-			H.forceMove(tmob.loc)
+		if(abs(get_size(target)/get_size(user)) >= 2)
+			user.forceMove(target.loc)
 			now_pushing = 0
-			micro_step_under(tmob)
-			return 1
+			micro_step_under(target)
+			return TRUE
 
 //Stepping on disarm intent -- TO DO, OPTIMIZE ALL OF THIS SHIT
-/mob/living/proc/handle_micro_bump_other(var/mob/living/carbon/tmob)
-	ASSERT(isliving(tmob))
-	if(ishuman(src) && tmob.has_dna())
-		var/mob/living/carbon/human/H = src
+/mob/living/proc/handle_micro_bump_other(mob/living/target)
+	ASSERT(isliving(target))
+	if(ishuman(src))
+		var/mob/living/carbon/human/user = src
 
-		if(tmob.pulledby == H)
-			return 0
+		if(target.pulledby == user)
+			return FALSE
 
 	//If on a table, don't
-		var/turf/steppyspot = tmob.loc
+		var/turf/steppyspot = target.loc
 		for(var/thing in steppyspot.contents)
 			if(istype(thing, /obj/structure/table))
-				return 1
+				return TRUE
 
 	//Both small
-		if(H.dna?.features["body_size"] <= RESIZE_A_TINYMICRO && tmob.dna.features["body_size"] <= RESIZE_A_TINYMICRO)
+		if(get_size(user) <= RESIZE_A_TINYMICRO && get_size(target) <= RESIZE_A_TINYMICRO)
 			now_pushing = 0
-			H.forceMove(tmob.loc)
-			return 1
+			user.forceMove(target.loc)
+			return TRUE
 
-		if(abs(H.dna.features["body_size"]/tmob.dna.features["body_size"]) >= 2)
-			if(H.a_intent == "disarm" && CHECK_MOBILITY(H, MOBILITY_MOVE) && !H.buckled)
+		if(abs(get_size(user)/get_size(target)) >= 2)
+			if(user.a_intent == "disarm" && CHECK_MOBILITY(user, MOBILITY_MOVE) && !user.buckled)
 				now_pushing = 0
-				H.forceMove(tmob.loc)
-				H.sizediffStamLoss(tmob)
-				H.add_movespeed_modifier(/datum/movespeed_modifier/stomp) //Full stop
-				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 3) //0.3 seconds
-				if(H.dna.features["body_size"] > tmob.dna.features["body_size"] && iscarbon(H))
-					if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
-						tmob.visible_message("<span class='danger'>[src] carefully rolls their tail over [tmob]!</span>", "<span class='danger'>[src]'s huge tail rolls over you!</span>")
+				user.forceMove(target.loc)
+				user.sizediffStamLoss(target)
+				user.add_movespeed_modifier(/datum/movespeed_modifier/stomp, TRUE) //Full stop
+				addtimer(CALLBACK(user, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP, TRUE), 3) //0.3 seconds
+				if(get_size(user) > get_size(target) && iscarbon(user))
+					if(istype(user) && user.dna.features["taur"] == "Naga" || user.dna.features["taur"] == "Tentacle")
+						target.visible_message("<span class='danger'>[src] carefully rolls their tail over [target]!</span>", "<span class='danger'>[src]'s huge tail rolls over you!</span>")
 					else
-						tmob.visible_message("<span class='danger'>[src] carefully steps on [tmob]!</span>", "<span class='danger'>[src] steps onto you with force!</span>")
-					return 1
+						target.visible_message("<span class='danger'>[src] carefully steps on [target]!</span>", "<span class='danger'>[src] steps onto you with force!</span>")
+					return TRUE
 
-			if(H.a_intent == "harm" && CHECK_MOBILITY(H, MOBILITY_MOVE) && !H.buckled)
+			if(user.a_intent == "harm" && CHECK_MOBILITY(user, MOBILITY_MOVE) && !user.buckled)
 				now_pushing = 0
-				H.forceMove(tmob.loc)
-				H.sizediffStamLoss(tmob)
-				H.sizediffBruteloss(tmob)
+				user.forceMove(target.loc)
+				user.sizediffStamLoss(target)
+				user.sizediffBruteloss(target)
 				playsound(loc, 'sound/misc/splort.ogg', 50, 1)
-				H.add_movespeed_modifier(/datum/movespeed_modifier/stomp)
-				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 10) //1 second
-				//H.Stun(20)
-				if(H.dna.features["body_size"] > tmob.dna.features["body_size"] && iscarbon(H))
-					if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
-						tmob.visible_message("<span class='danger'>[src] mows down [tmob] under their tail!</span>", "<span class='userdanger'>[src] plows their tail over you mercilessly!</span>")
+				user.add_movespeed_modifier(/datum/movespeed_modifier/stomp, TRUE)
+				addtimer(CALLBACK(user, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP, TRUE), 10) //1 second
+				//user.Stun(20)
+				if(get_size(user) > get_size(target) && iscarbon(user))
+					if(istype(user) && (user.dna.features["taur"] == "Naga" || user.dna.features["taur"] == "Tentacle"))
+						target.visible_message("<span class='danger'>[src] mows down [target] under their tail!</span>", "<span class='userdanger'>[src] plows their tail over you mercilessly!</span>")
 					else
-						tmob.visible_message("<span class='danger'>[src] slams their foot down on [tmob], crushing them!</span>", "<span class='userdanger'>[src] crushes you under their foot!</span>")
-					return 1
+						target.visible_message("<span class='danger'>[src] slams their foot down on [target], crushing them!</span>", "<span class='userdanger'>[src] crushes you under their foot!</span>")
+					return TRUE
 
-			if(H.a_intent == "grab" && CHECK_MOBILITY(H, MOBILITY_MOVE) && !H.buckled)
+			if(user.a_intent == "grab" && CHECK_MOBILITY(user, MOBILITY_MOVE) && !user.buckled)
 				now_pushing = 0
-				H.forceMove(tmob.loc)
-				H.sizediffStamLoss(tmob)
-				H.sizediffStun(tmob)
-				H.add_movespeed_modifier(/datum/movespeed_modifier/stomp)
-				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 7)//About 3/4th a second
-				if(H.dna.features["body_size"] > tmob.dna.features["body_size"] && iscarbon(H))
-					var/feetCover = (H.wear_suit && (H.wear_suit.body_parts_covered & FEET)) || (H.w_uniform && (H.w_uniform.body_parts_covered & FEET) || (H.shoes && (H.shoes.body_parts_covered & FEET)))
+				user.forceMove(target.loc)
+				user.sizediffStamLoss(target)
+				user.sizediffStun(target)
+				user.add_movespeed_modifier(/datum/movespeed_modifier/stomp, TRUE)
+				addtimer(CALLBACK(user, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP, TRUE), 7)//About 3/4th a second
+				if(get_size(user) > get_size(target) && iscarbon(user))
+					var/feetCover = (user.wear_suit && (user.wear_suit.body_parts_covered & FEET)) || (user.w_uniform && (user.w_uniform.body_parts_covered & FEET) || (user.shoes && (user.shoes.body_parts_covered & FEET)))
 					if(feetCover)
-						if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
-							tmob.visible_message("<span class='danger'>[src] pins [tmob] under their tail!</span>", "<span class='danger'>[src] pins you beneath their tail!</span>")
+						if(user?.dna?.features["taur"] == "Naga" || user?.dna?.features["taur"] == "Tentacle")
+							target.visible_message("<span class='danger'>[src] pins [target] under their tail!</span>", "<span class='danger'>[src] pins you beneath their tail!</span>")
 						else
-							tmob.visible_message("<span class='danger'>[src] pins [tmob] helplessly underfoot!</span>", "<span class='danger'>[src] pins you underfoot!</span>")
-						return 1
+							target.visible_message("<span class='danger'>[src] pins [target] helplessly underfoot!</span>", "<span class='danger'>[src] pins you underfoot!</span>")
+						return TRUE
 					else
-						if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
-							tmob.visible_message("<span class='danger'>[src] snatches up [tmob] underneath their tail!</span>", "<span class='userdanger'>[src]'s tail winds around you and snatches you in its coils!</span>")
-							//tmob.mob_pickup_micro_feet(H)
-							SEND_SIGNAL(tmob, COMSIG_MICRO_PICKUP_FEET, H)
+						if(user?.dna?.features["taur"] == "Naga" || user?.dna?.features["taur"] == "Tentacle")
+							target.visible_message("<span class='danger'>[user] snatches up [target] underneath their tail!</span>", "<span class='userdanger'>[src]'s tail winds around you and snatches you in its coils!</span>")
+							//target.mob_pickup_micro_feet(user)
+							SEND_SIGNAL(target, COMSIG_MICRO_PICKUP_FEET, user)
 						else
-							tmob.visible_message("<span class='danger'>[src] stomps down on [tmob], curling their toes and picking them up!</span>", "<span class='userdanger'>[src]'s toes pin you down and curl around you, picking you up!</span>")
-							//tmob.mob_pickup_micro_feet(H)
-							SEND_SIGNAL(tmob, COMSIG_MICRO_PICKUP_FEET, H)
-						return 1
+							target.visible_message("<span class='danger'>[user] stomps down on [target], curling their toes and picking them up!</span>", "<span class='userdanger'>[src]'s toes pin you down and curl around you, picking you up!</span>")
+							//target.mob_pickup_micro_feet(user)
+							SEND_SIGNAL(target, COMSIG_MICRO_PICKUP_FEET, user)
+						return TRUE
 
-		if(abs(tmob.dna.features["body_size"]/H.dna.features["body_size"]) >= 2)
-			H.forceMove(tmob.loc)
+		if(abs(get_size(target)/get_size(user)) >= 2)
+			user.forceMove(target.loc)
 			now_pushing = 0
-			micro_step_under(tmob)
-			return 1
+			micro_step_under(target)
+			return TRUE
+
+/mob/living/proc/macro_step_around(mob/living/target)
+	if(ishuman(src))
+		var/mob/living/carbon/human/validmob = src
+		if(validmob?.dna?.features["taur"] == "Naga" || validmob?.dna?.features["taur"] == "Tentacle")
+			visible_message("<span class='notice'>[validmob] carefully slithers around [target].</span>", "<span class='notice'>You carefully slither around [target].</span>")
+		else
+			visible_message("<span class='notice'>[validmob] carefully steps around [target].</span>", "<span class='notice'>You carefully steps around [target].</span>")
 
 //smaller person stepping under another person... TO DO, fix and allow special interactions with naga legs to be seen
-/mob/living/proc/micro_step_under(var/mob/living/tmob)
-	if(iscarbon(tmob))
-		var/mob/living/carbon/validmob = tmob
-		if((istype(validmob) && validmob.dna.features["taur"] == "Naga" || validmob.dna.features["taur"] == "Tentacle") && !validmob?.dna)
-			src.visible_message("<span class='notice'>[src] bounds over [validmob]'s tail.</span>", "<span class='notice'>You jump over [validmob]'s thick tail.</span>")
+/mob/living/proc/micro_step_under(mob/living/target)
+	if(ishuman(src))
+		var/mob/living/carbon/human/validmob = src
+		if(validmob?.dna?.features["taur"] == "Naga" || validmob?.dna?.features["taur"] == "Tentacle")
+			visible_message("<span class='notice'>[validmob] bounds over [target]'s tail.</span>", "<span class='notice'>You jump over [target]'s thick tail.</span>")
 		else
-			src.visible_message("<span class='notice'>[src] runs between [validmob]'s legs.</span>", "<span class='notice'>You run between [validmob]'s legs.</span>")
+			visible_message("<span class='notice'>[validmob] runs between [target]'s legs.</span>", "<span class='notice'>You run between [target]'s legs.</span>")
 
 //Proc for scaling stamina damage on size difference
-/mob/living/carbon/proc/sizediffStamLoss(var/mob/living/carbon/tmob)
-	var/S = (dna.features["body_size"]/tmob.dna.features["body_size"]*25) //macro divided by micro, times 25
-	tmob.Knockdown(S) //final result in stamina knockdown
+/mob/living/carbon/proc/sizediffStamLoss(mob/living/carbon/target)
+	var/S = (get_size(src)/get_size(target)*25) //macro divided by micro, times 25
+	target.Knockdown(S) //final result in stamina knockdown
 
 //Proc for scaling stuns on size difference (for grab intent)
-/mob/living/carbon/proc/sizediffStun(var/mob/living/carbon/tmob)
-	var/T = (dna.features["body_size"]/tmob.dna.features["body_size"]*2) //Macro divided by micro, times 2
-	tmob.Stun(T)
+/mob/living/carbon/proc/sizediffStun(mob/living/carbon/target)
+	var/T = (get_size(src)/get_size(target)*2) //Macro divided by micro, times 2
+	target.Stun(T)
 
 //Proc for scaling brute damage on size difference
-/mob/living/carbon/proc/sizediffBruteloss(var/mob/living/carbon/tmob)
-	var/B = (dna.features["body_size"]/tmob.dna.features["body_size"]*3) //macro divided by micro, times 3
-	tmob.adjustBruteLoss(B) //final result in brute loss
+/mob/living/carbon/proc/sizediffBruteloss(mob/living/carbon/target)
+	var/B = (get_size(src)/get_size(target)*3) //macro divided by micro, times 3
+	target.adjustBruteLoss(B) //final result in brute loss
 
 //Proc for instantly grabbing valid size difference. Code optimizations soon(TM)
 /*
-/mob/living/proc/sizeinteractioncheck(var/mob/living/tmob)
-	if(abs(get_effective_size()/tmob.get_effective_size())>=2.0 && get_effective_size()>tmob.get_effective_size())
+/mob/living/proc/sizeinteractioncheck(mob/living/target)
+	if(abs(get_effective_size()/target.get_effective_size())>=2.0 && get_effective_size()>target.get_effective_size())
 		return 0
 	else
 		return 1

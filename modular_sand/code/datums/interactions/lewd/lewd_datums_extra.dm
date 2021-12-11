@@ -61,7 +61,7 @@
 	user.do_oral_self(user, "vagina")
 
 /datum/interaction/lewd/breastfuckself
-	command = "Fuck their breasts"
+	command = "breastfuckself"
 	description = "Fuck your breast"
 	interaction_sound = null
 	require_user_penis = REQUIRE_EXPOSED
@@ -118,3 +118,57 @@
 
 /datum/interaction/lewd/titgrope_self/display_interaction(mob/living/carbon/human/user)
 	user.do_titgrope_self(user)
+
+/datum/interaction/lewd/remove_self_condom
+	command = "remove_self_condom"
+	description = "Remove your condom"
+	require_user_hands = TRUE
+	require_user_penis = REQUIRE_EXPOSED
+	user_is_target = TRUE
+	interaction_sound = 'modular_sand/sound/lewd/latex.ogg'
+	max_distance = 0
+	write_log_user = "removed their condom"
+	write_log_target = null
+
+/datum/interaction/lewd/remove_self_condom/display_interaction(mob/living/carbon/human/user)
+	user.remove_condom(user)
+
+/datum/interaction/lewd/remove_other_condom
+	command = "remove_other_condom"
+	description = "Remove their condom"
+	require_user_hands = TRUE
+	require_target_penis = REQUIRE_ANY
+	interaction_sound = 'modular_sand/sound/lewd/latex.ogg'
+	max_distance = 1
+	write_log_target = "got his condom removed by"
+	write_log_user = null
+
+/datum/interaction/lewd/remove_other_condom/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	user.remove_condom(target)
+
+/datum/interaction/lewd/remove_self_sounding
+	command = "remove_self_sounding"
+	description = "Remove your sounding rod"
+	require_user_hands = TRUE
+	require_user_penis = REQUIRE_EXPOSED
+	user_is_target = TRUE
+	interaction_sound = 'modular_sand/sound/lewd/champ_fingering.ogg'
+	max_distance = 0
+	write_log_user = "removed his sounding rod"
+	write_log_target = null
+
+/datum/interaction/lewd/remove_self_sounding/display_interaction(mob/living/carbon/human/user)
+	user.remove_sounding(user)
+
+/datum/interaction/lewd/remove_other_sounding
+	command = "remove_other_sounding"
+	description = "Remove their sounding rod"
+	require_user_hands = TRUE
+	require_target_penis = REQUIRE_EXPOSED
+	interaction_sound = 'modular_sand/sound/lewd/champ_fingering.ogg'
+	max_distance = 1
+	write_log_target = "got his sounding rod removed by"
+	write_log_user = null
+
+/datum/interaction/lewd/remove_other_sounding/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	user.remove_sounding(target)

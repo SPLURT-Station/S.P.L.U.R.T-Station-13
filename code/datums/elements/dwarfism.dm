@@ -18,7 +18,7 @@
 	var/mob/living/L = target
 	if(L.lying != 0)
 		L.transform = L.transform.Scale(SHORT, 1)
-		L.transform = L.transform.Translate(16*(SHORT-1), 0) //Makes sure you stand on the tile no matter the size - sand
+		L.transform = L.transform.Translate(L.lying == 90 ? 16*(SHORT-1) : -(16*(SHORT-1)), 0) //Makes sure you stand on the tile no matter the size - sand
 	else
 		L.transform = L.transform.Scale(1, SHORT)
 		L.transform = L.transform.Translate(0, 16*(SHORT-1)) //Makes sure you stand on the tile no matter the size - sand
@@ -35,7 +35,7 @@
 		return
 	if(L.lying != 0)
 		L.transform = L.transform.Scale(TALL, 1)
-		L.transform = L.transform.Translate(16*(TALL-1), 0) //Makes sure you stand on the tile no matter the size - sand
+		L.transform = L.transform.Translate(L.lying == 90 ? 16*(TALL-1) : -(16*(TALL-1)), 0) //Makes sure you stand on the tile no matter the size - sand
 	else
 		L.transform = L.transform.Scale(1, TALL)
 		L.transform = L.transform.Translate(0, 16*(TALL-1)) //Makes sure you stand on the tile no matter the size - sand

@@ -13206,15 +13206,6 @@
 	},
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet/restrooms)
-"aGI" = (
-/obj/machinery/shower{
-	dir = 4
-	},
-/obj/structure/sign/poster/official/no_erp{
-	pixel_x = -32
-	},
-/turf/open/floor/plasteel/freezer,
-/area/commons/toilet/restrooms)
 "aGJ" = (
 /obj/machinery/shower{
 	dir = 8
@@ -29640,19 +29631,6 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel,
-/area/science/robotics/lab)
-"bta" = (
-/obj/item/retractor,
-/obj/item/hemostat,
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 2.9
-	},
-/obj/structure/table,
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/plasteel/white,
 /area/science/robotics/lab)
 "btb" = (
 /obj/structure/table/optable{
@@ -52685,27 +52663,6 @@
 /obj/machinery/computer/security/labor,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
-"eQk" = (
-/obj/machinery/computer/med_data{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/blue,
-/obj/item/radio/intercom{
-	frequency = 1485;
-	name = "Station Intercom (Medbay)";
-	pixel_y = -27
-	},
-/obj/structure/sign/poster/official/no_erp{
-	pixel_x = -32
-	},
-/turf/open/floor/plasteel/white,
-/area/medical/surgery)
 "eQN" = (
 /obj/structure/chair/stool,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -53177,6 +53134,20 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/engineering/main)
+"fHX" = (
+/obj/item/retractor,
+/obj/item/hemostat,
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/structure/table,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/item/cautery,
+/turf/open/floor/plasteel/white,
+/area/science/robotics/lab)
 "fIu" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -55794,6 +55765,27 @@
 	icon_state = "platingdmg3"
 	},
 /area/maintenance/department/crew_quarters/dorms)
+"kkK" = (
+/obj/machinery/computer/med_data{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue,
+/obj/item/radio/intercom{
+	frequency = 1485;
+	name = "Station Intercom (Medbay)";
+	pixel_y = -27
+	},
+/obj/structure/sign/poster/contraband/yes_erp{
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/surgery)
 "kkQ" = (
 /obj/machinery/vending/cola/pwr_game,
 /turf/open/floor/plating{
@@ -58917,6 +58909,15 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
+"pkj" = (
+/obj/machinery/shower{
+	dir = 4
+	},
+/obj/structure/sign/poster/contraband/yes_erp{
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel/freezer,
+/area/commons/toilet/restrooms)
 "pkM" = (
 /obj/machinery/door/airlock/external{
 	req_access_txt = "22"
@@ -93308,7 +93309,7 @@ bHb
 bIk
 bJr
 bKB
-eQk
+kkK
 bFU
 bNV
 bCz
@@ -101260,7 +101261,7 @@ bnQ
 bnQ
 bqi
 brz
-bta
+fHX
 bkt
 bvH
 bxq
@@ -105849,7 +105850,7 @@ atn
 aEi
 aEd
 aFL
-aGI
+pkj
 aHr
 aEd
 aJp

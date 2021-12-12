@@ -225,12 +225,7 @@
 	discard_gun(user)
 
 // Automatic Shotguns//
-
-/obj/item/gun/ballistic/shotgun/automatic/shoot_live_shot(mob/living/user, pointblank = FALSE, mob/pbtarget, message = 1, stam_cost = 0)
-	..()
-	src.pump(user)
-
-/obj/item/gun/ballistic/shotgun/automatic/combat
+/obj/item/gun/ballistic/shotgun/combat
 	name = "combat shotgun"
 	desc = "A semi automatic shotgun with tactical furniture and a six-shell capacity underneath."
 	icon_state = "cshotgun"
@@ -241,7 +236,7 @@
 						"Slick" = "cshotgun_slick"
 						)
 
-/obj/item/gun/ballistic/shotgun/automatic/combat/compact
+/obj/item/gun/ballistic/shotgun/combat/compact
 	name = "warden's combat shotgun"
 	desc = "A modified version of the semi-automatic combat shotgun with a collapsible stock and a safety that prevents firing while folded. For close encounters."
 	icon_state = "cshotgunc"
@@ -252,17 +247,17 @@
 	recoil = 5
 	spread = 2
 
-/obj/item/gun/ballistic/shotgun/automatic/combat/compact/AltClick(mob/living/user)
+/obj/item/gun/ballistic/shotgun/combat/compact/AltClick(mob/living/user)
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)) || item_flags & IN_STORAGE)
 		return
 	toggle_stock(user)
 	. = ..()
 
-/obj/item/gun/ballistic/shotgun/automatic/combat/compact/examine(mob/user)
+/obj/item/gun/ballistic/shotgun/combat/compact/examine(mob/user)
 	. = ..()
 	. += "<span class='notice'>Alt-click to toggle the stock.</span>"
 
-/obj/item/gun/ballistic/shotgun/automatic/combat/compact/proc/toggle_stock(mob/living/user)
+/obj/item/gun/ballistic/shotgun/combat/compact/proc/toggle_stock(mob/living/user)
 	stock = !stock
 	if(stock)
 		w_class = WEIGHT_CLASS_HUGE
@@ -277,10 +272,10 @@
 	playsound(src.loc, extend_sound, 50, 1)
 	update_icon()
 
-/obj/item/gun/ballistic/shotgun/automatic/combat/compact/update_icon_state()
+/obj/item/gun/ballistic/shotgun/combat/compact/update_icon_state()
 	icon_state = "[current_skin ? unique_reskin[current_skin] : "cshotgun"][stock ? "" : "c"]"
 
-/obj/item/gun/ballistic/shotgun/automatic/combat/compact/afterattack(atom/target, mob/living/user, flag, params)
+/obj/item/gun/ballistic/shotgun/combat/compact/afterattack(atom/target, mob/living/user, flag, params)
 	if(!stock)
 		shoot_with_empty_chamber(user)
 		to_chat(user, "<span class='warning'>[src] won't fire with a folded stock!</span>")
@@ -290,7 +285,7 @@
 
 //Dual Feed Shotgun
 
-/obj/item/gun/ballistic/shotgun/automatic/dual_tube
+/obj/item/gun/ballistic/shotgun/dual_tube
 	name = "cycler shotgun"
 	desc = "An advanced shotgun with two separate magazine tubes, allowing you to quickly toggle between ammo types."
 	icon_state = "cycler"
@@ -299,22 +294,22 @@
 	var/toggled = FALSE
 	var/obj/item/ammo_box/magazine/internal/shot/alternate_magazine
 
-/obj/item/gun/ballistic/shotgun/automatic/dual_tube/examine(mob/user)
+/obj/item/gun/ballistic/shotgun/dual_tube/examine(mob/user)
 	. = ..()
 	. += "<span class='notice'>Alt-click to pump it.</span>"
 
-/obj/item/gun/ballistic/shotgun/automatic/dual_tube/Initialize()
+/obj/item/gun/ballistic/shotgun/dual_tube/Initialize()
 	. = ..()
 	if (!alternate_magazine)
 		alternate_magazine = new mag_type(src)
 
-/obj/item/gun/ballistic/shotgun/automatic/dual_tube/attack_self(mob/living/user)
+/obj/item/gun/ballistic/shotgun/dual_tube/attack_self(mob/living/user)
 	if(!chambered && magazine.contents.len)
 		pump()
 	else
 		toggle_tube(user)
 
-/obj/item/gun/ballistic/shotgun/automatic/dual_tube/proc/toggle_tube(mob/living/user)
+/obj/item/gun/ballistic/shotgun/dual_tube/proc/toggle_tube(mob/living/user)
 	var/current_mag = magazine
 	var/alt_mag = alternate_magazine
 	magazine = alt_mag
@@ -325,7 +320,7 @@
 	else
 		to_chat(user, "You switch to tube A.")
 
-/obj/item/gun/ballistic/shotgun/automatic/dual_tube/AltClick(mob/living/user)
+/obj/item/gun/ballistic/shotgun/dual_tube/AltClick(mob/living/user)
 	. = ..()
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		return

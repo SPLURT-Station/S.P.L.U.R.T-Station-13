@@ -63,7 +63,7 @@
 /datum/export/weapon/shotgun
 	cost = 200
 	unit_name = "combat shotgun"
-	export_types = list(/obj/item/gun/ballistic/shotgun/automatic/combat)
+	export_types = list(/obj/item/gun/ballistic/shotgun/combat)
 
 /datum/export/weapon/flashbang
 	cost = 5

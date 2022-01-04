@@ -760,6 +760,15 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/vape/attackby(obj/item/O, mob/user, params)
 	if(O.tool_behaviour == TOOL_SCREWDRIVER)
 		if(!screw)
+			var/turf/T = get_turf(src)
+			var/client/client = user.client
+
+			if(client && client.get_exp_living(TRUE) < 1800) // ANTI-GRIEF: Must have 30 hours (30 * 60) playtime to put custom chems in vapes.
+				to_chat(user, "<span class='red'>You do not have enough playtime on this server to put custom chemicals into e-cigs.</span>")
+				var/message = "<span class='adminhelp'>ANTI-GRIEF:</span> [ADMIN_LOOKUPFLW(user)]) attempted to put custom chemicals into \a [src] at [ADMIN_VERBOSEJMP(T)] (failed due to playtime requirement)"
+				message_admins(message)
+				return;
+
 			screw = TRUE
 			to_chat(user, "<span class='notice'>You open the cap on [src].</span>")
 			reagents.reagents_holder_flags |= OPENCONTAINER

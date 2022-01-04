@@ -56,6 +56,7 @@
 			if(beakers.len)
 				stage_change(READY)
 				to_chat(user, "<span class='notice'>You lock the [initial(name)] assembly.</span>")
+				custom_made = TRUE // This nade has been tampered with, its contents are now unknown. Grief check it on activation.
 				I.play_tool_sound(src, 25)
 			else
 				to_chat(user, "<span class='warning'>You need to add at least one beaker before locking the [initial(name)] assembly!</span>")

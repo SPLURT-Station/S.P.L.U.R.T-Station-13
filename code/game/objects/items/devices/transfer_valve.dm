@@ -189,8 +189,16 @@
 */
 /obj/item/transfer_valve/proc/toggle_valve()
 	if(!valve_open && tank_one && tank_two)
-		valve_open = TRUE
 		var/turf/bombturf = get_turf(src)
+		var/area/bombarea = get_area(bombturf)
+
+		if(!istype(bombarea, /area/science/test_area)) // ANTI-GRIEF: Can only blow up at the toxins test range.
+			var/mob/bomber = get_mob_by_key(fingerprintslast)
+			var/message = "<span class='adminhelp'>ANTI-GRIEF:</span> [ADMIN_LOOKUPFLW(bomber)]) attempted to detonate \a [src] at [ADMIN_VERBOSEJMP(bombturf)] (failed due to not being in toxins test area)"
+			message_admins(message)
+			return
+
+		valve_open = TRUE
 
 		var/attachment
 		if(attached_device)

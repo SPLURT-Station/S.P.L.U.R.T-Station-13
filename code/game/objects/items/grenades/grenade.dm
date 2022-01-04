@@ -34,6 +34,7 @@
 	/// the higher this number, the more projectiles are created as shrapnel
 	var/shrapnel_radius
 	var/shrapnel_initialized
+	var/custom_made = FALSE // Was this nade tampered with by a player? (used to check for grief nades)
 
 /obj/item/grenade/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>[user] primes [src], then eats it! It looks like [user.p_theyre()] trying to commit suicide!</span>")
@@ -99,6 +100,14 @@
 
 /obj/item/grenade/proc/preprime(mob/user, delayoverride, msg = TRUE, volume = 60)
 	var/turf/T = get_turf(src)
+	var/client/client = user.client
+
+	if(custom_made && client && client.get_exp_living(TRUE) < 1800) // ANTI-GRIEF: Must have 30 hours (30 * 60) playtime to use grenades.
+		to_chat(user, "<span class='red'>You do not have enough playtime on this server to prime custom explosives.</span>")
+		var/message = "<span class='adminhelp'>ANTI-GRIEF:</span> [ADMIN_LOOKUPFLW(user)]) attempted to arm \a [src] (customised) for detonation at [ADMIN_VERBOSEJMP(T)] (failed due to playtime requirement)"
+		message_admins(message)
+		return;
+
 	log_grenade(user, T) //Inbuilt admin procs already handle null users
 	if(user)
 		add_fingerprint(user)

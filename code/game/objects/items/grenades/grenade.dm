@@ -49,8 +49,8 @@
 	return BRUTELOSS
 
 /obj/item/grenade/deconstruct(disassembled = TRUE)
-	if(!disassembled)
-		prime()
+	// if(!disassembled)
+	// 	prime()
 	if(!QDELETED(src))
 		qdel(src)
 

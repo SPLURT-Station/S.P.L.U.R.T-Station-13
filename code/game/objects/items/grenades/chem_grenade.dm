@@ -148,7 +148,7 @@
 
 //assembly stuff
 /obj/item/grenade/chem_grenade/receive_signal()
-	prime()
+	// prime()
 
 
 /obj/item/grenade/chem_grenade/Crossed(atom/movable/AM)

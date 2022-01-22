@@ -176,6 +176,8 @@
 					/obj/item/circuitboard/computer/arcade/orion_trail,
 					/obj/item/circuitboard/computer/arcade/tetris,
 					/obj/item/circuitboard/computer/arcade/tetris,
+					/obj/item/circuitboard/computer/arcade/minesweeper,
+					/obj/item/circuitboard/computer/arcade/minesweeper,
 					/obj/item/circuitboard/computer/slot_machine,
 					/obj/item/circuitboard/computer/slot_machine,
 					/obj/item/circuitboard/computer/slot_machine,

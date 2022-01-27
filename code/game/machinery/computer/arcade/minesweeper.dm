@@ -402,7 +402,7 @@
 		cur_y++
 	var/num_explosions = 0
 	for(var/T in shuffle(targets)) //Create a shitton of explosions in irl turfs if we lose, it will probably kill us
-		addtimer(CALLBACK(GLOBAL_PROC, /proc/explosion, T, 0, rand(1,2),rand(1,5),rand(3,10), FALSE), 15 * ++num_explosions)
+		addtimer(CALLBACK(GLOBAL_PROC, /proc/explosion, T, 0, rand(0,1),rand(1,3),rand(3,7), FALSE), 15 * ++num_explosions)
 		if(num_explosions == mine_limit_v2)
 			return
 

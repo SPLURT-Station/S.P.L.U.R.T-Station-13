@@ -247,7 +247,11 @@
 				playsound(C, 'sound/voice/human/womanlaugh.ogg', 50, 1)
 			else
 				playsound(C, pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg'), 50, 1)
-
+		else if(isipcperson(C))
+			playsound(C, 'sound/voice/ahh.ogg', 50, 1)
+		else if(issynthliz(C))
+			playsound(C, 'sound/voice/ahh.ogg', 50, 1)
+			
 /datum/emote/living/audio_emote/chitter
 	key = "chitter"
 	key_third_person = "chitters"

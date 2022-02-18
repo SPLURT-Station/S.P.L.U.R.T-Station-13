@@ -436,6 +436,10 @@ SUBSYSTEM_DEF(vote)
 				var/list/lastmaps = SSpersistence.saved_maps?.len ? list("[SSmapping.config.map_name]") | SSpersistence.saved_maps : list("[SSmapping.config.map_name]")
 				for(var/M in config.maplist) //This is a typeless loop due to the finnicky nature of keyed lists in this kind of context
 					var/datum/map_config/targetmap = config.maplist[M]
+					/* SPLURT edit */
+					if(targetmap.map_name == SSmapping.config.map_name)
+						continue
+					/* END SPLURT edit */
 					if(!istype(targetmap))
 						continue
 					if(!targetmap.voteweight)

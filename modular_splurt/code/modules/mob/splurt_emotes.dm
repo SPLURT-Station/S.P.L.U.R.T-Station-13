@@ -24,8 +24,8 @@
 	if(user.fart_cooldown)
 		to_chat(user, "<span class='warning'>You try your hardest, but no shart comes out.</span>")
 		return
-	var/static/list/fart_emotes = list( //cope goonies
-		"lets out a girly little 'toot' from their butt.",
+	var/list/fart_emotes = list( //cope goonies
+		"lets out a girly little 'toot' from [user.p_their()] butt.",
 		"farts loudly!",
 		"lets one rip!",
 		"farts! It sounds wet and smells like rotten eggs.",
@@ -33,11 +33,11 @@
 		"farted! It smells like something died.",
 		"farts like a muppet!",
 		"defiles the station's air supply.",
-		"farts a ten second long fart.",
+		"farts for a whole ten seconds.",
 		"groans and moans, farting like the world depended on it.",
 		"breaks wind!",
-		"expels intestinal gas through the anus.",
-		"release an audible discharge of intestinal gas.",
+		"expels intestinal gas through [user.p_their()] anus.",
+		"releases an audible discharge of intestinal gas.",
 		"is a farting motherfucker!!!",
 		"suffers from flatulence!",
 		"releases flatus.",
@@ -58,18 +58,20 @@
 		"farts egregiously.",
 		"farts voraciously.",
 		"farts cantankerously.",
-		"fart in they own mouth. A shameful %OWNER.",
+		"farts in [user.p_their()] own mouth. A shameful \the <b>[user]</b>.",
 		"breaks wind noisily!",
 		"releases gas with the power of the gods! The very station trembles!!",
 		"<B><span style='color:red'>f</span><span style='color:blue'>a</span>r<span style='color:red'>t</span><span style='color:blue'>s</span>!</B>",
-		"laughs! Their breath smells like a fart.",
+		"laughs! [user.p_their(TRUE)] breath smells like a fart.",
 		"farts, and as such, blob cannot evoulate.",
 		"farts. It might have been the Citizen Kane of farts."
 	)
-	message = pick(fart_emotes)
+	var/new_message = pick(fart_emotes)
+	//new_message = replacetext(new_message, "%OWNER", "\the [user]")
+	message = new_message
 	. = ..()
 	if(.)
-		playlewdinteractionsound(user, pick(GLOB.brap_noises), 50, 1, ignored_mobs = user.get_unconsenting(unholy = TRUE)) //Rip brap trolling
+		playsound(user, pick(GLOB.brap_noises), 50, 1, -1)
 		var/delay = 3 SECONDS
 		user.fart_cooldown = TRUE
 		addtimer(CALLBACK(GLOBAL_PROC, .proc/_fart_renew_msg, user), delay)
@@ -89,7 +91,7 @@
 	muzzle_ignore = FALSE
 	restraint_check = FALSE
 
-/datum/emote/living/cackle/run_emote(mob/living/user, params)
+/datum/emote/living/cackle/run_emote(mob/user, params, type_override, intentional)
 	if(ishuman(user))
 		if(user.nextsoundemote >= world.time)
 			return
@@ -104,7 +106,7 @@
 	mob_type_allowed_typecache = list(/mob/living, /mob/dead/observer)
 	mob_type_ignore_stat_typecache = list(/mob/dead/observer)
 
-/datum/emote/speen/run_emote(mob/user)
+/datum/emote/speen/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	if(.)
 		user.spin(20, 1)
@@ -118,7 +120,7 @@
 			else
 				R.unbuckle_all_mobs()
 
-/datum/emote/speen/run_emote(mob/living/user, params)
+/datum/emote/speen/run_emote(mob/user, params, type_override, intentional)
 	if(ishuman(user))
 		if(user.nextsoundemote >= world.time)
 			return
@@ -155,7 +157,7 @@
 	message = "bleats loudly!"
 	emote_type = EMOTE_AUDIBLE
 
-/datum/emote/living/bleat/run_emote(mob/living/user, params)
+/datum/emote/living/bleat/run_emote(mob/user, params, type_override, intentional)
 	if(ishuman(user))
 		if(user.nextsoundemote >= world.time)
 			return
@@ -163,7 +165,7 @@
 		playsound(user, 'modular_splurt/sound/voice/bleat.ogg', 50, 1, -1)
 	. = ..()
 
-/datum/emote/living/carbon/moan/run_emote(mob/living/user, params) //I can't not port this shit, come on.
+/datum/emote/living/carbon/moan/run_emote(mob/user, params, type_override, intentional) //I can't not port this shit, come on.
 	if(user.nextsoundemote >= world.time || user.stat != CONSCIOUS)
 		return
 	var/sound
@@ -204,7 +206,7 @@
 	muzzle_ignore = FALSE
 	restraint_check = FALSE
 
-/datum/emote/living/bruh/run_emote(mob/living/user, params)
+/datum/emote/living/bruh/run_emote(mob/user, params, type_override, intentional)
 	if(!(. = ..()))
 		return
 	if(user.nextsoundemote >= world.time)
@@ -219,7 +221,7 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 
-/datum/emote/living/bababooey/run_emote(mob/living/user, params)
+/datum/emote/living/bababooey/run_emote(mob/user, params, type_override, intentional)
 	if(!(. = ..()))
 		return
 	if(user.nextsoundemote >= world.time)
@@ -238,7 +240,7 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 
-/datum/emote/living/babafooey/run_emote(mob/living/user, params)
+/datum/emote/living/babafooey/run_emote(mob/user, params, type_override, intentional)
 	if(!(. = ..()))
 		return
 	if(user.nextsoundemote >= world.time)
@@ -257,7 +259,7 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 
-/datum/emote/living/fafafooey/run_emote(mob/living/user, params)
+/datum/emote/living/fafafooey/run_emote(mob/user, params, type_override, intentional)
 	if(!(. = ..()))
 		return
 	if(user.nextsoundemote >= world.time)
@@ -276,7 +278,7 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 
-/datum/emote/living/fafafoggy/run_emote(mob/living/user, params)
+/datum/emote/living/fafafoggy/run_emote(mob/user, params, type_override, intentional)
 	if(!(. = ..()))
 		return
 	if(user.nextsoundemote >= world.time)
@@ -295,7 +297,7 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 
-/datum/emote/living/hohohoy/run_emote(mob/living/user, params)
+/datum/emote/living/hohohoy/run_emote(mob/user, params, type_override, intentional)
 	if(!(. = ..()))
 		return
 	if(user.nextsoundemote >= world.time)
@@ -314,7 +316,7 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = TRUE
 
-/datum/emote/living/ffff/run_emote(mob/living/user, params)
+/datum/emote/living/ffff/run_emote(mob/user, params, type_override, intentional)
 	if(!(. = ..()))
 		return
 	if(user.nextsoundemote >= world.time)
@@ -329,7 +331,7 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 
-/datum/emote/living/fafafail/run_emote(mob/living/user, params)
+/datum/emote/living/fafafail/run_emote(mob/user, params, type_override, intentional)
 	if(!(. = ..()))
 		return
 	if(user.nextsoundemote >= world.time)
@@ -340,3 +342,23 @@
 		return
 	user.nextsoundemote = world.time + 7
 	playsound(user, 'modular_splurt/sound/voice/bababooey/ffffhvh.ogg', 50, 1, -1)
+
+/datum/emote/living/boowomp
+	key = "boowomp"
+	key_third_person = "boowomps"
+	message = "produces a sad boowomp."
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/boowomp/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	if(user.is_muzzled())
+		user.nextsoundemote = world.time + 7
+		playsound(user, 'modular_splurt/sound/voice/boowomp_muffled.ogg', 50, 1, -1)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, 'modular_splurt/sound/voice/boowomp.ogg', 50, 1, -1)

@@ -59,26 +59,6 @@
 	new /obj/item/melee/classic_baton/telescopic(src)
 	new /obj/item/storage/belt/security(src)
 
-// Captain's gunbox
-
-/obj/item/storage/secure/briefcase/cap_e45_pack
-	name = "\improper \'Enforcer\' gun kit"
-	desc = "A storage case for a Enforcer Handgun. Bullets for everyone! !"
-
-
-/obj/item/storage/secure/briefcase/cap_e45_pack/PopulateContents()
-	new /obj/item/gun/ballistic/automatic/pistol/enforcergold(src)
-	new /obj/item/ammo_box/magazine/e45/lethal(src)
-	new /obj/item/ammo_box/magazine/e45/lethal(src)
-	new /obj/item/ammo_box/magazine/e45(src)
-	new /obj/item/ammo_box/magazine/e45(src)
-	new /obj/item/ammo_box/magazine/e45(src)
-	new /obj/item/ammo_box/magazine/e45/taser(src)
-	new /obj/item/ammo_box/magazine/e45/taser(src)
-	new /obj/item/ammo_box/magazine/e45/taser(src)
-
-
-
 /obj/item/storage/secure/briefcase/permits
 	name = "\improper \'Weapon\' permits case"
 	desc = "A storage case for weapon permits. Keep this secure!"

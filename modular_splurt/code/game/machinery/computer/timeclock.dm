@@ -64,9 +64,9 @@
 	if (..())
 		return
 	user.set_machine(src)
-	tgui_interact(user)
+	ui_interact(user)
 
-/obj/machinery/computer/timeclock/tgui_interact(mob/user, datum/tgui/ui)
+/obj/machinery/computer/timeclock/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
 		ui = new(user, src, "TimeClock", name)
@@ -106,7 +106,7 @@
 
 	return data
 
-/obj/machinery/computer/timeclock/ui_act(action, list/params, datum/tgui/ui, datum/tgui_state/state)
+/obj/machinery/computer/timeclock/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if (..())
 		return TRUE
 
@@ -119,7 +119,7 @@
 				card = null
 			else
 				var/obj/item/I = usr.get_active_hand()
-				if (istype(I, /obj/item/card/id) && usr.doUnEquip(I))
+				if (istype(I, /obj/item/card/id) && usr.canUnEquip(I))
 					I.forceMove(src)
 					card = I
 			update_icon()

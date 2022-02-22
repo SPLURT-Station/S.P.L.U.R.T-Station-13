@@ -152,7 +152,54 @@
 						available_jobs[job.title] += alt_job
 	return available_jobs
 
+/// How does xenobio work again? Oh right, we're checking the user's face here to allow access and prevent ne'er-do-wells from using someone's PTO
+/obj/machinery/computer/timeclock/proc/check_face()
+	if (!card)
+		to_chat(usr, "<span class='notice'>No ID is inserted.</span>")
+		return FALSE
+	var/mob/living/carbon/human/H = usr
+	if (!(istype(H)))
+		to_chat(usr, "<span class='warning'>Invalid user detected. Access denied.</span>")
+		return FALSE
+	else if ((H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || (H.head && (H.head.flags_inv & HIDEFACE)))	// No, you can't hide your face
+		to_chat(usr, "<span class='warning'>Facial recognition scan failed due to physical obstruction. Access denied.</span>")
+		return FALSE
+	else if (H.get_face_name() == "Unknown" || !(H.real_name == card.registered_name))
+		to_chat(usr, "<span class='warning'>Facial recognition scan failed. Access denied.</span>")
+		return FALSE
+	else
+		return TRUE
 
+/// Force users to wait 10 minutes between clocking in and out
+/obj/machinery/computer/timeclock/proc/check_card_cooldown()
+	if (!card)
+		return FALSE
+	var/time_left = 10 MINUTES - (world.time - card.last_job_switch)
+	if (time_left > 0)
+		to_chat(usr, "You need to wait another [round((time_left / 10) / 60, 1)] minute\s before you can switch.")
+		return FALSE
+	return TRUE
+
+/obj/machinery/computer/timeclock/proc/make_on_duty(var/new_rank, var/new_assignment)
+	var/datum/job/oldjob = SSjob.GetJob(SSjob.get_job_name(card.assignment))
+	var/datum/job/newjob = SSjob.GetJob(new_rank)
+
+	if (!oldjob || !is_open_on_duty_job(usr, oldjob.pto_type, newjob))
+		return
+	if (new_assignment != new_job.assignment && !(new_assignment in newjob.alt_titles))
+		return
+	if (newjob)
+		card.access = newjob.get_access()
+		card.assignment = new_assignment
+		card.name = text("[card.registered_name]'s ID Card ([card.assignment])")
+		GLOB.data_core.manifest_modify(card.registered_name, card.assignment)
+		card.last_job_switch = world.time
+		newjob.current_positions++
+		var/mob/living/carbon/human/H = usr
+		H.mind.assigned_role = card.assignment
+		if (GLOB.announcement_systems.len)
+			var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
+			announcer.announce("ONDUTY", card.registered_name, card.assignment, list())
 
 /**
  * HELPER FOR DEPARTMENT FLAGS

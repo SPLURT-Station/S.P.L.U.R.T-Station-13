@@ -9,15 +9,14 @@
  */
 /obj/machinery/computer/timeclock
 	name = "timeclock terminal"
-	// Temporarily has no icon or icon state
-	// icon = 'icons/obj/machines/timeclock.dmi'
-	// icon_state = "timeclock"
-	// icon_keyboard = null
+	icon = 'modular_splurt/icons/obj/machinery/timeclock.dmi'
+	icon_state = "timeclock"
+	icon_keyboard = null
 	light_color = "#0099ff"						   // TODO: Adjust this
 	light_power = 0.5
 	layer = ABOVE_WINDOW_LAYER
 	density = FALSE
-	// circuit = /obj/item/weapon/circuitboard/timeclock	// TODO: Actually make this
+	circuit = /obj/item/weapon/circuitboard/timeclock	// TODO: Actually make this
 
 	var/obj/item/card/id/card							// Inserted ID card
 
@@ -28,44 +27,49 @@
 	if (card)							// If we're holding an ID and get destroyed
 		card.forceMove(get_turf(src))	// Get rid of the fucker
 		card = null						// And make sure we know it's gone
-	. = ..()
+	. = ..()							// Someone's gonna ask later, refer them here.
+										// This shit just sets our return value to our parent proc's return value.
 
 /obj/machinery/computer/timeclock/update_icon()
-	if (!process())
-		icon_state = "[initial(icon_state)]_off"
-	else if (card)
-		icon_state = "[initial(icon_state)]_card"
-	else
-		icon_state = "[initial(icon_state)]"
+	if (!process())									// If we can't process
+		icon_state = "[initial(icon_state)]_off"	// we must be offline.
+	else if (card)									// If we have an ID
+		icon_state = "[initial(icon_state)]_card"	// display it!
+	else											// All else fails?
+		icon_state = "[initial(icon_state)]"		// We're just a clock.
 
+/// Allows the timeclock to update its icon and lighting on power change, should power go out
 /obj/machinery/computer/timeclock/power_change()
-	var/old_stat = stat
-	..()
-	if (old_stat != stat)
-		update_icon()
-	if (stat & NOPOWER)
-		set_light(0)
-	else
-		set_light(brightness_on)
+	var/old_stat = stat				// Save our old stats for later
+	..()							// Call the parent proc to handle the actual powernet shit
+	if (old_stat != stat)			// If our stat changed
+		update_icon()				// update our icon
+	if (stat & NOPOWER)				// If we no longer have power
+		set_light(0)				// turn off our lights
+	else							// Otherwise
+		set_light(brightness_on)	// turn on our lights
 
+/// Handle clicking with an object
 /obj/machinery/computer/timeclock/attackby(obj/I, mob/user)
-	if (istype(I, /obj/item/card/id))
-		if (!card && user.canUnEquip(I))
-			I.forceMove(src)
-			card = I
-			SStgui.update_uis(src)
-			update_icon()
-		else if (card)
+	if (istype(I, /obj/item/card/id))		// If the user clicked with an ID in hand
+		if (!card && user.canUnEquip(I))	// Check if we already have an ID and that the user can drop the ID
+			I.forceMove(src)				// Move the ID into our own location
+			card = I						// Set our card to the ID
+			SStgui.update_uis(src)			// Update all open UIs for us
+			update_icon()					// Update our icon to reflect the new ID
+		else if (card)						// There must've already been an ID inserted
 			to_chat(user, "<span class='warning'>There is already an ID card inside.</span>")
-		return
-	. = ..()
+		return								// Quit doing shit so we don't hit the timeclock
+	. = ..()								// Set our return value to that of the parent proc
 
+/// Handle user clicking
 /obj/machinery/computer/timeclock/attack_hand(var/mob/user as mob)
-	if (..())
-		return
-	user.set_machine(src)
-	ui_interact(user)
+	if (..())				// If for some reason the parent proc returns true
+		return				// We won't do anything
+	user.set_machine(src)	// Otherwise, set the mob's machine to us
+	ui_interact(user)		// Provide a UI to the user
 
+/// Handle UI interactions with this arcane shit known as tee gee yew eye
 /obj/machinery/computer/timeclock/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
@@ -102,7 +106,7 @@
 			if (CONFIG_GET(flag/time_off) && CONFIG_GET(flag/pto_job_change))
 				data["allow_change_job"] = TRUE
 				if (job && job.timeoff_factor < 0)	// They're off duty so we have to lookup available jobs
-					data["job_choices"] = get_open_onduty_jobs(user, job.pto_type)
+					data["job_choices"] = get_open_on_duty_jobs(user, job.pto_type)
 
 	return data
 
@@ -141,7 +145,7 @@
 			update_icon()
 			return TRUE
 
-/obj/machinery/computer/timeclock/proc/get_open_onduty_jobs(var/mob/user, var/department)
+/obj/machinery/computer/timeclock/proc/get_open_on_duty_jobs(var/mob/user, var/department)
 	var/list/available_jobs = list()
 	for (var/datum/job/job in SSjob.occupations)
 		if (is_open_onduty_job(user, department, job))
@@ -239,44 +243,43 @@
  * HELPER FOR DEPARTMENT FLAGS
  */
 /obj/machinery/computer/timeclock/proc/flags_to_english(var/department,var/flag)
-	switch (department)
-		if (ENGSEC)
-			switch (flag)
-				if (CAPTAIN | HOS | WARDEN | CHIEF)
-					return "Command"
-				if (DETECTIVE | OFFICER)
-					return "Security"
-				if (BRIGDOC)
-					return "Medsec"
-				if (BLUESHIELD)
-					return "Blueshield"
-				if (ENGINEER | ATMOSTECH)
-					return "Engineering"
-				if (ROBOTICIST)
-					return "Science"
-				else					// Technically this won't always be silicon
-					return "Silicon"	//  but we're listing your ass as silicon anyways. Cope.
-		if (MEDSCI)
-			switch (flag)
-				if (RD_JF | CMO_JF)
-					return "Command"
-				if (SCIENTIST)
-					return "Science"
-				if (CHEMIST | DOCTOR | VIROLOGIST | PARAMEDIC)
-					return "Medical"
-				if (GENETICIST)
-					return "Medsci"
-				else							// If you're landing here you're fucked
-					return "What the fuck?"
-		if (CIVILIAN)
-			switch (flag)
-				if (HOP)
-					return "Command"
-				if (PRISONER)
-					return "Prisoner"
-				if (CARGOTECH | QUARTERMASTER | MINER)
-					return "Cargo"
-				else
-					return "Civilian"
-		else									// New department combo? Wack.
-			return "What the fuck?"
+	if (department == ENGSEC)
+		switch (flag)
+			if (CAPTAIN, HOS, WARDEN, CHIEF)
+				return "Command"
+			if (DETECTIVE, OFFICER)
+				return "Security"
+			if (BRIGDOC)
+				return "Medsec"
+			if (BLUESHIELD)
+				return "Blueshield"
+			if (ENGINEER, ATMOSTECH)
+				return "Engineering"
+			if (ROBOTICIST)
+				return "Science"
+			else					// Technically this won't always be silicon
+				return "Silicon"	//  but we're listing your ass as silicon anyways. Cope.
+	else if (department == MEDSCI)
+		switch (flag)
+			if (RD_JF, CMO_JF)
+				return "Command"
+			if (SCIENTIST, ROBOTICIST)
+				return "Science"
+			if (CHEMIST, DOCTOR, VIROLOGIST, PARAMEDIC)
+				return "Medical"
+			if (GENETICIST)
+				return "Medsci"
+			else							// If you're landing here you're fucked
+				return "What the fuck?"
+	else if (department == CIVILIAN)
+		switch (flag)
+			if (HOP, QUARTERMASTER)
+				return "Command"
+			if (PRISONER)
+				return "Prisoner"
+			if (CARGOTECH, MINER)
+				return "Cargo"
+			else
+				return "Civilian"
+	else									// New department combo? Wack.
+		return "What the fuck?"

@@ -1,3 +1,6 @@
+/obj/item/card/id
+	var/last_job_switch	/// Last job switch for card's owner
+
 /obj/item/card/id/syndicate/slaver
 	name = "\improper Slaver Trader ID"
 	desc = "A cheap ID used by slave traders."

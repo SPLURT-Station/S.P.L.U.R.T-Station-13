@@ -181,25 +181,59 @@
 	return TRUE
 
 /obj/machinery/computer/timeclock/proc/make_on_duty(var/new_rank, var/new_assignment)
-	var/datum/job/oldjob = SSjob.GetJob(SSjob.get_job_name(card.assignment))
-	var/datum/job/newjob = SSjob.GetJob(new_rank)
+	var/datum/job/old_job = SSjob.GetJob(SSjob.get_job_name(card.assignment))
+	var/datum/job/new_job = SSjob.GetJob(new_rank)
 
-	if (!oldjob || !is_open_on_duty_job(usr, oldjob.pto_type, newjob))
+	if (!old_job || !is_open_onduty_job(usr, old_job.pto_type, new_job))
 		return
-	if (new_assignment != new_job.assignment && !(new_assignment in newjob.alt_titles))
+	if (new_assignment != new_job.title && !(new_assignment in new_job.alt_titles))
 		return
-	if (newjob)
-		card.access = newjob.get_access()
+	if (new_job)
+		card.access = new_job.get_access()
 		card.assignment = new_assignment
 		card.name = text("[card.registered_name]'s ID Card ([card.assignment])")
 		GLOB.data_core.manifest_modify(card.registered_name, card.assignment)
 		card.last_job_switch = world.time
-		newjob.current_positions++
+		new_job.current_positions++
 		var/mob/living/carbon/human/H = usr
 		H.mind.assigned_role = card.assignment
 		if (GLOB.announcement_systems.len)
 			var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
 			announcer.announce("ONDUTY", card.registered_name, card.assignment, list())
+
+/obj/machinery/computer/timeclock/proc/make_off_duty()
+	var/datum/job/found_job = SSjob.GetJob(SSjob.get_job_name(card.assignment))
+	if (!found_job)
+		return
+	var/new_dept = found_job.pto_type || PTO_CIVILIAN
+	var/datum/job/pto_job = null
+	for (var/datum/job/job in SSjob.occupations)
+		if (job.pto_type == new_dept && job.timeoff_factor < 0)
+			pto_job = job
+			break
+	if (pto_job)
+		// Apparently we aren't using this? I don't fucking know
+		// var/old_title = card.assignment
+		card.access = pto_job.get_access()
+		card.assignment = pto_job.title
+		card.name = text("[card.registered_name]'s ID Card ([card.assignment])")
+		GLOB.data_core.manifest_modify(card.registered_name, card.assignment)
+		card.last_job_switch = world.time
+		var/mob/living/carbon/human/H = usr
+		H.mind.assigned_role = pto_job.title
+		found_job.current_positions--
+		if (GLOB.announcement_systems.len)
+			var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
+			announcer.announce("OFFDUTY", card.registered_name, card.assignment, list())
+	return
+
+/obj/machinery/computer/timeclock/proc/is_open_onduty_job(var/mob/user, var/department, var/datum/job/job)
+	return job \
+		   && job.current_positions <= job.total_positions \
+		   && !jobban_isbanned(user, SSjob.get_job_name(job.title)) \
+		   && job.player_old_enough(user.client) \
+		   && job.pto_type == department \
+		   && job.timeoff_factor > 0
 
 /**
  * HELPER FOR DEPARTMENT FLAGS

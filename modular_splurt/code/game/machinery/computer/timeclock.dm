@@ -50,7 +50,7 @@
 
 /obj/machinery/computer/timeclock/attackby(obj/I, mob/user)
 	if (istype(I, /obj/item/card/id))
-		if (!card && user.doUnEquip(I))
+		if (!card && user.canUnEquip(I))
 			I.forceMove(src)
 			card = I
 			SStgui.update_uis(src)
@@ -127,7 +127,7 @@
 		if ("switch-to-onduty-rank")
 			if (check_face())
 				if (check_card_cooldown())
-					makeOnDuty(params["switch-to-onduty-rank"], params["switch-to-onduty-assignment"])
+					make_on_duty(params["switch-to-onduty-rank"], params["switch-to-onduty-assignment"])
 					usr.put_in_hands(card)
 					card = null
 			update_icon()

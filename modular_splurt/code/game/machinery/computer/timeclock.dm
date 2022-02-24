@@ -8,7 +8,7 @@
 	light_power = 0.5
 	layer = ABOVE_WINDOW_LAYER
 	density = FALSE
-	circuit = /obj/item/weapon/circuitboard/timeclock
+	circuit = /obj/item/circuitboard/computer/timeclock
 
 	var/obj/item/card/id/card											// Inserted ID card
 
@@ -178,43 +178,54 @@
 
 /// Force users to wait 10 minutes between clocking in and out
 /obj/machinery/computer/timeclock/proc/check_card_cooldown()
-	if (!card)
-		return FALSE
-	var/time_left = 10 MINUTES - (world.time - card.last_job_switch)
-	if (time_left > 0)
+	if (!card)															// If we don't have a card
+		return FALSE													// We can't check cooldown, fail the check
+	var/time_left = 10 MINUTES - (world.time - card.last_job_switch)	// Determine how much time is left before the next switch
+	if (time_left > 0)													// If there's any time left at all
 		to_chat(usr, "You need to wait another [round((time_left / 10) / 60, 1)] minute\s before you can switch.")
-		return FALSE
-	return TRUE
+		return FALSE													// Fail the check
+	return TRUE															// Otherwise pass the check
 
+/// Makes the active card on-duty with a set rank and assignment
 /obj/machinery/computer/timeclock/proc/make_on_duty(var/new_rank, var/new_assignment)
-	var/datum/job/old_job = SSjob.GetJob(SSjob.get_job_name(card.assignment))
-	var/datum/job/new_job = SSjob.GetJob(new_rank)
+	var/datum/job/old_job = \
+			SSjob.GetJob(SSjob.get_job_name(card.assignment))			// Get their old job from the card
+	var/datum/job/new_job = SSjob.GetJob(new_rank)						// And their new job from the rank
 
-	if (!old_job || !is_open_onduty_job(usr, old_job.pto_type, new_job))
-		return
-	if (new_assignment != new_job.title && !(new_assignment in new_job.alt_titles))
-		return
-	if (new_job)
-		card.access = new_job.get_access()
-		card.assignment = new_assignment
-		card.name = text("[card.registered_name]'s ID Card ([card.assignment])")
-		GLOB.data_core.manifest_modify(card.registered_name, card.assignment)
-		card.last_job_switch = world.time
-		new_job.current_positions++
-		var/mob/living/carbon/human/H = usr
-		H.mind.assigned_role = card.assignment
-		if (GLOB.announcement_systems.len)
-			var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
-			announcer.announce("ONDUTY", card.registered_name, card.assignment, list())
+	if (!old_job \
+			|| !is_open_onduty_job(usr, old_job.pto_type, new_job))		// If there's no old job or it's not an open and on-duty job
+		return															// Do nothing
+	if (new_assignment != new_job.title \
+			&& !(new_assignment in new_job.alt_titles))					// If the new assignment isn't the new job's title or alt-title
+		return															// Do nothing
+	if (new_job)														// As long as there's a new job
+		card.access = new_job.get_access()								// Set the card's access to the new job's access
+		card.assignment = new_assignment								// And the card's assignment to the new assignment
+		card.name = text(\
+			"[card.registered_name]'s ID Card ([card.assignment])")		// And change the card's name
+		GLOB.data_core.manifest_modify(card.registered_name, \
+			card.assignment)											// Apply the changes to the crew manifest
+		card.last_job_switch = world.time								// Set the last job switch on the card to the current world time
+		new_job.current_positions++										// Add one to the current positions for the new job
+		var/mob/living/carbon/human/H = usr								// Get the caller as a human data type
+		H.mind.assigned_role = card.assignment							// Set the assigned role of the caller's mind to the assignment on the card
+		if (GLOB.announcement_systems.len)								// If there are any announcement systems
+			var/obj/machinery/announcement_system/announcer = \
+				pick(GLOB.announcement_systems)							// Pick an announcer, any announcer!
+			announcer.announce("ONDUTY", card.registered_name, \
+				card.assignment, list())								// Make the announcement for now on-duty personnel
 
+/// Makes the active card off-duty
 /obj/machinery/computer/timeclock/proc/make_off_duty()
-	var/datum/job/found_job = SSjob.GetJob(SSjob.get_job_name(card.assignment))
+	var/datum/job/found_job = \
+			SSjob.GetJob(SSjob.get_job_name(card.assignment))
 	if (!found_job)
 		return
 	var/new_dept = found_job.pto_type || PTO_CIVILIAN
 	var/datum/job/pto_job = null
 	for (var/datum/job/job in SSjob.occupations)
-		if (job.pto_type == new_dept && job.timeoff_factor < 0)
+		if (job.pto_type == new_dept \
+				&& job.timeoff_factor < 0)
 			pto_job = job
 			break
 	if (pto_job)
@@ -222,15 +233,19 @@
 		// var/old_title = card.assignment
 		card.access = pto_job.get_access()
 		card.assignment = pto_job.title
-		card.name = text("[card.registered_name]'s ID Card ([card.assignment])")
-		GLOB.data_core.manifest_modify(card.registered_name, card.assignment)
+		card.name = text(\
+			"[card.registered_name]'s ID Card ([card.assignment])")
+		GLOB.data_core.manifest_modify(card.registered_name, \
+			card.assignment)
 		card.last_job_switch = world.time
 		var/mob/living/carbon/human/H = usr
 		H.mind.assigned_role = pto_job.title
 		found_job.current_positions--
 		if (GLOB.announcement_systems.len)
-			var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
-			announcer.announce("OFFDUTY", card.registered_name, card.assignment, list())
+			var/obj/machinery/announcement_system/announcer = \
+				pick(GLOB.announcement_systems)
+			announcer.announce("OFFDUTY", card.registered_name, \
+				card.assignment, list())
 	return
 
 /obj/machinery/computer/timeclock/proc/is_open_onduty_job(var/mob/user, var/department, var/datum/job/job)

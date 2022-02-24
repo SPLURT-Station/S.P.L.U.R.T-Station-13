@@ -1,0 +1,12 @@
+# Allow time off to be enabled
+## Uncomment to allow players to use their accrued time off
+## Defaults to off because this requires the database unless you want them to
+## use only what they accrued during the current round
+#TIME_OFF
+
+# Allow PTO job changes
+## Currently this is required if using the previous to allow users to change
+## jobs. This may be changed in the future and can be used to expand the functionality
+## for something such as on-the-go job changing within the department, without heads.
+## Thus it remains here.
+#PTO_JOB_CHANGE

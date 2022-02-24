@@ -1,20 +1,22 @@
 /// Timeclock terminal, ported from VOREStation
 /obj/machinery/computer/timeclock
-	name = "timeclock terminal"
-	icon = 'modular_splurt/icons/obj/machinery/timeclock.dmi'
-	icon_state = "timeclock"
-	icon_keyboard = null
-	light_color = "#0099ff"						   						// TODO: Adjust this
-	light_power = 0.5
-	layer = ABOVE_WINDOW_LAYER
-	density = FALSE
-	circuit = /obj/item/circuitboard/computer/timeclock
+	name = "timeclock terminal"											// Name of the object
+	icon = 'modular_splurt/icons/obj/machinery/timeclock.dmi'			// Spritesheet for the object's icon
+	icon_state = "timeclock"											// Icon state from the spritesheet
+	icon_keyboard = null												// Keyboard state because this is a computer and we need to tell it to not have a keyboard
+	light_color = "#0099ff"						   						// TODO: Adjust this // Color for the light coming from the object
+	light_power = 0.5													// Brightness of the light coming from the object
+	layer = ABOVE_WINDOW_LAYER											// Layer for the object
+	density = FALSE														// Density of the object, so we can walk through it
+	circuit = /obj/item/circuitboard/computer/timeclock					// Circuitboard for the object in case it gets destroyed
 
 	var/obj/item/card/id/card											// Inserted ID card
 
+/// For when we create a new timeclock
 /obj/machinery/computer/timeclock/New()
 	..()																// Let's do this just to be safe.
 
+// For when a timeclock is destroyed
 /obj/machinery/computer/timeclock/Destroy()
 	if (card)															// If we're holding an ID and get destroyed
 		card.forceMove(get_turf(src))									// Get rid of the fucker
@@ -22,6 +24,7 @@
 	. = ..()															// Someone's gonna ask later, refer them here.
 																		// This shit just sets our return value to our parent proc's return value.
 
+// Determines what icon to used based on a couple factors
 /obj/machinery/computer/timeclock/update_icon()
 	if (!process())														// If we can't process
 		icon_state = "[initial(icon_state)]_off"						// we must be offline.

@@ -218,85 +218,90 @@
 /// Makes the active card off-duty
 /obj/machinery/computer/timeclock/proc/make_off_duty()
 	var/datum/job/found_job = \
-			SSjob.GetJob(SSjob.get_job_name(card.assignment))
-	if (!found_job)
-		return
-	var/new_dept = found_job.pto_type || PTO_CIVILIAN
-	var/datum/job/pto_job = null
-	for (var/datum/job/job in SSjob.occupations)
+			SSjob.GetJob(SSjob.get_job_name(card.assignment))			// Get the current job from the inserted card
+	if (!found_job)														// If the card somehow doesn't have a job
+		return															// https://www.youtube.com/watch?v=2k0SmqbBIpQ
+	var/new_dept = found_job.pto_type || PTO_CIVILIAN					// New department is either the department's PTO type or civilian PTO
+	var/datum/job/pto_job = null										// Create a new PTO job
+	for (var/datum/job/job in SSjob.occupations)						// For all jobs in the list of occupations
 		if (job.pto_type == new_dept \
-				&& job.timeoff_factor < 0)
-			pto_job = job
-			break
-	if (pto_job)
+				&& job.timeoff_factor < 0)								// If the job is the department's PTO type and has a negative timeoff factor
+			pto_job = job												// That's the new PTO job
+			break														// And stop looking
+	if (pto_job)														// If a PTO job was found
 		// Apparently we aren't using this? I don't fucking know
 		// var/old_title = card.assignment
-		card.access = pto_job.get_access()
-		card.assignment = pto_job.title
+		card.access = pto_job.get_access()								// Assign the PTO job's access to the ID
+		card.assignment = pto_job.title									// And the PTO job's title to the ID
 		card.name = text(\
-			"[card.registered_name]'s ID Card ([card.assignment])")
+			"[card.registered_name]'s ID Card ([card.assignment])")		// Set the card's new name
 		GLOB.data_core.manifest_modify(card.registered_name, \
-			card.assignment)
-		card.last_job_switch = world.time
-		var/mob/living/carbon/human/H = usr
-		H.mind.assigned_role = pto_job.title
-		found_job.current_positions--
-		if (GLOB.announcement_systems.len)
+			card.assignment)											// And apply that change to the crew manifest
+		card.last_job_switch = world.time								// Set the last job switch on the card to the world's current time
+		var/mob/living/carbon/human/H = usr								// Get the caller as a human data type
+		H.mind.assigned_role = pto_job.title							// Set their mind's assigned role to the PTO job's title
+		found_job.current_positions--									// Remove one from the found job's position count since they no longer have that job
+		if (GLOB.announcement_systems.len)								// If there are any announcement systems
 			var/obj/machinery/announcement_system/announcer = \
-				pick(GLOB.announcement_systems)
+				pick(GLOB.announcement_systems)							// Pick an announcement system, any announcement system!
 			announcer.announce("OFFDUTY", card.registered_name, \
-				card.assignment, list())
-	return
+				card.assignment, list())								// Make an off-duty announcement with that system
+	return																// I really don't know why this return exists we always return anyways lol
 
+/// Check if a job is open and on-duty for a given user and department
 /obj/machinery/computer/timeclock/proc/is_open_onduty_job(var/mob/user, var/department, var/datum/job/job)
 	return job \
 		   && job.current_positions <= job.total_positions \
 		   && !jobban_isbanned(user, SSjob.get_job_name(job.title)) \
 		   && job.player_old_enough(user.client) \
 		   && job.pto_type == department \
-		   && job.timeoff_factor > 0
+		   && job.timeoff_factor > 0									// I feel like this requires some HEAVY explanation so here we go.
+		   																// First we check if the job exists
+																		// Then we check that there are enough open slots
+																		// Then we check if the user is jobbanned or not and negate that because it'll return positive if they're banned
+																		// Then we have to check that they have enough playtime to actually join as that job
+																		// Then we have to check that the PTO type matches the department requested (can't join security with a PTO type of medical)
+																		// Then we have to check that there's a timeoff value so you can actually accrue hours of PTO by playing as that role
 
-/**
- * HELPER FOR DEPARTMENT FLAGS
- */
+/// Convert a department and job flag to an english phrase
 /obj/machinery/computer/timeclock/proc/flags_to_english(var/department,var/flag)
-	if (department == ENGSEC)
-		switch (flag)
-			if (CAPTAIN, HOS, WARDEN, CHIEF)
-				return "Command"
-			if (DETECTIVE, OFFICER)
-				return "Security"
-			if (BRIGDOC)
-				return "Medsec"
-			if (BLUESHIELD)
-				return "Blueshield"
-			if (ENGINEER, ATMOSTECH)
-				return "Engineering"
-			if (ROBOTICIST)
-				return "Science"
-			else					// Technically this won't always be silicon
-				return "Silicon"	//  but we're listing your ass as silicon anyways. Cope.
-	else if (department == MEDSCI)
-		switch (flag)
-			if (RD_JF, CMO_JF)
-				return "Command"
-			if (SCIENTIST, ROBOTICIST)
-				return "Science"
-			if (CHEMIST, DOCTOR, VIROLOGIST, PARAMEDIC)
-				return "Medical"
-			if (GENETICIST)
-				return "Medsci"
-			else							// If you're landing here you're fucked
-				return "What the fuck?"
-	else if (department == CIVILIAN)
-		switch (flag)
-			if (HOP, QUARTERMASTER)
-				return "Command"
-			if (PRISONER)
-				return "Prisoner"
-			if (CARGOTECH, MINER)
-				return "Cargo"
-			else
-				return "Civilian"
-	else									// New department combo? Wack.
-		return "What the fuck?"
+	if (department == ENGSEC)											// If the department flag is engineering or security (or silicon apparently?)
+		switch (flag)													// Switch based on the flag
+			if (CAPTAIN, HOS, WARDEN, CHIEF)							// Captain, Head of Security, Warden or Chief Engineer
+				return "Command"										// Are all command
+			if (DETECTIVE, OFFICER)										// Detectives and Officers
+				return "Security"										// Are all security
+			if (BRIGDOC)												// Brig Docs
+				return "Medsec"											// Are medical and science
+			if (BLUESHIELD)												// Blueshield
+				return "Blueshield"										// Are obviously blueshield. Dunno what you expected fam
+			if (ENGINEER, ATMOSTECH)									// Engineers and Atmos Technicians
+				return "Engineering"									// Are engineering
+			if (ROBOTICIST)												// Roboticist is defined here but I think it was supposed to be with medsci? Just in case.
+				return "Science"										// They're science
+			else														// Technically this won't always be silicon
+				return "Silicon"										// But we're listing your ass as silicon anyways. Cope.
+	else if (department == MEDSCI)										// Otherwise, if the department flag is medical or science
+		switch (flag)													// Switch based on the flag (again)
+			if (RD_JF, CMO_JF)											// Research Director or Chief Medical Officer
+				return "Command"										// Are both command
+			if (SCIENTIST, ROBOTICIST)									// Scientists and Roboticists (this is where I think this was meant to be but it's still with ENGSEC just in case)
+				return "Science"										// Are obviously science
+			if (CHEMIST, DOCTOR, VIROLOGIST, PARAMEDIC)					// Chemists, Doctors, Virologists and Paramedics
+				return "Medical"										// Are medical
+			if (GENETICIST)												// Geneticists
+				return "Medsci"											// Are kind of a special, middle of the road medical and science case
+			else														// If you're landing here you're fucked
+				return "What the fuck?"									// So what the fuck?
+	else if (department == CIVILIAN)									// Otherwise you must be civilian, right? Right???
+		switch (flag)													// Once again a switch based on the flag
+			if (HOP, QUARTERMASTER)										// Head of Personnel and Quartermaster
+				return "Command"										// Are command
+			if (PRISONER)												// Prisoners
+				return "Prisoner"										// Are... prisoners? They shouldn't be able to PTO but if they manage to break out they can access a console so no fuck you here
+			if (CARGOTECH, MINER)										// Cargo Technicians and Miners
+				return "Cargo"											// Are cargonians
+			else														// Otherwise
+				return "Civilian"										// You must be a civilian. You could be an assisstant or a clown or a bartender, I don't really care.
+	else																// New department combo? Wack.
+		return "What the fuck?"											// what the fuck?

@@ -459,6 +459,71 @@
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
+/datum/interaction/lewd/nipple_fuck
+	command = "nipple_fuck"
+	description = "Fuck their nipple"
+	require_target_topless = TRUE
+	require_user_penis = REQUIRE_EXPOSED
+	write_log_user = "fucked nipples"
+	write_log_target = "got their nipples fucked by"
+	interaction_sound = null
+	max_distance = 1
+
+/datum/interaction/lewd/nipple_fuck/display_interaction(mob/living/user, mob/living/target)
+	user.do_nipfuck(target)
+
+	if(!isclownjob(target) || isclownjob(user))
+		return
+
+	if(prob(50) && isclownjob(target))
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s [pick(GLOB.breast_nouns)] honk[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/fuck_thighs
+	command = "fuck_thighs"
+	description = "Fuck their thighs"
+	require_user_penis = REQUIRE_EXPOSED
+	require_target_legs = REQUIRE_ANY
+	require_target_num_legs = 2
+	write_log_user = "fucked thighs"
+	write_log_target = "got their thighs fucked by"
+	interaction_sound = null
+	max_distance = 1
+
+/datum/interaction/lewd/fuck_thighs/display_interaction(mob/living/user, mob/living/target)
+	user.do_thighfuck(target)
+
+	if(!isclownjob(user))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/do_thighjob
+	command = "do_thighjob"
+	description = "Give them a thighjob"
+	require_target_penis = REQUIRE_EXPOSED
+	require_user_legs = REQUIRE_ANY
+	require_user_num_legs = 2
+	write_log_user = "Gave a thighjob"
+	write_log_target = "Got a thighjob from"
+	interaction_sound = null
+	max_distance = 1
+
+/datum/interaction/lewd/do_thighjob/display_interaction(mob/living/user, mob/living/target)
+	user.do_thighjob(target)
+
+	if(!isclownjob(target))
+		return
+
+	if(prob(50))
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// 									U N H O L Y										   /////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////

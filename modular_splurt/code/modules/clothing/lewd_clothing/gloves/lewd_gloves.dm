@@ -12,7 +12,7 @@
 
 /obj/item/clothing/gloves/latex_gloves/attack_hand(mob/living/carbon/human/user)
 	var/mob/living/carbon/human/C = user
-	if(iscarbon(user) && seamless && (user.get_item_by_slot(SLOT_GLOVES) == src))
+	if(iscarbon(user) && seamless && (user.get_item_by_slot(ITEM_SLOT_GLOVES) == src))
 		to_chat(C, span_purple(pick("You rub your gloved fingers together as you search for some sort of escape.",
 									"You can't find any leverage to remove these gloves!",
 									"Your pointless clawing seems to only make things more skin tight")))

@@ -440,6 +440,9 @@
 	},
 /area/commons/fitness/pool)
 "aaW" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
 /turf/open/floor/plasteel/yellowsiding{
 	dir = 1
 	},
@@ -611,6 +614,9 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
 /turf/open/floor/plasteel/white/corner,
 /area/commons/fitness/pool)
 "abv" = (
@@ -619,6 +625,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/item/cigbutt,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "abw" = (
@@ -661,7 +670,9 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 8
+	},
 /turf/open/floor/plasteel/yellowsiding/corner{
 	dir = 4
 	},
@@ -672,17 +683,26 @@
 	pixel_x = -2;
 	pixel_y = -27
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
 /turf/open/floor/plasteel/yellowsiding{
 	dir = 1
 	},
 /area/commons/fitness/pool)
 "abC" = (
 /obj/machinery/light,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
 /turf/open/floor/plasteel/yellowsiding{
 	dir = 1
 	},
 /area/commons/fitness/pool)
 "abD" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 9
+	},
 /turf/open/floor/plasteel/yellowsiding/corner{
 	dir = 1
 	},
@@ -5628,10 +5648,10 @@
 /area/command/gateway)
 "aoG" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 8
+	dir = 10
 	},
-/turf/closed/wall,
-/area/command/blueshielquarters)
+/turf/open/floor/wood,
+/area/command/blueshieldoffice)
 "aoH" = (
 /obj/structure/lattice,
 /obj/structure/grille,
@@ -8970,7 +8990,6 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 26
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
 "awE" = (
@@ -9271,7 +9290,6 @@
 	dir = 9
 	},
 /obj/effect/landmark/xeno_spawn,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
 "axC" = (
@@ -9636,7 +9654,6 @@
 	icon_state = "1-2"
 	},
 /obj/effect/landmark/start/assistant,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
 "ayy" = (
@@ -10140,7 +10157,6 @@
 	dir = 8
 	},
 /obj/effect/landmark/start/assistant,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
 "azG" = (
@@ -10588,8 +10604,8 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 10
 	},
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
@@ -51703,9 +51719,7 @@
 /turf/open/floor/plasteel/dark,
 /area/science/lab)
 "cSV" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall,
 /area/command/blueshielquarters)
 "cTI" = (
@@ -53405,6 +53419,9 @@
 /obj/item/radio/off{
 	pixel_x = 6;
 	pixel_y = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
 	},
 /turf/open/floor/wood,
 /area/command/blueshieldoffice)
@@ -56761,13 +56778,13 @@
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "lDf" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/turf/open/floor/plating,
-/area/maintenance/department/crew_quarters/dorms)
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 8
+	},
+/area/commons/fitness/pool)
 "lEh" = (
 /obj/structure/bookcase{
 	name = "Forbidden Knowledge"
@@ -57778,10 +57795,10 @@
 /area/maintenance/department/engine)
 "npO" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 6
+	dir = 4
 	},
 /turf/closed/wall,
-/area/command/blueshielquarters)
+/area/commons/fitness/pool)
 "nqu" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 10
@@ -58201,12 +58218,10 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
-	dir = 1
-	},
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/carpet,
 /area/command/blueshielquarters)
 "nQc" = (
@@ -58751,9 +58766,11 @@
 /turf/open/floor/plasteel/dark,
 /area/service/library)
 "oJf" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
 /turf/closed/wall,
-/area/command/blueshielquarters)
+/area/command/blueshieldoffice)
 "oKa" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/maintenance{
@@ -59057,15 +59074,11 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "peY" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 6
-	},
-/turf/open/floor/plating,
-/area/maintenance/department/crew_quarters/dorms)
+/turf/open/floor/wood,
+/area/command/blueshieldoffice)
 "pfz" = (
 /obj/machinery/light{
 	dir = 1
@@ -59342,9 +59355,6 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 10
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -59462,9 +59472,6 @@
 	name = "Blueshield's Office APC";
 	pixel_y = 23
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 6
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -59572,6 +59579,9 @@
 /turf/closed/wall/r_wall,
 /area/medical/virology)
 "pRr" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 1
+	},
 /turf/open/floor/carpet,
 /area/command/blueshielquarters)
 "pRz" = (
@@ -60412,11 +60422,11 @@
 /turf/open/space/basic,
 /area/space/station_ruins)
 "rnf" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 9
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 8
 	},
-/turf/closed/wall,
-/area/command/blueshielquarters)
+/area/commons/fitness/pool)
 "rnj" = (
 /obj/machinery/door/airlock/command{
 	name = "Blueshield's Quarters";
@@ -62240,14 +62250,14 @@
 /obj/item/storage/firstaid/toxin{
 	pixel_x = -5
 	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
-	dir = 1
-	},
 /obj/machinery/light{
 	dir = 8
 	},
 /obj/item/radio/intercom{
 	pixel_x = -29
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 4
 	},
 /turf/open/floor/wood,
 /area/command/blueshieldoffice)
@@ -107762,8 +107772,8 @@ aaM
 aaP
 aaP
 abt
-aaP
-aaP
+lDf
+rnf
 abD
 atn
 aur
@@ -108276,7 +108286,7 @@ aaF
 aaF
 aaF
 aaF
-aaF
+npO
 aaF
 abF
 aiS
@@ -108536,8 +108546,8 @@ ale
 abv
 ale
 abG
-peY
-lDf
+ale
+ale
 avn
 awD
 axA
@@ -108790,10 +108800,10 @@ atp
 oyH
 atp
 atp
-atp
-npO
 oJf
-rnf
+mxY
+mxY
+mxY
 mxY
 mxY
 mxY
@@ -109048,7 +109058,7 @@ pFT
 uyW
 cOd
 gdN
-aoG
+mxY
 uvY
 mqQ
 efW
@@ -109302,9 +109312,9 @@ aaa
 aaa
 atp
 pBy
+aoG
 xLE
-xLE
-xLE
+peY
 cSV
 nPI
 pRr

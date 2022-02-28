@@ -8,7 +8,7 @@
 	icon_state = "vibe"
 	item_state = "vibe"
 	w_class = WEIGHT_CLASS_SMALL
-	slot_flags = ITEM_SLOT_DENYPOCKET   //no more pocket shockers
+	//slot_flags = ITEM_SLOT_DENYPOCKET   //no more pocket shockers
 	var/equipment_slot = GENITAL_EQUIPMENT_VIBRATOR
 	var/mode = 1
 	var/style = "long"

@@ -44,6 +44,13 @@ obj/item/ammo_box/c45/trac
 	name = "ammo box (.45 Trac)"
 	ammo_type = /obj/item/ammo_casing/c45/trac
 
+/obj/item/ammo_box/c22lr
+	name = "ammo box (.22)"
+	icon_state = "22box"
+	icon = 'modular_splurt/icons/obj/ammo.dmi'
+	ammo_type = /obj/item/ammo_casing/c22lr
+	max_ammo = 24
+
 /datum/design/c45/c45r
 	name = "Box of ammo (.45 Rubber)"
 	desc = "A box of .45 Rubber"

@@ -25,7 +25,7 @@
 	if(get_refraction_dif() > 0)
 		onLewdCooldown = TRUE
 
-	if(M.client && M.client.prefs.erppref == "Yes" && CHECK_BITFIELD(M.client.prefs.toggles, VERB_CONSENT) && M.client.prefs.nonconpref == "Yes")
+	if(M.client && M.client?.prefs.erppref == "Yes" && CHECK_BITFIELD(M.client?.prefs.toggles, VERB_CONSENT) && M.client?.prefs.nonconpref == "Yes")
 		wantsNoncon = TRUE
 
 	switch(deathclaw_mode)
@@ -67,7 +67,7 @@
 	addtimer(CALLBACK(src, .proc/do_lewd_action, M), rand(8, 12))
 
 	// Regular sex has an extra action per tick to seem less slow and robotic
-	if(deathclaw_mode != "abomination" || M.client.prefs.unholypref != "Yes")
+	if(deathclaw_mode != "abomination" || M.client?.prefs.unholypref != "Yes")
 		addtimer(CALLBACK(src, .proc/do_lewd_action, M), rand(12, 16))
 
 
@@ -92,13 +92,13 @@
 
 	switch(chosen_hole)
 		if(CUM_TARGET_ANUS)
-			if(tearSlot(M, SLOT_WEAR_SUIT))
+			if(tearSlot(M, ITEM_SLOT_OCLOTHING))
 				return
-			if(tearSlot(M, SLOT_W_UNIFORM))
+			if(tearSlot(M, ITEM_SLOT_ICLOTHING))
 				return
 
 			// Abomination deathclaws do other stuff instead
-			if(deathclaw_mode == "abomination" && M.client.prefs.unholypref == "Yes")
+			if(deathclaw_mode == "abomination" && M.client?.prefs.unholypref == "Yes")
 				if(prob(1))
 					do_grindmouth(M)
 				else
@@ -108,26 +108,26 @@
 				do_anal(M)
 
 		if(CUM_TARGET_VAGINA)
-			if(tearSlot(M, SLOT_WEAR_SUIT))
+			if(tearSlot(M, ITEM_SLOT_OCLOTHING))
 				return
-			if(tearSlot(M, SLOT_W_UNIFORM))
+			if(tearSlot(M, ITEM_SLOT_ICLOTHING))
 				return
 
 			// Abomination deathclaws do other stuff instead
-			if(deathclaw_mode == "abomination" && M.client.prefs.unholypref == "Yes")
+			if(deathclaw_mode == "abomination" && M.client?.prefs.unholypref == "Yes")
 				do_footjob_v(M)
 				handle_post_sex(10, null, M)
 			else
 				do_vaginal(M)
 
 		if(CUM_TARGET_THROAT)
-			if(tearSlot(M, SLOT_HEAD))
+			if(tearSlot(M, ITEM_SLOT_HEAD))
 				return
-			if(tearSlot(M, SLOT_WEAR_MASK))
+			if(tearSlot(M, ITEM_SLOT_MASK))
 				return
 
 			// Abomination deathclaws do other stuff instead
-			if(deathclaw_mode == "abomination" && M.client.prefs.unholypref == "Yes")
+			if(deathclaw_mode == "abomination" && M.client?.prefs.unholypref == "Yes")
 				if(prob(1))
 					do_faceshit(M)
 				else
@@ -166,7 +166,7 @@
 		else
 			message = "cums on the floor!"
 
-	if(deathclaw_mode == "abomination" && M.client.prefs.unholypref == "Yes")
+	if(deathclaw_mode == "abomination" && M.client?.prefs.unholypref == "Yes")
 		message = "cums all over [M]'s body"
 
 	if(istype(M, /mob/living/carbon))

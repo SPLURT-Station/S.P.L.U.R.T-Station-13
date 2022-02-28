@@ -55,7 +55,7 @@
 	return ..()
 /obj/item/clothing/neck/mind_collar/attack_hand(mob/living/carbon/human/user)
 	var/mob/living/carbon/human/C = user
-	if(iscarbon(user) && seamless && (user.get_item_by_slot(SLOT_NECK)))
+	if(iscarbon(user) && seamless && (user.get_item_by_slot(ITEM_SLOT_NECK)))
 		to_chat(C, span_purple(pick("You can't seem to find the release latch for the collar!",
 									"The collar refuses to budge while you tug at it.",
 									"Your hands uselessly roam along the strange device.")))

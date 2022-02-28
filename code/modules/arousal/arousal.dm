@@ -122,7 +122,7 @@
 		to_chat(L,"<span class='userlove'>[src] climaxes [(Lgen) ? "in your [Lgen.name]" : "with you"], [p_their()] [G.name] spilling nothing!</span>")
 	//SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm) //Sandstorm edit
 	do_climax(fluid_source, spillage ? loc : L, G, spillage)
-	L.receive_climax(src, Lgen, G, spillage)
+	//L.receive_climax(src, Lgen, G, spillage)
 
 /mob/living/carbon/human/proc/mob_fill_container(obj/item/organ/genital/G, obj/item/reagent_containers/container, mb_time = 30) //For beaker-filling, beware the bartender
 	var/datum/reagents/fluid_source = G.climaxable(src)
@@ -260,7 +260,7 @@
 				//
 				if(partner) //Did they pass the clothing checks?
 					//skyrat edit
-					mob_climax_partner(G, partner, spillage = forced_spillage, mb_time = 0, Lgen = forced_receiving_genital) //Instant climax due to forced
+					mob_climax_partner(G, partner, spillage = forced_spillage, mb_time = 0, Lgen = forced_receiving_genital, forced = forced_climax) //Instant climax due to forced
 					//
 					continue //You've climaxed once with this organ, continue on
 			//not exposed OR if no partner was found while exposed, climax alone

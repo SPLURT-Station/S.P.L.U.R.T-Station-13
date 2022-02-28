@@ -77,14 +77,14 @@
 			muzzle = FALSE
 			//playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
 			to_chat(usr, span_notice("Speech switch off"))
-			if(usr.get_item_by_slot(SLOT_HEAD) == src)
+			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				REMOVE_TRAIT(usr, TRAIT_MUTE, CLOTHING_TRAIT)
 				to_chat(usr, span_purple("Your mouth is free. you breathe out with relief."))
 		else
 			muzzle = TRUE
 			//playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE, ignore_walls = FALSE)
 			to_chat(usr, span_notice("Speech switch on"))
-			if(usr.get_item_by_slot(SLOT_HEAD) == src)
+			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				ADD_TRAIT(usr, TRAIT_MUTE, CLOTHING_TRAIT)
 				to_chat(usr, span_purple("Something is gagging your mouth! You can't even make a sound..."))
 	if(C == "hearing")
@@ -92,7 +92,7 @@
 			earmuffs = FALSE
 			//playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
 			to_chat(usr, span_notice("Hearing switch off"))
-			if(usr.get_item_by_slot(SLOT_HEAD) == src)
+			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				REMOVE_TRAIT(usr, TRAIT_DEAF, CLOTHING_TRAIT)
 				//Toggle_Sounds()
 				to_chat(usr, span_purple("Finally you can hear the world around again."))
@@ -100,7 +100,7 @@
 			earmuffs = TRUE
 			//playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE, ignore_walls = FALSE)
 			to_chat(usr, span_notice("Hearing switch on"))
-			if(usr.get_item_by_slot(SLOT_HEAD) == src)
+			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				ADD_TRAIT(usr, TRAIT_DEAF, CLOTHING_TRAIT)
 				//Toggle_Sounds()
 				//stop_client_sounds()
@@ -111,14 +111,14 @@
 			prevent_vision = FALSE
 			//playsound(usr, 'sound/weapons/magout.ogg', 40, TRUE, ignore_walls = FALSE)
 			to_chat(usr, span_notice("Vision switch off"))
-			if(usr.get_item_by_slot(SLOT_HEAD) == src)
+			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				user.become_blind("deprivation_helmet_[REF(src)]")
 				to_chat(usr, span_purple("Helmet no longer restricts your vision."))
 		else
 			prevent_vision = TRUE
 			//playsound(usr, 'sound/weapons/magin.ogg', 40, TRUE, ignore_walls = FALSE)
 			to_chat(usr, span_notice("Vision switch on"))
-			if(usr.get_item_by_slot(SLOT_HEAD) == src)
+			if(usr.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 				user.become_blind("deprivation_helmet_[REF(src)]")
 				to_chat(usr, span_purple("The helmet is blocking your vision! You can't make out anything on the other side..."))
 
@@ -185,7 +185,7 @@
 
 /obj/item/clothing/head/helmet/space/deprivation_helmet/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	if(slot != SLOT_HEAD)
+	if(slot != ITEM_SLOT_HEAD)
 		return
 	if(muzzle == TRUE)
 		ADD_TRAIT(user, TRAIT_MUTE, CLOTHING_TRAIT)
@@ -222,7 +222,7 @@
 			to_chat(user, span_purple("The helmet no longer restricts your vision."))
 
 /obj/item/clothing/head/helmet/space/deprivation_helmet/attack_hand(mob/living/carbon/human/user)
-	if(iscarbon(user) && seamless && (user.get_item_by_slot(SLOT_HEAD) == src))
+	if(iscarbon(user) && seamless && (user.get_item_by_slot(ITEM_SLOT_HEAD) == src))
 		to_chat(user, span_purple(pick("You roam your hands around the helmet for some sort of release!",
 									"You find it impossible to leverage your fingers underneath the helmet",
 									"The durable material seems to reflect your pointless force.")))

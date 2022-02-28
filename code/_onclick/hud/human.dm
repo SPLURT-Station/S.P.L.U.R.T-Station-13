@@ -17,23 +17,23 @@
 	if(usr.hud_used.inventory_shown && targetmob.hud_used)
 		usr.hud_used.inventory_shown = FALSE
 		usr.client.screen -= targetmob.hud_used.toggleable_inventory
-		//SKYRAT EDIT
+		// Sandstorm edit
 		usr.client.screen -= targetmob.hud_used.extra_inventory
-		//SKYRAT EDIT END
+		// Sandstorm edit END
 	else
 		usr.hud_used.inventory_shown = TRUE
 		usr.client.screen += targetmob.hud_used.toggleable_inventory
-		//SKYRAT EDIT
+		// Sandstorm edit
 		if(usr.hud_used.extra_shown)
 			usr.client.screen += targetmob.hud_used.extra_inventory
-		//SKYRAT EDIT END
+		// Sandstorm edit END
 
 	targetmob.hud_used.hidden_inventory_update(usr)
-	//SKYRAT EDIT
+	// Sandstorm edit
 	targetmob.hud_used.extra_inventory_update(usr)
-	//SKYRAT EDIT END
+	// Sandstorm edit END
 
-//skyrat edit
+// Sandstorm edit
 /atom/movable/screen/human/toggle/extra
 	name = "toggle extra"
 	icon_state = "toggle_extra"
@@ -267,7 +267,7 @@
 	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "i_clothing"
 	inv_box.icon = ui_style
-	inv_box.slot_id = SLOT_W_UNIFORM
+	inv_box.slot_id = ITEM_SLOT_ICLOTHING
 	inv_box.icon_state = "uniform"
 	inv_box.screen_loc = ui_iclothing
 	toggleable_inventory += inv_box
@@ -275,7 +275,7 @@
 	inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = "o_clothing"
 	inv_box.icon = ui_style
-	inv_box.slot_id = SLOT_WEAR_SUIT
+	inv_box.slot_id = ITEM_SLOT_OCLOTHING
 	inv_box.icon_state = "suit"
 	inv_box.screen_loc = ui_oclothing
 	toggleable_inventory += inv_box
@@ -301,7 +301,7 @@
 	inv_box.icon = ui_style
 	inv_box.icon_state = "id"
 	inv_box.screen_loc = ui_id
-	inv_box.slot_id = SLOT_WEAR_ID
+	inv_box.slot_id = ITEM_SLOT_ID
 	static_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
@@ -309,7 +309,7 @@
 	inv_box.icon = ui_style
 	inv_box.icon_state = "mask"
 	inv_box.screen_loc = ui_mask
-	inv_box.slot_id = SLOT_WEAR_MASK
+	inv_box.slot_id = ITEM_SLOT_MASK
 	toggleable_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
@@ -317,7 +317,7 @@
 	inv_box.icon = ui_style
 	inv_box.icon_state = "neck"
 	inv_box.screen_loc = ui_neck
-	inv_box.slot_id = SLOT_NECK
+	inv_box.slot_id = ITEM_SLOT_NECK
 	toggleable_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
@@ -325,7 +325,7 @@
 	inv_box.icon = ui_style
 	inv_box.icon_state = "back"
 	inv_box.screen_loc = ui_back
-	inv_box.slot_id = SLOT_BACK
+	inv_box.slot_id = ITEM_SLOT_BACK
 	static_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
@@ -333,7 +333,7 @@
 	inv_box.icon = ui_style
 	inv_box.icon_state = "pocket"
 	inv_box.screen_loc = ui_storage1
-	inv_box.slot_id = SLOT_L_STORE
+	inv_box.slot_id = ITEM_SLOT_LPOCKET
 	static_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
@@ -341,7 +341,7 @@
 	inv_box.icon = ui_style
 	inv_box.icon_state = "pocket"
 	inv_box.screen_loc = ui_storage2
-	inv_box.slot_id = SLOT_R_STORE
+	inv_box.slot_id = ITEM_SLOT_RPOCKET
 	static_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
@@ -349,7 +349,7 @@
 	inv_box.icon = ui_style
 	inv_box.icon_state = "suit_storage"
 	inv_box.screen_loc = ui_sstore1
-	inv_box.slot_id = SLOT_S_STORE
+	inv_box.slot_id = ITEM_SLOT_SUITSTORE
 	static_inventory += inv_box
 
 	using = new /atom/movable/screen/resist()
@@ -382,7 +382,7 @@
 	inv_box.icon = ui_style
 	inv_box.icon_state = "gloves"
 	inv_box.screen_loc = ui_gloves
-	inv_box.slot_id = SLOT_GLOVES
+	inv_box.slot_id = ITEM_SLOT_GLOVES
 	toggleable_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
@@ -390,15 +390,15 @@
 	inv_box.icon = ui_style
 	inv_box.icon_state = "glasses"
 	inv_box.screen_loc = ui_glasses
-	inv_box.slot_id = SLOT_GLASSES
+	inv_box.slot_id = ITEM_SLOT_EYES
 	toggleable_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
-	inv_box.name = "left ear" //sandstorm edit
+	inv_box.name = "left ear" // Sandstorm edit
 	inv_box.icon = ui_style
 	inv_box.icon_state = "ears"
 	inv_box.screen_loc = ui_ears
-	inv_box.slot_id = SLOT_EARS_LEFT //skyrat edit
+	inv_box.slot_id = ITEM_SLOT_EARS_LEFT // Sandstorm Edit
 	toggleable_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
@@ -406,7 +406,7 @@
 	inv_box.icon = ui_style
 	inv_box.icon_state = "head"
 	inv_box.screen_loc = ui_head
-	inv_box.slot_id = SLOT_HEAD
+	inv_box.slot_id = ITEM_SLOT_HEAD
 	toggleable_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
@@ -414,10 +414,10 @@
 	inv_box.icon = ui_style
 	inv_box.icon_state = "shoes"
 	inv_box.screen_loc = ui_shoes
-	inv_box.slot_id = SLOT_SHOES
+	inv_box.slot_id = ITEM_SLOT_FEET
 	toggleable_inventory += inv_box
 
-	//skyrat edit
+	// Sandstorm edit
 	using = new /atom/movable/screen/human/toggle/extra()
 	using.icon = ui_style_modular(ui_style)
 	using.screen_loc = ui_inventory_extra
@@ -429,7 +429,7 @@
 	inv_box.icon = ui_style_modular(ui_style)
 	inv_box.icon_state = "underwear"
 	inv_box.screen_loc = ui_boxers
-	inv_box.slot_id = SLOT_W_UNDERWEAR //skyrat edit
+	inv_box.slot_id = ITEM_SLOT_UNDERWEAR // Sandstorm edit
 	extra_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
@@ -437,7 +437,7 @@
 	inv_box.icon = ui_style_modular(ui_style)
 	inv_box.icon_state = "socks"
 	inv_box.screen_loc = ui_socks
-	inv_box.slot_id = SLOT_W_SOCKS //skyrat edit
+	inv_box.slot_id = ITEM_SLOT_SOCKS // Sandstorm edit
 	extra_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
@@ -445,7 +445,7 @@
 	inv_box.icon = ui_style_modular(ui_style)
 	inv_box.icon_state = "shirt"
 	inv_box.screen_loc = ui_shirt
-	inv_box.slot_id = SLOT_W_SHIRT //skyrat edit
+	inv_box.slot_id = ITEM_SLOT_SHIRT // Sandstorm edit
 	extra_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
@@ -453,7 +453,7 @@
 	inv_box.icon = ui_style_modular(ui_style)
 	inv_box.icon_state = "ears_extra"
 	inv_box.screen_loc = ui_ears_extra
-	inv_box.slot_id = SLOT_EARS_RIGHT //skyrat edit
+	inv_box.slot_id = ITEM_SLOT_EARS_RIGHT // Sandstorm edit
 	extra_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
@@ -461,7 +461,7 @@
 	inv_box.icon = ui_style_modular(ui_style)
 	inv_box.icon_state = "wrists"
 	inv_box.screen_loc = ui_wrists
-	inv_box.slot_id = SLOT_WRISTS
+	inv_box.slot_id = ITEM_SLOT_WRISTS
 	extra_inventory += inv_box
 	//
 
@@ -471,7 +471,7 @@
 	inv_box.icon_state = "belt"
 //	inv_box.icon_full = "template_small"
 	inv_box.screen_loc = ui_belt
-	inv_box.slot_id = SLOT_BELT
+	inv_box.slot_id = ITEM_SLOT_BELT
 	static_inventory += inv_box
 
 	throw_icon = new /atom/movable/screen/throw_catch()
@@ -551,10 +551,10 @@
 	zone_select.update_icon()
 	static_inventory += zone_select
 
-	for(var/atom/movable/screen/inventory/inv in (static_inventory + toggleable_inventory + extra_inventory)) //skyrat edit
+	for(var/atom/movable/screen/inventory/inv in (static_inventory + toggleable_inventory + extra_inventory)) // Sandstorm edit
 		if(inv.slot_id)
 			inv.hud = src
-			inv_slots[inv.slot_id] = inv
+			inv_slots[TOBITSHIFT(inv.slot_id) + 1] = inv
 			inv.update_icon()
 
 	update_locked_slots()
@@ -611,7 +611,7 @@
 	if(!istype(H) || !H.dna.species)
 		return
 	var/datum/species/S = H.dna.species
-	for(var/atom/movable/screen/inventory/inv in (static_inventory + toggleable_inventory + extra_inventory)) //skyrat edit
+	for(var/atom/movable/screen/inventory/inv in (static_inventory + toggleable_inventory + extra_inventory)) // Sandstorm edit
 		if(inv.slot_id)
 			if(inv.slot_id in S.no_equip)
 				inv.alpha = 128
@@ -665,7 +665,7 @@
 		if(H.head)		screenmob.client.screen -= H.head
 
 
-//skyrat edit
+// Sandstorm edit
 /datum/hud/human/extra_inventory_update(mob/viewer)
 	if(!mymob)
 		return

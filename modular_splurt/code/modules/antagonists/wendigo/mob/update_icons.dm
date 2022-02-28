@@ -107,7 +107,7 @@
 	remove_overlay(EAR_LEFT_LAYER)
 	if(ears)
 		if(client && hud_used)
-			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[SLOT_EARS_LEFT]
+			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[ITEM_SLOT_EARS_LEFT]
 			inv.update_icon()
 		ears.screen_loc = ui_ears	//move the item to the appropriate screen loc
 		if(client && hud_used && hud_used.hud_shown)
@@ -136,7 +136,7 @@
 	remove_overlay(EAR_RIGHT_LAYER)
 	if(ears_extra)
 		if(client && hud_used)
-			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[SLOT_EARS_RIGHT]
+			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[ITEM_SLOT_EARS_RIGHT]
 			inv.update_icon()
 		ears_extra.screen_loc = ui_ears	//move the item to the appropriate screen loc
 		if(client && hud_used && hud_used.hud_shown)
@@ -336,7 +336,7 @@
 			if(WEST)
 				head_icon.pixel_x += HEAD_X_OFFSET_WEST
 				head_icon.pixel_y += HEAD_Y_OFFSET_WEST
-		overlays_standing[SLOT_HEAD] = head_icon
+		overlays_standing[ITEM_SLOT_HEAD] = head_icon
 		update_hud_head(head)
 
 	apply_overlay(HEAD_LAYER)

@@ -36,7 +36,7 @@
 
 	if(isliving(user))
 		var/mob/living/M = user
-		if(slot == SLOT_NECK)
+		if(slot == ITEM_SLOT_NECK)
 			playsound(get_turf(M), 'sound/machines/triple_beep.ogg', 50, 1)
 			ADD_TRAIT(src, TRAIT_NODROP, CLOTHING_TRAIT)
 

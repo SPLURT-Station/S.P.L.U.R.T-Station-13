@@ -1,6 +1,6 @@
 /datum/gear/accessories/ring
 	category = LOADOUT_CATEGORY_GLOVES
-	slot = SLOT_GLOVES
+	slot = ITEM_SLOT_HANDS
 
 /datum/gear/accessories/ring/goldring
 	name = "A gold ring"

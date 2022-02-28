@@ -5,7 +5,7 @@
 	item_state = "Off"
 	desc = "A pocket sized pump and tubing assembly designed to collect and store products from mammary glands."
 
-	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_POCKET
+	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_POCKETS
 
 	var/on = FALSE
 	var/obj/item/reagent_containers/inserted_item = null

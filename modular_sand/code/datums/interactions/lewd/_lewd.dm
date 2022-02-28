@@ -343,12 +343,12 @@
 				if(REQUIRE_ANY)
 					return TRUE
 				if(REQUIRE_EXPOSED)
-					if(C.get_item_by_slot(ITEM_SLOT_EARS))
+					if(C.get_item_by_slot(ITEM_SLOT_EARS_LEFT) || C.get_item_by_slot(ITEM_SLOT_EARS_RIGHT))
 						return FALSE
 					else
 						return TRUE
 				if(REQUIRE_UNEXPOSED)
-					if(!C.get_item_by_slot(ITEM_SLOT_EARS))
+					if(!C.get_item_by_slot(ITEM_SLOT_EARS_LEFT || C.get_item_by_slot(ITEM_SLOT_EARS_RIGHT)))
 						return FALSE
 					else
 						return TRUE
@@ -365,12 +365,12 @@
 				if(REQUIRE_ANY)
 					return TRUE
 				if(REQUIRE_EXPOSED)
-					if(C.get_item_by_slot(ITEM_SLOT_EARS))
+					if(C.get_item_by_slot(ITEM_SLOT_EARS_LEFT) || C.get_item_by_slot(ITEM_SLOT_EARS_RIGHT))
 						return FALSE
 					else
 						return TRUE
 				if(REQUIRE_UNEXPOSED)
-					if(!C.get_item_by_slot(ITEM_SLOT_EARS))
+					if(!C.get_item_by_slot(ITEM_SLOT_EARS_LEFT) || !C.get_item_by_slot(ITEM_SLOT_EARS_RIGHT))
 						return FALSE
 					else
 						return TRUE
@@ -1460,7 +1460,7 @@
 /mob/living/proc/do_lickfeet(mob/living/partner)
 	var/message
 
-	if(partner.get_item_by_slot(SLOT_SHOES) != null)
+	if(partner.get_item_by_slot(ITEM_SLOT_FEET) != null)
 		message = "licks \the <b>[partner]</b>'s [partner.get_shoes()]."
 	else
 		message = "licks \the <b>[partner]</b>'s [partner.has_feet() == 1 ? "foot" : "feet"]."
@@ -1477,7 +1477,7 @@
 	var/t_His = partner.p_their()
 
 	if(is_fucking(partner, GRINDING_FACE_WITH_FEET))
-		if(get_item_by_slot(SLOT_SHOES) != null)
+		if(get_item_by_slot(ITEM_SLOT_FEET) != null)
 			message = "[pick(list("grinds [u_His] [get_shoes()] into <b>[partner]</b>'s face.",
 				"presses [u_His] footwear down hard on <b>[partner]</b>'s face.",
 				"rubs off the dirt from [u_His] [get_shoes()] onto <b>[partner]</b>'s face."))]</span>"
@@ -1487,7 +1487,7 @@
 				"runs the soles of [u_His] bare feet against <b>[partner]</b>'s lips."))]</span>"
 
 	else if(is_fucking(partner, GRINDING_MOUTH_WITH_FEET))
-		if(get_item_by_slot(SLOT_SHOES) != null)
+		if(get_item_by_slot(ITEM_SLOT_FEET) != null)
 			message = "[pick(list("pulls [u_His] [get_shoes()] out of <b>[partner]</b>'s mouth and puts them on [t_His] face.",
 				"slowly retracts [u_His] [get_shoes()] from <b>[partner]</b>'s mouth, putting them on [t_His] face instead."))]</span>"
 		else
@@ -1497,7 +1497,7 @@
 		set_is_fucking(partner , GRINDING_FACE_WITH_FEET, null)
 
 	else
-		if(get_item_by_slot(SLOT_SHOES) != null)
+		if(get_item_by_slot(ITEM_SLOT_FEET) != null)
 			message = "[pick(list("plants [u_His] [get_shoes()] ontop of <b>[partner]</b>'s face.",
 				"rests [u_His] [get_shoes()] on <b>[partner]</b>'s face and presses down hard.",
 				"harshly places [u_His] [get_shoes()] atop <b>[partner]</b>'s face."))]</span>"
@@ -1526,7 +1526,7 @@
 	var/t_S = partner.p_s()
 
 	if(is_fucking(partner, GRINDING_MOUTH_WITH_FEET))
-		if(get_item_by_slot(SLOT_SHOES) != null)
+		if(get_item_by_slot(ITEM_SLOT_FEET) != null)
 			message = "[pick(list("roughly shoves [u_His] [get_shoes()] deeper into <b>[partner]</b>'s mouth.",
 				"harshly forces another inch of [u_His] [get_shoes()] into <b>[partner]</b>'s mouth.",
 				"presses [u_His] weight down, [u_His] [get_shoes()] prying deeper into <b>[partner]</b>'s mouth."))]</span>"
@@ -1536,7 +1536,7 @@
 				"roughly grinds [u_His] feet on <b>[partner]</b>'s tongue."))]</span>"
 
 	else if(is_fucking(partner, GRINDING_FACE_WITH_FEET))
-		if(get_item_by_slot(SLOT_SHOES) != null)
+		if(get_item_by_slot(ITEM_SLOT_FEET) != null)
 			message = "[pick(list("decides to force [u_His] [get_shoes()] deep into <b>[partner]</b>'s mouth.",
 				"pressed the tip of [u_His] [get_shoes()] against <b>[partner]</b>'s lips and shoves inwards."))]</span>"
 		else
@@ -1546,7 +1546,7 @@
 		set_is_fucking(partner , GRINDING_MOUTH_WITH_FEET, null)
 
 	else
-		if(get_item_by_slot(SLOT_SHOES) != null)
+		if(get_item_by_slot(ITEM_SLOT_FEET) != null)
 			message = "[pick(list("readies themselves and in one swift motion, shoves [u_His] [get_shoes()] into <b>[partner]</b>'s mouth.",
 				"grinds the tip of [u_His] [get_shoes()] against <b>[partner]</b>'s mouth before pushing themselves in."))]</span>"
 		else
@@ -1712,7 +1712,7 @@
 	//partner.handle_post_sex(NORMAL_LUST, null, src) //don't think we need it fo dis one
 
 /mob/living/proc/get_shoes(var/singular = FALSE)
-	var/obj/A = get_item_by_slot(SLOT_SHOES)
+	var/obj/A = get_item_by_slot(ITEM_SLOT_FEET)
 	if(A)
 		var/txt = A.name
 		if(findtext (A.name,"the"))
@@ -1743,15 +1743,13 @@
 		moan()
 	return FALSE
 
-/mob/living/proc/get_unconsenting(var/extreme = FALSE, var/list/ignored_mobs, var/unholy = FALSE)
+/mob/living/proc/get_unconsenting(var/extreme = FALSE, var/list/ignored_mobs)
 	var/list/nope = list()
 	nope += ignored_mobs
 	for(var/mob/M in range(7, src))
 		if(M.client)
 			var/client/cli = M.client
 			if(!(cli.prefs.toggles & VERB_CONSENT)) //Note: This probably could do with a specific preference
-				nope += M
-			else if(unholy && (cli.prefs.unholypref == "No"))
 				nope += M
 			else if(extreme && (cli.prefs.extremepref == "No"))
 				nope += M

@@ -20,7 +20,7 @@
 /obj/item/clothing/ears/earmuffs/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/earhealing)
-	AddComponent(/datum/component/wearertargeting/earprotection, list(SLOT_EARS_LEFT, SLOT_EARS_RIGHT)) //skyrat edit
+	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS_LEFT, ITEM_SLOT_EARS_RIGHT))
 
 /obj/item/clothing/ears/headphones
 	name = "headphones"

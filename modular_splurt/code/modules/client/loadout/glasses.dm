@@ -11,12 +11,12 @@
 /datum/gear/glasses/health/sunglasses/aviators
 	name = "Medical HUD Aviators"
 	path = /obj/item/clothing/glasses/hud/health/sunglasses/aviators
-	restricted_roles = list("Medical Doctor", "Virologist", "Chemist", "Geneticist", "Paramedic", "Cheif Medical Officer", "Brig Physician")
+	restricted_roles = list("Medical Doctor", "Virologist", "Chemist", "Geneticist", "Paramedic", "Chief Medical Officer", "Brig Physician")
 
 /datum/gear/glasses/health/sunglasses/aviators/prescription
 	name = "Prescription Medical HUD Aviators"
 	path = /obj/item/clothing/glasses/hud/health/sunglasses/aviators/prescription
-	restricted_roles = list("Medical Doctor", "Virologist", "Chemist", "Geneticist", "Paramedic", "Cheif Medical Officer", "Brig Physician")
+	restricted_roles = list("Medical Doctor", "Virologist", "Chemist", "Geneticist", "Paramedic", "Chief Medical Officer", "Brig Physician")
 
 /datum/gear/glasses/blueshield/aviators
 	name = "Blueshield HUD Aviators"

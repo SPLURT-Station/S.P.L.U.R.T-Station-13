@@ -964,7 +964,7 @@
 	var/numUses = 1
 
 /obj/item/clothing/neck/necklace/necklace_of_the_forsaken/item_action_slot_check(slot)
-	return (..() && (slot == SLOT_NECK))
+	return (..() && (slot == ITEM_SLOT_NECK))
 
 /obj/item/clothing/neck/necklace/necklace_of_the_forsaken/dropped(mob/user)
 	..()

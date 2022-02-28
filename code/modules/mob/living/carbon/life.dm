@@ -717,8 +717,8 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 	return total_environment_efficiency
 
 /mob/living/carbon/proc/check_suitlinking()
-	var/suit_item = get_item_by_slot(SLOT_WEAR_SUIT)
-	var/head_item = get_item_by_slot(SLOT_HEAD)
+	var/suit_item = get_item_by_slot(ITEM_SLOT_OCLOTHING)
+	var/head_item = get_item_by_slot(ITEM_SLOT_HEAD)
 	var/turf/T = get_turf(src)
 
 	if(istype(head_item, /obj/item/clothing/head/helmet/space) && istype(suit_item, /obj/item/clothing/suit/space))

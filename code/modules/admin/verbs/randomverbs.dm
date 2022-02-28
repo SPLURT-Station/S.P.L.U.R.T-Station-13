@@ -1633,6 +1633,19 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	log_game("[key_name(usr)] triggered a CentCom recall, with the message of: [message]")
 	SSshuttle.centcom_recall(SSshuttle.emergency.timer, message)
 
+/client/proc/cmd_admin_check_player_exp()	//Allows admins to determine who the newer players are.
+	set category = "Admin"
+	set name = "Player Playtime"
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	if(!CONFIG_GET(flag/use_exp_tracking))
+		to_chat(usr, "<span class='warning'>Tracking is disabled in the server configuration file.</span>")
+		return
+
+	new /datum/player_playtime(usr)
+
 /obj/effect/temp_visual/fireball
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "fireball"

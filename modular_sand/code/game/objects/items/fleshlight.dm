@@ -144,7 +144,7 @@
 	if(!useable)
 		to_chat(user, "<span class='notice'>It seems the device has failed or your partner is not wearing their device.</span>")
 	if(message)
-		var/mob/living/carbon/human/portal_target = ishuman(portalunderwear.loc) && portalunderwear.current_equipped_slot == SLOT_W_UNDERWEAR ? portalunderwear.loc : null
+		var/mob/living/carbon/human/portal_target = ishuman(portalunderwear.loc) && portalunderwear.current_equipped_slot == ITEM_SLOT_UNDERWEAR ? portalunderwear.loc : null
 		if(portalunderwear.targetting == "vagina")
 			V = portal_target.getorganslot(ORGAN_SLOT_VAGINA)
 		if(portal_target && (portal_target?.client?.prefs.toggles & VERB_CONSENT || !portal_target.ckey))
@@ -197,7 +197,7 @@
 		useable = FALSE
 		return
 	if(H) //if the portal panties are on someone.
-		if(portalunderwear.current_equipped_slot != SLOT_W_UNDERWEAR)
+		if(portalunderwear.current_equipped_slot != ITEM_SLOT_UNDERWEAR)
 			useable = FALSE
 			return
 
@@ -296,7 +296,7 @@
 /obj/item/clothing/underwear/briefs/panties/portalpanties/equipped(mob/user, slot)
 	. = ..()
 	switch(slot)
-		if(SLOT_W_UNDERWEAR)
+		if(ITEM_SLOT_UNDERWEAR)
 			if(!portallight)
 				audible_message("[icon2html(src, hearers(src))] *beep* *beep* *beep*")
 				playsound(src, 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)

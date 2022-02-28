@@ -72,7 +72,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/cmd_admin_man_up_global, //CIT CHANGE - ditto
 	/client/proc/cmd_admin_create_centcom_report,
 	/client/proc/cmd_change_command_name,
-	/client/proc/cmd_player_playtimes, /* shows players by playtime */
+	/client/proc/cmd_admin_check_player_exp, /* shows players by playtime */
 	/client/proc/toggle_combo_hud, // toggle display of the combination pizza antag and taco sci/med/eng hud
 	/client/proc/toggle_AI_interact, /*toggle admin ability to interact with machines as an AI*/
 	/datum/admins/proc/open_shuttlepanel, /* Opens shuttle manipulator UI */

@@ -27,7 +27,7 @@
 	var/obj/item/clothing/head/mob_holder/micro/holder = new(get_turf(source), source, worn_state, alt_worn, right_hand, left_hand, inv_slots)
 	if(!holder)
 		return
-	user.equip_to_slot(holder, SLOT_SHOES)
+	user.equip_to_slot(holder, ITEM_SLOT_FEET)
 	return
 
 /datum/element/mob_holder/micro/proc/mob_try_pickup_micro(mob/living/carbon/source, mob/living/carbon/user)

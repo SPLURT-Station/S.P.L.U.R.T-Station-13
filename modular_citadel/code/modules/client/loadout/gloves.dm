@@ -1,6 +1,6 @@
 /datum/gear/gloves
 	category = LOADOUT_CATEGORY_GLOVES
-	slot = SLOT_GLOVES
+	slot = ITEM_SLOT_GLOVES
 
 /datum/gear/gloves/fingerless
 	name = "Fingerless Gloves"

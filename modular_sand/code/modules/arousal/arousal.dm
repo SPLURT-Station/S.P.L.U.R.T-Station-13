@@ -23,12 +23,6 @@
 	if(ishuman(partner))
 		h_partner = partner
 
-	if(istype(source_gen, /obj/item/organ/genital/penis))
-		h_self.cumdrip_rate += rand(5,10)
-		if(h_self.has_belly(REQUIRE_ANY) && (h_self.client?.prefs.cit_toggles & BELLY_INFLATION))
-			var/obj/item/organ/genital/belly/midsection = h_self.getorganslot(ORGAN_SLOT_BELLY)
-			to_chat(h_self, "<span class='userlove'> You can feel your belly bloat outwards as [h_partner] fills you up with [h_partner.p_their()] seed, sagging more distended in front of you")
-			midsection.modify_size(1)
 	if(receiver)
 		switch(receiver.slot) //Feel free to add more options for other receiving genitals if you desire
 			if(ORGAN_SLOT_VAGINA)

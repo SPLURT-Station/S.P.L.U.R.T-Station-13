@@ -1,57 +1,57 @@
 /mob/living/carbon/wendigo/can_equip(obj/item/I, slot, disable_warning, bypass_equip_delay_self, clothing_check, list/return_warning)
 	switch(slot)
-		if(SLOT_HANDS)
+		if(ITEM_SLOT_HANDS)
 			if(get_empty_held_indexes())
 				return TRUE
 			return FALSE
-		if(SLOT_GLASSES)
+		if(ITEM_SLOT_EYES)
 			if(glasses)
 				return FALSE
 			if(!(I.slot_flags & ITEM_SLOT_EYES))
 				return FALSE
 			return TRUE
-		if(SLOT_NECK)
+		if(ITEM_SLOT_NECK)
 			if(wear_neck)
 				return FALSE
 			if(!(I.slot_flags & ITEM_SLOT_NECK))
 				return FALSE
 			return TRUE
-		if(SLOT_EARS_LEFT)
+		if(ITEM_SLOT_EARS_LEFT)
 			if(ears)
 				return FALSE
 			if(!(I.slot_flags & ITEM_SLOT_EARS))
 				return FALSE
 			return TRUE
-		if(SLOT_EARS_RIGHT)
+		if(ITEM_SLOT_EARS_RIGHT)
 			if(ears_extra)
 				return FALSE
 			if(!(I.slot_flags & ITEM_SLOT_EARS))
 				return FALSE
 			return TRUE
-		if(SLOT_GLOVES)
+		if(ITEM_SLOT_GLOVES)
 			if(gloves)
 				return FALSE
 			if(!(I.slot_flags & ITEM_SLOT_GLOVES))
 				return FALSE
 			return TRUE
-		if(SLOT_BACK)
+		if(ITEM_SLOT_BACK)
 			if(back)
 				return FALSE
 			if(!(I.slot_flags & ITEM_SLOT_BACK))
 				return FALSE
 			return TRUE
-		if(SLOT_IN_BACKPACK)
+		if(ITEM_SLOT_BACKPACK)
 			if(back)
 				if(SEND_SIGNAL(back, COMSIG_TRY_STORAGE_CAN_INSERT, I, src, TRUE))
 					return TRUE
 			return FALSE
-		if(SLOT_HEAD)
+		if(ITEM_SLOT_HEAD)
 			if(head)
 				return FALSE
 			if(!(I.slot_flags & ITEM_SLOT_HEAD))
 				return FALSE
 			return TRUE
-		if(SLOT_BELT)
+		if(ITEM_SLOT_BELT)
 			if(belt)
 				return FALSE
 			if(!(I.slot_flags & ITEM_SLOT_BELT))
@@ -63,16 +63,16 @@
 	if(!..())
 		return
 	switch(slot)
-		if(SLOT_GLASSES)
+		if(ITEM_SLOT_EYES)
 			glasses = I
 			update_inv_glasses()
-		if(SLOT_EARS_LEFT)
+		if(ITEM_SLOT_EARS_LEFT)
 			ears = I
 			update_inv_ears()
-		if(SLOT_EARS_RIGHT)
+		if(ITEM_SLOT_EARS_RIGHT)
 			ears_extra = I
 			update_inv_ears_extra()
-		if(SLOT_GLOVES)
+		if(ITEM_SLOT_GLOVES)
 			gloves = I
 			update_inv_gloves()
 	return TRUE

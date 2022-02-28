@@ -203,6 +203,8 @@
 
 /datum/quirk/cum_plus/remove()
 	var/mob/living/carbon/M = quirk_holder
+	if(!M)
+		return
 	if(quirk_holder.getorganslot("testicles"))
 		var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles")
 		T.fluid_mult = 1 //Base is 1

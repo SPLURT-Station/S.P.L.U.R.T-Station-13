@@ -1,3 +1,13 @@
+/datum/emote/living/audio_emote/laugh/run_emote(mob/user, params)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(!iscatperson(C) && !isinsect(C) && !isjellyperson(C) && !ishumanbasic(C))
+			if(user.gender == FEMALE)
+				playsound(C, 'sound/voice/human/womanlaugh.ogg', 50, 1)
+			else
+				playsound(C, pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg'), 50, 1)
+
 // SPLURT emotes
 /datum/emote/living/tilt
 	key = "tilt"
@@ -362,3 +372,23 @@
 		return
 	user.nextsoundemote = world.time + 7
 	playsound(user, 'modular_splurt/sound/voice/boowomp.ogg', 50, 1, -1)
+
+/datum/emote/living/swaos
+	key = "swaos"
+	key_third_person = "swaos"
+	message = "mutters swaos"
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+
+/datum/emote/living/swaos/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	if(user.is_muzzled())
+		user.nextsoundemote = world.time + 7
+		playsound(user, 'modular_splurt/sound/voice/swaos_muffled.ogg', 50, 1, -1)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, 'modular_splurt/sound/voice/swaos.ogg', 50, 1, -1)

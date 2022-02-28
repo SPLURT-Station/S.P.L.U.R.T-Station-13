@@ -195,6 +195,7 @@ as performing this in action() will cause the upgrade to end up in the borg inst
 	icon_state = "cyborg_upgrade3"
 	require_module = 1
 	module_type = list(/obj/item/robot_module/miner)
+	module_flags = BORG_MODULE_MINER
 
 /obj/item/borg/upgrade/advcutter/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()

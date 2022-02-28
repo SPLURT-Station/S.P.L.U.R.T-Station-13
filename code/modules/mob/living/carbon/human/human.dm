@@ -386,23 +386,23 @@
 	. = ..()
 	if(wear_suit)
 		if(wear_suit.flags_inv & HIDEGLOVES)
-			LAZYOR(., SLOT_GLOVES)
-			LAZYOR(., SLOT_WRISTS)
+			LAZYOR(., ITEM_SLOT_GLOVES)
+			LAZYOR(., ITEM_SLOT_WRISTS)
 		if(wear_suit.flags_inv & HIDEJUMPSUIT)
-			LAZYOR(., SLOT_W_UNIFORM)
-			LAZYOR(., SLOT_W_SHIRT)
-			LAZYOR(., SLOT_W_UNDERWEAR)
+			LAZYOR(., ITEM_SLOT_ICLOTHING)
+			LAZYOR(., ITEM_SLOT_SHIRT)
+			LAZYOR(., ITEM_SLOT_UNDERWEAR)
 		if(wear_suit.flags_inv & HIDESHOES)
-			LAZYOR(., SLOT_SHOES)
-			LAZYOR(., SLOT_W_SOCKS)
+			LAZYOR(., ITEM_SLOT_FEET)
+			LAZYOR(., ITEM_SLOT_SOCKS)
 	if(w_uniform)
 		if(underwear_hidden())
-			LAZYOR(., SLOT_W_UNDERWEAR)
+			LAZYOR(., ITEM_SLOT_UNDERWEAR)
 		if(undershirt_hidden())
-			LAZYOR(., SLOT_W_SHIRT)
+			LAZYOR(., ITEM_SLOT_SHIRT)
 	if(shoes)
 		if(socks_hidden())
-			LAZYOR(., SLOT_W_SOCKS)
+			LAZYOR(., ITEM_SLOT_SOCKS)
 
 /mob/living/carbon/human/assess_threat(judgement_criteria, lasercolor = "", datum/callback/weaponcheck=null)
 	if(judgement_criteria & JUDGE_EMAGGED)
@@ -969,6 +969,9 @@
 	else
 		. += "[t_He] [t_is] a [spec_trait_examine_font()][dna.custom_species ? dna.custom_species : dna.species.name]</font>"
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, usr, .)
+
+/mob/living/carbon/human/chestonly
+	bodyparts = list(/obj/item/bodypart/chest)
 
 /mob/living/carbon/human/species/abductor
 	race = /datum/species/abductor

@@ -117,24 +117,24 @@
 		if(!alt_covers_chest)
 			body_parts_covered |= CHEST
 
-	//SKYRAT EDIT
+	// Sandstorm edit
 	for(var/obj/item/clothing/accessory/attached_accessory in attached_accessories)
-		if(attached_accessory && slot != SLOT_HANDS && ishuman(user))
+		if(attached_accessory && slot != ITEM_SLOT_HANDS && ishuman(user))
 			var/mob/living/carbon/human/H = user
 			attached_accessory.on_uniform_equip(src, user)
 			if(attached_accessory.above_suit)
 				H.update_inv_wear_suit()
-	//SKYRAT EDIT END
+	//
 
 /obj/item/clothing/under/dropped(mob/user)
-	//SKYRAT EDIT
+	// Sandstorm edit
 	for(var/obj/item/clothing/accessory/attached_accessory in attached_accessories)
 		attached_accessory.on_uniform_dropped(src, user)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(attached_accessory.above_suit)
 				H.update_inv_wear_suit()
-	//SKYRAT EDIT END
+	//
 	..()
 
 /obj/item/clothing/under/proc/attach_accessory(obj/item/I, mob/user, notifyAttach = 1)

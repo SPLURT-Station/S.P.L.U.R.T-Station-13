@@ -291,14 +291,6 @@
 							to_chat(user, "<span class='warning'>Your earsockets need to be unexposed.</span>")
 						return FALSE
 
-		if(unholy)
-			var/client/cli = user.client
-			if(cli)
-				if(cli.prefs.unholypref == "No")
-					if(!silent)
-						to_chat(user, "<span class='warning'>That's way too much for you.</span>")
-					return FALSE
-
 		if(extreme)
 			var/client/cli = user.client
 			if(cli)
@@ -448,7 +440,7 @@
 							to_chat(user, "<span class='warning'>Their feet need to be unexposed.</span>")
 						return FALSE
 
-		if(require_target_num_feet && (user.get_num_feet() < require_target_num_feet))
+		if(require_target_num_feet && (target.get_num_feet() < require_target_num_feet))
 			if(!silent)
 				to_chat(user, "<span class='warning'>They don't have enough feet.</span>")
 			return FALSE
@@ -535,14 +527,6 @@
 				to_chat(user, "<span class='warning'>Their clothes are in the way.</span>")
 			return FALSE
 
-		if(unholy)
-			var/client/cli = target.client
-			if(cli)
-				if(target.client.prefs.unholypref == "No")
-					if(!silent)
-						to_chat(user, "<span class='warning'>For some reason, you don't want to do this to [target].</span>")
-					return FALSE
-
 		if(extreme)
 			var/client/cli = target.client
 			if(cli)
@@ -587,7 +571,7 @@
 		var/client/ucli = LM.client
 		if(cli.prefs.extremepref != "No")
 			if(!ucli || (ucli.prefs.extremepref != "No"))
-				if(!get_item_by_slot(ITEM_SLOT_EARS))
+				if(!get_item_by_slot(ITEM_SLOT_EARS_LEFT) && !get_item_by_slot(ITEM_SLOT_EARS_RIGHT))
 					if(has_ears())
 						dat += "...have unprotected ears."
 					else

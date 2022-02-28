@@ -97,4 +97,43 @@
 	size = D.features["belly_size"]
 	prev_size = size
 	size_cached = size
+	original_fluid_id = fluid_id
+	fluid_max_volume += (size - initial(size))*2.5
+	fluid_rate += (size - initial(size))/10
 	toggle_visibility(D.features["belly_visibility"], FALSE)
+
+/obj/item/organ/genital/belly/climax_modify_size(mob/living/partner, obj/item/organ/genital/source_gen, cum_hole)
+	if(!(owner.client?.prefs.cit_toggles & BELLY_INFLATION))
+		if(owner.has_anus(REQUIRE_EXPOSED) && (cum_hole == CUM_TARGET_ANUS))
+			var/obj/item/organ/genital/butt/ass = owner.getorganslot(ORGAN_SLOT_BUTT)
+			if(!ass)
+				ass = new
+				ass.Insert(owner)
+			ass.climax_modify_size(partner, source_gen)
+		return
+
+	var/datum/reagents/fluid_source = source_gen.climaxable()
+	if(!fluid_source)
+		return
+
+	if(!climax_fluids)
+		climax_fluids = new
+		climax_fluids.maximum_volume = INFINITY
+
+	source_gen.generate_fluid(fluid_source)
+	fluid_source.trans_to(climax_fluids, fluid_source.total_volume)
+
+	if(climax_fluids.total_volume >= fluid_max_volume * GENITAL_INFLATION_THRESHOLD)
+		var/previous = size
+		var/growth_amount = climax_fluids.total_volume / (fluid_max_volume * GENITAL_INFLATION_THRESHOLD)
+		modify_size(growth_amount)
+		if(size > round(previous))
+			owner.visible_message("<span class='lewd'>\The <b>[owner]</b>'s belly bloats outwards as it gets pumped full of[pick(" sweet", "")] [lowertext(source_gen.get_fluid_name())]!</span>", ignored_mobs = owner.get_unconsenting())
+			fluid_id = source_gen.get_fluid_id()
+		if(growth_amount >= 3 || size >= 3)
+			var/obj/item/organ/genital/butt/ass = owner.getorganslot(ORGAN_SLOT_BUTT)
+			if(!ass)
+				ass = new
+				ass.Insert(owner)
+			ass.climax_modify_size(partner, source_gen, TRUE)
+		climax_fluids.clear_reagents()

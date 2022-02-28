@@ -87,7 +87,7 @@
 
 		var/mob/living/L = C.loc
 		var/turf/pos = get_turf(L)
-		if(!pos || C != L.get_item_by_slot(SLOT_NECK))
+		if(!pos || C != L.get_item_by_slot(ITEM_SLOT_NECK))
 			continue
 
 		var/list/slave = list()

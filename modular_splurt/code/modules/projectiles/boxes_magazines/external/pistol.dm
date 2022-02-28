@@ -5,10 +5,13 @@
 	desc = "A M1911 magazine."
 	ammo_type = /obj/item/ammo_casing/c45/lethal
 
+/obj/item/ammo_box/magazine/m45/rubber
+	ammo_type = /obj/item/ammo_casing/c45
+
 /obj/item/ammo_box/magazine/e45
 	name = "Enforcer magazine (.45 Rubber)"
 	icon = 'modular_splurt/icons/obj/ammo.dmi'
-	icon_state = "enforcer-8"
+	icon_state = "enforcer"
 	ammo_type = /obj/item/ammo_casing/c45
 	caliber = ".45"
 	desc = "A Mk. 58 magazine. Loaded with rubber rounds."
@@ -57,6 +60,33 @@
 	name = "Enforcer magazine (.45 Stun}"
 	desc = "A Mk. 58 magazine. Loaded with Stun rounds."
 	ammo_type = /obj/item/ammo_casing/c45/stun
+
+/obj/item/ammo_box/magazine/m9
+	name = "Cheap handgun magazine (9mm)"
+	icon = 'modular_splurt/icons/obj/ammo.dmi'
+	icon_state = "m9mmds"
+	ammo_type = /obj/item/ammo_casing/c9mm
+	caliber = "9mm"
+	desc = "A cheap handgun magazine."
+	max_ammo = 10
+
+/obj/item/ammo_box/magazine/m9/update_icon()
+	..()
+	icon_state = "m9mmds-[ammo_count() ? "10" : "0"]"
+
+/obj/item/ammo_box/magazine/m22
+	name = "Cheap handgun magazine (.22LR)"
+	icon = 'modular_splurt/icons/obj/ammo.dmi'
+	icon_state = "pistol22"
+	ammo_type = /obj/item/ammo_casing/c22lr
+	caliber = ".22"
+	desc = "A cheap handgun magazine."
+	max_ammo = 12
+
+/obj/item/ammo_box/magazine/m22/update_icon()
+	..()
+	icon_state = "pistol22-[ammo_count() ? "12" : "0"]"
+
 
 // Pistol Magazines for the Sec Tecfab, yes its just easier to put it here for my own Sanity - Radar
 

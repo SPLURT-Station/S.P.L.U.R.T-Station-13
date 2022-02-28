@@ -37,24 +37,24 @@
 		if(!H.w_uniform || H.dropItemToGround(H.w_uniform))
 			C = new /obj/item/clothing/under/rank/civilian/clown(H)
 			ADD_TRAIT(C, TRAIT_NODROP, CLOWN_NUKE_TRAIT)
-			H.equip_to_slot_or_del(C, SLOT_W_UNIFORM)
+			H.equip_to_slot_or_del(C, ITEM_SLOT_ICLOTHING)
 
 		//skyrat edit
 		if(!H.w_shirt || H.dropItemToGround(H.w_shirt))
 			C = new /obj/item/clothing/underwear/shirt/clown(H)
 			ADD_TRAIT(C, TRAIT_NODROP, CLOWN_NUKE_TRAIT)
-			H.equip_to_slot_or_del(C, SLOT_W_SHIRT)
+			H.equip_to_slot_or_del(C, ITEM_SLOT_SHIRT)
 		//
 
 		if(!H.shoes || H.dropItemToGround(H.shoes))
 			C = new /obj/item/clothing/shoes/clown_shoes(H)
 			ADD_TRAIT(C, TRAIT_NODROP, CLOWN_NUKE_TRAIT)
-			H.equip_to_slot_or_del(C, SLOT_SHOES)
+			H.equip_to_slot_or_del(C, ITEM_SLOT_FEET)
 
 		if(!H.wear_mask || H.dropItemToGround(H.wear_mask))
 			C = new /obj/item/clothing/mask/gas/clown_hat(H)
 			ADD_TRAIT(C, TRAIT_NODROP, CLOWN_NUKE_TRAIT)
-			H.equip_to_slot_or_del(C, SLOT_WEAR_MASK)
+			H.equip_to_slot_or_del(C, ITEM_SLOT_MASK)
 
 		H.dna.add_mutation(CLOWNMUT)
 		H.dna.add_mutation(SMILE)

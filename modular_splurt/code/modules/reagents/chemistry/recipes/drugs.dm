@@ -89,6 +89,7 @@
 	description = "The powder form of cocaine."
 	color = "#ffffff"
 	value = REAGENT_VALUE_VERY_COMMON
+
 /obj/item/reagent_containers/crack
 	name = "crack"
 	desc = "A rock of freebase cocaine, otherwise known as crack."
@@ -204,3 +205,29 @@
 	unit_name = "cocaine brick"
 	export_types = list(/obj/item/reagent_containers/cocainebrick)
 	include_subtypes = FALSE
+
+/obj/item/seeds/cocaleaf
+	name = "pack of coca leaf seeds"
+	desc = "These seeds grow into coca shrubs. They make you feel energized just looking at them..."
+	icon = 'modular_splurt/icons/obj/crack.dmi'
+	growing_icon = 'modular_splurt/icons/obj/crack.dmi'
+	icon_state = "seed-cocoleaf"
+	species = "cocoleaf"
+	plantname = "Coca Leaves"
+	maturation = 8
+	potency = 20
+	growthstages = 1
+	product = /obj/item/reagent_containers/food/snacks/grown/cocaleaf
+	mutatelist = list()
+	reagents_add = list(/datum/reagent/drug/cocaine = 0.3, /datum/reagent/consumable/nutriment = 0.15)
+
+/obj/item/reagent_containers/food/snacks/grown/cocaleaf
+	seed = /obj/item/seeds/cocaleaf
+	name = "coca leaf"
+	desc = "A leaf of the coca shrub, which contains a potent psychoactive alkaloid known as 'cocaine'."
+	icon =	'modular_splurt/icons/obj/crack.dmi'
+	icon_state = "cocoleaf"
+	foodtype = FRUIT //i guess? i mean it grows on trees...
+	tastes = list("leaves" = 1)
+	grind_results = list(/datum/reagent/drug/cocaine)
+	wine_power = 50

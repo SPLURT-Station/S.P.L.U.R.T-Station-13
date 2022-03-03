@@ -177,9 +177,10 @@
 	name = "Cocaine brick"
 	result = /obj/item/reagent_containers/cocainebrick
 	reqs = list(/obj/item/reagent_containers/cocaine = 5)
-	parts = list(/obj/item/reagent_containers/cocaine = 5)
+	tools = null
 	time = 20
 	category = CAT_MISCELLANEOUS //i might just make a crafting category for drugs at some point
+	subcategory = CATEGORY_MISC
 
 //if you want money, convert it into crackbricks
 /datum/export/crack

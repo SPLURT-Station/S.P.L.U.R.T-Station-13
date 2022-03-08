@@ -96,6 +96,7 @@
 	var/list/departments = list(
 		"Command" = GLOB.command_positions,
 		"Security" = GLOB.security_positions,
+		"Corrections" = GLOB.corrections_positions,
 		"Engineering" = GLOB.engineering_positions,
 		"Medical" = GLOB.medical_positions,
 		"Science" = GLOB.science_positions,
@@ -135,6 +136,7 @@
 	var/list/med = list()
 	var/list/sci = list()
 	var/list/sup = list()
+	var/list/cor = list()
 	var/list/civ = list()
 	var/list/bot = list()
 	var/list/misc = list()
@@ -178,6 +180,9 @@
 		if(department_check in GLOB.civilian_positions)
 			civ[name] = rank
 			department = 1
+		if(department_check in GLOB.corrections_positions)
+			cor[name] = rank
+			department = 1
 		if(department_check in GLOB.nonhuman_positions)
 			bot[name] = rank
 			department = 1
@@ -213,6 +218,12 @@
 		for(var/name in sup)
 			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[sup[name]]</td></tr>"
 			even = !even
+	if(cor.len > 0)
+		dat += "<tr><th colspan=3>Corrections</th></tr>"
+		for(var/name in cor)
+			dat += "<tr[even ? " class='alt'" : ""]><td>[name]</td><td>[cor[name]]</td></tr>"
+			even = !even
+	// in case somebody is i
 	if(civ.len > 0)
 		dat += "<tr><th colspan=3>Civilian</th></tr>"
 		for(var/name in civ)

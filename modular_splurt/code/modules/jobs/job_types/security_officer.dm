@@ -6,10 +6,6 @@
     . = ..()
     backpack_contents += list(/obj/item/device/hailer)
 
-/datum/outfit/job/warden/New()
-    . = ..()
-    backpack_contents += list(/obj/item/device/hailer)
-
 /datum/outfit/job/hos/New()
     . = ..()
     backpack_contents += list(/obj/item/device/hailer)

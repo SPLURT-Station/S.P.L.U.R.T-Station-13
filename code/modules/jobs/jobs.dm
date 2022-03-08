@@ -6,7 +6,7 @@ GLOBAL_LIST_INIT(command_positions, list(
 	"Research Director",
 	"Chief Medical Officer",
 	"Quartermaster",
-	"Blueshield",
+	"Warden",
 	"Bridge Officer"))
 
 GLOBAL_LIST_INIT(engineering_positions, list(
@@ -50,11 +50,14 @@ GLOBAL_LIST_INIT(civilian_positions, list(
 
 GLOBAL_LIST_INIT(security_positions, list(
 	"Head of Security",
-	"Warden",
 	"Detective",
-	"Security Officer",
-	"Brig Physician"))
+	"Blueshield",
+	"Security Officer"))
 
+GLOBAL_LIST_INIT(corrections_positions, list(
+	"Warden",
+	"Correctional Officer",
+	"Brig Physician"))
 
 GLOBAL_LIST_INIT(nonhuman_positions, list(
 	"AI",
@@ -62,13 +65,14 @@ GLOBAL_LIST_INIT(nonhuman_positions, list(
 	ROLE_PAI))
 
 GLOBAL_LIST_INIT(exp_jobsmap, list(
-	EXP_TYPE_CREW = list("titles" = command_positions | engineering_positions | medical_positions | science_positions | supply_positions | security_positions | civilian_positions | list("AI","Cyborg")), // crew positions
+	EXP_TYPE_CREW = list("titles" = command_positions | engineering_positions | medical_positions | science_positions | supply_positions | security_positions | corrections_positions | civilian_positions | list("AI","Cyborg")), // crew positions
 	EXP_TYPE_COMMAND = list("titles" = command_positions),
 	EXP_TYPE_ENGINEERING = list("titles" = engineering_positions),
 	EXP_TYPE_MEDICAL = list("titles" = medical_positions),
 	EXP_TYPE_SCIENCE = list("titles" = science_positions),
 	EXP_TYPE_SUPPLY = list("titles" = supply_positions),
 	EXP_TYPE_SECURITY = list("titles" = security_positions),
+	EXP_TYPE_CORRECTIONS = list("tittles" = corrections_positions),
 	EXP_TYPE_SILICON = list("titles" = list("AI","Cyborg")),
 	EXP_TYPE_SERVICE = list("titles" = civilian_positions),
 ))

@@ -2,7 +2,6 @@
 	var/list/extra_products = list(
 		/obj/item/ammo_box/magazine/e45/taser = 10,
 		/obj/item/device/hailer = 10,
-		/obj/item/clothing/suit/armor/vest/peacekeeper = 5,
 		/obj/item/clothing/suit/armor/vest/metrocop = 2,
 		/obj/item/clothing/head/helmet/metrocop = 2
 	)
@@ -11,9 +10,6 @@
 
 /obj/machinery/vending/wardrobe/sec_wardrobe/Initialize()
 	var/list/extra_products = list(
-		/obj/item/clothing/head/beret/sec/peacekeeper/cap = 5,
-		/obj/item/clothing/head/beret/sec/peacekeeper = 5,
-		/obj/item/clothing/under/rank/security/officer/peacekeeper =5,
 		/obj/item/clothing/under/rank/security/officer/metrocop = 2,
 		/obj/item/clothing/under/rank/security/skirt/slut = 5,
 		/obj/item/clothing/under/rank/security/skirt/slut/pink = 5,
@@ -52,8 +48,11 @@
 	new /obj/item/radio/headset/headset_blueshield(src)
 	new /obj/item/flashlight/seclite(src)
 	new /obj/item/clothing/mask/gas/sechailer/swat(src)
-	new /obj/item/grenade/flashbang(src)
-	new /obj/item/choice_beacon/bsbaton(src)
+	new /obj/item/storage/belt/security/bs(src)
+	new /obj/item/storage/firstaid/brute(src)
+	new /obj/item/storage/firstaid/fire(src)
+	new /obj/item/storage/firstaid/o2(src)
+	new /obj/item/storage/firstaid/toxin(src)
 
 /obj/structure/closet/secure_closet/bridgesec
 	name = "bridge officer's locker"
@@ -179,3 +178,76 @@
 	new /obj/item/circuitboard/machine/techfab/department/security(src)
 	new /obj/item/storage/photo_album/HoS(src)
 	new /obj/item/card/id/departmental_budget/sec(src)
+
+/obj/structure/closet/secure_closet/correctional
+	name = "correctional officer's locker"
+	req_access = list(ACCESS_CORRECTIONS)
+	icon_state = "sec"
+
+/obj/structure/closet/secure_closet/correctional/PopulateContents()
+	..()
+	new /obj/item/clothing/head/helmet/sec/blueshield(src)
+	new /obj/item/radio/headset/headset_correctional(src)
+	new /obj/item/flashlight/seclite(src)
+	new /obj/item/storage/belt/security/corrections(src)
+	new /obj/item/storage/backpack/corrections(src)
+	new /obj/item/storage/backpack/satchel/corrections(src)
+	new /obj/item/storage/backpack/duffelbag/corrections(src)
+	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
+	new /obj/item/clothing/gloves/correctional(src)
+	new /obj/item/clothing/head/beret/sec/peacekeeper/cap(src)
+	new /obj/item/clothing/head/beret/sec/peacekeeper(src)
+	new /obj/item/clothing/suit/armor/vest/stabvest(src)
+	new /obj/item/clothing/under/rank/security/officer/correctional(src)
+
+/obj/machinery/vending/corrections
+	name = "\improper CorTech"
+	desc = "A correctional equipment vendor."
+	product_ads = "Crack communist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
+	icon_state = "sec"
+	icon_deny = "sec-deny"
+	light_mask = "sec-light-mask"
+	req_access = list(ACCESS_SECURITY)
+	products = list(/obj/item/restraints/handcuffs = 8,
+					/obj/item/restraints/handcuffs/cable/zipties = 10,
+					/obj/item/grenade/chem_grenade/teargas = 4,
+					/obj/item/assembly/flash/handheld = 5,
+					/obj/item/reagent_containers/food/snacks/donut = 12,
+					/obj/item/flashlight/seclite = 4,
+					/obj/item/electropack/shockcollar/security = 5,
+					/obj/item/clothing/neck/petcollar/locked/security = 5,
+					/obj/item/grenade/stingbang = 3)
+	refill_canister = /obj/item/vending_refill/security
+	default_price = PRICE_ALMOST_EXPENSIVE
+	extra_price = PRICE_REALLY_EXPENSIVE
+	payment_department = ACCOUNT_COR
+
+/obj/machinery/vending/blueshield
+	name = "\improper BlueTech"
+	desc = "A blueshield equipment vendor."
+	product_ads = "Crack communist skulls!;Beat some heads in!;Don't forget - harm is good!;Your weapons are right here.;Handcuffs!;Freeze, scumbag!;Don't tase me bro!;Tase them, bro.;Why not have a donut?"
+	icon_state = "sec"
+	icon_deny = "sec-deny"
+	light_mask = "sec-light-mask"
+	req_access = list(ACCESS_SECURITY)
+	products = list(/obj/item/restraints/handcuffs = 8,
+					/obj/item/restraints/handcuffs/cable/zipties = 10,
+					/obj/item/grenade/flashbang = 4,
+					/obj/item/assembly/flash/handheld = 5,
+					/obj/item/reagent_containers/food/snacks/donut = 12,
+					/obj/item/flashlight/seclite = 4,
+					/obj/item/restraints/legcuffs/bola/energy = 6,
+					/obj/item/storage/fancy/donut_box = 2,
+					/obj/item/electropack/shockcollar/security = 5,
+					/obj/item/clothing/neck/petcollar/locked/security = 5,
+					/obj/item/storage/belt/slut = 5,
+					/obj/item/clothing/mask/gas/sechailer/slut = 5,
+					/obj/item/bdsm_whip/ridingcrop = 3,
+					/obj/item/grenade/secbed = 3)
+	premium = list(/obj/item/coin/antagtoken = 1,
+					/obj/item/grenade/stingbang = 3,
+					/obj/item/storage/bag/ammo = 3)
+	refill_canister = /obj/item/vending_refill/security
+	default_price = PRICE_ALMOST_EXPENSIVE
+	extra_price = PRICE_REALLY_EXPENSIVE
+	payment_department = ACCOUNT_SEC

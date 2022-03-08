@@ -2,19 +2,20 @@
 	title = "Brig Physician"
 	flag = BRIGDOC
 //	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
-	department_head = list("Head of Security")
-	department_flag = ENGSEC
+	department_head = list("Warden")
+	department_flag = CORRECTIONS
 	faction = "Station"
-	total_positions = 1 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
-	spawn_positions = 1 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
-	supervisors = "the head of security, and the head of your assigned department (if applicable)"
-	selection_color = "#c02f2f"
+	total_positions = 2
+	spawn_positions = 2
+	supervisors = "the warden"
+	selection_color = "#3333FF"
 	minimal_player_age = 7
 	exp_requirements = 300
 	exp_type = EXP_TYPE_MEDICAL
 	considered_combat_role = TRUE
 	exp_type_department = EXP_TYPE_MEDICAL
 	alt_titles = list("Security Doctor", "Security Medic", "Brig Doctor", "Brig EMT", "Security Physician", "Security EMT", "Police Doctor")
+	custom_spawn_text = "<font color='red' size='2'><b> You are here to patch up people in the Brig and in Prison. You are not hear to fight or arrest. You're weapons are for self defense. However in times of emergecies you can ingore this. </b></font>"
 
 
 	outfit = /datum/outfit/job/brigdoc
@@ -46,10 +47,10 @@
 	r_pocket = /obj/item/assembly/flash/handheld
 	backpack_contents = list(/obj/item/storage/hypospraykit/regular, /obj/item/storage/firstaid/regular, /obj/item/melee/classic_baton/telescopic)
 
-	backpack = /obj/item/storage/backpack/security
-	satchel = /obj/item/storage/backpack/satchel/sec
-	duffelbag = /obj/item/storage/backpack/duffelbag/sec
-	box = /obj/item/storage/box/survival/security
+	backpack = /obj/item/storage/backpack/corrections
+	satchel = /obj/item/storage/backpack/satchel/corrections
+	duffelbag = /obj/item/storage/backpack/duffelbag/corrections
+	box = /obj/item/storage/box/survival
 
 	implants = list(/obj/item/implant/mindshield)
 
@@ -78,7 +79,7 @@
 /obj/item/encryptionkey/headset_brigdoc
 	name = "brig physician radio encryption key"
 	icon_state = "sec_cypherkey"
-	channels = list(RADIO_CHANNEL_SECURITY = 1, RADIO_CHANNEL_MEDICAL = 1)
+	channels = list(RADIO_CHANNEL_CORRECTIONS = 1, RADIO_CHANNEL_SECURITY = 0, RADIO_CHANNEL_MEDICAL = 1)
 
 /obj/effect/landmark/start/brigdoc
 	name = "Brig Physician"

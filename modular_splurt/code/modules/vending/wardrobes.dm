@@ -102,11 +102,7 @@
 					/obj/item/clothing/under/rank/security/head_of_security/grey = 1,
 					/obj/item/clothing/suit/hooded/wintercoat/hos = 1,
 					/obj/item/clothing/suit/armor/vest/leather = 1,
-					/obj/item/clothing/suit/armor/hos = 1,
-					/obj/item/clothing/under/rank/security/head_of_security/peacekeeper = 1,
-					/obj/item/clothing/head/beret/sec/peacekeeper/hos = 1,
-					/obj/item/clothing/head/HoS/peacekeeper = 1,
-					/obj/item/clothing/suit/armor/hos/peacekeeper = 1
+					/obj/item/clothing/suit/armor/hos = 1
 					)
 	refill_canister = /obj/item/vending_refill/wardrobe/sec_wardrobe
 	payment_department = ACCOUNT_SEC

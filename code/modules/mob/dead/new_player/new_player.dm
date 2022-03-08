@@ -665,7 +665,7 @@
 	dat += "<center><table><tr><td valign='top'>"
 	var/column_counter = 0
 	var/free_space = 0
-	for(var/list/category in list(GLOB.command_positions) + list(GLOB.supply_positions) + list(GLOB.engineering_positions) + list(GLOB.nonhuman_positions - "pAI") + list(GLOB.civilian_positions) + list(GLOB.medical_positions) + list(GLOB.science_positions) + list(GLOB.security_positions))
+	for(var/list/category in list(GLOB.command_positions) + list(GLOB.supply_positions) + list(GLOB.engineering_positions) + list(GLOB.nonhuman_positions - "pAI") + list(GLOB.civilian_positions) + list(GLOB.medical_positions) + list(GLOB.science_positions) + list(GLOB.security_positions) + list(GLOB.corrections_positions))
 		var/cat_color = "fff" //random default
 		cat_color = SSjob.name_occupations[category[1]].selection_color //use the color of the first job in the category (the department head) as the category color
 		dat += "<fieldset style='width: 185px; border: 2px solid [cat_color]; display: inline'>"
@@ -768,7 +768,7 @@
 
 		client.prefs.scars_list["[cur_scar_index]"] = valid_scars
 		client.prefs.save_character()
-	
+
 	client.prefs.copy_to(H, initial_spawn = TRUE)
 	H.dna.update_dna_identity()
 	if(mind)

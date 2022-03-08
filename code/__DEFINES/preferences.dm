@@ -62,6 +62,7 @@
 #define EXP_TYPE_SCIENCE		"Science"
 #define EXP_TYPE_SUPPLY			"Supply"
 #define EXP_TYPE_SECURITY		"Security"
+#define EXP_TYPE_CORRECTIONS	"Corrections"
 #define EXP_TYPE_SILICON		"Silicon"
 #define EXP_TYPE_SERVICE		"Service"
 #define EXP_TYPE_ANTAG			"Antag"

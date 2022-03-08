@@ -5,6 +5,7 @@
 #define CARDCON_DEPARTMENT_SCIENCE "Science"
 #define CARDCON_DEPARTMENT_ENGINEERING "Engineering"
 #define CARDCON_DEPARTMENT_COMMAND "Command"
+#define CARDCON_DEPARTMENT_CORRECTIONS "Corrections"
 
 /datum/computer_file/program/card_mod
 	filename = "plexagonidwriter"
@@ -281,7 +282,8 @@
 			CARDCON_DEPARTMENT_SCIENCE = GLOB.science_positions,
 			CARDCON_DEPARTMENT_SECURITY = GLOB.security_positions,
 			CARDCON_DEPARTMENT_SUPPLY = GLOB.supply_positions,
-			CARDCON_DEPARTMENT_SERVICE = GLOB.civilian_positions
+			CARDCON_DEPARTMENT_SERVICE = GLOB.civilian_positions,
+			CARDCON_DEPARTMENT_CORRECTIONS = GLOB.corrections_positions
 		)
 	data["jobs"] = list()
 	for(var/department in departments)
@@ -359,4 +361,5 @@
 #undef CARDCON_DEPARTMENT_SCIENCE
 #undef CARDCON_DEPARTMENT_SUPPLY
 #undef CARDCON_DEPARTMENT_ENGINEERING
+#undef CARDCON_DEPARTMENT_CORRECTIONS
 #undef CARDCON_DEPARTMENT_COMMAND

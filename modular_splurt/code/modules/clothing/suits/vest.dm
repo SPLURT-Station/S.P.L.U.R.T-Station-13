@@ -31,7 +31,6 @@
 	mob_overlay_icon = 'modular_splurt/icons/mobs/suits.dmi'
 	icon_state = "blueshield"
 	item_state = "blueshield"
-	armor = list("melee" = 30, "bullet" = 30, "laser" = 30, "energy" = 40, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 70, "acid" = 90, "wound" = 10)
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/suit/armor/vest/bluesheid/coat
@@ -51,14 +50,15 @@
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 	dog_fashion = null
 
-/obj/item/clothing/suit/armor/vest/peacekeeper
-	name = "peacekeeper armored vest"
-	desc = "A Type I armored vest that provides decent protection against most types of damage. This one is used by the peace minded officer"
+/obj/item/clothing/suit/armor/vest/stabvest
+	name = "corretional stab vest"
+	desc = "A Type II armored vest that is deisgned for protection aginst knifes, blades and other types of melee weapons."
 	icon_state = "peacekeeper_black"
 	item_state = "peacekeeper_black"
 	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
 	dog_fashion = null
+	armor = list("melee" = 40, "bullet" = 10, "laser" = 10, "energy" = 20, "bomb" = 10, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50, "wound" = 20)
 
 /obj/item/clothing/suit/armor/vest/metrocop
 	name = "civil protection armored vest"
@@ -70,17 +70,10 @@
 	dog_fashion = null
 
 /obj/item/clothing/suit/armor/vest/warden/peacekeeper
-	name = "warden's peacekeeper armored trenchcoat"
+	name = "warden's correctional armored trenchcoat"
 	desc = "A heavy trench coat with a armored vest sown into it. Used by the peace minded warden"
 	icon_state = "peacekeeper_trench_warden"
 	item_state = "peacekeeper_trench_warden"
 	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
 
-/obj/item/clothing/suit/armor/hos/peacekeeper
-	name = "head of secuirty's peacekeeper armored trenchcoat"
-	desc = "A heavy trench coat with a armored vest sown into it. Used by the peace minded head of secuirty"
-	icon_state = "peacekeeper_trench_hos"
-	item_state = "peacekeeper_trench_hos"
-	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
-	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'

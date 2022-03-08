@@ -3,18 +3,16 @@
 
 #define CAPTAIN			(1<<0)
 #define HOS				(1<<1)
-#define WARDEN			(1<<2)
-#define DETECTIVE		(1<<3)
-#define OFFICER			(1<<4)
-#define CHIEF			(1<<5)
-#define ENGINEER		(1<<6)
-#define ATMOSTECH		(1<<7)
-#define ROBOTICIST		(1<<8)
-#define AI_JF			(1<<9)
-#define CYBORG			(1<<10)
-#define BRIGDOC			(1<<11)
-#define BLUESHIELD		(1<<12)
-#define BRDIGEOFF		(1<<13)
+#define DETECTIVE		(1<<2)
+#define OFFICER			(1<<3)
+#define CHIEF			(1<<4)
+#define ENGINEER		(1<<5)
+#define ATMOSTECH		(1<<6)
+#define ROBOTICIST		(1<<7)
+#define AI_JF			(1<<8)
+#define CYBORG			(1<<9)
+#define BLUESHIELD		(1<<10)
+#define BRDIGEOFF		(1<<11)
 
 
 #define MEDSCI			(1<<1)
@@ -46,6 +44,11 @@
 #define MIME			(1<<12)
 #define ASSISTANT		(1<<13)
 #define PRISONER		(1<<14)
+
+#define CORRECTIONS		(1<<3)
+#define WARDEN			(1<<1)
+#define BRIGDOC			(1<<2)
+#define CORRECOFF		(1<<3)
 
 #define JOB_AVAILABLE 0
 #define JOB_UNAVAILABLE_GENERIC 1
@@ -90,10 +93,11 @@
 #define JOB_DISPLAY_ORDER_SCIENTIST 28
 #define JOB_DISPLAY_ORDER_ROBOTICIST 29
 #define JOB_DISPLAY_ORDER_HEAD_OF_SECURITY 30
-#define JOB_DISPLAY_ORDER_WARDEN 31
-#define JOB_DISPLAY_ORDER_DETECTIVE 32
-#define JOB_DISPLAY_ORDER_SECURITY_OFFICER 33
-#define JOB_DISPLAY_ORDER_BRIG_PHYSICIAN 34
-#define JOB_DISPLAY_ORDER_BLUESHIELD 35
-#define JOB_DISPLAY_ORDER_BO 36
-#define JOB_DISPLAY_ORDER_PRISONER 37
+#define JOB_DISPLAY_ORDER_DETECTIVE 31
+#define JOB_DISPLAY_ORDER_SECURITY_OFFICER 32
+#define JOB_DISPLAY_ORDER_BLUESHIELD 33
+#define JOB_DISPLAY_ORDER_BO 34
+#define JOB_DISPLAY_ORDER_WARDEN 35
+#define JOB_DISPLAY_ORDER_BRIG_PHYSICIAN 36
+#define  JOB_DISPLAY_ORDER_CORRECTIONAL_OFFICER 37
+#define JOB_DISPLAY_ORDER_PRISONER 38

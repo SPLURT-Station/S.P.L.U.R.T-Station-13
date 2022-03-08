@@ -8,6 +8,7 @@
 	new /obj/item/clothing/head/warden/peacekeeper(src)
 	new /obj/item/clothing/head/beret/sec/peacekeeper/warden(src)
 	new /obj/item/clothing/suit/armor/vest/warden/peacekeeper(src)
+	new /obj/item/card/id/departmental_budget/cor(src)
 
 /obj/item/paper/fluff/letter/cap45 //Little passive agressive? Maybe
 	name = "To the future Captain:"

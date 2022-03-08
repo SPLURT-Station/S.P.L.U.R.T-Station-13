@@ -806,5 +806,23 @@ SUBSYSTEM_DEF(job)
 		if(player.mind && (player.mind.assigned_role in GLOB.security_positions))
 			. |= player.mind
 
+//////////////////////////////////////////////
+//Keeps track of all living correctional members//
+//////////////////////////////////////////////
+/datum/controller/subsystem/job/proc/get_living_cor()
+	. = list()
+	for(var/mob/living/carbon/human/player in GLOB.carbon_list)
+		if(player.stat != DEAD && player.mind && (player.mind.assigned_role in GLOB.corrections_positions))
+			. |= player.mind
+
+////////////////////////////////////////
+//Keeps track of all  correctional members//
+////////////////////////////////////////
+/datum/controller/subsystem/job/proc/get_all_cor()
+	. = list()
+	for(var/mob/living/carbon/human/player in GLOB.carbon_list)
+		if(player.mind && (player.mind.assigned_role in GLOB.corrections_positions))
+			. |= player.mind
+
 /datum/controller/subsystem/job/proc/JobDebug(message)
 	log_job_debug(message)

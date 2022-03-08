@@ -787,6 +787,26 @@
 				counter = 0
 		dat += "</tr></table>"
 
+	//Corrections (Dark Blue)
+		counter = 0
+		dat += "<table cellpadding='1' cellspacing='0' width='100%'>"
+		dat += "<tr bgcolor='3333FF'><th colspan='[length(GLOB.corrections_positions)]'><a href='?src=[REF(src)];[HrefToken()];jobban3=correctiondept;jobban4=[REF(M)]'>Corrections Positions</a></th></tr><tr align='center'>"
+		for(var/jobPos in GLOB.corrections_positions)
+			if(!jobPos)
+				continue
+			if(jobban_isbanned(M, jobPos))
+				dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=[jobPos];jobban4=[REF(M)]'><font color=red>[jobPos]</font></a></td>"
+				counter++
+			else
+				dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=[jobPos];jobban4=[REF(M)]'>[jobPos]</a></td>"
+				counter++
+
+			if(counter >= 5) //So things dont get squiiiiished!
+				dat += "</tr><tr align='center'>"
+				counter = 0
+		dat += "</tr></table>"
+
+
 	//Non-Human (Green)
 		counter = 0
 		dat += "<table cellpadding='1' cellspacing='0' width='100%'>"
@@ -1006,6 +1026,11 @@
 					joblist += jobPos
 			if("civiliandept")
 				for(var/jobPos in GLOB.civilian_positions)
+					if(!jobPos)
+						continue
+					joblist += jobPos
+			if("correctiondept")
+				for(var/jobPos in GLOB.corrections_positions)
 					if(!jobPos)
 						continue
 					joblist += jobPos

@@ -48,3 +48,17 @@
 	time = 50
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
+
+/obj/item/gun/energy/e_gun/revolver
+	name = "energy revolver"
+	desc = "A slightly cut down Energy Gun into a revolver shape"
+	icon_state = "bsgun"
+	icon = 'modular_splurt/icons/obj/guns/energy.dmi'
+	ammo_type = list(/obj/item/ammo_casing/energy/disabler, /obj/item/ammo_casing/energy/laser)
+	w_class = WEIGHT_CLASS_SMALL
+	weapon_weight = WEAPON_LIGHT
+	modifystate = 1
+	can_flashlight = 1
+	ammo_x_offset = 3
+	flight_x_offset = 15
+	flight_y_offset = 12

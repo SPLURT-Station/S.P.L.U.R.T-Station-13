@@ -67,6 +67,24 @@
 /obj/item/gun/ballistic/automatic/pistol/enforcergold/update_icon_state()
 	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
 
+/obj/item/gun/ballistic/automatic/pistol/enforcerblue
+	name = "\improper Blue Mk. 58 Enforcer"
+	desc = "A polymer frame pistol made by Nanotreason. Won't show up on Space port X-rays and cost more then you make in a month. Get down Mr. Captain!"
+	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
+	icon_state = "enforcer_blue"
+	w_class = WEIGHT_CLASS_NORMAL
+	mag_type = /obj/item/ammo_box/magazine/e45
+	can_suppress = FALSE
+	can_flashlight = 1
+	flight_x_offset = 18
+	flight_y_offset = 14
+
+/obj/item/gun/ballistic/automatic/pistol/enforcerblue/update_icon_state()
+	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
+
+/obj/item/gun/ballistic/automatic/pistol/enforcerblue/nomag
+	spawnwithmagazine = FALSE
+
 /obj/item/gun/ballistic/automatic/pistol/m9mmpistol
 	name = "\improper Cheap 9mm Handgun"
 	desc = "An extremly cheap 9mm handgun produced by M&A Firearms."

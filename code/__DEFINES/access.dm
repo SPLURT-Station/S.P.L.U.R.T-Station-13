@@ -70,6 +70,8 @@
 #define ACCESS_BRIGDOC 71
 #define ACCESS_BLUESHIELD 72
 #define ACCESS_BRIDGE_OFFICER 73
+#define ACCESS_CORRECTIONS 74
+#define ACCESS_WARDEN 75
 //SPLURT EDIT END
 	//BEGIN CENTCOM ACCESS
 	/*Should leave plenty of room if we need to add more access levels.

@@ -33,31 +33,27 @@
 	new /obj/item/ammo_box/magazine/e45/taser(src)
 	new /obj/item/ammo_box/magazine/e45/taser(src)
 
-//Blueshield melee options
+//Blueshield range options
 
-/obj/item/storage/secure/briefcase/bsbaton/stunbaton
-	name = "\improper Stun Baton box"
-	desc = "A storage case for a high-tech Stun baton. Pick up that can."
+/obj/item/storage/secure/briefcase/bssidearm/enfrocer
+	name = "\improper Enforcer box"
+	desc = "A storage case for a Enforcer sidearm."
 
-/obj/item/storage/secure/briefcase/bsbaton/stunbaton/PopulateContents()
-	new  /obj/item/melee/baton(src)
-	new /obj/item/storage/belt/security/full(src)
+/obj/item/storage/secure/briefcase/bssidearm/enfrocer/PopulateContents()
+	new  /obj/item/gun/ballistic/automatic/pistol/enforcerblue/nomag(src)
+	new /obj/item/ammo_box/magazine/e45(src)
+	new /obj/item/ammo_box/magazine/e45(src)
+	new /obj/item/ammo_box/magazine/e45/taser(src)
+	new /obj/item/ammo_box/magazine/e45/taser(src)
+	new /obj/item/ammo_box/magazine/e45/lethal(src)
+	new /obj/item/ammo_box/magazine/e45/lethal(src)
 
-/obj/item/storage/secure/briefcase/bsbaton/stunsword
-	name = "\improper Stun Sword box"
-	desc = "A storage case for a high-tech Stun sword. The ninjas will fear you."
+/obj/item/storage/secure/briefcase/bssidearm/energyrevolver
+	name = "\improper Energy Revolver box"
+	desc = "A storage case for a high-tech Energy revolver."
 
-/obj/item/storage/secure/briefcase/bsbaton/stunsword/PopulateContents()
-	new /obj/item/storage/belt/sabre/secbelt(src)
-	new /obj/item/stock_parts/cell/high/plus(src)
-
-/obj/item/storage/secure/briefcase/bsbaton/tele
-	name = "\improper APS Baton Box"
-	desc = "A storage case for a Telescopic Baton. Poke them with a stick!"
-
-/obj/item/storage/secure/briefcase/bsbaton/tele/PopulateContents()
-	new /obj/item/melee/classic_baton/telescopic(src)
-	new /obj/item/storage/belt/security(src)
+/obj/item/storage/secure/briefcase/bssidearm/energyrevolver/PopulateContents()
+	new /obj/item/gun/energy/e_gun/revolver(src)
 
 /obj/item/storage/secure/briefcase/permits
 	name = "\improper \'Weapon\' permits case"

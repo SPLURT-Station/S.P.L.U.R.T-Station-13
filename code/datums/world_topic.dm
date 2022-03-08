@@ -246,6 +246,7 @@
 	var/list/medical = list()
 	var/list/science = list()
 	var/list/cargo = list()
+	var/list/corrections = list()
 	var/list/civilian = list()
 	var/list/misc = list()
 	for(var/datum/data/record/R in GLOB.data_core.general)
@@ -262,6 +263,8 @@
 			science[name] = rank
 		else if(GetJobName(real_rank) in GLOB.supply_positions)
 			cargo[name] = rank
+		else if(GetJobName(real_rank) in GLOB.corrections_positions)
+			corrections[name] = rank
 		else if(GetJobName(real_rank) in GLOB.civilian_positions)
 			civilian[name] = rank
 		else
@@ -277,6 +280,7 @@
 	.["Medical"] = medical
 	.["Science"] = science
 	.["Cargo"] = cargo
+	.["Corrections"] = corrections
 	.["Civilian"] = civilian
 	.["Misc"] = misc
 	return json_encode(.)

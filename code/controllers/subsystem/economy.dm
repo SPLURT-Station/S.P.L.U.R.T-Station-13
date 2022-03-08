@@ -11,7 +11,8 @@ SUBSYSTEM_DEF(economy)
 										ACCOUNT_MED = ACCOUNT_MED_NAME,
 										ACCOUNT_SRV = ACCOUNT_SRV_NAME,
 										ACCOUNT_CAR = ACCOUNT_CAR_NAME,
-										ACCOUNT_SEC = ACCOUNT_SEC_NAME)
+										ACCOUNT_SEC = ACCOUNT_SEC_NAME,
+										ACCOUNT_COR = ACCOUNT_COR_NAME)
 	var/list/generated_accounts = list()
 	var/full_ancap = FALSE // Enables extra money charges for things that normally would be free, such as sleepers/cryo/cloning.
 							//Take care when enabling, as players will NOT respond well if the economy is set up for low cash flows.
@@ -118,7 +119,7 @@ SUBSYSTEM_DEF(economy)
 		CHECK_TICK
 	var/living_ratio = alive_crew / crew
 	cash_to_grant = (crew_safety_bounty * living_ratio) + (monster_bounty * dead_monsters)
-	var/datum/bank_account/D = get_dep_account(ACCOUNT_SEC)
+	var/datum/bank_account/D = get_dep_account(ACCOUNT_SEC && ACCOUNT_COR)
 	if(D)
 		D.adjust_money(min(cash_to_grant, MAX_GRANT_SECMEDSRV))
 

@@ -63,3 +63,11 @@
 	build_path = /obj/item/clothing/gloves/cbrn/mopp
 	category = list("Armor")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/obj/item/clothing/gloves/correctional
+	name = "correctional gloves"
+	desc = "fancy black gloves with correctional coloring."
+	icon_state = "peacekeeper"
+	item_state = "peacekeeper"
+	icon = 'modular_splurt/icons/obj/clothing/gloves.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/hands.dmi'

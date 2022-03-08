@@ -26,13 +26,13 @@
 	name = "Cum in a Hot Tub"
 	id = /datum/reagent/consumable/ethanol/cum_in_a_hot_tub
 	results = list(/datum/reagent/consumable/ethanol/cum_in_a_hot_tub = 3)
-	required_reagents = list(/datum/reagent/consumable/ethanol/vodka = 2, /datum/reagent/consumable/ethanol/white_russian = 1, /datum/reagent/consumable/ethanol/irish_cream = 0.1)
+	required_reagents = list(/datum/reagent/consumable/ethanol/vodka = 2, /datum/reagent/consumable/ethanol/white_russian = 1, /datum/reagent/consumable/ethanol/irish_cream = 1)
 
 /datum/chemical_reaction/cum_in_a_hot_tub/semen
 	name = "Cum in a Hot Tub"
 	id = /datum/reagent/consumable/ethanol/cum_in_a_hot_tub/semen
 	results = list(/datum/reagent/consumable/ethanol/cum_in_a_hot_tub/semen = 3)
-	required_reagents = list(/datum/reagent/consumable/ethanol/vodka = 2, /datum/reagent/consumable/semen = 1, /datum/reagent/consumable/ethanol/irish_cream = 0.1)
+	required_reagents = list(/datum/reagent/consumable/ethanol/vodka = 2, /datum/reagent/consumable/semen = 1, /datum/reagent/consumable/ethanol/irish_cream = 1)
 
 /datum/chemical_reaction/orange_creamsicle
     name = "Orange Creamsical"

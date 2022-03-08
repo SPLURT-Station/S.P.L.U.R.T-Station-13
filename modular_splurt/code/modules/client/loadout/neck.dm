@@ -9,7 +9,7 @@
 	path = /obj/item/clothing/neck/cloak/alt/boatcloak/command
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
 	restricted_desc = "Heads of Staff"
-	restricted_roles = list("Head of Security","Captain","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer","Quartermaster")
+	restricted_roles = list("Head of Security","Captain","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer","Quartermaster","Blueshield","Bridge Officer")
 
 /datum/gear/neck/spikedcollar
 	name = "Spiked Pet Collar"

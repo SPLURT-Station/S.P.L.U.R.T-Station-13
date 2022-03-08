@@ -80,12 +80,12 @@
 	name = "red bikini"
 	icon_state = "swimming_red"
 
-/obj/item/clothing/underwear/top/bra_binder
+/obj/item/clothing/underwear/shirt/top/bra_binder
 	name = "Bra (binder)"
 	icon_state = "bra_binder"
 	body_parts_covered = CHEST
 
-/obj/item/clothing/underwear/top/bra_binder/strapless
+/obj/item/clothing/underwear/shirt/top/bra_binder/strapless
 	name = "Bra (binder, strapless)"
 	icon_state = "bra_binder_strapless"
 

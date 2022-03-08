@@ -65,7 +65,7 @@
             reagent_type = /datum/reagent/consumable/milk
             wanted_reagent = new reagent_type
             name = wanted_reagent.name
-            description = "The Kinaris annual bake sale is soon, and all of our milk has expired. Help us out."
+            description = "The Nanotrasen annual bake sale is soon, and all of our milk has expired. Help us out."
             reward += rand(10, 17) * 500 //Milk is generally easier to get. Make the reward a little lower.
         if(15,16,17,18,19) //A little romance
             var/static/list/possible_reagents = list(\

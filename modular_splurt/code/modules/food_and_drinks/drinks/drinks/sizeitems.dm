@@ -1,6 +1,6 @@
 /obj/item/reagent_containers/food/drinks/prospacillin
 	name = "Prospacillin Bottle"
-	desc = "An incredibly expensive bottle used by Kinaris command. It has golden engravings and reeks of corporate greed."
+	desc = "An incredibly expensive bottle used by Nanotrasen command. It has golden engravings and reeks of corporate greed."
 	w_class = WEIGHT_CLASS_TINY
 	icon = 'modular_splurt/icons/obj/drinks.dmi'
 	icon_state = "prospacillin"
@@ -8,7 +8,7 @@
 
 /obj/item/reagent_containers/food/drinks/diminicillin
 	name = "Diminicillin Bottle"
-	desc = "An incredibly expensive bottle used by Kinaris command. It has golden engravings and reeks of corporate greed."
+	desc = "An incredibly expensive bottle used by Nanotrasen command. It has golden engravings and reeks of corporate greed."
 	w_class = WEIGHT_CLASS_TINY
 	icon = 'modular_splurt/icons/obj/drinks.dmi'
 	icon_state = "diminicillin"

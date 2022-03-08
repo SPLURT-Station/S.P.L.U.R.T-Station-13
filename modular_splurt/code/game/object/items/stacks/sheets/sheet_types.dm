@@ -78,7 +78,7 @@ GLOBAL_LIST_INIT(mush_wood_recipes, list ( \
 //	return ..()
 
 
-GLOBAL_LIST_INIT(micro_bricks_recipes, list ( \
+GLOBAL_LIST_INIT(micro_bricks_recipes, list( \
 	new /datum/stack_recipe("Road fourway", /obj/structure/micro_brick/road_fourway, 2, time = 2, one_per_turf = TRUE, on_floor = TRUE), \
 	new /datum/stack_recipe("Road threeway", /obj/structure/micro_brick/road_threeway, 2, time = 2, one_per_turf = TRUE, on_floor = TRUE), \
 	new /datum/stack_recipe("Road straight", /obj/structure/micro_brick/road_straight, 2, time = 2, one_per_turf = TRUE, on_floor = TRUE), \
@@ -117,6 +117,6 @@ GLOBAL_LIST_INIT(micro_bricks_recipes, list ( \
 /obj/item/stack/sheet/micro_bricks/five
 	amount = 5
 
-/obj/item/stack/sheet/micro_bricks/Initialize(mapload, new_amount, merge = TRUE)
-	recipes = GLOB.micro_bricks_recipes
-	return ..()
+/obj/item/stack/sheet/micro_bricks/get_main_recipes()
+	. = ..()
+	. += GLOB.micro_bricks_recipes

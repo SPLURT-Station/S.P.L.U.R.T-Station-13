@@ -13,3 +13,29 @@
 /datum/gear/suit/dracula
 	name = "dracula coat"
 	path = /obj/item/clothing/suit/dracula
+
+// Fixes "Fed (Modern) uniform, White" being in general suit loadout section.
+/datum/gear/suit/trekcmdcapmod
+	subcategory = LOADOUT_SUBCATEGORY_SUIT_JOBS
+
+// Updates restrictions to accomodate new jobs (mostly trekkie stuff)
+/datum/gear/suit/trekds9_coat
+	restricted_roles = list("Head of Security","Captain","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer","Quartermaster","Blueshield","Bridge Officer",
+							"Medical Doctor","Chemist","Virologist","Paramedic","Geneticist","Scientist", "Roboticist",
+							"Atmospheric Technician","Station Engineer","Warden","Detective","Security Officer","Brig Physician",
+							"Cargo Technician", "Shaft Miner")
+
+/datum/gear/suit/trekcmdcap
+	restricted_roles = list("Captain","Head of Personnel","Blueshield")
+
+/datum/gear/suit/trekcmdmov
+	restricted_roles = list("Head of Security","Captain","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer","Quartermaster","Warden","Detective","Security Officer","Brig Physician","Blueshield","Bridge Officer")
+
+/datum/gear/suit/trekmedscimov
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Paramedic","Geneticist","Research Director","Scientist", "Roboticist", "Brig Physician")
+
+/datum/gear/suit/trekcmdmod
+	restricted_roles = list("Head of Security","Captain","Head of Personnel","Chief Engineer","Research Director","Chief Medical Officer","Quartermaster","Warden","Detective","Security Officer","Brig Physician","Blueshield","Bridge Officer")
+
+/datum/gear/suit/trekmedscimod
+	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Paramedic","Geneticist","Research Director","Scientist", "Roboticist", "Brig Physician")

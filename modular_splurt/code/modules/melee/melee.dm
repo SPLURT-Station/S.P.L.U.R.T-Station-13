@@ -1,6 +1,6 @@
 /obj/item/melee/classic_baton/nightstick
-	name = "police baton"
-	desc = "A wooden truncheon for beating criminal scum."
+	name = "nightstick"
+	desc = "Surpress the rights of crimrinals."
 	icon = 'modular_splurt/icons/obj/items_and_weapons.dmi'
 	icon_state = "nightstick"
 	item_state = "nightstick"

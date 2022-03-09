@@ -29,6 +29,7 @@
 			reagent_overlay.color = mix_color_from_reagents(reagents.reagent_list)
 			add_overlay(reagent_overlay)
 	else
+		icon = initial(icon)
 		icon_state = "glass_empty"
 		renamedByPlayer = FALSE //so new drinks can rename the glass
 
@@ -71,6 +72,7 @@
 
 
 	else
+		icon = initial(icon)
 		icon_state = "shotglass"
 		name = "shot glass"
 		desc = "A shot glass - the universal symbol for bad decisions."

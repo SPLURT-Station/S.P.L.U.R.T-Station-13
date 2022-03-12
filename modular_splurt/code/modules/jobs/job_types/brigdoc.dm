@@ -13,9 +13,8 @@
 	exp_requirements = 300
 	exp_type = EXP_TYPE_MEDICAL
 	considered_combat_role = TRUE
-	exp_type_department = EXP_TYPE_MEDICAL
 	alt_titles = list("Security Doctor", "Security Medic", "Brig Doctor", "Brig EMT", "Security Physician", "Security EMT", "Police Doctor")
-	custom_spawn_text = "<font color='red' size='2'><b> You are here to patch up people in the Brig and in Prison. You are not hear to fight or arrest. You're weapons are for self defense. However in times of emergecies you can ingore this. </b></font>"
+	custom_spawn_text = "<font color='red' size='2'><b> Your job as Brig Physician is to provide treatment to Security Officers first, and only to provide aide to cooperative Prisoners second. Prisoners who voluntarily harm themselves are up to your discretion on assisting. Your focus is not on Combat or Arrests, however certain circumstances may allow for detainment and Self-Defense.</b></font>"
 
 
 	outfit = /datum/outfit/job/brigdoc
@@ -24,7 +23,7 @@
 	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_MAINT_TUNNELS, ACCESS_MORGUE, ACCESS_MEDICAL, ACCESS_WEAPONS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP, ACCESS_FORENSICS_LOCKERS, ACCESS_MINERAL_STOREROOM, ACCESS_BRIGDOC)
 	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_MAINT_TUNNELS, ACCESS_MORGUE, ACCESS_MEDICAL, ACCESS_WEAPONS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP, ACCESS_FORENSICS_LOCKERS, ACCESS_MINERAL_STOREROOM, ACCESS_BRIGDOC)
 	paycheck = PAYCHECK_MEDIUM
-	paycheck_department = ACCOUNT_SEC
+	paycheck_department = ACCOUNT_COR
 
 	mind_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
 

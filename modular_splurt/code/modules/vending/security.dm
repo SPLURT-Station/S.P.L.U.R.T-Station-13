@@ -186,8 +186,7 @@
 
 /obj/structure/closet/secure_closet/correctional/PopulateContents()
 	..()
-	new /obj/item/clothing/head/helmet/sec/blueshield(src)
-	new /obj/item/radio/headset/headset_correctional(src)
+	new /obj/item/radio/headset/headset_correctional/alt(src)
 	new /obj/item/flashlight/seclite(src)
 	new /obj/item/storage/belt/security/corrections(src)
 	new /obj/item/storage/backpack/corrections(src)
@@ -207,16 +206,14 @@
 	icon_state = "sec"
 	icon_deny = "sec-deny"
 	light_mask = "sec-light-mask"
-	req_access = list(ACCESS_SECURITY)
-	products = list(/obj/item/restraints/handcuffs = 8,
-					/obj/item/restraints/handcuffs/cable/zipties = 10,
+	req_access = list(ACCESS_CORRECTIONS)
+	products = list(/obj/item/restraints/handcuffs/cable/zipties = 10,
 					/obj/item/grenade/chem_grenade/teargas = 4,
 					/obj/item/assembly/flash/handheld = 5,
 					/obj/item/reagent_containers/food/snacks/donut = 12,
 					/obj/item/flashlight/seclite = 4,
 					/obj/item/electropack/shockcollar/security = 5,
-					/obj/item/clothing/neck/petcollar/locked/security = 5,
-					/obj/item/grenade/stingbang = 3)
+					/obj/item/clothing/neck/petcollar/locked/security = 5)
 	refill_canister = /obj/item/vending_refill/security
 	default_price = PRICE_ALMOST_EXPENSIVE
 	extra_price = PRICE_REALLY_EXPENSIVE

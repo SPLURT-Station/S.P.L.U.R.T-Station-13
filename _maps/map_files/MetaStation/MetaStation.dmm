@@ -92,7 +92,6 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
-/obj/item/storage/secure/briefcase/permits,
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
 "aai" = (
@@ -5252,13 +5251,20 @@
 /obj/item/wirecutters{
 	pixel_y = 2
 	},
+/obj/machinery/keycard_auth{
+	pixel_x = 29;
+	pixel_y = 8
+	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "apM" = (
 /obj/structure/table,
-/obj/machinery/recharger,
 /obj/machinery/airalarm{
 	pixel_y = 28
+	},
+/obj/machinery/recharger{
+	pixel_x = 6;
+	pixel_y = 3
 	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
@@ -5984,6 +5990,7 @@
 	pixel_x = -3;
 	pixel_y = 5
 	},
+/obj/item/storage/secure/briefcase/permits,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "ast" = (

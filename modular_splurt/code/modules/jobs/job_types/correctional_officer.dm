@@ -25,7 +25,7 @@
 	exp_type = EXP_TYPE_CREW
 	considered_combat_role = TRUE
 	alt_titles = list("Prison Guard", "Prison Officer", "Brig Officer", "Brig Guard")
-	custom_spawn_text = "<font color='red' size='2'><b> You are here to guard the Brig, rehabilitate prisoners and assisit the warden and process incoming prisoners. You are not Sec. You are not to respond to anything outside of the Brig. Brig and Prison comes first!</b></font>"
+	custom_spawn_text = "<font color='red' size='2'><b>You are here to guard the Brig & Armory, rehabilitate prisoners, and process new inmates. Your Head of Staff is the Warden, and you respond to his orders first and foremost. You are not a part of Security and you may not transfer to it. You are not to respond to any Security Calls outside of the Brig unless on Amber Alert or Higher. The Brig and Prison always comes first!</b></font>"
 
 	outfit = /datum/outfit/job/correctional
 	plasma_outfit = /datum/outfit/plasmaman/correctional
@@ -46,15 +46,14 @@
 	name = "Correctional Officer"
 	jobtype = /datum/job/correctional
 	belt = /obj/item/pda/security
-	ears = /obj/item/radio/headset/headset_correctional
+	ears = /obj/item/radio/headset/headset_correctional/alt
 	uniform = /obj/item/clothing/under/rank/security/officer/correctional
 	head = /obj/item/clothing/head/beret/sec/peacekeeper/cap
 	gloves = /obj/item/clothing/gloves/correctional
 	suit = /obj/item/clothing/suit/armor/vest/stabvest
 	shoes = /obj/item/clothing/shoes/jackboots
-	l_pocket = /obj/item/restraints/handcuffs
+	l_pocket = /obj/item/restraints/handcuffs/cable
 	r_pocket = /obj/item/assembly/flash/handheld
-
 	backpack = /obj/item/storage/backpack/corrections
 	satchel = /obj/item/storage/backpack/satchel/corrections
 	duffelbag = /obj/item/storage/backpack/duffelbag/corrections
@@ -69,11 +68,19 @@
 
 	head = /obj/item/clothing/head/helmet/space/plasmaman/security //need to make custom sprites for the plasmaman
 	uniform = /obj/item/clothing/under/plasmaman/security
-	ears = /obj/item/radio/headset/headset_correctional
+	ears = /obj/item/radio/headset/headset_correctional/alt
+
 
 /obj/item/radio/headset/headset_correctional
 	name = "correctional bowman headset"
-	desc = "This is used by Correctional officers. It protects from flashbangs"
+	desc = "This is used by Correctional staff."
+	icon_state = "sec_headset"
+	item_state = "sec_headset"
+	keyslot = new /obj/item/encryptionkey/headset_correctional
+
+/obj/item/radio/headset/headset_correctional/alt
+	name = "correctional bowman headset"
+	desc = "This is used by Correctional staff. It protects from flashbangs"
 	icon_state = "sec_headset_alt"
 	item_state = "sec_headset_alt"
 	keyslot = new /obj/item/encryptionkey/headset_correctional

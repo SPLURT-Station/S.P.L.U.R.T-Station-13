@@ -1,12 +1,12 @@
 /datum/gear/glasses/security/sunglasses/aviators
 	name = "Secuirity HUD Aviators"
 	path = /obj/item/clothing/glasses/hud/security/sunglasses/aviators
-	restricted_roles = list("Security Officer", "Warden", "Head of Security")
+	restricted_roles = list("Security Officer", "Warden", "Head of Security", "Correctional Officer")
 
 /datum/gear/glasses/security/sunglasses/aviators/prescription
 	name = "Prescription Secuirity HUD Aviators"
 	path = /obj/item/clothing/glasses/hud/security/sunglasses/aviators/prescription
-	restricted_roles = list("Security Officer", "Warden", "Head of Security")
+	restricted_roles = list("Security Officer", "Warden", "Head of Security", "Correctional Officer")
 
 /datum/gear/glasses/health/sunglasses/aviators
 	name = "Medical HUD Aviators"

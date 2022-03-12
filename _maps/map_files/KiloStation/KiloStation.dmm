@@ -5575,13 +5575,7 @@
 /area/maintenance/fore)
 "ajw" = (
 /obj/structure/table,
-/obj/item/paper_bin,
-/obj/item/taperecorder{
-	pixel_x = 4;
-	pixel_y = 2
-	},
 /obj/effect/turf_decal/bot,
-/obj/item/pen,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
@@ -5591,6 +5585,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/machinery/keycard_auth,
 /turf/open/floor/plasteel/dark,
 /area/security/warden)
 "ajx" = (
@@ -6905,6 +6900,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/item/storage/secure/briefcase/permits,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "alN" = (
@@ -11573,6 +11569,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral,
+/obj/item/storage/secure/briefcase/permits,
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/hop)
 "ats" = (
@@ -12630,6 +12627,7 @@
 "avj" = (
 /obj/structure/table/wood,
 /obj/item/storage/fancy/donut_box,
+/obj/item/storage/secure/briefcase/permits,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/captain)
 "avk" = (
@@ -12752,6 +12750,10 @@
 	req_one_access_txt = "2"
 	},
 /obj/item/toy/figure/warden,
+/obj/item/taperecorder{
+	pixel_x = 4;
+	pixel_y = 2
+	},
 /turf/open/floor/plasteel/dark,
 /area/security/warden)
 "avu" = (
@@ -18338,6 +18340,8 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/item/paper_bin,
+/obj/item/pen,
 /turf/open/floor/plasteel/dark,
 /area/security/warden)
 "aEA" = (
@@ -60464,6 +60468,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/item/storage/secure/briefcase/permits,
 /turf/open/floor/plasteel/dark,
 /area/security/warden)
 "bTa" = (
@@ -73412,6 +73417,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/item/pen,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "coG" = (

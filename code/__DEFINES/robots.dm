@@ -69,7 +69,7 @@
 #define UPGRADE_FLOOR_SYNDIBOX     	 (1<<1)
 
 //Checks to determine borg availability depending on the server's config. These are defines in the interest of reducing copypasta
-#define BORG_SEC_AVAILABLE (!CONFIG_GET(flag/disable_secborg) && GLOB.security_level >= CONFIG_GET(number/minimum_secborg_alert))
+// #define BORG_SEC_AVAILABLE (!CONFIG_GET(flag/disable_secborg) && GLOB.security_level >= CONFIG_GET(number/minimum_secborg_alert))
 
 //silicon_priviledges flags
 #define PRIVILEGES_SILICON	(1<<0)

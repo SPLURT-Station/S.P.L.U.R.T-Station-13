@@ -8,7 +8,7 @@
 
 /obj/item/storage/belt/security/corrections/PopulateContents()
 	new /obj/item/reagent_containers/spray/pepper(src)
-	new /obj/item/restraints/handcuffs(src)
+	new /obj/item/restraints/handcuffs/cable(src)
 	new /obj/item/grenade/chem_grenade/teargas(src)
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/melee/classic_baton/nightstick(src)

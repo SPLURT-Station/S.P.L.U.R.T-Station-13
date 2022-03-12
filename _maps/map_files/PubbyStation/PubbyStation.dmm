@@ -871,7 +871,6 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
-/obj/item/storage/secure/briefcase/permits,
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
 "acc" = (
@@ -57628,6 +57627,12 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/security/brig)
+"mLY" = (
+/obj/machinery/keycard_auth{
+	pixel_y = -24
+	},
+/turf/open/floor/plasteel,
+/area/security/brig)
 "mMz" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -58938,6 +58943,11 @@
 /obj/item/clothing/ears/earmuffs,
 /obj/item/clothing/glasses/sunglasses,
 /obj/structure/table/reinforced,
+/obj/item/storage/secure/briefcase/permits,
+/obj/machinery/keycard_auth{
+	pixel_x = 29;
+	pixel_y = 8
+	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "oPy" = (
@@ -83100,7 +83110,7 @@ alW
 amI
 anu
 wxJ
-wxJ
+mLY
 tnP
 vOw
 wxJ

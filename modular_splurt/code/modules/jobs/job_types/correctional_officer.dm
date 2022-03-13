@@ -89,7 +89,7 @@
 /obj/item/encryptionkey/headset_correctional
 	name = "Correctional radio encryption key"
 	icon_state = "sec_cypherkey"
-	channels = list(RADIO_CHANNEL_CORRECTIONS = 1)
+	channels = list(RADIO_CHANNEL_CORRECTIONS = 1, RADIO_CHANNEL_SECURITY = 1)
 
 /obj/effect/landmark/start/correctional
 	name = "Correctional Officer"

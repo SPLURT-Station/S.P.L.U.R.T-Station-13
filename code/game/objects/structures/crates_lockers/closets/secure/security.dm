@@ -88,7 +88,7 @@
 
 /obj/structure/closet/secure_closet/warden
 	name = "\proper warden's locker"
-	req_access = list(ACCESS_ARMORY)
+	req_access = list(ACCESS_WARDEN)
 	icon_state = "warden"
 /obj/structure/closet/secure_closet/warden/PopulateContents()
 	..()

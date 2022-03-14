@@ -122,6 +122,7 @@
 	parts = list(/obj/item/reagent_containers/crack = 4)
 	time = 20
 	category = CAT_MISCELLANEOUS //i might just make a crafting category for drugs at some point
+	subcategory = CAT_MISCELLANEOUS
 
 // Should probably give this the edible component at some point
 /obj/item/reagent_containers/cocaine
@@ -180,7 +181,7 @@
 	tools = null
 	time = 20
 	category = CAT_MISCELLANEOUS //i might just make a crafting category for drugs at some point
-	subcategory = CATEGORY_MISC
+	subcategory = CAT_MISCELLANEOUS
 
 //if you want money, convert it into crackbricks
 /datum/export/crack

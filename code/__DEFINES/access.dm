@@ -66,7 +66,11 @@
 #define ACCESS_CLONING 68 //Cloning room and clone pod ejection
 #define ACCESS_ENTER_GENPOP 69
 #define ACCESS_LEAVE_GENPOP 70
-
+//SPLURT EDIT BEGIN
+#define ACCESS_BRIGDOC 71
+#define ACCESS_BLUESHIELD 72
+#define ACCESS_BRIDGE_OFFICER 73
+//SPLURT EDIT END
 	//BEGIN CENTCOM ACCESS
 	/*Should leave plenty of room if we need to add more access levels.
 	Mostly for admin fun times.*/

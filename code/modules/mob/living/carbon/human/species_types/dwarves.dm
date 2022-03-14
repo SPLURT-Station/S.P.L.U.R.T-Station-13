@@ -34,8 +34,10 @@ GLOBAL_LIST_INIT(dwarf_last, world.file2list("strings/names/dwarf_last.txt")) //
 	H.AddElement(/datum/element/dwarfism, COMSIG_SPECIES_LOSS, src)
 	RegisterSignal(C, COMSIG_MOB_SAY, .proc/handle_speech) //We register handle_speech is being used.
 
-/datum/species/dwarf/on_species_loss(mob/living/carbon/H, datum/species/new_species)
+/datum/species/dwarf/on_species_loss(mob/living/carbon/C, datum/species/new_species)
 	. = ..()
+	var/mob/living/carbon/human/H = C
+	H.RemoveElement(/datum/element/dwarfism, COMSIG_SPECIES_LOSS, src)
 	UnregisterSignal(H, COMSIG_MOB_SAY) //We register handle_speech is not being used.
 
 //Dwarf Name stuff

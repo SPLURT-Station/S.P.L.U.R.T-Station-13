@@ -351,8 +351,8 @@
 
 	if(href_list["lookitem"]) //It's for the show item at modular_sand/code/modules/mob/living/carbon/show.dm
 		var/obj/item/I = locate(href_list["lookitem"])
-		if(I in view(4))
-			src.examinate(I)
+		if(I.loc in view(4))
+			examinate(I)
 		else
 			to_chat(usr, "<span class='warning'>You need to get closer to examine that!</span>")
 

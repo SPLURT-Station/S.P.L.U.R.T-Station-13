@@ -29,3 +29,6 @@
 /datum/gear/shoes/latex/dominant
 	name = "Dominant Heels"
 	path = /obj/item/clothing/shoes/dominaheels
+
+/datum/gear/shoes/puttee
+	restricted_roles = list("Security Officer", "Warden", "Head of Security", "Brig Physician", "Blueshield")

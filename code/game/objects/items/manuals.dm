@@ -363,8 +363,8 @@
 	page_link = "Singularity_and_Tesla_engines"
 
 /obj/item/book/manual/wiki/security_space_law
-	name = "Space Law"
-	desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations."
+	name = "Outdated Space Law" // SPLURT change - makes sure people don't confuse it for our local law
+	desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations. This one has been out of print since 2660." // SPLURT change - makes sure people don't confuse it for our local law
 	icon_state = "bookSpaceLaw"
 	author = "Nanotrasen"
 	title = "Space Law"

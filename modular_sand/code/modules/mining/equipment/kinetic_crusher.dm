@@ -102,7 +102,7 @@
 	desc = "It really doesn't seem like it could be worn. Suitable as a crusher trophy."
 	icon = 'modular_sand/icons/obj/lavaland/artefacts.dmi'
 	icon_state = "miner_mask"
-	bonus_value = 10
+	bonus_value = 5 //SPLURT edit, Original: 10
 	denied_type = /obj/item/crusher_trophy/blaster_tubes/mask
 
 /obj/item/crusher_trophy/blaster_tubes/mask/effect_desc()
@@ -120,13 +120,27 @@
 	new /obj/effect/temp_visual/kinetic_blast(target)
 	playsound(target.loc, 'sound/weapons/kenetic_accel.ogg', 60, 0)
 
+// I'm gonna be honest, i cannot trust admins to be smart about it.
+/obj/item/crusher_trophy/blaster_tubes/mask/vv_edit_var(var_name, var_value)
+	switch(var_name)
+		if(NAMEOF(src, bonus_value))
+			if(istype(loc, /obj/item/kinetic_crusher))
+				var/datum/component/two_handed/TH = loc.GetComponent(/datum/component/two_handed)
+				TH.force_wielded -= bonus_value
+				TH.force_wielded += var_value
+	. = ..()
+
 /obj/item/crusher_trophy/blaster_tubes/mask/add_to(obj/item/kinetic_crusher/H, mob/living/user)
 	. = ..()
-	H.force += bonus_value
+	if(.)
+		var/datum/component/two_handed/TH = H.GetComponent(/datum/component/two_handed)
+		TH.force_wielded += bonus_value
 
 /obj/item/crusher_trophy/blaster_tubes/mask/remove_from(obj/item/kinetic_crusher/H, mob/living/user)
 	. = ..()
-	H.force -= bonus_value
+	if(.)
+		var/datum/component/two_handed/TH = H.GetComponent(/datum/component/two_handed)
+		TH.force_wielded -= bonus_value
 
 //lava imp
 /obj/item/crusher_trophy/blaster_tubes/impskull
@@ -251,8 +265,8 @@
 	. = ..()
 	if(.)
 		var/datum/component/two_handed/TH = H.GetComponent(/datum/component/two_handed)
-		H.charge_time += 15
-		TH.force_wielded += 12
+		H.charge_time += 12
+		TH.force_wielded += 15
 
 //hierophant crusher small changes
 /obj/item/crusher_trophy/vortex_talisman
@@ -442,7 +456,7 @@
 	var/dir = get_dir(user, chargeturf)//get direction
 	var/turf/T = get_ranged_target_turf(chargeturf,dir,range)//get final dash turf
 	if(!T) //the final dash turf was out of range - we settle for the target turf instead
-		T = chargeturf 
+		T = chargeturf
 	playsound(user, pick('modular_sand/sound/sif/whoosh1.ogg', 'modular_sand/sound/sif/whoosh2.ogg', 'modular_sand/sound/sif/whoosh3.ogg'), 300, 1)
 	new /obj/effect/temp_visual/decoy/fading(user.loc, user)
 	//Stop movement

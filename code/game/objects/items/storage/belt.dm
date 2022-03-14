@@ -66,7 +66,12 @@
 		/obj/item/clothing/gloves,
 		/obj/item/holosign_creator,
 		/obj/item/forcefield_projector,
-		/obj/item/assembly/signaler
+		/obj/item/assembly/signaler,
+		/obj/item/carpentry/handsaw,
+		/obj/item/carpentry/hammer,
+		/obj/item/carpentry/sandpaper,
+		/obj/item/carpentry/borer,
+		/obj/item/carpentry/glue
 		))
 	STR.can_hold = can_hold
 

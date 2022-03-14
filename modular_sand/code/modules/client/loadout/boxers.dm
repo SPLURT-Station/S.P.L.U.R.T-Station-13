@@ -3,7 +3,6 @@
 	category = LOADOUT_CATEGORY_GENERAL_UNDER
 	subcategory = LOADOUT_SUBCATEGORY_UNDERWEAR
 	slot = ITEM_SLOT_UNDERWEAR
-	has_colors = TRUE
 	path = /obj/item/clothing/underwear/briefs
 	cost = 0
 
@@ -32,7 +31,7 @@
 	path = /obj/item/clothing/underwear/briefs/boxers/usa
 
 /datum/gear/underwear/boxers/commie
-	name = "Heart Boxers"
+	name = "Commie Boxers"
 	path = /obj/item/clothing/underwear/briefs/boxers/commie
 
 /datum/gear/underwear/boxers/striped

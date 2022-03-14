@@ -3,6 +3,34 @@
 	icon = 'modular_splurt/icons/obj/clothing/head.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/head.dmi'
 
+/obj/item/clothing/head/bridgeofficer
+	name = "bridge officer cap"
+	desc = "A generic blue cap for the back ground officer"
+	icon_state = "bridgeseccap"
+	item_state = "bridgeseccap"
+	icon = 'modular_splurt/icons/obj/clothing/head.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mobs/head.dmi'
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	strip_delay = 25
+	dynamic_hair_suffix = ""
+	dog_fashion = null
+
+/obj/item/clothing/head/bridgeofficer/beret
+	name = "bridge officer beret"
+	desc = "A generic blue beret for the back ground officer"
+	icon_state = "beret_bridgesec"
+	item_state = "beret_bridgesec"
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/head.dmi'
+
+/obj/item/clothing/head/press_helmet
+	name = "press helmet"
+	icon_state = "press_helmet"
+	item_state = "press_helmet"
+	desc = "A lightweight helmet for reporting on security. You swear up and down it is made of kevlar and not old cloth and plastic."
+	icon = 'modular_splurt/icons/obj/clothing/head.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/head.dmi'
+	flags_inv = HIDEHAIR
+
 //CBRN/MOPP helmets
 
 /obj/item/clothing/head/helmet/cbrn
@@ -60,3 +88,4 @@
 	build_path = /obj/item/clothing/head/helmet/cbrn/mopp
 	category = list("Armor")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+

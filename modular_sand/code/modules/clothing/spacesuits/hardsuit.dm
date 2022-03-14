@@ -11,7 +11,7 @@
 	clothing_flags = THICKMATERIAL //Ouchie oofie my bones
 	armor = list("melee" = 40, "bullet" = 35, "laser" = 30, "energy" = 20, "bomb" = 40, "bio" = 100, "rad" = 5, "fire" = 75, "acid" = 100)
 	resistance_flags = ACID_PROOF
-	mutantrace_variation = STYLE_MUZZLE | STYLE_NO_ANTHRO_ICON
+	mutantrace_variation = STYLE_MUZZLE
 
 /obj/item/clothing/head/helmet/space/hardsuit/powerarmor/Initialize()
 	. = ..()
@@ -70,7 +70,7 @@
 	var/brutedamageemp = 20
 	var/rebootdelay
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/powerarmor
-	mutantrace_variation = STYLE_DIGITIGRADE | STYLE_NO_ANTHRO_ICON
+	mutantrace_variation = STYLE_DIGITIGRADE
 
 /obj/item/clothing/suit/space/hardsuit/powerarmor/Initialize()
 	. = ..()

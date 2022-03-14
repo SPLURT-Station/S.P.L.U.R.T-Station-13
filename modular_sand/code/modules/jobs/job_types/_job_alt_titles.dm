@@ -1,6 +1,6 @@
 //Command
 /datum/job/captain
-	alt_titles = list("Station Director", "Station Commander", "Station Overseer", "Colony Overseer", "Stationmaster", "Commissar")
+	alt_titles = list("Station Director", "Station Commander", "Station Overseer", "Colony Overseer", "Stationmaster", "Commissar", "Senator")
 
 /datum/job/chief_engineer
 	alt_titles = list("Senior Engineer", "Head Engineer", "Construction Coordinator", "Project Manager", "Power Plant Director")
@@ -26,7 +26,7 @@
 	alt_titles = list("Firefighter", "Life Support Specialist", "Disposals Technician")
 
 /datum/job/engineer
-	alt_titles = list("Maintenance Technician", "Engine Technician", "Electrician", "Structural Engineer", "Station Architect", "Hazardous Material Operator")
+	alt_titles = list("Maintenance Technician", "Engine Technician", "Electrician", "Structural Engineer", "Station Architect", "Hazardous Material Operator", "Junior Engineer", "Apprentice Engineer")
 
 //Service
 /datum/job/assistant
@@ -64,14 +64,14 @@
 	alt_titles = list("Biomechanical Engineer", "Mechatronic Engineer", "Mechanic", "Robotics Operator")
 
 /datum/job/scientist
-	alt_titles = list("Circuitry Designer", "Xenobiologist", "Xenobotanist", "Chemical Researcher", "Researcher", "Toxins Researcher", "Research Intern") // rebase code doesn't have xenoarch site for "Xenoarcheologist"
+	alt_titles = list("Circuitry Designer", "Xenobiologist", "Xenobotanist", "Chemical Researcher", "Researcher", "Toxins Researcher", "Research Intern", "Junior Scientist")
 
 //Medical
 /datum/job/chemist
 	alt_titles = list("Pharmacist", "Pharmacologist")
 
 /datum/job/doctor
-	alt_titles = list("Nurse", "Surgeon", "Medical Secretary", "Physician")
+	alt_titles = list("Nurse", "Surgeon", "Medical Secretary", "Physician", "Medical Intern", "Medical Resident")
 
 /datum/job/geneticist
 	alt_titles = list("Genetic Therapist", "Genetics Researcher")
@@ -87,7 +87,7 @@
 	alt_titles = list("Forensics Technician", "Private Investigator", "Gumshoe")
 
 /datum/job/officer
-	alt_titles = list("Security Cadet", "Security Guard", "Peacekeeper", "Enforcer", "Security Agent", "Probation Officer", "Guardsman", "Police Officer")
+	alt_titles = list("Security Cadet", "Security Guard", "Peacekeeper", "Enforcer", "Security Agent", "Probation Officer", "Guardsman", "Police Officer", "Rookie", "Security Trainee")
 
 /datum/job/warden
 	alt_titles = list("Brig Chief", "Prison Chief", "Armory Manager", "Prison Administrator", "Brig Superintendent")

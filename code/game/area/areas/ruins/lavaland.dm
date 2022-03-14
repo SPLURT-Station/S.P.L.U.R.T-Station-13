@@ -49,46 +49,51 @@
 	name = "Elephant Graveyard"
 	icon_state = "green"
 
-/area/ruin/lavaland/unpowered/syndicate_lava_base
+/area/ruin/unpowered/syndicate_lava_base
 	name = "Secret Base"
 	icon_state = "dk_yellow"
 	ambientsounds = HIGHSEC
 
-/area/ruin/lavaland/unpowered/syndicate_lava_base/engineering
+/area/ruin/unpowered/syndicate_lava_base/engineering
 	name = "Syndicate Lavaland Engineering"
 
-/area/ruin/lavaland/unpowered/syndicate_lava_base/medbay
+/area/ruin/unpowered/syndicate_lava_base/medbay
 	name = "Syndicate Lavaland Medbay"
 
-/area/ruin/lavaland/unpowered/syndicate_lava_base/arrivals
+/area/ruin/unpowered/syndicate_lava_base/arrivals
 	name = "Syndicate Lavaland Arrivals"
 
-/area/ruin/lavaland/unpowered/syndicate_lava_base/bar
+/area/ruin/unpowered/syndicate_lava_base/bar
 	name = "Syndicate Lavaland Bar"
 
-/area/ruin/lavaland/unpowered/syndicate_lava_base/main
+/area/ruin/unpowered/syndicate_lava_base/main
 	name = "Syndicate Lavaland Primary Hallway"
 
-/area/ruin/lavaland/unpowered/syndicate_lava_base/cargo
+/area/ruin/unpowered/syndicate_lava_base/cargo
 	name = "Syndicate Lavaland Cargo Bay"
 
-/area/ruin/lavaland/unpowered/syndicate_lava_base/chemistry
+/area/ruin/unpowered/syndicate_lava_base/chemistry
 	name = "Syndicate Lavaland Chemistry"
 
-/area/ruin/lavaland/unpowered/syndicate_lava_base/virology
+/area/ruin/unpowered/syndicate_lava_base/virology
 	name = "Syndicate Lavaland Virology"
 
-/area/ruin/lavaland/unpowered/syndicate_lava_base/testlab
+/area/ruin/unpowered/syndicate_lava_base/testlab
 	name = "Syndicate Lavaland Experimentation Lab"
 
-/area/ruin/lavaland/unpowered/syndicate_lava_base/dormitories
+/area/ruin/unpowered/syndicate_lava_base/dormitories
 	name = "Syndicate Lavaland Dormitories"
 
-/area/ruin/lavaland/unpowered/syndicate_lava_base/telecomms
+/area/ruin/unpowered/syndicate_lava_base/telecomms
 	name = "Syndicate Lavaland Telecommunications"
 
-/area/ruin/lavaland/unpowered/syndicate_lava_base/circuits
+/area/ruin/unpowered/syndicate_lava_base/circuits
 	name = "Syndicate Lavaland Circuit Lab"
+
+/area/ruin/unpowered/syndicate_lava_base/outdoors //Putting this area down should prevent fauna from spawning nearby
+	name = "Syndicate Lavaland Approach"
+	icon_state = "red"
+
 
 
 //Xeno Nest

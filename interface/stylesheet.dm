@@ -202,13 +202,6 @@ h1.alert, h2.alert		{color: #000000;}
 }
 
 .icon					{height: 1em;	width: auto;}
-.infobox {
-    border: 1px ridge #383243;
-	background: rgba(40, 40, 60, 0.5);
-	margin: 2px 8px;
-	padding: 8px 12px;
-	max-width: 550px;
-}
 
 .memo					{color: #638500;	text-align: center;}
 .memoedit				{text-align: center;	font-size: 2;}

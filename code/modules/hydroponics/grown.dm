@@ -66,20 +66,23 @@
 /obj/item/reagent_containers/food/snacks/grown/attackby(obj/item/O, mob/user, params)
 	..()
 	if (istype(O, /obj/item/plant_analyzer))
-		var/msg = "<div class='infobox'><span class='info'>This is [icon2html(src, user)] \a <span class='name'>[src]</span>.\n"
+		var/msg = "<span class='info'>This is [icon2html(src, user)] \a <span class='name'>[src]</span>.\n"
 		if(seed)
-			msg += seed.get_analyzer_text()
+			msg += "<hr>[seed.get_analyzer_text()]"
 		var/reag_txt = ""
 		if(seed)
 			for(var/reagent_id in seed.reagents_add)
 				var/datum/reagent/R  = GLOB.chemical_reagents_list[reagent_id]
 				var/amt = reagents.get_reagent_amount(reagent_id)
-				reag_txt += "\n<span class='info'>- [R.name]: [amt]</span>"
+				reag_txt += "\n\t- [R.name]: [amt]"
 
 		if(reag_txt)
-			msg += reag_txt
-		msg += "</span></div>"
-		to_chat(user, msg)
+			if(seed)
+				msg += "\n"
+			msg += "<span class='notice'>- Plant Reagents -</span>"
+			msg += "[span_info(reag_txt)]"
+		msg += "</span>"
+		to_chat(user, examine_block(msg))
 	else
 		if(seed)
 			for(var/datum/plant_gene/trait/T in seed.genes)

@@ -545,29 +545,28 @@
 
 	else if(istype(O, /obj/item/plant_analyzer))
 		var/obj/item/plant_analyzer/P_analyzer = O
-		var/msg = "<div class='infobox'>"
+		var/msg = ""
 		if(myseed)
 			if(P_analyzer.scan_mode == PLANT_SCANMODE_STATS)
-				msg += "*** <B>[myseed.plantname]</B> ***"
-				msg += "\n- Plant Age: <span class='notice'>[age]</span>"
+				msg += "<center><B>[myseed.plantname]</B></center>"
+				msg += "<hr>"
+				msg += "- Plant Age: <span class='notice'>[age]</span>"
 				var/list/text_string = myseed.get_analyzer_text()
 				if(text_string)
 					msg += "\n[text_string]"
 			if(myseed.reagents_add && P_analyzer.scan_mode == PLANT_SCANMODE_CHEMICALS)
 				msg += "\n- <B>Plant Reagents</B> -"
-				msg += "\n*---------*"
 				for(var/datum/plant_gene/reagent/G in myseed.genes)
 					msg += "\n<span class='notice'>- [G.get_name()] -</span>"
-				msg += "\n*---------*"
 		else
 			msg += "<B>No plant found.</B>"
+		msg += "<hr>"
 		msg += "\n- Weed level: <span class='notice'>[weedlevel] / 10</span>"
 		msg += "\n- Pest level: <span class='notice'>[pestlevel] / 10</span>"
 		msg += "\n- Toxicity level: <span class='notice'>[toxic] / 100</span>"
 		msg += "\n- Water level: <span class='notice'>[waterlevel] / [maxwater]</span>"
 		msg += "\n- Nutrition level: <span class='notice'>[reagents.total_volume] / [maxnutri]</span>"
-		msg += "</div>"
-		to_chat(user, msg)
+		to_chat(user, examine_block(msg))
 		return
 
 	else if(istype(O, /obj/item/cultivator))

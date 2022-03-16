@@ -1020,14 +1020,6 @@ em {
   font-size: 2.5em;
 }
 
-.infobox {
-  border: 1px ridge #383243;
-  background: rgba(40, 40, 60, 0.5);
-  margin: 2px 8px;
-  padding: 8px 12px;
-  max-width: 550px;
-}
-
 .memo {
   color: #638500;
   text-align: center;
@@ -1119,4 +1111,19 @@ em {
 
 .ml-3 {
   margin-left: 3em;
+}
+
+.examine_block {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(55, 55, 55, 0.33);
+  margin: 7px 4px;
+  padding: 8px 12px;
+  max-width: 550px;
+}
+
+.examine_block hr {
+  border: none;
+  background: #222;
+  height: 1px;
+  margin: 8px 16px 8px 16px;
 }

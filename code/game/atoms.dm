@@ -494,18 +494,20 @@
 //end changes (yeah the whole proc was modified)
 
 /atom/proc/examine(mob/user)
-	. = list("[get_examine_string(user, TRUE)].")
+	. = list("[get_examine_string(user, TRUE)].[desc ? "<hr>" : null]")
 
 	if(desc)
 		. += desc
 
 	if(custom_materials)
+		. += "<hr>"
 		var/list/materials_list = list()
 		for(var/i in custom_materials)
 			var/datum/material/M = i
 			materials_list += "[M.name]"
 		. += "<u>It is made out of [english_list(materials_list)]</u>."
 	if(reagents)
+		. += "<hr>"
 		if(reagents.reagents_holder_flags & TRANSPARENT)
 			. += "It contains:"
 			if(length(reagents.reagent_list))

@@ -43,10 +43,11 @@
 /mob/living/simple_animal/hostile/clockwork/examine(mob/user)
 	var/t_He = p_they(TRUE)
 	var/t_s = p_s()
-	var/msg = "<div class='infobox'><span class='brass'>This is [icon2html(src, user)] \a <b>[src]</b>!\n"
-	msg += "[desc]\n"
+	var/msg = "<span class='brass'>This is [icon2html(src, user)] \a <b>[src]</b>!\n"
+	if(desc)
+		msg += "<hr>[desc]\n"
 	if(health < maxHealth)
-		msg += "<span class='warning'>"
+		msg += "<hr><span class='warning'>"
 		if(health >= maxHealth/2)
 			msg += "[t_He] look[t_s] slightly dented.\n"
 		else
@@ -54,8 +55,8 @@
 		msg += "</span>"
 	var/addendum = examine_info()
 	if(addendum)
-		msg += "[addendum]\n"
-	msg += "</span></div>"
+		msg += "<hr>[addendum]\n"
+	msg += "</span>"
 
 	return list(msg)
 

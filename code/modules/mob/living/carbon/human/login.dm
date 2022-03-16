@@ -7,7 +7,8 @@
 		return
 
 	var/list/print_msg = list()
-	print_msg += "<div class='infobox'><span class='userdanger'>As you snap back to consciousness, you recall people messing with your stuff...</span>"
+	print_msg += "<span class='userdanger'>As you snap back to consciousness, you recall people messing with your stuff...</span>"
+	print_msg += "<hr>"
 
 	afk_thefts = reverseRange(afk_thefts)
 
@@ -27,7 +28,6 @@
 
 	if(LAZYLEN(afk_thefts) >= AFK_THEFT_MAX_MESSAGES)
 		print_msg += "<span class='warning'>There may have been more, but that's all you can remember...</span>"
-	print_msg += "</div>"
 
-	to_chat(src, print_msg.Join("\n"))
+	to_chat(src, examine_block(print_msg.Join("\n")))
 	LAZYNULL(afk_thefts)

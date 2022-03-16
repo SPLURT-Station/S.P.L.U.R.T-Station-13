@@ -6,7 +6,7 @@
 	var/t_has = p_have()
 	var/t_is = p_are()
 
-	. = list("<div class='infobox'><span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!")
+	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!")
 
 	if (handcuffed)
 		. += "<span class='warning'>[t_He] [t_is] [icon2html(handcuffed, user)] handcuffed!</span>"
@@ -158,7 +158,9 @@
 		. += "<span class='love'>[t_He] [t_is] currently in [gender == MALE ? "rut" : "heat"].</span>"
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
-	. += "</div>"
+
+	if(length(.) > 1)
+		.[1] += "<hr>"
 
 /mob/living/carbon/examine_more(mob/user)
 	if(!all_scars)

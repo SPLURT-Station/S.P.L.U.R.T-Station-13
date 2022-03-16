@@ -592,7 +592,7 @@
 					to_chat(src, "<span class='notice'>You succesfuly remove the durathread strand.</span>")
 					remove_status_effect(STATUS_EFFECT_CHOKINGSTRAND)
 				return
-			var/to_send = "<div class='infobox'>"
+			var/to_send = "<div class='info'>"
 			visible_message("[src] examines [p_them()]self.", "")
 			to_send += "<span class='notice'>You check yourself for injuries.</span>\n"
 
@@ -779,8 +779,7 @@
 			if(roundstart_quirks.len)
 				to_send += "<span class='notice'>You have these quirks: [get_trait_string()].</span>\n"
 
-			to_send += "</div>"
-			to_chat(src, to_send)
+			to_chat(src, examine_block(to_send))
 		else
 			if(wear_suit)
 				wear_suit.add_fingerprint(M)
@@ -794,7 +793,7 @@
 		return
 
 	visible_message("<span class='notice'>[src] examines [p_them()]self.</span>", "")
-	var/output = "<div class='infobox'><span class='notice'>You check yourself for injuries.</span>"
+	var/output = "<span class='notice'>You check yourself for injuries.</span><hr>"
 
 	var/list/missing = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 
@@ -871,8 +870,7 @@
 				output += "\n\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] stuck to your [LB.name]!</a>"
 			else
 				output += "\n\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] embedded in your [LB.name]!</a>"
-	output += "</div>"
-	to_chat(src, output)
+	to_chat(src, examine_block(output))
 
 /mob/living/carbon/human/damage_clothes(damage_amount, damage_type = BRUTE, damage_flag = 0, def_zone)
 	if(damage_type != BRUTE && damage_type != BURN)

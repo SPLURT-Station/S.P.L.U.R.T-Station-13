@@ -1,5 +1,5 @@
 /mob/living/silicon/robot/examine(mob/user)
-	. = list("<div class='infobox'><span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>, a [src.module.name] unit!")
+	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>, a [src.module.name] unit!")
 	if(desc)
 		. += "[desc]"
 
@@ -51,6 +51,9 @@
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, usr, .)
 
-	. += "</span></div>"
+	if(length(.) > 1)
+		.[1] += "\n<br>"
+
+	. += "</span>"
 
 	. += ..()

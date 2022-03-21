@@ -16,3 +16,5 @@
 /datum/outfit/job/warden
 	ears = /obj/item/radio/headset/headset_warden
 	box = /obj/item/storage/box/survival
+	uniform = /obj/item/clothing/under/rank/security/warden/peacekeeper
+	suit = /obj/item/clothing/suit/armor/vest/warden/peacekeeper

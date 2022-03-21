@@ -107,3 +107,52 @@
 	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
 	icon_state = "stubby"
 	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/snouts/mam_snouts/bigmandible // sarcoph @ hyperstation, march 2022
+	name = "Big Mandibles (Hyper)"
+	icon_state = "bigmandible"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	matrixed_sections = MATRIX_RED
+	recommended_species = list("insect")
+
+/datum/sprite_accessory/snouts/mam_snouts/proboscis // sarcoph @ hyperstation, march 2022
+	name = "Proboscis (Hyper)"
+	icon_state = "proboscis"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	matrixed_sections = MATRIX_RED
+	recommended_species = list("insect")
+
+/datum/sprite_accessory/snouts/mam_snouts/rhinobeetle // sarcoph @ hyperstation, march 2022
+	name = "Rhino Beetle (Hyper)"
+	icon_state = "rhinobeetle"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	matrixed_sections = MATRIX_RED
+	recommended_species = list("insect")
+
+/datum/sprite_accessory/snouts/mam_snouts/scarab // sarcoph @ hyperstation, march 2022
+	name = "Scarab Beetle (Hyper)"
+	icon_state = "scarab"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	matrixed_sections = MATRIX_RED
+	recommended_species = list("insect")
+
+/datum/sprite_accessory/snouts/mam_snouts/smallmandible // sarcoph @ hyperstation, march 2022
+	name = "Small Mandibles (Hyper)"
+	icon_state = "smallmandible"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	matrixed_sections = MATRIX_RED
+	recommended_species = list("insect")
+
+/datum/sprite_accessory/snouts/mam_snouts/spider // sarcoph @ hyperstation, march 2022
+	name = "Spider (Hyper)"
+	icon_state = "spider"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	matrixed_sections = MATRIX_RED
+	recommended_species = list("insect")
+
+/datum/sprite_accessory/snouts/mam_snouts/tarantula // sarcoph @ hyperstation, march 2022
+	name = "Tarantula (Hyper)"
+	icon_state = "tarantula"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	matrixed_sections = MATRIX_RED
+	recommended_species = list("insect")

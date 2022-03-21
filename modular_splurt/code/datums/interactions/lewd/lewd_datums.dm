@@ -401,7 +401,7 @@
 	command = "do_boobjob"
 	description = "Give them a boobjob"
 	require_user_breasts = REQUIRE_EXPOSED
-	require_user_penis = REQUIRE_EXPOSED
+	require_target_penis = REQUIRE_EXPOSED
 	interaction_sound = null
 	max_distance = 1
 	write_log_target = "Got a boobjob from"

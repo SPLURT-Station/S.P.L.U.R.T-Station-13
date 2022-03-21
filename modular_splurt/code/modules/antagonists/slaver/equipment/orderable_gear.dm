@@ -90,6 +90,13 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	category = "Advanced"
 	cost = 10000
 
+/datum/slaver_gear/jetpack
+	name = "Jetpack"
+	description = "Back-mounted jetpack for use in zero-gravity environments."
+	build_path = /obj/item/tank/jetpack/oxygen/harness
+	category = "Advanced"
+	cost = 3000
+
 /datum/slaver_gear/riot
 	name = "Riot Kit"
 	description = "Toy L6 SAW with riot darts."
@@ -153,7 +160,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 	description = ".50 cal sniper rifle with sleep-inducing rounds."
 	build_path = /obj/item/storage/backpack/duffelbag/syndie/slaver_marksman
 	category = "Firearms"
-	cost = 40000
+	cost = 50000
 
 /datum/slaver_gear/freedom
 	name = "Freedom Implant"
@@ -171,7 +178,7 @@ GLOBAL_LIST_INIT(slaver_gear, subtypesof(/datum/slaver_gear))
 
 /datum/slaver_gear/implant_teleport
 	name = "Emergency Teleport Implants"
-	description = "Emergency teleport implant x 2."
+	description = "Emergency teleport implant x 2. Once activated, user needs to stand still for 5 seconds, after which they will be teleported from any location back to the slaver hideout. Has only one use."
 	build_path = /obj/item/storage/box/slaver_teleport
 	category = "Implants"
 	cost = 15000

@@ -108,7 +108,7 @@ export const SlaveConsole = (props, context) => {
 
 const SlavePanel = (props, context) => {
   const { slaves } = props;
-  const { act, data } = useBackend(context);
+  const { act } = useBackend(context);
   if (!slaves.length) {
     return (
       <NoticeBox danger>
@@ -239,7 +239,9 @@ const SupplyPanel = (props, context) => {
 };
 
 const RansomPanel = (props, context) => {
+  const { data } = useBackend(context);
   const value_table = props.value_table;
+  const { cargo_credits, ransom_scale_value } = data;
 
   let value_table_converted = [];
 
@@ -271,7 +273,10 @@ const RansomPanel = (props, context) => {
                 {rank_value.rank}
               </Flex.Item>
               <Flex.Item>
-                {formatMoney(rank_value.value, null, true)}cr
+                {formatMoney(
+                  rank_value.value + (rank_value.value
+                    * (cargo_credits / ransom_scale_value))
+                  , null, true)}cr
               </Flex.Item>
             </Flex>
           );

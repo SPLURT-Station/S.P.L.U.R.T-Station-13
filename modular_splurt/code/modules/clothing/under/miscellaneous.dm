@@ -196,3 +196,25 @@
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
 	icon_state = "bridgesecformal"
 	item_state = "bridgesecformal"
+
+/obj/item/clothing/under/cyberpunksleek
+	name = "modern sweater"
+	desc = "A modern-styled sweater typically worn on more urban planets, made with a neo-laminated fiber lining."
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/uniform_digi.dmi'
+	icon_state = "cyberpunksleek"
+	item_state = "cyberpunksleek"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	can_adjust = FALSE
+
+/obj/item/clothing/under/costume/cyberpunksleek/long
+	name = "long modern sweater"
+	desc = "A long modern-styled sweater typically worn on more urban planets, made with a neo-laminated fiber lining."
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/uniform_digi.dmi'
+	icon_state = "cyberpunksleek_long"
+	item_state = "cyberpunksleek_long"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	can_adjust = FALSE

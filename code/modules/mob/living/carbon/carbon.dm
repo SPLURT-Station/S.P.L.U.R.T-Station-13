@@ -1037,23 +1037,7 @@
 	if(href_list[VV_HK_MARTIAL_ART])
 		if(!check_rights(NONE))
 			return
-		var/list/artpaths = subtypesof(/datum/martial_art)
-		var/list/artnames = list()
-		for(var/i in artpaths)
-			var/datum/martial_art/M = i
-			artnames[initial(M.name)] = M
-		var/result = input(usr, "Choose the martial art to teach","JUDO CHOP") as null|anything in artnames
-		if(!usr)
-			return
-		if(QDELETED(src))
-			to_chat(usr, "Mob doesn't exist anymore")
-			return
-		if(result)
-			var/chosenart = artnames[result]
-			var/datum/martial_art/MA = new chosenart
-			MA.teach(src)
-			log_admin("[key_name(usr)] has taught [MA] to [key_name(src)].")
-			message_admins("<span class='notice'>[key_name_admin(usr)] has taught [MA] to [key_name_admin(src)].</span>")
+		usr.client.teach_martial_art(src)
 	if(href_list[VV_HK_GIVE_TRAUMA])
 		if(!check_rights(NONE))
 			return

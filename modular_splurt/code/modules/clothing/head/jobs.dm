@@ -53,3 +53,10 @@
 	item_state = "secmed_helmet"
 	icon = 'modular_splurt/icons/obj/clothing/head.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/head.dmi'
+
+/obj/item/clothing/head/beret/sec/bitch
+	name = "security's bitch beret"
+	desc = "A softer beret with the word 'BITCH' embroidered on it in pink thread."
+	icon = 'modular_splurt/icons/obj/clothing/hats.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/head.dmi'
+	icon_state = "bitchberet"

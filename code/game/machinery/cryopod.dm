@@ -10,7 +10,6 @@
 GLOBAL_LIST_EMPTY(cryopod_computers)
 
 //Main cryopod console.
-
 /obj/machinery/computer/cryopod
 	name = "general oversight console"
 	desc = "An interface between crew and the cryogenic storage/teleporter storage oversight systems."
@@ -143,7 +142,6 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 	///Weakref to our controller
 	var/datum/weakref/control_computer_weakref
-	COOLDOWN_DECLARE(last_no_computer_message)
 
 /obj/machinery/cryopod/Initialize()
 	..()
@@ -151,32 +149,16 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 /obj/machinery/cryopod/LateInitialize()
 	update_icon()
-	find_control_computer()
+	control_computer_weakref = cryo_find_control_computer(src)
 
 // This is not a good situation
 /obj/machinery/cryopod/Destroy()
 	control_computer_weakref = null
 	return ..()
 
-/obj/machinery/cryopod/proc/find_control_computer(urgent = FALSE)
-	for(var/cryo_console as anything in GLOB.cryopod_computers)
-		var/obj/machinery/computer/cryopod/console = cryo_console
-		if(get_area(console) == get_area(src))
-			control_computer_weakref = WEAKREF(console)
-			break
-
-	// Don't send messages unless we *need* the computer, and less than five minutes have passed since last time we messaged
-	if(!control_computer_weakref && urgent && COOLDOWN_FINISHED(src, last_no_computer_message))
-		COOLDOWN_START(src, last_no_computer_message, 5 MINUTES)
-		log_admin("\The [src] in [get_area(src)] could not find control computer!")
-		message_admins("\The [src] in [get_area(src)] could not find control computer!")
-		last_no_computer_message = world.time
-
-	return control_computer_weakref != null
-
 /obj/machinery/cryopod/close_machine(atom/movable/target)
 	if(!control_computer_weakref)
-		find_control_computer(TRUE)
+		control_computer_weakref = cryo_find_control_computer(src, TRUE)
 	if((isnull(target) || isliving(target)) && state_open && !panel_open)
 		..(target)
 		var/mob/living/mob_occupant = occupant
@@ -214,12 +196,11 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 	if(!mob_occupant.client && COOLDOWN_FINISHED(src, despawn_world_time))
 		if(!control_computer_weakref)
-			find_control_computer(urgent = TRUE)
+			control_computer_weakref = cryo_find_control_computer(src, urgent = TRUE)
 
 		despawn_occupant()
 
-/obj/machinery/cryopod/proc/handle_objectives()
-	var/mob/living/mob_occupant = occupant
+/proc/cryo_handle_objectives(mob/living/mob_occupant)
 	// Update any existing objectives involving this mob.
 	for(var/datum/objective/objective in GLOB.objectives)
 		// We don't want revs to get objectives that aren't for heads of staff. Letting
@@ -275,147 +256,6 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		if(istype(item, possible_item.targetitem))
 			return TRUE
 	return FALSE
-
-// This function can not be undone; do not call this unless you are sure
-/obj/machinery/cryopod/proc/despawn_occupant()
-	var/mob/living/mob_occupant = occupant
-	var/list/crew_member = list()
-
-	crew_member["name"] = mob_occupant.real_name
-
-	if(mob_occupant.mind)
-		// Handle job slot/tater cleanup.
-		var/job = mob_occupant.mind.assigned_role
-		crew_member["job"] = job
-		SSjob.FreeRole(job)
-		// if(LAZYLEN(mob_occupant.mind.objectives))
-		// 	mob_occupant.mind.objectives.Cut()
-		mob_occupant.mind.special_role = null
-	else
-		crew_member["job"] = "N/A"
-
-	// Delete them from datacore.
-	var/announce_rank = null
-	for(var/datum/data/record/medical_record as anything in GLOB.data_core.medical)
-		if(medical_record.fields["name"] == mob_occupant.real_name)
-			qdel(medical_record)
-	for(var/datum/data/record/security_record as anything in GLOB.data_core.security)
-		if(security_record.fields["name"] == mob_occupant.real_name)
-			qdel(security_record)
-	for(var/datum/data/record/general_record as anything in GLOB.data_core.general)
-		if(general_record.fields["name"] == mob_occupant.real_name)
-			announce_rank = general_record.fields["rank"]
-			qdel(general_record)
-
-	var/obj/machinery/computer/cryopod/control_computer = control_computer_weakref?.resolve()
-	if(!control_computer)
-		control_computer_weakref = null
-	else
-		control_computer.frozen_crew += list(crew_member)
-
-	// Make an announcement and log the person entering storage.
-	if(GLOB.announcement_systems.len)
-		var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
-		announcer.announce(tele ? "CRYOSTORAGE_TELE" : "CRYOSTORAGE", mob_occupant.real_name, announce_rank, list())
-
-	visible_message(span_notice("\The [src] hums and hisses as it [tele ? "teleports" : "moves"] [mob_occupant.real_name] [tele ? "to centcom" : "into storage"]."))
-	if(tele)
-		do_fake_sparks(2, TRUE, src) // Oh yeah plasmafire time.
-		playsound(src, 'sound/weapons/emitter2.ogg', 25, 1, extrarange = 3, falloff_exponent = 5)
-
-	/* ============================= */
-	var/list/obj/item/storing = list()
-	var/list/obj/item/destroying = list()
-	var/list/obj/item/destroy_later = list()
-	var/drop_to_ground = !istype(control_computer, /obj/machinery/computer/cryopod) || !control_computer.allow_items
-	var/mind_identity = mob_occupant.mind?.name
-	var/occupant_identity = mob_occupant.real_name
-
-	if(iscyborg(mob_occupant))
-		var/mob/living/silicon/robot/R = mob_occupant
-		if(R.mmi?.brain)
-			destroy_later += R.mmi
-			destroy_later += R.mmi.brain
-		for(var/i in R.module)
-			if(!isitem(i))
-				destroying += i
-				continue
-			var/obj/item/I = i
-			// let's be honest we only care about the trash bag don't beat around the bush
-			if(SEND_SIGNAL(I, COMSIG_CONTAINS_STORAGE))
-				storing += I.contents
-				for(var/atom/movable/AM in I.contents)
-					AM.forceMove(src)
-			R.module.remove_module(I, TRUE)
-	else
-		if(ishuman(mob_occupant))
-			var/mob/living/carbon/human/H = mob_occupant
-			if(H.mind && H.client && H.client.prefs && H == H.mind.original_character)
-				H.SaveTCGCards()
-
-		var/list/gear = list()
-		if(iscarbon(mob_occupant))		// sorry simp-le-mobs deserve no mercy
-			var/mob/living/carbon/C = mob_occupant
-			gear = C.get_all_gear()
-
-		for(var/obj/item/item_content as anything in gear)
-			if(!istype(item_content) || HAS_TRAIT(item_content, TRAIT_NODROP))
-				destroying += item_content
-				continue
-			if(item_content.item_flags & (DROPDEL | ABSTRACT))
-				destroying += item_content
-				continue
-
-			// destroying stays in mob for a bit
-			item_content.forceMove(src)
-
-			// WEE WOO SNOWFLAKE TIME
-			if(istype(item_content, /obj/item/pda))
-				var/obj/item/pda/P = item_content
-				if((P.owner == mind_identity) || (P.owner == occupant_identity))
-					destroying += P
-				else
-					storing += P
-			else if(istype(item_content, /obj/item/card/id))
-				var/obj/item/card/id/idcard = item_content
-				if((idcard.registered_name == mind_identity) || (idcard.registered_name == occupant_identity))
-					destroying += idcard
-				else
-					storing += idcard
-			else
-				storing += item_content
-
-	// get rid of mobs
-	for(var/mob/living/L in mob_occupant.GetAllContents() - mob_occupant)
-		L.forceMove(drop_location())
-
-	if(storing.len)
-		var/obj/item/storage/box/blue/cryostorage_items/O = new /obj/item/storage/box/blue/cryostorage_items
-		O.name = "[tele ? "early leave" : "cryogenic"] retrieval package: [mob_occupant.real_name]"
-		O.real_name = mob_occupant.real_name
-		for(var/i in storing)
-			var/obj/item/I = i
-			I.forceMove(O)
-		O.forceMove(drop_to_ground ? control_computer.drop_location() : control_computer)
-		if((control_computer == control_computer) && !drop_to_ground)
-			control_computer.stored_packages += O
-	/* ============================= */
-
-	// Ghost and delete the mob.
-	// they already did ghost verb
-	var/mob/dead/observer/G = mob_occupant.get_ghost(TRUE)
-	if(G)
-		G.voluntary_ghosted = TRUE
-	// they did not ghost verb
-	else
-		mob_occupant.ghostize(FALSE, penalize = TRUE, voluntary = TRUE, cryo = TRUE)
-
-	QDEL_LIST(destroying)
-	handle_objectives()
-	QDEL_NULL(occupant)
-	QDEL_LIST(destroy_later)
-	open_machine()
-	name = initial(name)
 
 /obj/machinery/cryopod/MouseDrop_T(mob/living/target, mob/user)
 	if(!istype(target) || !can_interact(user) || !target.Adjacent(user) || !ismob(target) || isanimal(target) || !istype(user.loc, /turf) || target.buckled)
@@ -502,3 +342,165 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 /obj/item/storage/box/blue/cryostorage_items
 	w_class = WEIGHT_CLASS_HUGE
 	var/real_name = "fire coderbus"
+	occupant
+
+// This function can not be undone; do not call this unless you are sure
+/obj/machinery/cryopod/proc/despawn_occupant()
+	cryoMob(occupant, control_computer_weakref, src, tele, initial(name))
+
+/proc/cryoMob(mob/living/mob_occupant, datum/weakref/control_computer_weakref, obj/machinery/cryopod/pod, is_teleporter, initial_name, effects = FALSE)
+	var/list/crew_member = list()
+
+	// No computer passed in, use admin-cryo instead
+	if (!control_computer_weakref)
+		control_computer_weakref = cryo_find_control_computer(urgent = TRUE)
+
+		if (effects)
+			// Fancy effect for admin-cryo
+			playsound(get_turf(mob_occupant.loc), 'sound/magic/Repulse.ogg', 100, 1)
+			var/datum/effect_system/spark_spread/quantum/sparks = new
+			sparks.set_up(10, 1, mob_occupant)
+			sparks.attach(mob_occupant.loc)
+			sparks.start()
+
+	crew_member["name"] = mob_occupant.real_name
+
+	if(mob_occupant.mind)
+		// Handle job slot/tater cleanup.
+		var/job = mob_occupant.mind.assigned_role
+		crew_member["job"] = job
+		SSjob.FreeRole(job)
+		// if(LAZYLEN(mob_occupant.mind.objectives))
+		// 	mob_occupant.mind.objectives.Cut()
+		mob_occupant.mind.special_role = null
+	else
+		crew_member["job"] = "N/A"
+
+	// Delete them from datacore.
+	var/announce_rank = null
+	for(var/datum/data/record/medical_record as anything in GLOB.data_core.medical)
+		if(medical_record.fields["name"] == mob_occupant.real_name)
+			qdel(medical_record)
+	for(var/datum/data/record/security_record as anything in GLOB.data_core.security)
+		if(security_record.fields["name"] == mob_occupant.real_name)
+			qdel(security_record)
+	for(var/datum/data/record/general_record as anything in GLOB.data_core.general)
+		if(general_record.fields["name"] == mob_occupant.real_name)
+			announce_rank = general_record.fields["rank"]
+			qdel(general_record)
+
+	var/obj/machinery/computer/cryopod/control_computer = control_computer_weakref?.resolve()
+	if(!control_computer)
+		control_computer_weakref = null
+	else
+		control_computer.frozen_crew += list(crew_member)
+
+	// Make an announcement and log the person entering storage.
+	if(GLOB.announcement_systems.len)
+		var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
+		announcer.announce(is_teleporter ? "CRYOSTORAGE_TELE" : "CRYOSTORAGE", mob_occupant.real_name, announce_rank, list())
+
+	if (pod)
+		pod.visible_message(span_notice("\The [pod] hums and hisses as it [is_teleporter ? "teleports" : "moves"] [mob_occupant.real_name] [is_teleporter ? "to centcom" : "into storage"]."))
+		if(is_teleporter)
+			do_fake_sparks(2, TRUE, pod) // Oh yeah plasmafire time.
+			playsound(pod, 'sound/weapons/emitter2.ogg', 25, 1, extrarange = 3, falloff_exponent = 5)
+
+	/* ============================= */
+	var/list/obj/item/storing = list()
+	var/list/obj/item/destroying = list()
+	var/list/obj/item/destroy_later = list()
+	var/drop_to_ground = !istype(control_computer, /obj/machinery/computer/cryopod) || !control_computer.allow_items
+	var/mind_identity = mob_occupant.mind?.name
+	var/occupant_identity = mob_occupant.real_name
+
+	if(iscyborg(mob_occupant))
+		var/mob/living/silicon/robot/R = mob_occupant
+		if(R.mmi?.brain)
+			destroy_later += R.mmi
+			destroy_later += R.mmi.brain
+		for(var/i in R.module)
+			if(!isitem(i))
+				destroying += i
+				continue
+			var/obj/item/I = i
+			// let's be honest we only care about the trash bag don't beat around the bush
+			if(SEND_SIGNAL(I, COMSIG_CONTAINS_STORAGE))
+				storing += I.contents
+				for(var/atom/movable/AM in I.contents)
+					if(pod)
+						AM.forceMove(pod)
+			R.module.remove_module(I, TRUE)
+	else
+		if(ishuman(mob_occupant))
+			var/mob/living/carbon/human/H = mob_occupant
+			if(H.mind && H.client && H.client.prefs && H == H.mind.original_character)
+				H.SaveTCGCards()
+
+		var/list/gear = list()
+		if(iscarbon(mob_occupant))		// sorry simp-le-mobs deserve no mercy
+			var/mob/living/carbon/C = mob_occupant
+			gear = C.get_all_gear()
+
+		for(var/obj/item/item_content as anything in gear)
+			if(!istype(item_content) || HAS_TRAIT(item_content, TRAIT_NODROP))
+				destroying += item_content
+				continue
+			if(item_content.item_flags & (DROPDEL | ABSTRACT))
+				destroying += item_content
+				continue
+
+			// destroying stays in mob for a bit
+			if(pod)
+				item_content.forceMove(pod)
+
+			// WEE WOO SNOWFLAKE TIME
+			if(istype(item_content, /obj/item/pda))
+				var/obj/item/pda/P = item_content
+				if((P.owner == mind_identity) || (P.owner == occupant_identity))
+					destroying += P
+				else
+					storing += P
+			else if(istype(item_content, /obj/item/card/id))
+				var/obj/item/card/id/idcard = item_content
+				if((idcard.registered_name == mind_identity) || (idcard.registered_name == occupant_identity))
+					destroying += idcard
+				else
+					storing += idcard
+			else
+				storing += item_content
+
+	// get rid of mobs
+	if (pod)
+		for(var/mob/living/L in mob_occupant.GetAllContents() - mob_occupant)
+			L.forceMove(pod.drop_location())
+
+	if(storing.len)
+		var/obj/item/storage/box/blue/cryostorage_items/O = new /obj/item/storage/box/blue/cryostorage_items
+		O.name = "[is_teleporter ? "early leave" : "cryogenic"] retrieval package: [mob_occupant.real_name]"
+		O.real_name = mob_occupant.real_name
+		for(var/i in storing)
+			var/obj/item/I = i
+			I.forceMove(O)
+		O.forceMove(drop_to_ground ? control_computer.drop_location() : control_computer)
+		if((control_computer == control_computer) && !drop_to_ground)
+			control_computer.stored_packages += O
+	/* ============================= */
+
+	// Ghost and delete the mob.
+	// they already did ghost verb
+	var/mob/dead/observer/G = mob_occupant.get_ghost(TRUE)
+	if(G)
+		G.voluntary_ghosted = TRUE
+	// they did not ghost verb
+	else
+		mob_occupant.ghostize(FALSE, penalize = TRUE, voluntary = TRUE, cryo = TRUE)
+
+	QDEL_LIST(destroying)
+	cryo_handle_objectives()
+	QDEL_NULL(mob_occupant)
+	QDEL_LIST(destroy_later)
+
+	if (pod)
+		pod.open_machine()
+		pod.name = initial_name

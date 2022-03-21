@@ -1,3 +1,13 @@
+//Main code edits
+/obj/item/clothing/mask/muzzle/attack_hand(mob/user, act_intent, attackchain_flags)
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(src == C.wear_mask)
+			to_chat(user, "<span class='warning'>You need help taking this off!</span>")
+			return
+	..()
+
+//Own stuff
 /obj/item/clothing/mask/rat/kitsune
 	name = "kitsune mask"
 	desc = "A mask made of soft vinyl and latex, representing the head of a mythical kitsune."
@@ -176,3 +186,12 @@
 	build_path = /obj/item/clothing/mask/gas/cbrn/mopp
 	category = list("Armor")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/obj/item/clothing/mask/muzzle/ballgag
+	name = "ball gag"
+	desc = "To stop that awful noise, but lewder."
+	icon = 'modular_splurt/icons/obj/clothing/masks.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/mask.dmi'
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/mask_muzzle.dmi'
+	icon_state = "ballgag"
+	item_state = "ballgag"

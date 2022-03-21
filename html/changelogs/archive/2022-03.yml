@@ -101,3 +101,43 @@
   - bugfix: atmos equalization config now works properly
   kiwilover8:
   - rscadd: Added a gateway to wildwest gateway
+2022-03-19:
+  Crowbar764:
+  - tweak: Slaver improvements
+  - rscadd: Shiny new admin panel
+  - tweak: Switches some admin panels to TGUI
+  The-Sun-In-Splendour:
+  - spellcheck: export scanner description, switch blade order
+  TripleShades:
+  - rscadd: '[Omega] Aix Mixer pipe'
+  - rscadd: '[Omega] Wire to Turbine'
+2022-03-20:
+  BongaTheProto:
+  - rscadd: added Slave Implants
+  - rscadd: added ERT cleanup teams for if someone makes an oopsie with the rbmk
+  - rscadd: added Engislut items
+  - rscadd: added The rest of the slutcurity items from the oldbase (I think)
+  - rscadd: added the HEV suit (funny)
+  - rscadd: added Workout shorts and CitRP fluffy jackets
+  - rscadd: added Ballgags
+  - rscadd: added New hardsuits (may be a little broken)
+  - rscadd: added Cyberpunk sweaters
+  - rscadd: added Corpus outfits
+  - imageadd: added Cat Medibot
+  - rscadd: added Crystalline reentry event (only adminspawn)
+  - rscadd: added Railings and handlrails as mapping resources, ready to be implemented
+  - rscadd: added New body markings and other sprite accessories
+  - rscadd: added Bigmouse and plasmamouse
+  - rscadd: added Psychologist job (FINALLY!!!) It still needs to be properly implemented
+      on the maps too
+  - code_imp: Splits the modular job clothes in their specific files like in the main
+      code
+  - bugfix: Fixes carpentry so you can actually use it
+2022-03-21:
+  Melbert:
+  - bugfix: Balloon alerts sourced on turfs work properly.
+  SandPoot:
+  - bugfix: Miner's Salve no longer permanently allows you to make faster self-surgeries.
+      The TRAIT_PAINKILLER was seemingly not being removed.
+  - code_imp: Moved some files around just for the sake of organization, is not meaningful
+      to player and doesn't change anything.

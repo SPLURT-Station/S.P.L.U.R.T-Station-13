@@ -39,7 +39,7 @@
 		sharpness = SHARP_NONE
 
 /datum/supply_pack/goody/switchblade_single
-	name = "Switch balde Single-Pack"
+	name = "Switch blade Single-Pack"
 	desc = "Contains one sharpened switchblade. Guaranteed to fit snugly inside any Nanotrasen-standard boot."
 	cost = 600
 	contains = list(/obj/item/switchblade)

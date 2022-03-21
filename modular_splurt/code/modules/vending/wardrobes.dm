@@ -20,6 +20,22 @@
 	LAZYADD(products, extra_products)
 	. = ..()
 
+/obj/machinery/vending/wardrobe/engi_wardrobe/Initialize(mapload)
+	var/list/extra_products = list(
+		/obj/item/clothing/under/radkini = 2,
+		/obj/item/clothing/mask/gas/radmask = 2
+	)
+	LAZYADD(products, extra_products)
+	. = ..()
+
+/obj/machinery/vending/wardrobe/law_wardrobe/Initialize(mapload)
+	var/list/extra_products = list(
+		/obj/item/clothing/under/rank/civilian/lawyer/galaxy_blue = 3,
+		/obj/item/clothing/under/rank/civilian/lawyer/galaxy_red = 3
+	)
+	LAZYADD(products, extra_products)
+	. = ..()
+
 /obj/machinery/vending/wardrobe/blueshield_wardrobe
 	name = "\improper BlueDrobe"
 	desc = "A vending machine for blueshield and blueshield-related clothing!"

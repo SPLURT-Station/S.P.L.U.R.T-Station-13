@@ -79,7 +79,7 @@
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
 	matrixed_sections = MATRIX_RED
 
-/datum/sprite_accessory/tails_animated/mam_tails_animated/shorthawk
+/datum/sprite_accessory/tails_animated/mam_tails_animated/shorthawk // sarcoph @ hyperstation, jan 2022
 	name = "Hawk - Short"
 	icon_state = "shorthawk"
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
@@ -91,13 +91,13 @@
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
 	matrixed_sections = MATRIX_RED
 
-/datum/sprite_accessory/tails_animated/mam_tails_animated/longpigeon
+/datum/sprite_accessory/tails_animated/mam_tails_animated/longpigeon // sarcoph @ hyperstation, jan 2022
 	name = "Pigeon - Long"
 	icon_state = "longpigeon"
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
 	matrixed_sections = MATRIX_RED
 
-/datum/sprite_accessory/tails/mam_tails/shortpigeon
+/datum/sprite_accessory/tails/mam_tails/shortpigeon // sarcoph @ hyperstation, jan 2022
 	name = "Pigeon - Short"
 	icon_state = "shortpigeon"
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
@@ -109,7 +109,7 @@
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
 	matrixed_sections = MATRIX_RED
 
-/datum/sprite_accessory/tails/mam_tails/swallow
+/datum/sprite_accessory/tails/mam_tails/swallow // sarcoph @ hyperstation, jan 2022
 	name = "Swallow"
 	icon_state = "swallow"
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
@@ -121,7 +121,7 @@
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
 	matrixed_sections = MATRIX_RED
 
-/datum/sprite_accessory/tails/mam_tails/swallowstripped
+/datum/sprite_accessory/tails/mam_tails/swallowstripped // sarcoph @ hyperstation, jan 2022
 	name = "Swallow - Striped"
 	icon_state = "swallowstriped"
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
@@ -132,6 +132,62 @@
 	icon_state = "swallowstriped"
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
 	matrixed_sections = MATRIX_GREEN_BLUE
+
+/datum/sprite_accessory/tails/mam_tails/bee/hyper // sarcoph @ hyperstation, march 2022
+	name = "Bee (Hyper)"
+	icon_state = "bee"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	recommended_species = list("insect")
+	matrixed_sections = MATRIX_ALL
+
+/datum/sprite_accessory/tails_animated/mam_tails_animated/bee/hyper
+	name = "Bee (Hyper)"
+	icon_state = "bee"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	recommended_species = list("insect")
+	matrixed_sections = MATRIX_ALL
+
+/datum/sprite_accessory/tails/mam_tails/bee2 // sarcoph @ hyperstation, march 2022
+	name = "Bee w/ Stinger (Hyper)"
+	icon_state = "bee2"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	recommended_species = list("insect")
+	matrixed_sections = MATRIX_ALL
+
+/datum/sprite_accessory/tails_animated/mam_tails_animated/bee2
+	name = "Bee w/ Stinger (Hyper)"
+	icon_state = "bee2"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	recommended_species = list("insect")
+	matrixed_sections = MATRIX_ALL
+
+/datum/sprite_accessory/tails/mam_tails/insect // sarcoph @ hyperstation, march 2022
+	name = "Insect (Hyper)"
+	icon_state = "insect"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	recommended_species = list("insect")
+	matrixed_sections = MATRIX_RED
+
+/datum/sprite_accessory/tails_animated/mam_tails_animated/insect
+	name = "Insect (Hyper)"
+	icon_state = "insect"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	recommended_species = list("insect")
+	matrixed_sections = MATRIX_RED
+
+/datum/sprite_accessory/tails/mam_tails/bug2tone // sarcoph @ hyperstation, march 2022
+	name = "Insect - 2-tone (Hyper)"
+	icon_state = "bug2tone"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	recommended_species = list("insect")
+	matrixed_sections = MATRIX_RED_BLUE
+
+/datum/sprite_accessory/tails_animated/mam_tails_animated/bug2tone
+	name = "Insect - 2-tone (Hyper)"
+	icon_state = "bug2tone"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	recommended_species = list("insect")
+	matrixed_sections = MATRIX_RED_BLUE
 
 //Lizard tails
 /datum/sprite_accessory/tails/lizard/tailmaw

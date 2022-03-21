@@ -46,7 +46,6 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/getserverlogs,		/*for accessing server logs*/
 	/client/proc/getcurrentlogs,		/*for accessing server logs for the current round*/
 	/client/proc/cmd_admin_subtle_message,	/*send a message to somebody as a 'voice in their head'*/
-	/client/proc/cmd_admin_headset_message,	/*send a message to somebody through their headset as CentCom*/
 	/client/proc/cmd_admin_delete,		/*delete an instance/object/mob/etc*/
 	/client/proc/cmd_admin_check_contents,	/*displays the contents of an instance*/
 	/client/proc/centcom_podlauncher,/*Open a window to launch a Supplypod and configure it or it's contents*/
@@ -229,8 +228,6 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/datum/admins/proc/set_admin_notice,
 	/client/proc/admin_ghost,
 	/client/proc/toggle_view_range,
-	/client/proc/cmd_admin_subtle_message,
-	/client/proc/cmd_admin_headset_message,
 	/client/proc/cmd_admin_check_contents,
 	/datum/admins/proc/access_news_network,
 	/client/proc/admin_end_shift,
@@ -713,7 +710,8 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	var/type_length = length_char("/obj/effect/proc_holder/spell") + 2
 	for(var/A in GLOB.spells)
 		spell_list[copytext_char("[A]", type_length)] = A
-	var/obj/effect/proc_holder/spell/S = input("Choose the spell to give to that guy", "ABRAKADABRA") as null|anything in sortList(spell_list)
+	var/obj/effect/proc_holder/spell/S = tgui_input_list(usr, "Choose a spell to give", "ABRAKADABRA", sortList(spell_list)) //input("Choose the spell to give to that guy", "ABRAKADABRA") as null|anything in sortList(spell_list)
+
 	if(!S)
 		return
 
@@ -734,7 +732,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	set desc = "Remove a spell from the selected mob."
 
 	if(T?.mind)
-		var/obj/effect/proc_holder/spell/S = input("Choose the spell to remove", "NO ABRAKADABRA") as null|anything in sortList(T.mind.spell_list)
+		var/obj/effect/proc_holder/spell/S = tgui_input_list(usr, "Choose the spell to remove", "NO ABRAKADABRA", sortList(T.mind.spell_list)) // input("Choose the spell to remove", "NO ABRAKADABRA") as null|anything in sortList(T.mind.spell_list)
 		if(S)
 			T.mind.RemoveSpell(S)
 			log_admin("[key_name(usr)] removed the spell [S] from [key_name(T)].")

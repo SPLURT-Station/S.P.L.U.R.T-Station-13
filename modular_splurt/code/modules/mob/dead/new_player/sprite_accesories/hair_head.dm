@@ -11,7 +11,7 @@
 	icon_state = "hair_tailhair"
 
 /datum/sprite_accessory/hair/eros/whor_eee
-	name = "(((Hairfre)))"
+	name = "((((((Hairfre))))))"
 	icon_state = "hair_hairfre"
 
 /datum/sprite_accessory/hair/eros/sidehair

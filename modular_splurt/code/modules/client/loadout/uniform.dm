@@ -23,6 +23,18 @@
 	name = "Latex Catsuit"
 	path = /obj/item/clothing/under/misc/latex_catsuit
 
+/datum/gear/uniform/shorts/redwshort
+	name = "Red workout short"
+	path = /obj/item/clothing/under/shorts/redwshort
+
+/datum/gear/uniform/shorts/yellowwshort
+	name = "Yellow workout short"
+	path = /obj/item/clothing/under/shorts/yellowwshort
+
+/datum/gear/uniform/shorts/pinkwshort
+	name = "Pink workout short"
+	path = /obj/item/clothing/under/shorts/pinkwshort
+
 // Suggestion #151
 /datum/gear/uniform/waiter
 	name = "waiter's outfit"

@@ -445,10 +445,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["no_tetris_storage"]	>> no_tetris_storage
 
 	// Splurt
-	S["be_victim"]			>> be_victim
-	S["disable_combat_cursor"]		>> disable_combat_cursor
+	S["be_victim"]				>> be_victim
+	S["disable_combat_cursor"]	>> disable_combat_cursor
+	S["use_new_playerpanel"]	>> use_new_playerpanel
 	//favorite outfits
-	S["favorite_outfits"]	>> favorite_outfits
+	S["favorite_outfits"]		>> favorite_outfits
 
 	var/list/parsed_favs = list()
 	for(var/typetext in favorite_outfits)
@@ -633,6 +634,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	// Splurt
 	WRITE_FILE(S["be_victim"], be_victim)
 	WRITE_FILE(S["disable_combat_cursor"], disable_combat_cursor)
+	WRITE_FILE(S["use_new_playerpanel"], use_new_playerpanel)
 
 	var/mob/living/carbon/human/H = parent.mob
 	if(istype(H))

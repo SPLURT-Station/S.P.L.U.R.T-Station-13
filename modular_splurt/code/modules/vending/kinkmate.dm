@@ -26,6 +26,10 @@
 		/obj/item/dildo/flared/huge = 3,
 		/obj/item/clothing/neck/petcollar/locked/holo = 2
 	)
+	var/list/extra_premium = list(
+		/obj/item/clothing/mask/muzzle/ballgag = 3
+	)
 	LAZYADD(products, extra_products)
 	LAZYADD(contraband, extra_contraband)
+	LAZYADD(premium, extra_premium)
 	. = ..()

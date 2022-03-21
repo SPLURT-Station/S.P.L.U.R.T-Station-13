@@ -5,7 +5,19 @@
 		/obj/item/clothing/suit/armor/vest/metrocop = 2,
 		/obj/item/clothing/head/helmet/metrocop = 2
 	)
+	var/list/extra_contraband = list(
+		/obj/item/storage/belt/slut = 5,
+		/obj/item/bdsm_whip/ridingcrop = 3,
+		/obj/item/electropack/shockcollar/security = 5,
+		/obj/item/clothing/suit/armor/vest/stripper = 5,
+		/obj/item/clothing/suit/armor/vest/stripper/bikini = 5,
+		/obj/item/clothing/neck/petcollar/locked/security = 5,
+		/obj/item/clothing/mask/gas/sechailer/slut = 5,
+		/obj/item/grenade/secbed = 3,
+		/obj/item/dildo/flared/gigantic = 1
+	)
 	LAZYADD(products, extra_products)
+	LAZYADD(contraband, extra_contraband)
 	. = ..()
 
 /obj/machinery/vending/wardrobe/sec_wardrobe/Initialize()
@@ -13,9 +25,16 @@
 		/obj/item/clothing/under/rank/security/officer/metrocop = 2,
 		/obj/item/clothing/under/rank/security/skirt/slut = 5,
 		/obj/item/clothing/under/rank/security/skirt/slut/pink = 5,
-		/obj/item/clothing/under/rank/security/stripper = 5
+		/obj/item/clothing/under/rank/security/stripper = 5,
+		/obj/item/clothing/suit/hooded/corpus/s = 5
+	)
+	var/list/extra_premium = list(
+		/obj/item/clothing/gloves/latexsleeves/security = 5,
+		/obj/item/clothing/shoes/jackboots/tall = 5,
+		/obj/item/clothing/head/beret/sec/bitch = 5
 	)
 	LAZYADD(products, extra_products)
+	LAZYADD(premium, extra_premium)
 	. = ..()
 
 /obj/structure/closet/secure_closet/brigdoc

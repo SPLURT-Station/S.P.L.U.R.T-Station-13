@@ -1,0 +1,5 @@
+/obj/structure/closet/athletic_mixed/PopulateContents()
+	. = ..()
+	new /obj/item/clothing/under/shorts/redwshort(src)
+	new /obj/item/clothing/under/shorts/yellowwshort(src)
+	new /obj/item/clothing/under/shorts/pinkwshort(src)

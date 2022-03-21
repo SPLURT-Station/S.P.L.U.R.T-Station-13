@@ -953,12 +953,14 @@
 			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=bloodsucker;jobban4=[REF(M)]'><font color=red>Bloodsucker</font></a></td>"
 		else
 			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=bloodsucker;jobban4=[REF(M)]'>Bloodsucker</a></td>"
+
+		dat += "</tr><tr align='center'>" //So things dont get squished.
+
 		//Slave Trader
 		if(jobban_isbanned(M, ROLE_SLAVER) || isbanned_dept)
 			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=slaver;jobban4=[REF(M)]'><font color=red>Slaver</font></a></td>"
 		else
 			dat += "<td width='20%'><a href='?src=[REF(src)];[HrefToken()];jobban3=slaver;jobban4=[REF(M)]'>Slaver</a></td>"
-
 
 	//Other Roles (black)
 		dat += "<table cellpadding='1' cellspacing='0' width='100%'>"
@@ -2050,21 +2052,15 @@
 			return
 
 		var/mob/M = locate(href_list["CentComReply"])
-		usr.client.admin_headset_message(M, RADIO_CHANNEL_CENTCOM)
+		usr.client.cmd_admin_subtle_headset_message(M, RADIO_CHANNEL_CENTCOM)
 
 	else if(href_list["SyndicateReply"])
 		if(!check_rights(R_ADMIN))
 			return
 
 		var/mob/M = locate(href_list["SyndicateReply"])
-		usr.client.admin_headset_message(M, RADIO_CHANNEL_SYNDICATE)
+		usr.client.cmd_admin_subtle_headset_message(M, RADIO_CHANNEL_SYNDICATE)
 
-	else if(href_list["HeadsetMessage"])
-		if(!check_rights(R_ADMIN))
-			return
-
-		var/mob/M = locate(href_list["HeadsetMessage"])
-		usr.client.admin_headset_message(M)
 //ambition start
 	else if(href_list["ObjectiveRequest"])
 		if(!check_rights(R_ADMIN))
@@ -2125,7 +2121,7 @@
 			return
 
 		var/mob/M = locate(href_list["subtlemessage"])
-		usr.client.cmd_admin_subtle_message(M)
+		usr.client.cmd_admin_subtle_headset_message(M)
 
 	else if(href_list["individuallog"])
 		if(!check_rights(R_ADMIN))

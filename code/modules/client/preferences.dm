@@ -97,6 +97,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/preferred_map = null
 	var/preferred_chaos = null
 	var/be_victim = null
+	var/use_new_playerpanel = FALSE
 	var/disable_combat_cursor = FALSE
 	var/pda_style = MONO
 	var/pda_color = "#808000"
@@ -1037,7 +1038,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<b>Adminhelp Sounds:</b> <a href='?_src_=prefs;preference=hear_adminhelps'>[(toggles & SOUND_ADMINHELP)?"Enabled":"Disabled"]</a><br>"
 				dat += "<b>Announce Login:</b> <a href='?_src_=prefs;preference=announce_login'>[(toggles & ANNOUNCE_LOGIN)?"Enabled":"Disabled"]</a><br>"
 				dat += "<br>"
-				dat += "<b>Combo HUD Lighting:</b> <a href = '?_src_=prefs;preference=combohud_lighting'>[(toggles & COMBOHUD_LIGHTING)?"Full-bright":"No Change"]</a><br>" // sandstorm end - moves admins prefs to the right
+				dat += "<b>Combo HUD Lighting:</b> <a href='?_src_=prefs;preference=combohud_lighting'>[(toggles & COMBOHUD_LIGHTING)?"Full-bright":"No Change"]</a><br>"
+				dat += "<b>Use Modern Player Panel:</b> <a href='?_src_=prefs;preference=use_new_playerpanel'>[use_new_playerpanel ? "Yes" : "No"]</a><br>" // sandstorm end - moves admins prefs to the right
 
 			dat += "<h2>Citadel Preferences</h2>" //Because fuck me if preferences can't be fucking modularized and expected to update in a reasonable timeframe.
 			dat += "<b>Widescreen:</b> <a href='?_src_=prefs;preference=widescreenpref'>[widescreenpref ? "Enabled ([CONFIG_GET(string/default_view)])" : "Disabled (15x15)"]</a><br>"
@@ -3181,6 +3183,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					toggles ^= ANNOUNCE_LOGIN
 				if("combohud_lighting")
 					toggles ^= COMBOHUD_LIGHTING
+				if("use_new_playerpanel")
+					use_new_playerpanel = !use_new_playerpanel
 
 				if("be_special")
 					var/be_special_type = href_list["be_special_type"]

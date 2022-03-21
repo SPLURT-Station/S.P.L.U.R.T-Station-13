@@ -16007,6 +16007,13 @@
 /area/hallway/secondary/exit)
 "aEg" = (
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/components/trinary/mixer/airmix/flipped/inverse{
+	dir = 4;
+	name = "air mixer"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "aEh" = (
@@ -22980,7 +22987,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/structure/closet/secure_closet/engineering_electrical,
 /turf/open/floor/engine,
 /area/engineering/main)
 "aQU" = (
@@ -23823,9 +23829,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/obj/structure/sign/warning/vacuum/external{
-	pixel_x = -32
-	},
+/obj/structure/closet/secure_closet/engineering_electrical,
 /turf/open/floor/engine,
 /area/engineering/main)
 "aSQ" = (
@@ -41421,7 +41425,7 @@
 /area/engineering/gravity_generator)
 "wkG" = (
 /obj/structure/lattice/catwalk,
-/turf/open/floor/plating/airless,
+/turf/open/space/basic,
 /area/space/nearstation)
 "wkO" = (
 /obj/structure/cable/white{

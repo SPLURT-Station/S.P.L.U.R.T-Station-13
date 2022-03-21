@@ -17,3 +17,8 @@
 	..()
 	GLOB.slaver_leader_start += loc
 	return INITIALIZE_HINT_QDEL
+
+/obj/effect/landmark/start/psychologist
+	name = "Psychologist"
+	icon = 'modular_splurt/icons/mob/landmarks.dmi'
+	icon_state = "Psychologist"

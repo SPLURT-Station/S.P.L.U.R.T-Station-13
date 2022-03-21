@@ -39,3 +39,28 @@
 
 /datum/gear/suit/trekmedscimod
 	restricted_roles = list("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Paramedic","Geneticist","Research Director","Scientist", "Roboticist", "Brig Physician")
+
+/datum/gear/suit/jacketyellow
+	name = "Yellow Jacket"
+	path = /obj/item/clothing/suit/toggle/rp_jacket
+	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
+
+/datum/gear/suit/jacketorange
+	name = "Orange Jacket"
+	path = /obj/item/clothing/suit/toggle/rp_jacket/orange
+	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
+
+/datum/gear/suit/jacketred
+	name = "Red Jacket"
+	path = /obj/item/clothing/suit/toggle/rp_jacket/red
+	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
+
+/datum/gear/suit/jacketpurple
+	name = "Purple Jacket"
+	path = /obj/item/clothing/suit/toggle/rp_jacket/purple
+	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
+
+/datum/gear/suit/jacketwhite
+	name = "White Jacket"
+	path = /obj/item/clothing/suit/toggle/rp_jacket/white
+	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS

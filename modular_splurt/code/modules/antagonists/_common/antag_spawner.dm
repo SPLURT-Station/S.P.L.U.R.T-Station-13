@@ -59,6 +59,8 @@
 		else
 			R = new /mob/living/silicon/robot/modules/slaver(T)
 
+	R.radio = new /obj/item/radio/borg/syndicate(R)
+
 	var/brainopsname = C.prefs.real_name
 
 	R.mmi.name = "Man-Machine Interface: [brainopsname]"
@@ -73,3 +75,9 @@
 	new_borg.send_to_spawnpoint = FALSE
 	R.mind.add_antag_datum(new_borg,creator_slaver.slaver_team)
 	R.mind.special_role = "Slaver Cyborg"
+	R.grant_language(/datum/language/codespeak, TRUE, TRUE)
+
+	var/newName = sanitize_name(stripped_input(R, "Enter new robot name", "Cyborg Reclassification", "Cyborg", MAX_NAME_LEN))
+	if (newName)
+		R.custom_name = newName
+		R.updatename()

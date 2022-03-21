@@ -43,8 +43,11 @@
 			var/automatic_ransom_value = GLOB.slavers_ransom_values[M.job]
 			if (automatic_ransom_value)
 				station_rank = M.job
-				setPrice(automatic_ransom_value)
 
+				var/datum/bank_account/bank = SSeconomy.get_dep_account(ACCOUNT_CAR)
+				automatic_ransom_value += automatic_ransom_value * (bank.account_balance / SLAVER_RANSOM_SCALE_VALUE) // Slave price scales with station credit balance (+100% per 1,000,000 credits in the cargo budget)
+
+				setPrice(automatic_ransom_value)
 
 /obj/item/electropack/shockcollar/slave/proc/setPrice(newPrice)
 	var/mob/living/M = loc

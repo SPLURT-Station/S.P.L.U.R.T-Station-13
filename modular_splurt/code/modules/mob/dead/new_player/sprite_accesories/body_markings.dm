@@ -58,3 +58,8 @@
 	icon_state = "bug3tone"
 	recommended_species = list("insect")
 	covered_limbs = list("Chest" = MATRIX_GREEN_BLUE)
+//splurt changes
+/datum/sprite_accessory/mam_body_markings/eros/gloss
+	name = "Body Gloss"
+	icon_state = "gloss"
+	covered_limbs = list("Chest" = MATRIX_RED)

@@ -11979,10 +11979,6 @@
 	pixel_x = -5;
 	pixel_y = 6
 	},
-/obj/item/radio/off{
-	pixel_x = 6;
-	pixel_y = 4
-	},
 /obj/machinery/newscaster{
 	pixel_x = 30
 	},
@@ -13211,10 +13207,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
-"eDr" = (
-/obj/structure/dresser,
-/turf/open/floor/carpet,
-/area/command/blueshielquarters)
 "eEf" = (
 /obj/machinery/navbeacon{
 	codes_txt = "delivery;dir=2";
@@ -14035,6 +14027,15 @@
 "eRR" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
+	},
+/obj/structure/table/wood,
+/obj/item/radio/off{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/radio/off,
+/obj/item/radio/off{
+	pixel_y = 4
 	},
 /turf/open/floor/carpet,
 /area/command/blueshielquarters)
@@ -16270,6 +16271,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
+/obj/effect/landmark/start/blueshield,
 /turf/open/floor/plasteel/dark,
 /area/command/blueshieldoffice)
 "fEZ" = (
@@ -17331,7 +17333,11 @@
 	pixel_x = -2;
 	pixel_y = -1
 	},
-/obj/item/multitool,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = -2;
+	pixel_y = -1
+	},
 /turf/open/floor/wood,
 /area/command/blueshieldoffice)
 "fVN" = (
@@ -35392,11 +35398,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
-"mnp" = (
-/obj/structure/bed/double,
-/obj/item/bedsheet/blue/double,
-/turf/open/floor/carpet,
-/area/command/blueshielquarters)
 "mnD" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating/asteroid/snow{
@@ -54125,13 +54126,6 @@
 /area/engineering/storage/tech)
 "sTk" = (
 /obj/structure/closet/secure_closet/blueshield,
-/obj/item/storage/firstaid/brute{
-	pixel_x = 5
-	},
-/obj/item/storage/firstaid/fire,
-/obj/item/storage/firstaid/toxin{
-	pixel_x = -5
-	},
 /turf/open/floor/carpet,
 /area/command/blueshielquarters)
 "sTw" = (
@@ -106529,8 +106523,8 @@ roA
 roA
 wbA
 sTk
-eDr
-mnp
+sTk
+sTk
 wbA
 fJb
 fYY

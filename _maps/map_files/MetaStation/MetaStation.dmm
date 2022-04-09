@@ -18745,10 +18745,6 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "bwG" = (
-/obj/machinery/door/airlock/command{
-	name = "Emergency Escape";
-	req_access_txt = "20"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -18760,6 +18756,10 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
+	},
+/obj/machinery/door/airlock/command{
+	name = "Captain's Quarters";
+	req_one_access_txt = "20;72"
 	},
 /turf/open/floor/plating,
 /area/maintenance/central)
@@ -31184,7 +31184,7 @@
 	},
 /obj/machinery/door/airlock/maintenance{
 	name = "CMO Maintenance";
-	req_access_txt = "40"
+	req_one_access_txt = "40;72"
 	},
 /turf/open/floor/plating,
 /area/maintenance/aft)
@@ -47114,6 +47114,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
 /area/cargo/storage)
+<<<<<<< Updated upstream
+=======
+"dpj" = (
+/obj/effect/landmark/start/blueshield,
+/turf/open/floor/wood,
+/area/command/blueshieldoffice)
+>>>>>>> Stashed changes
 "dpk" = (
 /obj/item/cigbutt,
 /turf/open/floor/plating,
@@ -51730,6 +51737,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/gravity_generator)
+<<<<<<< Updated upstream
+=======
+"fuw" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/effect/landmark/start/blueshield,
+/turf/open/floor/wood,
+/area/command/blueshieldoffice)
+>>>>>>> Stashed changes
 "fuH" = (
 /obj/structure/sign/warning/securearea{
 	pixel_y = 32
@@ -52517,6 +52532,13 @@
 	},
 /turf/open/floor/plating,
 /area/cargo/storage)
+<<<<<<< Updated upstream
+=======
+"fUg" = (
+/obj/machinery/vending/wardrobe/blueshield_wardrobe,
+/turf/open/floor/wood,
+/area/command/blueshieldoffice)
+>>>>>>> Stashed changes
 "fUl" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -53661,6 +53683,19 @@
 	},
 /turf/open/floor/plating,
 /area/command/heads_quarters/ce)
+<<<<<<< Updated upstream
+=======
+"gzI" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/item/radio/intercom{
+	pixel_x = -29
+	},
+/obj/structure/closet/secure_closet/blueshield,
+/turf/open/floor/wood,
+/area/command/blueshieldoffice)
+>>>>>>> Stashed changes
 "gzN" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
@@ -54313,15 +54348,15 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/airlock/command{
-	name = "Head of Security's Office";
-	req_access_txt = "58"
-	},
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
+	},
+/obj/machinery/door/airlock/command{
+	name = "Head of Security's Office";
+	req_one_access_txt = "58;72"
 	},
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
@@ -55579,6 +55614,18 @@
 	},
 /turf/open/floor/carpet,
 /area/command/heads_quarters/captain/private)
+<<<<<<< Updated upstream
+=======
+"hFA" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/command/blueshieldoffice)
+>>>>>>> Stashed changes
 "hFD" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -55934,15 +55981,15 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/command{
-	name = "Head of Personnel";
-	req_access_txt = "57"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/door/airlock/command{
+	name = "Head of Personnel";
+	req_one_access_txt = "57;72"
 	},
 /turf/open/floor/wood,
 /area/command/heads_quarters/hop)
@@ -56243,7 +56290,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
 	name = "Quartermaster";
-	req_access_txt = "41"
+	req_one_access_txt = "41;72"
 	},
 /turf/open/floor/plasteel,
 /area/cargo/qm)
@@ -57722,6 +57769,26 @@
 	},
 /turf/open/floor/plasteel,
 /area/cargo/office)
+<<<<<<< Updated upstream
+=======
+"iNz" = (
+/obj/machinery/door/airlock/maintenance{
+	req_one_access_txt = "12;27;37;76"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plating,
+/area/maintenance/port)
+"iNF" = (
+/obj/structure/chair/office/dark{
+	dir = 8
+	},
+/obj/effect/landmark/start/blueshield,
+/turf/open/floor/carpet,
+/area/command/blueshieldoffice)
+>>>>>>> Stashed changes
 "iNR" = (
 /obj/machinery/airalarm{
 	dir = 8;
@@ -57748,7 +57815,7 @@
 /obj/machinery/door/window{
 	dir = 1;
 	name = "Captain's Bedroom";
-	req_access_txt = "20"
+	req_one_access_txt = "20;72"
 	},
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain/private)
@@ -58970,7 +59037,8 @@
 "jyl" = (
 /obj/machinery/door/window{
 	name = "Captain's Desk";
-	req_access_txt = "20"
+	req_access_txt = "0";
+	req_one_access_txt = "20;72"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -59383,7 +59451,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
 	name = "Head of Personnel";
-	req_access_txt = "57"
+	req_one_access_txt = "57;72"
 	},
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/hop)
@@ -60450,6 +60518,23 @@
 	dir = 5
 	},
 /area/command/heads_quarters/rd)
+<<<<<<< Updated upstream
+=======
+"kno" = (
+/obj/structure/table/wood,
+/obj/machinery/recharger,
+/obj/item/radio/off{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/radio/off,
+/obj/item/radio/off{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/turf/open/floor/wood,
+/area/command/blueshieldoffice)
+>>>>>>> Stashed changes
 "knM" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 5
@@ -60606,6 +60691,27 @@
 	},
 /turf/open/floor/carpet,
 /area/commons/dorms)
+<<<<<<< Updated upstream
+=======
+"kuo" = (
+/obj/structure/table/wood,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/item/radio/intercom{
+	pixel_x = -29
+	},
+/obj/item/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/turf/open/floor/wood,
+/area/command/blueshieldoffice)
+>>>>>>> Stashed changes
 "kuG" = (
 /obj/structure/sign/map/left{
 	desc = "A framed picture of the station. Clockwise from security at the top (red), you see engineering (yellow), science (purple), escape (red and white), medbay (green), arrivals (blue and white), and finally cargo (brown).";
@@ -62225,7 +62331,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
 	name = "Research Director's Office";
-	req_access_txt = "30"
+	req_one_access_txt = "30;72"
 	},
 /turf/open/floor/plasteel/cafeteria{
 	dir = 5
@@ -63631,7 +63737,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/door/airlock/command{
 	name = "Chief Engineer's Office";
-	req_access_txt = "56"
+	req_one_access_txt = "56;72"
 	},
 /obj/effect/turf_decal/bot{
 	dir = 1
@@ -64937,6 +65043,15 @@
 	dir = 5
 	},
 /area/service/kitchen)
+<<<<<<< Updated upstream
+=======
+"mGP" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white,
+/area/command/blueshieldoffice)
+>>>>>>> Stashed changes
 "mGQ" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 8
@@ -66115,9 +66230,12 @@
 	},
 /turf/open/floor/grass,
 /area/service/hydroponics/garden)
+<<<<<<< Updated upstream
 "nui" = (
 /turf/closed/wall,
 /area/command/blueshielquarters)
+=======
+>>>>>>> Stashed changes
 "nvq" = (
 /obj/effect/landmark/start/lawyer,
 /obj/structure/chair/office/dark{
@@ -69795,6 +69913,16 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel,
 /area/commons/storage/primary)
+<<<<<<< Updated upstream
+=======
+"prs" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/effect/landmark/start/blueshield,
+/turf/open/floor/wood,
+/area/command/blueshieldoffice)
+>>>>>>> Stashed changes
 "prS" = (
 /obj/structure/chair,
 /turf/open/floor/plasteel/grimy,
@@ -70872,6 +71000,16 @@
 	dir = 1
 	},
 /area/engineering/main)
+<<<<<<< Updated upstream
+=======
+"pUz" = (
+/obj/structure/curtain,
+/obj/machinery/shower{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white,
+/area/command/blueshieldoffice)
+>>>>>>> Stashed changes
 "pUB" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/heater/on,
 /obj/effect/turf_decal/tile/yellow{
@@ -71633,6 +71771,17 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/command/storage/eva)
+<<<<<<< Updated upstream
+=======
+"qpq" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/command{
+	name = "Blueshield's Quarters";
+	req_access_txt = "72"
+	},
+/turf/open/floor/wood,
+/area/command/blueshieldoffice)
+>>>>>>> Stashed changes
 "qpG" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -73442,7 +73591,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
 	name = "Captain's Quarters";
-	req_access_txt = "20"
+	req_one_access_txt = "20;72"
 	},
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/captain/private)
@@ -75047,6 +75196,18 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/circuit)
+<<<<<<< Updated upstream
+=======
+"sdo" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/maintenance{
+	name = "Blueshield's Office Maintenance";
+	req_access_txt = "72"
+	},
+/turf/open/floor/plating,
+/area/command/blueshieldoffice)
+>>>>>>> Stashed changes
 "sdw" = (
 /obj/structure/window/reinforced,
 /turf/open/space,
@@ -77155,6 +77316,16 @@
 /obj/machinery/shieldgen,
 /turf/open/floor/plating,
 /area/engineering/main)
+<<<<<<< Updated upstream
+=======
+"tjI" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/blueshield,
+/turf/open/floor/wood,
+/area/command/blueshieldoffice)
+>>>>>>> Stashed changes
 "tjW" = (
 /turf/closed/wall,
 /area/cargo/qm)
@@ -81102,12 +81273,12 @@
 /turf/open/floor/plasteel,
 /area/engineering/break_room)
 "vCg" = (
-/obj/machinery/door/airlock/command{
-	name = "Captain's Quarters";
-	req_access_txt = "20"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/command{
+	name = "Captain's Quarters";
+	req_one_access_txt = "20;72"
+	},
 /turf/open/floor/carpet,
 /area/command/heads_quarters/captain/private)
 "vCh" = (
@@ -81230,7 +81401,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
 	name = "Chief Medical Officer's Office";
-	req_access_txt = "40"
+	req_one_access_txt = "40;72"
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -82524,6 +82695,17 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/command/bridge)
+<<<<<<< Updated upstream
+=======
+"wqq" = (
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -22
+	},
+/obj/structure/closet/secure_closet/blueshield,
+/turf/open/floor/wood,
+/area/command/blueshieldoffice)
+>>>>>>> Stashed changes
 "wqs" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -83238,6 +83420,15 @@
 /obj/structure/sign/warning/securearea,
 /turf/closed/wall/r_wall,
 /area/ai_monitored/command/nuke_storage)
+<<<<<<< Updated upstream
+=======
+"wHi" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/command/blueshieldoffice)
+>>>>>>> Stashed changes
 "wHw" = (
 /obj/machinery/door/poddoor/shutters{
 	id = "visitation";
@@ -83700,6 +83891,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/cargo/sorting)
+<<<<<<< Updated upstream
+=======
+"wUT" = (
+/obj/structure/sign/poster/official/random{
+	pixel_y = -32
+	},
+/turf/open/floor/wood,
+/area/command/blueshieldoffice)
+>>>>>>> Stashed changes
 "wVf" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -85366,6 +85566,21 @@
 	},
 /turf/open/floor/plasteel,
 /area/commons/locker)
+<<<<<<< Updated upstream
+=======
+"xLG" = (
+/obj/structure/sink{
+	pixel_y = 25
+	},
+/obj/structure/mirror{
+	pixel_y = 32
+	},
+/obj/structure/toilet/secret/low_loot{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white,
+/area/command/blueshieldoffice)
+>>>>>>> Stashed changes
 "xLL" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -100921,6 +101136,7 @@ bHM
 ajs
 jBe
 pHS
+<<<<<<< Updated upstream
 xZU
 xZU
 xZU
@@ -100932,6 +101148,19 @@ nui
 nui
 nui
 nui
+=======
+lLW
+lLW
+lLW
+lLW
+lLW
+lLW
+lLW
+lLW
+lLW
+lLW
+lLW
+>>>>>>> Stashed changes
 alC
 mEe
 alK
@@ -101178,6 +101407,7 @@ ahT
 bKX
 jPu
 rbE
+<<<<<<< Updated upstream
 glF
 sUF
 mUk
@@ -101190,6 +101420,20 @@ sup
 uoE
 nui
 srv
+=======
+uGF
+lGQ
+kuo
+iYs
+kno
+cLW
+gzI
+wqq
+tjI
+fUg
+lLW
+hVT
+>>>>>>> Stashed changes
 bSq
 bTr
 bUQ
@@ -101435,6 +101679,7 @@ puI
 aeD
 kQP
 rNX
+<<<<<<< Updated upstream
 xZU
 sAa
 wdR
@@ -101446,6 +101691,19 @@ jif
 ljq
 nwY
 nui
+=======
+lLW
+opS
+uhb
+fuw
+uhb
+uhb
+hFA
+cLW
+cLW
+wUT
+lLW
+>>>>>>> Stashed changes
 auF
 bSo
 alK
@@ -101692,6 +101950,7 @@ ahT
 bKX
 aju
 syk
+<<<<<<< Updated upstream
 nhx
 iRf
 huK
@@ -101704,6 +101963,20 @@ nui
 nui
 nui
 kcJ
+=======
+snw
+xuf
+cLW
+cLW
+cLW
+cLW
+prs
+dpj
+dpj
+cLW
+lLW
+kAV
+>>>>>>> Stashed changes
 bSo
 alK
 bUR
@@ -101949,6 +102222,7 @@ aiW
 dig
 amv
 wlH
+<<<<<<< Updated upstream
 xZU
 rmq
 jct
@@ -101960,6 +102234,19 @@ aCO
 guF
 aCO
 kcz
+=======
+lLW
+gKv
+kfD
+fli
+vNs
+gwV
+wHi
+gwV
+gwV
+gwV
+sdo
+>>>>>>> Stashed changes
 bRd
 ghM
 alK
@@ -102206,6 +102493,7 @@ baE
 baE
 bqd
 xfI
+<<<<<<< Updated upstream
 xZU
 jBY
 jws
@@ -102218,6 +102506,20 @@ lqC
 nui
 nui
 xGX
+=======
+lLW
+qJH
+iNF
+nlf
+tog
+eez
+lLW
+lLW
+qpq
+lLW
+lLW
+lKb
+>>>>>>> Stashed changes
 xDn
 aSO
 srJ
@@ -102463,6 +102765,7 @@ bJp
 eiS
 jBe
 xmb
+<<<<<<< Updated upstream
 xZU
 hgq
 wHX
@@ -102474,6 +102777,19 @@ etp
 uUA
 etN
 nui
+=======
+lLW
+kTW
+ccC
+mdr
+cLW
+kVS
+lLW
+xLG
+mGP
+pUz
+lLW
+>>>>>>> Stashed changes
 aqO
 bSt
 dux
@@ -102720,6 +103036,7 @@ bsu
 btY
 maP
 xLL
+<<<<<<< Updated upstream
 xZU
 xZU
 xZU
@@ -102731,6 +103048,19 @@ nui
 nui
 nui
 nui
+=======
+lLW
+lLW
+lLW
+lLW
+lLW
+lLW
+lLW
+lLW
+voq
+lLW
+lLW
+>>>>>>> Stashed changes
 alK
 bSo
 dux

@@ -51702,10 +51702,13 @@
 	pixel_y = 23
 	},
 /obj/structure/table/wood,
-/obj/machinery/recharger,
-/obj/item/radio/off{
+/obj/machinery/recharger{
 	pixel_x = 6;
-	pixel_y = 4
+	pixel_y = 3
+	},
+/obj/machinery/recharger{
+	pixel_x = -6;
+	pixel_y = 3
 	},
 /turf/open/floor/carpet,
 /area/command/blueshieldoffice)
@@ -52859,16 +52862,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel/dark,
 /area/security/execution/transfer)
-"eLI" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/airalarm{
-	pixel_y = 23
-	},
-/obj/structure/closet/secure_closet/blueshield,
-/turf/open/floor/carpet,
-/area/command/blueshielquarters)
 "eLK" = (
 /obj/machinery/chem_master/condimaster{
 	name = "CondiMaster Neo"
@@ -53796,11 +53789,9 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/service/kitchen)
 "fLu" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/carpet,
-/area/command/blueshielquarters)
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/closed/wall,
+/area/command/blueshieldoffice)
 "fLN" = (
 /obj/machinery/chem_dispenser/drinks/beer{
 	dir = 1
@@ -53935,15 +53926,9 @@
 /area/hallway/primary/central)
 "fUa" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on,
-/obj/structure/mirror{
-	pixel_y = 32
-	},
-/obj/structure/sink{
-	pixel_y = 25
-	},
 /obj/effect/landmark/start/blueshield,
 /turf/open/floor/carpet,
-/area/command/blueshielquarters)
+/area/command/blueshieldoffice)
 "fWi" = (
 /obj/structure/sign/poster/contraband/robust_softdrinks{
 	pixel_y = 32
@@ -55298,18 +55283,20 @@
 	icon_state = "0-2"
 	},
 /obj/structure/table/wood,
-/obj/item/storage/firstaid/brute{
-	pixel_x = 5
-	},
-/obj/item/storage/firstaid/fire,
-/obj/item/storage/firstaid/toxin{
-	pixel_x = -5
-	},
 /obj/machinery/power/apc{
 	areastring = "/area/security/brig";
 	dir = 1;
 	name = "Blueshield's Office APC";
 	pixel_y = 23
+	},
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = -2;
+	pixel_y = -1
+	},
+/obj/item/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = -2;
+	pixel_y = -1
 	},
 /turf/open/floor/carpet,
 /area/command/blueshieldoffice)
@@ -55636,8 +55623,8 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
 	},
-/turf/closed/wall,
-/area/command/blueshielquarters)
+/turf/open/floor/carpet,
+/area/command/blueshieldoffice)
 "itD" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -56320,9 +56307,11 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/service/kitchen)
 "juS" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/closed/wall,
-/area/command/blueshielquarters)
+/area/command/blueshieldoffice)
 "jvd" = (
 /obj/structure/closet/athletic_mixed,
 /turf/open/floor/plasteel,
@@ -56498,11 +56487,17 @@
 	pixel_y = 20
 	},
 /obj/structure/table/wood,
-/obj/item/storage/toolbox/mechanical{
-	pixel_x = -2;
-	pixel_y = -1
+/obj/item/radio/off{
+	pixel_x = -6;
+	pixel_y = 4
 	},
-/obj/item/multitool,
+/obj/item/radio/off{
+	pixel_y = 4
+	},
+/obj/item/radio/off{
+	pixel_x = 6;
+	pixel_y = 4
+	},
 /turf/open/floor/carpet,
 /area/command/blueshieldoffice)
 "jDZ" = (
@@ -58960,14 +58955,6 @@
 /obj/item/reagent_containers/glass/beaker,
 /turf/open/floor/plating,
 /area/maintenance/bar)
-"mrm" = (
-/obj/structure/bed/double,
-/obj/item/bedsheet/blue/double,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/carpet,
-/area/command/blueshielquarters)
 "mrR" = (
 /obj/effect/spawner/lootdrop/keg,
 /turf/open/floor/wood,
@@ -61249,14 +61236,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
-"pHR" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/command{
-	name = "Blueshield's Quarters";
-	req_access_txt = "72"
-	},
-/turf/open/floor/carpet,
-/area/command/blueshielquarters)
 "pIR" = (
 /obj/structure/table,
 /obj/item/storage/box/handcuffs{
@@ -63158,8 +63137,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/closed/wall,
-/area/command/blueshielquarters)
+/obj/structure/closet/secure_closet/blueshield,
+/turf/open/floor/carpet,
+/area/command/blueshieldoffice)
 "sjW" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -63745,8 +63725,8 @@
 /area/security/prison/cells)
 "tcJ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/closed/wall,
-/area/command/blueshielquarters)
+/turf/open/floor/carpet,
+/area/command/blueshieldoffice)
 "tcU" = (
 /obj/machinery/door/airlock/maintenance{
 	req_access_txt = "46"
@@ -64742,7 +64722,7 @@
 	},
 /obj/machinery/vending/wardrobe/blueshield_wardrobe,
 /turf/open/floor/carpet,
-/area/command/blueshielquarters)
+/area/command/blueshieldoffice)
 "usE" = (
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/structure/rack,
@@ -65250,7 +65230,7 @@
 	pixel_y = -24
 	},
 /turf/open/floor/carpet,
-/area/command/blueshielquarters)
+/area/command/blueshieldoffice)
 "vcN" = (
 /obj/machinery/light{
 	dir = 4
@@ -66529,9 +66509,6 @@
 	},
 /turf/open/floor/plating,
 /area/service/abandoned_gambling_den)
-"wMj" = (
-/turf/closed/wall,
-/area/command/blueshielquarters)
 "wQg" = (
 /obj/structure/pool/ladder{
 	dir = 2;
@@ -93183,7 +93160,7 @@ jxa
 tcJ
 tcJ
 isN
-tcJ
+fLu
 auo
 axy
 ayN
@@ -93437,10 +93414,10 @@ aov
 dHc
 wGx
 wGx
-pHR
-fLu
+wGx
+wGx
 urz
-wMj
+poW
 awg
 axy
 ayM
@@ -93694,10 +93671,10 @@ aov
 poW
 jDV
 wGx
-wMj
+wGx
 fUa
 vcy
-juS
+dHk
 avs
 axz
 ayP
@@ -93952,9 +93929,9 @@ poW
 hRH
 flZ
 sjI
-eLI
-mrm
 sjI
+sjI
+juS
 kLE
 axy
 ayv
@@ -94208,10 +94185,10 @@ aox
 poW
 poW
 siL
-wMj
-wMj
-wMj
-wMj
+poW
+poW
+poW
+poW
 awg
 axy
 ayQ

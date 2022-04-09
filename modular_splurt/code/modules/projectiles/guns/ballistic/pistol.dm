@@ -3,9 +3,10 @@
 	can_flashlight = 1
 	flight_x_offset = 19
 	flight_y_offset = 15
+	can_suppress = TRUE
 
 /obj/item/gun/ballistic/automatic/pistol/m1911/update_icon_state()
-	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
+	icon_state = "[initial(icon_state)]][suppressed ? "-suppressed" : ""][chambered ? "" : "-e"]"
 
 
 /obj/item/gun/ballistic/automatic/pistol/enforcer
@@ -20,6 +21,7 @@
 	flight_x_offset = 18
 	flight_y_offset = 14
 	obj_flags = UNIQUE_RENAME
+	can_suppress = TRUE
 
 	unique_reskin = list("Default" = "enforcer_black",
 						"M2611 Enforcer" = "cde",
@@ -30,9 +32,9 @@
 
 /obj/item/gun/ballistic/automatic/pistol/enforcer/update_icon_state()
 	if(current_skin)
-		icon_state = "[unique_reskin[current_skin]][chambered ? "" : "-e"]"
+		icon_state = "[unique_reskin[current_skin]][suppressed ? "-suppressed" : ""][chambered ? "" : "-e"]"
 	else
-		icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
+		icon_state = "[initial(icon_state)][suppressed ? "-suppressed" : ""][chambered ? "" : "-e"]"
 
 /obj/item/gun/ballistic/automatic/pistol/enforcer/nomag
 	spawnwithmagazine = FALSE
@@ -48,10 +50,29 @@
 	can_flashlight = 1
 	flight_x_offset = 18
 	flight_y_offset = 14
+	can_suppress = TRUE
 
 /obj/item/gun/ballistic/automatic/pistol/enforcerred/update_icon_state()
-	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
+	icon_state = "[initial(icon_state)][suppressed ? "-suppressed" : ""][chambered ? "" : "-e"]"
 
+/obj/item/gun/ballistic/automatic/pistol/enforcerblue
+	name = "\improper Blue Mk. 58 Enforcer (.45)"
+	desc = "A polymer frame pistol made by Nanotreason. Won't show up on Space port X-rays and cost more then you make in a month. Get down Mr. Captain!"
+	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
+	icon_state = "enforcer_blue"
+	w_class = WEIGHT_CLASS_NORMAL
+	mag_type = /obj/item/ammo_box/magazine/e45
+	can_suppress = FALSE
+	can_flashlight = 1
+	flight_x_offset = 18
+	flight_y_offset = 14
+	can_suppress = TRUE
+
+/obj/item/gun/ballistic/automatic/pistol/enforcerblue/update_icon_state()
+	icon_state = "[initial(icon_state)][suppressed ? "-suppressed" : ""][chambered ? "" : "-e"]"
+
+/obj/item/gun/ballistic/automatic/pistol/enforcerblue/nomag
+	spawnwithmagazine = FALSE
 
 /obj/item/gun/ballistic/automatic/pistol/enforcergold
 	name = "\improper Gold Mk. 58 Enforcer (.45)"
@@ -64,9 +85,10 @@
 	can_flashlight = 1
 	flight_x_offset = 18
 	flight_y_offset = 14
+	can_suppress = TRUE
 
 /obj/item/gun/ballistic/automatic/pistol/enforcergold/update_icon_state()
-	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
+	icon_state = "[initial(icon_state)][suppressed ? "-suppressed" : ""][chambered ? "" : "-e"]"
 
 /obj/item/gun/ballistic/automatic/pistol/m9mmpistol
 	name = "\improper Cheap 9mm Handgun"

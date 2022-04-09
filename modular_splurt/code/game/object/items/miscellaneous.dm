@@ -15,19 +15,19 @@
 			cop_gun_list[initial(A.name)] = A
 	return cop_gun_list
 
-/obj/item/choice_beacon/bsbaton
+/obj/item/choice_beacon/bspistol
 	name = "personal weapon beacon"
-	desc = "Use this to summon your personal baton!"
+	desc = "Use this to summon your personal ranged weapon!"
 
-/obj/item/choice_beacon/bsbaton/generate_display_names()
-	var/static/list/bsbaton_list
-	if(!bsbaton_list)
-		bsbaton_list = list()
-		var/list/templist = subtypesof(/obj/item/storage/secure/briefcase/bsbaton/) //we have to convert type = name to name = type, how lovely!
+/obj/item/choice_beacon/bspistol/generate_display_names()
+	var/static/list/bspistol_list
+	if(!bspistol_list)
+		bspistol_list = list()
+		var/list/templist = subtypesof(/obj/item/storage/secure/briefcase/bspistol/) //we have to convert type = name to name = type, how lovely!
 		for(var/V in templist)
 			var/atom/A = V
-			bsbaton_list[initial(A.name)] = A
-	return bsbaton_list
+			bspistol_list[initial(A.name)] = A
+	return bspistol_list
 
 
 /obj/item/device/hailer

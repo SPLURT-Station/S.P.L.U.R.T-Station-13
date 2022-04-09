@@ -7,6 +7,15 @@
 	desc = "An outdated personal defence weapon. Uses 4.6x30mm rounds and is designated the WT-550 Semi-Automatic SMG. This one seems to only fire rubber bullets."
 	mag_type = /obj/item/ammo_box/magazine/wt550m9/wtrubber
 
+/obj/item/gun/ballistic/automatic/wt550
+	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
+	can_suppress = TRUE
+
+
+/obj/item/gun/ballistic/automatic/wt550/update_icon_state()
+	icon_state = "wt550[magazine ? "-[CEILING(((get_ammo(FALSE) / magazine.max_ammo) * 20) /4, 1)*4]" : "-0"][suppressed ? "-suppressed" : ""]" //Sprites only support up to 20.
+
+
 // PLEASE BE CAREFUL WITH THIS!!! -Radar
 /obj/item/gun/ballistic/automatic/m2a1
 	name = "\improper M2A1 HMG (.50)"

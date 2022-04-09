@@ -2823,6 +2823,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/tcommsat/computer)
+"aWJ" = (
+/obj/effect/landmark/start/blueshield,
+/turf/open/floor/carpet,
+/area/command/blueshieldoffice)
 "aWX" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on,
 /obj/structure/cable{
@@ -11979,10 +11983,6 @@
 	pixel_x = -5;
 	pixel_y = 6
 	},
-/obj/item/radio/off{
-	pixel_x = 6;
-	pixel_y = 4
-	},
 /obj/machinery/newscaster{
 	pixel_x = 30
 	},
@@ -13211,10 +13211,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
-"eDr" = (
-/obj/structure/dresser,
-/turf/open/floor/carpet,
-/area/command/blueshielquarters)
 "eEf" = (
 /obj/machinery/navbeacon{
 	codes_txt = "delivery;dir=2";
@@ -14035,6 +14031,15 @@
 "eRR" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
+	},
+/obj/structure/table/wood,
+/obj/machinery/recharger{
+	pixel_x = -6;
+	pixel_y = 3
+	},
+/obj/machinery/recharger{
+	pixel_x = 6;
+	pixel_y = 3
 	},
 /turf/open/floor/carpet,
 /area/command/blueshielquarters)
@@ -17331,7 +17336,11 @@
 	pixel_x = -2;
 	pixel_y = -1
 	},
-/obj/item/multitool,
+/obj/item/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = 1;
+	pixel_y = 5
+	},
 /turf/open/floor/wood,
 /area/command/blueshieldoffice)
 "fVN" = (
@@ -35392,11 +35401,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
-"mnp" = (
-/obj/structure/bed/double,
-/obj/item/bedsheet/blue/double,
-/turf/open/floor/carpet,
-/area/command/blueshielquarters)
 "mnD" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating/asteroid/snow{
@@ -36199,7 +36203,17 @@
 	dir = 4
 	},
 /obj/structure/table/wood,
-/obj/machinery/recharger,
+/obj/item/radio/off{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/radio/off{
+	pixel_y = 4
+	},
+/obj/item/radio/off{
+	pixel_x = 6;
+	pixel_y = 4
+	},
 /turf/open/floor/wood,
 /area/command/blueshieldoffice)
 "mCW" = (
@@ -54125,13 +54139,6 @@
 /area/engineering/storage/tech)
 "sTk" = (
 /obj/structure/closet/secure_closet/blueshield,
-/obj/item/storage/firstaid/brute{
-	pixel_x = 5
-	},
-/obj/item/storage/firstaid/fire,
-/obj/item/storage/firstaid/toxin{
-	pixel_x = -5
-	},
 /turf/open/floor/carpet,
 /area/command/blueshielquarters)
 "sTw" = (
@@ -105246,7 +105253,7 @@ uea
 eeI
 eSp
 dBU
-uzA
+aWJ
 fGn
 fVh
 uea
@@ -106529,8 +106536,8 @@ roA
 roA
 wbA
 sTk
-eDr
-mnp
+sTk
+sTk
 wbA
 fJb
 fYY

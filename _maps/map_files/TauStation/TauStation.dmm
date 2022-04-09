@@ -11979,6 +11979,10 @@
 	pixel_x = -5;
 	pixel_y = 6
 	},
+/obj/item/radio/off{
+	pixel_x = 6;
+	pixel_y = 4
+	},
 /obj/machinery/newscaster{
 	pixel_x = 30
 	},
@@ -13207,6 +13211,10 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
+"eDr" = (
+/obj/structure/dresser,
+/turf/open/floor/carpet,
+/area/command/blueshielquarters)
 "eEf" = (
 /obj/machinery/navbeacon{
 	codes_txt = "delivery;dir=2";
@@ -14027,15 +14035,6 @@
 "eRR" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
-	},
-/obj/structure/table/wood,
-/obj/item/radio/off{
-	pixel_x = 6;
-	pixel_y = 4
-	},
-/obj/item/radio/off,
-/obj/item/radio/off{
-	pixel_y = 4
 	},
 /turf/open/floor/carpet,
 /area/command/blueshielquarters)
@@ -16271,7 +16270,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
-/obj/effect/landmark/start/blueshield,
 /turf/open/floor/plasteel/dark,
 /area/command/blueshieldoffice)
 "fEZ" = (
@@ -17333,11 +17331,7 @@
 	pixel_x = -2;
 	pixel_y = -1
 	},
-/obj/item/storage/toolbox/mechanical,
-/obj/item/storage/toolbox/mechanical{
-	pixel_x = -2;
-	pixel_y = -1
-	},
+/obj/item/multitool,
 /turf/open/floor/wood,
 /area/command/blueshieldoffice)
 "fVN" = (
@@ -19948,11 +19942,11 @@
 /area/security/brig)
 "gSg" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
 	name = "Captain's Quarters";
-	req_one_access_txt = "20;72"
+	req_access_txt = "20"
 	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/wood/wood_tiled,
 /area/command/heads_quarters/captain/private)
 "gSq" = (
@@ -25757,12 +25751,12 @@
 /turf/open/floor/plasteel,
 /area/maintenance/department/security/brig)
 "iRC" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
 /obj/machinery/door/airlock/command{
 	name = "Emergency Escape";
-	req_one_access_txt = "20;72"
+	req_access_txt = "20"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
@@ -28130,11 +28124,11 @@
 /turf/open/floor/plasteel,
 /area/commons/storage/primary)
 "jMB" = (
-/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
 	name = "Head of Security's Office";
-	req_one_access_txt = "58;72"
+	req_access_txt = "58"
 	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/hos)
 "jMM" = (
@@ -33252,15 +33246,15 @@
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "lBI" = (
+/obj/machinery/door/airlock/command/glass{
+	name = "Research Director";
+	req_access_txt = "30"
+	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/door/airlock/command/glass{
-	name = "Research Director";
-	req_one_access_txt = "30;72"
-	},
 /turf/open/floor/plasteel/dark,
 /area/command/heads_quarters/rd)
 "lBK" = (
@@ -35398,6 +35392,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
+"mnp" = (
+/obj/structure/bed/double,
+/obj/item/bedsheet/blue/double,
+/turf/open/floor/carpet,
+/area/command/blueshielquarters)
 "mnD" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating/asteroid/snow{
@@ -41263,7 +41262,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/maintenance{
 	name = "Quartermaster Maintenance";
-	req_one_access_txt = "41;72"
+	req_access_txt = "41"
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -51754,7 +51753,7 @@
 	},
 /obj/machinery/door/airlock/command/glass{
 	name = "Chief Medical Officer";
-	req_one_access_txt = "40;72"
+	req_access_txt = "40"
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -54126,6 +54125,13 @@
 /area/engineering/storage/tech)
 "sTk" = (
 /obj/structure/closet/secure_closet/blueshield,
+/obj/item/storage/firstaid/brute{
+	pixel_x = 5
+	},
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/toxin{
+	pixel_x = -5
+	},
 /turf/open/floor/carpet,
 /area/command/blueshielquarters)
 "sTw" = (
@@ -58921,7 +58927,7 @@
 	},
 /obj/machinery/door/airlock/command{
 	name = "Quartermaster";
-	req_one_access_txt = "41;72"
+	req_access_txt = "41"
 	},
 /turf/open/floor/plasteel,
 /area/cargo/qm)
@@ -106523,8 +106529,8 @@ roA
 roA
 wbA
 sTk
-sTk
-sTk
+eDr
+mnp
 wbA
 fJb
 fYY

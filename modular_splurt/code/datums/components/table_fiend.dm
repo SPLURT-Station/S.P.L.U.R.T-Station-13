@@ -17,6 +17,8 @@
 	already_passed_tables = fiend.pass_flags & PASSTABLE
 	fiend.pass_flags |= PASSTABLE
 	if(isliving(fiend))
+		var/mob/living/living_fiend = fiend
+		living_fiend.set_resting(TRUE, TRUE, TRUE)
 		// we need to ensure living mobs won't suddenly stand up, that would be wack
 		ADD_TRAIT(fiend, TRAIT_MOBILITY_NOREST, TABLE_FIEND_TRAIT)
 	update_fiend()

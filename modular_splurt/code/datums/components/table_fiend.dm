@@ -41,14 +41,14 @@
 	var/atom/movable/fiend = parent
 	var/obj/structure/table/table = locate() in fiend.loc
 	if(!table)
-		qdel(src)
+		fiend.layer = original_layer
 		return FALSE
-	fiend.layer = table.layer - 0.01 //most of the time this will be layer 2.79
 	if(isliving(fiend))
 		var/mob/living/living_fiend = fiend
 		if(!living_fiend.lying)
-			qdel(src)
+			fiend.layer = original_layer
 			return FALSE
+	fiend.layer = table.layer - 0.01 //most of the time this will be layer 2.79
 	return TRUE
 
 /datum/component/table_fiend/proc/fiend_moved(atom/movable/source)

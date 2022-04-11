@@ -1,0 +1,1 @@
+#define COMSIG_LIVING_UPDATED_MOBILITY "living_updated_mobility"

@@ -172,4 +172,8 @@
 
 	update_movespeed()
 
+	// SPLURT EDIT
+	SEND_SIGNAL(src, COMSIG_LIVING_UPDATED_MOBILITY, mobility_flags)
+	// SPLURT END
+
 	return mobility_flags

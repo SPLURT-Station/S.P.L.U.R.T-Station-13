@@ -3,6 +3,7 @@
  * Essentially, while this component is applied and the fiend is on a tile with some sort of table,
  * the layer of the fiend will be changed to be just under the table.
  * Every time the fiend moves, a check will be done to see if the component should be removed.
+ * The component will get deleted when the fiend stands up, if the fiend is a living mob.
  */
 /datum/component/table_fiend
 	/// Original layer of the movable when the component was first applied
@@ -19,8 +20,6 @@
 	if(isliving(fiend))
 		var/mob/living/living_fiend = fiend
 		living_fiend.set_resting(TRUE, TRUE, TRUE)
-		// we need to ensure living mobs won't suddenly stand up, that would be wack
-		ADD_TRAIT(fiend, TRAIT_MOBILITY_NOREST, TABLE_FIEND_TRAIT)
 	update_fiend()
 
 /datum/component/table_fiend/Destroy(force, silent)
@@ -28,16 +27,16 @@
 	fiend.layer = original_layer
 	if(!already_passed_tables)
 		fiend.pass_flags &= ~PASSTABLE
-	if(isliving(fiend))
-		// we no longer need the mob to be lying down
-		REMOVE_TRAIT(fiend, TRAIT_MOBILITY_NOREST, TABLE_FIEND_TRAIT)
 	return ..()
 
 /datum/component/table_fiend/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/fiend_moved)
+	if(isliving(parent))
+		RegisterSignal(parent, COMSIG_LIVING_UPDATED_MOBILITY, .proc/fiend_mobility_updated)
 
 /datum/component/table_fiend/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_MOVABLE_MOVED)
+	UnregisterSignal(parent, COMSIG_LIVING_UPDATED_MOBILITY)
 
 /datum/component/table_fiend/proc/update_fiend()
 	var/atom/movable/fiend = parent
@@ -45,15 +44,21 @@
 	if(!table)
 		fiend.layer = original_layer
 		return FALSE
-	if(isliving(fiend))
+	else if(isliving(fiend))
 		var/mob/living/living_fiend = fiend
 		if(!living_fiend.lying)
 			fiend.layer = original_layer
+			qdel(src)
 			return FALSE
 	fiend.layer = table.layer - 0.01 //most of the time this will be layer 2.79
 	return TRUE
 
 /datum/component/table_fiend/proc/fiend_moved(atom/movable/source)
+	SIGNAL_HANDLER
+
+	update_fiend()
+
+/datum/component/table_fiend/proc/fiend_mobility_updated(mob/living/source)
 	SIGNAL_HANDLER
 
 	update_fiend()

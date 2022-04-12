@@ -11,7 +11,8 @@
 	/// This is used so we don't accidentally remove the PASSTABLE flag from a movable that should pass tables by default
 	var/already_passed_tables = FALSE
 
-/datum/component/table_fiend/Initialize(atom/movable/fiend)
+/datum/component/table_fiend/Initialize()
+	var/atom/movable/fiend = parent
 	if(!istype(fiend) || (fiend.layer < TABLE_LAYER))
 		return COMPONENT_INCOMPATIBLE
 	original_layer = fiend.layer

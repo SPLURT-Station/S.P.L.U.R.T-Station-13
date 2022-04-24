@@ -1158,6 +1158,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	vore_taste						= copytext(vore_taste, 1, MAX_TASTE_LEN)
 	vore_smell						= copytext(vore_smell, 1, MAX_TASTE_LEN)
 	belly_prefs 					= SANITIZE_LIST(belly_prefs)
+	//SPLURT EDIT BEGIN - gregnancy
+	S["virile"] >> virility
+	S["fertile"] >> fertility
+	S["oviposition"] >> oviposition
+	S["pregnancy_inflation"] >> pregnancy_inflation
+	//SPLURT EDIT END
 
 	cit_character_pref_load(S)
 
@@ -1344,7 +1350,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if(islist(modified_limbs))
 		WRITE_FILE(S["modified_limbs"]				, safe_json_encode(modified_limbs))
 	WRITE_FILE(S["chosen_limb_id"],   chosen_limb_id)
-
+	//SPLURT EDIT BEGIN
+	WRITE_FILE(S["virile"], virility)
+	WRITE_FILE(S["fertile"], fertility)
+	WRITE_FILE(S["oviposition"], oviposition)
+	WRITE_FILE(S["pregnancy_inflation"], pregnancy_inflation)
+	//SPLURT EDIT END
 
 	//gear loadout
 	if(length(loadout_data))

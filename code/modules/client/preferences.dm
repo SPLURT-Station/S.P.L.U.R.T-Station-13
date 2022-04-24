@@ -346,6 +346,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/tcg_cards = list()
 	var/list/tcg_decks = list()
 
+	//SPLURT EDIT - gregnancy
+	/// Does john spaceman's cum actually impregnate people?
+	var/virility = FALSE
+	/// Can john spaceman get gregnant if all conditions are right? (has a womb and is not on contraceptives)
+	var/fertility = FALSE
+	/// Does john spaceman need a cesarian/live birth or will he shit out eggs?
+	var/oviposition = FALSE
+	/// Does john spaceman look like a gluttonous slob if he pregent?
+	var/pregnancy_inflation = FALSE
+	//SPLURT END
+
 /datum/preferences/New(client/C)
 	parent = C
 
@@ -454,6 +465,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<a href='?_src_=prefs;preference=ai_core_icon;task=input'><b>Preferred AI Core Display:</b> [preferred_ai_core_display]</a><br>"
 			dat += "<a href='?_src_=prefs;preference=sec_dept;task=input'><b>Preferred Security Department:</b> [prefered_security_department]</a><BR></td>"
 			dat += "<br><a href='?_src_=prefs;preference=hide_ckey;task=input'><b>Hide ckey: [hide_ckey ? "Enabled" : "Disabled"]</b></a><br>"
+			//SPLURT EDIT BEGIN - gregnancy preferences
+			dat += "<BR><b>Fertility preferences:</b>"
+			dat += "<a href='?_src_=prefs;preference=virility;task=input'><b>Can impregnate: [virility ? "Enabled" : "Disabled"]</b></a><br>"
+			dat += "<a href='?_src_=prefs;preference=fertility;task=input'><b>Can get pregnant: [fertility ? "Enabled" : "Disabled"]</b></a><br>"
+			if(fertility)
+				dat += "<br><a href='?_src_=prefs;preference=live_birth;task=input'><b>Pregnancy type: [oviposition ? "Oviposition" : "Live Birth"]</b></a><br>"
+				dat += "<br><a href='?_src_=prefs;preference=pregnancy_inflation;task=input'><b>Pregnancy inflation: [pregnancy_inflation ? "Enabled" : "Disabled"]</b></a><br>"
+			//SPLURT EDIT END
 			dat += "</tr></table>"
 
 		//Character Appearance
@@ -1988,6 +2007,20 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					hide_ckey = !hide_ckey
 					if(user)
 						user.mind?.hide_ckey = hide_ckey
+
+				//SPLURT EDIT BEGIN - gregnancy
+				if("virility")
+					virility = !virility
+
+				if("fertility")
+					fertility = !fertility
+
+				if("oviposition")
+					oviposition = !oviposition
+
+				if("pregnancy_inflation")
+					pregnancy_inflation = !pregnancy_inflation
+				//SPLURT EDIT END
 
 				if("hair")
 					var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference","#"+hair_color) as color|null

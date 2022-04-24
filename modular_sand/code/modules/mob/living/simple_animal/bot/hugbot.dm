@@ -64,7 +64,7 @@
 	else
 		icon_state = "hugbot[stationary_mode+1]"
 
-/mob/living/simple_animal/bot/medbot/Initialize()
+/mob/living/simple_animal/bot/medbot/Initialize(mapload)
 	. = ..()
 	update_icon()
 

@@ -63,3 +63,13 @@
 	icon_state = "thinant"
 	recommended_species = list("insect")
 	matrixed_sections = MATRIX_RED
+
+/datum/sprite_accessory/ears/mam_ears/eros/chemlight
+	name = "RadDog"
+	icon_state = "chemlight"
+	matrixed_sections = MATRIX_RED
+
+/datum/sprite_accessory/ears/mam_ears/eros/easterndragon
+	name = "Dragon Eastern"
+	icon_state = "easternd"
+	matrixed_sections = MATRIX_RED_BLUE

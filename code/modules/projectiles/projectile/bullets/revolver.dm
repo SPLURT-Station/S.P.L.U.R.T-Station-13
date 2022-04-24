@@ -64,6 +64,9 @@
 	name = ".38 rubber bullet"
 	damage = 15
 	stamina = 48
+	shrapnel_type = NONE
+	sharpness = SHARP_NONE
+	embedding = null
 
 /obj/item/projectile/bullet/c38/trac
 	name = ".38 TRAC bullet"

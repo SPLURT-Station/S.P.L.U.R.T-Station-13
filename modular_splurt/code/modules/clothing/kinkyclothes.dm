@@ -41,6 +41,7 @@
 	name = "white boa"
 	desc = "Fluffy neck wear to keep you warm, and attract others."
 	icon = 'modular_splurt/icons/obj/clothing/neck.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/neck.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "stole"
 	item_state = ""	//no inhands

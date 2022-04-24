@@ -17,7 +17,7 @@
 	var/heatingPower = 40000
 	var/datum/bank_account/pay_me = null
 
-/obj/machinery/cryptominer/Initialize()
+/obj/machinery/cryptominer/Initialize(mapload)
 	. = ..()
 	pay_me = SSeconomy.get_dep_account(ACCOUNT_CAR)
 

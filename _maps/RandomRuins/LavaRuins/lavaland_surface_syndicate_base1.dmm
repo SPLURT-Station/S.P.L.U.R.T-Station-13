@@ -4335,7 +4335,7 @@
 	dir = 4
 	},
 /obj/machinery/jukebox{
-	req_one_access = list(0)
+	req_one_access = null
 	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/lavaland/unpowered/syndicate_lava_base/bar)
@@ -4537,8 +4537,7 @@
 "ld" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/layer3{
 	dir = 4;
-	id = "syndie_lavaland_n2_in";
-	piping_layer = 3
+	id = "syndie_lavaland_n2_in"
 	},
 /turf/open/floor/plating/airless,
 /area/ruin/lavaland/unpowered/syndicate_lava_base/engineering)
@@ -4879,8 +4878,7 @@
 /area/ruin/lavaland/unpowered/syndicate_lava_base/engineering)
 "lM" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/layer3{
-	id = "syndie_lavaland_tox_in";
-	piping_layer = 3
+	id = "syndie_lavaland_tox_in"
 	},
 /turf/open/floor/plating/airless,
 /area/ruin/lavaland/unpowered/syndicate_lava_base/engineering)
@@ -6737,8 +6735,7 @@
 "Tt" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/layer3{
 	dir = 4;
-	id = "syndie_lavaland_o2_in";
-	piping_layer = 3
+	id = "syndie_lavaland_o2_in"
 	},
 /turf/open/floor/plating/airless,
 /area/ruin/lavaland/unpowered/syndicate_lava_base/engineering)

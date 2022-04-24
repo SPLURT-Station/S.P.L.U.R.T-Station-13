@@ -1,6 +1,6 @@
 #define MECH_SIZE 1.5
 
-/obj/vehicle/sealed/mecha/Initialize()
+/obj/vehicle/sealed/mecha/Initialize(mapload)
 	. = ..()
 	var/matrix/M = matrix(transform)
 	M.Scale(MECH_SIZE, MECH_SIZE)

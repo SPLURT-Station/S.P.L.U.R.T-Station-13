@@ -10,7 +10,7 @@
 	toolspeed = 2.5
 
 
-/obj/item/weldingtool/makeshift/Initialize()
+/obj/item/weldingtool/makeshift/Initialize(mapload)
 	. = ..()
 	create_reagents(max_fuel)
 	reagents.add_reagent(/datum/reagent/fuel, 0)

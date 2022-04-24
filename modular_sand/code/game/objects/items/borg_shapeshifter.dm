@@ -78,7 +78,7 @@
 							"(Janitor) Sleek",
 							"(Janitor) Can")
 
-/obj/item/borg_shapeshifter/Initialize()
+/obj/item/borg_shapeshifter/Initialize(mapload)
 	. = ..()
 	friendlyName = pick(GLOB.ai_names)
 

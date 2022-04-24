@@ -54,6 +54,6 @@
 	var/static/list/dildo_typecache = typecacheof(/obj/item/dildo)
 	charge_type = /obj/item/dildo
 
-/obj/item/pneumatic_cannon/dildo/Initialize()
+/obj/item/pneumatic_cannon/dildo/Initialize(mapload)
 	. = ..()
 	allowed_typecache = dildo_typecache

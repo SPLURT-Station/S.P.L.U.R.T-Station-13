@@ -16,6 +16,13 @@
 
 <!-- Just say if it is a port of something and link the original pr/commit/whatever. -->
 
+## Pre-Merge Checklist
+<!-- Don't bother filling these in while creating your Pull Request, just click the checkboxes after the Pull Request is opened and you are redirected to the page. -->
+- [ ] You tested this on a local server.
+- [ ] This code did not runtime during testing.
+- [ ] You documented all of your changes.
+<!-- Neither the compiler nor workflow checks are perfect at detecting runtimes and errors. It is important to test your code/feature/fix locally. -->
+
 ## Changelog
 
 :cl:

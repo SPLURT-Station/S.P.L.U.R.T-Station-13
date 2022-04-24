@@ -30,3 +30,18 @@
 	name = "handmade collar"
 	path = /obj/item/clothing/neck/petcollar/handmade
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
+
+/datum/gear/neck/syntech/pendant
+	name = "Normalizer Pendant"
+	path = /obj/item/clothing/neck/syntech
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
+
+/datum/gear/neck/syntech/choker
+	name = "Normalizer Choker"
+	path = /obj/item/clothing/neck/syntech/choker
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
+
+/datum/gear/neck/syntech/collar
+	name = "Normalizer Collar"
+	path = /obj/item/clothing/neck/syntech/collar
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION

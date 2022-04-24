@@ -2632,7 +2632,7 @@
 	icon_state = "2-4"
 	},
 /turf/open/floor/plating/asteroid,
-/area/space/nearstation)
+/area/maintenance/department/security/upper)
 "aTM" = (
 /obj/machinery/vending/snack/random,
 /turf/open/floor/plasteel/grimy,
@@ -4849,7 +4849,8 @@
 /area/security/prison/mess)
 "bOj" = (
 /mob/living/simple_animal/hostile/bear/russian{
-	health = 200;
+	health = 350;
+	maxHealth = 350;
 	name = "Natalia"
 	},
 /turf/open/floor/plating/rust,
@@ -6258,6 +6259,10 @@
 /obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
+"ckI" = (
+/obj/machinery/smartfridge/organ/preloaded,
+/turf/closed/wall,
+/area/medical/surgery)
 "ckM" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -14477,7 +14482,7 @@
 	dir = 6
 	},
 /turf/open/floor/plating/asteroid,
-/area/space/nearstation)
+/area/maintenance/department/security/upper)
 "eYZ" = (
 /obj/machinery/light{
 	dir = 8
@@ -15281,6 +15286,7 @@
 /mob/living/simple_animal/pet/gondola{
 	desc = "Commandola is the silent walker. Having no hands he embodies the Taoist principle of wu-wei (non-action) while his smiling facial expression shows his utter and complete acceptance of the world as it is. Its hide is extremely deadly.";
 	health = 1750;
+	maxHealth = 1750;
 	melee_damage_lower = 2;
 	melee_damage_upper = 2;
 	name = "Gary";
@@ -15408,12 +15414,12 @@
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet)
 "fpC" = (
-/obj/item/clothing/suit/yakuza,
-/obj/item/melee/baseball_bat/ablative,
-/obj/item/clothing/glasses/eyepatch,
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/item/melee/baseball_bat/ablative,
+/obj/item/clothing/suit/yakuza,
+/obj/item/clothing/glasses/eyepatch,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "fpT" = (
@@ -16968,7 +16974,6 @@
 	c_tag = "Locker Room West";
 	dir = 4
 	},
-/obj/machinery/vending/kink,
 /turf/open/floor/plasteel,
 /area/commons/dorms)
 "fPI" = (
@@ -17812,6 +17817,9 @@
 	},
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet)
+"gfc" = (
+/turf/closed/wall/r_wall/rust,
+/area/space/nearstation)
 "gfd" = (
 /obj/structure/sign/warning/vacuum/external{
 	pixel_x = 32
@@ -18244,10 +18252,6 @@
 /turf/open/floor/engine,
 /area/engineering/main)
 "grF" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "robotics_shutters";
-	name = "robotics shutters"
-	},
 /obj/machinery/door/airlock/research{
 	name = "Robotics Lab";
 	req_access_txt = "29"
@@ -19002,9 +19006,7 @@
 /area/space/nearstation)
 "gEr" = (
 /obj/docking_port/stationary{
-	dheight = 12;
 	dir = 4;
-	dwidth = 1;
 	id = "whiteship_home";
 	name = "dormitories"
 	},
@@ -25406,6 +25408,11 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/dark,
 /area/security/checkpoint/engineering)
+"iMC" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/snacks/grown/banana/bluespace,
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "iMH" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -26906,6 +26913,7 @@
 	name = "Engineering Storage";
 	req_access_txt = "32"
 	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "jqZ" = (
@@ -27403,6 +27411,7 @@
 	health = 25;
 	maxHealth = 50;
 	name = "Speed Gonzalez";
+	speed = 10;
 	turns_per_move = 2
 	},
 /turf/open/floor/plating,
@@ -29982,8 +29991,15 @@
 	name = "Station Intercom (General)";
 	pixel_x = -30
 	},
+/obj/machinery/recharger,
 /turf/open/floor/wood,
 /area/command/heads_quarters/hop)
+"kxT" = (
+/mob/living/simple_animal/hostile/shark/laser,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/space/nearstation)
 "kyf" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 4
@@ -30214,9 +30230,8 @@
 /area/maintenance/fore)
 "kBT" = (
 /obj/effect/decal/cleanable/ash/large,
-/obj/structure/toilet/secret/high_loot{
-	dir = 4;
-	name = "Dusty Toilet"
+/obj/structure/toilet/secret/low_loot{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
@@ -30822,12 +30837,7 @@
 	dir = 1;
 	pixel_y = -26
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "kMq" = (
@@ -30908,6 +30918,7 @@
 "kNh" = (
 /mob/living/simple_animal/hostile/retaliate/goat{
 	health = 69;
+	maxHealth = 69;
 	melee_damage_lower = 8;
 	melee_damage_upper = 10;
 	name = "Asterion"
@@ -31184,7 +31195,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating/asteroid,
-/area/space/nearstation)
+/area/maintenance/department/security/upper)
 "kSO" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 4
@@ -32617,7 +32628,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/asteroid,
-/area/space/nearstation)
+/area/maintenance/department/security/upper)
 "lsv" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable{
@@ -33637,7 +33648,7 @@
 /area/hallway/secondary/civilian)
 "lHY" = (
 /turf/open/floor/plating/asteroid,
-/area/space/nearstation)
+/area/maintenance/department/security/upper)
 "lId" = (
 /obj/machinery/camera{
 	c_tag = "Atmospherics Tank - CO2";
@@ -38694,6 +38705,7 @@
 	damage_coeff = list("brute" = 0.25, "fire" = 0.25, "tox" = 1, "clone" = 1, "stamina" = 0, "oxy" = 1);
 	desc = "Exposure to low gravity made them grow larger, this one looks particularly royal.";
 	health = 250;
+	maxHealth = 250;
 	name = "Lorde"
 	},
 /turf/open/floor/plasteel/vaporwave,
@@ -40180,7 +40192,7 @@
 /area/security/brig)
 "nTw" = (
 /obj/structure/table/wood,
-/obj/item/stack/sheet/mineral/bananium,
+/obj/item/reagent_containers/food/snacks/grown/banana/bombanana,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "nTH" = (
@@ -41997,7 +42009,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/asteroid,
-/area/space/nearstation)
+/area/maintenance/department/security/upper)
 "oCH" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -42298,6 +42310,7 @@
 	icon_living = "crawling";
 	icon_state = "crawling";
 	loot = list(/obj/effect/gibspawner/generic);
+	maxHealth = 200;
 	melee_damage_lower = 12;
 	melee_damage_upper = 15;
 	name = "Geoffrey";
@@ -48540,7 +48553,8 @@
 /mob/living/simple_animal/hostile/retaliate/clown/mutant/blob{
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0);
 	enemies = list("neutral");
-	health = 300
+	health = 300;
+	maxHealth = 300
 	},
 /turf/open/floor/plating,
 /area/service/theater/abandoned)
@@ -56309,6 +56323,10 @@
 	},
 /turf/open/floor/noslip,
 /area/service/janitor)
+"tGM" = (
+/mob/living/simple_animal/hostile/shark/laser,
+/turf/open/space/basic,
+/area/space/station_ruins)
 "tGO" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -58545,6 +58563,12 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/engineering/transit_tube)
+"uqP" = (
+/obj/machinery/rnd/experimentor{
+	pixel_x = -32
+	},
+/turf/open/floor/engine,
+/area/science/explab)
 "uqR" = (
 /turf/closed/wall/r_wall,
 /area/construction)
@@ -69274,6 +69298,13 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/science)
+"xQi" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 5
+	},
+/mob/living/simple_animal/hostile/russian/ranged/mosin,
+/turf/open/floor/plating/rust,
+/area/maintenance/department/security/upper)
 "xQm" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
@@ -69866,10 +69897,6 @@
 "xYM" = (
 /turf/closed/wall/r_wall,
 /area/security/office)
-"xYN" = (
-/obj/machinery/rnd/experimentor,
-/turf/open/floor/engine,
-/area/science/explab)
 "xYV" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -80918,7 +80945,7 @@ iFN
 ara
 vMG
 mYI
-weM
+ofk
 kMn
 vMG
 unz
@@ -88998,7 +89025,7 @@ chc
 chc
 chc
 chc
-mDQ
+gfc
 chc
 chc
 chc
@@ -89254,9 +89281,9 @@ chc
 chc
 chc
 chc
-mDQ
+gfc
 bIs
-mDQ
+gfc
 chc
 chc
 chc
@@ -89510,11 +89537,11 @@ chc
 chc
 chc
 chc
-mDQ
+gfc
 bIs
 cnL
 bIs
-mDQ
+gfc
 chc
 chc
 chc
@@ -89766,12 +89793,12 @@ mDQ
 chc
 chc
 chc
-mDQ
+gfc
 bIs
 mra
 mra
 bIs
-mDQ
+gfc
 chc
 chc
 chc
@@ -90022,12 +90049,12 @@ bIs
 mDQ
 chc
 chc
-mDQ
+gfc
 bIs
 ewu
 bOj
 bIs
-mDQ
+gfc
 chc
 chc
 chc
@@ -90279,11 +90306,11 @@ mDQ
 chc
 chc
 chc
-mDQ
+gfc
 bIs
 mra
 bIs
-mDQ
+gfc
 chc
 chc
 chc
@@ -90536,11 +90563,11 @@ chc
 chc
 chc
 chc
-mDQ
+gfc
 bIs
 tNg
 bIs
-mDQ
+gfc
 chc
 chc
 chc
@@ -93367,7 +93394,7 @@ mWE
 qlD
 urj
 vSZ
-dDd
+xQi
 bIs
 mDQ
 chc
@@ -99648,7 +99675,7 @@ wye
 pqy
 xma
 xOz
-fxn
+ckI
 aMu
 veq
 tXx
@@ -111460,7 +111487,7 @@ ygo
 ygo
 twc
 xwx
-xYN
+xZb
 uDN
 nAj
 pdt
@@ -111717,7 +111744,7 @@ ygo
 ygo
 twc
 xye
-xZb
+uqP
 cTs
 ozy
 hun
@@ -121975,7 +122002,7 @@ vUt
 nSt
 hpl
 nSt
-nTw
+iMC
 fbk
 kRj
 quq
@@ -128959,7 +128986,7 @@ fza
 fza
 fza
 fza
-fza
+bOH
 fza
 fza
 fza
@@ -129210,7 +129237,7 @@ fza
 fza
 fza
 fza
-fza
+bOH
 fza
 fza
 fza
@@ -129975,15 +130002,15 @@ fza
 fza
 fza
 fza
+fza
+fza
 bOH
 fza
 fza
 fza
 fza
 fza
-fza
-fza
-fza
+bOH
 fza
 fza
 fza
@@ -130762,7 +130789,7 @@ mDQ
 chc
 chc
 chc
-chc
+tGM
 chc
 chc
 chc
@@ -132554,7 +132581,7 @@ mDQ
 mDQ
 rTx
 fAl
-rTx
+kxT
 rfX
 rfX
 uJZ

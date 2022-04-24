@@ -158,6 +158,10 @@
 			hat_offset = 3
 	return ..()
 
+/obj/item/robot_module/Initialize()
+	basic_modules += /obj/item/milking_machine/pleasuremaw
+	. = ..()
+
 /obj/item/robot_module/syndicate_medical/slaver
 	name = "Slaver Medical Combat"
 
@@ -166,4 +170,46 @@
 		/obj/item/slaver/gizmo
 	)
 	LAZYADD(basic_modules, extra_tools)
+	. = ..()
+
+/obj/item/robot_module/medical/Initialize()
+	var/list/extra = list(
+		/obj/item/dogborg/jaws/small,
+		/obj/item/storage/bag/borgdelivery,
+		/obj/item/analyzer/nose,
+		/obj/item/soap/tongue,
+		/obj/item/shockpaddles/cyborg/hound
+	)
+	LAZYADD(basic_modules, extra)
+	. = ..()
+
+/obj/item/robot_module/peacekeeper/Initialize()
+	var/list/extra = list(
+		/obj/item/dogborg/jaws/small,
+		/obj/item/storage/bag/borgdelivery,
+		/obj/item/analyzer/nose,
+		/obj/item/soap/tongue
+	)
+	LAZYADD(basic_modules, extra)
+	. = ..()
+
+/obj/item/robot_module/security/Initialize()
+	var/list/extra = list(
+		/obj/item/storage/bag/borgdelivery,
+		/obj/item/dogborg/jaws/big,
+		/obj/item/dogborg/pounce,
+		/obj/item/soap/tongue,
+		/obj/item/analyzer/nose,
+		/obj/item/holosign_creator/security
+	)
+	LAZYADD(basic_modules, extra)
+	. = ..()
+
+/obj/item/robot_module/butler/Initialize()
+	var/list/extra = list(
+		/obj/item/dogborg/jaws/small,
+		/obj/item/analyzer/nose,
+		/obj/item/soap/tongue/scrubpup
+	)
+	LAZYADD(basic_modules, extra)
 	. = ..()

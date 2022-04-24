@@ -73,41 +73,7 @@
 		rebuild_modules()
 	return I
 
-/obj/item/robot_module/medical/Initialize()
-	var/list/extra = list(
-		/obj/item/dogborg/jaws/small,
-		/obj/item/storage/bag/borgdelivery,
-		/obj/item/analyzer/nose,
-		/obj/item/soap/tongue,
-		/obj/item/shockpaddles/cyborg/hound
-	)
-	LAZYADD(basic_modules, extra)
-	. = ..()
-
-/obj/item/robot_module/peacekeeper/Initialize()
-	var/list/extra = list(
-		/obj/item/dogborg/jaws/small,
-		/obj/item/storage/bag/borgdelivery,
-		/obj/item/analyzer/nose,
-		/obj/item/soap/tongue
-	)
-	LAZYADD(basic_modules, extra)
-	. = ..()
-
-/obj/item/robot_module/security/Initialize()
-	var/list/extra = list(
-		/obj/item/storage/bag/borgdelivery,
-		/obj/item/dogborg/jaws/big,
-		/obj/item/dogborg/pounce,
-		/obj/item/soap/tongue,
-		/obj/item/analyzer/nose,
-		/obj/item/holosign_creator/security
-	)
-	LAZYADD(basic_modules, extra)
-	. = ..()
-
-
-/obj/item/robot_module/engineering/Initialize()
+/obj/item/robot_module/engineering/Initialize(mapload)
 	basic_modules += /obj/item/pen
 	basic_modules += /obj/item/stack/sheet/plasmaglass/cyborg
 	basic_modules += /obj/item/stack/sheet/plasmarglass/cyborg
@@ -115,21 +81,15 @@
 	basic_modules += /obj/item/stack/sheet/mineral/plasma/cyborg
 	. = ..()
 
-/obj/item/robot_module/butler/Initialize()
+/obj/item/robot_module/butler/Initialize(mapload)
 	basic_modules -= /obj/item/reagent_containers/borghypo/borgshaker
 	basic_modules += /obj/item/reagent_containers/borghypo/borgshaker/beershaker
 	basic_modules += /obj/item/reagent_containers/borghypo/borgshaker/juiceshaker
 	basic_modules += /obj/item/reagent_containers/borghypo/borgshaker/sodashaker
 	basic_modules += /obj/item/reagent_containers/borghypo/borgshaker/miscshaker
-	var/list/extra = list(
-		/obj/item/dogborg/jaws/small,
-		/obj/item/analyzer/nose,
-		/obj/item/soap/tongue/scrubpup
-	)
-	LAZYADD(basic_modules, extra)
 	. = ..()
 
-/obj/item/robot_module/miner/Initialize()
+/obj/item/robot_module/miner/Initialize(mapload)
 	basic_modules += /obj/item/card/id/miningborg
 	. = ..()
 
@@ -278,7 +238,6 @@
 	moduleselect_icon = "standard"
 	hat_offset = -3
 
-/obj/item/robot_module/Initialize()
+/obj/item/robot_module/Initialize(mapload)
 	basic_modules += /obj/item/dildo/custom
-	basic_modules += /obj/item/milking_machine/pleasuremaw
 	. = ..()

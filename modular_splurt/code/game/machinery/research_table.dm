@@ -85,6 +85,8 @@
 	return
 
 /obj/machinery/research_table/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
+	if(QDELETED(buckled_mob) || QDELETED(user)) //SPLURT edit
+		return
 	if(INTERACTING_WITH(buckled_mob, src))
 		to_chat(user, "<span class='notice'>You're already trying to unbuckle [buckled_mob == user ? "yourself" : buckled_mob]!")
 		return

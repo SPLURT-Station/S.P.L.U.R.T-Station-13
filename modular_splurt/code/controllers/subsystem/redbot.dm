@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(redbot)
 	name = "RedBot Comms"
 	flags = SS_NO_FIRE
 
-/datum/controller/subsystem/redbot/Initialize(start_timeofday)
+/datum/controller/subsystem/redbot/Initialize(start_timeofday) //Changed from the default of timeofday.
 	var/comms_key = CONFIG_GET(string/comms_key)
 	var/bot_ip = CONFIG_GET(string/bot_ip)
 	var/round_id = GLOB.round_id

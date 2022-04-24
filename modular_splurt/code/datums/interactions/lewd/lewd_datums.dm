@@ -40,7 +40,7 @@
 		return
 
 	if(prob(50))
-		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s cock honks[pick(" loudly", "")]!</span>")
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
@@ -61,16 +61,6 @@
 
 	if(prob(50) && isclownjob(target))
 		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s fun hole honks[pick(" loudly", "")]!</span>")
-
-	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
-
-/datum/interaction/lewd/fuck/belly/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	. = ..()
-	if(!(isclownjob(target) || isclownjob(user)))
-		return
-
-	if(prob(50) && isclownjob(target))
-		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s belly button honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
@@ -271,26 +261,6 @@
 
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
-/datum/interaction/lewd/oral/selfsuck/display_interaction(mob/living/carbon/human/user)
-	. = ..()
-	if(!isclownjob(user))
-		return
-
-	if(prob(50))
-		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
-
-	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
-
-/datum/interaction/lewd/breastfuckself/display_interaction(mob/living/carbon/human/user)
-	. = ..()
-	if(!isclownjob(user))
-		return
-
-	if(prob(50))
-		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.breast_nouns)] honk[pick(" loudly", "")]!</span>")
-
-	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
-
 /datum/interaction/lewd/fingerass_self/display_interaction(mob/living/carbon/human/user)
 	. = ..()
 	if(!isclownjob(user))
@@ -342,6 +312,141 @@
 	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 //Own stuff
+/datum/interaction/lewd/oral/selfsuck
+	command = "selfsuck"
+	description = "Suck yourself off."
+	interaction_sound = null
+	require_target_vagina = REQUIRE_NONE
+	require_user_penis = REQUIRE_EXPOSED
+	user_not_tired = TRUE
+	user_is_target = TRUE
+	max_distance = 0
+	write_log_user = "sucked off"
+	write_log_target = null
+
+/datum/interaction/lewd/oral/selfsuck/display_interaction(mob/living/carbon/human/user)
+	user.do_oral_self(user, "penis")
+	if(!isclownjob(user))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/oral/suckvagself
+	command = "suckvagself"
+	description = "Lick your own pussy."
+	interaction_sound = null
+	require_user_penis = REQUIRE_NONE
+	user_not_tired = TRUE
+	user_is_target = TRUE
+	max_distance = 0
+	write_log_user = "Сunni off"
+	write_log_target = null
+
+/datum/interaction/lewd/oral/suckvagself/display_interaction(mob/living/carbon/human/user)
+	user.do_oral_self(user, "vagina")
+
+/datum/interaction/lewd/breastfuckself
+	command = "breastfuckself"
+	description = "Fuck your breasts"
+	interaction_sound = null
+	require_user_penis = REQUIRE_EXPOSED
+	require_user_breasts = REQUIRE_EXPOSED
+	user_not_tired = TRUE
+	user_is_target = TRUE
+	max_distance = 0
+	write_log_user = "Breastfucked"
+	write_log_target = null
+
+/datum/interaction/lewd/breastfuckself/display_interaction(mob/living/carbon/human/user)
+	user.do_breastfuck_self(user)
+	if(!isclownjob(user))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.breast_nouns)] honk[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/fuck/belly
+	command = "fuckbelly"
+	description = "Fuck their belly."
+	require_target_vagina = REQUIRE_NONE
+	require_target_belly = REQUIRE_EXPOSED
+	write_log_user = "belly fucked"
+	write_log_target = "was belly fucked by"
+
+/datum/interaction/lewd/fuck/belly/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
+	user.do_bellyfuck(target)
+
+	if(!(isclownjob(target) || isclownjob(user)))
+		return
+
+	if(prob(50) && isclownjob(target))
+		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s belly button honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/remove_self_equipment
+	command = "remove_self_equipment"
+	description = "Remove your genital's equipment"
+	require_user_hands = TRUE
+	interaction_sound = null
+	max_distance = 0
+	user_is_target = TRUE
+	write_log_user = "messed with their genital equipment"
+	write_log_target = null
+	user_is_target = TRUE
+
+/datum/interaction/lewd/remove_self_equipment/display_interaction(mob/living/user)
+	if(!iscarbon(user))
+		to_chat(user, "<span class='warning'>You don't seem like someone who'd use cock equipment my dude</span>")
+		return
+	user.remove_equipment(user)
+
+/datum/interaction/lewd/remove_other_equipment
+	command = "remove_other_equipment"
+	description = "Remove their genital's equipment"
+	require_user_hands = TRUE
+	interaction_sound = null
+	max_distance = 1
+	write_log_user = null
+	write_log_target = "got their genital's equipment edited by"
+
+/datum/interaction/lewd/remove_other_equipment/display_interaction(mob/living/user, mob/living/target)
+	if(!iscarbon(target))
+		to_chat(user, "<span class='warning'>[target.p_they()] don't look like someone who'd use balls equipment</span>")
+	user.remove_equipment(target)
+
+/datum/interaction/lewd/deflate_belly
+	command = "deflate_belly"
+	description = "Deflate belly"
+	require_user_belly = REQUIRE_EXPOSED
+	interaction_sound = null
+	max_distance = 0
+	user_is_target = TRUE
+	write_log_user = "deflated their belly"
+	write_log_target = null
+
+/datum/interaction/lewd/deflate_belly/display_interaction(mob/living/carbon/user)
+	var/obj/item/organ/genital/belly/gut = user.getorganslot(ORGAN_SLOT_BELLY)
+	if(gut)
+		gut.modify_size(-1)
+
+/datum/interaction/lewd/nuzzle_belly
+	command = "nuzzle_belly"
+	description = "Nuzzle their belly"
+	require_target_belly = REQUIRE_EXPOSED
+	interaction_sound = null
+	max_distance = 1
+	write_log_target = "got their belly nuzzled by"
+	write_log_user = null
+
+/datum/interaction/lewd/nuzzle_belly/display_interaction(mob/living/user, mob/living/target)
+	user.nuzzle_belly(target)
+
 /datum/interaction/lewd/do_breastsmother
 	command = "do_breastsmother"
 	description = "Smother them in your breasts"
@@ -396,6 +501,44 @@
 
 /datum/interaction/lewd/lick_armpit/display_interaction(mob/living/user, mob/living/target)
 	user.lick_armpit(target)
+
+/datum/interaction/lewd/fuck_armpit
+	command = "fuck_armpit"
+	description = "Fuck their armpit"
+	require_user_penis = REQUIRE_EXPOSED
+	interaction_sound = null
+	write_log_target = "got their armpit fucked by"
+	write_log_user = "fucked the armpit of"
+
+/datum/interaction/lewd/fuck_armpit/display_interaction(mob/living/user, mob/living/target)
+	user.fuck_armpit(target)
+
+	if(!isclownjob(user))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/do_pitjob
+	command = "do_pitjob"
+	description = "Jerk them off with your armpit"
+	require_target_penis = REQUIRE_EXPOSED
+	interaction_sound = null
+	write_log_target = "gave a pitjob to"
+	write_log_user = "got a pitjob from"
+
+/datum/interaction/lewd/do_pitjob/display_interaction(mob/living/user, mob/living/target)
+	user.do_pitjob(target)
+
+	if(!isclownjob(target))
+		return
+
+	if(prob(50))
+		user.visible_message("<span class='lewd'>\The <b>[user]</b>'s [pick(GLOB.dick_nouns)] honks[pick(" loudly", "")]!</span>")
+
+	playlewdinteractionsound(user, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
 /datum/interaction/lewd/do_boobjob
 	command = "do_boobjob"
@@ -576,6 +719,19 @@
 
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
+/datum/interaction/lewd/unholy/suck_fart
+	command = "suck_fart"
+	description = "Suck the farts out of their asshole"
+	require_user_mouth = TRUE
+	require_target_anus = REQUIRE_EXPOSED
+	max_distance = 1
+	interaction_sound = null
+	write_log_target = "got their farts sucked out by"
+	write_log_user = "sucked farts"
+
+/datum/interaction/lewd/unholy/suck_fart/display_interaction(mob/living/user, mob/living/target)
+	user.suck_fart(target)
+
 /datum/interaction/lewd/unholy/do_faceshit
 	command = "do_faceshit"
 	description = "Shit on their face"
@@ -620,6 +776,19 @@
 		target.visible_message("<span class='lewd'>\The <b>[target]</b>'s fun hole honks[pick(" loudly", "")]!</span>")
 
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
+
+/datum/interaction/lewd/unholy/suck_shit
+	command = "suck_shit"
+	description = "Suck the shit out of their asshole"
+	require_user_mouth = TRUE
+	require_target_anus = REQUIRE_EXPOSED
+	max_distance = 1
+	interaction_sound = null
+	write_log_target = "got their shit sucked out by"
+	write_log_user = "sucked shit"
+
+/datum/interaction/lewd/unholy/suck_shit/display_interaction(mob/living/user, mob/living/target)
+	user.suck_shit(target)
 
 /datum/interaction/lewd/unholy/piss_over
 	command = "piss_over"

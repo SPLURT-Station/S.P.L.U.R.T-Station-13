@@ -32,6 +32,11 @@
 		var/confirm = alert(src, "Send [O]([ckey]) back to the lobby without respawn restrictions?", "Send to Lobby", "Yes", "No")
 		if(confirm != "Yes")
 			return
+		//SPLURT edit
+		if(!O.client)
+			to_chat(src, "The user has left the game.")
+			return
+		//
 		message_admins("[key_name_admin(src)] gave [key_name_admin(O)] a full respawn and sent them back to the lobby.")
 		log_admin("[key_name(src)] gave [key_name(O)] a full respawn and sent them back to the lobby.")
 		to_chat(O, "<span class='userdanger'>You have been given a full respawn.</span>")
@@ -42,11 +47,16 @@
 		var/confirm = alert(src, "Remove [NP]'s respawn restrictions?", "Remove Restrictions", "Yes", "No")
 		if(confirm != "Yes")
 			return
+		//SPLURT edit
+		if(!NP.client)
+			to_chat(src, "The user has left the game.")
+			return
+		//
 		message_admins("[key_name_admin(src)] removed [ckey]'s respawn restrictions.")
 		log_admin("[key_name(src)] removed [ckey]'s respawn restrictions")
 		NP.client.prefs.respawn_restrictions_active = FALSE
 		NP.client.prefs.dnr_triggered = FALSE
-		to_chat(NP, "<span class='boldnotie'>Your respawn restrictions have been removed.")
+		to_chat(NP, "<span class='boldnotice'>Your respawn restrictions have been removed.</span>")
 	else
 		CRASH("Invalid mobtype")
 

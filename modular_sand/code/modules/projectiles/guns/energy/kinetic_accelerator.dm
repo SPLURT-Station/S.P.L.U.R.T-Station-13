@@ -145,7 +145,7 @@
 	knife_x_offset = 15
 	knife_y_offset = 8
 
-/obj/item/gun/energy/kinetic_accelerator/premiumka/heavy/Initialize()
+/obj/item/gun/energy/kinetic_accelerator/premiumka/heavy/Initialize(mapload)
 	. = ..()
 	var/obj/item/borg/upgrade/modkit/aoe/heavy/initial_kit = new /obj/item/borg/upgrade/modkit/aoe/heavy(src)
 	initial_kit.install(src)

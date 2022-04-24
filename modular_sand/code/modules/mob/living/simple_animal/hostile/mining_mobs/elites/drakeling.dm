@@ -103,7 +103,7 @@
 	ranged_cooldown = world.time + 25
 	visible_message("<span class='boldwarning'>[src] spews lava around themselves! Get back!</span>")
 	for(var/turf/T in oview(1, src))
-		new /obj/effect/temp_visual/lava_warning(T)
+		new /obj/effect/temp_visual/lava_warning(T, 40)
 
 /mob/living/simple_animal/hostile/asteroid/elite/drakeling/proc/lava_around()
 	ranged_cooldown = world.time + 50
@@ -146,7 +146,7 @@
 /mob/living/simple_animal/hostile/asteroid/elite/drakeling/proc/lava_wall(dir, range)
 	var/turf/T = get_turf(src)
 	for(var/i in 1 to range)
-		new /obj/effect/temp_visual/lava_warning(T)
+		new /obj/effect/temp_visual/lava_warning(T, 40)
 		T = get_step(T, dir)
 		sleep(2)
 

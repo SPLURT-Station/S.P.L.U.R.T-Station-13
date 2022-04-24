@@ -85,7 +85,7 @@
 /obj/item/clothing/under/costume/kilt/highlander
 	desc = "You're the only one worthy of this kilt."
 
-/obj/item/clothing/under/costume/kilt/highlander/Initialize()
+/obj/item/clothing/under/costume/kilt/highlander/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, HIGHLANDER)
 
@@ -126,7 +126,7 @@
 	can_adjust = FALSE
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
-/obj/item/clothing/under/costume/maid/Initialize()
+/obj/item/clothing/under/costume/maid/Initialize(mapload)
 	. = ..()
 	var/obj/item/clothing/accessory/maidapron/A = new (src)
 	attach_accessory(A)

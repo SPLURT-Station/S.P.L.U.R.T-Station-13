@@ -19,7 +19,7 @@
 	var/upgradeddesc = "Go to Hell, Carolina!"
 	w_class = WEIGHT_CLASS_BULKY
 
-/obj/item/katana/goldbrand/Initialize()
+/obj/item/katana/goldbrand/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj,src)
 
@@ -70,7 +70,7 @@
 	var/list/megalist = list()
 	var/list/cmegalist = list()
 
-/obj/effect/wrath/Initialize()
+/obj/effect/wrath/Initialize(mapload)
 	..()
 	megalist = list("Cockblock", "Cockblock", "Cockblock") //cockblock just to be sure that no one goes through the wrath wall in the 10 minute grace period
 	addtimer(CALLBACK(src, .proc/updatemegalist), 6000) //10 minutes delay so that all megafauna can spawn and etc.

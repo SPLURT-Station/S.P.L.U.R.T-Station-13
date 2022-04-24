@@ -1,3 +1,10 @@
+/obj/item/clothing/neck/petcollar/locked/security
+	name = "security collar"
+	desc = "For when you need to show everyone who your pet belongs to."
+	icon = 'modular_splurt/icons/obj/clothing/neck.dmi'
+	icon_state = "seccollar"
+	poly_states = 0
+
 /obj/item/clothing/neck/petcollar/spike
 	name = "Spiked Pet Collar"
 	desc = "A collar with spikes that look as sharp as your teeth. Doesn't seem very good for neck cuddles."

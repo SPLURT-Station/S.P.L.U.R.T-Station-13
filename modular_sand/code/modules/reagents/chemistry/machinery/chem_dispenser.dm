@@ -3,7 +3,7 @@
 		/datum/reagent/toxin/slimejelly
 	)
 
-/obj/machinery/chem_dispenser/Initialize()
+/obj/machinery/chem_dispenser/Initialize(mapload)
 	if(upgrade_reagents4)
 		upgrade_reagents4 = sortList(upgrade_reagents4, /proc/cmp_reagents_asc)
 	. = ..()

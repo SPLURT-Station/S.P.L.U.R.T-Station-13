@@ -9,7 +9,7 @@
 	icon_state = "floor-empty"
 	start_with_cell = FALSE
 
-/obj/machinery/light/floor/built/Initialize()
+/obj/machinery/light/floor/built/Initialize(mapload)
 	. = ..()
 	status = LIGHT_EMPTY
 	update(0)

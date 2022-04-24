@@ -71,7 +71,7 @@
 	update_appearance()
 	return TRUE
 
-/obj/item/dildo/Initialize()
+/obj/item/dildo/Initialize(mapload)
 	. = ..()
 	if(random_color == TRUE)
 		var/randcolor = pick(GLOB.dildo_colors)
@@ -119,8 +119,8 @@
 	attack_verb 		= list("penetrated", "slapped", "neighed", "gaped", "prolapsed", "inseminated")
 
 /obj/item/dildo/flared/huge
-	name 				= "literal horse cock"
-	desc 				= "THIS THING IS HUGE!"
+	name 				= "The Penetrator"
+	desc 				= "The absurdity of a sex toy with the lethality of a baseball bat."
 	dildo_size 			= 4
 	force				= 10
 	hitsound = 'sound/weapons/klonk.ogg'

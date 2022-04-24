@@ -380,7 +380,7 @@ They deal 35 brute (armor is considered).
 /obj/effect/step_trigger/gladiator
 	var/mob/living/simple_animal/hostile/megafauna/gladiator/glady
 
-/obj/effect/step_trigger/gladiator/Initialize()
+/obj/effect/step_trigger/gladiator/Initialize(mapload)
 	. = ..()
 	for(var/mob/living/simple_animal/hostile/megafauna/gladiator/G in view(7, src))
 		if(!glady)

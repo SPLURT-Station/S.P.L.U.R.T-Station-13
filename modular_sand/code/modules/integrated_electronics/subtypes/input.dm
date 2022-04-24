@@ -42,7 +42,7 @@
 	var/obj/machinery/telecomms/receiver/circuit/receiver
 	var/list/freq_blacklist = list(FREQ_CENTCOM,FREQ_SYNDICATE,FREQ_CTF_RED,FREQ_CTF_BLUE)
 
-/obj/item/integrated_circuit/input/tcomm_interceptor/Initialize()
+/obj/item/integrated_circuit/input/tcomm_interceptor/Initialize(mapload)
 	. = ..()
 	receiver = new(src)
 	receiver.holder = src

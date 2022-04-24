@@ -1,3 +1,13 @@
+//Main code edits
+/datum/reagent/drug/aphrodisiacplus/overdose_process(mob/living/M)
+	if(M && M.client?.prefs.arousable && !(M.client?.prefs.cit_toggles & NO_APHRO))
+		if(!HAS_TRAIT(M, TRAIT_IN_HEAT))
+			to_chat(M, "<span class='userlove'>Your need for sex is overpowering!</span>")
+			M.log_message("Made In Heat by hexacrocin.", LOG_EMOTE)
+			ADD_TRAIT(M, TRAIT_IN_HEAT, APHRO_TRAIT)
+	. = ..()
+
+//Own stuff
 /datum/reagent/drug/maint/tar
 	name = "Maintenance Tar"
 	description = "An unknown tar that you most likely gotten from an assistant, a bored chemist... or cooked yourself."

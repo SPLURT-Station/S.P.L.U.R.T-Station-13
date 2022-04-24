@@ -1,4 +1,4 @@
-/obj/machinery/mineral/equipment_vendor/Initialize()
+/obj/machinery/mineral/equipment_vendor/Initialize(mapload)
 	. = ..()
 	prize_list += list(
 			new /datum/data/mining_equipment("Precise Accelerator",			/obj/item/gun/energy/kinetic_accelerator/premiumka/precise,			10000),

@@ -20,7 +20,7 @@
 	var/map_pad_id = "" as text //what's my name
 	var/map_pad_link_id = "" as text //who's my friend
 
-/obj/machinery/quantumpad/Initialize()
+/obj/machinery/quantumpad/Initialize(mapload)
 	. = ..()
 	if(map_pad_id)
 		mapped_quantum_pads[map_pad_id] = src
@@ -89,10 +89,11 @@
 	return ..()
 
 /obj/machinery/quantumpad/interact(mob/user, obj/machinery/quantumpad/target_pad = linked_pad)
-	if(!target_pad || QDELETED(target_pad))
+	if(QDELETED(target_pad)) //SPLURT edit
 		if(!map_pad_link_id || !initMappedLink())
 			to_chat(user, "<span class='warning'>Target pad not found!</span>")
 			return
+		target_pad = linked_pad //SPLURT edit
 
 	if(world.time < last_teleport + teleport_cooldown)
 		to_chat(user, "<span class='warning'>[src] is recharging power. Please wait [DisplayTimeText(last_teleport + teleport_cooldown - world.time)].</span>")

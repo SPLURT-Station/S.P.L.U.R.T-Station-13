@@ -50,13 +50,13 @@
 	matrixed_sections = MATRIX_RED
 
 /datum/sprite_accessory/tails/mam_tails/chemlight
-	name = "Chemlight"
+	name = "RadDog"
 	icon_state = "chemlight"
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
 	matrixed_sections = MATRIX_ALL
 
 /datum/sprite_accessory/tails_animated/mam_tails_animated/chemlight
-	name = "Chemlight"
+	name = "RadDog"
 	icon_state = "chemlight"
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
 	matrixed_sections = MATRIX_ALL
@@ -188,6 +188,18 @@
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
 	recommended_species = list("insect")
 	matrixed_sections = MATRIX_RED_BLUE
+
+/datum/sprite_accessory/tails/mam_tails/easterndragon
+	name = "Dragon Eastern"
+	icon_state = "easternd"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/tails_animated/mam_tails_animated/easterndragon
+	name = "Eastern Dragon"
+	icon_state = "easternd"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	matrixed_sections = MATRIX_RED_GREEN
 
 //Lizard tails
 /datum/sprite_accessory/tails/lizard/tailmaw

@@ -59,6 +59,16 @@
 	recommended_species = list("insect")
 	covered_limbs = list("Chest" = MATRIX_GREEN_BLUE)
 
+/datum/sprite_accessory/mam_body_markings/eros/chemlight
+	name = "RadDog"
+	icon_state = "chemlight"
+	covered_limbs = list("Head" = MATRIX_ALL, "Chest" = MATRIX_ALL, "Right Arm" = MATRIX_RED_BLUE, "Left Arm" = MATRIX_RED_BLUE, "Right Leg" = MATRIX_RED_BLUE, "Left Leg" = MATRIX_RED_BLUE)
+
+/datum/sprite_accessory/mam_body_markings/eros/easterndragon
+	name = "Eastern Dragon"
+	icon_state = "easternd"
+	covered_limbs = list("Head" = MATRIX_RED_GREEN, "Chest" = MATRIX_RED_GREEN, "Right Arm" = MATRIX_RED_GREEN, "Left Arm" = MATRIX_RED_GREEN, "Right Leg" = MATRIX_RED_GREEN, "Left Leg" = MATRIX_RED_GREEN)
+
 //S.P.L.U.R.T Body Markings
 /datum/sprite_accessory/mam_body_markings/eros/gloss
 	name = "Body Gloss"

@@ -269,11 +269,6 @@
 #define TRAIT_NODROP            "nodrop"
 #define TRAIT_SPOOKY_THROW      "spooky_throw"
 
-
-// Hyperstation traits
-#define TRAIT_PHARMA            "hepatic_pharmacokinesis"
-#define TRAIT_CHOKE_SLUT		"choke_slut"
-
 // common trait sources
 #define TRAIT_GENERIC "generic"
 #define EYE_DAMAGE "eye_damage"

@@ -14,7 +14,8 @@
 		/obj/item/clothing/neck/petcollar/spike = 5,
 		/obj/item/clothing/neck/petcollar/holo = 5,
 		/obj/item/clothing/neck/petcollar/casino = 5,
-		/obj/item/clothing/gloves/latexsleeves = 3
+		/obj/item/clothing/gloves/latexsleeves = 3,
+		/obj/item/genital_equipment/sounding = 4
 	)
 	var/list/extra_contraband = list(
 		//Lewd-Clothes

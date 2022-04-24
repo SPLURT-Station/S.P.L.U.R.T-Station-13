@@ -70,7 +70,7 @@
 	RECIPE_PIKE = /obj/item/smithing/pikehead,
 	RECIPE_STUNDIL = /obj/item/smithing/stundild)
 
-/obj/structure/anvil/Initialize()
+/obj/structure/anvil/Initialize(mapload)
 	..()
 	currentquality = anvilquality
 

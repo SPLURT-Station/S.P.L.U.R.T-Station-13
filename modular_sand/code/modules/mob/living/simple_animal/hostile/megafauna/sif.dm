@@ -111,7 +111,7 @@ Difficulty: Medium
 	layer = HIGH_OBJ_LAYER //Looks better when its over everything... cause its huge
 	var/obj/item/gps/internal/geepm
 
-/obj/structure/sword/sif/Initialize()
+/obj/structure/sword/sif/Initialize(mapload)
 	. = ..()
 	geepm = new /obj/item/gps/internal/sif(src)
 

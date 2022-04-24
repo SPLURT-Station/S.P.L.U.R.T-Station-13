@@ -234,6 +234,7 @@
 		"ipc_antenna"		= "None",
 		"flavor_text"		= "",
 		"silicon_flavor_text"		= "",
+		"naked_flavor_text" = "", //SPLURT edit
 		"meat_type"			= "Mammalian",
 		"body_model"		= body_model,
 		"body_size"			= RESIZE_DEFAULT_SIZE

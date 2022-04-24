@@ -24,7 +24,7 @@
 	var/egg_lain = 0
 	gold_core_spawnable = HOSTILE_SPAWN //NO, It's powergame time! :wooo:
 
-/mob/living/simple_animal/hostile/headcrab/Initialize()
+/mob/living/simple_animal/hostile/headcrab/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/ventcrawling, given_tier = VENTCRAWLER_ALWAYS)
 

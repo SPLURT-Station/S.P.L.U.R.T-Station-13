@@ -2,7 +2,7 @@
 	mob_type = /mob/living/silicon/robot
 	assignedrole = "Ghost Role"
 
-/obj/effect/mob_spawn/robot/Initialize()
+/obj/effect/mob_spawn/robot/Initialize(mapload)
 	. = ..()
 
 /obj/effect/mob_spawn/robot/equip(mob/living/silicon/robot/R)

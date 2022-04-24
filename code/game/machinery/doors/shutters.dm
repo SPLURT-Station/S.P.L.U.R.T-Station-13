@@ -46,7 +46,7 @@
 	density = FALSE
 	opacity = 0
 	rad_insulation = 1
-
+/* //SPLURT edit, now handled better in modular
 /obj/machinery/door/poddoor/shutters/radiation/do_animate(animation)
 	..()
 	switch(animation)
@@ -54,7 +54,7 @@
 			rad_insulation = 1
 		if("closing")
 			rad_insulation = -0.5
-
+*/
 // A 3x3 N2 SM setup won't irradiate you if you're behind the shutter at -0.9 insulation. If it starts to delam, it'll start irradiating you slowly. Keep the value between -0.1 to -0.9
 
 /obj/machinery/door/poddoor/shutters/window

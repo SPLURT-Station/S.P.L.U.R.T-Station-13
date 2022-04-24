@@ -50,7 +50,7 @@
 	range = 21
 	color = "#FF0000"
 
-/mob/living/simple_animal/hostile/megafauna/rogueprocess/Initialize()
+/mob/living/simple_animal/hostile/megafauna/rogueprocess/Initialize(mapload)
 	. = ..()
 	internal = new /obj/item/gps/internal/rogueprocess(src)
 

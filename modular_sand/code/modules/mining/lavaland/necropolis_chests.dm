@@ -51,7 +51,7 @@
 	icon = 'modular_sand/icons/obj/shields.dmi'
 	icon_state = "raft"
 
-/obj/vehicle/ridden/lavaboat/dragon/gladiator/Initialize()
+/obj/vehicle/ridden/lavaboat/dragon/gladiator/Initialize(mapload)
 	..()
 	var/datum/component/riding/D = LoadComponent(/datum/component/riding)
 	D.vehicle_move_delay = 1
@@ -105,7 +105,7 @@
 	var/toggled = FALSE
 	var/obj/item/ammo_box/magazine/internal/shot/alternate_magazine
 
-/obj/item/gun/ballistic/revolver/doublebarrel/super/Initialize()
+/obj/item/gun/ballistic/revolver/doublebarrel/super/Initialize(mapload)
 	. = ..()
 	if(!alternate_magazine)
 		alternate_magazine = new /obj/item/ammo_box/magazine/internal/shot/dual/heck/hook(src)
@@ -224,7 +224,7 @@
 	var/wielded
 	var/item_state_on = "crucible1"
 
-/obj/item/crucible/Initialize()
+/obj/item/crucible/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/wield)
 	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/unwield)
@@ -931,7 +931,7 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 //Enables the sword to butcher bodies
-/obj/item/melee/sword_of_the_forsaken/Initialize()
+/obj/item/melee/sword_of_the_forsaken/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/butchering, 50, 100, 10)
 

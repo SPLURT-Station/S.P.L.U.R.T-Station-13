@@ -90,6 +90,7 @@
 	if(rand(1,7) == 7)
 		playsound(loc, "modular_splurt/sound/lewd/deathclaw_grunt[rand(1, 5)].ogg", 70, 1, -1)
 
+	var/datum/interaction/I
 	switch(chosen_hole)
 		if(CUM_TARGET_ANUS)
 			if(tearSlot(M, ITEM_SLOT_OCLOTHING))
@@ -100,12 +101,13 @@
 			// Abomination deathclaws do other stuff instead
 			if(deathclaw_mode == "abomination" && M.client?.prefs.unholypref == "Yes")
 				if(prob(1))
-					do_grindmouth(M)
+					I = SSinteractions.interactions["grindmouth"]
 				else
-					do_grindface(M)
+					I = SSinteractions.interactions["grindface"]
 				handle_post_sex(25, null, M)
 			else
-				do_anal(M)
+				I = SSinteractions.interactions["fuckass"]
+			I.display_interaction(src, M)
 
 		if(CUM_TARGET_VAGINA)
 			if(tearSlot(M, ITEM_SLOT_OCLOTHING))
@@ -115,10 +117,11 @@
 
 			// Abomination deathclaws do other stuff instead
 			if(deathclaw_mode == "abomination" && M.client?.prefs.unholypref == "Yes")
-				do_footjob_v(M)
+				I = SSinteractions.interactions["footjob_vaginal"]
 				handle_post_sex(10, null, M)
 			else
-				do_vaginal(M)
+				I = SSinteractions.interactions["fuckvag"]
+			I.display_interaction(src, M)
 
 		if(CUM_TARGET_THROAT)
 			if(tearSlot(M, ITEM_SLOT_HEAD))
@@ -135,7 +138,8 @@
 				handle_post_sex(25, null, M)
 				shake_camera(M, 6, 1)
 			else
-				do_throatfuck(M)
+				I = SSinteractions.interactions["throatfuck"]
+				I.display_interaction(src, M)
 
 /mob/living/simple_animal/hostile/deathclaw/funclaw/cum(mob/living/M)
 

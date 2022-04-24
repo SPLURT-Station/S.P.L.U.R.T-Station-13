@@ -9,7 +9,28 @@
 	var/require_target_legs
 	var/require_target_num_legs
 
+	var/require_user_belly
+	var/require_target_belly
+
 /datum/interaction/lewd/evaluate_user(mob/living/user, silent = TRUE, action_check = TRUE)
+	if(require_user_belly)
+		switch(require_user_belly)
+			if(REQUIRE_EXPOSED)
+				if(!user.has_belly(REQUIRE_EXPOSED))
+					if(!silent)
+						to_chat(user, "<span class='warning'>Your belly needs to be exposed.</span>")
+					return FALSE
+			if(REQUIRE_ANY)
+				if(!user.has_belly(REQUIRE_ANY))
+					if(!silent)
+						to_chat(user, "<span class='warning'>Your belly seems to be too flat for that.</span>")
+					return FALSE
+			if(REQUIRE_UNEXPOSED)
+				if(!user.has_belly(REQUIRE_UNEXPOSED))
+					if(!silent)
+						to_chat(user, "<span class='warning'>Your belly needs to be unexposed.</span>")
+					return FALSE
+
 	if(require_user_legs)
 		switch(require_user_legs)
 			if(REQUIRE_EXPOSED)
@@ -44,6 +65,24 @@
 	. = ..()
 
 /datum/interaction/lewd/evaluate_target(mob/living/user, mob/living/target, silent = TRUE)
+	if(require_target_belly)
+		switch(require_target_belly)
+			if(REQUIRE_EXPOSED)
+				if(!target.has_belly(REQUIRE_EXPOSED))
+					if(!silent)
+						to_chat(user, "<span class='warning'>Their belly needs to be exposed.</span>")
+					return FALSE
+			if(REQUIRE_ANY)
+				if(!target.has_belly(REQUIRE_ANY))
+					if(!silent)
+						to_chat(user, "<span class='warning'>Their belly seems to be too flat for that.</span>")
+					return FALSE
+			if(REQUIRE_UNEXPOSED)
+				if(!target.has_belly(REQUIRE_UNEXPOSED))
+					if(!silent)
+						to_chat(user, "<span class='warning'>Their belly needs to be unexposed.</span>")
+					return FALSE
+
 	if(require_target_legs)
 		switch(require_target_legs)
 			if(REQUIRE_EXPOSED)

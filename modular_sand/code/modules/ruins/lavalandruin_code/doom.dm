@@ -73,7 +73,7 @@
 	var/list/candylist = list()
 	var/shouldunlock = FALSE
 
-/obj/machinery/door/airlock/titanium/doomed/locked/Initialize()
+/obj/machinery/door/airlock/titanium/doomed/locked/Initialize(mapload)
 	. = ..()
 	for(var/mob/living/simple_animal/hostile/asteroid/elite/candy/C in view(15))
 		candylist += C
@@ -105,7 +105,7 @@
 	icon = 'modular_sand/icons/obj/doom.dmi'
 	icon_state = "barrel"
 
-/obj/structure/fermenting_barrel/doom/Initialize()
+/obj/structure/fermenting_barrel/doom/Initialize(mapload)
 	..()
 	src.reagents.add_reagent(pick(subtypesof(/datum/reagent/toxin)), 300)
 

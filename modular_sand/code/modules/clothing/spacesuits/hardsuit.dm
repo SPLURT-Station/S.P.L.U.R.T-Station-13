@@ -13,7 +13,7 @@
 	resistance_flags = ACID_PROOF
 	mutantrace_variation = STYLE_MUZZLE
 
-/obj/item/clothing/head/helmet/space/hardsuit/powerarmor/Initialize()
+/obj/item/clothing/head/helmet/space/hardsuit/powerarmor/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/spraycan_paintable)
 	update_icon()
@@ -72,7 +72,7 @@
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/powerarmor
 	mutantrace_variation = STYLE_DIGITIGRADE
 
-/obj/item/clothing/suit/space/hardsuit/powerarmor/Initialize()
+/obj/item/clothing/suit/space/hardsuit/powerarmor/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/spraycan_paintable)
 	update_icon()

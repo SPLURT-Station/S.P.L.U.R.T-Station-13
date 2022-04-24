@@ -10,7 +10,7 @@
 	verb_say = "beeps"
 	var/charge_count
 
-/obj/item/computermath/Initialize()
+/obj/item/computermath/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 

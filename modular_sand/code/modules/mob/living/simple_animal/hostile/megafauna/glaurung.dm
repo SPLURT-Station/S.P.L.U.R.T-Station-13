@@ -58,7 +58,7 @@ Difficulty: Medium
 	move_resist = MOVE_FORCE_NORMAL
 	pull_force = MOVE_FORCE_NORMAL
 
-/mob/living/simple_animal/hostile/megafauna/dragon/glaurung/Initialize()
+/mob/living/simple_animal/hostile/megafauna/dragon/glaurung/Initialize(mapload)
 	smallsprite.Grant(src)
 	. = ..()
 	internal = new/obj/item/gps/internal/glaurung(src)

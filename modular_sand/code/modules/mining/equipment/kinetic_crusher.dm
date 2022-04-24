@@ -333,7 +333,7 @@
 	var/backstab_bonus = 40
 	var/brightness = 7
 
-/obj/item/melee/zweihander/Initialize()
+/obj/item/melee/zweihander/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/butchering, 80, 110)
 	set_light(brightness)

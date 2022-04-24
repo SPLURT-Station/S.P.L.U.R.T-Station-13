@@ -20,7 +20,7 @@
 	var/list/encryption_keys = list()
 	var/obj/item/radio/headset/integrated/radio
 
-/obj/item/integrated_circuit/output/text_to_radio/Initialize()
+/obj/item/integrated_circuit/output/text_to_radio/Initialize(mapload)
 	. = ..()
 	radio = new(src)
 	radio.frequency = FREQ_COMMON

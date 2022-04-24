@@ -10,7 +10,7 @@
 	active_power_usage = 5000
 	var/efficiency
 
-/obj/machinery/telepad/Initialize()
+/obj/machinery/telepad/Initialize(mapload)
 	. = ..()
 	var/obj/item/circuitboard/machine/B = new /obj/item/circuitboard/machine/telesci_pad(null)
 	B.apply_default_parts(src)

@@ -1,4 +1,4 @@
-/obj/machinery/vending/clothing/Initialize()
+/obj/machinery/vending/clothing/Initialize(mapload)
 	products += list(/obj/item/clothing/head/wig = 5,
 					/obj/item/clothing/suit/jacket/duster = 5,
 					/obj/item/clothing/head/slouch_hat = 5,

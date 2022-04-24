@@ -98,7 +98,7 @@ Difficulty: Insanely Hard
 	var/list/rangers = list()
 	stun_chance = 7
 
-/mob/living/simple_animal/hostile/megafauna/king/phase2/Initialize()
+/mob/living/simple_animal/hostile/megafauna/king/phase2/Initialize(mapload)
 	. = ..()
 	update_icon()
 

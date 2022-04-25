@@ -467,10 +467,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<br><a href='?_src_=prefs;preference=hide_ckey;task=input'><b>Hide ckey: [hide_ckey ? "Enabled" : "Disabled"]</b></a><br>"
 			//SPLURT EDIT BEGIN - gregnancy preferences
 			dat += "<BR><b>Fertility preferences:</b>"
-			dat += "<a href='?_src_=prefs;preference=virility;task=input'><b>Can impregnate: [virility ? "Enabled" : "Disabled"]</b></a><br>"
-			dat += "<a href='?_src_=prefs;preference=fertility;task=input'><b>Can get pregnant: [fertility ? "Enabled" : "Disabled"]</b></a><br>"
+			dat += "<br><a href='?_src_=prefs;preference=virility;task=input'><b>Can impregnate: [virility ? "Enabled" : "Disabled"]</b></a><br>"
+			dat += "<br><a href='?_src_=prefs;preference=fertility;task=input'><b>Can get pregnant: [fertility ? "Enabled" : "Disabled"]</b></a><br>"
 			if(fertility)
-				dat += "<br><a href='?_src_=prefs;preference=live_birth;task=input'><b>Pregnancy type: [oviposition ? "Oviposition" : "Live Birth"]</b></a><br>"
+				dat += "<br><a href='?_src_=prefs;preference=oviposition;task=input'><b>Pregnancy type: [oviposition ? "Oviposition" : "Live Birth"]</b></a><br>"
 				dat += "<br><a href='?_src_=prefs;preference=pregnancy_inflation;task=input'><b>Pregnancy inflation: [pregnancy_inflation ? "Enabled" : "Disabled"]</b></a><br>"
 			//SPLURT EDIT END
 			dat += "</tr></table>"
@@ -2020,6 +2020,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("pregnancy_inflation")
 					pregnancy_inflation = !pregnancy_inflation
+
 				//SPLURT EDIT END
 
 				if("hair")

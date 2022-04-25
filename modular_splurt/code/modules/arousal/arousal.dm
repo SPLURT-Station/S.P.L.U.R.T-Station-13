@@ -5,6 +5,17 @@
 /mob/living/receive_climax(mob/living/partner, obj/item/organ/genital/receiver, obj/item/organ/genital/source_gen, spill, forced)
 	. = ..()
 
+	//gregnancy...
+	if(!spill && istype(source_gen, /obj/item/organ/genital/penis) && \
+		istype(receiver, /obj/item/organ/genital/vagina) && prob(PREGNANCY_CHANCE_ON_EJACULATION))
+		var/can_impregnate = TRUE
+		if(source_gen.owner.client?.prefs)
+			can_impregnate = source_gen.owner.client.prefs.virility
+		var/can_get_pregnant = (client?.prefs?.fertility && !is_type_in_typecache(src.type, GLOB.pregnancy_blocked_mob_typecache))
+		if(can_impregnate && can_get_pregnant)
+			apply_status_effect(/datum/status_effect/pregnancy, src.type, source_gen.owner)
+			to_chat(source_gen.owner, span_danger("That felt like a pregnancy nut!"))
+			to_chat(src, span_danger("That felt like a pregnancy nut!"))
 	if(!receiver || spill || forced)
 		return
 

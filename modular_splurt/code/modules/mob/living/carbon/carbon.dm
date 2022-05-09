@@ -3,10 +3,10 @@
 
 /mob/living/carbon/verb/open_genital_manager()
 	set category = "IC"
-	set name = "Open genital manager"
+	set name = "Open Genital Manager"
 	set desc = "Opens the genital management menu."
 
 	if(!genital_manager)
-		genital_manager = new()
+		genital_manager = new(src)
 
 	genital_manager.ui_interact(src)

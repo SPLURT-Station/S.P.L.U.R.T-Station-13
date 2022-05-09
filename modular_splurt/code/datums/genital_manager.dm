@@ -25,6 +25,12 @@
 		UnregisterSignal(preferences, COMSIG_PARENT_QDELETING)
 		preferences = null
 
+/datum/genital_manager/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "GenitalManager", name)
+		ui.open()
+
 /datum/genital_manager/ui_host(mob/user)
 	return owner
 

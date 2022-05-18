@@ -5,7 +5,7 @@
 	item_state = "knife"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
-	desc = "A sharp, concealable, fodling knife. Also known as a Balisong fan knife."
+	desc = "A sharp, concealable, folding knife. Also known as a Balisong fan knife."
 	flags_1 = CONDUCT_1
 	force = 3
 	w_class = WEIGHT_CLASS_SMALL
@@ -76,7 +76,7 @@
 
 /datum/supply_pack/goody/pistol22_single
 	name = ".22 Pistol Single-Pack"
-	desc = "Contains a parts kit to assemble a .22 Pistol."
+	desc = "Contains a parts kit to assemble a .22 pistol."
 	cost = 500
 	contains = list(/obj/item/gunpart/pistol22frame, /obj/item/gunpart/pistol22barrel, /obj/item/gunpart/pistol22bolt, /obj/item/ammo_box/magazine/m22, /obj/item/ammo_box/magazine/m22)
 
@@ -94,7 +94,7 @@
 
 /datum/supply_pack/goody/pistol45_single
 	name = ".45 Pistol Single-Pack"
-	desc = "Contains a pre-assembled .45 caliber M1911. Comes with .45 Rubber."
+	desc = "Contains a pre-assembled .45 ACP M1911. Comes with .45 Rubber."
 	cost = 900
 	contains = list(/obj/item/gun/ballistic/automatic/pistol/m1911/no_mag, /obj/item/ammo_box/magazine/m45/rubber, /obj/item/ammo_box/magazine/m45/rubber, /obj/item/ammo_box/magazine/m45/rubber)
 
@@ -106,13 +106,13 @@
 
 /datum/supply_pack/goody/brushgun2_signle
 	name = ".45 Brush Gun Single-Pack"
-	desc = "Contains a parts kit to assemble a 45 Long Brush Gun. Comes with a box of .45 Long"
+	desc = "Contains a parts kit to assemble a .45 Long Brush Gun. Comes with a box of .45 Long"
 	cost = 1500
 	contains = list( /obj/item/gunpart/riflebrush2stock, /obj/item/gunpart/riflebrush2barrel, /obj/item/ammo_box/g45l)
 
 /datum/supply_pack/goody/revolver45_single
-	name = ".45 Reolver Single-Pack"
-	desc = "Contains a parts kit to assemble a 45 Revolver Gun. Comes with a box of .45 Long"
+	name = ".45 Revolver Single-Pack"
+	desc = "Contains a parts kit to assemble a .45 Long Revolver. Comes with a box of .45 Long"
 	cost = 800
 	contains = list( /obj/item/gunpart/revolver45cylinder, /obj/item/gunpart/revolver45frame, /obj/item/ammo_box/g45l)
 

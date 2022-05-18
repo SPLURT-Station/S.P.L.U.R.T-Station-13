@@ -15,4 +15,4 @@
 	STR.max_items = 5
 	STR.display_numerical_stacking = TRUE
 	STR.can_hold = typecacheof(list(/obj/item/restraints/handcuffs, /obj/item/restraints/handcuffs/cable/zipties, /obj/item/assembly/flash,
-	/obj/item/reagent_containers/food/snacks/donut, /obj/item/melee/classic_baton/telescopic, /obj/item/grenade/flashbang, /obj/item/grenade/smokebomb, /obj/item/device/hailer))
+	/obj/item/reagent_containers/food/snacks/donut, /obj/item/melee/classic_baton/telescopic, /obj/item/grenade/flashbang, /obj/item/grenade/smokebomb, /obj/item/device/hailer, /obj/item/detective_scanner))

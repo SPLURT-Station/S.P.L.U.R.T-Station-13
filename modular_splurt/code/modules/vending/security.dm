@@ -4,7 +4,8 @@
 		/obj/item/device/hailer = 10,
 		/obj/item/clothing/suit/armor/vest/peacekeeper = 5,
 		/obj/item/clothing/suit/armor/vest/metrocop = 2,
-		/obj/item/clothing/head/helmet/metrocop = 2
+		/obj/item/clothing/head/helmet/metrocop = 2,
+		/obj/item/storage/bag/security = 10
 	)
 	var/list/extra_contraband = list(
 		/obj/item/storage/belt/slut = 5,

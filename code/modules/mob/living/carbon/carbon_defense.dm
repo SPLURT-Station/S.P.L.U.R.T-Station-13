@@ -359,8 +359,7 @@
 		AdjustAllImmobility(-60, FALSE)
 		AdjustUnconscious(-60, FALSE)
 		AdjustSleeping(-100, FALSE)
-		if(player_triggered_sleeping) //SPLURT Edit
-			player_triggered_sleeping = 0 //Ditto
+		player_triggered_sleeping = 0 //SPLURT Edit
 		if(combat_flags & COMBAT_FLAG_HARD_STAMCRIT)
 			adjustStaminaLoss(-15)
 		else

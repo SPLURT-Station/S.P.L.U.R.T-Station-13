@@ -489,6 +489,7 @@
 
 // MOB PROCS //END
 
+// Handled differently at modular_splurt\code\modules\mob\living\living.dm
 /*
 /mob/living/proc/mob_sleep()
 	set name = "Sleep"
@@ -501,14 +502,6 @@
 		if(alert(src, "You sure you want to sleep for a while?", "Sleep", "Yes", "No") == "Yes")
 			SetSleeping(400) //Short nap
 */
-
-/mob/living/proc/mob_sleep()
-	set name = "Sleep"
-	set category = "IC"
-
-	if(alert("Are you sure you want to [player_triggered_sleeping ? "wake up?" : "sleep for a while? Use 'sleep' again to wake up."]", "Sleep", "No", "Yes") == "Yes")
-		player_triggered_sleeping = !player_triggered_sleeping
-		GoSleeping()
 
 //Skyrat change start
 /mob/living/proc/surrender()

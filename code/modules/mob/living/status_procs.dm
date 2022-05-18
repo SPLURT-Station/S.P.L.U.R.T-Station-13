@@ -473,7 +473,7 @@
 		var/datum/status_effect/incapacitating/sleeping/S = IsSleeping()
 		if(S)
 			S.duration = max(world.time + amount, S.duration)
-		else if(amount > 0)
+		else if(amount > 0 || player_triggered_sleeping) //SPLURT Edit
 			S = apply_status_effect(STATUS_EFFECT_SLEEPING, amount, updating)
 		return S
 
@@ -501,19 +501,6 @@
 		else if(amount > 0)
 			S = apply_status_effect(STATUS_EFFECT_SLEEPING, amount, updating)
 		return S
-
-// SPLURT Edit
-/mob/living/proc/GoSleeping(amount, updating = TRUE, ignore_canstun = FALSE) //Character chose to sleep
-	if(SEND_SIGNAL(src, COMSIG_LIVING_STATUS_SLEEP, amount, updating, ignore_canstun) & COMPONENT_NO_STUN)
-		return
-	if((!HAS_TRAIT(src, TRAIT_SLEEPIMMUNE)) || ignore_canstun)
-		var/datum/status_effect/incapacitating/sleeping/S = IsSleeping()
-		if(S)
-			S.duration = max(world.time + amount, S.duration)
-		else if(amount > 0 || player_triggered_sleeping)
-			S = apply_status_effect(STATUS_EFFECT_SLEEPING, amount, updating)
-		return S
-// SPLURT End
 
 ///////////////////////////////// OFF BALANCE/SHOVIES ////////////////////////
 /mob/living/proc/ShoveOffBalance(amount)

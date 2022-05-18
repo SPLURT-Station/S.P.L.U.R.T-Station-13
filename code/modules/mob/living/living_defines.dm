@@ -176,3 +176,7 @@
 	var/stamina_buffer_regen_last = 0
 	/// Last time we used stamina buffer
 	var/stamina_buffer_last_use = 0
+
+	// SPLURT Addons
+	/// Checks if player set themselves to sleep.
+	var/player_triggered_sleeping = 0

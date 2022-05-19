@@ -12,7 +12,7 @@
 	exp_requirements = 100
 	exp_type = EXP_TYPE_CREW
 	considered_combat_role = FALSE
-	alt_titles = list("Peace Officer", "Security Trainee", "Security Assistant")
+	alt_titles = list("Peace Officer", "Security Trainee", "Security Assistant", "Security Cadet", "Security Trainee", "Rookie")
 	custom_spawn_text = "<font color='red' size='2'><b> Your job is to help Security and react to Minor and Moderate crimes. Conflict De-escalation through WORDS is your top priority. Only use your Baton or Hypos as a last resort. You are NOT required to engage hostile forces unless on Amber or Higher, and ONLY if ordered to by your Superiors.</b></font>"
 
 	outfit = /datum/outfit/job/peacekeeper

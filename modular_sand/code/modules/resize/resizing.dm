@@ -60,6 +60,7 @@
 			return TRUE
 
 		if(abs(get_size(user)/get_size(target)) >= 2)
+			log_combat(user, target, "stepped on", addition="[user.a_intent] trample")
 			if(user.a_intent == "disarm" && CHECK_MOBILITY(user, MOBILITY_MOVE) && !user.buckled)
 				now_pushing = 0
 				user.forceMove(target.loc)

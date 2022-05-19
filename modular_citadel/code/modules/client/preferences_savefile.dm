@@ -15,8 +15,10 @@
 	features["mcolor3"]	= sanitize_hexcolor(features["mcolor3"], 6, FALSE)
 
 	// Sandstorm changes
-	S["enable_personal_chat_color"]			>> enable_personal_chat_color
+	S["enable_personal_chat_color"]		>> enable_personal_chat_color
 	S["personal_chat_color"]			>> personal_chat_color
+	S["lust_tolerance"] 				>> lust_tolerance
+	S["sexual_potency"]					>> sexual_potency
 
 	S["alt_titles_preferences"]			>> alt_titles_preferences
 	alt_titles_preferences = SANITIZE_LIST(alt_titles_preferences)

@@ -471,9 +471,17 @@
 		return
 	if((!HAS_TRAIT(src, TRAIT_SLEEPIMMUNE)) || ignore_canstun)
 		var/datum/status_effect/incapacitating/sleeping/S = IsSleeping()
+		if(player_triggered_sleeping) // SPLURT edits start here.
+			S = apply_status_effect(STATUS_EFFECT_SLEEPING, -1, updating)
 		if(S)
+			var/sleep_delay
+			if(player_triggered_sleeping)
+				sleep_delay = S.duration
+				return
+			else if(!player_triggered_sleeping)
+				S.duration = sleep_delay // SPLURT edits end here.
 			S.duration = max(world.time + amount, S.duration)
-		else if(amount > 0 || player_triggered_sleeping) //SPLURT Edit
+		else if(amount > 0)
 			S = apply_status_effect(STATUS_EFFECT_SLEEPING, amount, updating)
 		return S
 

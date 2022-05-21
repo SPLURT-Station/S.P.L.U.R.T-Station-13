@@ -471,7 +471,7 @@
 		return
 	if((!HAS_TRAIT(src, TRAIT_SLEEPIMMUNE)) || ignore_canstun)
 		var/datum/status_effect/incapacitating/sleeping/S = IsSleeping()
-		if(player_triggered_sleeping) // SPLURT edits start here.
+		if(player_triggered_sleeping && !S) // SPLURT edits start here.
 			S = apply_status_effect(STATUS_EFFECT_SLEEPING, -1, updating)
 		if(S)
 			var/sleep_delay

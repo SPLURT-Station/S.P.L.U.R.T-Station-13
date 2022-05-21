@@ -82,24 +82,24 @@
 	if(!ishuman(target))
 		return
 	if(target.buckled)
-		to_chat(user, "<span class='warning'>The user is buckled and can not be put into your [src.name].</span>")
+		to_chat(user, span_warning("The user is buckled and can not be put into your [src.name]."))
 		return
 	if(target.anchored)
-		to_chat(user, "<span class='warning'>The user is anchored and can not be put into your [src.name].</span>")
+		to_chat(user, span_warning("The user is anchored and can not be put into your [src.name]."))
 		return
 	if(patient)
-		to_chat(user, "<span class='warning'>Your [src.name] is already occupied.</span>")
+		to_chat(user, span_warning("Your [src.name] is already occupied.</span>")
 		return
 
 	if (!CHECK_BITFIELD(target.vore_flags,DEVOURABLE))
-		to_chat(user, "The target registers an error code. Unable to insert into [src.name].")
+		to_chat(user, span_warning("The target registers an error code. Unable to insert into [src.name]."))
 		return
 
 	var/voracious = TRUE
 	if(!target.client || !(target.client.prefs.cit_toggles & MEDIHOUND_SLEEPER) || !hound.client || !(hound.client.prefs.cit_toggles & MEDIHOUND_SLEEPER))
 		voracious = FALSE
 
-	user.visible_message("<span class='warning'>[hound.name] is carefully inserting [target.name] into their [src.name].</span>", "<span class='notice'>You start placing [target] into your [src.name]...</span>")
+	user.visible_message(span_warning("[hound.name] is carefully inserting [target.name] into their [src.name]."), span_notice("You start placing [target] into your [src.name]..."))
 	if(do_after (user, 100, target = target) && !target.buckled && !target.anchored && !patient)
 		if(!in_range(src, target)) //Proximity is probably old news by now, do a new check.
 			return //If they moved away, you can't eat them.
@@ -152,8 +152,8 @@
 				"<span class='notice'>You successfully break out of [hound.name]!</span>")
 			go_out(user, hound)
 	else
-		user.visible_message("<span class='notice'>You see [voracious ? "[user] struggling against the expanded material of [hound]'s gut!" : "and hear [user] pounding against something inside of [hound]'s [src.name]!"]</span>", \
-			"<span class='notice'>[voracious ? "You start struggling inside of [src.name]'s tight, flexible confines," : "You start pounding against the metallic walls of [src.name],"] trying to find the trigger the release...</span>", \
+		user.visible_message(span_notice("You see [voracious ? "[user] struggling against the expanded material of [hound]'s gut!" : "and hear [user] pounding against something inside of [hound]'s [src.name]!"]"), \
+			span_notice("[voracious ? "You start struggling inside of [src.name]'s tight, flexible confines," : "You start pounding against the metallic walls of [src.name],"] trying to find the trigger the release..."), \
 			"<span class='italics'>You hear a [voracious ? "couple of thumps" : "loud banging noise"] coming from within [hound].</span>")
 
 /obj/item/dogborg/sleeper/proc/go_out(atom/movable/target, mob/living/silicon/robot/hound)
@@ -168,8 +168,8 @@
 					voracious = FALSE
 	if(length(targets))
 		if(hound)
-			hound.visible_message("<span class='warning'>[voracious ? "[hound] empties out [hound.p_their()] contents via [hound.p_their()] release port." : "[hound]'s underside slides open with an audible clunk before [hound.p_their()] [src.name] flips over, carelessly dumping its contents onto the ground below [hound.p_them()] before closing right back up again."]</span>", \
-				"<span class='notice'>[voracious ? "You empty your contents via your release port." : "You open your sleeper hatch, quickly releasing all of the contents within before closing it again."]</span>")
+			hound.visible_message(span_warning("[voracious ? "[hound] empties out [hound.p_their()] contents via [hound.p_their()] release port." : "[hound]'s underside slides open with an audible clunk before [hound.p_their()] [src.name] flips over, carelessly dumping its contents onto the ground below [hound.p_them()] before closing right back up again."]"), \
+				span_notice("[voracious ? "You empty your contents via your release port." : "You open your sleeper hatch, quickly releasing all of the contents within before closing it again."]"))
 		for(var/a in contents)
 			var/atom/movable/AM = a
 			AM.forceMove(get_turf(src))
@@ -266,7 +266,7 @@
 				to_chat(usr, "Your [src.name] is already clean.")
 				return
 			if(patient)
-				to_chat(patient, "<span class='danger'>[usr.name]'s [src.name] fills with caustic enzymes around you!</span>")
+				to_chat(patient, span_danger("[usr.name]'s [src.name] fills with caustic enzymes around you!"))
 			to_chat(usr, "<span class='danger'>Cleaning process enabled.</span>")
 			playsound(loc, 'sound/machines/click.ogg', 50, 1)
 			cleaning = TRUE
@@ -365,8 +365,8 @@
 				var/mob/living/carbon/T = target
 				if(T.stat == DEAD && (T.vore_flags & DIGESTABLE))	//Mob is now dead
 					message_admins("[key_name(hound)] has digested [key_name(T)] as a dogborg. ([hound ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[hound.x];Y=[hound.y];Z=[hound.z]'>JMP</a>" : "null"])")
-					to_chat(hound,"<span class='notice'>You feel your belly slowly churn around [T], breaking them down into a soft slurry to be used as power for your systems.</span>")
-					to_chat(T,"<span class='notice'>You feel [hound]'s belly slowly churn around your form, breaking you down into a soft slurry to be used as power for [hound]'s systems.</span>")
+					to_chat(hound, span_notice("You feel your belly slowly churn around [T], breaking them down into a soft slurry to be used as power for your systems."))
+					to_chat(T, span_notice("You feel [hound]'s belly slowly churn around your form, breaking you down into a soft slurry to be used as power for [hound]'s systems."))
 					hound.cell.give(30000) //Fueeeeellll
 					if((world.time - NORMIE_HEARCHECK) > last_hearcheck)
 						var/turf/source = get_turf(hound)
@@ -405,12 +405,12 @@
 		cleaning_cycles = initial(cleaning_cycles)
 		cleaning = FALSE
 		escape_pending = FALSE
-		to_chat(hound, "<span class='notice'>Your [src.name] clicks as its self-cleaning cycle ends. NOTE: Foreign objects are still detected. Resume self-cleaning?</span>")
+		to_chat(hound, span_notice("Your [src.name] clicks as its self-cleaning cycle ends. NOTE: Foreign objects are still detected. Resume self-cleaning?"))
 		playsound(loc, 'sound/machines/click.ogg', 50, 1)
 
 	if(!contents || length(contents) == 0)
 		//Belly is entirely empty
-		to_chat(hound, "<span class='notice'>Your [src.name] chimes as it completes its self-cleaning cycle.</span>")
+		to_chat(hound, span_notice("Your [src.name] chimes as it completes its self-cleaning cycle."))
 		playsound(loc, 'sound/machines/ding.ogg', 50, 1)
 		cleaning_cycles = initial(cleaning_cycles)
 		cleaning = FALSE
@@ -444,18 +444,18 @@
 	if(!hound || !patient || !patient.reagents)
 		return
 	if(hound.cell.charge <= inject_cost + 50) //This is so borgs don't kill themselves with it. Remember, 750 charge used every injection.
-		to_chat(hound, "<span class='notice'>You don't have enough power to synthesize fluids.</span>")
+		to_chat(hound, span_notice("You don't have enough power to synthesize fluids."))
 		return
-	if(!chem_allowed(chem)) //Preventing people from accidentally killing themselves by trying to inject too many chemicals!
-		to_chat(hound, "<span class='notice'>Your stomach is currently too full of fluids to secrete more fluids of this kind.</span>")
+	if(!chem_allowed(chem)) //Preventing robots from accidentally killing their patient by trying to inject too many chemicals!
+		to_chat(hound, span_notice("Your stomach is currently too full of fluids to secrete more fluids of this kind."))
 		return
 	patient.reagents.add_reagent(chem, inject_amount)
 	hound.cell.use(inject_cost) //-750 charge per injection
 	//var/units = round(patient.reagents.get_reagent_amount(chem))
-	to_chat(hound, "<span class='notice'>Injecting [inject_amount] unit\s of [chem] into occupant.</span>") //If they were immersed, the reagents wouldn't leave with them.
+	to_chat(hound, span_notice("Injecting [inject_amount] unit\s of [chem] into occupant.")) //If they were immersed, the reagents wouldn't leave with them.
 
 /obj/item/dogborg/sleeper/proc/chem_allowed(chem)
-	if(!patient || !patient.reagents)
+	if(!patient || !patient.reagents || !(chem in injection_chems))
 		return
 	var/amount = patient.reagents.get_reagent_amount(chem) + inject_amount <= 20
 	var/occ_health = patient.health > min_health || chem == /datum/reagent/medicine/epinephrine
@@ -481,24 +481,24 @@
 	if(!ishuman(target))
 		return
 	if(target.buckled)
-		to_chat(user, "<span class='warning'>The user is buckled and can not be put into your [src.name].</span>")
+		to_chat(user, span_warning("The user is buckled and can not be put into your [src.name]."))
 		return
 	if(target.anchored)
-		to_chat(user, "<span class='warning'>The user is anchored and can not be put into your [src.name].</span>")
+		to_chat(user, span_warning("The user is anchored and can not be put into your [src.name]."))
 		return
 	if(patient)
-		to_chat(user, "<span class='warning'>Your [src.name] is already occupied.</span>")
+		to_chat(user, span_warning("Your [src.name] is already occupied."))
 		return
 
 	if(!CHECK_BITFIELD(target.vore_flags,DEVOURABLE))
-		to_chat(user, "The target registers an error code. Unable to insert into [src.name].")
+		to_chat(user, span_warning("The target registers an error code. Unable to insert into [src.name]."))
 		return
 
 	var/voracious = TRUE
 	if(!target.client || !(target.client.prefs.cit_toggles & MEDIHOUND_SLEEPER) || !hound.client || !(hound.client.prefs.cit_toggles & MEDIHOUND_SLEEPER))
 		voracious = FALSE
 
-	user.visible_message("<span class='warning'>[hound.name] is ingesting [target] into their [src.name].</span>", "<span class='notice'>You start ingesting [target] into your [src.name]...</span>")
+	user.visible_message(span_warning("[hound.name] is ingesting [target] into their [src.name]."), span_notice("You start ingesting [target] into your [src.name]..."))
 	if(do_after(user, 30, target = target) && !patient && !target.buckled)
 
 		//if(patient)
@@ -511,7 +511,7 @@
 		target.forceMove(src)
 		target.reset_perspective(src)
 		update_gut(hound)
-		user.visible_message("<span class='warning'>[hound.name]'s mobile brig clunks in series as [target] slips inside.</span>", "<span class='notice'>Your mobile brig groans lightly as [target] slips inside.</span>")
+		user.visible_message(span_warning("[hound.name]'s mobile brig clunks in series as [target] slips inside."), span_notice("Your mobile brig groans lightly as [target] slips inside."))
 		playsound(hound, voracious ? 'sound/vore/prey/insertion_01.ogg' : 'sound/effects/bin_close.ogg', 80, 1)
 
 /obj/item/dogborg/sleeper/K9/flavour

@@ -31,7 +31,7 @@
 	path = /obj/item/clothing/neck/petcollar/handmade
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
 
-/datum/gear/neck/syntech/pendant
+/datum/gear/neck/syntech
 	name = "Normalizer Pendant"
 	path = /obj/item/clothing/neck/syntech
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION

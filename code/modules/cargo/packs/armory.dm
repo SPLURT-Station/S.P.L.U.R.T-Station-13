@@ -60,7 +60,7 @@
 	crate_name = "anti riot net guns crate"
 
 /datum/supply_pack/security/armory/pmcenergy
-		name = "PMC guns crate"
+	name = "PMC guns crate"
 	desc = "Contains three advanced PMC Energy Guns, capable of firing nonlethal disablers, tasers and lethal blasts of light. Requires Armory access to open."
 	cost = 5000
 	contains = list(/obj/item/gun/energy/e_gun/stun,

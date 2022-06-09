@@ -2,12 +2,12 @@
 	name = "electrode"
 	icon_state = "spark"
 	color = "#FFFF00"
-	nodamage = TRUE
 	knockdown = 60
 	knockdown_stamoverride = 36
 	knockdown_stam_max = 50
 	stutter = 10
 	jitter = 20
+	stamina = 140
 	hitsound = 'sound/weapons/taserhit.ogg'
 	range = 14
 	pixels_per_second = TILES_TO_PIXELS(16.667)
@@ -52,7 +52,7 @@
 /obj/item/projectile/energy/electrode/security/hos
 	tase_duration = 20
 	knockdown = 0
-	stamina = 40
+	stamina = 50
 	knockdown_stamoverride = 36
 	knockdown_stam_max = 50
 	strong_tase = FALSE

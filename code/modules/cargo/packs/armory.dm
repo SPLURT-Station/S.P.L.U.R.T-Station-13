@@ -59,6 +59,16 @@
 					/obj/item/gun/energy/e_gun/dragnet)
 	crate_name = "anti riot net guns crate"
 
+/datum/supply_pack/security/armory/pmcenergy
+		name = "PMC guns crate"
+	desc = "Contains three advanced PMC Energy Guns, capable of firing nonlethal disablers, tasers and lethal blasts of light. Requires Armory access to open."
+	cost = 5000
+	contains = list(/obj/item/gun/energy/e_gun/stun,
+					/obj/item/gun/energy/e_gun/stun,
+					/obj/item/gun/energy/e_gun/stun)
+	crate_name = "Tactical Energy Guns"
+	crate_type = /obj/structure/closet/crate/secure/plasma
+
 /datum/supply_pack/security/armory/energy
 	name = "Energy Guns Crate"
 	desc = "Contains three Energy Guns, capable of firing both nonlethal and lethal blasts of light. Requires Armory access to open."

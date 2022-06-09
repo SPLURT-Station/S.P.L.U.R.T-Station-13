@@ -98,7 +98,7 @@
 /obj/item/projectile/beam/pulse
 	name = "pulse"
 	icon_state = "u_laser"
-	damage = 50
+	damage = 65
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/blue_laser
 	light_color = LIGHT_COLOR_BLUE
 	tracer_type = /obj/effect/projectile/tracer/pulse
@@ -116,6 +116,7 @@
 
 /obj/item/projectile/beam/pulse/heavy
 	name = "heavy pulse laser"
+	damage = 90
 	icon_state = "pulse1_bl"
 	var/life = 20
 

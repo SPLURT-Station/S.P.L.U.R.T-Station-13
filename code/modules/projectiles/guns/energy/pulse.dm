@@ -46,6 +46,7 @@
 	can_flashlight = 1
 	flight_x_offset = 18
 	flight_y_offset = 12
+	ammo_type = list(/obj/item/projectile/beam/pulse/shotgun, /obj/item/projectile/energy/electrode/security/hos, /obj/item/ammo_casing/energy/laser)
 
 /obj/item/gun/energy/pulse/carbine/loyalpin
 	pin = /obj/item/firing_pin/implant/mindshield
@@ -58,6 +59,7 @@
 	icon_state = "pulse_pistol"
 	item_state = "gun"
 	cell_type = "/obj/item/stock_parts/cell/pulse/pistol"
+	ammo_type = list(/obj/item/projectile/beam/pulse/shotgun, /obj/item/projectile/energy/electrode/security/hos, /obj/item/ammo_casing/energy/laser)
 
 /obj/item/gun/energy/pulse/pistol/loyalpin
 	pin = /obj/item/firing_pin/implant/mindshield

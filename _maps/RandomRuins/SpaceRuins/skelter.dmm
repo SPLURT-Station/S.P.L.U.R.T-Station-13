@@ -3478,6 +3478,7 @@
 "ia" = (
 /obj/structure/closet/crate/trashcart,
 /obj/effect/turf_decal/bot,
+/obj/item/suspiciousphone,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/skelter/storage)
 "ib" = (
@@ -4009,6 +4010,9 @@
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
+	},
+/obj/item/gps/mining{
+	gpstag = "Distant Signal"
 	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/ruin/space/has_grav/skelter/comms)

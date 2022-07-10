@@ -75,6 +75,7 @@
 	layer = SPACEVINE_MOB_LAYER
 	health = 50
 	maxHealth = 50
+	gender = MALE
 	ranged = TRUE
 	harm_intent_damage = 5
 	obj_damage = 60
@@ -84,6 +85,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 0
+	gold_core_spawnable = HOSTILE_SPAWN
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	faction = list("hostile","vines","plants")
 	initial_language_holder = /datum/language_holder/venus

@@ -75,7 +75,6 @@
 	layer = SPACEVINE_MOB_LAYER
 	health = 50
 	maxHealth = 50
-	gender = MALE
 	ranged = TRUE
 	harm_intent_damage = 5
 	obj_damage = 60

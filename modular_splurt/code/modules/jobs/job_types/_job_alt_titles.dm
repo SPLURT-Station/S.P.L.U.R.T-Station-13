@@ -116,6 +116,7 @@
 
 /datum/job/curator/New()
 	var/list/extra_titles = list(
+		"Archaeologist",
 		"Keeper",
 		"Artist"
 	)

@@ -20,6 +20,7 @@
 	var/bluespace_capable = TRUE
 	var/cooldown = 0
 	var/thruster_active = FALSE
+	var/needs_heater = TRUE
 	var/datum/weakref/attached_heater
 
 /obj/machinery/shuttle/engine/plasma
@@ -47,6 +48,7 @@
 	thrust = 400
 	fuel_use = 0
 	bluespace_capable = TRUE
+	needs_heater = FALSE
 	cooldown = 90
 
 /obj/machinery/shuttle/engine/Initialize(mapload)

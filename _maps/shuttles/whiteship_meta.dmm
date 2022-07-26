@@ -45,7 +45,6 @@
 /obj/docking_port/mobile{
 	callTime = 250;
 	can_move_docking_ports = 1;
-	dheight = 0;
 	dir = 2;
 	dwidth = 11;
 	height = 17;
@@ -2047,13 +2046,6 @@
 /turf/open/floor/plasteel/cult,
 /area/shuttle/abandoned/bridge)
 "cG" = (
-/obj/machinery/computer/camera_advanced/shuttle_docker/whiteship{
-	designate_time = 100;
-	dir = 8;
-	view_range = 14;
-	x_offset = -4;
-	y_offset = -8
-	},
 /obj/effect/decal/cleanable/dirt{
 	desc = "A thin layer of dust coating the floor.";
 	name = "dust"
@@ -2063,6 +2055,9 @@
 	},
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/machinery/modular_computer/console/preset/engineering{
 	dir = 8
 	},
 /turf/open/floor/plasteel/cult,

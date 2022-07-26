@@ -399,13 +399,14 @@
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/caravan/pirate)
 "oO" = (
-/obj/machinery/computer/camera_advanced/shuttle_docker/caravan/pirate,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
+/obj/structure/rack,
+/obj/item/weldingtool,
 /turf/open/floor/plasteel/dark,
 /area/shuttle/caravan/pirate)
 "oT" = (
@@ -467,7 +468,6 @@
 "pZ" = (
 /obj/structure/tank_dispenser/oxygen,
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_y = 24
 	},
 /obj/effect/turf_decal/tile/neutral{
@@ -848,9 +848,7 @@
 /turf/open/floor/plasteel/white,
 /area/shuttle/caravan/pirate)
 "Jb" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 2
-	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/door/airlock/external{
 	id_tag = "caravanpirate_bolt_port"
@@ -884,9 +882,7 @@
 /turf/open/floor/plasteel/white,
 /area/shuttle/caravan/pirate)
 "Ku" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 2
-	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/door/airlock/external{
 	id_tag = "caravanpirate_bolt_starboard"
@@ -1018,7 +1014,6 @@
 "UP" = (
 /obj/structure/rack,
 /obj/item/storage/toolbox/emergency,
-/obj/item/weldingtool,
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},

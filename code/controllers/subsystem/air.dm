@@ -74,6 +74,8 @@ SUBSYSTEM_DEF(air)
 	// If this is set to 0, monstermos won't process planet atmos
 	var/planet_equalize_enabled = 0
 
+	var/list/paused_z_levels
+
 /datum/controller/subsystem/air/stat_entry(msg)
 	msg += "C:{"
 	msg += "HP:[round(cost_highpressure,1)]|"

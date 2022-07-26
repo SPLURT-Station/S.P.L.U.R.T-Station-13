@@ -5,7 +5,6 @@
 #define TELECRYSTALS_MALUS_SCALING 1 //the higher the value, the bigger the malus.
 #define CHALLENGE_SHUTTLE_DELAY 15000 // 25 minutes, so the ops have at least 5 minutes before the shuttle is callable.
 
-GLOBAL_LIST_EMPTY(jam_on_wardec)
 GLOBAL_VAR_INIT(war_declared, FALSE)
 
 /obj/item/nuclear_challenge
@@ -61,8 +60,7 @@ GLOBAL_VAR_INIT(war_declared, FALSE)
 		var/obj/item/circuitboard/computer/syndicate_shuttle/board = V
 		board.challenge = TRUE
 
-	for(var/obj/machinery/computer/camera_advanced/shuttle_docker/D in GLOB.jam_on_wardec)
-		D.jammed = TRUE
+	GLOB.shuttle_docking_jammed = TRUE
 
 	GLOB.war_declared = TRUE
 	var/list/nukeops = get_antag_minds(/datum/antagonist/nukeop)

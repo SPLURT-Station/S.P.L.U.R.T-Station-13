@@ -4,4 +4,3 @@
 	circuit = /obj/item/circuitboard/computer/monastery_shuttle
 	shuttleId = "pod"
 	possible_destinations = "monastery_shuttle_asteroid;monastery_shuttle_station"
-	no_destination_swap = TRUE

@@ -21,7 +21,7 @@
 
 			if(!valid)
 				break
-			
+
 
 		if(!valid)
 			continue
@@ -170,7 +170,7 @@
 								if(PLACE_LAVA_RUIN)
 									forced_ruins[linked] = pick(SSmapping.levels_by_trait(ZTRAIT_LAVA_RUINS))
 								if(PLACE_SPACE_RUIN)
-									forced_ruins[linked] = pick(SSmapping.levels_by_trait(ZTRAIT_SPACE_RUINS))
+									forced_ruins[linked] = pick(SSmapping.levels_by_trait(ZTRAIT_DYNAMIC_LEVEL))
 								if(PLACE_DEFAULT)
 									forced_ruins[linked] = -1
 								if(PLACE_BELOW)

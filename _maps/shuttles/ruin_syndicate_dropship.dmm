@@ -195,14 +195,14 @@
 /area/shuttle/caravan/syndicate3)
 "sb" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/computer/camera_advanced/shuttle_docker/caravan/syndicate3{
-	dir = 8
-	},
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/machinery/computer/security{
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
@@ -493,17 +493,14 @@
 /area/shuttle/caravan/syndicate3)
 "PL" = (
 /obj/machinery/porta_turret/syndicate/energy{
-	dir = 2;
-	icon_state = "standard_lethal";
-	mode = 1
+	icon_state = "standard_lethal"
 	},
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/caravan/syndicate3)
 "Rj" = (
 /obj/machinery/porta_turret/syndicate/energy{
 	dir = 1;
-	icon_state = "standard_lethal";
-	mode = 1
+	icon_state = "standard_lethal"
 	},
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/caravan/syndicate3)

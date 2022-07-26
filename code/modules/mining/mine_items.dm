@@ -76,7 +76,6 @@
 	circuit = /obj/item/circuitboard/computer/mining_shuttle
 	shuttleId = "mining"
 	possible_destinations = "mining_home;mining_away;landing_zone_dock;mining_public"
-	no_destination_swap = TRUE
 	var/static/list/dumb_rev_heads = list()
 
 /obj/machinery/computer/shuttle/mining/common

@@ -18,6 +18,7 @@
 	circuit = /obj/item/circuitboard/computer/white_ship/pod/recall
 	possible_destinations = "whiteship_pod_home"
 
+/*
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship
 	name = "White Ship Navigation Computer"
 	desc = "Used to designate a precise transit location for the White Ship."
@@ -48,6 +49,7 @@
 /obj/machinery/computer/camera_advanced/shuttle_docker/whiteship/Destroy()
 	GLOB.jam_on_wardec -= src
 	return ..()
+*/
 
 /obj/effect/spawner/lootdrop/whiteship_cere_ripley
 	name = "25% mech 75% wreckage ripley spawner"

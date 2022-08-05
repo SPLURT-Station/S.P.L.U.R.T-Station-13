@@ -168,6 +168,7 @@
 					/obj/item/toy/prize/odysseus,
 					/obj/item/toy/prize/phazon,
 					/obj/item/toy/prize/reticence,
+					/obj/item/toy/prize/savannahivanov,
 					/obj/item/toy/cards/deck,
 					/obj/item/toy/nuke,
 					/obj/item/toy/minimeteor,

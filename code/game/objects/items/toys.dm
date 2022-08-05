@@ -641,6 +641,10 @@
 	icon_state = "reticenceprize"
 	quiet = 1
 
+/obj/item/toy/prize/savannahivanov
+	name = "toy Savannah-Ivanov"
+	icon_state = "savannahivanovtoy"
+	desc = "Mini-Mecha action figure! Collect them all! 13/12."
 
 /obj/item/toy/talking
 	name = "talking action figure"

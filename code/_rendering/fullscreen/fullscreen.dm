@@ -232,3 +232,7 @@
 	layer = LIGHTING_LAYER
 	blend_mode = BLEND_ADD
 	show_when_dead = TRUE
+
+/atom/movable/screen/fullscreen/ivanov_display
+	icon_state = "ivanov"
+	alpha = 180

@@ -178,6 +178,10 @@
 /obj/structure/lavaland/ash_walker/eastern,
 /turf/open/lava/smooth/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"dx" = (
+/obj/machinery/computer/shuttle/elevator/mining,
+/turf/open/floor/plating,
+/area/mining_level_access/upper)
 "dD" = (
 /obj/structure/stone_tile{
 	dir = 4
@@ -199,6 +203,10 @@
 /area/ruin/lavaland/unpowered/ash_walkers)
 "eP" = (
 /obj/structure/anvil/obtainable/basalt,
+/obj/structure/stone_tile/block/burnt{
+	dir = 8;
+	pixel_y = -16
+	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
 "eZ" = (
@@ -263,6 +271,9 @@
 /obj/item/storage/bag/plants/portaseeder,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"ga" = (
+/turf/open/floor/plating,
+/area/mining_level_access/upper)
 "gj" = (
 /obj/structure/stone_tile/surrounding_tile{
 	dir = 1
@@ -985,6 +996,9 @@
 	},
 /turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"lX" = (
+/turf/open/openspace,
+/area/mining_level_access/upper)
 "lZ" = (
 /obj/structure/stone_tile/block/cracked{
 	dir = 4
@@ -1450,6 +1464,9 @@
 /obj/structure/flora/ash/cap_shroom,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"qR" = (
+/turf/closed/wall,
+/area/mining_level_access/upper)
 "qS" = (
 /obj/structure/stone_tile/block,
 /obj/structure/stone_tile/block{
@@ -1795,6 +1812,12 @@
 	},
 /turf/open/indestructible/necropolis,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"KQ" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/mining_level_access/upper)
 "Lu" = (
 /obj/structure/stone_tile/block/cracked,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
@@ -1845,6 +1868,10 @@
 /obj/machinery/smartfridge/drying_rack,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"PP" = (
+/obj/machinery/light/small,
+/turf/open/floor/plating,
+/area/mining_level_access/upper)
 "PT" = (
 /obj/item/reagent_containers/glass/bucket/wood{
 	pixel_x = -15
@@ -1896,12 +1923,21 @@
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"RJ" = (
+/turf/open/openspace,
+/area/ruin/lavaland/unpowered/ash_walkers)
 "RL" = (
 /obj/structure/stone_tile/block/burnt{
 	pixel_x = -16
 	},
 /turf/open/indestructible/necropolis,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"RP" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/mining_level_access/upper)
 "Sh" = (
 /obj/structure/stone_tile/surrounding/cracked{
 	dir = 6
@@ -2049,6 +2085,12 @@
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"VL" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/mining_level_access/upper)
 "VT" = (
 /obj/structure/lavaland/ash_walker/western,
 /turf/open/lava/smooth/lava_land_surface,
@@ -2120,6 +2162,15 @@
 "Zm" = (
 /obj/structure/statue/boney/ashwalker{
 	anchored = 1
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/lavaland/unpowered/ash_walkers)
+"ZH" = (
+/obj/structure/stone_tile/slab/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile/burnt{
+	dir = 8
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
@@ -21377,14 +21428,14 @@ ai
 ai
 ab
 ab
+qR
+VL
+ga
+ga
+ga
+PP
+qR
 ab
-ab
-ab
-ab
-ab
-aj
-aj
-aj
 ab
 ab
 ab
@@ -21634,14 +21685,14 @@ ai
 ai
 ai
 ab
+RP
+lX
+lX
+lX
+lX
+lX
+RP
 ab
-aj
-ab
-ab
-ab
-aj
-aj
-aj
 ab
 ab
 ab
@@ -21891,14 +21942,14 @@ ai
 ai
 ai
 ai
-ab
-aj
-ab
-ab
-ab
-ab
-ab
-aj
+ga
+lX
+lX
+lX
+lX
+lX
+ga
+ga
 ab
 ab
 ab
@@ -22148,14 +22199,14 @@ aj
 aj
 ab
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-aj
+ga
+lX
+lX
+lX
+lX
+lX
+dx
+ga
 ab
 ab
 ab
@@ -22405,14 +22456,14 @@ aj
 aj
 ab
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-aj
+ga
+lX
+lX
+lX
+lX
+lX
+ga
+ga
 ab
 ab
 ab
@@ -22662,13 +22713,13 @@ aj
 aj
 aj
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+KQ
+lX
+lX
+lX
+lX
+lX
+KQ
 ab
 ab
 ab
@@ -22919,13 +22970,13 @@ aj
 aj
 aj
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+qR
+VL
+ga
+ga
+ga
+PP
+qR
 ab
 ab
 ab
@@ -58161,7 +58212,7 @@ aa
 aa
 aa
 aa
-aa
+VG
 VG
 VG
 VG
@@ -58418,7 +58469,7 @@ aa
 aa
 aa
 aa
-aa
+kG
 eP
 VG
 VG
@@ -58675,8 +58726,8 @@ aa
 aa
 aa
 aa
-aa
-VG
+RJ
+pt
 VG
 VG
 VG
@@ -58932,8 +58983,8 @@ aa
 aa
 aa
 aa
-aa
-VG
+RJ
+ZH
 On
 VG
 XS
@@ -59190,7 +59241,7 @@ aa
 aa
 aa
 aa
-VG
+FD
 VG
 VG
 XS

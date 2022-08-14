@@ -178,10 +178,6 @@
 /obj/structure/lavaland/ash_walker/eastern,
 /turf/open/lava/smooth/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
-"dx" = (
-/obj/machinery/computer/shuttle/elevator/mining,
-/turf/open/floor/plating,
-/area/mining_level_access/upper)
 "dD" = (
 /obj/structure/stone_tile{
 	dir = 4
@@ -201,6 +197,12 @@
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"eN" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/mining_level_access/upper)
 "eP" = (
 /obj/structure/anvil/obtainable/basalt,
 /obj/structure/stone_tile/block/burnt{
@@ -271,8 +273,8 @@
 /obj/item/storage/bag/plants/portaseeder,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
-"ga" = (
-/turf/open/floor/plating,
+"ge" = (
+/turf/open/openspace,
 /area/mining_level_access/upper)
 "gj" = (
 /obj/structure/stone_tile/surrounding_tile{
@@ -715,6 +717,10 @@
 /obj/structure/stone_tile/center,
 /turf/open/lava/smooth/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"kx" = (
+/obj/machinery/light/small,
+/turf/open/floor/plating,
+/area/mining_level_access/upper)
 "ky" = (
 /obj/structure/stone_tile/cracked{
 	dir = 4
@@ -996,9 +1002,6 @@
 	},
 /turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
-"lX" = (
-/turf/open/openspace,
-/area/mining_level_access/upper)
 "lZ" = (
 /obj/structure/stone_tile/block/cracked{
 	dir = 4
@@ -1027,6 +1030,15 @@
 	},
 /turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"mh" = (
+/obj/structure/stone_tile/slab/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile/burnt{
+	dir = 8
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/lavaland/unpowered/ash_walkers)
 "mk" = (
 /obj/structure/stone_tile/block/cracked{
 	dir = 8
@@ -1410,6 +1422,10 @@
 	},
 /turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
+"ni" = (
+/obj/machinery/computer/shuttle/elevator/mining,
+/turf/open/floor/plating,
+/area/mining_level_access/upper)
 "nI" = (
 /obj/structure/table/wood/mushroom,
 /obj/item/storage/belt/mining/primitive,
@@ -1464,9 +1480,6 @@
 /obj/structure/flora/ash/cap_shroom,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
-"qR" = (
-/turf/closed/wall,
-/area/mining_level_access/upper)
 "qS" = (
 /obj/structure/stone_tile/block,
 /obj/structure/stone_tile/block{
@@ -1523,6 +1536,12 @@
 /obj/structure/closet/crate/wooden/shadow,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"ur" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/mining_level_access/upper)
 "uD" = (
 /obj/structure/stone_tile/block/burnt{
 	dir = 4
@@ -1589,12 +1608,21 @@
 	},
 /turf/open/indestructible/necropolis,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"yV" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/mining_level_access/upper)
 "zh" = (
 /obj/structure/table/wood/shadow,
 /obj/item/kitchen/knife/combat/bone{
 	pixel_y = 8
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/ruin/lavaland/unpowered/ash_walkers)
+"zm" = (
+/turf/open/openspace,
 /area/ruin/lavaland/unpowered/ash_walkers)
 "zE" = (
 /obj/structure/stone_tile/block/burnt{
@@ -1706,6 +1734,9 @@
 	},
 /turf/open/indestructible/necropolis,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"EB" = (
+/turf/open/floor/plating,
+/area/mining_level_access/upper)
 "FD" = (
 /obj/structure/stone_tile/surrounding_tile/burnt,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
@@ -1812,12 +1843,6 @@
 	},
 /turf/open/indestructible/necropolis,
 /area/ruin/lavaland/unpowered/ash_walkers)
-"KQ" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/mining_level_access/upper)
 "Lu" = (
 /obj/structure/stone_tile/block/cracked,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
@@ -1847,6 +1872,19 @@
 	},
 /turf/open/lava/smooth/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
+"Mv" = (
+/obj/docking_port/stationary{
+	area_type = /area/mining_level_access/upper;
+	dir = 4;
+	dwidth = 2;
+	height = 5;
+	id = "lavaland_mining_top";
+	name = "lavaland mining top";
+	roundstart_template = /datum/map_template/shuttle/lavaland/mining;
+	width = 5
+	},
+/turf/open/openspace,
+/area/mining_level_access/upper)
 "Nl" = (
 /obj/structure/stone_tile/block/burnt{
 	dir = 4;
@@ -1868,9 +1906,8 @@
 /obj/machinery/smartfridge/drying_rack,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
-"PP" = (
-/obj/machinery/light/small,
-/turf/open/floor/plating,
+"Pr" = (
+/turf/closed/wall,
 /area/mining_level_access/upper)
 "PT" = (
 /obj/item/reagent_containers/glass/bucket/wood{
@@ -1923,21 +1960,12 @@
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
-"RJ" = (
-/turf/open/openspace,
-/area/ruin/lavaland/unpowered/ash_walkers)
 "RL" = (
 /obj/structure/stone_tile/block/burnt{
 	pixel_x = -16
 	},
 /turf/open/indestructible/necropolis,
 /area/ruin/lavaland/unpowered/ash_walkers)
-"RP" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/mining_level_access/upper)
 "Sh" = (
 /obj/structure/stone_tile/surrounding/cracked{
 	dir = 6
@@ -2085,12 +2113,6 @@
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
-"VL" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/mining_level_access/upper)
 "VT" = (
 /obj/structure/lavaland/ash_walker/western,
 /turf/open/lava/smooth/lava_land_surface,
@@ -2162,15 +2184,6 @@
 "Zm" = (
 /obj/structure/statue/boney/ashwalker{
 	anchored = 1
-	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/ruin/lavaland/unpowered/ash_walkers)
-"ZH" = (
-/obj/structure/stone_tile/slab/cracked{
-	dir = 4
-	},
-/obj/structure/stone_tile/surrounding_tile/burnt{
-	dir = 8
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/lavaland/unpowered/ash_walkers)
@@ -21428,13 +21441,13 @@ ai
 ai
 ab
 ab
-qR
-VL
-ga
-ga
-ga
-PP
-qR
+Pr
+ur
+EB
+EB
+EB
+kx
+Pr
 ab
 ab
 ab
@@ -21685,13 +21698,13 @@ ai
 ai
 ai
 ab
-RP
-lX
-lX
-lX
-lX
-lX
-RP
+yV
+ge
+ge
+Mv
+ge
+ge
+yV
 ab
 ab
 ab
@@ -21942,14 +21955,14 @@ ai
 ai
 ai
 ai
-ga
-lX
-lX
-lX
-lX
-lX
-ga
-ga
+EB
+ge
+ge
+ge
+ge
+ge
+EB
+EB
 ab
 ab
 ab
@@ -22199,14 +22212,14 @@ aj
 aj
 ab
 ab
-ga
-lX
-lX
-lX
-lX
-lX
-dx
-ga
+EB
+ge
+ge
+ge
+ge
+ge
+ni
+EB
 ab
 ab
 ab
@@ -22456,14 +22469,14 @@ aj
 aj
 ab
 ab
-ga
-lX
-lX
-lX
-lX
-lX
-ga
-ga
+EB
+ge
+ge
+ge
+ge
+ge
+EB
+EB
 ab
 ab
 ab
@@ -22713,13 +22726,13 @@ aj
 aj
 aj
 ab
-KQ
-lX
-lX
-lX
-lX
-lX
-KQ
+eN
+ge
+ge
+ge
+ge
+ge
+eN
 ab
 ab
 ab
@@ -22970,13 +22983,13 @@ aj
 aj
 aj
 ab
-qR
-VL
-ga
-ga
-ga
-PP
-qR
+Pr
+ur
+EB
+EB
+EB
+kx
+Pr
 ab
 ab
 ab
@@ -58726,7 +58739,7 @@ aa
 aa
 aa
 aa
-RJ
+zm
 pt
 VG
 VG
@@ -58983,8 +58996,8 @@ aa
 aa
 aa
 aa
-RJ
-ZH
+zm
+mh
 On
 VG
 XS

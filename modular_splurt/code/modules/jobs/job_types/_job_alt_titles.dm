@@ -169,7 +169,9 @@
 		"Researcher",
 		"Toxins Researcher",
 		"Research Intern",
-		"Junior Scientist"
+		"Junior Scientist",
+		"Xenobotanist",
+		"Xenoarcheologist"
 	)
 	LAZYADD(alt_titles, extra_titles)
 

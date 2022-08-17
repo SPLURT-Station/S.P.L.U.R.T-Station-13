@@ -16,7 +16,7 @@
 
 /area/mining_level_access
   	name = "Mining Level Access"
-  	icon = 'modular_skyrat/icons/turf/areas.dmi'
+  	icon = 'modular_splurt/icons/turf/areas.dmi'
   	icon_state = "milevel"
   	requires_power = FALSE
   	has_gravity = STANDARD_GRAVITY
@@ -29,7 +29,7 @@
 	name = "Upper Mining Level Access"
 
 /area/xenoarch
-	icon = 'modular_skyrat/icons/turf/areas.dmi'
+	icon = 'modular_splurt/icons/turf/areas.dmi'
 	icon_state = "xenogen"
 	has_gravity = STANDARD_GRAVITY
 
@@ -55,5 +55,5 @@
 
 /area/medical/psych
 	name = "Psychology Office"
-	icon = 'modular_skyrat/icons/turf/areas.dmi'
+	icon = 'modular_splurt/icons/turf/areas.dmi'
 	icon_state = "psychoff"

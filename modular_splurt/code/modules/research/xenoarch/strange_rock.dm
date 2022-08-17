@@ -1,5 +1,5 @@
 /obj/item/strangerock
-	icon = 'modular_skyrat/code/modules/research/xenoarch/fossil_and_artifact.dmi'
+	icon = 'modular_splurt/code/modules/research/xenoarch/fossil_and_artifact.dmi'
 	name = "strange rock"
 	desc = "This is a strange rock, it appears to have a relic encased."
 	icon_state = "strange"
@@ -151,7 +151,7 @@
 					Current depth dug: [dugdepth] centimeters
 				</center>
 				"}
-	
+
 	var/datum/browser/popup = new(user, "xeno_strangerock", name, 225, 110)
 	popup.set_content(dat)
 	popup.open()
@@ -182,4 +182,4 @@
 /turf/closed/mineral/random/snow/New(loc, ...)
 	mineralSpawnChanceList += list(/turf/closed/mineral/strange/ice = 15)
 	. = ..()
-	
+

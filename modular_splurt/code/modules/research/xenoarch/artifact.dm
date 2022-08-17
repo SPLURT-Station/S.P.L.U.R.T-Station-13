@@ -1,7 +1,7 @@
 /obj/item/ancientartifact
 	name = "Admin Debug. Parent Artifact"
 	desc = "You shouldn't have this."
-	icon = 'modular_skyrat/code/modules/research/xenoarch/fossil_and_artifact.dmi'
+	icon = 'modular_splurt/code/modules/research/xenoarch/fossil_and_artifact.dmi'
 
 /obj/item/ancientartifact/Initialize()
 	..()

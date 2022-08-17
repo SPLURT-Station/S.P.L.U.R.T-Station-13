@@ -11,5 +11,5 @@
 	icon_state = "pigtail_bed"
 	can_buckle = FALSE
 	buckle_lying = FALSE
-	buildstacktype = /obj/item/stack/sheet/pigtail_cloth
+	buildstacktype = /obj/item/stack/sheet/cloth
 	buildstackamount = 10

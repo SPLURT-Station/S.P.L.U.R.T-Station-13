@@ -3,7 +3,7 @@
   	icon_state = "away"
   	requires_power = FALSE
   	has_gravity = STANDARD_GRAVITY
-  	noteleport = TRUE
+  	NOTELEPORT = TRUE
   	hidden = TRUE
 
 /area/security/prison/toilet

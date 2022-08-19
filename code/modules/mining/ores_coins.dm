@@ -361,7 +361,6 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 		return
 	qdel(src)
 
-
 /*****************************Coin********************************/
 
 // The coin's value is a value of it's materials.

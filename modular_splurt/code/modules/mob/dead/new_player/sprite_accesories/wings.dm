@@ -108,3 +108,10 @@
 	color_src = MATRIXED
 	matrixed_sections = MATRIX_ALL
 	relevant_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+
+/datum/sprite_accessory/deco_wings/harpy
+	name = "Harpy (large)"
+	icon_state = "harpy"
+	icon = 'modular_splurt/icons/mob/64_wings.dmi'
+	dimension_x = 64
+	center = TRUE

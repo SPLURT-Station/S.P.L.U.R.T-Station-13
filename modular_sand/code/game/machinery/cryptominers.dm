@@ -56,8 +56,8 @@
 				to_chat(user, "<span class='warning'>ERROR: No bank account found.</span>")
 				return
 			to_chat(user, "<span class='notice'>You link \the [CARD] to \the [src].</span>")
-			say("Now using [pay_me.account_holder ? "[pay_me.account_holder]'s" : "<span class='boldwarning'>ERROR</span>"] account.")
 			pay_me = CARD.registered_account
+			say("Now using [pay_me.account_holder ? "[pay_me.account_holder]'s" : "<span class='boldwarning'>ERROR</span>"] account.")
 			return
 
 /obj/machinery/cryptominer/AltClick(mob/user)

@@ -23,7 +23,7 @@
 
 //Belly inflator yes
 /datum/reagent/fermi/belly_inflator
-	name = "Belladine"
+	name = "Belladine nectar"
 	description = "It will give you the lewdest tummy ache you've ever had"
 	color = "#01ff63"
 	taste_description = "blueberry gum"

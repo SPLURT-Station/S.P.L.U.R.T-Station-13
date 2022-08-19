@@ -22,7 +22,6 @@
 /datum/sprite_accessory/wings/angel
 	name = "Angel"
 	icon_state = "angel"
-	color_src = 0
 	dimension_x = 46
 	center = TRUE
 	dimension_y = 34
@@ -31,7 +30,6 @@
 /datum/sprite_accessory/wings_open/angel
 	name = "Angel"
 	icon_state = "angel"
-	color_src = 0
 	dimension_x = 46
 	center = TRUE
 	dimension_y = 34
@@ -156,7 +154,6 @@
 /datum/sprite_accessory/deco_wings/angel
 	name = "Angel"
 	icon_state = "angel"
-	color_src = 0
 	dimension_x = 46
 	center = TRUE
 	dimension_y = 34
@@ -183,7 +180,11 @@
 /datum/sprite_accessory/deco_wings/dragon
 	name = "Dragon"
 	icon_state = "dragon"
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_RED_BLUE
 	upgrade_to = SPECIES_WINGS_DRAGON //lol
+	extra = TRUE //IF NOBODY CAN HAVE UNIQUE DUAL-COLOR DUE TO SHITCODE, I SHALL MAKE IT SO THAT THE MOST USELESS COLOR SLOT IS USED.
+	extra_color_src = MUTCOLORS3
 
 /datum/sprite_accessory/deco_wings/dragonfly
 	name = "Dragonfly"
@@ -387,13 +388,16 @@
 /datum/sprite_accessory/insect_wings/dragon
 	name = "Dragon"
 	icon_state = "dragon"
-	upgrade_to = SPECIES_WINGS_DRAGON
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_RED_BLUE
+	upgrade_to = SPECIES_WINGS_DRAGON //lol
+	extra = TRUE //IF NOBODY CAN HAVE UNIQUE DUAL-COLOR DUE TO SHITCODE, I SHALL MAKE IT SO THAT THE MOST USELESS COLOR SLOT IS USED.
+	extra_color_src = MUTCOLORS3
 
 /datum/sprite_accessory/insect_wings/dragonfly
 	name = "Dragonfly"
 	icon_state = "dragonfly"
 	upgrade_to = SPECIES_WINGS_INSECT
-
 /datum/sprite_accessory/insect_wings/fairy
 	name = "Fairy"
 	icon_state = "fairy"

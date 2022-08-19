@@ -1872,7 +1872,11 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 				"<span class='danger'>You slap [user == target ? "your" : "\the [target]'s"] ass, but feel an intense amount of pain as you realise their buns are harder than steel!</span>",\
 				"You hear a slap."
 			)
-			playsound(target.loc, 'sound/weapons/tap.ogg', 50, 1, -1)
+			var/list/ouchies = list(
+				'modular_splurt/sound/effects/pan0.ogg',
+				'modular_splurt/sound/effects/pan1.ogg'
+			)
+			playsound(target.loc, pick(ouchies), 50, 1, -1)
 			user.emote("scream")
 			return FALSE
 

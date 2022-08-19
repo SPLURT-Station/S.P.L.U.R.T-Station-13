@@ -26,3 +26,8 @@
 	name = "Broken (Left)"
 	icon = 'modular_splurt/icons/mob/mutant_bodyparts.dmi'
 	icon_state = "broken-left"
+
+/datum/sprite_accessory/horns/albedo_horns
+	name = "Succ horns" // Not sure if I'll change that later
+	icon = 'modular_splurt/icons/mob/mutant_bodyparts.dmi'
+	icon_state = "albedo"

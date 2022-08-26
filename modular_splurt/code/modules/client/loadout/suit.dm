@@ -73,6 +73,10 @@
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
 	loadout_initial_colors = list("#E6E6E6", "#D6D6D6", "#D6D6D6")
 
+/datum/gear/suit/gonersuit/classic
+	name = "polychromic trencher coat (classic)"
+	path = /obj/item/clothing/suit/goner/fake/poly/classic
+
 /datum/gear/suit/tunnelfox
 	name = "tunnel fox jacket"
 	path = /obj/item/clothing/suit/tunnelfox

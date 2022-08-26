@@ -19,7 +19,6 @@
 	minimal_access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_CLONING, ACCESS_MINERAL_STOREROOM, ACCESS_PSYCH)
 
 	display_order = JOB_DISPLAY_ORDER_PSYCH
-	alt_titles = list("Therapist", "Psychiatrist", "Rental Mommy", "Rental Daddy")
 
 /datum/outfit/job/doctor/psychologist
 	name = "Psychologist"

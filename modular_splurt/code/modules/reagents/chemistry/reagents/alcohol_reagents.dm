@@ -152,3 +152,137 @@
 	glass_icon_state = "mothinchief"
 	glass_name = "Moth in Chief"
 	glass_desc = "A simple yet elegant drink, inspires confidence in even the most pessimistic of men. The mantle rests well upon your shoulders."
+
+
+// ~( Ported from TG )~
+/datum/reagent/consumable/ethanol/curacao
+	name = "Curaçao"
+	description = "Made with laraha oranges, for an aromatic finish."
+	boozepwr = 30
+	color = "#1a5fa1"
+	quality = DRINK_NICE
+	taste_description = "blue orange"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "curacao"
+	glass_name = "glass of curaçao"
+	glass_desc = "It's blue, da ba dee."
+
+/datum/reagent/consumable/ethanol/navy_rum
+	name = "Navy Rum"
+	description = "Rum as the finest sailors drink."
+	boozepwr = 90
+	color = "#d8e8f0"
+	quality = DRINK_NICE
+	taste_description = "a life on the waves"
+	glass_icon_state = "ginvodkaglass"
+	glass_name = "glass of navy rum"
+	glass_desc = "Splice the mainbrace, and God save the King."
+
+/datum/reagent/consumable/ethanol/bitters
+	name = "Andromeda Bitters"
+	description = "A bartender's best friend, often used to lend a delicate spiciness to any drink. Produced in New Trinidad, now and forever."
+	boozepwr = 70
+	color = "#1c0000"
+	quality = DRINK_NICE
+	taste_description = "spiced alcohol"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "bitters"
+	glass_name = "glass of bitters"
+	glass_desc = "Typically you'd want to mix this with something- but you do you."
+
+/datum/reagent/consumable/ethanol/admiralty
+	name = "Admiralty"
+	description = "A refined, bitter drink made with navy rum, vermouth and fernet."
+	boozepwr = 100
+	color = "#1F0001"
+	quality = DRINK_VERYGOOD
+	taste_description = "haughty arrogance"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "admiralty"
+	glass_name = "Admiralty"
+	glass_desc = "Hail to the Admiral, for he brings fair tidings, and rum too."
+
+/datum/reagent/consumable/ethanol/dark_and_stormy
+	name = "Dark and Stormy"
+	description = "A classic drink arriving to thunderous applause."
+	boozepwr = 50
+	color = "#8c5046"
+	quality = DRINK_GOOD
+	taste_description = "ginger and rum"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "dark_and_stormy"
+	glass_name = "Dark and Stormy"
+	glass_desc = "Thunder and lightning, very very frightening."
+
+/datum/reagent/consumable/ethanol/long_john_silver
+	name = "Long John Silver"
+	description = "A long drink of navy rum, bitters, and lemonade. Particularly popular aboard the Mothic Fleet as it's light on ration credits and heavy on flavour."
+	boozepwr = 50
+	color = "#c4b35c"
+	quality = DRINK_VERYGOOD
+	taste_description = "rum and spices"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "long_john_silver"
+	glass_name = "Long John Silver"
+	glass_desc = "Named for a famous pirate, who may or may not have been fictional. But hey, why let the truth get in the way of a good yarn?"
+
+/datum/reagent/consumable/ethanol/long_haul
+	name = "Long Haul"
+	description = "A favourite amongst freighter pilots, unscrupulous smugglers, and nerf herders."
+	boozepwr = 35
+	color = "#003153"
+	quality = DRINK_VERYGOOD
+	taste_description = "companionship"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "long_haul"
+	glass_name = "Long Haul"
+	glass_desc = "A perfect companion for a lonely long haul flight."
+
+/datum/reagent/consumable/ethanol/salt_and_swell
+	name = "Salt and Swell"
+	description = "A bracing sour with an interesting salty taste."
+	boozepwr = 60
+	color = "#b4abd0"
+	quality = DRINK_FANTASTIC
+	taste_description = "salt and spice"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "salt_and_swell"
+	glass_name = "Salt and Swell"
+	glass_desc = "Ah, I do like to be beside the seaside."
+
+/datum/reagent/consumable/ethanol/tich_toch
+	name = "Tich Toch"
+	description = "A mix of Tiltällen, Töchtaüse Syrup, and vodka. It's not exactly to everyones' tastes."
+	boozepwr = 75
+	color = "#b4abd0"
+	quality = DRINK_VERYGOOD
+	taste_description = "spicy sour cheesy yoghurt"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "tich_toch"
+	glass_name = "Tich Toch"
+	glass_desc = "Oh god."
+
+/datum/reagent/consumable/ethanol/tiltaellen
+	name = "Tiltällen"
+	description = "A lightly fermented yoghurt drink with salt and a light dash of vinegar. Has a distinct sour cheesy flavour."
+	boozepwr = 10
+	color = "#F4EFE2"
+	quality = DRINK_NICE
+	taste_description = "sour cheesy yoghurt"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "tiltaellen"
+	glass_name = "glass of tiltällen"
+	glass_desc = "Eww... it's curdled."
+
+/datum/reagent/consumable/ethanol/tropical_storm
+	name = "Tropical Storm"
+	description = "A taste of the Caribbean in one glass."
+	boozepwr = 40
+	color = "#00bfa3"
+	quality = DRINK_VERYGOOD
+	taste_description = "the tropics"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "tropical_storm"
+	glass_name = "Tropical Storm"
+	glass_desc = "Less destructive than the real thing."
+

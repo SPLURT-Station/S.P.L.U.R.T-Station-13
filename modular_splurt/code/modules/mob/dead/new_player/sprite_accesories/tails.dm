@@ -319,6 +319,14 @@
 	center = TRUE
 	matrixed_sections = MATRIX_RED_GREEN
 
+/datum/sprite_accessory/tails_animated/mam_tails_animated/westerndragon
+	name = "Dragon western"
+	icon = 'modular_splurt/icons/mob/64_mam_tails.dmi'
+	icon_state = "westerndragon"
+	dimension_x = 64
+	center = TRUE
+	matrixed_sections = MATRIX_RED_GREEN
+
 /datum/sprite_accessory/tails/human/succubus
 	name = "Succubus tail"
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'

@@ -35,7 +35,8 @@
 					/obj/item/reagent_containers/food/drinks/soda_cans/sol_dry = 8,
 					/obj/item/reagent_containers/food/drinks/ice = 10,
 					/obj/item/reagent_containers/food/drinks/flask = 3,
-					/obj/item/reagent_containers/food/drinks/beer = 6)
+					/obj/item/reagent_containers/food/drinks/beer = 6
+				)
 	contraband = list(/obj/item/reagent_containers/food/drinks/mug/tea = 12,
 					/obj/item/reagent_containers/food/drinks/bottle/fernet = 5)
 	premium = list(/obj/item/reagent_containers/glass/bottle/ethanol = 4,

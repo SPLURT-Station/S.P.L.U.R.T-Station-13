@@ -1,0 +1,15 @@
+# Need discord account to join
+## Uncomment to make players need to link their discord accounts to ckeys in order to join the game_mode ##
+## The discord verification system makes use of https://github.com/optimumtact/orangescogs ##
+## Needs a working database with the station's current schema ##
+#NEED_DISCORD_TO_JOIN
+
+# Uncomment to kick players who are probably trying to connect using a vpn
+# Keep in mind this depends on your ipintel configuration and can potentially kick players not actually using a vpn
+#KICK_VPN
+
+# VPN bypass ckeys
+## Use these if you activate the option above but have some people that for one reason or another should be allowed to bypass it ##
+#VPN_BYPASS test_ckey1
+#VPN_BYPASS test_ckey2
+#VPN_BYPASS test_ckey3

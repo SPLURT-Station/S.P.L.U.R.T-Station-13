@@ -118,7 +118,7 @@
 				O.on_find(user)
 				organs -= O
 				organs[O.name] = O
-			I = show_radial_menu(user, target, organs, custom_check = FALSE, require_near = TRUE, tooltips = TRUE)
+			I = show_radial_menu(user, target, organs, require_near = TRUE, tooltips = TRUE)
 			if(I && user && target && user.Adjacent(target) && user.get_active_held_item() == tool)
 				I = organs[I]
 				if(!I)

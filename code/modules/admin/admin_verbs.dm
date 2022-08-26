@@ -89,6 +89,8 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/revokebunkerbypass,	//CIT
 	/client/proc/adddiscordbypass,		//SPLURT
 	/client/proc/revokediscordbypass,	//SPLURT
+	/client/proc/addvpnbypass, //SPLURT
+	/client/proc/revokevpnbypass, //SPLURT
 	/datum/admins/proc/open_borgopanel
 	)
 GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/DB_ban_panel, /client/proc/stickybanpanel))
@@ -149,6 +151,7 @@ GLOBAL_PROTECT(admin_verbs_server)
 	/client/proc/adminchangemap,
 	/client/proc/panicbunker,
 	/client/proc/discordbunker, // SPLURT
+	/client/proc/vpnbunker, //SPLURT
 	// /client/proc/toggle_interviews,
 	/client/proc/toggle_hub,
 	/client/proc/toggle_cdn
@@ -279,10 +282,13 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/client/proc/reload_admins,
 	/client/proc/panicbunker,
 	/client/proc/discordbunker, // SPLURT
+	/client/proc/vpnbunker, // SPLURT
 	/client/proc/addbunkerbypass,		//CIT
 	/client/proc/revokebunkerbypass,	//CIT
 	/client/proc/adddiscordbypass,		//SPLURT
 	/client/proc/revokediscordbypass,	//SPLURT
+	/client/proc/addvpnbypass, //SPLURT
+	/client/proc/revokevpnbypass, //SPLURT
 	// /client/proc/toggle_interviews,
 	/client/proc/admin_change_sec_level,
 	/client/proc/toggle_nuke,

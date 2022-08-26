@@ -1,7 +1,25 @@
 /client/check_ip_intel()
 	. = ..()
-	if(ip_intel != initial(ip_intel) && ip_intel >= CONFIG_GET(number/ipintel_rating_bad))
-		uses_vpn = TRUE
+	if(!(ip_intel != initial(ip_intel) && ip_intel >= CONFIG_GET(number/ipintel_rating_bad)))
+		uses_vpn = FALSE
+		return .
+
+	uses_vpn = TRUE //Puts the vpn flag on the player playtimes
+
+	//Kicks them automatically if 100% sure and they're not whitelisted
+	if(!CONFIG_GET(flag/kick_vpn) || ip_intel < 1)
+		return .
+	var/list/whitelist = CONFIG_GET(multi_keyed_flag/vpn_bypass)
+	if(whitelist.Find(ckey(ckey)))
+		log_admin("[key_name(src)] was allowed to join although they're using a vpn")
+		return .
+
+	to_chat(src, span_danger("You have been kicked from the server because your IP has been flagged as a VPN. \
+	Please turn it off in order to connect or contact staff in case this is an error."))
+	var/logg = "[key_name(src)] kicked for failing the vpn check."
+	log_admin(logg)
+	message_admins(span_adminnotice(logg))
+	qdel(src)
 
 /client/proc/toggle_quirk(mob/living/carbon/human/H)
 	if (!istype(H))

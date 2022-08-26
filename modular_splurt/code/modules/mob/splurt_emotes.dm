@@ -588,6 +588,51 @@
 	user.nextsoundemote = world.time + 10
 	playsound(user, 'modular_splurt/sound/voice/waterphone.ogg', 50, 1, -1)
 
+/datum/emote/living/weh2
+	key = "weh2"
+	key_third_person = "wehs2"
+	message = "let out a weh!"
+
+/datum/emote/living/weh2/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, 'modular_splurt/sound/voice/weh2.ogg', 50, 1, -1)
+
+/datum/emote/living/weh3
+	key = "weh3"
+	key_third_person = "wehs3"
+	message = "let out a weh!"
+
+/datum/emote/living/weh3/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, 'modular_splurt/sound/voice/weh3.ogg', 50, 1, -1)
+
+/datum/emote/living/weh4
+	key = "weh-s"
+	key_third_person = "wehs4"
+	message = "let out a surprised weh!"
+
+/datum/emote/living/weh4/run_emote(mob/user, params, type_override, intentional)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, 'modular_splurt/sound/voice/weh_s.ogg', 50, 1, -1)
+
+/datum/emote/living/mlem
+	key = "mlem"
+	key_third_person = "mlems"
+	message = "sticks their tongue for a moment. Mlem!"
+	emote_type = EMOTE_VISIBLE
+
 /datum/emote/living/snore/snore2
 	key = "snore2"
 	key_third_person = "snores"

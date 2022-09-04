@@ -53,7 +53,7 @@
 	materials = list(/datum/material/iron = 50, /datum/material/glass = 20)
 	build_path = /obj/item/multitool
 	category = list("initial","Tools","Tool Designs")
-	DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_SCIENCE
+	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/analyzer
 	name = "Analyzer"

@@ -49,11 +49,10 @@
 /datum/design/multitool
 	name = "Multitool"
 	id = "multitool"
-	build_type = AUTOLATHE | PROTOLATHE | NO_PUBLIC_LATHE
+	build_type = AUTOLATHE | PROTOLATHE |
 	materials = list(/datum/material/iron = 50, /datum/material/glass = 20)
 	build_path = /obj/item/multitool
 	category = list("initial","Tools","Tool Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/analyzer
 	name = "Analyzer"

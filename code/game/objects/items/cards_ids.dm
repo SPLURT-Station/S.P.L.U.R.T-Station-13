@@ -91,6 +91,7 @@
 
 /obj/item/card/emag/afterattack(atom/target, mob/user, proximity)
 	. = ..()
+	/** --- SPLURT EDIT ---
 	var/atom/A = target
 	if(!proximity && prox_check || !(isobj(A) || issilicon(A) || isbot(A) || isdrone(A)))
 		return
@@ -108,6 +109,7 @@
 	if(!uses)
 		user.visible_message("<span class='warning'>[src] fizzles and sparks. It seems like it's out of charges.</span>")
 		playsound(src, 'sound/effects/light_flicker.ogg', 100, 1)
+	*/
 
 /obj/item/card/emag/examine(mob/user)
 	. = ..()

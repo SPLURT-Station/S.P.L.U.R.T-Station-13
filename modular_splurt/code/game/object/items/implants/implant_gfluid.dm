@@ -65,12 +65,6 @@
 	to_chat(owner, span_notice("You feel the fluids inside your [cocc.name] bubble and swirl..."))
 	message_admins("[ADMIN_LOOKUPFLW(owner)] changed the fluid of their [owner.p_their()] [cocc.name] to [selection].")
 
-/** Can't even emag the implant itself. Let's change that, shall we~?
-/obj/item/implant/genital_fluid/emag_act()
-	. = ..()
-	use_blacklist = FALSE
-*/
-
 /obj/item/implanter/genital_fluid
 	name = "implanter (genital fluid)"
 	imp_type = /obj/item/implant/genital_fluid
@@ -84,10 +78,11 @@
 	. = ..()
 	if(istype(imp, /obj/item/implant/genital_fluid))
 		var/obj/item/implant/genital_fluid/I = imp
-		if(I.use_blacklist == FALSE) // already hacked
+		if(I.obj_flags & EMAGGED)
 			to_chat(user, "<span class='warning'>[src] has no functional safeties to emag.</span>")
 			return
 		to_chat(user, "<span class='notice'>You short out [src]'s safeties.</span>")
 		name = "implant case - 'Genital Fluid (Hacked)'"
 		I.name = "hacked genital fluid implant"
 		I.use_blacklist = FALSE
+		I.obj_flags |= EMAGGED

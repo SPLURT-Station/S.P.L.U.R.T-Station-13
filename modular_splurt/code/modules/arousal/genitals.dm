@@ -81,3 +81,18 @@
 			selected.loc = owner.loc
 			equipment.Remove(selection)
 */
+
+/obj/item/organ/genital/generate_fluid(datum/reagents/R)
+	var/amount = clamp((fluid_rate * ((world.time - last_orgasmed) / (10 SECONDS)) * fluid_mult),0,fluid_max_volume)
+	R.clear_reagents()
+	R.maximum_volume = fluid_max_volume
+	var/fluid = fluid_id || linked_organ?.fluid_id
+	var/blood_data = owner.get_blood_data()
+	if(fluid == /datum/reagent/fermi/enthrall)
+		var/enthrall_data = list("creatorID" = null, "creatorGender" = null, "creatorName" = null)
+		R.add_reagent(fluid, amount, enthrall_data)
+		var/datum/reagent/fermi/enthrall/E = locate(/datum/reagent/fermi/enthrall) in R.reagent_list
+		E.SetDataFromBloodData(blood_data)
+	else if(fluid)
+		R.add_reagent(fluid, amount, blood_data)
+	return TRUE

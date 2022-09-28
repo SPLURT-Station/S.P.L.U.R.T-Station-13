@@ -26,6 +26,11 @@
 		return
 
 /obj/item/organ/genital/belly/modify_size(modifier, min = -INFINITY, max = BELLY_SIZE_MAX)
+	// If pref is set, restricts min/max to growth_min/growth_max (if not set, continues like normal)
+	var/min_pref = owner.client.prefs.features["belly_growth_min"]
+	var/max_pref = owner.client.prefs.features["belly_growth_max"]
+	min = min_pref != null ? max(min_pref, min) : min
+	max = max_pref != null ? min(max_pref, max) : max
 	var/new_value = clamp(size_cached + modifier, min, max)
 	if(new_value == size_cached)
 		return

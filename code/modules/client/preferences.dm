@@ -224,6 +224,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 "breasts_stuffing" = FALSE,
 "butt_stuffing" = FALSE,
 "belly_stuffing" = FALSE,
+"cock_growth_min" = COCK_SIZE_MIN,
+"cock_growth_max" = INFINITY,
+"breasts_growth_min" = "a",
+"breasts_growth_max" = "o",
+"butt_growth_min" = BUTT_SIZE_MIN,
+"butt_growth_max" = INFINITY,
+"belly_growth_min" = BELLY_SIZE_MIN,
+"belly_growth_max" = INFINITY,
 "inert_eggs" = FALSE,
 "ipc_screen" = "Sunburst",
 "ipc_antenna" = "None",
@@ -853,10 +861,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<h3>Lewd preferences</h3>"
 			dat += "<b>Lust tolerance:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=lust_tolerance;task=input'>[lust_tolerance]</a>"
 			dat += "<b>Sexual potency:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=sexual_potency;task=input'>[sexual_potency]</a>"
-			dat += "</td>"
 
 			//SPLURT EDIT BEGIN - gregnancy preferences
-			dat += "<td width='220px' height='300px' valign='top'>"
 			dat += "<h3>Pregnancy preferences</h3>"
 			dat += "<b>Chance of impregnation:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=virility;task=input'>[virility ? virility : "Disabled"]</a>"
 			dat += "<b>Chance of getting pregnant:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=fertility;task=input'>[fertility ? fertility : "Disabled"]</a>"
@@ -894,7 +900,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Penis Length:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=cock_length;task=input'>[features["cock_length"]] inch(es)</a>"
 					dat += "<b>Diameter Ratio:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=cock_diameter_ratio;task=input'>[features["cock_diameter_ratio"]]</a>"
 					dat += "<b>Penis Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=cock_visibility;task=input'>[features["cock_visibility"]]</a>"
-					dat += "<b>Egg Stuffing:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=cock_stuffing'>[features["cock_stuffing"] == TRUE ? "Yes" : "No"]</a>"
 					dat += "<b>Has Testicles:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=has_balls'>[features["has_balls"] == TRUE ? "Yes" : "No"]</a>"
 					if(features["has_balls"])
 						if(pref_species.use_skintones && features["genitals_use_skintone"] == TRUE)
@@ -905,7 +910,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							dat += "<span style='border: 1px solid #161616; background-color: #[features["balls_color"]];'><font color='[color_hex2num(features["balls_color"]) < 200 ? "FFFFFF" : "000000"]'>#[features["balls_color"]]</font></span> <a href='?_src_=prefs;preference=balls_color;task=input'>Change</a><br>"
 						dat += "<b>Testicles Shape:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=balls_shape;task=input'>[features["balls_shape"]]</a>"
 						dat += "<b>Testicles Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=balls_visibility;task=input'>[features["balls_visibility"]]</a>"
-						dat += "<b>Egg Stuffing:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=balls_stuffing'>[features["balls_stuffing"] == TRUE ? "Yes" : "No"]</a>"
 						dat += "<b>Produces:</b>"
 						var/datum/reagent/balls_fluid = find_reagent_object_from_type(features["balls_fluid"])
 						if(balls_fluid && (balls_fluid in GLOB.genital_fluids_list))
@@ -925,7 +929,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						dat += "<b>Vagina Color:</b></a><BR>"
 						dat += "<span style='border: 1px solid #161616; background-color: #[features["vag_color"]];'><font color='[color_hex2num(features["vag_color"]) < 200 ? "FFFFFF" : "000000"]'>#[features["vag_color"]]</font></span> <a href='?_src_=prefs;preference=vag_color;task=input'>Change</a><br>"
 					dat += "<b>Vagina Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=vag_visibility;task=input'>[features["vag_visibility"]]</a>"
-					dat += "<b>Egg Stuffing:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=vag_stuffing'>[features["vag_stuffing"] == TRUE ? "Yes" : "No"]</a>"
 					dat += "<b>Has Womb:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=has_womb'>[features["has_womb"] == TRUE ? "Yes" : "No"]</a>"
 					if(features["has_womb"] == TRUE)
 						dat += "<b>Produces:</b>"
@@ -949,7 +952,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Breasts Shape:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_shape;task=input'>[features["breasts_shape"]]</a>"
 					dat += "<b>Breasts Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=breasts_visibility;task=input'>[features["breasts_visibility"]]</a>"
 					dat += "<b>Lactates:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_producing'>[features["breasts_producing"] == TRUE ? "Yes" : "No"]</a>"
-					dat += "<b>Egg Stuffing:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_stuffing'>[features["breasts_stuffing"] == TRUE ? "Yes" : "No"]</a>"
 					if(features["breasts_producing"] == TRUE)
 						dat += "<b>Produces:</b>"
 						var/datum/reagent/breasts_fluid = find_reagent_object_from_type(features["breasts_fluid"])
@@ -970,7 +972,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						dat += "<span style='border: 1px solid #161616; background-color: #[features["butt_color"]];'><font color='[color_hex2num(features["butt_color"]) < 200 ? "FFFFFF" : "000000"]'>#[features["butt_color"]]</font></span> <a href='?_src_=prefs;preference=butt_color;task=input'>Change</a><br>"
 					dat += "<b>Butt Size:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=butt_size;task=input'>[features["butt_size"]]</a>"
 					dat += "<b>Butt Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=butt_visibility;task=input'>[features["butt_visibility"]]</a>"
-					dat += "<b>Egg Stuffing:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=butt_stuffing'>[features["butt_stuffing"] == TRUE ? "Yes" : "No"]</a>"
 				dat += "</td>"
 				dat += APPEARANCE_CATEGORY_COLUMN
 				dat += "<h3>Belly</h3>"
@@ -984,7 +985,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						dat += "<span style='border: 1px solid #161616; background-color: #[features["belly_color"]];'><font color='[color_hex2num(features["belly_color"]) < 200 ? "FFFFFF" : "000000"]'>#[features["belly_color"]]</font></span> <a href='?_src_=prefs;preference=belly_color;task=input'>Change</a><br>"
 					dat += "<b>Belly Size:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=belly_size;task=input'>[features["belly_size"]]</a>"
 					dat += "<b>Belly Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=belly_visibility;task=input'>[features["belly_visibility"]]</a>"
-					dat += "<b>Egg Stuffing:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=belly_stuffing'>[features["belly_stuffing"] == TRUE ? "Yes" : "No"]</a>"
 				dat += "</td>"
 				if(pref_species.id == SPECIES_DULLAHAN)
 					dat += APPEARANCE_CATEGORY_COLUMN
@@ -3207,18 +3207,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					user.client.view_size.setDefault(getScreenSize(widescreenpref))
 				if("long_strip_menu")
 					long_strip_menu = !long_strip_menu
-				if("cock_stuffing")
-					features["cock_stuffing"] = !features["cock_stuffing"]
-				if("balls_stuffing")
-					features["balls_stuffing"] = !features["balls_stuffing"]
-				if("vag_stuffing")
-					features["vag_stuffing"] = !features["vag_stuffing"]
-				if("breasts_stuffing")
-					features["breasts_stuffing"] = !features["breasts_stuffing"]
-				if("butt_stuffing")
-					features["butt_stuffing"] = !features["butt_stuffing"]
-				if("belly_stuffing")
-					features["belly_stuffing"] = !features["belly_stuffing"]
 				if("inert_eggs")
 					features["inert_eggs"] = !features["inert_eggs"]
 				if("pixel_size")

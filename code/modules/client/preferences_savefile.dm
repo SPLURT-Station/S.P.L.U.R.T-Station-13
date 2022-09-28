@@ -765,6 +765,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 "breasts_stuffing" = FALSE,
 "butt_stuffing" = FALSE,
 "belly_stuffing" = FALSE,
+"cock_growth_min" = COCK_SIZE_MIN,
+"cock_growth_max" = INFINITY,
+"breasts_growth_min" = "a",
+"breasts_growth_max" = "o",
+"butt_growth_min" = BUTT_SIZE_MIN,
+"butt_growth_max" = INFINITY,
+"belly_growth_min" = BELLY_SIZE_MIN,
+"belly_growth_max" = INFINITY,
 "inert_eggs" = FALSE,
 "ipc_screen" = "Sunburst",
 "ipc_antenna" = "None",
@@ -1004,6 +1012,16 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_vag_stuffing"] >> features["vag_stuffing"]
 	S["feature_butt_stuffing"] >> features["butt_stuffing"]
 	S["feature_belly_stuffing"] >> features["belly_stuffing"]
+
+	S["feature_cock_growth_min"] >> features["cock_growth_min"]
+	S["feature_cock_growth_max"] >> features["cock_growth_max"]
+	S["feature_breasts_growth_min"] >> features["breasts_growth_min"]
+	S["feature_breasts_growth_max"] >> features["breasts_growth_max"]
+	S["feature_butt_growth_min"] >> features["butt_growth_min"]
+	S["feature_butt_growth_max"] >> features["butt_growth_max"]
+	S["feature_belly_growth_min"] >> features["belly_growth_min"]
+	S["feature_belly_growth_max"] >> features["belly_growth_max"]
+
 	S["feature_inert_eggs"] >> features["inert_eggs"]
 
 	var/char_vr_path = "[vr_path]/character_[default_slot]_v2.json"
@@ -1348,11 +1366,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_butt_visibility"], features["butt_visibility"])
 	WRITE_FILE(S["feature_butt_stuffing"], features["butt_stuffing"])
 
-	WRITE_FILE(S["feature_has_belly"], features["has_belly"])
-	WRITE_FILE(S["feature_belly_color"], features["belly_color"])
-	WRITE_FILE(S["feature_belly_size"], features["belly_size"])
-	WRITE_FILE(S["feature_belly_visibility"], features["belly_visibility"])
-	WRITE_FILE(S["feature_belly_stuffing"], features["belly_stuffing"])
+	WRITE_FILE(S["feature_cock_growth_min"], features["cock_growth_min"])
+	WRITE_FILE(S["feature_cock_growth_max"], features["cock_growth_max"])
+	WRITE_FILE(S["feature_breasts_growth_min"], features["breasts_growth_min"])
+	WRITE_FILE(S["feature_breasts_growth_max"], features["breasts_growth_max"])
+	WRITE_FILE(S["feature_butt_growth_min"], features["butt_growth_min"])
+	WRITE_FILE(S["feature_butt_growth_max"], features["butt_growth_max"])
+	WRITE_FILE(S["feature_belly_growth_min"], features["belly_growth_min"])
+	WRITE_FILE(S["feature_belly_growth_max"], features["belly_growth_max"])
 
 	WRITE_FILE(S["feature_inert_eggs"], features["inert_eggs"])
 

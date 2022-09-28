@@ -132,7 +132,7 @@
 		for(var/obj/item/organ/genital/genital in target_genitals.internal_organs)
 			if(!(CHECK_BITFIELD(genital.genital_flags, GENITAL_FUID_PRODUCTION)))
 				continue
-			var/fluids = (clamp(genital.fluid_rate * ((world.time - genital.last_orgasmed) / (10 SECONDS)) * genital.fluid_mult, 0, genital.fluid_max_volume) / genital.fluid_max_volume)
+			var/fluids = (genital.get_fluid_volume() / genital.fluid_max_volume)
 			var/list/genital_entry = list()
 			genital_entry["name"] = "[genital.name]"
 			genital_entry["key"] = REF(genital)

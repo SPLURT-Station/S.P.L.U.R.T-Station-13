@@ -21,6 +21,11 @@
 	var/diameter_ratio = COCK_DIAMETER_RATIO_DEF //0.25; check citadel_defines.dm
 
 /obj/item/organ/genital/penis/modify_size(modifier, min = -INFINITY, max = INFINITY)
+	// If pref is set, restricts min/max to growth_min/growth_max (if not set, continues like normal)
+	var/min_pref = owner.client.prefs.features["cock_growth_min"]
+	var/max_pref = owner.client.prefs.features["cock_growth_max"]
+	min = min_pref != null ? max(min_pref, min) : min
+	max = max_pref != null ? min(max_pref, max) : max
 	var/new_value = clamp(length + modifier, min, max)
 	if(new_value == length)
 		return

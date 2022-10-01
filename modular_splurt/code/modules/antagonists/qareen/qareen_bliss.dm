@@ -1,18 +1,19 @@
 /datum/disease/qarbliss
-	name = "Unnatural Wasting"
-	max_stages = 5
-	stage_prob = 10
+	name = "Unnatural Sloth and Lust"
+	stage_prob = 3
+	max_stages = 7
 	spread_flags = DISEASE_SPREAD_NON_CONTAGIOUS
-	cure_text = "Holy water or Semen or extensive rest."
-	spread_text = "A burst of pink unholy energy"
+	cure_text = "Holy water or Semen."
+	spread_text = "A fog of pink unholy energy"
 	cures = list("holywater", "semen")
+	cure_chance = 5
 	agent = "Unholy Forces"
 	viable_mobtypes = list(/mob/living/carbon/human)
 	disease_flags = CURABLE
 	permeability_mod = 1
-	severity = DISEASE_SEVERITY_POSITIVE
-	var/finalstage = FALSE //Because we're spawning off the cure in the final stage, we need to check if we've done the final stage's effects.
-	var/bliss = FALSE
+	severity = DISEASE_SEVERITY_MEDIUM
+	var/bliss_stage_1 = FALSE
+	var/bliss_stage_2 = FALSE
 
 /datum/disease/qarbliss/cure()
 	if(affected_mob)
@@ -24,51 +25,58 @@
 	..()
 
 /datum/disease/qarbliss/stage_act()
-	if(!finalstage)
-		if(affected_mob.lying && prob(stage*4))
-			to_chat(affected_mob, "<span class='notice'>The warmth in your nethers fades.</span>")
-			cure()
-			return
-		if(prob(stage*3))
-			to_chat(affected_mob, "<span class='revennotice'>You suddenly feel [pick("hot and bothered", "horny", "lusty", "like you're in a rut", "the need to breed", "breedable")]...</span>")
-			affected_mob.confused += 8
-			affected_mob.adjustStaminaLoss(8)
-			new /obj/effect/temp_visual/revenant(affected_mob.loc)
-		if(prob(45))
-			affected_mob.adjustStaminaLoss(stage)
+	if(prob(stage*2))
+		if(prob(5))
+			to_chat(affected_mob, "<span class='revennotice'>You feel [pick("hot and bothered", "horny", "lusty", "like you're in a rut", "the need to breed", "breedable", "slimy")]...</span>")
+		if(stage > 1 && prob(20))
+			affected_mob.confused += 5
+		if(stage > 2 && prob(20))
+			affected_mob.hallucination += 5
+		if(stage > 3 && prob(20))
+			affected_mob.drowsyness += 20
+		affected_mob.adjustStaminaLoss(stage*10)
+		new /obj/effect/temp_visual/revenant(affected_mob.loc)
 	..() //So we don't increase a stage before applying the stage damage.
 	switch(stage)
 		if(2)
 			if(prob(5))
 				affected_mob.emote("blush")
 		if(3)
-			if(!bliss)
+			if(!bliss_stage_1)
 				SEND_SIGNAL(affected_mob, COMSIG_ADD_MOOD_EVENT, "qar_bliss", /datum/mood_event/qareen_bliss)
-				bliss = TRUE
+				bliss_stage_1 = TRUE
 			SEND_SIGNAL(affected_mob, COMSIG_MODIFY_SANITY, 0.12, SANITY_CRAZY)
-			if(prob(10))
+			if(prob(5))
 				affected_mob.emote(pick("blush","drool"))
 		if(4)
 			SEND_SIGNAL(affected_mob, COMSIG_MODIFY_SANITY, 0.18, SANITY_CRAZY)
-			if(prob(15))
+			if(prob(5))
 				affected_mob.emote(pick("blush","drool","moan"))
+			affected_mob.add_quirk(/datum/quirk/cum_plus)
 		if(5)
-			if(!finalstage)
-				finalstage = TRUE
-				to_chat(affected_mob, "<span class='revenbignotice'>You feel a pink haze clouding your mind. [pick("Everyone needs to be bred.", "You need to breed.", "You need sex.", "They're all nothing but whores.")].</span>")
-				affected_mob.adjustStaminaLoss(45)
+			if (bliss_stage_2 == FALSE)
+				bliss_stage_2 = TRUE
+				to_chat(affected_mob, "<span class='revenbignotice'>It's too much! Brain.. fried..</span>")
+				if (ishuman(affected_mob))
+					var/mob/living/carbon/human/H = affected_mob
+					H.mob_climax(TRUE,"Bliss",src,TRUE)
 				if(affected_mob.dna?.species)
 					affected_mob.dna.species.handle_mutant_bodyparts(affected_mob,"#fff0ff")
 					affected_mob.dna.species.handle_hair(affected_mob,"#da6eda")
-				affected_mob.add_quirk(/datum/quirk/cum_plus)
-				affected_mob.visible_message("<span class='warning'>[affected_mob] looks terrifyingly horny...</span>", "<span class='revennotice'>You suddenly feel like your skin is <i>tingling</i>...</span>")
+				affected_mob.visible_message("<span class='warning'>[affected_mob] looks utterly depraved.</span>", "<span class='revennotice'>You suddenly feel like your skin is <i>tingling</i>...</span>")
 				affected_mob.add_atom_colour("#ffdaf3", TEMPORARY_COLOUR_PRIORITY)
 				new /obj/effect/temp_visual/revenant(affected_mob.loc)
-				addtimer(CALLBACK(src, .proc/blessings), 150)
+				// addtimer(CALLBACK(src, .proc/blessings), 150)
+		if(7)
+			stage = 6
+			if (ishuman(affected_mob))
+				var/mob/living/carbon/human/H = affected_mob
+				H.mob_climax(forced_climax=TRUE, cause="Bliss")
+				if(prob(30))
+					affected_mob.emote(pick("blush","drool","moan"))
 
 /datum/disease/qarbliss/proc/blessings()
 	if(QDELETED(affected_mob))
 		return
 	affected_mob.playsound_local(affected_mob, 'sound/effects/gib_step.ogg', 40, 1, -1)
 	to_chat(affected_mob, "<span class='revendanger'>You sense the curse of a lustful ghost befall you...</span>")
-	cure()

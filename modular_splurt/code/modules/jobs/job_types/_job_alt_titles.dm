@@ -191,6 +191,12 @@
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
 
+/datum/job/roboticist/New()
+	var/list/extra_titles = list(
+		"Ripperdoc"
+	)
+	LAZYADD(alt_titles, extra_titles)
+	. = ..()
 
 // Medical
 
@@ -207,7 +213,8 @@
 	var/list/extra_titles = list(
 		"Physician",
 		"Medical Intern",
-		"Medical Resident"
+		"Medical Resident",
+		"Medtech"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -233,7 +240,12 @@
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
 
-// No additions for paramedic
+/datum/job/paramedic/New()
+	var/list/extra_titles = list(
+		"Trauma Team"
+	)
+	LAZYADD(alt_titles, extra_titles)
+	. = ..()
 
 /datum/job/virologist/New()
 	var/list/extra_titles = list(

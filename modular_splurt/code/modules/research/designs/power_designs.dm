@@ -9,3 +9,7 @@
 	build_path = /obj/item/stock_parts/cell/bluespacereactor
 	category = list("Misc","Power Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING
+
+/datum/design/vortex_cell
+	build_type = PROTOLATHE
+	category = list("Power Designs")

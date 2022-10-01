@@ -57,10 +57,10 @@
   timothyteakettle:
   - rscadd: lets ghosts click a pAI device to download into it without a master
 2022-09-14:
-  timothyteakettle:
-  - rscadd: lets ghosts click a pAI device to download into it without a master
   BongaTheProto:
   - imageadd: 'New anthro snout: Magus'
+  timothyteakettle:
+  - rscadd: lets ghosts click a pAI device to download into it without a master
 2022-09-17:
   BongaTheProto:
   - soundadd: Adds new chitter sounds!! bark and emote
@@ -71,13 +71,13 @@
   - bugfix: Improved performance noticeably, or so I hope. Please report any issues
       related to lighting!
 2022-09-18:
-  Zirok:
-  - bugfix: The scope on the sniper rifle available to nukeops and slavers works again!
   Putnam3145:
   - code_imp: Spurious for loop squashed
   That REALLY Good Soda Flavor, jacklecroy on GitHub, ported by Hatterhat:
   - rscadd: Using certain martial arts will create a combo meter when you attack.
   - imageadd: Added combo meter icons.
+  Zirok:
+  - bugfix: The scope on the sniper rifle available to nukeops and slavers works again!
   shellspeed1:
   - rscadd: The Quantum Spin design has been brought over from TG for testing in the
       Citadel Station facilities.
@@ -92,3 +92,81 @@
 2022-09-19:
   Putnam3145:
   - code_imp: Auxmos updated to 2.0.0
+2022-09-20:
+  ItsSelis:
+  - rscadd: Added the input framework itself (including prefs)
+  - code_imp: Changed some input procs to their relevant tgui_input ones
+  - refactor: Updated already existing tgui code (Text/List)
+  JerryWester:
+  - rscadd: IPC organs and Prosthetics tabs to the mechfab
+  - tweak: sort mechfab items into their proper categories, including the unused Cybernetics
+      and Implants categories
+  - rscadd: printable IPC organs to the mechfab
+  - tweak: a few description and name edits to the IPC organs
+  - tweak: add IPC organs to the "basic cybernetics" techweb node, and move IPC power
+      cord implant to it as well
+  - tweak: add nanogel paste to the Misc category in the mechfab. It was always printable
+      from the mechfab, but before didn't have an assigned category
+  - tweak: remove the vortex cell from the mechfab because *why is it there? You can't
+      even print it without chems and the mechfab can't hold chems!*
+  - bugfix: made it so emagging an implant case containing the gfluid implant will
+      call the emag function on the implant
+  - rscadd: pre-emagged variants of the implanter/implant case for adminbus
+2022-09-22:
+  Gr33d-y:
+  - rscadd: Adds a surgery computer to the meta station brig doc, along with an operation
+      computer, a cell for the defib and it moves the IV thingy to the side a bit.
+  ToasterStrudes:
+  - rscadd: Adds Body Markings to IPCs
+  shellspeed1:
+  - rscadd: Massively buffs talking by adding 3 new speech verbs improving the ability
+      of everyone to scream at each other.
+2022-09-23:
+  BongaTheProto:
+  - imageadd: finally announced the winners of the logo contest, wahoo!
+  shellspeed1:
+  - rscadd: Massively buffs talking by adding 3 new speech verbs improving the ability
+      of everyone to scream at each other.
+2022-09-24:
+  Putnam3145:
+  - bugfix: Added a check to from-ghosts midrounds making them not able to roll if
+      there are no ghosts
+  shellspeed1:
+  - rscadd: full auto is now available for some weapons.
+  - rscadd: All automatic weapons now come with a firemode selector switch.
+  - rscadd: You can now take people hostage with a gun by using it on someone with
+      the grab intent on.
+  - bugfix: cyborg mining point card now works again.
+  - rscadd: Added the posialert console, now ghosts can complain at the roboticist
+      for not making posibrains.
+  - rscadd: Borgs now receive access to the comms associated with their department
+      by default!
+  zeroisthebiggay, retlaw34 (https://github.com/retlaw34), any%, tetrazeta, zxaber(https://github.com/zxaber):
+  - imageadd: Restyles the hud
+  - imageadd: The Airlock Shock Indicator seen when using a Diagnostics Hud has a
+      new sprite.
+2022-09-27:
+  NullFag:
+  - rscadd: Added new markings and frills.
+  Putnam3145:
+  - bugfix: Your custom AI name is no longer stomped if someone decides to name a
+      station pet "Friend" or whatever
+2022-09-28:
+  NullFag:
+  - rscadd: Added cloacas for lizards.
+2022-09-29:
+  memerson1337:
+  - rscadd: Added new assistant title
+2022-09-30:
+  BongaTheProto:
+  - rscadd: Brand new body markings, Noodle Dragon, Owl, Horned Owl and Toe Claws
+  - rscadd: Brand new neck fluffs, Hyena, Hyena (Stripes), Soft and Flat"
+  - rscadd: Brand new ears, Noodle Dragon
+  - rscadd: Brand new horns, Long Dragon
+  - rscadd: Brand new taur sprites, Leopard Seal, Noodle Dragon and Noodle Dragon
+      (dotted)
+  - rscadd: Brand new snouts, Duck, Goose and Owl
+  - rscadd: Brand new wings, Harpy (Two Tones) and Seal
+  Pin-alternative:
+  - rscadd: pregnancy causes lactation
+  - tweak: ovi eggs now behave like posi-brains

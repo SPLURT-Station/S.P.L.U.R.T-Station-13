@@ -18,7 +18,7 @@
 	id = /datum/reagent/consumable/wockyslush
 	results = list(/datum/reagent/consumable/wockyslush = 5)
 	required_reagents = list(/datum/reagent/toxin/fentanyl = 1, /datum/reagent/consumable/ice = 1, /datum/reagent/consumable/lemon_lime = 1)
-	mix_message = "That thang bleedin’ P!"
+	mix_message = "That thang bleedin' P!"
 
 /datum/chemical_reaction/cum_in_a_hot_tub
 	name = "Cum in a Hot Tub"
@@ -123,7 +123,7 @@
 		/datum/reagent/consumable/ethanol/bitters = 1,
 		/datum/reagent/consumable/lemonade = 5
 	)
-	
+
 /datum/chemical_reaction/long_haul
 	name = "Long Haul"
 	id = /datum/chemical_reaction/long_haul

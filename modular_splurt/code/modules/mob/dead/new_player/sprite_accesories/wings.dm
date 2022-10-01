@@ -43,7 +43,6 @@
 	icon = 'modular_splurt/icons/mob/wings.dmi'
 	upgrade_to = SPECIES_WINGS_ANGEL
 
-//ripped from fulp
 /datum/sprite_accessory/deco_wings/aspen
 	name = "Aspen"
 	icon_state = "aspen"
@@ -59,6 +58,42 @@
 /datum/sprite_accessory/deco_wings/delirious
 	name = "Delirious"
 	icon_state = "delirious"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+	upgrade_to = SPECIES_WINGS_MOTH
+
+/datum/sprite_accessory/deco_wings/sylveon
+	name = "Sylveon Ribbons"
+	icon_state = "sylveon_bow"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_ALL
+	relevant_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+
+/datum/sprite_accessory/deco_wings/harpy
+	name = "Harpy (large)"
+	icon_state = "harpy"
+	icon = 'modular_splurt/icons/mob/64_wings.dmi'
+	dimension_x = 64
+	center = TRUE
+	upgrade_to = SPECIES_WINGS_ANGEL
+
+/datum/sprite_accessory/deco_wings/harpy/two
+	name = "Harpy (Two Tones)"
+	icon_state = "harpytwo"
+	icon = 'modular_splurt/icons/mob/64_wings.dmi'
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_RED_BLUE
+
+/datum/sprite_accessory/deco_wings/seal
+	name = "Seal"
+	icon_state = "seal"
+	icon = 'modular_splurt/icons/mob/wings.dmi'
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_RED_BLUE
+
+/datum/sprite_accessory/deco_wings/angelmoth
+	name = "Angel Moth"
+	icon_state = "angelmoth"
 	icon = 'modular_splurt/icons/mob/wings.dmi'
 	upgrade_to = SPECIES_WINGS_MOTH
 
@@ -101,28 +136,7 @@
 	icon = 'modular_splurt/icons/mob/wings.dmi'
 	upgrade_to = SPECIES_WINGS_MOTH
 
-/datum/sprite_accessory/deco_wings/sylveon
-	name = "Sylveon Ribbons"
-	icon_state = "sylveon_bow"
-	icon = 'modular_splurt/icons/mob/wings.dmi'
-	color_src = MATRIXED
-	matrixed_sections = MATRIX_ALL
-	relevant_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
-
-/datum/sprite_accessory/deco_wings/harpy
-	name = "Harpy (large)"
-	icon_state = "harpy"
-	icon = 'modular_splurt/icons/mob/64_wings.dmi'
-	dimension_x = 64
-	center = TRUE
-
 /datum/sprite_accessory/insect_wings/angelmoth
-	name = "Angel Moth"
-	icon_state = "angelmoth"
-	icon = 'modular_splurt/icons/mob/wings.dmi'
-	upgrade_to = SPECIES_WINGS_MOTH
-
-/datum/sprite_accessory/deco_wings/angelmoth
 	name = "Angel Moth"
 	icon_state = "angelmoth"
 	icon = 'modular_splurt/icons/mob/wings.dmi'

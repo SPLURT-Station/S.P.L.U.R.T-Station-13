@@ -67,13 +67,33 @@
 
 /obj/item/implant/genital_fluid/emag_act()
 	. = ..()
+	name = "hacked genital fluid implant"
 	use_blacklist = FALSE
+	obj_flags |= EMAGGED
 
 /obj/item/implanter/genital_fluid
 	name = "implanter (genital fluid)"
 	imp_type = /obj/item/implant/genital_fluid
 
+/obj/item/implanter/genital_fluid/hacked
+	name = "implanter (genital fluid (hacked))"
+
+/obj/item/implanter/genital_fluid/hacked/New()
+	. = ..()
+	if(istype(imp, /obj/item/implant/genital_fluid))
+		var/obj/item/implant/genital_fluid/I = imp
+		I.emag_act()
+
 /obj/item/implantcase/genital_fluid
 	name = "implant case - 'Genital Fluid'"
-	desc = "A glass case containing a Genital FLuid Infuser implant."
+	desc = "A glass case containing a Genital Fluid Infuser implant."
 	imp_type = /obj/item/implant/genital_fluid
+
+/obj/item/implantcase/genital_fluid/hacked
+	name = "implant case - 'Genital Fluid (Hacked)'"
+
+/obj/item/implantcase/genital_fluid/hacked/New()
+	. = ..()
+	if(istype(imp, /obj/item/implant/genital_fluid))
+		var/obj/item/implant/genital_fluid/I = imp
+		I.emag_act()

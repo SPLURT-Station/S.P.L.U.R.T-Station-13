@@ -196,3 +196,21 @@
 	extra = TRUE
 	extra_color_src = MATRIXED
 	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/snouts/mam_snouts/duck
+	name = "Duck"
+	icon_state = "duck"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	matrixed_sections = MATRIX_RED
+
+/datum/sprite_accessory/snouts/mam_snouts/goose
+	name = "Goose"
+	icon_state = "goose"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	matrixed_sections = MATRIX_RED
+
+/datum/sprite_accessory/snouts/mam_snouts/owl
+	name = "Owl"
+	icon_state = "owl"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	matrixed_sections = MATRIX_RED

@@ -16,6 +16,7 @@
 	var/list/modules = list() //holds all the usable modules
 	var/list/added_modules = list() //modules not inherient to the robot module, are kept when the module changes
 	var/list/storages = list()
+	var/list/added_channels = list() //Borg radio stuffs
 
 	var/cyborg_base_icon = "robot" //produces the icon for the borg and, if no special_light_key is set, the lights
 	var/special_light_key //if we want specific lights, use this instead of copying lights in the dmi
@@ -263,10 +264,8 @@
 		R.typing_indicator_state = /obj/effect/overlay/typing_indicator/machine/dogborg
 	else
 		R.typing_indicator_state = /obj/effect/overlay/typing_indicator/machine
-	//Skyrat change start
 	R.radio.extra_channels = RM.added_channels
 	R.radio.recalculateChannels()
-	//Skyrat change stop
 	R.maxHealth = borghealth
 	R.health = min(borghealth, R.health)
 	qdel(src)
@@ -353,6 +352,7 @@
 
 /obj/item/robot_module/medical
 	name = "Medical"
+	added_channels = list(RADIO_CHANNEL_MEDICAL = 1)
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/extinguisher/mini,
@@ -539,6 +539,7 @@
 
 /obj/item/robot_module/engineering
 	name = "Engineering"
+	added_channels = list(RADIO_CHANNEL_ENGINEERING = 1)
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/borg/sight/meson,
@@ -733,6 +734,7 @@
 
 /obj/item/robot_module/security
 	name = "Security"
+	added_channels = list(RADIO_CHANNEL_SECURITY = 1)
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/extinguisher/mini,
@@ -919,6 +921,7 @@
 
 /obj/item/robot_module/peacekeeper
 	name = "Peacekeeper"
+	added_channels = list(RADIO_CHANNEL_SECURITY = 1)
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/extinguisher/mini,
@@ -1057,6 +1060,7 @@
 
 /obj/item/robot_module/clown
 	name = "Clown"
+	added_channels = list(RADIO_CHANNEL_SERVICE = 1)
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/extinguisher/mini,
@@ -1089,6 +1093,7 @@
 
 /obj/item/robot_module/butler
 	name = "Service"
+	added_channels = list(RADIO_CHANNEL_SERVICE = 1)
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/extinguisher/mini,
@@ -1362,6 +1367,7 @@
 
 /obj/item/robot_module/miner
 	name = "Miner"
+	added_channels = list(RADIO_CHANNEL_SUPPLY = 1)
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/extinguisher/mini,
@@ -1521,6 +1527,7 @@
 
 /obj/item/robot_module/syndicate
 	name = "Syndicate Assault"
+	added_channels = list(RADIO_CHANNEL_SYNDICATE = 1)
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/extinguisher/mini,
@@ -1551,6 +1558,7 @@
 
 /obj/item/robot_module/syndicate_medical
 	name = "Syndicate Medical"
+	added_channels = list(RADIO_CHANNEL_SYNDICATE = 1)
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/extinguisher/mini,
@@ -1583,6 +1591,7 @@
 
 /obj/item/robot_module/saboteur
 	name = "Syndicate Saboteur"
+	added_channels = list(RADIO_CHANNEL_SYNDICATE = 1)
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/borg/sight/thermal,

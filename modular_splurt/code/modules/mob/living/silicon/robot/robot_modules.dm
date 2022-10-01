@@ -1,41 +1,8 @@
-/obj/item/robot_module
-	var/list/added_channels = list() //Borg radio stuffs
-
-/obj/item/robot_module/medical
-	added_channels = list(RADIO_CHANNEL_MEDICAL = 1)
-
-/obj/item/robot_module/engineering
-	added_channels = list(RADIO_CHANNEL_ENGINEERING = 1)
-
-/obj/item/robot_module/security
-	added_channels = list(RADIO_CHANNEL_SECURITY = 1)
-
-/obj/item/robot_module/peacekeeper
-	added_channels = list(RADIO_CHANNEL_SECURITY = 1)
-
-/obj/item/robot_module/clown
-	added_channels = list(RADIO_CHANNEL_SERVICE = 1)
-
-/obj/item/robot_module/butler
-	added_channels = list(RADIO_CHANNEL_SERVICE = 1)
-
-/obj/item/robot_module/miner
-	added_channels = list(RADIO_CHANNEL_SUPPLY = 1)
-	
 /obj/item/robot_module/cargo
 	added_channels = list(RADIO_CHANNEL_SUPPLY = 1)
 
-/obj/item/robot_module/syndicate
-	added_channels = list(RADIO_CHANNEL_SYNDICATE = 1)
-
 /obj/item/robot_module/syndicatejack
 	added_channels = list(RADIO_CHANNEL_SYNDICATE = 1) // Probably already handled by other code when spawned with pre-set module, but whatever.
-
-/obj/item/robot_module/syndicate_medical
-	added_channels = list(RADIO_CHANNEL_SYNDICATE = 1)
-
-/obj/item/robot_module/saboteur
-	added_channels = list(RADIO_CHANNEL_SYNDICATE = 1)
 
 /obj/item/robot_module/standard/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc

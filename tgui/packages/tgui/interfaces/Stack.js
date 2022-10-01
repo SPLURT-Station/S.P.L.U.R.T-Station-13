@@ -71,14 +71,15 @@ const RecipeList = (props, context) => {
 
   const sortedKeys = sortBy(key => key.toLowerCase())(Object.keys(recipes));
 
-  return sortedKeys.map(title => {
+  return sortedKeys.map((title, index) => {
     const recipe = recipes[title];
     if (recipe.ref === undefined) {
       return (
         <Collapsible
           ml={1}
           color="label"
-          title={title}>
+          title={title}
+          key={index}>
           <Box ml={1}>
             <RecipeList recipes={recipe} />
           </Box>
@@ -88,7 +89,8 @@ const RecipeList = (props, context) => {
       return (
         <Recipe
           title={title}
-          recipe={recipe} />
+          recipe={recipe}
+          key={index} />
       );
     }
   });

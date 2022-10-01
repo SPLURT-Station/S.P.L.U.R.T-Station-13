@@ -1366,6 +1366,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_butt_visibility"], features["butt_visibility"])
 	WRITE_FILE(S["feature_butt_stuffing"], features["butt_stuffing"])
 
+	WRITE_FILE(S["feature_has_belly"], features["has_belly"])
+	WRITE_FILE(S["feature_belly_color"], features["belly_color"])
+	WRITE_FILE(S["feature_belly_size"], features["belly_size"])
+	WRITE_FILE(S["feature_belly_visibility"], features["belly_visibility"])
+	WRITE_FILE(S["feature_belly_stuffing"], features["belly_stuffing"])
+
 	WRITE_FILE(S["feature_cock_growth_min"], features["cock_growth_min"])
 	WRITE_FILE(S["feature_cock_growth_max"], features["cock_growth_max"])
 	WRITE_FILE(S["feature_breasts_growth_min"], features["breasts_growth_min"])

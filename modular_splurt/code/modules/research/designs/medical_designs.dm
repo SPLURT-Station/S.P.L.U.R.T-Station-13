@@ -25,3 +25,124 @@
 	build_path = /obj/item/implantcase/radio
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SECURITY
+
+/datum/design/nanogel
+	category = list("Misc", "Medical Designs")
+
+//Cybernetic organs
+
+/datum/design/cybernetic_liver
+	category = list("Cybernetics", "Medical Designs")
+
+/datum/design/cybernetic_heart
+	category = list("Cybernetics", "Medical Designs")
+
+/datum/design/cybernetic_lungs
+	category = list("Cybernetics", "Medical Designs")
+
+/datum/design/cybernetic_stomach
+	category = list("Cybernetics", "Medical Designs")
+
+/datum/design/cybernetic_tongue
+	category = list("Cybernetics", "Medical Designs")
+
+/datum/design/cybernetic_ears
+	category = list("Cybernetics", "Medical Designs")
+
+/datum/design/cybernetic_ears_u
+	category = list("Cybernetics", "Medical Designs")
+
+/datum/design/cyberimp_welding
+	category = list("Cybernetics", "Medical Designs")
+
+/datum/design/cyberimp_gloweyes
+	category = list("Cybernetics", "Medical Designs")
+
+/datum/design/cyberimp_xray
+	category = list("Cybernetics", "Medical Designs")
+
+/datum/design/cyberimp_thermals
+	category = list("Cybernetics", "Medical Designs")
+
+//Cybernetic implants
+
+/datum/design/cyberimp_breather
+	category = list("Implants", "Medical Designs")
+
+/datum/design/cyberimp_surgical
+	category = list("Implants", "Medical Designs")
+
+/datum/design/cyberimp_toolset
+	category = list("Implants", "Medical Designs")
+
+/datum/design/cyberimp_shield
+	category = list("Implants", "Medical Designs")
+
+/datum/design/cyberimp_janitor
+	category = list("Implants", "Medical Designs")
+
+/datum/design/cyberimp_service
+	category = list("Implants", "Medical Designs")
+
+/datum/design/cyberimp_medical_hud
+	category = list("Implants", "Medical Designs")
+
+/datum/design/cyberimp_security_hud
+	category = list("Implants", "Medical Designs")
+
+/datum/design/cyberimp_antidrop
+	category = list("Implants", "Medical Designs")
+
+/datum/design/cyberimp_antistun
+	category = list("Implants", "Medical Designs")
+
+/datum/design/cyberimp_nutriment
+	category = list("Implants", "Medical Designs")
+
+/datum/design/cyberimp_nutriment_plus
+	category = list("Implants", "Medical Designs")
+
+/datum/design/cyberimp_reviver
+	category = list("Implants", "Medical Designs")
+
+/datum/design/cyberimp_thrusters
+	category = list("Implants", "Medical Designs")
+
+/datum/design/cyberimp_toolset_advanced
+	category = list("Implants", "Medical Designs")
+
+/datum/design/cyberimp_surgical_advanced
+	category = list("Implants", "Medical Designs")
+
+/datum/design/cyberimp_robot_radshielding
+	category = list("IPC Organs", "Medical Designs")
+
+/datum/design/cyberimp_power_cord
+	category = list("IPC Organs", "Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
+
+//Prosthetics
+
+/datum/design/basic_l_arm
+	category = list("Prosthetics", "Medical Designs")
+
+/datum/design/basic_r_arm
+	category = list("Prosthetics", "Medical Designs")
+
+/datum/design/basic_l_leg
+	category = list("Prosthetics", "Medical Designs")
+
+/datum/design/basic_r_leg
+	category = list("Prosthetics", "Medical Designs")
+
+/datum/design/adv_r_leg
+	category = list("Prosthetics", "Medical Designs")
+
+/datum/design/adv_l_leg
+	category = list("Prosthetics", "Medical Designs")
+
+/datum/design/adv_l_arm
+	category = list("Prosthetics", "Medical Designs")
+
+/datum/design/adv_r_arm
+	category = list("Prosthetics", "Medical Designs")

@@ -2,7 +2,7 @@
 	name = "Demon"
 	icon = 'modular_splurt/icons/mob/mutant_bodyparts.dmi'
 	icon_state = "demon"
-	
+
 /datum/sprite_accessory/horns/sylveon
 	name = "Sylveon Bow"
 	icon = 'modular_splurt/icons/mob/mutant_bodyparts.dmi'
@@ -31,3 +31,8 @@
 	name = "Succ horns" // Not sure if I'll change that later
 	icon = 'modular_splurt/icons/mob/mutant_bodyparts.dmi'
 	icon_state = "albedo"
+
+/datum/sprite_accessory/horns/dragonlong
+	name = "Long Dragon"
+	icon = 'modular_splurt/icons/mob/mutant_bodyparts.dmi'
+	icon_state = "dragonlong"

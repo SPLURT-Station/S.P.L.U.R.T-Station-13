@@ -15,11 +15,14 @@
 	var/list/mother_features
 	var/list/father_features
 
+	var/mother_name
+
 	var/egg_name
 
 	var/stage = 0
 	var/max_stage = PREGNANCY_STAGES
 	COOLDOWN_DECLARE(stage_time)
+	COOLDOWN_DECLARE(hatch_request_cooldown)
 
 	var/added_size = 0
 	/// this boolean is for identifying whether this preg is in the egg state or not
@@ -63,6 +66,8 @@
 		mother_dna = new
 		carmom.dna.copy_dna(mother_dna)
 
+	mother_name = _mother.real_name
+
 	if(ishuman(_father))
 		var/mob/living/carbon/human/cardad = _father
 		LAZYINITLIST(father_features)
@@ -95,7 +100,7 @@
 	RegisterSignal(parent, COMSIG_ATOM_ENTERING, .proc/on_entering)
 	RegisterSignal(parent, COMSIG_OBJ_BREAK, .proc/on_obj_break)
 	RegisterSignal(parent, COMSIG_OBJ_WRITTEN_ON, .proc/name_egg)
-	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/hatch)
+	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/handle_hatch)
 	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/eg_status)
 
 /datum/component/pregnancy/UnregisterFromParent()
@@ -126,24 +131,6 @@
 	if(carrier)
 		generic_pragency_end()
 	return ..()
-/*
-/datum/component/pregnancy/PreTransfer()
-	if(carrier)
-		generic_pragency_end()
-	oviposition = FALSE
-
-/datum/component/pregnancy/PostTransfer()
-	carrier = null
-	container = null
-	egg_name = null
-
-	if(isliving(parent))
-		carrier = parent
-	else if(isitem(parent))
-		max_stage += 1
-	else
-		return COMPONENT_INCOMPATIBLE
-*/
 
 /datum/component/pregnancy/proc/name_egg(datum/source, name)
 	SIGNAL_HANDLER
@@ -202,6 +189,7 @@
 	if((stage >= 2) && !revealed)
 		revealed = TRUE
 		carrier.apply_status_effect(/datum/status_effect/pregnancy)
+		carrier.apply_status_effect(/datum/status_effect/lactation)
 
 	if(stage > 3 && ishuman(carrier) && oviposition)
 		SEND_SIGNAL(carrier, COMSIG_ADD_MOOD_EVENT, "pregnancy", /datum/mood_event/pregnant_negative)
@@ -233,18 +221,58 @@
 	if(carrier && (stage == max_stage) && prob(2))
 		to_chat(carrier, span_warning("\The [parent] moves, it's probably ready to hatch!"))
 
-/datum/component/pregnancy/proc/hatch(datum/source, obj/item/I, mob/user, params)
+/datum/component/pregnancy/proc/handle_hatch(datum/source, obj/item/I, mob/user, params)
 	SIGNAL_HANDLER
 
 	if(stage < max_stage)
 		return
 
+	INVOKE_ASYNC(src, .proc/hatch, source, I, user, params)
+
+/datum/component/pregnancy/proc/hatch(datum/source, obj/item/I, mob/user, params)
+	if(!COOLDOWN_FINISHED(src, hatch_request_cooldown))
+		return
+
+	COOLDOWN_START(src, hatch_request_cooldown, 30 SECONDS)
+
+	var/poll_message = "Do you want to play as [mother_name]'s offspring?[egg_name ? " Your name will be [egg_name]" : ""]"
+	var/list/mob/candidates = pollGhostCandidates(poll_message, ROLE_RESPAWN, null, FALSE, 30 SECONDS)
+
+	if(!LAZYLEN(candidates))
+		to_chat(user, span_info("\The [parent] doesn't seems to hatch, try again later?"))
+		return
+
+	var/mob/player = pick(candidates)
+
 	playsound(parent, 'sound/effects/splat.ogg', 70, TRUE)
 	var/mob/living/babby = new baby_type(get_turf(parent))
+
 	if(ishuman(babby))
 		determine_baby_features(babby)
 		determine_baby_dna(babby)
-	INVOKE_ASYNC(GLOBAL_PROC, .proc/offer_control_to_babby, babby, user, egg_name)
+
+	player.transfer_ckey(babby, TRUE)
+
+	to_chat(babby, "You are the son (or daughter) of [mother_name ? mother_name : "someone"]!")
+
+	var/name
+	if(egg_name)
+		name = egg_name
+	else if(user)
+		name = input(user, "What will be your baby's name?", "Name the baby") as null|text
+	else
+		name = input(babby, "What will be your name?", "Name yourself") as null|text
+
+	if(!name)
+		babby.real_name = random_unique_name(babby.gender, )
+		babby.update_name()
+	else
+		babby.real_name = name
+		babby.update_name()
+
+	if(mother_name)
+		babby?.mind?.store_memory("[mother_name] is your mother!")
+
 	var/obj/item = parent
 	item.forceMove(get_turf(parent))
 	item.obj_break(MELEE)
@@ -255,43 +283,6 @@
 
 	if(stage >= max_stage)
 		examine_list += span_notice("\The [parent] seems ready to hatch! You can tap it with something to hatch it")
-
-///datum/component/pregnancy/proc/handle_preg()
-//
-//	if(prob(60))
-//		return
-//	if(stage < max_stage)
-//		return
-//
-//	if(prob(50))
-//		to_chat(carrier, span_warning("Something is moving inside you!"))
-//	else
-//		to_chat(carrier, span_userdanger("It hurts! Something is trying to come out!"))
-//
-//	carrier.emote("scream")
-//
-//	var/can_birth = TRUE
-//	if(ishuman(carrier))
-//		var/mob/living/carbon/human/human_owner = carrier
-//		var/obj/item/bodypart/chest = human_owner.get_bodypart(BODY_ZONE_CHEST)
-//		if(LAZYLEN(human_owner.clothingonpart(chest)))
-//			can_birth = FALSE
-//	if(can_birth)
-//		playsound(carrier, 'sound/effects/splat.ogg', 70, TRUE)
-//		to_chat(carrier, span_nicegreen("The egg hatched!"))
-//		carrier.Knockdown(200, TRUE, TRUE)
-//		carrier.Stun(200, TRUE, TRUE)
-//		carrier.adjustStaminaLoss(200)
-//		var/mob/living/babby = new baby_type(get_turf(carrier))
-//		if(ishuman(babby))
-//			determine_baby_dna(babby)
-//		INVOKE_ASYNC(GLOBAL_PROC, .proc/offer_control_to_babby, babby, carrier, egg_name)
-//		SEND_SIGNAL(carrier, COMSIG_ADD_MOOD_EVENT, "pregnancy_end", /datum/mood_event/pregnant_positive)
-//		if(isitem(parent))
-//			var/obj/item = parent
-//			item.forceMove(get_turf(carrier))
-//			item.obj_break(MELEE)
-//		qdel(src)
 
 /datum/component/pregnancy/proc/handle_ovi_preg()
 	if(stage <= 2)
@@ -401,15 +392,6 @@
 		human_pragency_end(carrier)
 
 /datum/component/pregnancy/proc/human_pragency_start(mob/living/carbon/human/gregnant)
-	/*
-	if(pregnancy_inflation)
-		//give them a king ass ripper belly initially
-		var/obj/item/organ/genital/belly/belly = gregnant.getorganslot(ORGAN_SLOT_BELLY)
-		if(!belly)
-			belly = gregnant.give_genital(/obj/item/organ/genital/belly)
-		if(added_size > 0)
-			belly.modify_size(added_size)
-	*/
 	if(pregnancy_breast_growth)
 		var/obj/item/organ/genital/breasts/boob = gregnant.getorganslot(ORGAN_SLOT_BREASTS)
 		if(!boob)
@@ -417,12 +399,6 @@
 	return TRUE
 
 /datum/component/pregnancy/proc/human_pragency_end(mob/living/carbon/human/gregnant)
-	/*
-	//get rid of king ass ripper belly
-	var/obj/item/organ/genital/belly/belly = gregnant.getorganslot(ORGAN_SLOT_BELLY)
-	if(pregnancy_inflation)
-		belly?.modify_size(-added_size)
-	*/
 	SEND_SIGNAL(gregnant, COMSIG_CLEAR_MOOD_EVENT, "pregnancy")
 
 /datum/component/pregnancy/proc/fetus_mortus()
@@ -450,36 +426,3 @@
 
 	if(def_zone == BODY_ZONE_CHEST && damage > 20 && prob(40))
 		fetus_mortus()
-
-/proc/offer_control_to_babby(mob/living/babby, mob/living/mommy, pre_named)
-	var/poll_message = "Do you want to play as [mommy]'s offspring?"
-	var/list/mob/candidates = pollCandidatesForMob(poll_message, ROLE_RESPAWN, null, FALSE, 120, babby)
-	if(!LAZYLEN(candidates))
-		babby.real_name = random_unique_name(babby.gender)
-		babby.update_name()
-		return
-
-	var/mob/player = pick(candidates)
-
-	player.transfer_ckey(babby, TRUE)
-
-	var/mommy_name = "someone"
-	if(!QDELETED(mommy))
-		mommy_name = mommy.real_name
-
-	to_chat(babby, "You are the son (or daughter) of [mommy_name]!")
-
-	var/name
-	if(pre_named)
-		name = pre_named
-	else if(QDELETED(mommy))
-		name = input(babby, "What will be your name?", "Name yourself") as null|text
-	else
-		name = input(mommy, "What will be your baby's name?", "Name the baby") as null|text
-
-	if(!name)
-		babby.real_name = random_unique_name(babby.gender, )
-		babby.update_name()
-	else
-		babby.real_name = name
-		babby.update_name()

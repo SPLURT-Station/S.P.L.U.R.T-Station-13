@@ -921,6 +921,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	if (!client)
 		return
 	client.mouse_pointer_icon = initial(client.mouse_pointer_icon)
+	// Consider using mouse override icon or snapping this section.
 	if(pull_cursor_icon && client.keys_held["Ctrl"])
 		client.mouse_pointer_icon = pull_cursor_icon
 	else if(throw_cursor_icon && in_throw_mode != 0)
@@ -930,10 +931,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 			client.mouse_pointer_icon = combat_cursor_icon
 	else if(examine_cursor_icon && client.keys_held["Shift"]) //mouse shit is hardcoded, make this non hard-coded once we make mouse modifiers bindable
 		client.mouse_pointer_icon = examine_cursor_icon
-	else if (ismecha(loc))
-		var/obj/vehicle/sealed/mecha/M = loc
-		if(M.mouse_pointer)
-			client.mouse_pointer_icon = M.mouse_pointer
+	//
+	else if(istype(loc, /obj/vehicle/sealed))
+		var/obj/vehicle/sealed/mecha/E = loc
+		if(E.mouse_pointer)
+			client.mouse_pointer_icon = E.mouse_pointer
+	if(client.mouse_override_icon)
+		client.mouse_pointer_icon = client.mouse_override_icon
 
 /mob/proc/is_literate()
 	return 0

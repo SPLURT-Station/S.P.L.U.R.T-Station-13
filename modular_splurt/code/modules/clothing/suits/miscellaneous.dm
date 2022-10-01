@@ -133,6 +133,27 @@
 	icon_state = "maiddress"
 	item_state = "maiddress"
 
+/obj/item/clothing/suit/hooded/pyramidhead
+	name = "Pyramid Head apron"
+	desc = "This was probably stolen from the kitchen and turned into someone's cosplay project."
+	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
+	icon_state = "pyramidhead"
+	item_state = "apron"
+	hoodtype = /obj/item/clothing/head/hooded/pyramidhead
+	body_parts_covered = CHEST|GROIN|LEGS
+	mutantrace_variation = NONE
+	no_t = TRUE
+
+/obj/item/clothing/head/hooded/pyramidhead
+	name = "Pyramid Head"
+	desc = "Looks like someone stole some plating tiles and let them rust for a while."
+	icon = 'modular_splurt/icons/obj/clothing/head.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/head.dmi'
+	icon_state = "pyramidhead"
+	item_state = "pyramidhead"
+	flags_inv = HIDEHAIR|HIDEEARS|HIDEFACIALHAIR|HIDEFACE|HIDEMASK|HIDESNOUT|HIDENECK
+
 // GWTB-inspired stuff wooo
 /obj/item/clothing/suit/goner
 	name = "trencher coat"

@@ -1,22 +1,10 @@
-//qareens: based off of wraiths from Goon
+//qareens: based off of revenant from TG
 //"Ghosts" that are invisible and move like ghosts, cannot take damage while invisible
 //Can hear deadchat, but are NOT normal ghosts and do NOT have x-ray vision
 //Admin-spawn or random event
 
-// Qareen
-
-// | Harvest - gathering essence via absorbing cum stains from the floor instead of sucking corpses.
-// | Defile - (PREREQUISITE - LewdSpraycanSprites) - Add derogatory imagery and sprayed on stain imitations;
-// 		replace damage with stamina damage; replace "orbs of lightning" with "orbs of lust"?;
-//		remove the part where it can destroy walls, windows, shooting lightning.
-// | Blight - instead of it having an ability that makes people depressed and making them take stamina and toxic damage
-//		- make it so that it makes them horny and give them stamina damage - if they hit 0 stamina while affected by the virus
-// 		- make them cum in a 3x3 area around themselves and on everyone in the area. (giving food for Harvest)
-//		- rename to bliss
-// Overload Light - color all lights in affected area pink instead ; replace "orbs of lightning" with "orbs of lust"
-// Malfunction (got no good ideas for this yet)
-// Replace objective of "Making the crew as miserable as possible" with "Make this station look like a cheap motel."
-// new ability - manifest - gives visible simplemob form
+// TODO
+// new ability - manifest - gives visible simplemob form untill de-activated (can still use abilities) (add after spriting)
 
 #define INVISIBILITY_QAREEN 50
 #define QAREEN_NAME_FILE "qareen_names.json"
@@ -470,7 +458,7 @@
 		qdel(qareen)
 	..()
 
-/proc/qareenThrow(over, mob/user, obj/item/throwable)
+/mob/living/simple_animal/qareen/proc/qareenThrow(over, mob/user, obj/item/throwable)
 	var/mob/living/simple_animal/qareen/spooker = user
 	if(!istype(throwable))
 		return
@@ -487,7 +475,7 @@
 		spooker.telekinesis_cooldown = TRUE
 		throwable.float(TRUE, TRUE)
 		sleep(20)
-		throwable.DoQareenThrowEffects(over)
+		throwable.DoRevenantThrowEffects(over)
 		throwable.throw_at(over, 10, 2)
 		ADD_TRAIT(throwable, TRAIT_SPOOKY_THROW, "qareen")
 		log_combat(throwable, over, "spooky telekinesised at", throwable)
@@ -508,7 +496,7 @@
 
 /datum/objective/qareen/New()
 	targetAmount = rand(150,300)
-	explanation_text = "Absorb [targetAmount] points of essence from humans."
+	explanation_text = "Absorb [targetAmount] of essence from this sector of space."
 	..()
 
 /datum/objective/qareen/check_completion()
@@ -526,16 +514,14 @@
 
 /datum/objective/qareenFluff/New()
 	var/list/explanationTexts = list("Assist and exacerbate existing threats at critical moments.", \
-									 "Avoid killing in plain sight.", \
-									 "Cause as much chaos and anger as you can without being killed.", \
-									 "Damage and render as much of the station rusted and unusable as possible.", \
-									 "Disable and cause malfunctions in as many machines as possible.", \
-									 "Ensure that any holy weapons are rendered unusable.", \
-									 "Hinder the crew while attempting to avoid being noticed.", \
-									 "Make the crew as miserable as possible.", \
-									 "Make the clown as miserable as possible.", \
-									 "Make the captain as miserable as possible.", \
-									 "Prevent the use of energy weapons where possible.")
+									 "Avoid sucking up essence in plain sight.", \
+									 "Cause as much bliss and chaos as you can without being caught or killed.", \
+									 "Modify and render as much of the station rusted and essennce covered as possible.", \
+									 "Curse the crew while attempting to avoid being attacked.", \
+									 "Make the crew as horny as possible.", \
+									 "Make the clown as horny as possible.", \
+									 "Make the captain as horny as possible.", \
+	)
 	explanation_text = pick(explanationTexts)
 	..()
 

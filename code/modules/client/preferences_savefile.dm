@@ -411,6 +411,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["see_chat_non_mob"] 	>> see_chat_non_mob
 	S["tgui_fancy"] >> tgui_fancy
 	S["tgui_lock"] >> tgui_lock
+	S["tgui_input_mode"]		>> tgui_input_mode
+	S["tgui_large_buttons"]		>> tgui_large_buttons
+	S["tgui_swapped_buttons"]	>> tgui_swapped_buttons
 	S["buttons_locked"] >> buttons_locked
 	S["windowflash"] >> windowflashing
 	S["be_special"] 		>> be_special
@@ -496,6 +499,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	see_chat_non_mob = sanitize_integer(see_chat_non_mob, 0, 1, initial(see_chat_non_mob))
 	tgui_fancy = sanitize_integer(tgui_fancy, 0, 1, initial(tgui_fancy))
 	tgui_lock = sanitize_integer(tgui_lock, 0, 1, initial(tgui_lock))
+	tgui_input_mode	= sanitize_integer(tgui_input_mode, 0, 1, initial(tgui_input_mode))
+	tgui_large_buttons	= sanitize_integer(tgui_large_buttons, 0, 1, initial(tgui_large_buttons))
+	tgui_swapped_buttons	= sanitize_integer(tgui_swapped_buttons, 0, 1, initial(tgui_swapped_buttons))
 	buttons_locked = sanitize_integer(buttons_locked, 0, 1, initial(buttons_locked))
 	windowflashing = sanitize_integer(windowflashing, 0, 1, initial(windowflashing))
 	default_slot = sanitize_integer(default_slot, 1, max_save_slots, initial(default_slot))
@@ -613,6 +619,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["see_chat_non_mob"], see_chat_non_mob)
 	WRITE_FILE(S["tgui_fancy"], tgui_fancy)
 	WRITE_FILE(S["tgui_lock"], tgui_lock)
+	WRITE_FILE(S["tgui_input_mode"], tgui_input_mode)
+	WRITE_FILE(S["tgui_large_buttons"], tgui_large_buttons)
+	WRITE_FILE(S["tgui_swapped_buttons"], tgui_swapped_buttons)
 	WRITE_FILE(S["buttons_locked"], buttons_locked)
 	WRITE_FILE(S["windowflash"], windowflashing)
 	WRITE_FILE(S["be_special"], be_special)

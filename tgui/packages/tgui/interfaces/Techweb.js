@@ -732,11 +732,11 @@ const TechNode = (props, context) => {
         <Collapsible
           className="Techweb__NodeExperimentsRequired"
           title="Required Experiments">
-          {required_experiments.map(k => {
+          {required_experiments.map((k, index) => {
             const thisExp = experiments[k];
             if (thisExp === null || thisExp === undefined) {
               return (
-                <LockedExperiment />
+                <LockedExperiment key={index} />
               );
             }
             return (
@@ -749,11 +749,11 @@ const TechNode = (props, context) => {
         <Collapsible
           className="TechwebNodeExperimentsRequired"
           title="Discount-Eligible Experiments">
-          {Object.keys(discount_experiments).map(k => {
+          {Object.keys(discount_experiments).map((k, index) => {
             const thisExp = experiments[k];
             if (thisExp === null || thisExp === undefined) {
               return (
-                <LockedExperiment />
+                <LockedExperiment key={index} />
               );
             }
             return (

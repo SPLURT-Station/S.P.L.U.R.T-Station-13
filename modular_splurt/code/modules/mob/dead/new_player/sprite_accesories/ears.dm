@@ -93,3 +93,9 @@
 	icon_state = "catnormal"
 	matrixed_sections = MATRIX_RED_GREEN
 	icon = 'modular_splurt/icons/mob/mam_ears.dmi'
+
+/datum/sprite_accessory/ears/mam_ears/noodledragon
+	name = "Noodle Dragon"
+	icon_state = "noodledragon"
+	matrixed_sections = MATRIX_RED_BLUE
+	icon = 'modular_splurt/icons/mob/mam_ears.dmi'

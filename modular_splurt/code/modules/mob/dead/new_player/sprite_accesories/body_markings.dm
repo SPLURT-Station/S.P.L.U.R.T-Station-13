@@ -6,25 +6,6 @@
 // use the HumanScissors tool to break your sprite up into the zones easier.
 // Although Byond supposedly doesn't have an icon limit anymore of 512 states after 512.1478, just be careful about too many additions.
 
-//Hyperstation markings
-/datum/sprite_accessory/mam_body_markings/abs
-	name = "Abdominals"
-	icon_state = "abs"
-	covered_limbs = list("Head" = MATRIX_RED, "Chest" = MATRIX_RED, "Left Leg" = MATRIX_RED_BLUE, "Right Leg" = MATRIX_RED_BLUE)
-	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
-
-/datum/sprite_accessory/mam_body_markings/abstwo
-	name = "Abdominals Two-Tones"
-	icon_state = "absbelly"
-	covered_limbs = list("Head" = MATRIX_RED, "Chest" = MATRIX_RED_GREEN)
-	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
-
-/datum/sprite_accessory/mam_body_markings/absthree
-	name = "Abdominals Three-Tones"
-	icon_state = "absarms"
-	covered_limbs = list("Head" = MATRIX_RED, "Chest" = MATRIX_RED_GREEN, "Left Leg" = MATRIX_ALL, "Right Leg" = MATRIX_ALL, "Left Arm" = MATRIX_RED_BLUE, "Right Arm" = MATRIX_RED_BLUE)
-	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
-
 /datum/sprite_accessory/mam_body_markings/pigeon
 	name = "Pigeon"
 	icon_state = "pigeon"
@@ -95,3 +76,56 @@
 	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
 	icon_state = "floof"
 	covered_limbs = list("Chest" = MATRIX_RED)
+
+/datum/sprite_accessory/mam_body_markings/noodledragon
+	name = "Noodle Dragon"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "noodledragon"
+	covered_limbs = list("Chest" = MATRIX_GREEN_BLUE)
+
+/datum/sprite_accessory/mam_body_markings/owlbarn
+	name = "Owl"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "owlbarn"
+	covered_limbs = list("Head" = MATRIX_RED_BLUE)
+
+/datum/sprite_accessory/mam_body_markings/owlhorned
+	name = "Horned Owl"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "owlhorned"
+	covered_limbs = list("Head" = MATRIX_RED_BLUE)
+
+/datum/sprite_accessory/mam_body_markings/toeclaws
+	name = "Toe Claws"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "toeclaws"
+	covered_limbs = list("Right Leg" = MATRIX_RED, "Left Leg" = MATRIX_RED)
+
+/******************************************
+************* Insect Markings *************
+*******************************************/
+
+/datum/sprite_accessory/insect_fluff/hyena
+	name = "Hyena"
+	icon = 'modular_splurt/icons/mob/neck_fluff.dmi'
+	icon_state = "hyena"
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_RED_BLUE
+
+/datum/sprite_accessory/insect_fluff/hyena/stripes
+	name = "Hyena (Stripes)"
+	icon_state = "hyenastripes"
+
+/datum/sprite_accessory/insect_fluff/soft
+	name = "Soft"
+	icon = 'modular_splurt/icons/mob/neck_fluff.dmi'
+	icon_state = "soft"
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_RED_BLUE
+
+/datum/sprite_accessory/insect_fluff/flat
+	name = "Flat"
+	icon = 'modular_splurt/icons/mob/neck_fluff.dmi'
+	icon_state = "flat"
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_RED_BLUE

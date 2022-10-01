@@ -25,6 +25,7 @@
 		/obj/item/storage/fancy/jellybean_pack = 5,
 		/obj/item/storage/box/aphrodisiac_pump = 5,
 		/obj/item/strapon_strap = 5,
+		/obj/item/restraints/bondage_rope = 5,
 	)
 	var/list/extra_contraband = list(
 		//Lewd-Clothes

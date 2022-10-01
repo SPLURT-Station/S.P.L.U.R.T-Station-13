@@ -1,8 +1,4 @@
 //Main code edits
-
-/mob/living/silicon/robot
-	var/obj/item/pda/ai/aiPDA //TODO: Refractor the whole PDA system to be on /mob/living/silicon and add the pda functions of all the other silicons from /tg/
-
 /// Allows "cyborg" players to change gender at will - Modularised here
 /mob/living/silicon/robot/verb/toggle_gender()
 	set name = "Set Gender"
@@ -31,19 +27,6 @@
 			has_penis = FALSE
 			has_balls = FALSE
 			has_vagina = FALSE
-
-/mob/living/silicon/robot/Initialize(mapload)
-	. = ..()
-	if(!shell)
-		aiPDA = new/obj/item/pda/ai(src)
-		aiPDA.owner = real_name
-		aiPDA.ownjob = "Cyborg"
-		aiPDA.name = real_name + " (" + aiPDA.ownjob + ")"
-
-/mob/living/silicon/robot/replace_identification_name(oldname, newname)
-	if(aiPDA && !shell)
-		aiPDA.owner = newname
-		aiPDA.name = newname + " (" + aiPDA.ownjob + ")"
 
 // Slaver medical borg
 /mob/living/silicon/robot/modules/syndicate/slaver/medical

@@ -39,8 +39,7 @@ export class Tooltip extends Component<TooltipProps, TooltipState> {
   static virtualElement: VirtualElement = {
     getBoundingClientRect: () => (
       Tooltip.currentHoveredElement?.getBoundingClientRect()
-        ?? NULL_RECT
-    ),
+        ?? NULL_RECT) as DOMRect,
   };
 
   getDOMNode() {

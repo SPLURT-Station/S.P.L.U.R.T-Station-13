@@ -26,7 +26,7 @@
 
 //Service
 /datum/job/assistant
-	alt_titles = list("Civilian", "Visitor", "Businessman", "Trader", "Entertainer", "Intern")
+	alt_titles = list("Civilian", "Visitor", "Businessman", "Trader", "Entertainer", "Intern", "Off-Duty Civilian")
 
 /datum/job/bartender
 	alt_titles = list("Barista")

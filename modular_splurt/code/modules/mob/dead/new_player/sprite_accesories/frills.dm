@@ -11,10 +11,3 @@
 	icon_state = "cobrahood_alt"
 	matrixed_sections = MATRIX_RED_GREEN
 	color_src = MATRIXED
-
-/datum/sprite_accessory/frills/cobraslim
-	name = "Narrow Cobra Hood"
-	icon = 'modular_splurt/icons/mob/mutant_bodyparts.dmi'
-	icon_state = "cobraslim"
-	color_src = MATRIXED
-	matrixed_sections = MATRIX_RED_GREEN

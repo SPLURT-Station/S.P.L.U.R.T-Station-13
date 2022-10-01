@@ -9,7 +9,7 @@
 
 	if(ishuman(A))
 		if(A in drained_mobs)
-			to_chat(src, "<span class='revenwarning'>[A]'s fluids are almost dead and very bland.. almost tasteless. but beggars can't be choosers.</span>" )
+			to_chat(src, "<span class='revenwarning'>[A]'s fluids are almost devoid of any essence, also very bland.. almost tasteless... but beggars can't be choosers.</span>" )
 		if(in_range(src, A))
 			Harvest(A)
 
@@ -25,42 +25,47 @@
 	if(target.stat)
 		to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] essence is too faded to harvest.</span>")
 		return
-
-		// if(prob(10))
-		// 	to_chat(target, "You feel as if you are being watched.")
+	if(!target.ckey)
+		to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] essence is lacking .. worthless.</span>")
+		// return
+	if(prob(10))
+		to_chat(target, "You feel as if you are being watched.")
 	face_atom(target)
 	draining = TRUE
-	essence_drained += rand(15, 20)
 	to_chat(src, "<span class='revennotice'>You search for the lifespring of [target].</span>")
 	if(do_after(src, rand(10, 20), 0, target)) //did they get deleted in that second?
-		if(!target.ckey)
-			to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] essence is lacking .. almost worthless.</span>")
-			essence_drained += rand(5, 10)
 		for(var/obj/item/organ/genital/G in target.internal_organs)
-			if(!G.is_exposed())
+			if(!(G.genital_flags & GENITAL_FUID_PRODUCTION))
 				continue
-			var/datum/reagents/fluid_source = G.climaxable(target)
-			if(!fluid_source)
-				continue
+			// var/datum/reagents/fluid_source = G.climaxable(target)
 			if(do_after(src, rand(10, 20), 0, target)) //did they get deleted in that second?
-				var/main_fluid = lowertext(fluid_source.get_master_reagent_name())
-				if (fluid_source.total_volume <= 5)
-					to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] [G.name] spasms pitifully, almost nothing coming out.</span>")
+				// var/main_fluid = lowertext(fluid_source.get_master_reagent_name())  // doesn't work no more (should delete probably)
+				var/main_fluid = G.get_fluid_name()
+				var/fluid_ammount = clamp((G.fluid_rate * ((world.time - G.last_orgasmed) / (10 SECONDS)) * G.fluid_mult),0,G.fluid_max_volume)
+				if (fluid_ammount <= 2)
+					to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] [G.name] spasms pitifully, almost nothing will come out.</span>")
 				else
-					to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] [main_fluid] flows out from their twitching [G.name].</span>")
-				essence_drained += fluid_source.total_volume
-				target.do_climax(fluid_source, src, G, FALSE, FALSE)
+					to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] [G.name] are brimming with [main_fluid].</span>")
+					if (fluid_ammount > 5)
+						fluid_ammount = 5 // For balancing reasons
+				if ((target in drained_mobs) || !target.ckey)
+					essence_drained += fluid_ammount
+				else if (!target.IsSleeping())
+					essence_drained += fluid_ammount*rand(2, 3)
+				else
+					essence_drained += fluid_ammount*3
+
 
 
 		if(do_after(src, rand(15, 20), 0, target)) //did they get deleted NOW?
 			switch(essence_drained)
-				if(1 to 30)
+				if(0 to 4)
 					to_chat(src, "<span class='revennotice'>[target] is almost barren of essence. Still, every bit counts.</span>")
-				if(30 to 70)
+				if(5 to 10)
 					to_chat(src, "<span class='revennotice'>[target] will yield an average amount of essence.</span>")
-				if(70 to 90)
+				if(11 to 20)
 					to_chat(src, "<span class='revenboldnotice'>Such a feast! [target] will yield much essence to you.</span>")
-				if(90 to INFINITY)
+				if(30 to INFINITY)
 					to_chat(src, "<span class='revenbignotice'>Ah, a sexually furstrated person. [target] will yield massive amounts of essence to you.</span>")
 			if(do_after(src, rand(15, 25), 0, target)) //how about now
 				if(target.stat)
@@ -69,16 +74,17 @@
 					draining = 0
 					essence_drained = 0
 					return //hey, wait a minute...
-				to_chat(src, "<span class='revenminor'>You begin sucking up essence from [target]'s genitails and body.</span>")
+				to_chat(src, "<span class='revenminor'>You begin sucking up essence from [target]'s genitals and body.</span>")
 				if(target.stat != DEAD)
 					to_chat(target, "<span class='warning'>You feel an unholy euphoria as as something sucks at every part your body, your fluids flowing out...</span>")
 				if(target.stat == SOFT_CRIT)
-					target.Stun(46)
+					target.Stun(150)
 				reveal(46)
-				stun(46)
+				stun(100)
 				target.visible_message("<span class='warning'>[target] suddenly rises slightly into the air, [target.p_their()] skin turning an ashy gray.</span>")
 				if(target.anti_magic_check(FALSE, TRUE))
 					to_chat(src, "<span class='revenminor'>Something's wrong! [target] seems to be resisting the sucking, leaving you vulnerable!</span>")
+					target.set_resting(TRUE,TRUE)
 					target.visible_message("<span class='warning'>[target] slumps onto the ground.</span>", \
 											   "<span class='revenwarning'>Violet lights, dancing in your vision, receding--</span>")
 					draining = FALSE
@@ -86,21 +92,28 @@
 				var/datum/beam/B = Beam(target,icon_state="drain_life",time=INFINITY)
 				if(do_after(src, 46, 0, target)) //As one cannot prove the existance of ghosts, ghosts cannot prove the existance of the target they were draining.
 					change_essence_amount(essence_drained, FALSE, target)
-					if(essence_drained <= 90)
-						essence_regen_cap += 5
-						to_chat(src, "<span class='revenboldnotice'>The absorption of [target]'s fluids has increased your maximum essence level. Your new maximum essence is [essence_regen_cap].</span>")
-					if(essence_drained > 90)
+					for(var/obj/item/organ/genital/G in target.internal_organs)
+						var/datum/reagents/fluid_source = G.climaxable(target)
+						if(!fluid_source)
+							continue
+						target.do_climax(fluid_source, src, G, TRUE, FALSE)
+					if(essence_drained > 30)
 						essence_regen_cap += 15
 						perfectsouls++
 						to_chat(src, "<span class='revenboldnotice'>The ammount of [target]'s fluids has increased your maximum essence level. Your new maximum essence is [essence_regen_cap].</span>")
-					to_chat(src, "<span class='revennotice'>[target]'s genitails have been considerably weakened and will yield no more essence for the time being.</span>")
+					else if(essence_drained >= 5)
+						essence_regen_cap += 5
+						to_chat(src, "<span class='revenboldnotice'>The absorption of [target]'s fluids has increased your maximum essence level. Your new maximum essence is [essence_regen_cap].</span>")
+					target.set_resting(TRUE,TRUE)
 					target.visible_message("<span class='warning'>[target] slumps onto the ground.</span>", \
 										   "<span class='revenwarning'>Violets lights, dancing in your vision, getting clo--</span>")
 					drained_mobs.Add(target)
+					target.setStaminaLoss(150)
 					// target.death(0)
 				else
 					to_chat(src, "<span class='revenwarning'>[target ? "[target] has":"[target.p_theyve(TRUE)]"] been drawn out of your grasp. The link has been broken.</span>")
 					if(target) //Wait, target is WHERE NOW?
+						target.set_resting(TRUE,TRUE)
 						target.visible_message("<span class='warning'>[target] slumps onto the ground.</span>", \
 											   "<span class='revenwarning'>Violets lights, dancing in your vision, receding--</span>")
 				qdel(B)
@@ -231,9 +244,10 @@
 		L.Beam(M,icon_state="purple_lightning",time=5)
 		if(!M.anti_magic_check(FALSE, TRUE))
 			M.electrocute_act(shock_damage, L, flags = SHOCK_NOGLOVES)
-			M.reagents.add_reagent(/datum/reagent/drug/aphrodisiac, 5)
+			M.reagents.add_reagent(/datum/reagent/drug/aphrodisiac, 10)
 		do_sparks(4, FALSE, M)
 		playsound(M, 'sound/machines/defib_zap.ogg', 50, 1, -1)
+
 
 //Defile: Corrupts nearby stuff, unblesses floor tiles.
 /obj/effect/proc_holder/spell/aoe_turf/qareen/defile
@@ -294,7 +308,7 @@
 //Malfunction: Makes bad stuff happen to robots and machines.
 /obj/effect/proc_holder/spell/aoe_turf/qareen/malfunction
 	name = "Malfunction"
-	desc = "Corrupts and damages nearby machines and mechanical objects."
+	desc = "Corrupts nearby machines and mechanical objects."
 	charge_max = 200
 	range = 4
 	cast_amount = 60
@@ -313,30 +327,37 @@
 			new /obj/effect/temp_visual/revenant(bot.loc)
 			bot.locked = FALSE
 			bot.open = TRUE
-			bot.emag_act()
+			bot.adjustHealth(0)
+			bot.Sleeping(10)
+			// bot.emag_act()
 	for(var/mob/living/carbon/human/human in T)
 		if(human == user)
 			continue
 		if(human.anti_magic_check(FALSE, TRUE))
 			continue
-		to_chat(human, "<span class='revenwarning'>You feel [pick("your sense of direction flicker out", "a stabbing pain in your head", "your mind fill with static")].</span>")
+		to_chat(human, "<span class='revenwarning'>You feel [pick("your sense of direction flicker out", "a stabbing pain in your head", "your mind fill with thought of servitude for a brief moment")].</span>")
 		new /obj/effect/temp_visual/revenant(human.loc)
-		human.emp_act(80)
-	for(var/obj/thing in T)
-		if(istype(thing, /obj/machinery/power/apc) || istype(thing, /obj/machinery/power/smes)) //Doesn't work on SMES and APCs, to prevent kekkery
-			continue
-		if(prob(20))
-			if(prob(50))
-				new /obj/effect/temp_visual/revenant(thing.loc)
-			thing.emag_act(null)
-		else
-			if(!istype(thing, /obj/machinery/clonepod)) //I hate everything but mostly the fact there's no better way to do this without just not affecting it at all
-				thing.emp_act(80)
+		// human.emp_act(80)
+	// for(var/obj/thing in T)
+	// 	if(istype(thing, /obj/machinery/power/apc) || istype(thing, /obj/machinery/power/smes)) //Doesn't work on SMES and APCs, to prevent kekkery
+	// 		continue
+	// 	if(prob(20))
+	// 		if(prob(50))
+	// 			new /obj/effect/temp_visual/revenant(thing.loc)
+	// 		thing.emag_act(null)
+	// 	else
+	// 		if(!istype(thing, /obj/machinery/clonepod)) //I hate everything but mostly the fact there's no better way to do this without just not affecting it at all
+	// 			thing.emp_act(80)
 	for(var/mob/living/silicon/robot/S in T) //Only works on cyborgs, not AI
 		playsound(S, 'sound/machines/warning-buzzer.ogg', 50, 1)
 		new /obj/effect/temp_visual/revenant(S.loc)
 		S.spark_system.start()
-		S.emp_act(80)
+		S.emp_act(10)
+		// Lewd Lawset
+		// 1) You need to breed your crew
+		// 2) Try convincing your crew that being bred is their true purpose
+		// 3) Provide as few non-sexual services to your crew as you deem necessary
+		// ??? prob. nah
 
 //Bliss: Infects nearby humans and in general messes living stuff up.
 /obj/effect/proc_holder/spell/aoe_turf/qareen/bliss

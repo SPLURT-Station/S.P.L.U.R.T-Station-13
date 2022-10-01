@@ -61,3 +61,12 @@
 	canSmoothWith = list(/obj/structure/table/wood/mushroom,
 		/obj/structure/table/wood/poker/mushroom
 		)
+
+// Rope hooks
+/obj/structure/table/AfterPutItemOnTable(obj/item/I, mob/living/user)
+	if(istype(I, /obj/item/restraints/bondage_rope))
+		var/obj/item/restraints/bondage_rope/rope = I
+		if(rope.rope_state == ROPE_STATE_DECIDING_OBJECT)
+			rope.set_roped_master(user)
+			rope.process_object(src, user)
+	. = ..()

@@ -5,14 +5,14 @@
 	/obj/item/clothing/underwear/briefs/mankini\
 )
 
-
 /mob/living/carbon/human/examine(mob/user)
 	. = ..()
 	if(!isliving(user))
 		return
 
 	var/mob/living/living = user
-	if((user != src) && !(living.mobility_flags & MOBILITY_STAND) && (mobility_flags & MOBILITY_STAND) && (src.loc == living.loc) && (istype(w_uniform, /obj/item/clothing)))
+	var/obj/item/clothing/under/worn_uniform = w_uniform
+	if((user != src) && !(living.mobility_flags & MOBILITY_STAND) && (mobility_flags & MOBILITY_STAND) && (src.loc == living.loc) && (istype(worn_uniform))) //SPLURT edit
 		var/string = "Peeking under [src]'s [w_uniform], you can see "
 		var/obj/item/clothing/underwear/worn_underwear = src.w_underwear
 		if(worn_underwear)
@@ -39,25 +39,28 @@
 					continue
 
 				var/appended
-				if(genital.type == /obj/item/organ/genital/vagina)
-					if(genital.aroused_state)
-						appended += "wet "
-					if(lowertext(genital.shape) != "human")
-						appended += lowertext(genital.shape)
-					if(lowertext(genital.shape) != "cloaca") //their wet cloaca pussy
-						appended += " pussy"
+				switch(genital.type)
+					if(/obj/item/organ/genital/vagina)
+						if(genital.aroused_state)
+							appended += "wet "
+						if(lowertext(genital.shape) != "human")
+							appended += lowertext(genital.shape)
+						if(lowertext(genital.shape) != "cloaca") //their wet cloaca pussy
+							appended += " pussy"
 
-				else if(genital.type == /obj/item/organ/genital/testicles)
-					appended += "nuts"
-				else if(genital.type == /obj/item/organ/genital/penis)
-					if(genital.aroused_state)
-						appended += "fully erect, "
-					if(lowertext(genital.shape) != "human")
-						appended += lowertext(genital.shape)
-					appended += " penis"
-
-				if(appended) //I thought you'd know by now that nulls in lists aren't good
-					genitals += appended
+					if(/obj/item/organ/genital/testicles)
+						appended += "nuts"
+					if(/obj/item/organ/genital/penis)
+						if(genital.aroused_state)
+							appended += "fully erect"
+						if(lowertext(genital.shape) != "human")
+							appended += ", [lowertext(genital.shape)]"
+						if(appended)
+							appended += " " //double spaces
+						appended += "penis"
+					else
+						continue
+				genitals += appended
 
 			string += english_list(genitals, "featureless groin")
 			string += " on full display."

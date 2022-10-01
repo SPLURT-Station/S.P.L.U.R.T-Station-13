@@ -158,30 +158,7 @@ Icons, maybe?
 	if(!leash_pet == "null") //No pet, no tug.
 		return
 	//Yank the pet. Yank em in close.
-	if(leash_pet.x > leash_master.x + 1)
-		step(leash_pet, WEST, 1) //"1" is the speed of movement. We want the tug to be faster than their slow current walk speed.
-		if(leash_pet.y > leash_master.y)//Check the other axis, and tug them into alignment so they are behind the master
-			step(leash_pet, SOUTH, 1)
-		if(leash_pet.y < leash_master.y)
-			step(leash_pet, NORTH, 1)
-	if(leash_pet.x < leash_master.x - 1)
-		step(leash_pet, EAST, 1)
-		if(leash_pet.y > leash_master.y)//Check the other axis, and tug them into alignment so they are behind the master
-			step(leash_pet, SOUTH, 1)
-		if(leash_pet.y < leash_master.y)
-			step(leash_pet, NORTH, 1)
-	if(leash_pet.y > leash_master.y + 1)
-		step(leash_pet, SOUTH, 1)
-		if(leash_pet.x > leash_master.x)//Check the other axis, and tug them into alignment so they are behind the master
-			step(leash_pet, WEST, 1)
-		if(leash_pet.x < leash_master.x)
-			step(leash_pet, EAST, 1)
-	if(leash_pet.y < leash_master.y - 1)
-		step(leash_pet, NORTH, 1)
-		if(leash_pet.x > leash_master.x)//Check the other axis, and tug them into alignment so they are behind the master
-			step(leash_pet, WEST, 1)
-		if(leash_pet.x < leash_master.x)
-			step(leash_pet, EAST, 1)
+	apply_tug_mob_to_mob(leash_pet, leash_master, 1)
 
 /obj/item/leash/proc/on_master_move()
 	//Make sure the dom still has a pet
@@ -205,30 +182,7 @@ Icons, maybe?
 		return
 	if(leash_pet == "null")
 		return
-	if(leash_pet.x > leash_master.x + 2)
-		step(leash_pet, WEST, 1) //"1" is the speed of movement. We want the tug to be faster than their slow current walk speed.
-		if(leash_pet.y > leash_master.y)//Check the other axis, and tug them into alignment so they are behind the master
-			step(leash_pet, SOUTH, 1)
-		if(leash_pet.y < leash_master.y)
-			step(leash_pet, NORTH, 1)
-	if(leash_pet.x < leash_master.x - 2)
-		step(leash_pet, EAST, 1)
-		if(leash_pet.y > leash_master.y)
-			step(leash_pet, SOUTH, 1)
-		if(leash_pet.y < leash_master.y)
-			step(leash_pet, NORTH, 1)
-	if(leash_pet.y > leash_master.y + 2)
-		step(leash_pet, SOUTH, 1)
-		if(leash_pet.x > leash_master.x)
-			step(leash_pet, WEST, 1)
-		if(leash_pet.x < leash_master.x)
-			step(leash_pet, EAST, 1)
-	if(leash_pet.y < leash_master.y - 2)
-		step(leash_pet, NORTH, 1)
-		if(leash_pet.x > leash_master.x)
-			step(leash_pet, WEST, 1)
-		if(leash_pet.x < leash_master.x)
-			step(leash_pet, EAST, 1)
+	apply_tug_mob_to_mob(leash_pet, leash_master, 2)
 
 	//Knock the pet over if they get further behind. Shouldn't happen too often.
 	sleep(3) //This way running normally won't just yank the pet to the ground.

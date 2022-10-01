@@ -18,8 +18,11 @@
 	var/message_queue
 	var/sent_assets = list()
 	// Vars passed to initialize proc (and saved for later)
-	var/inline_assets
-	var/fancy
+	var/initial_fancy
+	var/initial_assets
+	var/initial_inline_html
+	var/initial_inline_js
+	var/initial_inline_css
 
 /**
  * public
@@ -49,16 +52,19 @@
  * optional fancy bool If TRUE, will hide the window titlebar.
  */
 /datum/tgui_window/proc/initialize(
-		inline_assets = list(),
+		fancy = FALSE,
+		assets = list(),
 		inline_html = "",
-		fancy = FALSE)
-	log_tgui(client,
-		context = "[id]/initialize",
-		window = src)
+		inline_js = "",
+		inline_css = "")
+	log_tgui(client, "[id]/initialize ([src])")
 	if(!client)
 		return
-	src.inline_assets = inline_assets
-	src.fancy = fancy
+	src.initial_fancy = fancy
+	src.initial_assets = assets
+	src.initial_inline_html = inline_html
+	src.initial_inline_js = inline_js
+	src.initial_inline_css = inline_css
 	status = TGUI_WINDOW_LOADING
 	fatally_errored = FALSE
 	// Build window options
@@ -73,7 +79,7 @@
 	html = replacetextEx(html, "\[tgui:windowId]", id)
 	// Inject inline assets
 	var/inline_assets_str = ""
-	for(var/datum/asset/asset in inline_assets)
+	for(var/datum/asset/asset in assets)
 		var/mappings = asset.get_url_mappings()
 		for(var/name in mappings)
 			var/url = mappings[name]
@@ -86,8 +92,17 @@
 	if(length(inline_assets_str))
 		inline_assets_str = "<script>\n" + inline_assets_str + "</script>\n"
 	html = replacetextEx(html, "<!-- tgui:assets -->\n", inline_assets_str)
-	// Inject custom HTML
-	html = replacetextEx(html, "<!-- tgui:html -->\n", inline_html)
+	// Inject inline HTML
+	if (inline_html)
+		html = replacetextEx(html, "<!-- tgui:inline-html -->", inline_html)
+	// Inject inline JS
+	if (inline_js)
+		inline_js = "<script>\n[inline_js]\n</script>"
+		html = replacetextEx(html, "<!-- tgui:inline-js -->", inline_js)
+	// Inject inline CSS
+	if (inline_css)
+		inline_css = "<style>\n[inline_css]\n</style>"
+		html = replacetextEx(html, "<!-- tgui:inline-css -->", inline_css)
 	// Open the window
 	client << browse(html, "window=[id];[options]")
 	// Detect whether the control is a browser
@@ -176,19 +191,23 @@
  *
  * optional can_be_suspended bool
  */
-/datum/tgui_window/proc/close(can_be_suspended = TRUE)
+/datum/tgui_window/proc/close(can_be_suspended = TRUE, logout = FALSE)
 	if(!client)
 		return
 	if(can_be_suspended && can_be_suspended())
-		log_tgui(client,
-			context = "[id]/close (suspending)",
-			window = src)
+		#ifdef TGUI_DEBUGGING
+			log_tgui(client, "[id]/close: suspending")
+		#endif
 		status = TGUI_WINDOW_READY
 		send_message("suspend")
+		// You would think that BYOND would null out client or make it stop passing istypes or, y'know, ANYTHING during
+		// logout, but nope! It appears to be perfectly valid to call winset by every means we can measure in Logout,
+		// and yet it causes a bad client runtime. To avoid that happening, we just have to know if we're in Logout or
+		// not.
+		if(!logout && client)
+			winset(client, null, "mapwindow.map.focus=true")
 		return
-	log_tgui(client,
-		context = "[id]/close",
-		window = src)
+	log_tgui(client, "[id]/close")
 	release_lock()
 	status = TGUI_WINDOW_CLOSED
 	message_queue = null
@@ -196,6 +215,8 @@
 	// to read the error message.
 	if(!fatally_errored)
 		client << browse(null, "window=[id]")
+		if(!logout && client)
+			winset(client, null, "mapwindow.map.focus=true")
 
 /**
  * public
@@ -317,7 +338,12 @@
 			client << link(href_list["url"])
 		if("cacheReloaded")
 			// Reinitialize
-			initialize(inline_assets = inline_assets, fancy = fancy)
+			initialize(
+				fancy = initial_fancy,
+				assets = initial_assets,
+				inline_html = initial_inline_html,
+				inline_js = initial_inline_js,
+				inline_css = initial_inline_css)
 			// Resend the assets
 			for(var/asset in sent_assets)
 				send_asset(asset)

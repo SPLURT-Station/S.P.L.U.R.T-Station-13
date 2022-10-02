@@ -133,8 +133,8 @@ GLOBAL_LIST_INIT(GENITAL_PANEL_MAPPINGS, list(
 			host.genital_selected = params["genitalpick"]
 			return TRUE
 		if("changeattr")
-			if(!GENITAL_PANEL_CHANGES)
-				return
+			// if(!GENITAL_PANEL_CHANGES)
+			// 	return
 			var/list/genital_selected_list = GLOB.GENITAL_PANEL_MAPPINGS[host.genital_selected]
 			var/genital_selected_type = host.genital_selected
 			var/genital_selected_name = genital_selected_list["name"]
@@ -278,17 +278,17 @@ GLOBAL_LIST_INIT(GENITAL_PANEL_MAPPINGS, list(
 			unsaved_changes = TRUE
 			return TRUE
 		if("saveprefs")
-			if(GENITAL_PANEL_MID_CHANGES)
-				var/mob/living/carbon/human/human_host = host
-				// TODO: not sure if this is the best way (taken from /code/modules/client/preferences.dm:3824)
-				human_host.dna.features = human_host.client.prefs.features.Copy()
-				human_host.dna.features["lust_tolerance"] = human_host.client.prefs.lust_tolerance
-				human_host.dna.features["sexual_potency"] = human_host.client.prefs.sexual_potency
-				SEND_SIGNAL(human_host, COMSIG_HUMAN_PREFS_COPIED_TO, human_host.client.prefs, TRUE, FALSE)
+			// if(GENITAL_PANEL_MID_CHANGES)
+			var/mob/living/carbon/human/human_host = host
+			// TODO: not sure if this is the best way (taken from /code/modules/client/preferences.dm:3824)
+			human_host.dna.features = human_host.client.prefs.features.Copy()
+			human_host.dna.features["lust_tolerance"] = human_host.client.prefs.lust_tolerance
+			human_host.dna.features["sexual_potency"] = human_host.client.prefs.sexual_potency
+			SEND_SIGNAL(human_host, COMSIG_HUMAN_PREFS_COPIED_TO, human_host.client.prefs, TRUE, FALSE)
 
-				human_host.give_genitals(TRUE)
-			else
-				to_chat(host, "<span class='warning'>Mid round changes are not allowed! Changes will be applied next round.</span>")
+			human_host.give_genitals(TRUE)
+			// else
+			// 	to_chat(host, "<span class='warning'>Mid round changes are not allowed! Changes will be applied next round.</span>")
 
 			host.client.prefs.save_character()
 			unsaved_changes = FALSE

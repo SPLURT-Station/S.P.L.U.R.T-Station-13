@@ -32,14 +32,14 @@
  * * item_module - the item being equipped to a slot.
  */
 /mob/living/silicon/robot/proc/activate_module(obj/item/item_module)
-	//CITADEL EDIT Dogborg lasers
+	//SPLURT EDIT: the return of Dogborg lasers
 	if(istype(item_module,/obj/item/gun/energy/laser/cyborg))
 		laser = TRUE
 		update_icons() //REEEEEEACH FOR THE SKY
 	if(istype(item_module,/obj/item/gun/energy/disabler/cyborg) || istype(item_module,/obj/item/gun/energy/e_gun/advtaser/cyborg))
 		disabler = TRUE
 		update_icons()
-	//END CITADEL EDIT
+	//END SPLURT EDIT
 	if(QDELETED(item_module))
 		CRASH("activate_module called with improper item_module")
 

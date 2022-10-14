@@ -831,3 +831,31 @@
 		to_chat(user, "<span class='warning'>Erm, you may wanna be a carbon entity fo dat</span>")
 		return
 	user.piss_mouth(target)
+
+/datum/interaction/lewd/knot
+	description = "Knot their pussy"
+	max_distance = 1
+	interaction_sound = null
+	require_user_penis = REQUIRE_EXPOSED
+	require_target_vagina = REQUIRE_EXPOSED
+	write_log_user = "Pushed their knot into someone"
+	write_log_target = "got their pussy knotted by"
+
+/datum/interaction/lewd/knot/display_interaction(mob/living/carbon/user, mob/living/target)
+	. = ..()
+	var/obj/item/organ/genital/G
+	if(user.has_penis())
+		G = user.getorganslot(ORGAN_SLOT_PENIS)
+		if(G.shape == "Knotted")
+			user.knot(target)
+
+/datum/component/riding/proc/vehicle_moved_lewd(datum/source, oldLoc, dir)
+	SIGNAL_HANDLER
+	var/atom/movable/AM = parent
+	if (isnull(dir))
+		dir = AM.dir
+	AM.set_glide_size(DELAY_TO_GLIDE_SIZE(vehicle_move_delay), FALSE)
+	for(var/i in AM.buckled_mobs)
+		ride_check(i)
+	handle_vehicle_offsets(dir)
+	handle_vehicle_layer(dir)

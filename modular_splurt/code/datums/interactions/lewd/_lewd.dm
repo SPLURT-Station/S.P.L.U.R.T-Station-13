@@ -1,5 +1,6 @@
 /mob/living
 	var/has_belly = FALSE
+	var/knotted = FALSE
 
 /mob/living/moan()
 	var/moaned = lastmoan
@@ -1055,3 +1056,195 @@
 	if(!is_fucking(target, CUM_TARGET_MOUTH))
 		set_is_fucking(target, CUM_TARGET_MOUTH, pee_pee)
 	handle_post_sex(NORMAL_LUST, CUM_TARGET_MOUTH, target)
+
+			//////////////////////////////////////////////////////////
+			//////////////special penis interactions /////////////////
+			//////////////////////////////////////////////////////////
+
+/mob/living/carbon/proc/knot(mob/living/target)
+	var/message
+	var/u_His = p_their()
+	var/list/lines = list(
+		"plops [u_His] knot into [target]'s pussy",
+		"forces [u_His] knot into [target]'s breeding hole"
+	)
+	message = "<span class='lewd'>\The <b>[src]</b> [pick(lines)]</span>"
+	visible_message(message, ignored_mobs = get_unconsenting())
+	playlewdinteractionsound(loc, 'modular_splurt/sound/interactions/knot.ogg', 70, 1, -1)
+	buckle_mob(target, TRUE, TRUE, 0, 1, 0, FALSE)
+	target.pixel_x = 5
+	target.pixel_y = 0
+
+/mob/living/carbon/proc/knotcarry(mob/living/carbon/target)
+	src.knot_carry(target, TRUE, TRUE, 1, 0)
+
+			//////////////////////////////////////////////////////////
+			///////////////////// special procs //////////////////////
+			//////////////////////////////////////////////////////////
+
+/mob/living/carbon/knot_carry(mob/living/target, force, check_loc, hands_needed, target_hands_needed)
+	if(!force)//humans are only meant to be ridden through piggybacking and special cases
+		return
+	var/datum/component/riding/human/riding_datum = LoadComponent(/datum/component/riding/human/)
+	if(target_hands_needed)
+		riding_datum.ride_check_rider_restrained = TRUE
+	if(buckled_mobs && ((target in buckled_mobs) || (buckled_mobs.len >= max_buckled_mobs)) || buckled)
+		return
+	var/equipped_hands_self
+	var/equipped_hands_target
+	if(hands_needed)
+		equipped_hands_self = riding_datum.equip_buckle_inhands(src, hands_needed, target)
+	if(target_hands_needed)
+		equipped_hands_target = riding_datum.equip_buckle_inhands(target, target_hands_needed)
+	if(hands_needed || target_hands_needed)
+		if(hands_needed && !equipped_hands_self)
+			src.visible_message("<span class='warning'>[src] can't get a grip on [target] because their hands are full!</span>",
+				"<span class='warning'>You can't get a grip on [target] because your hands are full!</span>")
+			return
+		else if(target_hands_needed && !equipped_hands_target)
+			target.visible_message("<span class='warning'>[target] can't get a grip on [src] because their hands are full!</span>",
+				"<span class='warning'>You can't get a grip on [src] because your hands are full!</span>")
+			return
+
+	stop_pulling()
+
+	riding_datum.handle_knotting_layer(dir)
+	. = ..(target, force, check_loc)
+
+/datum/component/riding/human
+
+/datum/component/riding/human/handle_knotting_layer()
+	. = ..()
+	var/atom/movable/AM = parent
+	if(AM.buckled_mobs && AM.buckled_mobs.len)
+		for(var/mob/M in AM.buckled_mobs) //ensure proper layering of piggyback and carry, sometimes weird offsets get applied
+			M.layer = MOB_LAYER
+		if(!AM.buckle_lying)
+			if(AM.dir == SOUTH)
+				AM.layer = ABOVE_MOB_LAYER
+			else
+				AM.layer = OBJ_LAYER
+		else
+			if(AM.dir == NORTH)
+				AM.layer = OBJ_LAYER
+			else
+				AM.layer = ABOVE_MOB_LAYER
+	else
+		AM.layer = MOB_LAYER
+
+#define COMSIG_BITCH_MOVED "bitch_moved"
+
+/datum/component/riding/proc/handle_knotting_offsets(dir)
+	var/atom/movable/AM = parent
+	var/AM_dir = "[dir]"
+	var/passindex = 0
+	if(AM.has_buckled_mobs())
+		for(var/m in AM.buckled_mobs)
+			passindex++
+			var/mob/living/buckled_mob = m
+			var/list/offsets = get_offsets_lewd(passindex)
+			var/rider_dir = get_rider_dir(passindex)
+			buckled_mob.setDir(rider_dir)
+			for(var/offsetdir in offsets)
+				if(offsetdir == AM_dir)
+					var/list/diroffsets = offsets[offsetdir]
+					buckled_mob.pixel_x = diroffsets[1]
+					if(diroffsets.len >= 2)
+						buckled_mob.pixel_y = diroffsets[2]
+					if(diroffsets.len == 3)
+						buckled_mob.layer = diroffsets[3]
+					break
+	if (!additional_offset_checks())
+		return
+	var/list/static/default_vehicle_pixel_offsets = list(TEXT_NORTH = list(0, 0), TEXT_SOUTH = list(0, 0), TEXT_EAST = list(0, 0), TEXT_WEST = list(0, 0))
+	var/px = default_vehicle_pixel_offsets[AM_dir]
+	var/py = default_vehicle_pixel_offsets[AM_dir]
+	if(directional_vehicle_offsets[AM_dir])
+		if(isnull(directional_vehicle_offsets[AM_dir]))
+			px = AM.pixel_x
+			py = AM.pixel_y
+		else
+			px = directional_vehicle_offsets[AM_dir][1]
+			py = directional_vehicle_offsets[AM_dir][2]
+	AM.pixel_x = px
+	AM.pixel_y = py
+
+/datum/component/riding/proc/handle_knotting_layer(dir)
+	var/atom/movable/AM = parent
+	var/static/list/defaults = list(TEXT_NORTH = ABOVE_MOB_LAYER, TEXT_SOUTH = OBJ_LAYER, TEXT_EAST = ABOVE_MOB_LAYER, TEXT_WEST = ABOVE_MOB_LAYER)
+	. = defaults["[dir]"]
+	if(directional_vehicle_layers["[dir]"])
+		. = directional_vehicle_layers["[dir]"]
+	if(isnull(.))	//you can set it to null to not change it.
+		. = AM.layer
+	AM.layer = .
+
+/atom/movable/proc/knot_carry(mob/living/M, force = FALSE, check_loc = TRUE)
+	LAZYINITLIST(buckled_mobs)
+
+	if(!istype(M))
+		return FALSE
+
+	if(check_loc && M.loc != loc && !(M.Adjacent(src) || src.Adjacent(M)))
+		return FALSE
+
+	if((!can_buckle && !force) || M.buckled || (buckled_mobs.len >= max_buckled_mobs) || (buckle_requires_restraints && !M.restrained()) || M == src)
+		return FALSE
+	M.buckling = src
+	if(!M.can_buckle() && !force)
+		if(M == usr)
+			to_chat(M, "<span class='warning'>You are unable to knot yourself to [src]!</span>")
+		else
+			to_chat(usr, "<span class='warning'>You are unable to knot [M] to [src]!</span>")
+		M.buckling = null
+		return FALSE
+
+	if(M.pulledby)
+		if(buckle_prevents_pull)
+			M.pulledby.stop_pulling()
+		else if(isliving(M.pulledby))
+			var/mob/living/L = M.pulledby
+			L.reset_pull_offsets(M, TRUE)
+
+	// if(!check_loc && M.loc != loc)
+	if(M.loc != loc)
+		M.forceMove(loc)
+
+	M.buckling = null
+	M.buckled = src
+	M.setDir(dir)
+	buckled_mobs |= M
+	M.update_mobility()
+	M.throw_alert("buckled", /atom/movable/screen/alert/restrained/buckled)
+	post_knot_mob(M)
+
+	SEND_SIGNAL(src, COMSIG_BITCH_MOVED, M, force)
+	return TRUE
+
+/atom/movable/proc/post_knot_mob(mob/living/M)
+
+/datum/component/riding/proc/get_offsets_lewd(pass_index) // list(dir = x, y, layer)
+	. = list(TEXT_NORTH = list(0, 0), TEXT_SOUTH = list(0, 0), TEXT_EAST = list(0, 0), TEXT_WEST = list(0, 0))
+	if(riding_offsets["[pass_index]"])
+		. = riding_offsets["[pass_index]"]
+	else if(riding_offsets["[RIDING_OFFSET_ALL]"])
+		. = riding_offsets["[RIDING_OFFSET_ALL]"]
+
+/datum/component/riding/human/get_offsets_lewd(pass_index)
+	var/mob/living/carbon/human/H = parent
+	return list(TEXT_NORTH = list(3, 0), TEXT_SOUTH = list(-3, 0), TEXT_EAST = list(2, 5), TEXT_WEST = list( 2, -5)) //sadenning
+
+/datum/component/riding/Initialize()
+	RegisterSignal(parent, COMSIG_BITCH_MOVED, .proc/bitch_moved)
+
+datum/component/riding/proc/bitch_moved(datum/source, oldLoc, dir)
+	SIGNAL_HANDLER
+
+	var/atom/movable/AM = parent
+	if (isnull(dir))
+		dir = AM.dir
+	AM.set_glide_size(DELAY_TO_GLIDE_SIZE(vehicle_move_delay), FALSE)
+	for(var/i in AM.buckled_mobs)
+		ride_check(i)
+	handle_knotting_offsets(dir)
+	handle_knotting_layer(dir)

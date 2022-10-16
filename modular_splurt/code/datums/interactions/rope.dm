@@ -1,6 +1,7 @@
 /datum/interaction/lewd/bondage_rope_remove
 	description = "Remove bondage rope."
 	interaction_sound = 'modular_splurt/sound/lewd/rope.ogg'
+	require_user_hands = TRUE
 
 /datum/interaction/lewd/bondage_rope_remove/evaluate_target(mob/living/user, mob/living/target, silent = TRUE)
 	if(!istype(target, /mob/living/carbon))
@@ -12,7 +13,7 @@
 
 	return ..()
 
-/datum/interaction/lewd/display_interaction(mob/living/user, mob/living/target)
+/datum/interaction/lewd/bondage_rope_remove/display_interaction(mob/living/user, mob/living/target)
 	if(!istype(target, /mob/living/carbon))
 		return
 	var/mob/living/carbon/C = target

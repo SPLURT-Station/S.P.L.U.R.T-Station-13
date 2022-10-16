@@ -1,4 +1,12 @@
 //Sandstorm edits
+/datum/interaction/lewd/handjob
+	can_hand_slide = TRUE
+
+/datum/interaction/lewd/finger
+	can_hand_slide = TRUE
+
+/datum/interaction/lewd/fingerass
+	can_hand_slide = TRUE
 
 /datum/interaction/lewd/display_interaction(mob/living/user, mob/living/target)
 	. = ..()
@@ -605,6 +613,7 @@
 	description = "Grope their ass."
 	simple_message = "USER gropes TARGET's ass!"
 	require_user_hands = TRUE
+	require_target_anus = REQUIRE_ANY
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "Got their ass groped by"

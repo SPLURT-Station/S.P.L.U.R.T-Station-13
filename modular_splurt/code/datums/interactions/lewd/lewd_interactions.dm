@@ -12,6 +12,8 @@
 	var/require_user_belly
 	var/require_target_belly
 
+	var/can_hand_slide = FALSE
+
 /datum/interaction/lewd/evaluate_user(mob/living/user, silent = TRUE, action_check = TRUE)
 	if(require_user_belly)
 		switch(require_user_belly)
@@ -115,7 +117,15 @@
 				return FALSE
 	. = ..()
 
-/mob/living/list_interaction_attributes(mob/living/LM)
+/mob/living/list_interaction_attributes(mob/living/LM, mob/living/LT)
 	. = ..()
 	if(has_belly(REQUIRE_EXPOSED))
 		. += "...have a belly"
+	if(LM == src && istype(LM, /mob/living/carbon))
+		var/mob/living/carbon/LMC = LM
+		if(LMC.hand_slide_target == LT)
+			. += "...slid your hand [LMC.hand_slide_part == CHEST ? "up" : "under"] their [LMC.get_hand_slide_clothing_name(LMC.hand_slide_target, LMC.hand_slide_part)]"
+	else if(LT == src && istype(LT, /mob/living/carbon))
+		var/mob/living/carbon/LTC = LT
+		if(LTC.hand_slide_target == LM)
+			. += "...slid their hand [LTC.hand_slide_part == CHEST ? "up" : "under"] your [LTC.get_hand_slide_clothing_name(LTC.hand_slide_target, LTC.hand_slide_part)]"

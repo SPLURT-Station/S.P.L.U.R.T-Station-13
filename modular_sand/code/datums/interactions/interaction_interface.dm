@@ -53,9 +53,9 @@
 	//Getting info
 	.["isTargetSelf"] = target == self
 	.["interactingWith"] = target != self ? "Interacting with \the [target]..." : "Interacting with yourself..."
-	.["selfAttributes"] = self.list_interaction_attributes(self)
+	.["selfAttributes"] = self.list_interaction_attributes(self, target)
 	if(target != self)
-		.["theirAttributes"] = target.list_interaction_attributes(self)
+		.["theirAttributes"] = target.list_interaction_attributes(self, target)
 
 	//Getting interactions
 	var/list/sent_interactions = list()

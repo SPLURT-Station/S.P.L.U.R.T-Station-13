@@ -305,11 +305,13 @@
 		if(!silent)
 			to_chat(user, "<span class='warning'>Their clothes are in the way.</span>")
 		return FALSE
-
+	
+	var/target_groin_exposed_visibility = user.get_target_part_exposed_visibility(can_hand_slide, target, GROIN)
+	var/target_chest_exposed_visibility = user.get_target_part_exposed_visibility(can_hand_slide, target, CHEST)
 	if(require_target_penis)
 		switch(require_target_penis)
 			if(REQUIRE_EXPOSED)
-				if(!target.has_penis(REQUIRE_EXPOSED) && !target.has_strapon(REQUIRE_EXPOSED))
+				if(!target.has_penis(target_groin_exposed_visibility) && !target.has_strapon(target_groin_exposed_visibility))
 					if(!silent)
 						to_chat(user, "<span class='warning'>Their penis needs to be exposed.</span>")
 					return FALSE
@@ -327,7 +329,7 @@
 	if(require_target_balls)
 		switch(require_target_balls)
 			if(REQUIRE_EXPOSED)
-				if(!target.has_balls(REQUIRE_EXPOSED))
+				if(!target.has_balls(target_groin_exposed_visibility))
 					if(!silent)
 						to_chat(user, "<span class='warning'>Their balls need to be exposed.</span>")
 					return FALSE
@@ -345,7 +347,7 @@
 	if(require_target_anus)
 		switch(require_target_anus)
 			if(REQUIRE_EXPOSED)
-				if(!target.has_anus(REQUIRE_EXPOSED))
+				if(!target.has_anus(target_groin_exposed_visibility))
 					if(!silent)
 						to_chat(user, "<span class='warning'>Their anus needs to be exposed.</span>")
 					return FALSE
@@ -363,7 +365,7 @@
 	if(require_target_vagina)
 		switch(require_target_vagina)
 			if(REQUIRE_EXPOSED)
-				if(!target.has_vagina(REQUIRE_EXPOSED))
+				if(!target.has_vagina(target_groin_exposed_visibility))
 					if(!silent)
 						to_chat(user, "<span class='warning'>Their vagina needs to be exposed.</span>")
 					return FALSE
@@ -381,7 +383,7 @@
 	if(require_target_breasts)
 		switch(require_target_breasts)
 			if(REQUIRE_EXPOSED)
-				if(!target.has_breasts(REQUIRE_EXPOSED))
+				if(!target.has_breasts(target_chest_exposed_visibility))
 					if(!silent)
 						to_chat(user, "<span class='warning'>Their breasts need to be exposed.</span>")
 					return FALSE
@@ -515,7 +517,7 @@
 	user.cleartimer = addtimer(CALLBACK(user, /mob/living/proc/clear_lewd_datum), 300, TIMER_STOPPABLE)
 	return ..()
 
-/mob/living/list_interaction_attributes(mob/living/LM)
+/mob/living/list_interaction_attributes(mob/living/LM, mob/living/LT)
 	var/dat = ..()
 	if(!COOLDOWN_FINISHED(LM, refractory_period))
 		dat += "...are sexually exhausted for the time being."

@@ -1,3 +1,7 @@
+/mob/living/carbon
+	var/mob/living/hand_slide_target = null
+	var/hand_slide_part = null
+
 /mob/living/carbon/is_muzzled()
 	return ..() || istype(wear_mask, /obj/item/clothing/mask/gas/sechailer/slut)
 
@@ -22,3 +26,35 @@
 			new_rope.forceMove(src.loc)
 			return
 	. = ..()
+	
+// Returns the piece of clothing blocking body part
+// TODO: Best would be to have a list and pick the top layer one (so jumpsuit gets returned before boxers)
+/mob/living/proc/get_clothing_blocking_part(body_part, ignore_skirts = FALSE)
+	for(var/A in get_equipped_items())
+		var/obj/item/I = A
+		if(istype(I) && I.body_parts_covered & body_part)
+			if(ignore_skirts && istype(I, /obj/item/clothing/under))
+				var/obj/item/clothing/under/under = I
+				if(!under.is_skirt)
+					return under
+			else
+				return I
+	return null
+
+/mob/living/proc/get_target_part_exposed_visibility(can_hand_slide, mob/living/target, body_part)
+	return REQUIRE_EXPOSED
+
+// Allows up for exposed visibility changes between an user and a target
+// Right now used for interactions with a hand slided under target's clothes (handjob, fingering) and skirt interactions (no longer needing to forcibly remove the skirt)
+/mob/living/carbon/get_target_part_exposed_visibility(can_hand_slide, mob/living/target, body_part)
+	if(hand_slide_target == target && hand_slide_part == body_part)
+		if(body_part == GROIN && target.get_clothing_blocking_part(GROIN, TRUE) == null)
+			return REQUIRE_ANY
+		return can_hand_slide ? REQUIRE_ANY : REQUIRE_EXPOSED
+	else
+		return REQUIRE_EXPOSED
+
+// Returns name of the clothing somebody is sliding under
+/mob/living/carbon/proc/get_hand_slide_clothing_name(mob/living/target, body_part)
+	var/obj/item/I = target.get_clothing_blocking_part(body_part)
+	return I == null ? "none" : I.name

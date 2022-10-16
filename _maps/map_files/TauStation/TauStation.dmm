@@ -15766,6 +15766,16 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel,
 /area/security/prison/cells)
+"fuL" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/landmark/navigate_destination/eva,
+/turf/open/floor/plasteel,
+/area/hallway/primary/starboard)
 "fuZ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
@@ -26175,7 +26185,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 5
 	},
-/obj/effect/landmark/navigate_destination/teleporter,
 /turf/open/floor/plasteel/dark,
 /area/command/teleporter)
 "jaJ" = (
@@ -34509,13 +34518,6 @@
 	dir = 1
 	},
 /area/cargo/office)
-"lXZ" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/effect/landmark/navigate_destination/bar,
-/turf/open/floor/carpet/black,
-/area/service/bar)
 "lYc" = (
 /obj/machinery/atmospherics/pipe/simple/general/hidden{
 	dir = 4
@@ -37491,6 +37493,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/blue,
+/obj/effect/landmark/navigate_destination/gateway,
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
 "mVP" = (
@@ -38160,12 +38163,6 @@
 	icon_state = "wood-broken4"
 	},
 /area/maintenance/department/cargo)
-"neT" = (
-/obj/effect/landmark/navigate_destination/vault,
-/turf/open/floor/circuit/green{
-	luminosity = 2
-	},
-/area/ai_monitored/command/nuke_storage)
 "nfd" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -40554,10 +40551,6 @@
 	},
 /turf/closed/wall/r_wall,
 /area/engineering/main)
-"nZT" = (
-/obj/effect/landmark/navigate_destination/eva,
-/turf/open/floor/plasteel/dark,
-/area/ai_monitored/command/storage/eva)
 "nZZ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -42283,7 +42276,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/effect/landmark/navigate_destination/gateway,
 /turf/open/floor/plasteel/dark,
 /area/command/gateway)
 "oFC" = (
@@ -46243,6 +46235,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/effect/landmark/navigate_destination/bar,
 /turf/open/floor/plasteel/dark,
 /area/service/bar)
 "qcf" = (
@@ -48513,7 +48506,6 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
-/obj/effect/landmark/navigate_destination/sec,
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "qTy" = (
@@ -56293,6 +56285,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
+/obj/effect/landmark/navigate_destination/teleporter,
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
 "tEF" = (
@@ -62132,6 +62125,7 @@
 	codes_txt = "patrol;next_patrol=Jannitorial";
 	location = "Security"
 	},
+/obj/effect/landmark/navigate_destination/sec,
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
 "vzK" = (
@@ -63319,6 +63313,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
+/obj/effect/landmark/navigate_destination/vault,
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
 "vUs" = (
@@ -92819,7 +92814,7 @@ fza
 vZT
 kaD
 kwM
-neT
+kaa
 kYD
 lsL
 lOE
@@ -105180,9 +105175,9 @@ pmj
 pSO
 qUx
 qUx
-nZT
+qUx
 rST
-suO
+fuL
 ygo
 ygo
 vbA
@@ -119046,7 +119041,7 @@ pgi
 vki
 oJY
 oJY
-lXZ
+pvd
 oJY
 lsW
 lex

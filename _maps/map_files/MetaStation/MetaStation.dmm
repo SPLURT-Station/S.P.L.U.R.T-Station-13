@@ -7549,6 +7549,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/red,
+/obj/effect/landmark/navigate_destination/det,
 /turf/open/floor/plasteel,
 /area/security/brig)
 "axu" = (
@@ -8239,7 +8240,6 @@
 	icon_state = "1-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/effect/landmark/navigate_destination/det,
 /turf/open/floor/carpet,
 /area/security/detectives_office)
 "azT" = (
@@ -10698,7 +10698,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/effect/landmark/navigate_destination/court,
 /turf/open/floor/plasteel,
 /area/security/courtroom)
 "aOk" = (
@@ -10836,7 +10835,6 @@
 /obj/machinery/ai_slipper{
 	uses = 8
 	},
-/obj/effect/landmark/navigate_destination/aiupload,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "aPx" = (
@@ -12639,6 +12637,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/effect/landmark/navigate_destination/aiupload,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "aXH" = (
@@ -13694,6 +13693,7 @@
 	icon_state = "cleanbot1";
 	name = "Mopficcer Sweepsky"
 	},
+/obj/effect/landmark/navigate_destination/janitor,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "baK" = (
@@ -16562,6 +16562,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
+/obj/effect/landmark/navigate_destination/engineering,
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
 "bno" = (
@@ -19727,6 +19728,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
+/obj/effect/landmark/navigate_destination/bridge,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/command)
 "bDh" = (
@@ -27854,7 +27856,6 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
-/obj/effect/landmark/navigate_destination/chemfactory,
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "ciy" = (
@@ -51650,7 +51651,6 @@
 	name = "Blueshield";
 	req_access_txt = "72"
 	},
-/obj/effect/landmark/navigate_destination/blueshield,
 /turf/open/floor/wood,
 /area/command/blueshieldoffice)
 "fvo" = (
@@ -57943,7 +57943,6 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
 	},
-/obj/effect/landmark/navigate_destination/janitor,
 /turf/open/floor/plasteel,
 /area/service/janitor)
 "iWG" = (
@@ -59632,7 +59631,6 @@
 	req_access_txt = "76"
 	},
 /obj/machinery/door/firedoor,
-/obj/effect/landmark/navigate_destination/psychologist,
 /turf/open/floor/plasteel,
 /area/medical/psychology)
 "jQR" = (
@@ -59746,7 +59744,6 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/effect/landmark/navigate_destination/lawyer,
 /turf/open/floor/wood,
 /area/service/lawoffice)
 "jSx" = (
@@ -63193,6 +63190,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
 	},
+/obj/effect/landmark/navigate_destination/psychologist,
 /turf/open/floor/plasteel/white/corner,
 /area/hallway/secondary/entry)
 "lOI" = (
@@ -64230,7 +64228,6 @@
 /obj/structure/chair/comfy/black{
 	dir = 1
 	},
-/obj/effect/landmark/navigate_destination/bridge,
 /turf/open/floor/carpet,
 /area/command/bridge)
 "mqC" = (
@@ -64980,7 +64977,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/effect/landmark/navigate_destination/vault,
 /turf/open/floor/circuit/green{
 	luminosity = 2
 	},
@@ -67305,6 +67301,7 @@
 /obj/effect/turf_decal/tile/brown{
 	dir = 8
 	},
+/obj/effect/landmark/navigate_destination/vault,
 /turf/open/floor/plasteel,
 /area/construction/storage_wing)
 "ocV" = (
@@ -69483,7 +69480,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/landmark/navigate_destination/engineering,
 /turf/open/floor/plasteel,
 /area/engineering/break_room)
 "pko" = (
@@ -74780,6 +74776,16 @@
 	dir = 4
 	},
 /area/service/chapel/main)
+"rVz" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/landmark/navigate_destination/gateway,
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "rVI" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 4
@@ -75817,6 +75823,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/turf_decal/tile/neutral,
+/obj/effect/landmark/navigate_destination/blueshield,
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
 "syK" = (
@@ -76146,7 +76153,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/effect/landmark/navigate_destination/gateway,
 /turf/open/floor/plasteel/dark,
 /area/command/gateway)
 "sHf" = (
@@ -78904,6 +78910,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
+/obj/effect/landmark/navigate_destination/lawyer,
 /turf/open/floor/plasteel,
 /area/commons/locker)
 "ukJ" = (
@@ -81363,6 +81370,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/service/chapel/main)
+"vLs" = (
+/obj/effect/landmark/navigate_destination/court,
+/turf/open/floor/plasteel/dark,
+/area/security/courtroom)
 "vLD" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -115666,7 +115677,7 @@ aLB
 aMN
 aOj
 aPC
-aIT
+vLs
 aRZ
 aIT
 aUG
@@ -117242,7 +117253,7 @@ wzp
 med
 tim
 oOi
-bTI
+rVz
 aYX
 bWB
 aVW

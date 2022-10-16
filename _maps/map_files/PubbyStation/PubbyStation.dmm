@@ -7365,6 +7365,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/effect/landmark/navigate_destination/court,
 /turf/open/floor/plasteel/dark,
 /area/security/courtroom)
 "atI" = (
@@ -7571,7 +7572,6 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/obj/effect/landmark/navigate_destination/vault,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/command/nuke_storage)
 "aud" = (
@@ -8506,6 +8506,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
+/obj/effect/landmark/navigate_destination/vault,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "awg" = (
@@ -8553,6 +8554,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/effect/landmark/navigate_destination/gateway,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "awk" = (
@@ -9981,6 +9983,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
+/obj/effect/landmark/navigate_destination/lawyer,
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
 "aAe" = (
@@ -10022,6 +10025,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
+/obj/effect/landmark/navigate_destination/det,
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
 "aAj" = (
@@ -10362,7 +10366,6 @@
 	req_access_txt = "4"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/effect/landmark/navigate_destination/det,
 /turf/open/floor/plasteel/dark,
 /area/security/detectives_office)
 "aBg" = (
@@ -14233,6 +14236,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/effect/landmark/navigate_destination/eva,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "aJW" = (
@@ -14790,7 +14794,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/landmark/navigate_destination/eva,
 /turf/open/floor/plasteel,
 /area/ai_monitored/command/storage/eva)
 "aLT" = (
@@ -14844,7 +14847,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/effect/landmark/navigate_destination/teleporter,
 /turf/open/floor/plasteel,
 /area/command/teleporter)
 "aLZ" = (
@@ -51193,6 +51195,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/commons/dorms)
+"dch" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/landmark/navigate_destination/bridge,
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "dci" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -52081,6 +52091,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
+/obj/effect/landmark/navigate_destination/blueshield,
 /turf/open/floor/plasteel,
 /area/maintenance/department/crew_quarters/dorms)
 "exa" = (
@@ -52576,6 +52587,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/purple,
+/obj/effect/landmark/navigate_destination/psychologist,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "fgh" = (
@@ -53761,6 +53773,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
+/obj/effect/landmark/navigate_destination/sec,
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
 "gZL" = (
@@ -55474,21 +55487,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
-"jKk" = (
-/obj/effect/turf_decal/bot_white,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/landmark/navigate_destination/gateway,
-/turf/open/floor/plasteel/dark,
-/area/command/gateway)
 "jOB" = (
 /turf/open/floor/plating,
 /area/commons/storage/emergency/starboard)
@@ -56380,7 +56378,6 @@
 	req_access_txt = "76"
 	},
 /obj/machinery/door/firedoor,
-/obj/effect/landmark/navigate_destination/psychologist,
 /turf/open/floor/plasteel,
 /area/medical/psychology)
 "lcU" = (
@@ -57583,7 +57580,6 @@
 	req_access_txt = "72"
 	},
 /obj/machinery/door/firedoor,
-/obj/effect/landmark/navigate_destination/blueshield,
 /turf/open/floor/wood,
 /area/command/blueshieldoffice)
 "mZE" = (
@@ -59533,33 +59529,6 @@
 	icon_state = "wood-broken5"
 	},
 /area/maintenance/department/engine)
-"pVH" = (
-/obj/structure/table/reinforced,
-/obj/machinery/door/window/northleft{
-	dir = 2;
-	name = "Chemistry Desk";
-	req_access_txt = "5; 33"
-	},
-/obj/machinery/door/firedoor,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "chemistry_shutters";
-	name = "chemistry shutters"
-	},
-/obj/item/folder/white,
-/obj/item/pen,
-/obj/effect/turf_decal/tile/yellow{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/yellow,
-/obj/effect/turf_decal/tile/yellow{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/yellow{
-	dir = 8
-	},
-/obj/effect/landmark/navigate_destination/chemfactory,
-/turf/open/floor/plasteel/white,
-/area/medical/chemistry)
 "pWm" = (
 /obj/machinery/door/window/southleft{
 	dir = 4;
@@ -60612,13 +60581,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/science)
-"rvE" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/effect/landmark/navigate_destination/sec,
-/turf/open/floor/plasteel,
-/area/security/brig)
 "rvH" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/machinery/door/airlock{
@@ -61593,6 +61555,16 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/engine,
 /area/science/xenobiology)
+"tfU" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/landmark/navigate_destination/teleporter,
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "tfZ" = (
 /obj/structure/closet/crate/freezer,
 /obj/structure/window/reinforced{
@@ -63930,13 +63902,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/cargo)
-"wAO" = (
-/obj/structure/chair/comfy/black{
-	dir = 1
-	},
-/obj/effect/landmark/navigate_destination/bridge,
-/turf/open/floor/plasteel/dark,
-/area/command/bridge)
 "wBb" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -64362,7 +64327,6 @@
 "xeB" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/navigate_destination/lawyer,
 /turf/open/floor/wood,
 /area/service/lawoffice)
 "xgh" = (
@@ -64864,7 +64828,6 @@
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden{
 	dir = 4
 	},
-/obj/effect/landmark/navigate_destination/court,
 /turf/open/floor/plasteel,
 /area/security/courtroom)
 "xNW" = (
@@ -86734,7 +86697,7 @@ arl
 aty
 atz
 avv
-rvE
+avv
 xgz
 gZF
 ayL
@@ -94456,7 +94419,7 @@ aEC
 aDJ
 aAA
 myu
-aHU
+dch
 aIV
 aJS
 aKU
@@ -95730,7 +95693,7 @@ asR
 atU
 auR
 avX
-wAO
+axb
 ayb
 azj
 aAC
@@ -96031,7 +95994,7 @@ blp
 bmz
 bnG
 boN
-pVH
+bpW
 dHZ
 bsK
 buk
@@ -99341,7 +99304,7 @@ aGx
 aHl
 aHV
 aDZ
-aJV
+tfU
 aLd
 aLY
 aNw
@@ -100863,7 +100826,7 @@ aaa
 cBU
 aoB
 apr
-jKk
+apV
 aqR
 arY
 atb

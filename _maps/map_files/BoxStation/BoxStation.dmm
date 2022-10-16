@@ -9294,7 +9294,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/effect/landmark/navigate_destination/vault,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/command/nuke_storage)
 "aFY" = (
@@ -10359,6 +10358,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
+/obj/effect/landmark/navigate_destination/vault,
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
 "aLq" = (
@@ -12676,6 +12676,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
+/obj/effect/landmark/navigate_destination/bridge,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "aXd" = (
@@ -16428,7 +16429,6 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
 	},
-/obj/effect/landmark/navigate_destination/research,
 /turf/open/floor/plasteel/white,
 /area/science/research)
 "biW" = (
@@ -18985,6 +18985,7 @@
 	id = "hop";
 	name = "Privacy Shutters"
 	},
+/obj/effect/landmark/navigate_destination/hop,
 /turf/open/floor/plasteel,
 /area/command/heads_quarters/hop)
 "bpb" = (
@@ -19579,7 +19580,6 @@
 /area/command/heads_quarters/hop)
 "bqB" = (
 /obj/machinery/holopad/secure,
-/obj/effect/landmark/navigate_destination/hop,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hop)
 "bqD" = (
@@ -20955,6 +20955,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/effect/landmark/navigate_destination/teleporter,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "btP" = (
@@ -39767,7 +39768,6 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/trimline/white/filled/corner,
-/obj/effect/landmark/navigate_destination/bar,
 /turf/open/floor/plasteel/dark,
 /area/service/bar)
 "csc" = (
@@ -48909,7 +48909,6 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/obj/effect/landmark/navigate_destination/gateway,
 /turf/open/floor/plasteel/dark,
 /area/command/gateway)
 "hqc" = (
@@ -51059,6 +51058,10 @@
 	dir = 8
 	},
 /area/security/prison/upper)
+"jpz" = (
+/obj/effect/landmark/navigate_destination/chapel,
+/turf/open/floor/grass,
+/area/service/chapel/main)
 "jqv" = (
 /obj/structure/chair/wood/normal{
 	dir = 1
@@ -51980,7 +51983,6 @@
 /area/maintenance/starboard)
 "kgP" = (
 /obj/structure/flora/tree/jungle,
-/obj/effect/landmark/navigate_destination/chapel,
 /turf/open/floor/grass,
 /area/service/chapel/main)
 "kgY" = (
@@ -53410,6 +53412,16 @@
 /obj/structure/filingcabinet,
 /turf/open/floor/wood,
 /area/command/bridge)
+"lpn" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/landmark/navigate_destination/hydro,
+/turf/open/floor/plasteel,
+/area/hallway/primary/starboard)
 "lpr" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Isolation Cell";
@@ -54290,6 +54302,13 @@
 "mbC" = (
 /turf/closed/wall/r_wall,
 /area/security/execution/transfer)
+"mbH" = (
+/obj/structure/chair/stool{
+	pixel_y = 8
+	},
+/obj/effect/landmark/navigate_destination/bar,
+/turf/open/floor/wood,
+/area/service/bar)
 "mbQ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/light_switch{
@@ -61468,6 +61487,14 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/prison/aft)
+"sLA" = (
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
+	},
+/obj/effect/landmark/navigate_destination/research,
+/turf/open/floor/plasteel,
+/area/hallway/primary/starboard)
 "sMu" = (
 /obj/structure/lattice,
 /obj/structure/lattice,
@@ -63413,6 +63440,13 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+"uzc" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 1
+	},
+/obj/effect/landmark/navigate_destination/kitchen,
+/turf/open/floor/plasteel/dark,
+/area/service/bar)
 "uzg" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 6
@@ -63434,10 +63468,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/maintenance/starboard/aft)
-"uzI" = (
-/obj/effect/landmark/navigate_destination/hydro,
-/turf/open/floor/plasteel,
-/area/service/hydroponics)
 "uAB" = (
 /obj/machinery/shower{
 	pixel_y = 16
@@ -64546,6 +64576,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/effect/landmark/navigate_destination/gateway,
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/central)
 "vCt" = (
@@ -65426,7 +65457,6 @@
 	dir = 4
 	},
 /obj/machinery/holopad,
-/obj/effect/landmark/navigate_destination/bridge,
 /turf/open/floor/carpet/royalblack,
 /area/command/bridge)
 "wdr" = (
@@ -65694,13 +65724,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit)
-"wnY" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/effect/landmark/navigate_destination/teleporter,
-/turf/open/floor/plasteel,
-/area/command/teleporter)
 "wof" = (
 /obj/machinery/computer/communications,
 /turf/open/floor/carpet/royalblack,
@@ -66423,13 +66446,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
-"xbA" = (
-/obj/effect/turf_decal/siding/white{
-	dir = 1
-	},
-/obj/effect/landmark/navigate_destination/kitchen,
-/turf/open/floor/plasteel/cafeteria,
-/area/service/kitchen)
 "xcl" = (
 /obj/structure/lattice,
 /obj/machinery/atmospherics/pipe/simple/dark/visible{
@@ -99540,7 +99556,7 @@ boa
 bpm
 bqH
 bsn
-wnY
+btL
 buY
 buY
 bqH
@@ -103114,7 +103130,7 @@ khZ
 rWK
 gcQ
 qGA
-acN
+mbH
 aKR
 iHG
 iNe
@@ -105431,7 +105447,7 @@ wgU
 gdJ
 aVz
 faV
-wEk
+uzc
 jVS
 tjV
 jVS
@@ -105942,7 +105958,7 @@ aJI
 mUH
 xGg
 mvN
-xbA
+vAI
 aVz
 cTl
 wEk
@@ -108003,7 +108019,7 @@ aJI
 kKE
 kck
 aRJ
-uzI
+aRJ
 aRJ
 gkS
 vjn
@@ -109035,7 +109051,7 @@ efq
 aKU
 aTl
 vwm
-ikm
+lpn
 aYV
 aYV
 tvt
@@ -113922,7 +113938,7 @@ aCR
 aYV
 aXq
 aYV
-bfX
+sLA
 bhB
 bgp
 bhU
@@ -115199,7 +115215,7 @@ cRd
 jcL
 uaO
 kgP
-uaO
+jpz
 rwH
 mWr
 uaY

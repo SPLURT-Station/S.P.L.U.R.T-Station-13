@@ -260,7 +260,7 @@
 		// Activate the item
 		var/obj/item/I = get_item_by_slot(slot)
 		if(istype(I))
-			if(slot in check_obscured_slots())
+			if(slot in check_equip_obscured_slots())
 				to_chat(src, "<span class='warning'>You are unable to unequip that while wearing other garments over it!</span>")
 				return FALSE
 			I.attack_hand(src)

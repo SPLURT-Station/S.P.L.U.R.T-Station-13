@@ -1280,7 +1280,7 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 		if(!I.species_exception || !is_type_in_list(src, I.species_exception))
 			return FALSE
 
-	if(clothing_check && (slot in H.check_obscured_slots()))
+	if(clothing_check && (slot in H.check_equip_obscured_slots()))
 		if(return_warning)
 			return_warning[1] = "<span class='warning'>You are unable to equip that with your current garments in the way!</span>"
 		return FALSE

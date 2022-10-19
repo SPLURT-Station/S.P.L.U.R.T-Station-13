@@ -22,6 +22,10 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		if(prefs.muted & MUTE_OOC)
 			to_chat(src, "<span class='danger'>You cannot use OOC (muted).</span>")
 			return
+		if(findtext(msg, "nigger") || findtext(msg, "Nigger") || findtext(msg, "NIGGER") || findtext(msg, "igger"))
+			to_chat(src, "<B>saying the n-word in ooc is not allowed</B>")
+			log_admin("[key_name(src)] has attempted to say the n word in LOOC: [msg]")
+			return
 	if(jobban_isbanned(src.mob, "OOC"))
 		to_chat(src, "<span class='danger'>You have been banned from OOC.</span>")
 		return

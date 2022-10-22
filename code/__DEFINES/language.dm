@@ -24,6 +24,7 @@
 #define LANGUAGE_STONER			"stoner"
 #define LANGUAGE_VASSAL			"vassal"
 #define LANGUAGE_VOICECHANGE	"voicechange"
+#define LANGUAGE_GHOULISH		"Ghoulish"
 //#define LANGUAGE_MULTILINGUAL	"multilingual"
 
 //SKYRAT LANGUAGES

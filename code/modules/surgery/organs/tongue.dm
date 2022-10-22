@@ -144,6 +144,26 @@
 	taste_sensitivity = 32
 	maxHealth = 65 //Stop! It's already dead...!
 	initial_accents = list(/datum/accent/zombie)
+	var/static/list/languages_possible_zombie = typecacheof(list(
+		/datum/language/ghoulish))
+
+/obj/item/organ/tongue/zombie/Initialize(mapload)
+	. = ..()
+	languages_possible += languages_possible_zombie
+
+/obj/item/organ/tongue/zombie/handle_speech(datum/source, list/speech_args)
+	if(speech_args[SPEECH_LANGUAGE] == /datum/language/ghoulish) // No accent if they speak their language
+		return
+	else for(var/datum/accent/speech_modifier in accents)
+		speech_args = speech_modifier.modify_speech(speech_args, source, owner)
+
+/obj/item/organ/tongue/zombie/Insert(mob/living/carbon/M, special, drop_if_replaced)
+	M?.language_holder.spoken_languages += /datum/language/ghoulish
+	. = ..()
+
+/obj/item/organ/tongue/Remove(special = FALSE)
+	owner?.language_holder.spoken_languages -= /datum/language/ghoulish
+	. = ..()
 
 /obj/item/organ/tongue/alien
 	name = "alien tongue"

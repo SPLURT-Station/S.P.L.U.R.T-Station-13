@@ -157,14 +157,6 @@
 	else for(var/datum/accent/speech_modifier in accents)
 		speech_args = speech_modifier.modify_speech(speech_args, source, owner)
 
-/obj/item/organ/tongue/zombie/Insert(mob/living/carbon/M, special, drop_if_replaced)
-	M?.language_holder.spoken_languages += /datum/language/ghoulish
-	. = ..()
-
-/obj/item/organ/tongue/Remove(special = FALSE)
-	owner?.language_holder.spoken_languages -= /datum/language/ghoulish
-	. = ..()
-
 /obj/item/organ/tongue/alien
 	name = "alien tongue"
 	desc = "According to leading xenobiologists the evolutionary benefit of having a second mouth in your mouth is \"that it looks badass\"."

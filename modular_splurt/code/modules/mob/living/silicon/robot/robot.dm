@@ -9,7 +9,7 @@
 		to_chat(usr, "<span class='warning'>You cannot toggle your gender while unconcious!</span>")
 		return
 
-	var/choice = tgui_alert(usr, "Select Gender.", "Gender", list("Both", "Male", "Female", "None"))
+	var/choice = tgui_alert(usr, "Select Gender.", "Gender", list("Both", "Male", "Female", "None","Toggle Breasts"))
 	switch(choice)
 		if("Both")
 			has_penis = TRUE
@@ -27,7 +27,11 @@
 			has_penis = FALSE
 			has_balls = FALSE
 			has_vagina = FALSE
-
+		if("Toggle Breasts")
+			if(!has_breasts)
+				has_breasts = TRUE
+			else
+				has_breasts = FALSE
 // Slaver medical borg
 /mob/living/silicon/robot/modules/syndicate/slaver/medical
 	faction = list(ROLE_SLAVER)

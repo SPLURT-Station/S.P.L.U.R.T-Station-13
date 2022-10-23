@@ -197,8 +197,6 @@
 		return
 	..()
 
-
-
 /datum/component/edible/TakeBite(mob/living/eater, mob/living/feeder)
 
 	var/atom/owner = parent
@@ -211,8 +209,14 @@
 
 	var/obj/item/organ/stomach/vacuous/stomach = eater.getorganslot(ORGAN_SLOT_STOMACH)
 	if(stomach && (istype(stomach, /obj/item/organ/stomach/vacuous)))
-		if(istype(owner, /obj/item/organ) || istype(owner, /obj/item/reagent_containers/food/snacks/meat/slab/human))
-
+		if(istype(owner, /obj/item/organ) || istype(owner, /obj/item/bodypart) || istype(owner, list(
+														/obj/item/reagent_containers/food/snacks/meat/slab/human,
+														/obj/item/reagent_containers/food/snacks/meat/rawcutlet/plain/human,
+														/obj/item/reagent_containers/food/snacks/meat/cutlet/plain/human,
+														/obj/item/reagent_containers/food/snacks/meat/steak/plain/human,
+														/obj/item/reagent_containers/food/snacks/kebab/human,
+														/obj/item/reagent_containers/food/snacks/burger/human,
+														)))
 			SEND_SIGNAL(parent, COMSIG_FOOD_EATEN, eater, feeder)
 			var/fraction = min(bite_consumption / owner.reagents.total_volume, 1)
 			owner.reagents.reaction(eater, INGEST, fraction)
@@ -229,8 +233,12 @@
 		return TRUE
 	. = ..()
 
-
-
+/obj/item/bodypart/Initialize(mapload)
+	. = ..()
+	var/list/food_reagents = list(/datum/reagent/consumable/nutriment = 20)
+	if(status & BODYPART_ORGANIC)
+		AddComponent(/datum/component/edible, food_reagents, null, RAW | MEAT | GROSS, null, 10, null, null, null, null)
+	START_PROCESSING(SSobj, src)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 			///Weird fucking organs///
@@ -464,7 +472,7 @@
 		hunger_rate *= max(0.5, 1 - 0.002 * mood.sanity)
 	hunger_rate *= (owner.nutrition / 50)
 
-	owner.blood_volume = clamp(owner.blood_volume - hunger_rate, BLOOD_VOLUME_SURVIVE, BLOOD_VOLUME_MAXIMUM)
+	owner.blood_volume = clamp(owner.blood_volume - hunger_rate, BLOOD_VOLUME_SURVIVE, NUTRITION_LEVEL_FULL)
 	owner.set_nutrition(min(owner.blood_volume, NUTRITION_LEVEL_FULL))
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////

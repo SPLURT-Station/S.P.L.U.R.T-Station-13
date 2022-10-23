@@ -197,6 +197,21 @@
 		return
 	..()
 
+/datum/species/mammal/undead/spec_life(mob/living/carbon/human/H)
+	H.set_screwyhud(SCREWYHUD_HEALTHY) //just in case of hallucinations
+	H.adjustStaminaLoss(-5) //no pain, no fatigue
+	..()
+
+/datum/species/insect/undead/spec_life(mob/living/carbon/human/H)
+	H.set_screwyhud(SCREWYHUD_HEALTHY) //just in case of hallucinations
+	H.adjustStaminaLoss(-5) //no pain, no fatigue
+	..()
+
+/datum/species/lizard/undead/spec_life(mob/living/carbon/human/H)
+	H.set_screwyhud(SCREWYHUD_HEALTHY) //just in case of hallucinations
+	H.adjustStaminaLoss(-5) //no pain, no fatigue
+	..()
+
 /datum/component/edible/TakeBite(mob/living/eater, mob/living/feeder)
 
 	var/atom/owner = parent
@@ -216,6 +231,7 @@
 														/obj/item/reagent_containers/food/snacks/meat/steak/plain/human,
 														/obj/item/reagent_containers/food/snacks/kebab/human,
 														/obj/item/reagent_containers/food/snacks/burger/human,
+														/obj/item/reagent_containers/food/snacks/soylentgreen
 														)))
 			SEND_SIGNAL(parent, COMSIG_FOOD_EATEN, eater, feeder)
 			var/fraction = min(bite_consumption / owner.reagents.total_volume, 1)
@@ -223,6 +239,9 @@
 			owner.reagents.trans_to(eater, bite_consumption, 1, 0, 0, FALSE)
 			eater.blood_volume += bite_consumption
 			bitecount++
+			var/obj/item/bodypart/edible = owner
+			if(istype(edible, /obj/item/bodypart))
+				edible.max_damage -= clamp(bitecount*bite_consumption, 0, edible.max_damage)
 			On_Consume(eater)
 			checkLiked(fraction, eater)
 
@@ -234,11 +253,10 @@
 	. = ..()
 
 /obj/item/bodypart/Initialize(mapload)
-	. = ..()
 	var/list/food_reagents = list(/datum/reagent/consumable/nutriment = 20)
 	if(status & BODYPART_ORGANIC)
 		AddComponent(/datum/component/edible, food_reagents, null, RAW | MEAT | GROSS, null, 10, null, null, null, null)
-	START_PROCESSING(SSobj, src)
+	. = ..()
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 			///Weird fucking organs///
@@ -346,7 +364,7 @@
 	GLOB.zombie_infection_list -= src
 	. = ..()
 
-/obj/item/organ/undead_infection/Insert(var/mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
+/obj/item/organ/undead_infection/Insert(mob/living/carbon/M, special, drop_if_replaced)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
@@ -457,8 +475,10 @@
 	ADD_TRAIT(owner, TRAIT_NO_PROCESS_FOOD, "Zombism")
 
 /obj/item/organ/stomach/vacuous/Remove(special)
-	. = ..()
-	REMOVE_TRAIT(owner, TRAIT_NO_PROCESS_FOOD, "Zombism")
+	var/mob/living/carbon/human/H = owner
+	if(H && istype(H))
+		REMOVE_TRAIT(H, TRAIT_NO_PROCESS_FOOD, "Zombism")
+	..()
 
 /obj/item/organ/stomach/vacuous/on_life()
 	var/mob/living/carbon/human/Z = owner

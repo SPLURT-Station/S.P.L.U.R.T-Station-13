@@ -32,10 +32,9 @@
 	var/list/food_reagents = list(/datum/reagent/consumable/nutriment = 5)
 
 /obj/item/organ/Initialize(mapload)
-	. = ..()
 	if(organ_flags & ORGAN_EDIBLE)
 		AddComponent(/datum/component/edible, food_reagents, null, RAW | MEAT | GROSS, null, 10, null, null, null, CALLBACK(src, .proc/OnEatFrom))
-	START_PROCESSING(SSobj, src)
+	. = ..()
 
 /obj/item/organ/Destroy()
 	if(owner)

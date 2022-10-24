@@ -191,25 +191,15 @@
 	Z.set_screwyhud(SCREWYHUD_NONE)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+			///Handling bleeding because the blood code is jank as fuck///
+			
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 			///Weird fucking procs///
-/mob/living/carbon/human/handle_blood(delta_time, times_fired)
-	if(iszombie(src)) //We're basically pudding pops.
-		return
-	..()
-
-/datum/species/mammal/undead/spec_life(mob/living/carbon/human/H)
-	H.set_screwyhud(SCREWYHUD_HEALTHY) //just in case of hallucinations
-	H.adjustStaminaLoss(-5) //no pain, no fatigue
-	..()
-
-/datum/species/insect/undead/spec_life(mob/living/carbon/human/H)
-	H.set_screwyhud(SCREWYHUD_HEALTHY) //just in case of hallucinations
-	H.adjustStaminaLoss(-5) //no pain, no fatigue
-	..()
-
-/datum/species/lizard/undead/spec_life(mob/living/carbon/human/H)
-	H.set_screwyhud(SCREWYHUD_HEALTHY) //just in case of hallucinations
-	H.adjustStaminaLoss(-5) //no pain, no fatigue
+/datum/species/spec_life(mob/living/carbon/human/H)
+	if(iszombie(H))
+		H.set_screwyhud(SCREWYHUD_HEALTHY) //just in case of hallucinations
+		H.adjustStaminaLoss(-5) //no pain, no fatigue
 	..()
 
 /datum/component/edible/TakeBite(mob/living/eater, mob/living/feeder)

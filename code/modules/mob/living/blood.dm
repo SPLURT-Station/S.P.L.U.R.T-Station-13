@@ -32,7 +32,7 @@
 // Takes care blood loss and regeneration
 /mob/living/carbon/human/handle_blood(delta_time, times_fired)
 
-	if(NOBLOOD in dna.species.species_traits || bleedsuppress || (HAS_TRAIT(src, TRAIT_FAKEDEATH)))
+	if(NOBLOOD in dna.species.species_traits || bleedsuppress || (HAS_TRAIT(src, TRAIT_FAKEDEATH)) && !iszombie(src))
 		return
 
 	if(HAS_TRAIT(src, TRAIT_NOMARROW)) //Bloodsuckers don't need to be here.
@@ -48,7 +48,7 @@
 					blood_volume += blood_diff
 			if(blood_volume < BLOOD_VOLUME_NORMAL)
 				var/nutrition_ratio = 0
-				if(!HAS_TRAIT(src, TRAIT_NOHUNGER))
+				if(!HAS_TRAIT(src, TRAIT_NOHUNGER) && !iszombie(src))
 					switch(nutrition)
 						if(0 to NUTRITION_LEVEL_STARVING)
 							nutrition_ratio = 0.2
@@ -81,7 +81,7 @@
 					blood_volume = min(BLOOD_VOLUME_NORMAL, blood_volume + 0.5 * thirst_ratio)
 
 			//Effects of bloodloss
-			if(!HAS_TRAIT(src, TRAIT_ROBOTIC_ORGANISM))	//Synths are immune to direct consequences of bloodloss, instead suffering penalties to heat exchange.
+			if(!HAS_TRAIT(src, TRAIT_ROBOTIC_ORGANISM) && !iszombie(src))	//Synths are immune to direct consequences of bloodloss, instead suffering penalties to heat exchange.
 				var/word = pick("dizzy","woozy","faint")
 				var/blood_effect_volume = blood_volume + integrating_blood
 				switch(blood_effect_volume)

@@ -311,7 +311,7 @@
 		if(DISGUST_LEVEL_DISGUSTED to INFINITY)
 			msg += "[t_He] look[p_s()] extremely disgusted.\n"
 
-	if(!HAS_TRAIT(src, TRAIT_ROBOTIC_ORGANISM))
+	if(!HAS_TRAIT(src, TRAIT_ROBOTIC_ORGANISM) && !iszombie(src))
 		var/apparent_blood_volume = blood_volume
 		if(dna.species.use_skintones && skin_tone == "albino")
 			apparent_blood_volume -= 150 // enough to knock you down one tier

@@ -192,7 +192,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 			///Handling bleeding because the blood code is jank as fuck///
-			
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 			///Weird fucking procs///
@@ -293,9 +293,9 @@
 				if(owner.getOxyLoss())
 					owner.adjustOxyLoss(-5)
 				if(owner.getBruteLoss())
-					owner.adjustBruteLoss(-3)
+					owner.adjustBruteLoss(-3, TRUE, TRUE)
 				if(owner.getFireLoss())
-					owner.adjustFireLoss(-3)
+					owner.adjustFireLoss(-3, TRUE, TRUE)
 				if(owner.getToxLoss())
 					owner.adjustToxLoss(-1)
 		if(owner.health >= HEALTH_THRESHOLD_CRIT)
@@ -310,9 +310,9 @@
 				if(owner.getOxyLoss())
 					owner.adjustOxyLoss(-3)
 				if(owner.getBruteLoss())
-					owner.adjustBruteLoss(-1.5)
+					owner.adjustBruteLoss(-1.5, TRUE, TRUE)
 				if(owner.getFireLoss())
-					owner.adjustFireLoss(-1.5)
+					owner.adjustFireLoss(-1.5, TRUE, TRUE)
 				if(owner.getToxLoss())
 					owner.adjustToxLoss(-1)
 			if(owner.health >= HEALTH_THRESHOLD_FULLCRIT)

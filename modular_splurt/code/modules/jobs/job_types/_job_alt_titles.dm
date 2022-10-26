@@ -33,7 +33,8 @@
 /datum/job/hos/New()
 	var/list/extra_titles = list(
 		"Security Commander",
-		"Head of Slutcurity"
+		"Head of Slutcurity",
+		"Commissar"
 	)
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
 		LAZYADD(extra_titles, "Head of Spookcurity")

@@ -45,6 +45,11 @@
 	name = "waiter's outfit"
 	path = /obj/item/clothing/under/suit/waiter
 
+// Suggestion #3278
+/datum/gear/uniform/amish
+	name = "Amish suit"
+	path = /obj/item/clothing/under/suit/sl
+
 /datum/gear/uniform/bunnysuit
 	name = "bunny outfit"
 	path = /obj/item/clothing/under/bunnysuit

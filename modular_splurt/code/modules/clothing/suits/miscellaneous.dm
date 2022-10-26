@@ -228,3 +228,13 @@
 	name = "yellow trencher coat"
 	desc = "A trenchcoat of the boring wars. This one have yellow insignias."
 	icon_state = "goner_suit_y"
+
+/obj/item/clothing/suit/hooded/corpus/jp //It's him! John Prodman!
+	name = "Strange Voidsuit"
+	desc = "An odd Voidsuit that looks strangely familiar. Has the name 'John' stenciled on it. The shielding module is also intact!"
+	icon_state = "corpus_jp"
+	armor = list(MELEE = 50, BULLET = 50, LASER = 50, ENERGY = 50, BOMB = 50, BIO = 0, RAD = 50, FIRE = 50, ACID = 50, WOUND = 50)
+	hoodtype = /obj/item/clothing/head/hooded/corpus/jp
+
+/obj/item/clothing/head/hooded/corpus/jp //sec
+	icon_state = "corpus_jp"

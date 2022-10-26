@@ -14,6 +14,15 @@
 	name = "dracula coat"
 	path = /obj/item/clothing/suit/dracula
 
+// Suggestion #3279
+/datum/gear/suit/apron
+	name = "apron, blue"
+	path = /obj/item/clothing/suit/apron
+
+/datum/gear/suit/overalls
+	name = "overalls"
+	path = /obj/item/clothing/suit/apron/overalls
+
 // Fixes "Fed (Modern) uniform, White" being in general suit loadout section.
 /datum/gear/suit/trekcmdcapmod
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_JOBS

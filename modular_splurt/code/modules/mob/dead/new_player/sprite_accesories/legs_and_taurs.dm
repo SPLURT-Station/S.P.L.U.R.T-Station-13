@@ -43,3 +43,11 @@
 /datum/sprite_accessory/taur/noodledragon/dotted
 	name = "Noodle Dragon (dotted)"
 	icon_state = "noodledragon_dotted"
+
+/datum/sprite_accessory/taur/kangaroo
+	name = "Kangaroo Tail"
+	icon_state = "kangaroo"
+	icon = 'modular_splurt/icons/mob/mam_taur.dmi'
+	taur_mode = STYLE_PAW_TAURIC
+	color_src = MUTCOLORS
+	extra = FALSE

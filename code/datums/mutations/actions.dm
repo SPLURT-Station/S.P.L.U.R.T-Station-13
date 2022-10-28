@@ -216,12 +216,9 @@
 	REMOVE_TRAIT(owner, TRAIT_GOODSMELL, GENETIC_MUTATION)
 
 /datum/mutation/human/olfaction/modify()
-	. = ..()
-	var/obj/effect/proc_holder/spell/targeted/olfaction/to_modify = power
-	if(!istype(to_modify)) // null or invalid
-		return .
-
-	to_modify.sensitivity = GET_MUTATION_SYNCHRONIZER(src)
+	if(power)
+		var/obj/effect/proc_holder/spell/targeted/olfaction/S = power
+		S.sensitivity = GET_MUTATION_SYNCHRONIZER(src)
 
 /obj/effect/proc_holder/spell/targeted/olfaction
 	name = "Remember the Scent"

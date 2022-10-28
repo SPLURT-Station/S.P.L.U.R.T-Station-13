@@ -24,8 +24,6 @@
 
 	//SKYRAT CHANGE - is this language available on the character setup? Set to true if not.
 	var/restricted = TRUE
-	var/allow_repeated_syllables = TRUE // Control for handling some of the random lang/name gen.
-	//
 
 	// if you are seeing someone speak popcorn language, then something is wrong.
 	var/icon = 'icons/misc/language.dmi'
@@ -53,13 +51,11 @@
 	var/full_name = ""
 	var/new_name = ""
 
-	var/possible_syllables = allow_repeated_syllables ? syllables : syllables.Copy()
 	for(var/i in 0 to name_count)
 		new_name = ""
 		var/Y = rand(FLOOR(syllable_count/syllable_divisor, 1), syllable_count)
 		for(var/x in Y to 0)
 			new_name += pick(syllables)
-			new_name += allow_repeated_syllables ? pick(possible_syllables) : pick_n_take(possible_syllables)
 		full_name += " [capitalize(lowertext(new_name))]"
 
 	return "[trim(full_name)]"

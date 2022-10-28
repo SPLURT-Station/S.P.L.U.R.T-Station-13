@@ -217,9 +217,9 @@
 
 /datum/mutation/human/olfaction/modify()
 	. = ..()
-	var/obj/effect/proc_holder/spell/targeted/olfaction/to_modify = .
+	var/obj/effect/proc_holder/spell/targeted/olfaction/to_modify = power
 	if(!istype(to_modify)) // null or invalid
-		return
+		return .
 
 	to_modify.sensitivity = GET_MUTATION_SYNCHRONIZER(src)
 

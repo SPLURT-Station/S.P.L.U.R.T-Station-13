@@ -505,7 +505,6 @@
 	space_chance = 0		//Huh?
 	flags = LANGUAGE_HIDE_ICON_IF_NOT_UNDERSTOOD | NO_STUTTER | TONGUELESS_SPEECH
 	restricted = TRUE
-	allow_repeated_syllables = FALSE
 	icon_state = "aphasia"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////

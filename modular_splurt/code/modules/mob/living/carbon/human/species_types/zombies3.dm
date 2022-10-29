@@ -276,6 +276,7 @@
 	languages_possible += languages_possible_zombie
 
 /obj/item/organ/tongue/zombie/handle_speech(datum/source, list/speech_args)
+	. = ..()
 	if(speech_args[SPEECH_LANGUAGE] == /datum/language/ghoulish) // No accent if they speak their language
 		return
 	else for(var/datum/accent/speech_modifier in accents)

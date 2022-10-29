@@ -35,7 +35,7 @@
 	if(NOBLOOD in dna.species.species_traits || bleedsuppress || (HAS_TRAIT(src, TRAIT_FAKEDEATH)) && !iszombie(src))
 		return
 
-	if(HAS_TRAIT(src, TRAIT_NOMARROW)) //Bloodsuckers don't need to be here.
+	if(HAS_TRAIT(src, TRAIT_NOMARROW) && !iszombie(src)) //Bloodsuckers don't need to be here.
 		return
 
 	if(bodytemperature >= TCRYO && !(HAS_TRAIT(src, TRAIT_HUSK))) //cryosleep or husked people do not pump the blood.

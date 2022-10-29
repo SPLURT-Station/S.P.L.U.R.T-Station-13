@@ -268,12 +268,6 @@
 	taste_sensitivity = 32
 	maxHealth = 65 //Stop! It's already dead...!
 	initial_accents = list(/datum/accent/zombie)
-	var/static/list/languages_possible_zombie = typecacheof(list(
-		/datum/language/ghoulish))
-
-/obj/item/organ/tongue/zombie/Initialize(mapload)
-	. = ..()
-	languages_possible += languages_possible_zombie
 
 /obj/item/organ/tongue/zombie/handle_speech(datum/source, list/speech_args)
 	. = ..()

@@ -47,7 +47,7 @@
 
 	mutant_brain = /obj/item/organ/brain/rotten_brain
 	mutant_heart = /obj/item/organ/heart/decayed_heart
-	mutanttongue = /obj/item/organ/tongue/zombie
+	mutanttongue = /obj/item/organ/tongue/zombie/undead
 	mutantstomach = /obj/item/organ/stomach/vacuous
 
 
@@ -112,7 +112,7 @@
 	mutant_brain = /obj/item/organ/brain/rotten_brain
 	mutanteyes = /obj/item/organ/eyes/decayed
 	mutant_heart = /obj/item/organ/heart/decayed_heart
-	mutanttongue = /obj/item/organ/tongue/zombie
+	mutanttongue = /obj/item/organ/tongue/zombie/undead
 	mutantstomach = /obj/item/organ/stomach/vacuous
 
 	species_category = SPECIES_CATEGORY_UNDEAD
@@ -177,7 +177,7 @@
 
 	mutant_brain = /obj/item/organ/brain/rotten_brain
 	mutant_heart = /obj/item/organ/heart/decayed_heart
-	mutanttongue = /obj/item/organ/tongue/zombie
+	mutanttongue = /obj/item/organ/tongue/zombie/undead
 	mutantstomach = /obj/item/organ/stomach/vacuous
 
 	species_category = SPECIES_CATEGORY_UNDEAD
@@ -259,6 +259,27 @@
 	see_in_dark = 6
 	flash_protect = -2
 //////
+
+/obj/item/organ/tongue/zombie/undead
+	name = "rotting tongue"
+	desc = "Between the decay and the fact that it's just lying there you doubt a tongue has ever seemed less sexy."
+	icon_state = "tonguezombie"
+	say_mod = "moans"
+	taste_sensitivity = 32
+	maxHealth = 65 //Stop! It's already dead...!
+	initial_accents = list(/datum/accent/zombie)
+	var/static/list/languages_possible_zombie = typecacheof(list(
+		/datum/language/ghoulish))
+
+/obj/item/organ/tongue/zombie/Initialize(mapload)
+	. = ..()
+	languages_possible += languages_possible_zombie
+
+/obj/item/organ/tongue/zombie/handle_speech(datum/source, list/speech_args)
+	if(speech_args[SPEECH_LANGUAGE] == /datum/language/ghoulish) // No accent if they speak their language
+		return
+	else for(var/datum/accent/speech_modifier in accents)
+		speech_args = speech_modifier.modify_speech(speech_args, source, owner)
 
 /obj/item/organ/brain/rotten_brain
 	name = "rotten brain"

@@ -517,7 +517,7 @@
 	user.cleartimer = addtimer(CALLBACK(user, /mob/living/proc/clear_lewd_datum), 300, TIMER_STOPPABLE)
 	return ..()
 
-/mob/living/list_interaction_attributes(mob/living/LM, mob/living/LT)
+/mob/living/list_interaction_attributes(mob/living/LM)
 	var/dat = ..()
 	if(!COOLDOWN_FINISHED(LM, refractory_period))
 		dat += "...are sexually exhausted for the time being."

@@ -30,15 +30,15 @@
 // Returns the piece of clothing blocking body part
 // TODO: Best would be to have a list and pick the top layer one (so jumpsuit gets returned before boxers)
 /mob/living/proc/get_clothing_blocking_part(body_part, ignore_skirts = FALSE)
-	for(var/A in get_equipped_items())
-		var/obj/item/I = A
-		if(istype(I) && I.body_parts_covered & body_part)
-			if(ignore_skirts && istype(I, /obj/item/clothing/under))
-				var/obj/item/clothing/under/under = I
-				if(!under.is_skirt)
-					return under
-			else
-				return I
+	for(var/obj/item/I in get_equipped_items())
+		if(!(I.body_parts_covered & body_part))
+			continue
+		if(ignore_skirts && istype(I, /obj/item/clothing/under))
+			var/obj/item/clothing/under/under = I
+			if(!under.is_skirt)
+				return under
+		else
+			return I
 	return null
 
 /mob/living/proc/get_target_part_exposed_visibility(can_hand_slide, mob/living/target, body_part)
@@ -49,12 +49,12 @@
 /mob/living/carbon/get_target_part_exposed_visibility(can_hand_slide, mob/living/target, body_part)
 	if(hand_slide_target == target && hand_slide_part == body_part)
 		if(body_part == GROIN && target.get_clothing_blocking_part(GROIN, TRUE) == null)
-			return REQUIRE_ANY
-		return can_hand_slide ? REQUIRE_ANY : REQUIRE_EXPOSED
+			return REQUIRE_ANY_SAFE
+		return can_hand_slide ? REQUIRE_ANY_SAFE : REQUIRE_EXPOSED
 	else
 		return REQUIRE_EXPOSED
 
 // Returns name of the clothing somebody is sliding under
 /mob/living/carbon/proc/get_hand_slide_clothing_name(mob/living/target, body_part)
 	var/obj/item/I = target.get_clothing_blocking_part(body_part)
-	return I == null ? "none" : I.name
+	return I ? I.name : "none"

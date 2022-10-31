@@ -93,6 +93,8 @@
 			switch(visibility)
 				if(REQUIRE_ANY)
 					return TRUE
+				if(REQUIRE_ANY_SAFE)
+					return !(genital.genital_flags & GENITAL_HIDDEN)
 				if(REQUIRE_EXPOSED)
 					return genital.is_exposed()
 				if(REQUIRE_UNEXPOSED)
@@ -113,7 +115,7 @@
 		var/obj/item/clothing/underwear/briefs/strapon/strapon = C.get_strapon()
 		if(strapon)
 			switch(visibility)
-				if(REQUIRE_ANY)
+				if(REQUIRE_ANY, REQUIRE_ANY_SAFE)
 					return TRUE
 				if(REQUIRE_EXPOSED)
 					return strapon.is_exposed()
@@ -160,6 +162,8 @@
 	switch(visibility)
 		if(REQUIRE_ANY)
 			return TRUE
+		if(REQUIRE_ANY_SAFE)
+			return anus_exposed != -1
 		if(REQUIRE_EXPOSED)
 			switch(anus_exposed)
 				if(-1)

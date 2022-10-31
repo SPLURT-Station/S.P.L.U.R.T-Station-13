@@ -35,3 +35,4 @@ GLOBAL_LIST_INIT(lewd_prefs_choices, list(
 #define REQUIRE_EXPOSED 1
 #define REQUIRE_UNEXPOSED 2
 #define REQUIRE_ANY 3
+#define REQUIRE_ANY_SAFE 4

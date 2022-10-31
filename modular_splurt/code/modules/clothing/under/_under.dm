@@ -3,5 +3,6 @@
 	return ..()
 
 // Allow skirts to equip/unequip underwear
-/obj/item/clothing/under/get_body_parts_equip_uncovered()
-    return is_skirt ? GROIN : body_parts_equip_uncovered
+/obj/item/clothing/under/Initialize(mapload)
+	if(is_skirt)
+		body_parts_equip_uncovered = GROIN

@@ -28,10 +28,8 @@
 			has_balls = FALSE
 			has_vagina = FALSE
 		if("Toggle Breasts")
-			if(!has_breasts)
-				has_breasts = TRUE
-			else
-				has_breasts = FALSE
+			has_breasts = !has_breasts
+
 // Slaver medical borg
 /mob/living/silicon/robot/modules/syndicate/slaver/medical
 	faction = list(ROLE_SLAVER)

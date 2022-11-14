@@ -246,5 +246,5 @@
 	initial_temperature = 255.37
 
 /turf/open/floor/plating/snowed/smoothed/icemoon
-	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
+	initial_gas_mix = FROZEN_ATMOS
 

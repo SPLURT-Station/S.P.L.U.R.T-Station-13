@@ -132,7 +132,9 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "acX" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
@@ -235,7 +237,9 @@
 	},
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "aeh" = (
 /obj/structure/lattice/catwalk,
 /turf/open/floor/plating{
@@ -447,7 +451,9 @@
 	pixel_y = 1
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "ahL" = (
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -700,7 +706,9 @@
 "akP" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/plasteel/cafeteria,
-/area/service/chapel)
+/area/service/kitchen{
+	name = "Chapel Kitchen"
+	})
 "akW" = (
 /turf/closed/wall,
 /area/hallway/primary/port/fore)
@@ -1072,7 +1080,9 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "atl" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -1488,7 +1498,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/key/security,
 /turf/open/floor/pod,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "azI" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -1498,7 +1510,9 @@
 /area/service/chapel/office)
 "azM" = (
 /turf/open/floor/pod,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "azT" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -1693,7 +1707,7 @@
 	sortType = 25
 	},
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "aDj" = (
 /obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/grass,
@@ -2294,7 +2308,7 @@
 "aPD" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/closed/wall/mineral/wood,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "aPN" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 8
@@ -2321,7 +2335,9 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "aQt" = (
 /obj/machinery/bloodbankgen,
 /turf/open/floor/plasteel/white,
@@ -2348,7 +2364,9 @@
 "aQy" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "aQH" = (
 /obj/structure/railing{
 	dir = 1
@@ -2428,7 +2446,9 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "aTw" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -2833,7 +2853,9 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "bbp" = (
 /obj/effect/landmark/blobstart,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
@@ -3024,7 +3046,9 @@
 	name = "Mix to Port"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "bfz" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	name = "Gas to Filter"
@@ -3506,7 +3530,9 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "bof" = (
 /obj/structure/window/plasma/reinforced{
 	dir = 1
@@ -3556,7 +3582,9 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "boF" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/firstaid/regular,
@@ -3669,7 +3697,9 @@
 /obj/structure/lattice/catwalk,
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "bqN" = (
 /obj/machinery/camera{
 	c_tag = "Telecomms - Control Room";
@@ -3823,7 +3853,9 @@
 	req_access_txt = "12"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "bub" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 4
@@ -3888,7 +3920,7 @@
 	sortType = 17
 	},
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "bvI" = (
 /turf/closed/wall,
 /area/science/robotics/lab)
@@ -4240,7 +4272,9 @@
 "bDb" = (
 /obj/structure/barricade/wooden,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "bDd" = (
 /obj/structure/grille/broken,
 /turf/open/floor/plating,
@@ -4248,7 +4282,9 @@
 "bDt" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "bDX" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -4562,7 +4598,9 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "bHx" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/green{
@@ -4872,7 +4910,9 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "bMW" = (
 /turf/closed/wall,
 /area/service/library/lounge)
@@ -5342,7 +5382,9 @@
 	},
 /obj/structure/fans/tiny,
 /turf/open/floor/plating,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "bVq" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -5392,7 +5434,9 @@
 	pixel_x = -5
 	},
 /turf/open/floor/pod,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "bVN" = (
 /obj/structure/lattice/catwalk,
 /turf/open/floor/plating,
@@ -5704,7 +5748,9 @@
 "cah" = (
 /obj/structure/weightmachine/stacklifter,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "cai" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -5846,7 +5892,9 @@
 "ccT" = (
 /obj/machinery/vending/sustenance,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "ccW" = (
 /obj/structure/table/wood/fancy/green,
 /obj/item/reagent_containers/food/drinks/bottle/holywater{
@@ -6108,7 +6156,9 @@
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "chP" = (
 /obj/machinery/door/airlock{
 	name = "Custodial Closet";
@@ -6184,7 +6234,9 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "cjd" = (
 /turf/closed/indestructible/rock/snow/ice,
 /area/icemoon/underground/explored)
@@ -6230,7 +6282,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "cke" = (
 /obj/docking_port/stationary/random{
 	dir = 2;
@@ -6253,7 +6305,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "ckB" = (
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
@@ -6308,7 +6362,9 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/freezer,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "cmy" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -6488,7 +6544,9 @@
 	dir = 9
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "cpg" = (
 /obj/structure/loot_pile/maint,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -6619,7 +6677,9 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/cafeteria,
-/area/service/chapel)
+/area/service/kitchen{
+	name = "Chapel Kitchen"
+	})
 "csm" = (
 /obj/machinery/portable_atmospherics/canister,
 /obj/effect/turf_decal/bot,
@@ -7200,7 +7260,9 @@
 	name = "2maintenance loot spawner"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "cDV" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -7247,7 +7309,9 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "cFs" = (
 /obj/structure/table,
 /obj/structure/cable{
@@ -7304,7 +7368,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "cFV" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
@@ -7736,7 +7802,9 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "cLk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small{
@@ -7877,7 +7945,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "cMB" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -7962,7 +8032,9 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "cNX" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
@@ -8544,7 +8616,9 @@
 "cWt" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "cWN" = (
 /obj/machinery/airalarm{
 	dir = 1;
@@ -8722,7 +8796,9 @@
 /obj/structure/closet/cardboard,
 /obj/item/reagent_containers/glass/beaker/waterbottle/wataur,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "dam" = (
 /obj/machinery/quantumpad{
 	map_pad_id = "4";
@@ -9203,7 +9279,9 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "diF" = (
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/purple{
@@ -9355,7 +9433,18 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
+"dkN" = (
+/obj/machinery/atmospherics/pipe/simple/multiz{
+	piping_layer = 3
+	},
+/obj/effect/turf_decal/stripes/box,
+/turf/open/floor/plating,
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "dkU" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -9729,7 +9818,7 @@
 	dir = 10
 	},
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "dqV" = (
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -10437,13 +10526,17 @@
 /obj/machinery/reagentgrinder,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/cafeteria,
-/area/service/chapel)
+/area/service/kitchen{
+	name = "Chapel Kitchen"
+	})
 "dEr" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "dEF" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -10623,7 +10716,9 @@
 	name = "west facing firelock"
 	},
 /turf/open/floor/plasteel/cafeteria,
-/area/service/chapel)
+/area/service/kitchen{
+	name = "Chapel Kitchen"
+	})
 "dHv" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/security/wooden_tv,
@@ -11585,7 +11680,9 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "dVB" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -11613,7 +11710,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "dVL" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -11735,7 +11834,9 @@
 /obj/structure/closet/cardboard,
 /obj/item/reagent_containers/food/snacks/cannedpeaches,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "dXN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -11744,7 +11845,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "dXT" = (
 /obj/structure/chair{
 	dir = 4
@@ -12326,6 +12429,12 @@
 /obj/structure/closet/secure_closet/chemical,
 /turf/open/floor/plasteel,
 /area/medical/chemistry)
+"ejq" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/service/kitchen{
+	name = "Chapel Kitchen"
+	})
 "ejs" = (
 /obj/structure/table,
 /obj/effect/turf_decal/tile/blue{
@@ -12489,7 +12598,9 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "elv" = (
 /obj/machinery/light{
 	dir = 4
@@ -12598,7 +12709,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "ene" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -12659,7 +12770,9 @@
 	req_access_txt = "12"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "eob" = (
 /turf/closed/wall/mineral/wood,
 /area/mine/living_quarters)
@@ -12932,7 +13045,9 @@
 	dir = 9
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "erQ" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/structure/disposalpipe/segment{
@@ -13141,7 +13256,9 @@
 	dir = 8
 	},
 /turf/open/floor/pod,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "evk" = (
 /obj/item/gps/science{
 	gpstag = "SCIEXPED4"
@@ -13415,7 +13532,9 @@
 "eyO" = (
 /obj/effect/decal/cleanable/glass,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "ezq" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9
@@ -13489,6 +13608,13 @@
 "eBs" = (
 /turf/open/floor/plasteel,
 /area/science/test_area)
+"eBt" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/plating,
+/area/service/kitchen{
+	name = "Chapel Kitchen"
+	})
 "eBv" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 8
@@ -13623,7 +13749,9 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "eDM" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
@@ -13737,14 +13865,22 @@
 	pixel_y = -3
 	},
 /turf/open/floor/pod,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "eFI" = (
 /obj/machinery/telecomms/broadcaster/preset_right,
 /turf/open/floor/plasteel/dark/telecomms,
 /area/tcommsat/server)
 "eFO" = (
 /turf/closed/wall/mineral/wood,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
+"eGc" = (
+/obj/effect/spawner/lootdrop/grille_or_trash,
+/turf/open/floor/plating,
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "eGh" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -13838,7 +13974,9 @@
 /area/maintenance/port/fore)
 "eHF" = (
 /turf/open/floor/pod/dark,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "eHI" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -14022,7 +14160,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/pod,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "eIQ" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -14291,7 +14431,9 @@
 "ePd" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on,
 /turf/open/floor/plasteel/cafeteria,
-/area/service/chapel)
+/area/service/kitchen{
+	name = "Chapel Kitchen"
+	})
 "ePr" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -14627,7 +14769,9 @@
 	pixel_x = -28
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "eUs" = (
 /obj/structure/closet/crate,
 /obj/item/reagent_containers/glass/beaker/waterbottle/wataur,
@@ -14646,7 +14790,9 @@
 "eVh" = (
 /obj/machinery/light/small,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "eVl" = (
 /obj/machinery/door/airlock/research/glass{
 	name = "Genetics Research";
@@ -14699,7 +14845,9 @@
 /area/commons/fitness/pool)
 "eVy" = (
 /turf/open/floor/plasteel/cafeteria,
-/area/service/chapel)
+/area/service/kitchen{
+	name = "Chapel Kitchen"
+	})
 "eVO" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 10
@@ -14727,7 +14875,9 @@
 	req_access_txt = "12"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "eWu" = (
 /obj/structure/table/wood,
 /obj/item/screwdriver{
@@ -15981,7 +16131,9 @@
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "fvR" = (
 /obj/machinery/atmospherics/pipe/manifold/yellow/visible{
 	dir = 8
@@ -16392,7 +16544,9 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/cafeteria,
-/area/service/chapel)
+/area/service/kitchen{
+	name = "Chapel Kitchen"
+	})
 "fED" = (
 /obj/structure/chair,
 /obj/effect/turf_decal/stripes/line{
@@ -17597,7 +17751,7 @@
 "fXQ" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "fYg" = (
 /obj/machinery/computer/crew{
 	dir = 1
@@ -18294,7 +18448,7 @@
 	dir = 6
 	},
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "gkK" = (
 /obj/structure/window/plasma/reinforced{
 	dir = 1
@@ -18359,7 +18513,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "gmn" = (
 /obj/structure/chair/comfy/brown,
 /turf/open/floor/wood,
@@ -18387,7 +18541,9 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "gmM" = (
 /turf/open/floor/plating,
 /area/maintenance/department/electrical)
@@ -18564,7 +18720,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/oil,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "grf" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -18677,7 +18835,9 @@
 /obj/structure/railing,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "gsu" = (
 /obj/machinery/light/small,
 /turf/open/floor/plating,
@@ -18808,7 +18968,7 @@
 /obj/machinery/space_heater,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "gun" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -19700,7 +19860,9 @@
 /obj/structure/rack,
 /obj/item/stack/sheet/glass/fifty,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "gIP" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -20027,7 +20189,9 @@
 	dir = 4
 	},
 /turf/open/floor/plating/snowed/smoothed/icemoon,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "gQK" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
@@ -20163,7 +20327,9 @@
 /obj/item/canvas/nineteenXnineteen,
 /obj/item/canvas/nineteenXnineteen,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "gTI" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -20309,7 +20475,7 @@
 	dir = 6
 	},
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "gVa" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -20649,7 +20815,9 @@
 	dir = 8
 	},
 /turf/open/floor/plating/asteroid/snow/icemoon,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "hax" = (
 /obj/machinery/door/airlock/external,
 /obj/structure/fans/tiny,
@@ -20657,7 +20825,9 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "haI" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -20818,7 +20988,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "hcS" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -20962,7 +21134,9 @@
 	},
 /obj/structure/closet/crate/bin,
 /turf/open/floor/plasteel/cafeteria,
-/area/service/chapel)
+/area/service/kitchen{
+	name = "Chapel Kitchen"
+	})
 "hfc" = (
 /obj/machinery/light{
 	dir = 8
@@ -21581,7 +21755,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/key/security,
 /turf/open/floor/pod,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "hmP" = (
 /obj/machinery/door/airlock/external{
 	glass = 1;
@@ -21603,7 +21779,9 @@
 /obj/machinery/door/airlock/glass_large,
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "hnw" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "bridge blast";
@@ -22300,7 +22478,9 @@
 	dir = 10
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "hAO" = (
 /obj/machinery/light{
 	dir = 4
@@ -22389,7 +22569,9 @@
 	pixel_y = 6
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "hCq" = (
 /obj/structure/fence/corner{
 	dir = 5
@@ -22480,7 +22662,9 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/pod,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "hDZ" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -23451,7 +23635,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel/cafeteria,
-/area/service/chapel)
+/area/service/kitchen{
+	name = "Chapel Kitchen"
+	})
 "hUh" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 4
@@ -23840,7 +24026,9 @@
 	},
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "hZW" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -24227,7 +24415,9 @@
 	req_access_txt = "12"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "ihB" = (
 /obj/structure/chair{
 	dir = 8
@@ -24237,7 +24427,9 @@
 	},
 /obj/machinery/power/apc/auto_name/east,
 /turf/open/floor/pod,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "ihN" = (
 /obj/machinery/firealarm{
 	pixel_y = 24
@@ -24488,7 +24680,9 @@
 	req_access_txt = "12"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "ims" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -24574,7 +24768,9 @@
 	name = "north facing firelock"
 	},
 /turf/open/floor/plasteel/cafeteria,
-/area/service/chapel)
+/area/service/kitchen{
+	name = "Chapel Kitchen"
+	})
 "inn" = (
 /obj/structure/chair/comfy/black{
 	dir = 8
@@ -24588,7 +24784,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "inC" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -25092,7 +25290,9 @@
 /turf/open/floor/plasteel/stairs/right{
 	dir = 4
 	},
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "iyM" = (
 /obj/structure/railing/corner{
 	dir = 1
@@ -26171,7 +26371,9 @@
 /obj/structure/closet/crate,
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "iTy" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4
@@ -26423,7 +26625,9 @@
 "iXF" = (
 /obj/effect/decal/cleanable/oil,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "iXN" = (
 /obj/structure/frame/machine,
 /turf/open/floor/plating,
@@ -26593,7 +26797,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "jbL" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -27101,7 +27307,9 @@
 	icon_state = "stairs_t"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "jkJ" = (
 /turf/closed/wall,
 /area/mine/living_quarters)
@@ -27302,7 +27510,9 @@
 "jnZ" = (
 /obj/machinery/vending/kink,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "jol" = (
 /obj/machinery/atmospherics/pipe/simple/supply/visible,
 /obj/structure/railing{
@@ -27339,7 +27549,9 @@
 	pixel_y = 9
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "jqd" = (
 /obj/effect/turf_decal/trimline/brown/filled/line,
 /turf/open/floor/plasteel,
@@ -27569,7 +27781,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "jtb" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -28294,7 +28508,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/key/security,
 /turf/open/floor/pod,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "jHl" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -28431,7 +28647,9 @@
 /obj/effect/turf_decal/vg_decals/radiation,
 /obj/item/reagent_containers/glass/beaker/waterbottle/wataur,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "jKl" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Evidence Storage";
@@ -28547,7 +28765,9 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "jMf" = (
 /obj/structure/railing/corner{
 	dir = 4
@@ -28749,7 +28969,9 @@
 "jQO" = (
 /obj/machinery/space_heater,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "jQS" = (
 /obj/structure/rack,
 /obj/item/storage/box/rubbershot,
@@ -28821,7 +29043,9 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "jSS" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
@@ -28894,7 +29118,9 @@
 "jTB" = (
 /obj/structure/chair/stool,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "jTH" = (
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel/dark,
@@ -29227,7 +29453,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "kax" = (
 /obj/structure/sign/warning/electricshock,
 /turf/closed/wall/r_wall,
@@ -29504,7 +29730,9 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "kdX" = (
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -29564,7 +29792,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "ken" = (
 /obj/structure/stairs,
 /turf/open/floor/plasteel/dark,
@@ -29663,7 +29893,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "kgi" = (
 /obj/structure/table,
 /turf/open/floor/carpet,
@@ -29687,7 +29917,9 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "kgT" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -29730,7 +29962,9 @@
 	pixel_x = -30
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "khG" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
@@ -29749,7 +29983,7 @@
 	sortType = 30
 	},
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "khW" = (
 /obj/structure/sign/warning/electricshock,
 /turf/closed/wall/r_wall,
@@ -29836,6 +30070,11 @@
 	},
 /turf/open/floor/carpet,
 /area/science)
+"kjV" = (
+/turf/open/floor/plating,
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "kjZ" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -29976,7 +30215,9 @@
 /obj/effect/turf_decal/box,
 /obj/effect/turf_decal/vg_decals/numbers/two,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "kok" = (
 /obj/structure/closet/firecloset/full,
 /obj/structure/lattice/catwalk,
@@ -30566,7 +30807,9 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "kyd" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
@@ -31012,7 +31255,9 @@
 	icon_state = "2-8"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "kFQ" = (
 /obj/structure/table/wood,
 /obj/item/book/manual/wiki/security_space_law,
@@ -31995,7 +32240,9 @@
 /obj/structure/barricade/wooden,
 /obj/structure/lattice/catwalk,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "kYm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
@@ -32327,12 +32574,20 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "lez" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/closet/l3closet,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
+"leE" = (
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating,
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "leG" = (
 /obj/structure/stairs{
 	dir = 4;
@@ -32569,7 +32824,9 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/freezer,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "liu" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
 	dir = 1
@@ -32735,7 +32992,9 @@
 	},
 /obj/structure/railing,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "ljI" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -32809,7 +33068,9 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "lkR" = (
 /obj/structure/fence{
 	dir = 4
@@ -32970,7 +33231,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "lnt" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible/layer3{
 	dir = 10
@@ -33162,7 +33425,9 @@
 "lqR" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/pod/dark,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "lrb" = (
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -33255,7 +33520,9 @@
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/structure/closet,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "ltU" = (
 /obj/machinery/door/airlock{
 	desc = "A place to read books.";
@@ -33980,7 +34247,9 @@
 /obj/machinery/atmospherics/pipe/simple/multiz,
 /obj/effect/turf_decal/stripes/box,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "lIG" = (
 /obj/structure/table/wood,
 /turf/open/floor/carpet,
@@ -33991,7 +34260,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "lIP" = (
 /obj/machinery/light{
 	dir = 1
@@ -34327,7 +34596,9 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "lOs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -34490,7 +34761,9 @@
 	name = "3maintenance loot spawner"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "lRi" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -34595,7 +34868,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "lUf" = (
 /obj/structure/disposalpipe/trunk,
 /obj/machinery/disposal/bin,
@@ -35369,7 +35644,9 @@
 	dir = 4
 	},
 /turf/open/floor/plating/snowed/smoothed/icemoon,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "mjP" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -35443,7 +35720,9 @@
 	pixel_x = -28
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "mki" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -35651,6 +35930,12 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall/mineral/iron,
 /area/maintenance/department/chapel)
+"mnT" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "mnX" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor/border_only{
@@ -35864,7 +36149,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "msv" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -36034,6 +36321,12 @@
 /obj/structure/railing,
 /turf/open/floor/plating,
 /area/maintenance/aft)
+"mws" = (
+/obj/machinery/door/airlock/maintenance,
+/turf/open/floor/plating,
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "mwu" = (
 /obj/machinery/vending/coffee,
 /obj/item/radio/intercom{
@@ -36178,7 +36471,9 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "myc" = (
 /turf/closed/wall,
 /area/medical/morgue)
@@ -36612,7 +36907,9 @@
 	req_access_txt = "12"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "mFl" = (
 /obj/structure/sign/warning/securearea{
 	pixel_x = 32
@@ -37148,7 +37445,9 @@
 /obj/structure/plasticflaps/opaque,
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "mNc" = (
 /obj/item/kirbyplants/random,
 /obj/structure/window/reinforced{
@@ -37304,7 +37603,9 @@
 "mQa" = (
 /obj/structure/grille/broken,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "mQc" = (
 /obj/structure/railing/corner,
 /turf/open/floor/plating/snowed/smoothed/icemoon,
@@ -37788,7 +38089,9 @@
 	dir = 10
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "naq" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -38361,12 +38664,19 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
+"njS" = (
+/turf/closed/wall,
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "nkf" = (
 /obj/machinery/space_heater,
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/pod,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "nkA" = (
 /obj/machinery/door/airlock/external{
 	name = "Engineering External Access";
@@ -38505,7 +38815,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "nnW" = (
 /obj/structure/lattice/catwalk,
 /turf/open/floor/plating{
@@ -38649,7 +38961,9 @@
 	req_access_txt = "63"
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "nqY" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/maintenance{
@@ -38915,7 +39229,9 @@
 "nvY" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "nwp" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 8
@@ -38925,7 +39241,9 @@
 	dir = 6
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "nxo" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 4
@@ -39139,7 +39457,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "nBx" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -39723,7 +40043,9 @@
 "nLV" = (
 /obj/machinery/pipedispenser,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "nMl" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4
@@ -40153,7 +40475,9 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "nTT" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -40956,7 +41280,9 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "oiC" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
@@ -41253,7 +41579,9 @@
 /obj/effect/turf_decal/vg_decals/numbers/four,
 /obj/effect/decal/cleanable/glass,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "ooj" = (
 /obj/structure/girder,
 /turf/open/floor/plating,
@@ -41570,7 +41898,9 @@
 /area/maintenance/starboard/fore)
 "otJ" = (
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "otO" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 4
@@ -41645,7 +41975,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "ovt" = (
 /obj/machinery/conveyor{
 	id = "mining_internal"
@@ -41702,7 +42032,9 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/pod/dark,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "owU" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -41976,7 +42308,9 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "oCl" = (
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
@@ -42007,7 +42341,9 @@
 "oCY" = (
 /obj/machinery/door/airlock,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "oDm" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -42427,12 +42763,16 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "oKV" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "oKZ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -42586,7 +42926,9 @@
 	dir = 9
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "oOD" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 8
@@ -42664,7 +43006,7 @@
 	sortType = 28
 	},
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "oQQ" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 10
@@ -42899,7 +43241,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "oUn" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
@@ -45184,7 +45526,9 @@
 	dir = 6
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "pKZ" = (
 /obj/structure/toilet{
 	contents = newlist(/obj/item/toy/snappop/phoenix);
@@ -46313,7 +46657,9 @@
 	icon_state = "cobweb2"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "qfz" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -47563,7 +47909,9 @@
 /turf/open/floor/plasteel/stairs/left{
 	dir = 4
 	},
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "qCI" = (
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/carpet,
@@ -47714,7 +48062,9 @@
 "qGs" = (
 /obj/effect/decal/cleanable/oil,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "qGB" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 6
@@ -47955,7 +48305,9 @@
 /obj/effect/turf_decal/vg_decals/numbers/three,
 /obj/effect/decal/cleanable/glass,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "qKD" = (
 /obj/item/radio/intercom{
 	pixel_x = 25
@@ -48500,7 +48852,9 @@
 	pixel_x = -30
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "qTD" = (
 /obj/machinery/door/firedoor/border_only{
 	name = "south facing firelock"
@@ -48547,7 +48901,9 @@
 "qTQ" = (
 /obj/machinery/power/floodlight,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "qUb" = (
 /obj/machinery/computer/arcade{
 	dir = 8
@@ -48565,7 +48921,9 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "qUd" = (
 /obj/structure/chair/sofa/right{
 	dir = 1
@@ -48831,7 +49189,9 @@
 /obj/effect/decal/cleanable/oil,
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "raa" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -49021,7 +49381,9 @@
 	},
 /obj/item/reagent_containers/food/condiment/sugar,
 /turf/open/floor/plasteel/cafeteria,
-/area/service/chapel)
+/area/service/kitchen{
+	name = "Chapel Kitchen"
+	})
 "rdi" = (
 /obj/structure/table,
 /obj/item/mmi,
@@ -49038,7 +49400,9 @@
 "rdC" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/cafeteria,
-/area/service/chapel)
+/area/service/kitchen{
+	name = "Chapel Kitchen"
+	})
 "rdD" = (
 /obj/structure/lattice/catwalk,
 /turf/open/floor/plating,
@@ -49236,6 +49600,11 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/carpet,
 /area/commons/dorms)
+"rgB" = (
+/turf/closed/wall,
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "rgJ" = (
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/plating/snowed/smoothed/icemoon,
@@ -49289,7 +49658,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "rhM" = (
 /obj/structure/chair/sofa/right{
 	dir = 8
@@ -49577,7 +49946,7 @@
 	dir = 10
 	},
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "rlZ" = (
 /obj/item/kirbyplants{
 	icon_state = "plant-21"
@@ -49599,7 +49968,9 @@
 "rmB" = (
 /obj/effect/decal/cleanable/oil,
 /turf/open/floor/pod/dark,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "rmY" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -50178,7 +50549,9 @@
 "rvT" = (
 /obj/structure/firelock_frame,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "rwb" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -50647,7 +51020,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "rEu" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -50960,7 +51333,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "rIV" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
@@ -51070,7 +51445,9 @@
 "rMh" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "rMS" = (
 /obj/machinery/light{
 	dir = 4
@@ -51103,7 +51480,7 @@
 /obj/structure/mineral_door/woodrustic,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "rNC" = (
 /obj/machinery/door/airlock/maintenance{
 	req_access_txt = "12"
@@ -51147,7 +51524,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/punching_bag,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "rOd" = (
 /obj/effect/turf_decal/trimline/purple/filled/corner{
 	dir = 1
@@ -51170,7 +51549,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "rOA" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/visible,
 /turf/closed/wall/r_wall,
@@ -51797,7 +52178,7 @@
 	dir = 6
 	},
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "rVZ" = (
 /obj/structure/table/wood,
 /obj/machinery/keycard_auth{
@@ -51887,7 +52268,9 @@
 /obj/effect/turf_decal/bot_red,
 /obj/item/key/security,
 /turf/open/floor/pod,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "rWH" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
@@ -51938,7 +52321,9 @@
 	icon_state = "0-4"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "rXm" = (
 /obj/machinery/light{
 	dir = 1
@@ -51989,7 +52374,9 @@
 	pixel_y = 10
 	},
 /turf/open/floor/pod,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "rYx" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
@@ -52286,7 +52673,9 @@
 "see" = (
 /obj/machinery/light/floor,
 /turf/open/floor/plating/snowed/smoothed/icemoon,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "sej" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/grille/broken,
@@ -52793,7 +53182,9 @@
 "snc" = (
 /obj/structure/tank_dispenser/oxygen,
 /turf/open/floor/pod,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "snl" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -52963,7 +53354,7 @@
 "spT" = (
 /obj/structure/disposalpipe/segment,
 /turf/closed/wall/mineral/wood,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "sqa" = (
 /obj/machinery/light{
 	dir = 4
@@ -53474,7 +53865,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "sAe" = (
 /obj/effect/turf_decal/tile/yellow,
 /obj/item/radio/intercom{
@@ -53617,7 +54008,7 @@
 	sortType = 16
 	},
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "sBy" = (
 /obj/machinery/light{
 	dir = 4
@@ -53923,7 +54314,9 @@
 	},
 /obj/machinery/processor,
 /turf/open/floor/plasteel/cafeteria,
-/area/service/chapel)
+/area/service/kitchen{
+	name = "Chapel Kitchen"
+	})
 "sGt" = (
 /turf/closed/wall,
 /area/service/chapel/main)
@@ -54524,7 +54917,9 @@
 "sRm" = (
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "sRo" = (
 /obj/machinery/light{
 	dir = 4
@@ -54698,7 +55093,9 @@
 	pixel_y = -28
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "sVf" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -54847,7 +55244,9 @@
 	icon_state = "1-4"
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "sXD" = (
 /obj/machinery/vending/wardrobe/curator_wardrobe,
 /turf/open/floor/plasteel/cult,
@@ -55293,7 +55692,9 @@
 /obj/item/stack/sheet/metal/fifty,
 /obj/structure/rack,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "teX" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "Secure Brig Control";
@@ -55852,7 +56253,9 @@
 "toN" = (
 /obj/effect/spawner/structure/window/ice,
 /turf/open/floor/plating,
-/area/service/chapel)
+/area/service/kitchen{
+	name = "Chapel Kitchen"
+	})
 "tps" = (
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -55973,7 +56376,9 @@
 "trf" = (
 /obj/structure/easel,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "trg" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
@@ -56030,7 +56435,7 @@
 	sortType = 8
 	},
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "tsu" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -56068,7 +56473,9 @@
 "tty" = (
 /mob/living/simple_animal/hostile/mimic/crate,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "ttM" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -56557,7 +56964,7 @@
 	sortType = 7
 	},
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "tDJ" = (
 /obj/machinery/conveyor{
 	dir = 8;
@@ -56789,7 +57196,9 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "tHN" = (
 /obj/machinery/airalarm{
 	pixel_y = 23
@@ -57136,7 +57545,9 @@
 "tNA" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "tNZ" = (
 /turf/open/floor/plasteel/dark/corner{
 	dir = 1
@@ -57197,7 +57608,9 @@
 	dir = 6
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "tOI" = (
 /turf/closed/wall,
 /area/maintenance/department/electrical)
@@ -57257,7 +57670,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/mineral_door/woodrustic,
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "tQs" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -57295,7 +57708,9 @@
 	dir = 6
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "tQV" = (
 /turf/open/floor/plasteel,
 /area/science/circuit)
@@ -57785,7 +58200,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "tZn" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/firealarm{
@@ -57817,7 +58234,7 @@
 	dir = 10
 	},
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "tZJ" = (
 /turf/closed/wall,
 /area/maintenance/bar)
@@ -58026,7 +58443,7 @@
 	icon_state = "1-2"
 	},
 /turf/closed/wall/mineral/wood,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "uek" = (
 /obj/machinery/airalarm{
 	dir = 1;
@@ -58194,7 +58611,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "uhq" = (
 /obj/structure/railing{
 	dir = 8
@@ -58286,7 +58705,9 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "ujv" = (
 /obj/machinery/door/window/southleft,
 /obj/machinery/shower{
@@ -58770,7 +59191,9 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "uqK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -58783,7 +59206,9 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "ure" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -59310,7 +59735,9 @@
 "uzE" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel/cafeteria,
-/area/service/chapel)
+/area/service/kitchen{
+	name = "Chapel Kitchen"
+	})
 "uzG" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -59784,7 +60211,9 @@
 "uHc" = (
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "uHd" = (
 /obj/machinery/gibber,
 /turf/open/floor/plasteel/freezer,
@@ -59871,7 +60300,9 @@
 /obj/effect/turf_decal/stripes/corner,
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "uJR" = (
 /obj/effect/decal/cleanable/oil,
 /obj/structure/lattice/catwalk,
@@ -60006,7 +60437,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "uLU" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 1
@@ -60123,7 +60554,9 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "uOk" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
@@ -60181,7 +60614,9 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "uPf" = (
 /obj/machinery/door/window/northleft{
 	dir = 2;
@@ -60567,7 +61002,9 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "uVF" = (
 /obj/machinery/door/window/southright,
 /obj/machinery/shower{
@@ -62215,7 +62652,7 @@
 "vwV" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "vwW" = (
 /obj/machinery/vending/hydronutrients,
 /turf/open/floor/plasteel/dark,
@@ -62398,7 +62835,9 @@
 /obj/machinery/atmospherics/pipe/manifold/general/visible,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "vBh" = (
 /obj/machinery/conveyor{
 	dir = 1;
@@ -62447,7 +62886,9 @@
 	},
 /obj/machinery/chem_master/condimaster,
 /turf/open/floor/plasteel/cafeteria,
-/area/service/chapel)
+/area/service/kitchen{
+	name = "Chapel Kitchen"
+	})
 "vCr" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -62807,7 +63248,9 @@
 	dir = 5
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "vJj" = (
 /obj/structure/chair/comfy/brown{
 	dir = 1
@@ -62947,7 +63390,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/oil,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "vKP" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
@@ -63440,7 +63885,7 @@
 	dir = 4
 	},
 /turf/closed/wall/mineral/wood,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "vTO" = (
 /obj/structure/fence,
 /turf/open/floor/plating/snowed/smoothed/icemoon,
@@ -63523,7 +63968,9 @@
 /obj/structure/closet/cardboard,
 /obj/item/reagent_containers/food/snacks/beans,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "vVA" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -63899,7 +64346,9 @@
 	pixel_x = 32
 	},
 /turf/open/floor/plasteel/cafeteria,
-/area/service/chapel)
+/area/service/kitchen{
+	name = "Chapel Kitchen"
+	})
 "wcG" = (
 /obj/item/tank/internals/emergency_oxygen/double{
 	pixel_x = 3
@@ -64224,7 +64673,9 @@
 /obj/effect/turf_decal/box,
 /obj/effect/turf_decal/vg_decals/numbers/one,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "wiL" = (
 /obj/item/kirbyplants/random,
 /turf/open/floor/plasteel,
@@ -64376,7 +64827,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "wnf" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -64642,7 +65095,9 @@
 	name = "Gym Locker"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "wrG" = (
 /obj/structure/sink/kitchen{
 	pixel_y = 28
@@ -64703,7 +65158,9 @@
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/east,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "wsC" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
@@ -65436,6 +65893,11 @@
 	dir = 1
 	},
 /area/service/chapel/main/monastery)
+"wER" = (
+/turf/closed/wall/mineral/iron,
+/area/service/kitchen{
+	name = "Chapel Kitchen"
+	})
 "wEX" = (
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel/dark,
@@ -65511,7 +65973,9 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "wGU" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -65561,7 +66025,9 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "wHl" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -65772,7 +66238,9 @@
 	},
 /obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "wLa" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -66081,7 +66549,9 @@
 /obj/structure/bed,
 /obj/item/bedsheet/blue,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "wUd" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 9
@@ -66170,7 +66640,9 @@
 	},
 /obj/structure/weightmachine/weightlifter,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "wVA" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -66334,7 +66806,7 @@
 "wYx" = (
 /obj/machinery/space_heater,
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "wYz" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -66400,7 +66872,9 @@
 	},
 /obj/structure/railing/corner,
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "wZx" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
@@ -66683,7 +67157,9 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "xfI" = (
 /turf/open/floor/plasteel/white,
 /area/science/misc_lab)
@@ -66766,7 +67242,9 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/brig)
+/area/security/office{
+	name = "Security Exterior Access"
+	})
 "xgP" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
@@ -67465,7 +67943,9 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "xrQ" = (
 /obj/machinery/atmospherics/components/unary/tank/air{
 	dir = 1;
@@ -68181,7 +68661,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard/fore)
+/area/maintenance/starboard{
+	name = "Service Basement"
+	})
 "xFm" = (
 /obj/machinery/power/deck_relay,
 /obj/effect/turf_decal/stripes/box,
@@ -68277,7 +68759,7 @@
 "xHi" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/closed/wall/mineral/wood,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "xHn" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /obj/structure/railing{
@@ -69500,7 +69982,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/closed/wall/mineral/wood,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "yfI" = (
 /turf/closed/wall,
 /area/medical/psychology)
@@ -69785,7 +70267,7 @@
 "ykX" = (
 /obj/structure/mineral_door/woodrustic,
 /turf/open/floor/plating,
-/area/maintenance/disposal)
+/area/icemoon/surface/outdoors)
 "ylk" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -175811,9 +176293,9 @@ mAW
 mAW
 mAW
 mAW
-nhR
+rgB
 hax
-nhR
+rgB
 mAW
 mAW
 mAW
@@ -176068,9 +176550,9 @@ mAW
 mAW
 mAW
 mAW
-nhR
+rgB
 dEr
-nhR
+rgB
 mAW
 mAW
 mAW
@@ -176314,29 +176796,29 @@ mAW
 mAW
 mAW
 mAW
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
 mAW
-nhR
-nhR
+rgB
+rgB
 oCe
-nhR
+rgB
 mAW
 mAW
-nhR
-nhR
+rgB
+rgB
 xrI
-nhR
-nhR
-nhR
-nhR
+rgB
+rgB
+rgB
+rgB
 mAW
 mAW
 xdf
@@ -176571,30 +177053,30 @@ mAW
 mAW
 mAW
 mAW
-nhR
-mqn
-nhR
+rgB
+kjV
+rgB
 uJM
 asW
 wmT
 asW
 keh
-nhR
-nhR
-nhR
+rgB
+rgB
+rgB
 bqz
-rtx
-nhR
-nhR
-nhR
-nhR
+leE
+rgB
+rgB
+rgB
+rgB
 cDK
 cEV
 nao
-nhR
+rgB
 qTQ
-nhR
-nhR
+rgB
+rgB
 mAW
 xdf
 xdf
@@ -176821,37 +177303,37 @@ xdf
 xdf
 mAW
 mAW
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
-mqn
-nhR
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
+kjV
+rgB
 tNA
 wiI
 eyO
 qKa
 aQm
-nhR
+rgB
 chd
 wZo
 wHg
 wHg
 ujk
-unc
+eGc
 gqS
-nhR
+rgB
 rMh
 vKJ
 bfm
 eWh
 nvY
-unc
-nhR
+eGc
+rgB
 mAW
 xdf
 xdf
@@ -177078,11 +177560,11 @@ xdf
 xdf
 mAW
 mAW
-nhR
+rgB
 rvT
-mqn
-mqn
-mqn
+kjV
+kjV
+kjV
 bDb
 sRm
 fvE
@@ -177091,24 +177573,24 @@ eWh
 tNA
 eyO
 jKe
-mqn
+kjV
 adX
-nhR
+rgB
 iXF
 ljF
-unc
-mqn
+eGc
+kjV
 ljF
 nvY
 sRm
-nhR
+rgB
 kgD
 hAM
 vBe
-nhR
-mqn
+rgB
+kjV
 qZZ
-nhR
+rgB
 mAW
 xdf
 xdf
@@ -177335,37 +177817,37 @@ xdf
 xdf
 mAW
 mAW
-nhR
-mqn
+rgB
+kjV
 bDb
-mqn
+kjV
 nvY
-mqn
-mqn
-uwY
+kjV
+kjV
+mnT
 otJ
-nhR
+rgB
 tNA
 koh
-mqn
+kjV
 ooi
 aQm
-nhR
-unc
+rgB
+eGc
 gst
-mqn
+kjV
 nvY
 eDA
 dkM
 dkM
 enN
-mqn
+kjV
 tOy
 nnI
-nhR
-mqn
-nhR
-nhR
+rgB
+kjV
+rgB
+rgB
 mAW
 xdf
 xdf
@@ -177592,36 +178074,36 @@ xdf
 xdf
 mAW
 mAW
-nhR
+rgB
 dEr
-mqn
-mqn
-mqn
+kjV
+kjV
+kjV
 nvY
-mqn
+kjV
 fvE
 mQa
-nhR
+rgB
 jbB
 elr
 rIT
 elr
 uPa
-nhR
+rgB
 nvY
 xfw
-nhR
+rgB
 hZO
 sRm
 nvY
-unc
-nhR
+eGc
+rgB
 lnp
 uqE
 nwp
-nhR
+rgB
 eWh
-nhR
+rgB
 mAW
 mAW
 xdf
@@ -177849,36 +178331,36 @@ xdf
 xdf
 mAW
 mAW
-nhR
-mqn
+rgB
+kjV
 nvY
-mqn
+kjV
 nvY
-mqn
+kjV
 rvT
-uwY
+mnT
 rXh
-nhR
-nhR
-nhR
-nhR
+rgB
+rgB
+rgB
+rgB
 mMW
-nhR
-nhR
-nhR
+rgB
+rgB
+rgB
 imr
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
-rtx
-nhR
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
+leE
+rgB
 mAW
 xdf
 xdf
@@ -178106,16 +178588,16 @@ xdf
 xdf
 mAW
 mAW
-nhR
-mqn
+rgB
+kjV
 nvY
-mqn
+kjV
 iTd
-mqn
-mqn
+kjV
+kjV
 hnu
 aTp
-nhR
+rgB
 tQN
 jta
 bMR
@@ -178123,7 +178605,7 @@ bDt
 qTz
 qGs
 otJ
-mqn
+kjV
 pKT
 khu
 nBw
@@ -178135,7 +178617,7 @@ dVD
 cko
 cMu
 vIF
-nhR
+rgB
 mAW
 xdf
 xdf
@@ -178363,16 +178845,16 @@ xdf
 xdf
 mAW
 mAW
-nhR
+rgB
 sRm
-mqn
-mqn
-mqn
+kjV
+kjV
+kjV
 nvY
-mqn
+kjV
 uHc
 uOj
-nhR
+rgB
 uqK
 nBw
 lTO
@@ -178384,15 +178866,15 @@ tZl
 cpd
 otJ
 bDt
-nhR
-unc
-mqn
+rgB
+eGc
+kjV
 sRm
 nvY
 iXF
-mqn
+kjV
 bbo
-nhR
+rgB
 mAW
 xdf
 xdf
@@ -178620,36 +179102,36 @@ xdf
 xdf
 mAW
 mAW
-nhR
+rgB
 bDb
-mqn
-mqn
+kjV
+kjV
 rvT
-mqn
+kjV
 bDb
 fvE
 dVz
-nhR
+rgB
 oKO
-nhR
+rgB
 jke
 jke
-nhR
+rgB
 cWt
 jQO
 mya
-mqn
+kjV
 otJ
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
 nvY
 bbo
-nhR
+rgB
 mAW
 xdf
 xdf
@@ -178877,36 +179359,36 @@ xdf
 mAW
 mAW
 qDs
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
 cjb
-nhR
+rgB
 lOh
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
 bDt
-mqn
+kjV
 hnu
-mqn
+kjV
 nvY
 iTd
 bDb
 jnZ
-nhR
+rgB
 nvY
 bbo
-nhR
+rgB
 mAW
 xdf
 xdf
@@ -179141,29 +179623,29 @@ qDs
 qDs
 qDs
 qDs
-nhR
+rgB
 kxS
-mqn
+kjV
 boc
 fvE
 wry
 rNW
 mka
-otE
+mws
 eUe
-nhR
-mqn
-mqn
+rgB
+kjV
+kjV
 uHc
-mqn
+kjV
 nvY
-mqn
-mqn
+kjV
+kjV
 rvT
-nhR
-unc
+rgB
+eGc
 rOe
-nhR
+rgB
 mAW
 xdf
 xdf
@@ -179391,36 +179873,36 @@ abU
 qDs
 qDs
 qDs
-uwY
-uwY
-nhR
-nhR
-nhR
-uwY
-uwY
-nhR
+mnT
+mnT
+rgB
+rgB
+rgB
+mnT
+mnT
+rgB
 cjb
 otJ
 jLT
-uwY
+mnT
 tHE
 gmE
-mqn
-nhR
+kjV
+rgB
 xFi
-nhR
-mqn
+rgB
+kjV
 otJ
-nhR
-mqn
-mqn
-mqn
-mqn
-mqn
+rgB
+kjV
+kjV
+kjV
+kjV
+kjV
 ihA
 diB
 acu
-nhR
+rgB
 mAW
 xdf
 xdf
@@ -179648,13 +180130,13 @@ qDs
 qDs
 rzD
 qDs
-uwY
+mnT
 trf
 otJ
-mqn
+kjV
 oCY
 otJ
-mqn
+kjV
 oCY
 cFT
 bHg
@@ -179663,21 +180145,21 @@ uhp
 erJ
 oOB
 hcR
-nhR
+rgB
 clY
-nhR
+rgB
 hax
 kdL
-nhR
+rgB
 bDb
-mqn
+kjV
 nvY
-mqn
-mqn
-nhR
+kjV
+kjV
+rgB
 oKV
 uVt
-nhR
+rgB
 mAW
 mAW
 mAW
@@ -179905,14 +180387,14 @@ qDs
 rzD
 rzD
 qDs
-uwY
+mnT
 gTf
 mss
 otJ
-nhR
-uwY
-uwY
-nhR
+rgB
+mnT
+mnT
+rgB
 ccT
 ltP
 qUc
@@ -179920,15 +180402,15 @@ fvE
 cah
 wVp
 otJ
-nhR
+rgB
 lit
-nhR
+rgB
 nvY
 eVh
-nhR
+rgB
 rvT
 sRm
-mqn
+kjV
 bDb
 bDb
 sUc
@@ -180162,31 +180644,31 @@ qDs
 rzD
 rzD
 qDs
-uwY
+mnT
 lQZ
 inw
 wUb
-nhR
+rgB
 qDs
 qDs
-nhR
-nhR
-nhR
+rgB
+rgB
+rgB
 bua
-nhR
-nhR
-nhR
+rgB
+rgB
+rgB
 jTB
-nhR
-nhR
-nhR
+rgB
+rgB
+rgB
 oCe
 oCe
-nhR
-nhR
-nhR
+rgB
+rgB
+rgB
 nTP
-nhR
+rgB
 sUc
 sUc
 eZO
@@ -180419,31 +180901,31 @@ qDs
 rzD
 rzD
 qDs
-uwY
-uwY
-nhR
-nhR
-nhR
+mnT
+mnT
+rgB
+rgB
+rgB
 qDs
 qDs
-nhR
+rgB
 dXu
 lIt
 ley
 gII
 teT
-nhR
-nhR
-nhR
+rgB
+rgB
+rgB
 mAW
 hal
 uQc
 uQc
 qDs
 mAW
-nhR
+rgB
 kYd
-rtx
+leE
 sUc
 iXa
 qCN
@@ -180683,13 +181165,13 @@ qDs
 qDs
 qDs
 mAW
-nhR
+rgB
 dal
-oWN
+dkN
 oiA
 aQy
 nLV
-nhR
+rgB
 mAW
 mAW
 mAW
@@ -180698,8 +181180,8 @@ uQc
 uQc
 qDs
 mAW
-nhR
-nhR
+rgB
+rgB
 jSi
 sUc
 iXa
@@ -180940,13 +181422,13 @@ mAW
 mAW
 mAW
 mAW
-nhR
+rgB
 vVw
 ahC
 kFK
 wsw
 hCd
-nhR
+rgB
 mAW
 mAW
 mAW
@@ -180956,7 +181438,7 @@ qDs
 qDs
 mAW
 mAW
-nhR
+rgB
 nvY
 sUc
 sUc
@@ -181197,13 +181679,13 @@ mAW
 mAW
 mAW
 mAW
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
-nhR
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
+rgB
 mAW
 mAW
 mAW
@@ -181213,9 +181695,9 @@ uQc
 mAW
 mAW
 mAW
-nhR
+rgB
 qfu
-mqn
+kjV
 sUc
 sUc
 sUc
@@ -181470,13 +181952,13 @@ uQc
 mAW
 mAW
 mAW
-nhR
-nhR
+rgB
+rgB
 jqc
 boB
 tty
-nhR
-nhR
+rgB
+rgB
 mAW
 mAW
 mAW
@@ -181728,11 +182210,11 @@ mAW
 mAW
 mAW
 mAW
-nhR
-nhR
-nhR
-nhR
-nhR
+rgB
+rgB
+rgB
+rgB
+rgB
 mAW
 mAW
 xdf
@@ -185695,12 +186177,12 @@ xdf
 xdf
 xdf
 mAW
-vDE
-vDE
+wER
+wER
 toN
 toN
-vDE
-vDE
+wER
+wER
 fKD
 mmB
 vDE
@@ -185952,12 +186434,12 @@ xdf
 xdf
 xdf
 mAW
-vDE
+wER
 eVy
 eVy
 rdc
 csj
-vDE
+wER
 omp
 omp
 lKO
@@ -186209,12 +186691,12 @@ xdf
 xdf
 xdf
 mAW
-vDE
+wER
 hfa
 ePd
 rdC
 dEg
-byF
+eBt
 iXi
 iXi
 fGx
@@ -186466,7 +186948,7 @@ xdf
 xdf
 xdf
 mAW
-vDE
+wER
 sGj
 eVy
 eVy
@@ -186723,7 +187205,7 @@ xdf
 xdf
 xdf
 mAW
-vDE
+wER
 vCq
 eVy
 akP
@@ -186980,12 +187462,12 @@ xdf
 xdf
 xdf
 mAW
-vDE
+wER
 wcs
 eVy
 eVy
 fEA
-ipi
+ejq
 omp
 omp
 vDE
@@ -187237,12 +187719,12 @@ xdf
 xdf
 xdf
 mAW
-vDE
-vDE
+wER
+wER
 dHp
 dHp
-vDE
-vDE
+wER
+wER
 duw
 qGo
 tKC
@@ -228365,10 +228847,10 @@ uJK
 kPo
 ttc
 ksS
-mwK
-mwK
-mwK
-mwK
+njS
+njS
+njS
+njS
 qOf
 qOf
 qOf
@@ -228882,7 +229364,7 @@ ksS
 cLd
 iyK
 qCz
-mwK
+njS
 qOf
 qOf
 qOf
@@ -229139,10 +229621,10 @@ ksS
 nqX
 cNO
 sUZ
-mwK
-mwK
-mwK
-mwK
+njS
+njS
+njS
+njS
 frJ
 frJ
 frJ
@@ -229399,7 +229881,7 @@ azM
 hmJ
 evj
 jHc
-mwK
+njS
 see
 frJ
 frJ
@@ -230170,7 +230652,7 @@ eIO
 azF
 nkf
 rWG
-mwK
+njS
 see
 frJ
 frJ
@@ -234472,7 +234954,7 @@ frJ
 eFO
 oTZ
 oQI
-rgK
+pgL
 eFO
 uDn
 qNI
@@ -234729,7 +235211,7 @@ frJ
 eFO
 oTZ
 bvD
-rgK
+pgL
 eFO
 uDn
 qNI

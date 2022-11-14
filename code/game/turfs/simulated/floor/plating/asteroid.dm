@@ -180,11 +180,11 @@
 
 /turf/open/floor/plating/asteroid/snow/icemoon
 	baseturfs = /turf/open/openspace/icemoon
-	initial_gas_mix = FROZEN_ATMOS
+	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 	slowdown = 0
 
 /turf/open/lava/plasma/ice_moon
-	initial_gas_mix = FROZEN_ATMOS
+	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 	baseturfs = /turf/open/lava/plasma/ice_moon
 	planetary_atmos = TRUE
 
@@ -205,7 +205,7 @@
 // 	return list("snow-ice")
 /turf/open/floor/plating/asteroid/snow/ice/icemoon
 	baseturfs = /turf/open/floor/plating/asteroid/snow/ice/icemoon
-	initial_gas_mix = FROZEN_ATMOS
+	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 	planetary_atmos = TRUE
 	slowdown = 0
 

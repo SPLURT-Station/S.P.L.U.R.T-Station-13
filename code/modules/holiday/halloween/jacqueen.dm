@@ -409,12 +409,10 @@
 
 /mob/living/simple_animal/jacq/proc/trick(mob/living/carbon/C, gender)
 	var/option
-	if(ishuman(C) && (C.gender == MALE || C.gender == FEMALE))
-		option = rand(1,8)
-	else if (ishuman(C))
-		option = rand(1,7)
-	else
+	if(ishuman(C))
 		option = rand(1,6)
+	else
+		option = rand(1,5)
 	switch(option)
 		if(1)
 			visible_message("<b>[src]</b> waves their arms around, <span class='spooky'>\"Hocus pocus, making friends is now your focus!\"</span>")
@@ -444,10 +442,6 @@
 			jacqrunes("A new familiar for me, and you'll see it's thee!", C)
 			C.reagents.add_reagent(/datum/reagent/fermi/secretcatchem, 30)
 		if(6)
-			visible_message("<b>[src]</b> waves their arms around, <span class='spooky'>\"There will be some fun on this night, go on and find someone you like!\"</span>")
-			jacqrunes("There will be some fun on this night, go on and find someone you like!", C)
-			C.reagents.add_reagent(/datum/reagent/drug/aphrodisiacplus, 15)
-		if(7)
 			visible_message("<b>[src]</b> waves their arms around, <span class='spooky'>\"While you may not be a ghost, for this sheet you'll always be it's host.\"</span>")
 			jacqrunes("While you may not be a ghost, for this sheet you'll always be it's host.", C)
 			var/mob/living/carbon/human/H = C
@@ -456,10 +450,6 @@
 				H.dropItemToGround(W, TRUE)
 			var/ghost = new /obj/item/clothing/suit/ghost_sheet/sticky
 			H.equip_to_slot(ghost, ITEM_SLOT_OCLOTHING, 1, 1)
-		if(8)
-			visible_message("<b>[src]</b> waves their arms around, <span class='spooky'>\"Who cares, it's lad or lass? You'll take a new life glanсe!\"</span>")
-			jacqrunes("Who cares, it's lad or lass? You'll take a new life glanсe!", C)
-			C.set_gender(C.gender == MALE ? FEMALE : MALE)
 	poof()
 
 //Blame Fel

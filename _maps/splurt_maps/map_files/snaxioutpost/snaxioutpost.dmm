@@ -2112,12 +2112,12 @@
 	dir = 1;
 	name = "north facing firelock"
 	},
-/obj/machinery/door/airlock/engineering/glass{
-	name = "Power Storage";
-	req_access_txt = "11"
+/obj/machinery/door/airlock/security/glass{
+	name = "Security Office";
+	req_access_txt = "63"
 	},
 /turf/open/floor/plating,
-/area/engineering/storage)
+/area/security/checkpoint/engineering)
 "aKp" = (
 /obj/machinery/button/door{
 	id = "Cell1";
@@ -5453,6 +5453,9 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 6
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
 	},
 /turf/open/floor/plasteel,
 /area/security/checkpoint/medical)
@@ -10050,14 +10053,17 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/command/nuke_storage)
 "dtQ" = (
+/obj/structure/table,
+/obj/item/paper_bin{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/book/manual/splurt_space_law,
 /obj/structure/cable{
-	icon_state = "1-2"
+	icon_state = "4-8"
 	},
-/obj/structure/lattice/catwalk,
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
-/area/maintenance/starboard/aft)
+/turf/open/floor/plasteel,
+/area/security/checkpoint/engineering)
 "dtV" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -10387,7 +10393,7 @@
 /area/maintenance/aft/secondary)
 "dzV" = (
 /turf/closed/wall/r_wall,
-/area/engineering/storage)
+/area/security/checkpoint/engineering)
 "dAp" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/lattice/catwalk,
@@ -24461,8 +24467,11 @@
 /turf/open/floor/plasteel/white,
 /area/medical/genetics)
 "ieP" = (
-/turf/open/floor/plating,
-/area/engineering/storage)
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel,
+/area/security/checkpoint/engineering)
 "ieX" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/plating,
@@ -24835,6 +24844,15 @@
 	},
 /obj/effect/turf_decal/tile/red,
 /obj/structure/closet/secure_closet/security/med,
+/obj/machinery/power/apc{
+	areastring = "/area/security/checkpoint/medical";
+	dir = 8;
+	name = "Medbay Security APC";
+	pixel_x = -25
+	},
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
 /turf/open/floor/plasteel,
 /area/security/checkpoint/medical)
 "imh" = (
@@ -25427,13 +25445,16 @@
 /turf/open/floor/plasteel/dark,
 /area/science/robotics/lab)
 "ixE" = (
-/obj/structure/grille,
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/structure/chair/office/dark{
+	dir = 8
 	},
-/obj/structure/lattice/catwalk,
-/turf/open/floor/plating,
-/area/maintenance/starboard/aft)
+/obj/item/radio/intercom{
+	name = "Station Intercom (General)";
+	pixel_y = -35
+	},
+/obj/effect/landmark/start/depsec/engineering,
+/turf/open/floor/plasteel,
+/area/security/checkpoint/engineering)
 "ixF" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -28086,6 +28107,16 @@
 	},
 /turf/open/floor/plating/snowed/smoothed,
 /area/service/chapel)
+"jvq" = (
+/obj/machinery/computer/secure_data{
+	dir = 4
+	},
+/obj/machinery/computer/security/telescreen/engine{
+	dir = 4;
+	pixel_x = -24
+	},
+/turf/open/floor/plasteel,
+/area/security/checkpoint/engineering)
 "jvF" = (
 /obj/structure/chair/sofa/right{
 	dir = 8
@@ -30321,11 +30352,14 @@
 /turf/open/floor/plating,
 /area/engineering/atmos)
 "kkV" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_x = 30
 	},
-/turf/open/floor/plating,
-/area/engineering/storage)
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel,
+/area/security/checkpoint/engineering)
 "klj" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -31465,6 +31499,9 @@
 /area/engineering/storage/tech)
 "kFJ" = (
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel,
 /area/security/checkpoint/medical)
 "kFK" = (
@@ -39654,8 +39691,13 @@
 /turf/open/floor/grass,
 /area/hallway/primary/starboard)
 "nzx" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/starboard/aft)
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1;
+	name = "north facing firelock"
+	},
+/turf/open/floor/plasteel,
+/area/security/checkpoint/engineering)
 "nzK" = (
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
@@ -44103,15 +44145,12 @@
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "pcO" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -24
 	},
-/turf/open/floor/plating,
-/area/engineering/storage)
+/turf/open/floor/plasteel,
+/area/security/checkpoint/engineering)
 "pdg" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -49588,15 +49627,11 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
 "rac" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Engineering Maintenance";
-	req_access_txt = "10"
-	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plating,
-/area/maintenance/starboard/aft)
+/turf/closed/wall/r_wall,
+/area/security/checkpoint/engineering)
 "ray" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -53178,12 +53213,13 @@
 /turf/open/floor/plating/snowed/smoothed,
 /area/maintenance/department/electrical)
 "sfi" = (
-/obj/structure/cable{
-	icon_state = "0-4"
+/obj/machinery/requests_console{
+	department = "Security";
+	departmentType = 5;
+	pixel_y = -30
 	},
-/obj/machinery/power/port_gen/pacman,
-/turf/open/floor/plating,
-/area/engineering/storage)
+/turf/open/floor/plasteel,
+/area/security/checkpoint/engineering)
 "sfr" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -54287,10 +54323,6 @@
 /area/icemoon/surface/outdoors)
 "sAe" = (
 /obj/effect/turf_decal/tile/yellow,
-/obj/item/radio/intercom{
-	name = "Station Intercom (General)";
-	pixel_y = -35
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -59189,8 +59221,8 @@
 	icon_state = "1-2"
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/floor/plating,
-/area/maintenance/starboard/aft)
+/turf/closed/wall/r_wall,
+/area/security/checkpoint/engineering)
 "ujj" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor/heavy,
@@ -60684,12 +60716,9 @@
 /turf/closed/wall,
 /area/maintenance/port/aft)
 "uFY" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/effect/landmark/blobstart,
-/turf/open/floor/plating,
-/area/engineering/storage)
+/obj/machinery/vending/wardrobe/sec_wardrobe,
+/turf/open/floor/plasteel,
+/area/security/checkpoint/engineering)
 "uGn" = (
 /mob/living/simple_animal/pet/cat/Runtime{
 	desc = "Meow.";
@@ -65873,12 +65902,12 @@
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "wvQ" = (
-/obj/structure/closet/crate,
-/obj/item/stack/sheet/mineral/plasma{
-	amount = 30
+/obj/structure/closet/secure_closet/security/engine,
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
-/turf/open/floor/plating,
-/area/engineering/storage)
+/turf/open/floor/plasteel,
+/area/security/checkpoint/engineering)
 "wvU" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -66188,6 +66217,9 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/red,
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
 /turf/open/floor/plasteel,
 /area/security/checkpoint/medical)
 "wBn" = (
@@ -66606,6 +66638,11 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/electrical)
+"wHM" = (
+/obj/structure/lattice/catwalk,
+/obj/effect/landmark/blobstart,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "wHO" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -70301,10 +70338,21 @@
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "yal" = (
-/obj/structure/closet/cardboard,
-/obj/item/clothing/head/foilhat,
-/turf/open/floor/plating,
-/area/maintenance/starboard/aft)
+/obj/structure/table,
+/obj/machinery/recharger{
+	pixel_y = 4
+	},
+/obj/machinery/power/apc{
+	areastring = "/area/security/checkpoint/engineering";
+	dir = 8;
+	name = "Engineering Security APC";
+	pixel_x = -25
+	},
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/open/floor/plasteel,
+/area/security/checkpoint/engineering)
 "yaw" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Central Access"
@@ -255007,9 +255055,9 @@ ewA
 sfE
 fov
 rac
-dtQ
 uiX
-ixE
+uiX
+uiX
 ucH
 smv
 iCi
@@ -255265,8 +255313,8 @@ iDi
 bnK
 nzx
 yal
-cVR
-nYw
+jvq
+dzV
 wBc
 oSl
 wBc
@@ -255520,9 +255568,9 @@ ivx
 ivx
 cMB
 qkM
-dzV
-dzV
-dzV
+nzx
+dtQ
+ixE
 dzV
 oSl
 oSl
@@ -255777,13 +255825,13 @@ ceq
 ivx
 fOD
 sAe
-dzV
+nzx
 wvQ
 sfi
 dzV
 oSl
 oSl
-oSl
+wHM
 oSl
 nYw
 vgC
@@ -256034,7 +256082,7 @@ lZG
 lwk
 fOD
 fwV
-dzV
+nzx
 ieP
 pcO
 dzV

@@ -24,3 +24,4 @@
 
 /turf/open/chasm/icemoon/snaxi
 	initial_gas_mix = FROZEN_ATMOS
+

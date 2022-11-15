@@ -4072,6 +4072,21 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel/dark/side,
 /area/hallway/primary/starboard)
+"bxD" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/open/floor/plating/snowed/smoothed,
+/area/icemoon/surface/outdoors)
 "bxH" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -10408,7 +10423,11 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/smes,
+/obj/machinery/power/smes{
+	output_level = 100000;
+	input_level = 100000;
+	charge = 500000
+	},
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/aft)
 "dAY" = (
@@ -11284,7 +11303,10 @@
 /obj/machinery/airalarm{
 	pixel_y = 28
 	},
-/obj/machinery/power/smes/engineering,
+/obj/machinery/power/smes/engineering{
+	input_level = 100000;
+	output_level = 100000
+	},
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "dNs" = (
@@ -12230,7 +12252,11 @@
 /area/security/courtroom)
 "edd" = (
 /obj/structure/cable,
-/obj/machinery/power/smes,
+/obj/machinery/power/smes{
+	output_level = 100000;
+	input_level = 100000;
+	charge = 500000
+	},
 /turf/open/floor/plasteel,
 /area/maintenance/department/electrical)
 "edA" = (
@@ -23004,6 +23030,13 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/commons/cryopod)
+"hFz" = (
+/obj/machinery/power/rtg,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/open/floor/plating/asteroid/snow/icemoon/snaxi,
+/area/icemoon/surface/outdoors)
 "hFG" = (
 /obj/machinery/power/apc/auto_name/west,
 /obj/structure/cable{
@@ -25724,6 +25757,18 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel/dark,
 /area/engineering/atmos)
+"iCS" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/open/floor/plating/snowed/smoothed,
+/area/icemoon/surface/outdoors)
 "iDb" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
@@ -39998,10 +40043,13 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/smes/engineering,
 /obj/item/radio/intercom{
 	name = "Station Intercom (General)";
 	pixel_y = 20
+	},
+/obj/machinery/power/smes/engineering{
+	input_level = 100000;
+	output_level = 100000
 	},
 /turf/open/floor/plasteel,
 /area/engineering/main)
@@ -44218,7 +44266,10 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/smes/engineering,
+/obj/machinery/power/smes/engineering{
+	input_level = 100000;
+	output_level = 100000
+	},
 /turf/open/floor/plasteel,
 /area/engineering/main)
 "pei" = (
@@ -44928,6 +44979,13 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
+"ppZ" = (
+/obj/machinery/power/rtg,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plating/asteroid/snow/icemoon/snaxi,
+/area/icemoon/surface/outdoors)
 "pqg" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
@@ -45457,6 +45515,9 @@
 /area/maintenance/bar)
 "pCg" = (
 /obj/machinery/light,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/open/floor/plating/asteroid/snow/icemoon/snaxi,
 /area/maintenance/solars/port/fore)
 "pCj" = (
@@ -46916,6 +46977,18 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/chapel)
+"qbR" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/open/floor/plating/snowed/smoothed,
+/area/icemoon/surface/outdoors)
 "qci" = (
 /obj/structure/girder,
 /turf/open/floor/plating/airless,
@@ -52003,6 +52076,13 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/service/bar)
+"rOX" = (
+/obj/machinery/power/rtg,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/open/floor/plating/asteroid/snow/icemoon/snaxi,
+/area/icemoon/surface/outdoors)
 "rOZ" = (
 /obj/effect/turf_decal/plaque{
 	icon_state = "L10"
@@ -54864,7 +54944,12 @@
 /area/command/heads_quarters/cmo)
 "sHM" = (
 /obj/machinery/light/small,
-/obj/machinery/power/smes,
+/obj/machinery/power/smes{
+	output_level = 100000;
+	input_level = 100000;
+	charge = 500000
+	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/maintenance/department/electrical)
 "sHT" = (
@@ -56770,7 +56855,11 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/machinery/power/smes,
+/obj/machinery/power/smes{
+	output_level = 100000;
+	input_level = 100000;
+	charge = 500000
+	},
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
 "tpw" = (
@@ -58439,6 +58528,18 @@
 	},
 /turf/open/floor/wood,
 /area/service/lawoffice)
+"tUw" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/open/floor/plating/snowed/smoothed,
+/area/icemoon/surface/outdoors)
 "tUN" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -60946,6 +61047,11 @@
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/plasteel/dark,
 /area/science/robotics/lab)
+"uLa" = (
+/obj/machinery/power/rtg,
+/obj/structure/cable,
+/turf/open/floor/plating/asteroid/snow/icemoon/snaxi,
+/area/icemoon/surface/outdoors)
 "uLh" = (
 /obj/item/chair,
 /obj/effect/decal/cleanable/glass,
@@ -208766,7 +208872,7 @@ frJ
 mOM
 kgT
 jfj
-frJ
+rOX
 frJ
 frJ
 vgC
@@ -209023,7 +209129,7 @@ frJ
 mOM
 kgT
 jfj
-frJ
+xDt
 frJ
 vgC
 vgC
@@ -209280,7 +209386,7 @@ frJ
 mOM
 kgT
 jfj
-frJ
+xDt
 kTm
 frJ
 orJ
@@ -209794,7 +209900,7 @@ uEz
 aFD
 qOf
 lQV
-uEz
+qbR
 gvh
 mjZ
 kyy
@@ -210308,7 +210414,7 @@ frJ
 mOM
 eGP
 jfj
-frJ
+xDt
 vfV
 frJ
 orJ
@@ -210565,7 +210671,7 @@ frJ
 mOM
 eGP
 jfj
-frJ
+xDt
 frJ
 frJ
 vgC
@@ -210822,7 +210928,7 @@ frJ
 mOM
 eGP
 jfj
-frJ
+hFz
 frJ
 frJ
 vgC
@@ -214524,13 +214630,13 @@ frJ
 frJ
 frJ
 frJ
-frJ
-frJ
-frJ
-uDn
-frJ
-frJ
-frJ
+ppZ
+lps
+lps
+iCS
+lps
+lps
+uLa
 frJ
 frJ
 frJ
@@ -241634,7 +241740,7 @@ frJ
 mOM
 trs
 jfj
-frJ
+rOX
 frJ
 frJ
 frJ
@@ -241891,7 +241997,7 @@ frJ
 frJ
 pgm
 frJ
-frJ
+xDt
 frJ
 frJ
 sCQ
@@ -242148,7 +242254,7 @@ uEz
 aFD
 qOf
 lQV
-uEz
+eIQ
 uEz
 uEz
 uEz
@@ -242405,7 +242511,7 @@ frJ
 frJ
 jlD
 frJ
-frJ
+xDt
 frJ
 frJ
 sCQ
@@ -242662,7 +242768,7 @@ frJ
 mOM
 itB
 jfj
-frJ
+hFz
 frJ
 frJ
 frJ
@@ -262072,9 +262178,9 @@ frJ
 frJ
 frJ
 frJ
-frJ
+rOX
 qDh
-oTo
+tUw
 bFL
 frJ
 qDh
@@ -262329,7 +262435,7 @@ frJ
 frJ
 frJ
 frJ
-frJ
+xDt
 frJ
 pgm
 frJ
@@ -262586,7 +262692,7 @@ uEz
 uEz
 uEz
 uEz
-uEz
+bxD
 aFD
 qOf
 qOf
@@ -262843,7 +262949,7 @@ frJ
 frJ
 frJ
 frJ
-frJ
+xDt
 frJ
 jlD
 frJ
@@ -263100,7 +263206,7 @@ frJ
 frJ
 frJ
 frJ
-frJ
+hFz
 qDh
 eGP
 bFL

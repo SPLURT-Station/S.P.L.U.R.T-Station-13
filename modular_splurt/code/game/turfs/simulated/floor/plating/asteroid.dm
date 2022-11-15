@@ -36,3 +36,13 @@
 	switch(B.icon_state)
 		if("layenia3", "layenia4")
 			B.set_light(2, 0.6, LIGHT_COLOR_BLUE) //more light
+
+/turf/open/floor/plating/asteroid/snow/ice/icemoon/snaxi
+	initial_gas_mix = FROZEN_ATMOS
+
+/turf/open/lava/plasma/ice_moon/snaxi
+	initial_gas_mix = FROZEN_ATMOS
+
+/turf/open/floor/plating/asteroid/snow/icemoon/snaxi
+	initial_gas_mix = FROZEN_ATMOS
+

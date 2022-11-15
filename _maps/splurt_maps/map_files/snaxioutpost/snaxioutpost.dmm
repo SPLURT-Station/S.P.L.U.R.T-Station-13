@@ -88,7 +88,7 @@
 /area/maintenance/aft/secondary)
 "abU" = (
 /obj/machinery/light/floor,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "abY" = (
 /obj/machinery/firealarm{
@@ -132,9 +132,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "acX" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
@@ -237,9 +235,7 @@
 	},
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "aeh" = (
 /obj/structure/lattice/catwalk,
 /turf/open/floor/plating{
@@ -261,7 +257,7 @@
 	},
 /obj/machinery/light/floor,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "aes" = (
 /obj/structure/cable{
@@ -408,7 +404,7 @@
 /area/mine/living_quarters)
 "afE" = (
 /obj/effect/decal/remains/human,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/turf/open/floor/plating/asteroid/basalt,
 /area/icemoon/underground/explored)
 "afY" = (
 /turf/closed/wall,
@@ -418,7 +414,7 @@
 	icon_state = "4-8"
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "agw" = (
 /turf/open/floor/plating,
@@ -451,9 +447,7 @@
 	pixel_y = 1
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "ahL" = (
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -706,9 +700,7 @@
 "akP" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/plasteel/cafeteria,
-/area/service/kitchen{
-	name = "Chapel Kitchen"
-	})
+/area/service/chapel)
 "akW" = (
 /turf/closed/wall,
 /area/hallway/primary/port/fore)
@@ -898,7 +890,7 @@
 "aqw" = (
 /obj/machinery/light/floor,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "aqE" = (
 /obj/structure/table/wood,
@@ -1080,9 +1072,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "atl" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -1192,7 +1182,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "aut" = (
 /obj/structure/cable{
@@ -1338,7 +1328,7 @@
 /area/service/chapel/office)
 "axa" = (
 /obj/effect/decal/remains/human,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/execution/education)
 "axe" = (
 /obj/structure/cable{
@@ -1453,7 +1443,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "azb" = (
 /obj/structure/cable{
@@ -1498,9 +1488,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/key/security,
 /turf/open/floor/pod,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "azI" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -1510,9 +1498,7 @@
 /area/service/chapel/office)
 "azM" = (
 /turf/open/floor/pod,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "azT" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -1677,7 +1663,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 9
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "aCx" = (
 /obj/structure/cable{
@@ -1754,7 +1740,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "aEu" = (
 /obj/effect/turf_decal/tile/red,
@@ -1798,7 +1784,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "aEW" = (
 /obj/structure/table/glass,
@@ -1820,7 +1806,7 @@
 /area/engineering/atmos)
 "aFD" = (
 /obj/structure/cable,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "aFE" = (
 /turf/closed/wall,
@@ -1841,7 +1827,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 6
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "aFP" = (
 /obj/structure/grille/broken,
@@ -1918,7 +1904,7 @@
 	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
 	width = 3
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "aHf" = (
 /obj/structure/table/reinforced,
@@ -2112,7 +2098,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "aKF" = (
 /turf/closed/wall/r_wall,
@@ -2328,16 +2314,14 @@
 /obj/structure/chair{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "aQm" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "aQt" = (
 /obj/machinery/bloodbankgen,
 /turf/open/floor/plasteel/white,
@@ -2364,9 +2348,7 @@
 "aQy" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "aQH" = (
 /obj/structure/railing{
 	dir = 1
@@ -2446,9 +2428,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "aTw" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -2485,7 +2465,7 @@
 	dir = 4
 	},
 /obj/machinery/light/floor,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "aTX" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
@@ -2817,7 +2797,7 @@
 /area/tcommsat/server)
 "baS" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "bbj" = (
 /obj/effect/turf_decal/stripes/line{
@@ -2853,9 +2833,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "bbp" = (
 /obj/effect/landmark/blobstart,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
@@ -2954,7 +2932,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "bdF" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
@@ -2980,7 +2958,7 @@
 /obj/structure/railing/corner{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "bej" = (
 /obj/effect/turf_decal/tile/purple{
@@ -3046,9 +3024,7 @@
 	name = "Mix to Port"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "bfz" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	name = "Gas to Filter"
@@ -3530,9 +3506,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "bof" = (
 /obj/structure/window/plasma/reinforced{
 	dir = 1
@@ -3582,9 +3556,7 @@
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "boF" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/firstaid/regular,
@@ -3697,9 +3669,7 @@
 /obj/structure/lattice/catwalk,
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "bqN" = (
 /obj/machinery/camera{
 	c_tag = "Telecomms - Control Room";
@@ -3853,15 +3823,13 @@
 	req_access_txt = "12"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "bub" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "buo" = (
 /turf/open/openspace,
@@ -3871,7 +3839,7 @@
 	dir = 6
 	},
 /obj/machinery/light/floor,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "buO" = (
 /obj/machinery/rnd/production/techfab/department/cargo,
@@ -4272,9 +4240,7 @@
 "bDb" = (
 /obj/structure/barricade/wooden,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "bDd" = (
 /obj/structure/grille/broken,
 /turf/open/floor/plating,
@@ -4282,9 +4248,7 @@
 "bDt" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "bDX" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -4386,7 +4350,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/light/floor,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "bES" = (
 /obj/structure/disposalpipe/segment{
@@ -4591,16 +4555,14 @@
 	},
 /area/hallway/primary/port)
 "bHa" = (
-/turf/open/lava/plasma/ice_moon,
+/turf/open/lava/plasma/ice_moon/snaxi,
 /area/icemoon/underground/explored)
 "bHg" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "bHx" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/green{
@@ -4695,7 +4657,7 @@
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 9
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "bJi" = (
 /obj/effect/turf_decal/stripes/line{
@@ -4867,7 +4829,7 @@
 /obj/structure/railing/corner{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "bMC" = (
 /obj/structure/disposalpipe/trunk{
@@ -4910,9 +4872,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "bMW" = (
 /turf/closed/wall,
 /area/service/library/lounge)
@@ -5262,7 +5222,7 @@
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "bSs" = (
-/turf/open/openspace/icemoon/ruins,
+/turf/open/openspace/icemoon/snaxi,
 /area/security/execution/education)
 "bSv" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
@@ -5303,7 +5263,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 9
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "bTA" = (
 /obj/effect/turf_decal/tile/green,
@@ -5328,7 +5288,7 @@
 /area/service/kitchen)
 "bUj" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "bUk" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -5361,7 +5321,7 @@
 /area/mine/living_quarters)
 "bUv" = (
 /obj/machinery/light/small,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/maintenance/department/engine)
 "bUQ" = (
 /obj/structure/table/reinforced,
@@ -5382,9 +5342,7 @@
 	},
 /obj/structure/fans/tiny,
 /turf/open/floor/plating,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "bVq" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -5414,7 +5372,7 @@
 /area/security/checkpoint/supply)
 "bVG" = (
 /obj/effect/decal/cleanable/blood/gibs,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/execution/education)
 "bVH" = (
 /obj/machinery/airalarm{
@@ -5434,9 +5392,7 @@
 	pixel_x = -5
 	},
 /turf/open/floor/pod,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "bVN" = (
 /obj/structure/lattice/catwalk,
 /turf/open/floor/plating,
@@ -5612,7 +5568,7 @@
 /obj/structure/railing/corner{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "bYN" = (
 /obj/machinery/door/window/northleft{
@@ -5748,9 +5704,7 @@
 "cah" = (
 /obj/structure/weightmachine/stacklifter,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "cai" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -5860,7 +5814,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "ccn" = (
 /obj/structure/cable{
@@ -5892,9 +5846,7 @@
 "ccT" = (
 /obj/machinery/vending/sustenance,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "ccW" = (
 /obj/structure/table/wood/fancy/green,
 /obj/item/reagent_containers/food/drinks/bottle/holywater{
@@ -6156,9 +6108,7 @@
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "chP" = (
 /obj/machinery/door/airlock{
 	name = "Custodial Closet";
@@ -6234,9 +6184,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "cjd" = (
 /turf/closed/indestructible/rock/snow/ice,
 /area/icemoon/underground/explored)
@@ -6289,7 +6237,7 @@
 	id = "pod_lavaland2";
 	name = "lavaland"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "cko" = (
 /obj/structure/lattice/catwalk,
@@ -6305,9 +6253,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "ckB" = (
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
@@ -6362,9 +6308,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/freezer,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "cmy" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -6544,9 +6488,7 @@
 	dir = 9
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "cpg" = (
 /obj/structure/loot_pile/maint,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -6587,7 +6529,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 6
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "cpU" = (
 /obj/machinery/camera{
@@ -6677,9 +6619,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/cafeteria,
-/area/service/kitchen{
-	name = "Chapel Kitchen"
-	})
+/area/service/chapel)
 "csm" = (
 /obj/machinery/portable_atmospherics/canister,
 /obj/effect/turf_decal/bot,
@@ -6698,13 +6638,13 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "csv" = (
 /obj/structure/fence/corner{
 	dir = 6
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "csC" = (
 /obj/effect/turf_decal/stripes/line,
@@ -7260,9 +7200,7 @@
 	name = "2maintenance loot spawner"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "cDV" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -7309,9 +7247,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "cFs" = (
 /obj/structure/table,
 /obj/structure/cable{
@@ -7368,9 +7304,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "cFV" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
@@ -7414,7 +7348,7 @@
 /obj/machinery/camera{
 	dir = 10
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/space)
 "cGY" = (
 /obj/structure/disposalpipe/segment,
@@ -7726,7 +7660,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "cKI" = (
 /obj/structure/cable{
@@ -7777,14 +7711,14 @@
 	desc = "A captive winter hound with bits of flesh sticking from its jaws, that explains all the remains.";
 	name = "Jäger"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/execution/education)
 "cKX" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/on/layer3{
 	dir = 1;
 	piping_layer = 3
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/maintenance/central/secondary)
 "cLb" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -7802,9 +7736,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "cLk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small{
@@ -7945,9 +7877,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "cMB" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -7990,7 +7920,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/teg)
 "cNn" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -8032,9 +7962,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "cNX" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
@@ -8202,7 +8130,7 @@
 	dir = 4
 	},
 /obj/structure/railing,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "cQA" = (
 /obj/structure/disposalpipe/segment{
@@ -8616,9 +8544,7 @@
 "cWt" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "cWN" = (
 /obj/machinery/airalarm{
 	dir = 1;
@@ -8777,7 +8703,7 @@
 /area/mine/production)
 "cZd" = (
 /obj/effect/decal/fakelattice,
-/turf/open/openspace/icemoon/ruins,
+/turf/open/openspace/icemoon/snaxi,
 /area/space/nearstation)
 "cZu" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
@@ -8789,16 +8715,14 @@
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "dal" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/cardboard,
 /obj/item/reagent_containers/glass/beaker/waterbottle/wataur,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "dam" = (
 /obj/machinery/quantumpad{
 	map_pad_id = "4";
@@ -8905,7 +8829,7 @@
 /turf/open/floor/plating,
 /area/maintenance/port)
 "dby" = (
-/turf/open/openspace/icemoon/ruins,
+/turf/open/openspace/icemoon/snaxi,
 /area/engineering/teg)
 "dbz" = (
 /obj/effect/turf_decal/arrows/red{
@@ -9279,9 +9203,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "diF" = (
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/purple{
@@ -9345,7 +9267,7 @@
 /area/engineering/teg)
 "djs" = (
 /obj/structure/railing,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "dju" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
@@ -9433,18 +9355,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
-"dkN" = (
-/obj/machinery/atmospherics/pipe/simple/multiz{
-	piping_layer = 3
-	},
-/obj/effect/turf_decal/stripes/box,
-/turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "dkU" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -9707,7 +9618,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "dpD" = (
 /obj/effect/turf_decal/stripes/line{
@@ -9770,7 +9681,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 9
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "dqv" = (
 /obj/structure/cable{
@@ -9797,7 +9708,7 @@
 /area/medical/psychology)
 "dqN" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "dqQ" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
@@ -9967,7 +9878,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "dtz" = (
 /turf/open/floor/carpet,
@@ -10345,7 +10256,7 @@
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
 "dBn" = (
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface)
 "dBy" = (
 /obj/structure/disposalpipe/segment{
@@ -10519,24 +10430,20 @@
 	name = "Cargo Bay";
 	width = 12
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "dEg" = (
 /obj/structure/table,
 /obj/machinery/reagentgrinder,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/cafeteria,
-/area/service/kitchen{
-	name = "Chapel Kitchen"
-	})
+/area/service/chapel)
 "dEr" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "dEF" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -10716,9 +10623,7 @@
 	name = "west facing firelock"
 	},
 /turf/open/floor/plasteel/cafeteria,
-/area/service/kitchen{
-	name = "Chapel Kitchen"
-	})
+/area/service/chapel)
 "dHv" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/security/wooden_tv,
@@ -10741,7 +10646,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "dHV" = (
 /obj/structure/lattice/catwalk,
@@ -10867,7 +10772,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "dJJ" = (
 /obj/effect/turf_decal/tile/blue,
@@ -11313,7 +11218,7 @@
 "dOy" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /obj/machinery/meter,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "dOI" = (
 /obj/structure/disposalpipe/segment,
@@ -11408,7 +11313,7 @@
 /obj/machinery/atmospherics/pipe/simple/yellow/visible{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "dQA" = (
 /obj/structure/cable{
@@ -11505,7 +11410,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/teg)
 "dSt" = (
 /obj/machinery/door/airlock/maintenance,
@@ -11574,7 +11479,7 @@
 	dir = 4
 	},
 /obj/structure/fence,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "dTs" = (
 /obj/structure/chair/office,
@@ -11680,9 +11585,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "dVB" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -11710,9 +11613,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "dVL" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -11748,7 +11649,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "dWc" = (
 /obj/effect/turf_decal/tile/brown{
@@ -11799,7 +11700,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "dXm" = (
 /obj/machinery/light,
@@ -11834,9 +11735,7 @@
 /obj/structure/closet/cardboard,
 /obj/item/reagent_containers/food/snacks/cannedpeaches,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "dXN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -11845,9 +11744,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "dXT" = (
 /obj/structure/chair{
 	dir = 4
@@ -11906,7 +11803,7 @@
 /obj/machinery/atmospherics/components/unary/relief_valve/atmos/atmos_waste{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/atmos)
 "dYF" = (
 /obj/structure/railing/corner,
@@ -11942,7 +11839,7 @@
 	desc = "A captive winter hound with bits of flesh sticking from its jaws, that explains all the remains.";
 	name = "Klondike"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/execution/education)
 "dZJ" = (
 /obj/effect/turf_decal/stripes/line{
@@ -11998,7 +11895,7 @@
 "ebt" = (
 /obj/effect/decal/remains/plasma,
 /obj/item/clothing/head/helmet/space/plasmaman/science,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/turf/open/floor/plating/asteroid/basalt,
 /area/icemoon/surface/outdoors)
 "ebv" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -12086,7 +11983,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "ecD" = (
 /obj/machinery/light,
@@ -12429,12 +12326,6 @@
 /obj/structure/closet/secure_closet/chemical,
 /turf/open/floor/plasteel,
 /area/medical/chemistry)
-"ejq" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/service/kitchen{
-	name = "Chapel Kitchen"
-	})
 "ejs" = (
 /obj/structure/table,
 /obj/effect/turf_decal/tile/blue{
@@ -12474,7 +12365,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "ejI" = (
 /obj/structure/extinguisher_cabinet{
@@ -12598,9 +12489,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "elv" = (
 /obj/machinery/light{
 	dir = 4
@@ -12770,9 +12659,7 @@
 	req_access_txt = "12"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "eob" = (
 /turf/closed/wall/mineral/wood,
 /area/mine/living_quarters)
@@ -12828,7 +12715,7 @@
 	dir = 6
 	},
 /obj/machinery/light,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "eoI" = (
 /obj/machinery/vending/cola/random,
@@ -13045,9 +12932,7 @@
 	dir = 9
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "erQ" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/structure/disposalpipe/segment{
@@ -13256,9 +13141,7 @@
 	dir = 8
 	},
 /turf/open/floor/pod,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "evk" = (
 /obj/item/gps/science{
 	gpstag = "SCIEXPED4"
@@ -13419,7 +13302,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/box,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/supermatter)
 "exE" = (
 /obj/structure/railing/corner{
@@ -13532,9 +13415,7 @@
 "eyO" = (
 /obj/effect/decal/cleanable/glass,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "ezq" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9
@@ -13608,13 +13489,6 @@
 "eBs" = (
 /turf/open/floor/plasteel,
 /area/science/test_area)
-"eBt" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/turf/open/floor/plating,
-/area/service/kitchen{
-	name = "Chapel Kitchen"
-	})
 "eBv" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 8
@@ -13749,9 +13623,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "eDM" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
@@ -13807,7 +13679,7 @@
 /area/service/library)
 "eEX" = (
 /obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "eFt" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -13839,7 +13711,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "eFD" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -13865,9 +13737,7 @@
 	pixel_y = -3
 	},
 /turf/open/floor/pod,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "eFI" = (
 /obj/machinery/telecomms/broadcaster/preset_right,
 /turf/open/floor/plasteel/dark/telecomms,
@@ -13875,12 +13745,6 @@
 "eFO" = (
 /turf/closed/wall/mineral/wood,
 /area/icemoon/surface/outdoors)
-"eGc" = (
-/obj/effect/spawner/lootdrop/grille_or_trash,
-/turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
 "eGh" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -13942,7 +13806,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "eHg" = (
 /obj/machinery/door/airlock/medical{
@@ -13974,9 +13838,7 @@
 /area/maintenance/port/fore)
 "eHF" = (
 /turf/open/floor/pod/dark,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "eHI" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -14160,9 +14022,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/pod,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "eIQ" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -14173,7 +14033,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "eIX" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible{
@@ -14217,7 +14077,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "eKZ" = (
 /obj/structure/sign/warning/nosmoking{
@@ -14431,9 +14291,7 @@
 "ePd" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on,
 /turf/open/floor/plasteel/cafeteria,
-/area/service/kitchen{
-	name = "Chapel Kitchen"
-	})
+/area/service/chapel)
 "ePr" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -14613,7 +14471,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "eSc" = (
 /obj/structure/disposalpipe/segment{
@@ -14676,7 +14534,7 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "eTn" = (
 /obj/structure/table,
@@ -14697,7 +14555,7 @@
 /obj/machinery/atmospherics/pipe/simple/orange/visible{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "eTv" = (
 /turf/closed/wall/r_wall,
@@ -14769,9 +14627,7 @@
 	pixel_x = -28
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "eUs" = (
 /obj/structure/closet/crate,
 /obj/item/reagent_containers/glass/beaker/waterbottle/wataur,
@@ -14790,9 +14646,7 @@
 "eVh" = (
 /obj/machinery/light/small,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "eVl" = (
 /obj/machinery/door/airlock/research/glass{
 	name = "Genetics Research";
@@ -14845,9 +14699,7 @@
 /area/commons/fitness/pool)
 "eVy" = (
 /turf/open/floor/plasteel/cafeteria,
-/area/service/kitchen{
-	name = "Chapel Kitchen"
-	})
+/area/service/chapel)
 "eVO" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 10
@@ -14875,9 +14727,7 @@
 	req_access_txt = "12"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "eWu" = (
 /obj/structure/table/wood,
 /obj/item/screwdriver{
@@ -14983,7 +14833,7 @@
 	dir = 8
 	},
 /obj/machinery/light/floor,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "eZM" = (
 /obj/machinery/door/firedoor/border_only{
@@ -15047,7 +14897,7 @@
 	},
 /obj/structure/railing,
 /obj/machinery/light/floor,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "fbg" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
@@ -15098,7 +14948,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "fbS" = (
 /obj/structure/chair/sofa/left{
@@ -15627,7 +15477,7 @@
 /area/hallway/primary/starboard/fore)
 "fjT" = (
 /obj/effect/decal/cleanable/blood/gibs/human,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/execution/education)
 "fjU" = (
 /obj/structure/railing,
@@ -15867,7 +15717,7 @@
 /obj/structure/railing{
 	dir = 10
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "fqy" = (
 /obj/machinery/light,
@@ -15964,7 +15814,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "fsn" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden{
@@ -16059,7 +15909,7 @@
 	dir = 1
 	},
 /obj/machinery/light/floor,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "ftQ" = (
 /obj/structure/cable{
@@ -16131,9 +15981,7 @@
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "fvR" = (
 /obj/machinery/atmospherics/pipe/manifold/yellow/visible{
 	dir = 8
@@ -16504,7 +16352,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/components/binary/valve/digital/on,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/atmos)
 "fEm" = (
 /turf/closed/wall/r_wall,
@@ -16544,9 +16392,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/cafeteria,
-/area/service/kitchen{
-	name = "Chapel Kitchen"
-	})
+/area/service/chapel)
 "fED" = (
 /obj/structure/chair,
 /obj/effect/turf_decal/stripes/line{
@@ -16555,7 +16401,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "fEK" = (
 /obj/structure/fence/corner{
@@ -16806,7 +16652,9 @@
 /turf/open/floor/plasteel,
 /area/mine/eva)
 "fIZ" = (
-/turf/closed/mineral/random/snow/underground,
+/turf/closed/mineral/random/snow/snaxi/underground{
+	name = "snowy mountainside"
+	},
 /area/icemoon/underground/unexplored/rivers/deep)
 "fJf" = (
 /obj/structure/cable{
@@ -16829,7 +16677,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "fJv" = (
 /obj/machinery/door/airlock/centcom{
@@ -17196,7 +17044,7 @@
 	dir = 4
 	},
 /obj/structure/railing/corner,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "fPN" = (
 /obj/structure/disposalpipe/segment{
@@ -17987,7 +17835,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 9
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "gbw" = (
 /obj/structure/extinguisher_cabinet{
@@ -18322,7 +18170,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "ggR" = (
 /obj/structure/rack,
@@ -18541,9 +18389,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "gmM" = (
 /turf/open/floor/plating,
 /area/maintenance/department/electrical)
@@ -18684,7 +18530,7 @@
 /obj/structure/railing/corner{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "gqo" = (
 /obj/structure/closet/emcloset/anchored,
@@ -18720,9 +18566,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/oil,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "grf" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -18835,9 +18679,7 @@
 /obj/structure/railing,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "gsu" = (
 /obj/machinery/light/small,
 /turf/open/floor/plating,
@@ -19566,7 +19408,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "gDF" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -19794,7 +19636,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 6
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/teg)
 "gHI" = (
 /obj/machinery/door/window/brigdoor/security/cell{
@@ -19860,9 +19702,7 @@
 /obj/structure/rack,
 /obj/item/stack/sheet/glass/fifty,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "gIP" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -20001,7 +19841,7 @@
 /area/hallway/primary/port/aft)
 "gMJ" = (
 /obj/structure/ladder,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "gMP" = (
 /obj/machinery/rnd/server,
@@ -20024,7 +19864,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "gNu" = (
 /obj/structure/cable{
@@ -20071,7 +19911,7 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "gOq" = (
 /obj/structure/frame,
@@ -20182,16 +20022,14 @@
 /area/science/robotics/lab)
 "gQA" = (
 /obj/effect/decal/cleanable/blood/gibs/human/body,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/execution/education)
 "gQJ" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/turf/open/floor/plating/snowed/smoothed,
+/area/maintenance/starboard/fore)
 "gQK" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
@@ -20327,9 +20165,7 @@
 /obj/item/canvas/nineteenXnineteen,
 /obj/item/canvas/nineteenXnineteen,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "gTI" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -20631,7 +20467,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "gXw" = (
 /obj/effect/turf_decal/tile/blue,
@@ -20815,9 +20651,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating/asteroid/snow/icemoon,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "hax" = (
 /obj/machinery/door/airlock/external,
 /obj/structure/fans/tiny,
@@ -20825,9 +20659,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "haI" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -20988,9 +20820,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "hcS" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -21134,9 +20964,7 @@
 	},
 /obj/structure/closet/crate/bin,
 /turf/open/floor/plasteel/cafeteria,
-/area/service/kitchen{
-	name = "Chapel Kitchen"
-	})
+/area/service/chapel)
 "hfc" = (
 /obj/machinery/light{
 	dir = 8
@@ -21197,7 +21025,7 @@
 	id = "pod_lavaland2";
 	name = "lavaland"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "hgk" = (
 /obj/effect/spawner/structure/window/hollow/reinforced/directional{
@@ -21329,7 +21157,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/teg)
 "hih" = (
 /turf/open/floor/plasteel,
@@ -21755,9 +21583,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/key/security,
 /turf/open/floor/pod,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "hmP" = (
 /obj/machinery/door/airlock/external{
 	glass = 1;
@@ -21779,9 +21605,7 @@
 /obj/machinery/door/airlock/glass_large,
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "hnw" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "bridge blast";
@@ -21809,7 +21633,7 @@
 /area/mine/living_quarters)
 "hnE" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "hnH" = (
 /obj/effect/turf_decal/tile/red{
@@ -21982,7 +21806,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "hpS" = (
 /obj/machinery/chem_master/condimaster{
@@ -21995,7 +21819,7 @@
 /area/service/bar)
 "hpT" = (
 /obj/machinery/light/floor,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "hqh" = (
 /obj/structure/reagent_dispensers/fueltank,
@@ -22218,7 +22042,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 5
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/teg)
 "hvr" = (
 /obj/structure/stairs{
@@ -22478,9 +22302,7 @@
 	dir = 10
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "hAO" = (
 /obj/machinery/light{
 	dir = 4
@@ -22569,14 +22391,12 @@
 	pixel_y = 6
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "hCq" = (
 /obj/structure/fence/corner{
 	dir = 5
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/prison/garden)
 "hCy" = (
 /obj/machinery/atmospherics/pipe/simple/multiz,
@@ -22662,9 +22482,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/pod,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "hDZ" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -22680,7 +22498,7 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "hEi" = (
 /obj/effect/turf_decal/stripes/corner{
@@ -22857,7 +22675,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "hGk" = (
 /obj/structure/table/wood,
@@ -23032,7 +22850,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "hJx" = (
 /obj/structure/cable{
@@ -23185,7 +23003,7 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "hLT" = (
 /obj/effect/turf_decal/tile/blue{
@@ -23635,9 +23453,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel/cafeteria,
-/area/service/kitchen{
-	name = "Chapel Kitchen"
-	})
+/area/service/chapel)
 "hUh" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 4
@@ -23745,7 +23561,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "hVM" = (
 /obj/machinery/status_display,
@@ -23784,7 +23600,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 6
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/teg)
 "hWS" = (
 /obj/effect/turf_decal/tile/bar{
@@ -23841,7 +23657,7 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/maintenance/department/electrical)
 "hXq" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
@@ -23908,7 +23724,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "hYk" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -24026,9 +23842,7 @@
 	},
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "hZW" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -24415,9 +24229,7 @@
 	req_access_txt = "12"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "ihB" = (
 /obj/structure/chair{
 	dir = 8
@@ -24427,9 +24239,7 @@
 	},
 /obj/machinery/power/apc/auto_name/east,
 /turf/open/floor/pod,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "ihN" = (
 /obj/machinery/firealarm{
 	pixel_y = 24
@@ -24641,7 +24451,7 @@
 /obj/structure/railing/corner{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/teg)
 "ilV" = (
 /obj/machinery/light/small/broken{
@@ -24680,9 +24490,7 @@
 	req_access_txt = "12"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "ims" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -24691,7 +24499,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "imx" = (
 /obj/machinery/door/airlock/external{
@@ -24768,9 +24576,7 @@
 	name = "north facing firelock"
 	},
 /turf/open/floor/plasteel/cafeteria,
-/area/service/kitchen{
-	name = "Chapel Kitchen"
-	})
+/area/service/chapel)
 "inn" = (
 /obj/structure/chair/comfy/black{
 	dir = 8
@@ -24784,9 +24590,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "inC" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -24963,7 +24767,7 @@
 /obj/item/flashlight/lantern{
 	on = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/execution/education)
 "iqW" = (
 /obj/structure/cable{
@@ -25015,7 +24819,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "isD" = (
 /obj/machinery/atmospherics/pipe/manifold/general/visible{
@@ -25075,7 +24879,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "itJ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -25290,9 +25094,7 @@
 /turf/open/floor/plasteel/stairs/right{
 	dir = 4
 	},
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "iyM" = (
 /obj/structure/railing/corner{
 	dir = 1
@@ -25326,7 +25128,7 @@
 	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
 	width = 3
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "izF" = (
 /obj/structure/table,
@@ -25345,7 +25147,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 9
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/teg)
 "izS" = (
 /obj/effect/turf_decal/tile/blue{
@@ -25447,7 +25249,7 @@
 /obj/machinery/atmospherics/pipe/simple/orange/visible{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "iCa" = (
 /turf/closed/wall/r_wall,
@@ -25485,7 +25287,7 @@
 /obj/machinery/atmospherics/components/binary/pump/on/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/maintenance/department/electrical)
 "iCv" = (
 /obj/structure/sign/warning/fire{
@@ -25768,7 +25570,7 @@
 /area/maintenance/department/electrical)
 "iIr" = (
 /obj/structure/transit_tube/curved/flipped,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "iIv" = (
 /obj/structure/chair/comfy/brown{
@@ -26365,15 +26167,13 @@
 	dir = 4
 	},
 /obj/machinery/light/floor,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "iTd" = (
 /obj/structure/closet/crate,
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "iTy" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4
@@ -26397,7 +26197,7 @@
 /area/security/prison/garden)
 "iTS" = (
 /obj/structure/weightmachine/weightlifter,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/prison/garden)
 "iTX" = (
 /obj/structure/table,
@@ -26461,7 +26261,7 @@
 /obj/structure/transit_tube/curved{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "iVq" = (
 /obj/machinery/disposal/bin,
@@ -26567,7 +26367,7 @@
 	dir = 8
 	},
 /obj/machinery/meter,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "iWF" = (
 /turf/open/floor/engine/air,
@@ -26625,9 +26425,7 @@
 "iXF" = (
 /obj/effect/decal/cleanable/oil,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "iXN" = (
 /obj/structure/frame/machine,
 /turf/open/floor/plating,
@@ -26748,7 +26546,7 @@
 	volume_rate = 200
 	},
 /obj/effect/turf_decal/stripes/box,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/service/chapel/main)
 "jaR" = (
 /obj/structure/disposalpipe/segment,
@@ -26797,9 +26595,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "jbL" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -26879,7 +26675,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "jdI" = (
 /obj/structure/flora/ausbushes/ywflowers,
@@ -27088,7 +26884,7 @@
 /area/engineering/atmos)
 "jhc" = (
 /obj/structure/transit_tube/horizontal,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "jhd" = (
 /obj/structure/fence/post,
@@ -27281,7 +27077,7 @@
 /obj/structure/fence/corner{
 	dir = 10
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "jjP" = (
 /obj/structure/cable{
@@ -27307,9 +27103,7 @@
 	icon_state = "stairs_t"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "jkJ" = (
 /turf/closed/wall,
 /area/mine/living_quarters)
@@ -27362,7 +27156,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "jlE" = (
 /obj/structure/cable{
@@ -27510,9 +27304,7 @@
 "jnZ" = (
 /obj/machinery/vending/kink,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "jol" = (
 /obj/machinery/atmospherics/pipe/simple/supply/visible,
 /obj/structure/railing{
@@ -27549,9 +27341,7 @@
 	pixel_y = 9
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "jqd" = (
 /obj/effect/turf_decal/trimline/brown/filled/line,
 /turf/open/floor/plasteel,
@@ -27781,9 +27571,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "jtb" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -27798,7 +27586,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "jtI" = (
 /obj/structure/lattice/catwalk,
@@ -27830,7 +27618,7 @@
 /obj/structure/railing/corner{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "jtR" = (
 /obj/effect/turf_decal/tile/red{
@@ -27890,7 +27678,7 @@
 	dir = 1;
 	volume_rate = 200
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/service/chapel)
 "jvF" = (
 /obj/structure/chair/sofa/right{
@@ -28043,7 +27831,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "jyV" = (
 /obj/structure/cable{
@@ -28105,7 +27893,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 6
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "jzE" = (
 /obj/effect/turf_decal/tile/blue{
@@ -28142,7 +27930,7 @@
 /area/service/chapel/main/monastery)
 "jzR" = (
 /obj/structure/girder,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface)
 "jAs" = (
 /obj/structure/cable{
@@ -28218,7 +28006,7 @@
 /area/science)
 "jCk" = (
 /obj/structure/fence/door,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "jCv" = (
 /obj/structure/cable{
@@ -28508,9 +28296,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/key/security,
 /turf/open/floor/pod,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "jHl" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -28647,9 +28433,7 @@
 /obj/effect/turf_decal/vg_decals/radiation,
 /obj/item/reagent_containers/glass/beaker/waterbottle/wataur,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "jKl" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Evidence Storage";
@@ -28765,9 +28549,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "jMf" = (
 /obj/structure/railing/corner{
 	dir = 4
@@ -28832,7 +28614,9 @@
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
 "jNV" = (
-/turf/closed/mineral/random/snow/underground,
+/turf/closed/mineral/random/snow/snaxi/underground{
+	name = "snowy mountainside"
+	},
 /area/icemoon/surface/outdoors)
 "jNX" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -28969,9 +28753,7 @@
 "jQO" = (
 /obj/machinery/space_heater,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "jQS" = (
 /obj/structure/rack,
 /obj/item/storage/box/rubbershot,
@@ -29043,9 +28825,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "jSS" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
@@ -29118,9 +28898,7 @@
 "jTB" = (
 /obj/structure/chair/stool,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "jTH" = (
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel/dark,
@@ -29192,7 +28970,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/orange/visible,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "jUH" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -29266,7 +29044,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "jVL" = (
 /obj/machinery/light,
@@ -29326,7 +29104,7 @@
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "jWO" = (
-/turf/open/openspace/icemoon/ruins,
+/turf/open/openspace/icemoon/snaxi,
 /area/service/kitchen)
 "jWU" = (
 /obj/effect/turf_decal/tile/blue{
@@ -29512,7 +29290,7 @@
 /area/service/janitor)
 "kbr" = (
 /obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "kbz" = (
 /obj/structure/cable{
@@ -29683,7 +29461,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/stripes/box,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/teg)
 "kdp" = (
 /turf/open/floor/plating/ice/icemoon,
@@ -29730,9 +29508,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "kdX" = (
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -29792,9 +29568,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "ken" = (
 /obj/structure/stairs,
 /turf/open/floor/plasteel/dark,
@@ -29917,9 +29691,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "kgT" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -29930,7 +29702,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "khg" = (
 /obj/effect/turf_decal/loading_area,
@@ -29962,9 +29734,7 @@
 	pixel_x = -30
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "khG" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
@@ -30035,13 +29805,13 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "kjq" = (
 /obj/structure/transit_tube/curved{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "kju" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -30070,11 +29840,6 @@
 	},
 /turf/open/floor/carpet,
 /area/science)
-"kjV" = (
-/turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
 "kjZ" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -30215,9 +29980,7 @@
 /obj/effect/turf_decal/box,
 /obj/effect/turf_decal/vg_decals/numbers/two,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "kok" = (
 /obj/structure/closet/firecloset/full,
 /obj/structure/lattice/catwalk,
@@ -30468,7 +30231,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "krv" = (
 /obj/structure/cable{
@@ -30548,7 +30311,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "ksS" = (
 /turf/closed/wall/r_wall,
@@ -30777,7 +30540,7 @@
 /area/maintenance/disposal)
 "kwY" = (
 /obj/structure/railing/corner,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/atmos)
 "kxf" = (
 /obj/machinery/portable_atmospherics/canister/air,
@@ -30807,9 +30570,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "kyd" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
@@ -30877,7 +30638,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "kzA" = (
 /obj/effect/turf_decal/stripes/line{
@@ -31161,7 +30922,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "kDW" = (
 /obj/structure/cable{
@@ -31255,9 +31016,7 @@
 	icon_state = "2-8"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "kFQ" = (
 /obj/structure/table/wood,
 /obj/item/book/manual/wiki/security_space_law,
@@ -31331,7 +31090,9 @@
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
 "kHU" = (
-/turf/closed/mineral/random/snow/underground,
+/turf/closed/mineral/random/snow/snaxi/underground{
+	name = "snowy mountainside"
+	},
 /area/icemoon/underground/explored)
 "kHZ" = (
 /obj/structure/chair/wood/normal,
@@ -31478,7 +31239,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "kKG" = (
 /obj/structure/table,
@@ -31538,7 +31299,7 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "kLo" = (
 /obj/structure/cable{
@@ -32214,7 +31975,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "kXL" = (
 /obj/structure/chair/comfy/black{
@@ -32240,14 +32001,12 @@
 /obj/structure/barricade/wooden,
 /obj/structure/lattice/catwalk,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "kYm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "kYn" = (
 /obj/structure/cable{
@@ -32574,20 +32333,12 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "lez" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/closet/l3closet,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
-"leE" = (
-/obj/structure/lattice/catwalk,
-/turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
 "leG" = (
 /obj/structure/stairs{
 	dir = 4;
@@ -32654,7 +32405,7 @@
 /obj/structure/railing{
 	dir = 5
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "lgb" = (
 /obj/structure/railing{
@@ -32824,9 +32575,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/freezer,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "liu" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
 	dir = 1
@@ -32992,9 +32741,7 @@
 	},
 /obj/structure/railing,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "ljI" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -33007,7 +32754,7 @@
 /area/maintenance/port)
 "ljJ" = (
 /obj/structure/barricade/wooden/snowed,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface)
 "ljS" = (
 /obj/structure/railing/corner{
@@ -33016,7 +32763,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/main)
 "lkd" = (
 /obj/structure/closet/lasertag/red,
@@ -33068,14 +32815,12 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "lkR" = (
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "lla" = (
 /obj/structure/cable{
@@ -33231,9 +32976,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "lnt" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible/layer3{
 	dir = 10
@@ -33241,7 +32984,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 5
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/teg)
 "lnK" = (
 /obj/structure/closet/crate,
@@ -33425,9 +33168,7 @@
 "lqR" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/pod/dark,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "lrb" = (
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -33520,9 +33261,7 @@
 /obj/effect/spawner/lootdrop/maintenance,
 /obj/structure/closet,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "ltU" = (
 /obj/machinery/door/airlock{
 	desc = "A place to read books.";
@@ -33717,7 +33456,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/prison/garden)
 "lyo" = (
 /obj/structure/disposalpipe/segment{
@@ -33776,7 +33515,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "lzz" = (
 /obj/structure/table/reinforced,
@@ -33969,7 +33708,7 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/command/heads_quarters/cmo)
 "lEr" = (
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/turf/open/floor/plating/asteroid/basalt,
 /area/icemoon/surface/outdoors)
 "lEx" = (
 /turf/closed/wall,
@@ -34126,7 +33865,7 @@
 /area/command/heads_quarters/ce)
 "lGW" = (
 /obj/structure/punching_bag,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/prison/garden)
 "lHg" = (
 /obj/item/radio/intercom{
@@ -34143,7 +33882,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/atmos)
 "lHs" = (
 /obj/structure/table/wood,
@@ -34247,9 +33986,7 @@
 /obj/machinery/atmospherics/pipe/simple/multiz,
 /obj/effect/turf_decal/stripes/box,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "lIG" = (
 /obj/structure/table/wood,
 /turf/open/floor/carpet,
@@ -34596,9 +34333,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "lOs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -34752,7 +34487,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "lQZ" = (
 /obj/structure/table,
@@ -34761,9 +34496,7 @@
 	name = "3maintenance loot spawner"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "lRi" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -34853,13 +34586,13 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "lTy" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "lTO" = (
 /obj/structure/cable{
@@ -34868,9 +34601,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "lUf" = (
 /obj/structure/disposalpipe/trunk,
 /obj/machinery/disposal/bin,
@@ -34950,7 +34681,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "lVV" = (
 /obj/structure/disposalpipe/segment{
@@ -35058,7 +34789,7 @@
 /obj/structure/railing/corner{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "lYF" = (
 /obj/structure/disposalpipe/segment,
@@ -35175,7 +34906,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "maL" = (
 /obj/machinery/door/airlock/command{
@@ -35266,7 +34997,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "mcV" = (
 /obj/effect/turf_decal/tile/brown{
@@ -35643,10 +35374,8 @@
 /obj/machinery/atmospherics/components/unary/outlet_injector/on{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/turf/open/floor/plating/snowed/smoothed,
+/area/maintenance/starboard/fore)
 "mjP" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -35720,9 +35449,7 @@
 	pixel_x = -28
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "mki" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -35770,7 +35497,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "mli" = (
 /obj/structure/filingcabinet,
@@ -35930,12 +35657,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall/mineral/iron,
 /area/maintenance/department/chapel)
-"mnT" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
 "mnX" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor/border_only{
@@ -36006,7 +35727,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "mpZ" = (
 /obj/structure/cable{
@@ -36104,7 +35825,7 @@
 /area/security/brig)
 "mrF" = (
 /obj/machinery/light,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/hallway/secondary/exit/departure_lounge)
 "mrN" = (
 /turf/open/floor/plasteel/dark,
@@ -36131,7 +35852,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "mrY" = (
 /obj/structure/cable{
@@ -36149,9 +35870,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "msv" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -36219,7 +35938,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "muy" = (
 /obj/machinery/camera{
@@ -36321,12 +36040,6 @@
 /obj/structure/railing,
 /turf/open/floor/plating,
 /area/maintenance/aft)
-"mws" = (
-/obj/machinery/door/airlock/maintenance,
-/turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
 "mwu" = (
 /obj/machinery/vending/coffee,
 /obj/item/radio/intercom{
@@ -36471,9 +36184,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "myc" = (
 /turf/closed/wall,
 /area/medical/morgue)
@@ -36517,7 +36228,7 @@
 "mzC" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/ladder,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "mAh" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -36566,7 +36277,7 @@
 /area/hallway/primary/port)
 "mAy" = (
 /obj/structure/railing,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "mAK" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3,
@@ -36907,9 +36618,7 @@
 	req_access_txt = "12"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "mFl" = (
 /obj/structure/sign/warning/securearea{
 	pixel_x = 32
@@ -36917,7 +36626,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/prison/garden)
 "mFu" = (
 /obj/effect/turf_decal/tile/blue{
@@ -37298,7 +37007,7 @@
 	width = 7
 	},
 /obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "mLn" = (
 /turf/closed/wall,
@@ -37367,7 +37076,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "mMs" = (
 /obj/structure/disposalpipe/sorting/mail/flip{
@@ -37445,9 +37154,7 @@
 /obj/structure/plasticflaps/opaque,
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "mNc" = (
 /obj/item/kirbyplants/random,
 /obj/structure/window/reinforced{
@@ -37603,12 +37310,10 @@
 "mQa" = (
 /obj/structure/grille/broken,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "mQc" = (
 /obj/structure/railing/corner,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "mQf" = (
 /obj/structure/sign/nanotrasen{
@@ -37701,7 +37406,7 @@
 /turf/open/floor/carpet,
 /area/commons/dorms)
 "mRR" = (
-/turf/open/openspace/icemoon/ruins,
+/turf/open/openspace/icemoon/snaxi,
 /area/maintenance/starboard/fore)
 "mRY" = (
 /obj/structure/railing{
@@ -37733,7 +37438,7 @@
 	dir = 1
 	},
 /obj/machinery/light/floor,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "mSk" = (
 /obj/machinery/door/airlock/research{
@@ -37894,7 +37599,7 @@
 /turf/open/floor/plating,
 /area/cargo/miningdock)
 "mWR" = (
-/turf/open/openspace/icemoon/ruins,
+/turf/open/openspace/icemoon/snaxi,
 /area/icemoon/underground/explored)
 "mWU" = (
 /obj/machinery/firealarm{
@@ -38089,9 +37794,7 @@
 	dir = 10
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "naq" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -38590,7 +38293,7 @@
 /obj/structure/transit_tube/curved/flipped{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "nie" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -38664,19 +38367,12 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
-"njS" = (
-/turf/closed/wall,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
 "nkf" = (
 /obj/machinery/space_heater,
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/pod,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "nkA" = (
 /obj/machinery/door/airlock/external{
 	name = "Engineering External Access";
@@ -38815,9 +38511,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "nnW" = (
 /obj/structure/lattice/catwalk,
 /turf/open/floor/plating{
@@ -38961,9 +38655,7 @@
 	req_access_txt = "63"
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "nqY" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/maintenance{
@@ -39229,9 +38921,7 @@
 "nvY" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "nwp" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 8
@@ -39241,9 +38931,7 @@
 	dir = 6
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "nxo" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 4
@@ -39266,7 +38954,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "nxH" = (
 /obj/machinery/door/firedoor/border_only{
@@ -39457,9 +39145,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "nBx" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -39769,7 +39455,7 @@
 /obj/structure/railing/corner{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "nFJ" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -40043,9 +39729,7 @@
 "nLV" = (
 /obj/machinery/pipedispenser,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "nMl" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4
@@ -40062,14 +39746,14 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "nNm" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "nND" = (
 /obj/structure/disposalpipe/sorting/mail/flip{
@@ -40180,7 +39864,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/prison/garden)
 "nOZ" = (
 /obj/machinery/camera{
@@ -40475,9 +40159,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "nTT" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -40900,7 +40582,7 @@
 /area/service/chapel/main/monastery)
 "oan" = (
 /obj/machinery/atmospherics/pipe/simple/dark/visible,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "oaw" = (
 /obj/machinery/atmospherics/pipe/manifold/yellow/visible,
@@ -40964,11 +40646,11 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "obH" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "obJ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -41280,9 +40962,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "oiC" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
@@ -41366,7 +41046,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "okI" = (
 /obj/structure/table/wood,
@@ -41579,9 +41259,7 @@
 /obj/effect/turf_decal/vg_decals/numbers/four,
 /obj/effect/decal/cleanable/glass,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "ooj" = (
 /obj/structure/girder,
 /turf/open/floor/plating,
@@ -41594,7 +41272,7 @@
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 10
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "ooQ" = (
 /turf/closed/wall,
@@ -41724,7 +41402,7 @@
 	id = "pod_lavaland2";
 	name = "lavaland"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "orn" = (
 /obj/machinery/holopad,
@@ -41749,7 +41427,7 @@
 /obj/structure/fence/post{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/prison/garden)
 "orJ" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -41799,7 +41477,7 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "osw" = (
 /obj/machinery/light/small{
@@ -41898,9 +41576,7 @@
 /area/maintenance/starboard/fore)
 "otJ" = (
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "otO" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer1{
 	dir = 4
@@ -42032,9 +41708,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/pod/dark,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "owU" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -42308,9 +41982,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "oCl" = (
 /turf/open/floor/wood,
 /area/command/heads_quarters/captain)
@@ -42325,7 +41997,7 @@
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/starboard)
 "oCt" = (
-/turf/open/openspace/icemoon/ruins,
+/turf/open/openspace/icemoon/snaxi,
 /area/engineering/atmos)
 "oCv" = (
 /obj/structure/closet/crate,
@@ -42341,9 +42013,7 @@
 "oCY" = (
 /obj/machinery/door/airlock,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "oDm" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -42763,16 +42433,12 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "oKV" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "oKZ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -42857,7 +42523,7 @@
 	dir = 4;
 	light_color = "#d8b1b1"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/mine/living_quarters)
 "oMA" = (
 /obj/structure/railing,
@@ -42926,9 +42592,7 @@
 	dir = 9
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "oOD" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 8
@@ -43011,7 +42675,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 10
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/teg)
 "oQS" = (
 /obj/effect/landmark/blobstart,
@@ -43143,7 +42807,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "oTo" = (
 /obj/structure/cable{
@@ -43155,7 +42819,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "oTp" = (
 /obj/machinery/door/poddoor/preopen{
@@ -43253,7 +42917,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "oUQ" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/atmos/air_input,
@@ -43294,7 +42958,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "oVD" = (
 /obj/structure/table,
@@ -43625,7 +43289,7 @@
 /area/maintenance/port)
 "paI" = (
 /obj/structure/girder/displaced,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface)
 "paK" = (
 /obj/machinery/door/poddoor/preopen{
@@ -43802,7 +43466,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/teg)
 "pdM" = (
 /obj/machinery/computer/security{
@@ -43960,7 +43624,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "pgu" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -44051,7 +43715,7 @@
 	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
 	width = 3
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "pir" = (
 /obj/effect/turf_decal/tile/brown{
@@ -44077,7 +43741,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/atmos)
 "piA" = (
 /obj/structure/bed,
@@ -44721,7 +44385,7 @@
 	name = "Atmospheric Pits";
 	req_access_txt = "24"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/atmos)
 "puS" = (
 /obj/effect/turf_decal/bot_white,
@@ -44788,7 +44452,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 5
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "pwt" = (
 /obj/machinery/door/firedoor/border_only{
@@ -44963,7 +44627,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "pAr" = (
 /obj/structure/window/reinforced{
@@ -45261,7 +44925,7 @@
 	dir = 4
 	},
 /obj/structure/railing/corner,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "pHj" = (
 /obj/structure/table_frame/wood,
@@ -45526,9 +45190,7 @@
 	dir = 6
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "pKZ" = (
 /obj/structure/toilet{
 	contents = newlist(/obj/item/toy/snappop/phoenix);
@@ -46047,7 +45709,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "pTI" = (
 /obj/machinery/door/airlock/maintenance,
@@ -46154,7 +45816,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "pVB" = (
 /obj/machinery/hydroponics/soil,
@@ -46288,7 +45950,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "pYa" = (
 /obj/effect/decal/cleanable/dirt/dust,
@@ -46427,7 +46089,7 @@
 /obj/structure/railing/corner{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/atmos)
 "qaE" = (
 /obj/effect/turf_decal/bot,
@@ -46657,9 +46319,7 @@
 	icon_state = "cobweb2"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "qfz" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -46883,7 +46543,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "qjD" = (
 /obj/effect/turf_decal/stripes/line,
@@ -47124,7 +46784,7 @@
 	dir = 4
 	},
 /obj/structure/railing,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "qnY" = (
 /obj/effect/landmark/event_spawn,
@@ -47298,14 +46958,14 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "qrc" = (
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "qri" = (
 /obj/structure/cable{
@@ -47357,7 +47017,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "qrO" = (
 /obj/structure/cable{
@@ -47522,7 +47182,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 5
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "qvB" = (
 /turf/open/floor/plating,
@@ -47894,7 +47554,7 @@
 	dir = 8
 	},
 /obj/machinery/light/floor,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "qCt" = (
 /obj/structure/table/reinforced,
@@ -47909,9 +47569,7 @@
 /turf/open/floor/plasteel/stairs/left{
 	dir = 4
 	},
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "qCI" = (
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/carpet,
@@ -48005,7 +47663,7 @@
 /turf/open/floor/wood,
 /area/service/library)
 "qDO" = (
-/turf/open/openspace/icemoon/ruins,
+/turf/open/openspace/icemoon/snaxi,
 /area/icemoon/surface)
 "qEQ" = (
 /obj/structure/fireplace,
@@ -48062,9 +47720,7 @@
 "qGs" = (
 /obj/effect/decal/cleanable/oil,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "qGB" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 6
@@ -48111,19 +47767,19 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "qHh" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "qHj" = (
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "qHw" = (
 /obj/structure/disposalpipe/trunk{
@@ -48305,9 +47961,7 @@
 /obj/effect/turf_decal/vg_decals/numbers/three,
 /obj/effect/decal/cleanable/glass,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "qKD" = (
 /obj/item/radio/intercom{
 	pixel_x = 25
@@ -48344,7 +47998,7 @@
 /area/security/checkpoint/supply)
 "qKW" = (
 /obj/structure/chair,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "qKX" = (
 /obj/structure/cable{
@@ -48523,7 +48177,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "qNO" = (
 /obj/structure/railing/corner{
@@ -48544,7 +48198,7 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
 "qOf" = (
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "qOh" = (
 /turf/closed/wall,
@@ -48764,7 +48418,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "qRP" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -48852,9 +48506,7 @@
 	pixel_x = -30
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "qTD" = (
 /obj/machinery/door/firedoor/border_only{
 	name = "south facing firelock"
@@ -48881,7 +48533,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "qTP" = (
 /obj/structure/cable{
@@ -48901,9 +48553,7 @@
 "qTQ" = (
 /obj/machinery/power/floodlight,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "qUb" = (
 /obj/machinery/computer/arcade{
 	dir = 8
@@ -48921,9 +48571,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "qUd" = (
 /obj/structure/chair/sofa/right{
 	dir = 1
@@ -49189,9 +48837,7 @@
 /obj/effect/decal/cleanable/oil,
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "raa" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -49269,7 +48915,7 @@
 /area/service/chapel)
 "rbv" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "rbw" = (
 /obj/effect/spawner/structure/window/ice,
@@ -49295,7 +48941,7 @@
 /area/commons/arcade)
 "rbR" = (
 /obj/effect/turf_decal/bot,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "rbT" = (
 /obj/structure/lattice/catwalk,
@@ -49381,9 +49027,7 @@
 	},
 /obj/item/reagent_containers/food/condiment/sugar,
 /turf/open/floor/plasteel/cafeteria,
-/area/service/kitchen{
-	name = "Chapel Kitchen"
-	})
+/area/service/chapel)
 "rdi" = (
 /obj/structure/table,
 /obj/item/mmi,
@@ -49400,9 +49044,7 @@
 "rdC" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/cafeteria,
-/area/service/kitchen{
-	name = "Chapel Kitchen"
-	})
+/area/service/chapel)
 "rdD" = (
 /obj/structure/lattice/catwalk,
 /turf/open/floor/plating,
@@ -49602,12 +49244,10 @@
 /area/commons/dorms)
 "rgB" = (
 /turf/closed/wall,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/space)
 "rgJ" = (
 /obj/effect/decal/cleanable/blood/old,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/execution/education)
 "rgK" = (
 /turf/open/floor/plating,
@@ -49968,9 +49608,7 @@
 "rmB" = (
 /obj/effect/decal/cleanable/oil,
 /turf/open/floor/pod/dark,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "rmY" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -50209,7 +49847,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "rqb" = (
 /obj/machinery/light/small{
@@ -50237,7 +49875,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "rqC" = (
 /obj/effect/turf_decal/bot,
@@ -50282,7 +49920,7 @@
 /area/security/brig)
 "rrb" = (
 /obj/machinery/atmospherics/pipe/simple/orange/visible,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "rrt" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -50363,7 +50001,7 @@
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "rtj" = (
 /obj/machinery/door/airlock/mining/glass{
@@ -50498,7 +50136,7 @@
 	dir = 10
 	},
 /obj/machinery/light,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "rur" = (
 /obj/machinery/door/airlock/maintenance{
@@ -50549,9 +50187,7 @@
 "rvT" = (
 /obj/structure/firelock_frame,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "rwb" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -50748,7 +50384,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "ryy" = (
 /turf/open/floor/plasteel,
@@ -50763,7 +50399,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 9
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "ryT" = (
 /obj/structure/table/wood,
@@ -51055,7 +50691,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "rFu" = (
 /obj/machinery/computer/operating{
@@ -51242,7 +50878,7 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "rHS" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -51313,7 +50949,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "rIy" = (
 /obj/effect/turf_decal/stripes/line{
@@ -51333,9 +50969,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "rIV" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
@@ -51445,9 +51079,7 @@
 "rMh" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "rMS" = (
 /obj/machinery/light{
 	dir = 4
@@ -51524,9 +51156,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/punching_bag,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "rOd" = (
 /obj/effect/turf_decal/trimline/purple/filled/corner{
 	dir = 1
@@ -51549,9 +51179,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "rOA" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/visible,
 /turf/closed/wall/r_wall,
@@ -51816,7 +51444,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/prison/garden)
 "rRW" = (
 /obj/structure/sign/warning/vacuum/external{
@@ -51934,7 +51562,7 @@
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 6
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "rTm" = (
 /obj/structure/cable{
@@ -52268,9 +51896,7 @@
 /obj/effect/turf_decal/bot_red,
 /obj/item/key/security,
 /turf/open/floor/pod,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "rWH" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
@@ -52321,9 +51947,7 @@
 	icon_state = "0-4"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "rXm" = (
 /obj/machinery/light{
 	dir = 1
@@ -52361,7 +51985,7 @@
 /area/engineering/atmos)
 "rXZ" = (
 /obj/structure/fence,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/prison/garden)
 "rYw" = (
 /obj/structure/table/reinforced,
@@ -52374,14 +51998,12 @@
 	pixel_y = 10
 	},
 /turf/open/floor/pod,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "rYx" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "rYK" = (
 /obj/structure/closet/wardrobe/engineering_yellow,
@@ -52569,11 +52191,11 @@
 /area/mine/eva)
 "sca" = (
 /obj/item/clothing/glasses/science,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/turf/open/floor/plating/asteroid/basalt,
 /area/icemoon/surface/outdoors)
 "sch" = (
 /obj/item/beacon,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "scn" = (
 /obj/structure/cable{
@@ -52672,10 +52294,8 @@
 /area/science/robotics/lab)
 "see" = (
 /obj/machinery/light/floor,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/turf/open/floor/plating/snowed/smoothed,
+/area/security/brig)
 "sej" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/grille/broken,
@@ -52761,7 +52381,7 @@
 	},
 /obj/structure/railing,
 /obj/machinery/light/floor,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "sfi" = (
 /obj/structure/cable{
@@ -53177,14 +52797,12 @@
 /obj/structure/transit_tube/horizontal{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "snc" = (
 /obj/structure/tank_dispenser/oxygen,
 /turf/open/floor/pod,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "snl" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -53256,13 +52874,13 @@
 /obj/structure/railing/corner{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "sor" = (
 /obj/structure/sign/poster/official/random{
 	pixel_y = -32
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/prison/garden)
 "sot" = (
 /obj/structure/closet/emcloset{
@@ -53332,7 +52950,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "spJ" = (
 /obj/structure/cable{
@@ -53555,7 +53173,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "suE" = (
 /obj/structure/reagent_dispensers/cooking_oil,
@@ -53580,7 +53198,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "suX" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible,
@@ -53719,7 +53337,7 @@
 "swM" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/on,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/medical/virology)
 "swX" = (
 /obj/machinery/vending/wardrobe/medi_wardrobe,
@@ -53810,7 +53428,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "syM" = (
 /obj/machinery/airalarm{
@@ -53833,7 +53451,7 @@
 /area/mine/production)
 "syU" = (
 /obj/machinery/light,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/prison/garden)
 "syX" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -54098,7 +53716,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "sCO" = (
 /obj/structure/closet/emcloset,
@@ -54314,9 +53932,7 @@
 	},
 /obj/machinery/processor,
 /turf/open/floor/plasteel/cafeteria,
-/area/service/kitchen{
-	name = "Chapel Kitchen"
-	})
+/area/service/chapel)
 "sGt" = (
 /turf/closed/wall,
 /area/service/chapel/main)
@@ -54614,7 +54230,7 @@
 	},
 /obj/machinery/light/floor,
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "sMi" = (
 /obj/effect/turf_decal/tile/green{
@@ -54917,9 +54533,7 @@
 "sRm" = (
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "sRo" = (
 /obj/machinery/light{
 	dir = 4
@@ -55093,9 +54707,7 @@
 	pixel_y = -28
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "sVf" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -55244,9 +54856,7 @@
 	icon_state = "1-4"
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "sXD" = (
 /obj/machinery/vending/wardrobe/curator_wardrobe,
 /turf/open/floor/plasteel/cult,
@@ -55376,7 +54986,7 @@
 	dir = 4;
 	name = "External to Filter"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/maintenance/department/electrical)
 "sZs" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
@@ -55692,9 +55302,7 @@
 /obj/item/stack/sheet/metal/fifty,
 /obj/structure/rack,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "teX" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "Secure Brig Control";
@@ -56161,7 +55769,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "tmQ" = (
 /obj/structure/cable{
@@ -56253,9 +55861,7 @@
 "toN" = (
 /obj/effect/spawner/structure/window/ice,
 /turf/open/floor/plating,
-/area/service/kitchen{
-	name = "Chapel Kitchen"
-	})
+/area/service/chapel)
 "tps" = (
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -56270,7 +55876,7 @@
 /obj/structure/railing/corner{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "tpJ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -56376,9 +55982,7 @@
 "trf" = (
 /obj/structure/easel,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "trg" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
@@ -56419,7 +56023,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "trW" = (
 /obj/effect/turf_decal/stripes/line{
@@ -56473,9 +56077,7 @@
 "tty" = (
 /mob/living/simple_animal/hostile/mimic/crate,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "ttM" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -56583,7 +56185,7 @@
 "tvp" = (
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/blood/old,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/execution/education)
 "tvC" = (
 /turf/closed/wall/mineral/iron,
@@ -56671,7 +56273,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "txv" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -56887,7 +56489,7 @@
 /turf/open/floor/plasteel,
 /area/security/checkpoint/customs)
 "tBf" = (
-/turf/open/openspace/icemoon/ruins,
+/turf/open/openspace/icemoon/snaxi,
 /area/icemoon/surface/outdoors)
 "tBr" = (
 /obj/effect/turf_decal/tile/red,
@@ -57196,9 +56798,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "tHN" = (
 /obj/machinery/airalarm{
 	pixel_y = 23
@@ -57351,7 +56951,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/cargo/miningdock)
 "tKO" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -57438,7 +57038,7 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "tMv" = (
 /obj/structure/disposalpipe/segment,
@@ -57506,7 +57106,7 @@
 	dir = 5
 	},
 /obj/machinery/light/floor,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "tNe" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
@@ -57545,9 +57145,7 @@
 "tNA" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "tNZ" = (
 /turf/open/floor/plasteel/dark/corner{
 	dir = 1
@@ -57608,9 +57206,7 @@
 	dir = 6
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "tOI" = (
 /turf/closed/wall,
 /area/maintenance/department/electrical)
@@ -57708,9 +57304,7 @@
 	dir = 6
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "tQV" = (
 /turf/open/floor/plasteel,
 /area/science/circuit)
@@ -57809,7 +57403,7 @@
 	desc = "A captive winter hound with bits of flesh sticking from its jaws, that explains all the remains.";
 	name = "Reese"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/execution/education)
 "tTj" = (
 /obj/structure/cable{
@@ -57965,7 +57559,7 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "tVP" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -58114,7 +57708,7 @@
 /obj/structure/railing/corner{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "tXL" = (
 /obj/structure/table/wood,
@@ -58200,9 +57794,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "tZn" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/firealarm{
@@ -58272,7 +57864,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "uaw" = (
 /obj/effect/turf_decal/tile/blue{
@@ -58418,7 +58010,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 5
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "udD" = (
 /obj/machinery/light{
@@ -58611,9 +58203,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "uhq" = (
 /obj/structure/railing{
 	dir = 8
@@ -58705,9 +58295,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "ujv" = (
 /obj/machinery/door/window/southleft,
 /obj/machinery/shower{
@@ -58890,7 +58478,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/green/visible,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/teg)
 "ulF" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
@@ -59191,9 +58779,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "uqK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -59206,9 +58792,7 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "ure" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
@@ -59481,7 +59065,7 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "uvt" = (
 /obj/machinery/airalarm{
@@ -59735,9 +59319,7 @@
 "uzE" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel/cafeteria,
-/area/service/kitchen{
-	name = "Chapel Kitchen"
-	})
+/area/service/chapel)
 "uzG" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -59940,7 +59522,7 @@
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "uCF" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -59985,7 +59567,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "uDx" = (
 /obj/structure/cable{
@@ -60029,7 +59611,7 @@
 	dir = 4;
 	piping_layer = 3
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "uEt" = (
 /obj/machinery/light/small{
@@ -60059,7 +59641,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "uEC" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/visible{
@@ -60079,7 +59661,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 9
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "uEN" = (
 /obj/machinery/door/airlock/engineering/abandoned{
@@ -60211,9 +59793,7 @@
 "uHc" = (
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "uHd" = (
 /obj/machinery/gibber,
 /turf/open/floor/plasteel/freezer,
@@ -60277,7 +59857,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "uJm" = (
 /obj/machinery/airalarm/unlocked{
@@ -60300,9 +59880,7 @@
 /obj/effect/turf_decal/stripes/corner,
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "uJR" = (
 /obj/effect/decal/cleanable/oil,
 /obj/structure/lattice/catwalk,
@@ -60520,7 +60098,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 10
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "uNz" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -60554,9 +60132,7 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "uOk" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
@@ -60614,9 +60190,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "uPf" = (
 /obj/machinery/door/window/northleft{
 	dir = 2;
@@ -60688,7 +60262,7 @@
 /turf/open/floor/carpet,
 /area/hallway/primary/starboard)
 "uQc" = (
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "uQl" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{
@@ -61002,9 +60576,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "uVF" = (
 /obj/machinery/door/window/southright,
 /obj/machinery/shower{
@@ -61841,7 +61413,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 5
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/teg)
 "viP" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -61958,11 +61530,11 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/hallway/secondary/exit/departure_lounge)
 "vlG" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "vlI" = (
 /obj/structure/closet/crate{
@@ -62142,7 +61714,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "vor" = (
 /obj/machinery/portable_atmospherics/pump,
@@ -62179,7 +61751,7 @@
 /area/hallway/primary/port)
 "vpA" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "vpE" = (
 /obj/structure/closet/crate/trashcart,
@@ -62214,7 +61786,7 @@
 	dir = 4
 	},
 /obj/machinery/light/floor,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "vpU" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -62449,7 +62021,7 @@
 /obj/structure/chair{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "vuH" = (
 /obj/structure/ore_box,
@@ -62608,7 +62180,7 @@
 /turf/open/floor/plating,
 /area/maintenance/department/engine/atmos)
 "vwu" = (
-/turf/open/openspace/icemoon/ruins,
+/turf/open/openspace/icemoon/snaxi,
 /area/maintenance/department/security)
 "vwx" = (
 /obj/effect/turf_decal/bot,
@@ -62835,9 +62407,7 @@
 /obj/machinery/atmospherics/pipe/manifold/general/visible,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "vBh" = (
 /obj/machinery/conveyor{
 	dir = 1;
@@ -62875,7 +62445,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 10
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "vCo" = (
 /turf/closed/wall/r_wall,
@@ -62886,9 +62456,7 @@
 	},
 /obj/machinery/chem_master/condimaster,
 /turf/open/floor/plasteel/cafeteria,
-/area/service/kitchen{
-	name = "Chapel Kitchen"
-	})
+/area/service/chapel)
 "vCr" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -62953,7 +62521,7 @@
 /mob/living/simple_animal/hostile/asteroid/wolf{
 	name = "King"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/execution/education)
 "vDk" = (
 /obj/structure/sign/poster/official/random{
@@ -63148,7 +62716,7 @@
 /area/ai_monitored/turret_protected/ai_upload)
 "vGB" = (
 /obj/structure/girder,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "vHc" = (
 /obj/machinery/conveyor{
@@ -63248,9 +62816,7 @@
 	dir = 5
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "vJj" = (
 /obj/structure/chair/comfy/brown{
 	dir = 1
@@ -63390,9 +62956,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/oil,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "vKP" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
@@ -63492,7 +63056,7 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
 "vMR" = (
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/execution/education)
 "vNe" = (
 /obj/structure/table,
@@ -63734,7 +63298,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/stripes/box,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/maintenance/disposal/incinerator)
 "vQC" = (
 /obj/effect/turf_decal/tile/red{
@@ -63888,7 +63452,7 @@
 /area/icemoon/surface/outdoors)
 "vTO" = (
 /obj/structure/fence,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "vUo" = (
 /obj/structure/loot_pile/maint,
@@ -63919,7 +63483,7 @@
 /turf/open/floor/plating,
 /area/maintenance/port)
 "vUQ" = (
-/turf/open/lava/plasma/ice_moon,
+/turf/open/lava/plasma/ice_moon/snaxi,
 /area/icemoon/surface/outdoors)
 "vUX" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -63968,9 +63532,7 @@
 /obj/structure/closet/cardboard,
 /obj/item/reagent_containers/food/snacks/beans,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "vVA" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -63987,7 +63549,7 @@
 /obj/structure/sign/poster/official/random{
 	pixel_x = 32
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/prison/garden)
 "vWF" = (
 /obj/structure/table/reinforced,
@@ -64305,7 +63867,7 @@
 /obj/structure/railing/corner{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/teg)
 "wbk" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -64346,9 +63908,7 @@
 	pixel_x = 32
 	},
 /turf/open/floor/plasteel/cafeteria,
-/area/service/kitchen{
-	name = "Chapel Kitchen"
-	})
+/area/service/chapel)
 "wcG" = (
 /obj/item/tank/internals/emergency_oxygen/double{
 	pixel_x = 3
@@ -64673,9 +64233,7 @@
 /obj/effect/turf_decal/box,
 /obj/effect/turf_decal/vg_decals/numbers/one,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "wiL" = (
 /obj/item/kirbyplants/random,
 /turf/open/floor/plasteel,
@@ -64812,7 +64370,7 @@
 /obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/components/unary/portables_connector/visible,
 /obj/machinery/portable_atmospherics/canister/water_vapor,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/maintenance/bar)
 "wmI" = (
 /obj/machinery/pool/controller,
@@ -64827,9 +64385,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "wnf" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -65095,9 +64651,7 @@
 	name = "Gym Locker"
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "wrG" = (
 /obj/structure/sink/kitchen{
 	pixel_y = 28
@@ -65158,9 +64712,7 @@
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/east,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "wsC" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
@@ -65198,7 +64750,7 @@
 	dir = 4
 	},
 /obj/structure/fence,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "wtC" = (
 /obj/effect/decal/cleanable/oil,
@@ -65893,11 +65445,6 @@
 	dir = 1
 	},
 /area/service/chapel/main/monastery)
-"wER" = (
-/turf/closed/wall/mineral/iron,
-/area/service/kitchen{
-	name = "Chapel Kitchen"
-	})
 "wEX" = (
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel/dark,
@@ -65973,9 +65520,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "wGU" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -66025,9 +65570,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "wHl" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -66219,7 +65762,7 @@
 	dir = 4;
 	light_color = "#d8b1b1"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/mine/living_quarters)
 "wKT" = (
 /obj/structure/cable{
@@ -66238,9 +65781,7 @@
 	},
 /obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "wLa" = (
 /obj/structure/cable{
 	icon_state = "2-4"
@@ -66248,7 +65789,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "wLv" = (
 /obj/effect/spawner/lootdrop/maintenance,
@@ -66434,7 +65975,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/prison/garden)
 "wPP" = (
 /obj/structure/cable,
@@ -66549,9 +66090,7 @@
 /obj/structure/bed,
 /obj/item/bedsheet/blue,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "wUd" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 9
@@ -66640,9 +66179,7 @@
 	},
 /obj/structure/weightmachine/weightlifter,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "wVA" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -66872,9 +66409,7 @@
 	},
 /obj/structure/railing/corner,
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "wZx" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced{
@@ -67157,9 +66692,7 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "xfI" = (
 /turf/open/floor/plasteel/white,
 /area/science/misc_lab)
@@ -67206,11 +66739,11 @@
 /turf/open/floor/plating,
 /area/maintenance/port)
 "xgq" = (
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/turf/open/floor/plating/asteroid/basalt,
 /area/icemoon/underground/explored)
 "xgt" = (
 /obj/effect/turf_decal/stripes/corner,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "xgK" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible{
@@ -67242,9 +66775,7 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel/dark,
-/area/security/office{
-	name = "Security Exterior Access"
-	})
+/area/security/brig)
 "xgP" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
@@ -67360,7 +66891,7 @@
 	name = "Northeast Taxi Port";
 	width = 6
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "xiM" = (
 /obj/structure/girder,
@@ -67374,7 +66905,7 @@
 	name = "Northwest Taxi Port";
 	width = 6
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "xiX" = (
 /obj/machinery/button/door{
@@ -67593,7 +67124,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/engineering/teg)
 "xmN" = (
 /obj/machinery/light,
@@ -67694,7 +67225,7 @@
 "xoa" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/components/unary/thermomachine/heater,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/maintenance/bar)
 "xob" = (
 /obj/effect/landmark/start/security_officer,
@@ -67765,7 +67296,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "xoR" = (
 /obj/structure/sign/poster/contraband/random{
@@ -67845,7 +67376,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/hallway/primary/port)
 "xqJ" = (
 /obj/structure/cable{
@@ -67943,9 +67474,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "xrQ" = (
 /obj/machinery/atmospherics/components/unary/tank/air{
 	dir = 1;
@@ -68116,7 +67645,7 @@
 /obj/structure/chair{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/underground/explored)
 "xvE" = (
 /obj/structure/cable{
@@ -68331,7 +67860,7 @@
 	dir = 4
 	},
 /obj/machinery/light/floor,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "xyK" = (
 /obj/machinery/light{
@@ -68564,7 +68093,7 @@
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
 "xDm" = (
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/security/prison/garden)
 "xDt" = (
 /obj/structure/cable{
@@ -68661,9 +68190,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
-/area/maintenance/starboard{
-	name = "Service Basement"
-	})
+/area/maintenance/starboard/fore)
 "xFm" = (
 /obj/machinery/power/deck_relay,
 /obj/effect/turf_decal/stripes/box,
@@ -68734,7 +68261,7 @@
 /area/command/heads_quarters/hop)
 "xGA" = (
 /obj/structure/transit_tube/crossing/horizontal,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "xGB" = (
 /obj/machinery/light/small,
@@ -68765,7 +68292,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "xHz" = (
 /obj/structure/disposalpipe/segment{
@@ -69333,7 +68860,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "xUe" = (
 /turf/open/floor/plasteel/white,
@@ -69844,7 +69371,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/mine/living_quarters)
 "ycn" = (
 /obj/structure/cable{
@@ -70017,7 +69544,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "yhe" = (
 /obj/structure/disposalpipe/segment,
@@ -70099,7 +69626,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/plating/snowed/smoothed/icemoon,
+/turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors)
 "yiM" = (
 /obj/structure/cable{
@@ -176293,9 +175820,9 @@ mAW
 mAW
 mAW
 mAW
-rgB
+nhR
 hax
-rgB
+nhR
 mAW
 mAW
 mAW
@@ -176550,9 +176077,9 @@ mAW
 mAW
 mAW
 mAW
-rgB
+nhR
 dEr
-rgB
+nhR
 mAW
 mAW
 mAW
@@ -176796,29 +176323,29 @@ mAW
 mAW
 mAW
 mAW
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
 mAW
-rgB
-rgB
+nhR
+nhR
 oCe
-rgB
+nhR
 mAW
 mAW
-rgB
-rgB
+nhR
+nhR
 xrI
-rgB
-rgB
-rgB
-rgB
+nhR
+nhR
+nhR
+nhR
 mAW
 mAW
 xdf
@@ -177053,30 +176580,30 @@ mAW
 mAW
 mAW
 mAW
-rgB
-kjV
-rgB
+nhR
+mqn
+nhR
 uJM
 asW
 wmT
 asW
 keh
-rgB
-rgB
-rgB
+nhR
+nhR
+nhR
 bqz
-leE
-rgB
-rgB
-rgB
-rgB
+rtx
+nhR
+nhR
+nhR
+nhR
 cDK
 cEV
 nao
-rgB
+nhR
 qTQ
-rgB
-rgB
+nhR
+nhR
 mAW
 xdf
 xdf
@@ -177303,37 +176830,37 @@ xdf
 xdf
 mAW
 mAW
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
-kjV
-rgB
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
+mqn
+nhR
 tNA
 wiI
 eyO
 qKa
 aQm
-rgB
+nhR
 chd
 wZo
 wHg
 wHg
 ujk
-eGc
+unc
 gqS
-rgB
+nhR
 rMh
 vKJ
 bfm
 eWh
 nvY
-eGc
-rgB
+unc
+nhR
 mAW
 xdf
 xdf
@@ -177560,11 +177087,11 @@ xdf
 xdf
 mAW
 mAW
-rgB
+nhR
 rvT
-kjV
-kjV
-kjV
+mqn
+mqn
+mqn
 bDb
 sRm
 fvE
@@ -177573,24 +177100,24 @@ eWh
 tNA
 eyO
 jKe
-kjV
+mqn
 adX
-rgB
+nhR
 iXF
 ljF
-eGc
-kjV
+unc
+mqn
 ljF
 nvY
 sRm
-rgB
+nhR
 kgD
 hAM
 vBe
-rgB
-kjV
+nhR
+mqn
 qZZ
-rgB
+nhR
 mAW
 xdf
 xdf
@@ -177817,37 +177344,37 @@ xdf
 xdf
 mAW
 mAW
-rgB
-kjV
+nhR
+mqn
 bDb
-kjV
+mqn
 nvY
-kjV
-kjV
-mnT
+mqn
+mqn
+uwY
 otJ
-rgB
+nhR
 tNA
 koh
-kjV
+mqn
 ooi
 aQm
-rgB
-eGc
+nhR
+unc
 gst
-kjV
+mqn
 nvY
 eDA
 dkM
 dkM
 enN
-kjV
+mqn
 tOy
 nnI
-rgB
-kjV
-rgB
-rgB
+nhR
+mqn
+nhR
+nhR
 mAW
 xdf
 xdf
@@ -178074,36 +177601,36 @@ xdf
 xdf
 mAW
 mAW
-rgB
+nhR
 dEr
-kjV
-kjV
-kjV
+mqn
+mqn
+mqn
 nvY
-kjV
+mqn
 fvE
 mQa
-rgB
+nhR
 jbB
 elr
 rIT
 elr
 uPa
-rgB
+nhR
 nvY
 xfw
-rgB
+nhR
 hZO
 sRm
 nvY
-eGc
-rgB
+unc
+nhR
 lnp
 uqE
 nwp
-rgB
+nhR
 eWh
-rgB
+nhR
 mAW
 mAW
 xdf
@@ -178331,36 +177858,36 @@ xdf
 xdf
 mAW
 mAW
-rgB
-kjV
+nhR
+mqn
 nvY
-kjV
+mqn
 nvY
-kjV
+mqn
 rvT
-mnT
+uwY
 rXh
-rgB
-rgB
-rgB
-rgB
+nhR
+nhR
+nhR
+nhR
 mMW
-rgB
-rgB
-rgB
+nhR
+nhR
+nhR
 imr
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
-leE
-rgB
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
+rtx
+nhR
 mAW
 xdf
 xdf
@@ -178588,16 +178115,16 @@ xdf
 xdf
 mAW
 mAW
-rgB
-kjV
+nhR
+mqn
 nvY
-kjV
+mqn
 iTd
-kjV
-kjV
+mqn
+mqn
 hnu
 aTp
-rgB
+nhR
 tQN
 jta
 bMR
@@ -178605,7 +178132,7 @@ bDt
 qTz
 qGs
 otJ
-kjV
+mqn
 pKT
 khu
 nBw
@@ -178617,7 +178144,7 @@ dVD
 cko
 cMu
 vIF
-rgB
+nhR
 mAW
 xdf
 xdf
@@ -178845,16 +178372,16 @@ xdf
 xdf
 mAW
 mAW
-rgB
+nhR
 sRm
-kjV
-kjV
-kjV
+mqn
+mqn
+mqn
 nvY
-kjV
+mqn
 uHc
 uOj
-rgB
+nhR
 uqK
 nBw
 lTO
@@ -178866,15 +178393,15 @@ tZl
 cpd
 otJ
 bDt
-rgB
-eGc
-kjV
+nhR
+unc
+mqn
 sRm
 nvY
 iXF
-kjV
+mqn
 bbo
-rgB
+nhR
 mAW
 xdf
 xdf
@@ -179102,36 +178629,36 @@ xdf
 xdf
 mAW
 mAW
-rgB
+nhR
 bDb
-kjV
-kjV
+mqn
+mqn
 rvT
-kjV
+mqn
 bDb
 fvE
 dVz
-rgB
+nhR
 oKO
-rgB
+nhR
 jke
 jke
-rgB
+nhR
 cWt
 jQO
 mya
-kjV
+mqn
 otJ
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
 nvY
 bbo
-rgB
+nhR
 mAW
 xdf
 xdf
@@ -179359,36 +178886,36 @@ xdf
 mAW
 mAW
 qDs
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
 cjb
-rgB
+nhR
 lOh
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
 bDt
-kjV
+mqn
 hnu
-kjV
+mqn
 nvY
 iTd
 bDb
 jnZ
-rgB
+nhR
 nvY
 bbo
-rgB
+nhR
 mAW
 xdf
 xdf
@@ -179623,29 +179150,29 @@ qDs
 qDs
 qDs
 qDs
-rgB
+nhR
 kxS
-kjV
+mqn
 boc
 fvE
 wry
 rNW
 mka
-mws
+otE
 eUe
-rgB
-kjV
-kjV
+nhR
+mqn
+mqn
 uHc
-kjV
+mqn
 nvY
-kjV
-kjV
+mqn
+mqn
 rvT
-rgB
-eGc
+nhR
+unc
 rOe
-rgB
+nhR
 mAW
 xdf
 xdf
@@ -179873,36 +179400,36 @@ abU
 qDs
 qDs
 qDs
-mnT
-mnT
-rgB
-rgB
-rgB
-mnT
-mnT
-rgB
+uwY
+uwY
+nhR
+nhR
+nhR
+uwY
+uwY
+nhR
 cjb
 otJ
 jLT
-mnT
+uwY
 tHE
 gmE
-kjV
-rgB
+mqn
+nhR
 xFi
-rgB
-kjV
+nhR
+mqn
 otJ
-rgB
-kjV
-kjV
-kjV
-kjV
-kjV
+nhR
+mqn
+mqn
+mqn
+mqn
+mqn
 ihA
 diB
 acu
-rgB
+nhR
 mAW
 xdf
 xdf
@@ -180130,13 +179657,13 @@ qDs
 qDs
 rzD
 qDs
-mnT
+uwY
 trf
 otJ
-kjV
+mqn
 oCY
 otJ
-kjV
+mqn
 oCY
 cFT
 bHg
@@ -180145,21 +179672,21 @@ uhp
 erJ
 oOB
 hcR
-rgB
+nhR
 clY
-rgB
+nhR
 hax
 kdL
-rgB
+nhR
 bDb
-kjV
+mqn
 nvY
-kjV
-kjV
-rgB
+mqn
+mqn
+nhR
 oKV
 uVt
-rgB
+nhR
 mAW
 mAW
 mAW
@@ -180387,14 +179914,14 @@ qDs
 rzD
 rzD
 qDs
-mnT
+uwY
 gTf
 mss
 otJ
-rgB
-mnT
-mnT
-rgB
+nhR
+uwY
+uwY
+nhR
 ccT
 ltP
 qUc
@@ -180402,15 +179929,15 @@ fvE
 cah
 wVp
 otJ
-rgB
+nhR
 lit
-rgB
+nhR
 nvY
 eVh
-rgB
+nhR
 rvT
 sRm
-kjV
+mqn
 bDb
 bDb
 sUc
@@ -180644,31 +180171,31 @@ qDs
 rzD
 rzD
 qDs
-mnT
+uwY
 lQZ
 inw
 wUb
-rgB
+nhR
 qDs
 qDs
-rgB
-rgB
-rgB
+nhR
+nhR
+nhR
 bua
-rgB
-rgB
-rgB
+nhR
+nhR
+nhR
 jTB
-rgB
-rgB
-rgB
+nhR
+nhR
+nhR
 oCe
 oCe
-rgB
-rgB
-rgB
+nhR
+nhR
+nhR
 nTP
-rgB
+nhR
 sUc
 sUc
 eZO
@@ -180901,31 +180428,31 @@ qDs
 rzD
 rzD
 qDs
-mnT
-mnT
-rgB
-rgB
-rgB
+uwY
+uwY
+nhR
+nhR
+nhR
 qDs
 qDs
-rgB
+nhR
 dXu
 lIt
 ley
 gII
 teT
-rgB
-rgB
-rgB
+nhR
+nhR
+nhR
 mAW
 hal
 uQc
 uQc
 qDs
 mAW
-rgB
+nhR
 kYd
-leE
+rtx
 sUc
 iXa
 qCN
@@ -181165,13 +180692,13 @@ qDs
 qDs
 qDs
 mAW
-rgB
+nhR
 dal
-dkN
+oWN
 oiA
 aQy
 nLV
-rgB
+nhR
 mAW
 mAW
 mAW
@@ -181180,8 +180707,8 @@ uQc
 uQc
 qDs
 mAW
-rgB
-rgB
+nhR
+nhR
 jSi
 sUc
 iXa
@@ -181422,13 +180949,13 @@ mAW
 mAW
 mAW
 mAW
-rgB
+nhR
 vVw
 ahC
 kFK
 wsw
 hCd
-rgB
+nhR
 mAW
 mAW
 mAW
@@ -181438,7 +180965,7 @@ qDs
 qDs
 mAW
 mAW
-rgB
+nhR
 nvY
 sUc
 sUc
@@ -181679,13 +181206,13 @@ mAW
 mAW
 mAW
 mAW
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
-rgB
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
+nhR
 mAW
 mAW
 mAW
@@ -181695,9 +181222,9 @@ uQc
 mAW
 mAW
 mAW
-rgB
+nhR
 qfu
-kjV
+mqn
 sUc
 sUc
 sUc
@@ -181953,12 +181480,12 @@ mAW
 mAW
 mAW
 rgB
-rgB
+nhR
 jqc
 boB
 tty
-rgB
-rgB
+nhR
+nhR
 mAW
 mAW
 mAW
@@ -182210,11 +181737,11 @@ mAW
 mAW
 mAW
 mAW
-rgB
-rgB
-rgB
-rgB
-rgB
+nhR
+nhR
+nhR
+nhR
+nhR
 mAW
 mAW
 xdf
@@ -186177,12 +185704,12 @@ xdf
 xdf
 xdf
 mAW
-wER
-wER
+vDE
+vDE
 toN
 toN
-wER
-wER
+vDE
+vDE
 fKD
 mmB
 vDE
@@ -186434,12 +185961,12 @@ xdf
 xdf
 xdf
 mAW
-wER
+vDE
 eVy
 eVy
 rdc
 csj
-wER
+vDE
 omp
 omp
 lKO
@@ -186691,12 +186218,12 @@ xdf
 xdf
 xdf
 mAW
-wER
+vDE
 hfa
 ePd
 rdC
 dEg
-eBt
+byF
 iXi
 iXi
 fGx
@@ -186948,7 +186475,7 @@ xdf
 xdf
 xdf
 mAW
-wER
+vDE
 sGj
 eVy
 eVy
@@ -187205,7 +186732,7 @@ xdf
 xdf
 xdf
 mAW
-wER
+vDE
 vCq
 eVy
 akP
@@ -187462,12 +186989,12 @@ xdf
 xdf
 xdf
 mAW
-wER
+vDE
 wcs
 eVy
 eVy
 fEA
-ejq
+ipi
 omp
 omp
 vDE
@@ -187719,12 +187246,12 @@ xdf
 xdf
 xdf
 mAW
-wER
-wER
+vDE
+vDE
 dHp
 dHp
-wER
-wER
+vDE
+vDE
 duw
 qGo
 tKC
@@ -228847,10 +228374,10 @@ uJK
 kPo
 ttc
 ksS
-njS
-njS
-njS
-njS
+mwK
+mwK
+mwK
+mwK
 qOf
 qOf
 qOf
@@ -229364,7 +228891,7 @@ ksS
 cLd
 iyK
 qCz
-njS
+mwK
 qOf
 qOf
 qOf
@@ -229621,10 +229148,10 @@ ksS
 nqX
 cNO
 sUZ
-njS
-njS
-njS
-njS
+mwK
+mwK
+mwK
+mwK
 frJ
 frJ
 frJ
@@ -229881,7 +229408,7 @@ azM
 hmJ
 evj
 jHc
-njS
+mwK
 see
 frJ
 frJ
@@ -230652,7 +230179,7 @@ eIO
 azF
 nkf
 rWG
-njS
+mwK
 see
 frJ
 frJ

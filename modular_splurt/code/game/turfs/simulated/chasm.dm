@@ -21,3 +21,6 @@
 	underlay_appearance.icon_state = SPACE_ICON_STATE
 	underlay_appearance.plane = PLANE_SPACE
 	return TRUE
+
+/turf/open/chasm/icemoon/snaxi
+	initial_gas_mix = FROZEN_ATMOS

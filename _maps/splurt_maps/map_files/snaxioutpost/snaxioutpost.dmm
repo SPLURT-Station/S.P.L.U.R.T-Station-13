@@ -3725,10 +3725,8 @@
 /turf/open/floor/plasteel/white,
 /area/science/mixing)
 "bsC" = (
-/obj/machinery/cryopod{
-	dir = 1
-	},
 /obj/machinery/light,
+/obj/machinery/cryopod/tele,
 /turf/open/floor/circuit/green,
 /area/commons/cryopod)
 "bsH" = (
@@ -23924,13 +23922,11 @@
 /turf/open/floor/plasteel/dark,
 /area/science/robotics/lab)
 "ibD" = (
-/obj/machinery/cryopod{
-	dir = 1
-	},
 /obj/machinery/computer/cryopod{
 	dir = 1;
 	pixel_y = -26
 	},
+/obj/machinery/cryopod/tele,
 /turf/open/floor/circuit/green,
 /area/commons/cryopod)
 "ibT" = (
@@ -37406,7 +37402,7 @@
 /turf/open/floor/carpet,
 /area/commons/dorms)
 "mRR" = (
-/turf/open/openspace/icemoon/snaxi,
+/turf/open/openspace,
 /area/maintenance/starboard/fore)
 "mRY" = (
 /obj/structure/railing{
@@ -52682,13 +52678,11 @@
 /turf/open/floor/plating,
 /area/engineering/atmos)
 "slb" = (
-/obj/machinery/cryopod{
-	dir = 1
-	},
 /obj/machinery/light_switch{
 	pixel_x = -7;
 	pixel_y = -26
 	},
+/obj/machinery/cryopod/tele,
 /turf/open/floor/circuit/green,
 /area/commons/cryopod)
 "slc" = (

@@ -5060,7 +5060,7 @@
 	c_tag = "Bar East";
 	dir = 8
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plasteel/grimy,
 /area/service/bar)
 "bOE" = (
 /obj/structure/cable{
@@ -10863,10 +10863,13 @@
 /turf/open/floor/plasteel,
 /area/cargo/storage)
 "dGw" = (
-/obj/structure/chair/comfy/brown{
-	dir = 4
+/mob/living/carbon/monkey/punpun,
+/obj/structure/table/reinforced,
+/obj/machinery/door/firedoor/border_only{
+	dir = 8;
+	name = "west facing firelock"
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plasteel/grimy,
 /area/service/bar)
 "dGL" = (
 /obj/machinery/light/small,
@@ -18408,10 +18411,7 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/border_only{
-	name = "south facing firelock"
-	},
-/turf/open/floor/plasteel,
+/turf/closed/wall,
 /area/service/bar)
 "gdH" = (
 /obj/effect/turf_decal/trimline/brown/filled/line{
@@ -18725,14 +18725,14 @@
 /turf/open/floor/wood,
 /area/hallway/secondary/exit/departure_lounge)
 "gkB" = (
-/obj/structure/musician/piano{
-	icon_state = "piano"
-	},
-/obj/machinery/camera{
-	c_tag = "Bar South";
+/obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
-/turf/open/floor/wood,
+/obj/effect/turf_decal/tile/bar,
+/obj/machinery/door/firedoor/border_only{
+	name = "south facing firelock"
+	},
+/turf/open/floor/plasteel,
 /area/service/bar)
 "gkG" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -32096,7 +32096,8 @@
 /area/command/bridge)
 "kMD" = (
 /obj/machinery/door/firedoor/border_only{
-	name = "south facing firelock"
+	dir = 8;
+	name = "west facing firelock"
 	},
 /obj/machinery/jukebox,
 /turf/open/floor/plasteel/grimy,
@@ -36505,12 +36506,11 @@
 /turf/closed/wall/mineral/iron,
 /area/maintenance/department/chapel)
 "mnX" = (
-/obj/structure/table/reinforced,
-/obj/machinery/door/firedoor/border_only{
-	name = "south facing firelock"
+/obj/machinery/camera{
+	c_tag = "Bar South";
+	dir = 1
 	},
-/mob/living/carbon/monkey/punpun,
-/turf/open/floor/plasteel/grimy,
+/turf/open/floor/wood,
 /area/service/bar)
 "moc" = (
 /obj/structure/cable{
@@ -54721,8 +54721,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/structure/chair/comfy/brown,
-/turf/open/floor/wood,
+/turf/open/floor/plasteel/grimy,
 /area/service/bar)
 "szV" = (
 /obj/structure/rack,
@@ -68747,9 +68746,6 @@
 /area/engineering/teg)
 "xmN" = (
 /obj/machinery/light,
-/obj/structure/chair/comfy/black{
-	dir = 8
-	},
 /turf/open/floor/wood,
 /area/service/bar)
 "xmO" = (
@@ -248189,7 +248185,7 @@ rSK
 rSK
 rSK
 rSK
-wCN
+mZY
 ghu
 ufA
 lJi
@@ -248446,7 +248442,7 @@ rSK
 gAq
 rSK
 rSK
-gdD
+wCN
 ouE
 wpw
 yhv
@@ -248702,8 +248698,8 @@ oGp
 rSK
 wby
 rSK
+rSK
 gkB
-lrp
 uzS
 xHb
 ufA
@@ -248960,7 +248956,7 @@ rSK
 rSK
 rSK
 xmN
-mZY
+lrp
 lHS
 ldM
 aGP
@@ -249213,11 +249209,11 @@ iOk
 mXN
 mXN
 cYu
-rSK
-rSK
-rSK
-rSK
-wCN
+ciu
+ciu
+ciu
+mnX
+gdD
 kTf
 qJO
 bHG
@@ -249470,10 +249466,10 @@ exQ
 nVv
 qCt
 odS
-ciu
-rSK
-rSK
-rSK
+dGw
+nVv
+nVv
+kMD
 gdD
 fUw
 mtG
@@ -249726,11 +249722,11 @@ mZY
 wrG
 ekp
 mqP
-mnX
-ciu
-rSK
-rSK
-dGw
+ekp
+ekp
+ekp
+ekp
+ekp
 gfa
 kwA
 xHb
@@ -249983,11 +249979,11 @@ lmh
 tyd
 dtb
 lXF
-kMD
-ciu
+ekp
+ekp
 bNW
 szN
-lNP
+ekp
 gfa
 kwA
 xHb

@@ -12350,11 +12350,15 @@
 /turf/open/floor/wood,
 /area/security/courtroom)
 "edd" = (
-/obj/structure/cable,
-/obj/machinery/power/smes{
-	output_level = 100000;
+/obj/machinery/power/smes/engineering{
 	input_level = 100000;
-	charge = 500000
+	output_level = 100000
+	},
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/department/electrical)
@@ -18516,10 +18520,12 @@
 /turf/open/floor/plasteel,
 /area/commons/storage/primary)
 "gfF" = (
-/obj/structure/cable,
 /obj/machinery/power/smes/engineering{
 	input_level = 100000;
 	output_level = 100000
+	},
+/obj/structure/cable{
+	icon_state = "0-4"
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/department/electrical)
@@ -19906,6 +19912,9 @@
 /obj/item/storage/toolbox/electrical{
 	pixel_x = 1;
 	pixel_y = 6
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/electrical)
@@ -22276,6 +22285,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/electrical)
@@ -52178,6 +52190,9 @@
 /obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/open/floor/plating,
 /area/maintenance/port/central)
 "rLa" = (
@@ -55276,6 +55291,9 @@
 /area/command/heads_quarters/cmo)
 "sHM" = (
 /obj/machinery/light/small,
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
 /turf/open/floor/plasteel,
 /area/maintenance/department/electrical)
 "sHT" = (
@@ -57312,9 +57330,6 @@
 /turf/open/floor/plasteel/white,
 /area/science/misc_lab)
 "tqU" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
@@ -59730,6 +59745,18 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
+"ujt" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/open/floor/plating,
+/area/maintenance/department/electrical)
 "ujv" = (
 /obj/machinery/door/window/southleft,
 /obj/machinery/shower{
@@ -62839,9 +62866,6 @@
 	},
 /obj/structure/cable{
 	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
 	},
 /obj/structure/cable,
 /obj/machinery/power/terminal,
@@ -225098,7 +225122,7 @@ tLZ
 dwa
 vcV
 gmM
-iIa
+ujt
 gDp
 sHM
 tOI

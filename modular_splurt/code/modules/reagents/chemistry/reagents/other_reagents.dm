@@ -13,18 +13,18 @@
 //incubus and succubus additions below
 /datum/reagent/consumable/semen/on_mob_life(mob/living/carbon/M)
 	. = ..()
-	if(HAS_TRAIT(M,TRAIT_SUCCUBUS))
-		M.adjust_nutrition(1)
+	if(HAS_TRAIT(M,TRAIT_SUCCUBUS)||HAS_TRAIT(M,TRAIT_INCUBUS))
+		M.adjust_nutrition(2.5)
 
 /datum/reagent/consumable/ethanol/cum_in_a_hot_tub/semen/on_mob_life(mob/living/carbon/M)
 	. = ..()
-	if(HAS_TRAIT(M,TRAIT_SUCCUBUS))
+	if(HAS_TRAIT(M,TRAIT_SUCCUBUS)||HAS_TRAIT(M,TRAIT_INCUBUS))
 		M.adjust_nutrition(0.5)
 
 /datum/reagent/consumable/milk/on_mob_life(mob/living/carbon/M)
 	. = ..()
-	if(HAS_TRAIT(M,TRAIT_INCUBUS))
-		M.adjust_nutrition(1.5)
+	if(HAS_TRAIT(M,TRAIT_INCUBUS)||HAS_TRAIT(M,TRAIT_SUCCUBUS))
+		M.adjust_nutrition(4)
 
 /datum/reagent/blood/on_mob_life(mob/living/carbon/C)
 	. = ..()

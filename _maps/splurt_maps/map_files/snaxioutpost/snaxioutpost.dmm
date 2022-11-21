@@ -744,7 +744,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/obj/structure/lattice/catwalk,
 /turf/open/floor/catwalk_floor,
 /area/icemoon/surface/outdoors/unexplored)
 "alu" = (
@@ -5375,19 +5374,6 @@
 /obj/item/storage/box/donkpockets,
 /turf/open/floor/plasteel/grimy,
 /area/tcommsat/computer)
-"bSk" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
-	dir = 4
-	},
-/obj/structure/lattice/catwalk,
-/turf/open/floor/plating/snowed/smoothed,
-/area/icemoon/surface/outdoors/unexplored)
 "bSs" = (
 /turf/open/openspace/icemoon/snaxi,
 /area/security/execution/education)
@@ -7069,7 +7055,7 @@
 /area/ai_monitored/security/armory)
 "cxC" = (
 /obj/structure/lattice/catwalk,
-/turf/open/floor/catwalk_floor,
+/turf/open/openspace/icemoon/snaxi,
 /area/icemoon/underground/explored)
 "cxN" = (
 /obj/structure/closet/l3closet/janitor,
@@ -9746,15 +9732,8 @@
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
 "dnA" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /obj/machinery/light/floor,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/lattice/catwalk,
-/turf/open/floor/plating/snowed/smoothed,
+/turf/open/floor/catwalk_floor,
 /area/maintenance/department/electrical)
 "dnJ" = (
 /obj/structure/cable{
@@ -13751,7 +13730,7 @@
 	dir = 8
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/floor/catwalk_floor,
+/turf/open/openspace/icemoon/snaxi,
 /area/icemoon/underground/explored)
 "eyM" = (
 /obj/structure/disposalpipe/segment{
@@ -17016,7 +16995,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/floor/catwalk_floor,
+/turf/open/openspace/icemoon/snaxi,
 /area/icemoon/underground/explored)
 "fIy" = (
 /obj/machinery/door/airlock/maintenance{
@@ -17446,7 +17425,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/floor/catwalk_floor,
+/turf/open/openspace/icemoon/snaxi,
 /area/icemoon/underground/explored)
 "fPN" = (
 /obj/structure/disposalpipe/segment{
@@ -30294,10 +30273,6 @@
 /turf/open/floor/wood,
 /area/security/courtroom)
 "keT" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/railing{
-	dir = 8
-	},
 /turf/open/floor/catwalk_floor,
 /area/icemoon/surface/outdoors/unexplored)
 "kfd" = (
@@ -36122,13 +36097,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/central)
-"mhL" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/open/floor/plating/asteroid/snow/icemoon/snaxi,
-/area/icemoon/surface/outdoors/unexplored)
 "mhO" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -36471,16 +36439,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
-"mmY" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/lattice/catwalk,
-/turf/open/floor/plating/snowed/smoothed,
-/area/icemoon/surface/outdoors/unexplored)
 "mni" = (
 /obj/structure/rack,
 /obj/item/clothing/suit/hazardvest,
@@ -38168,17 +38126,6 @@
 	},
 /turf/open/floor/plating,
 /area/engineering/secure_construction)
-"mPb" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/lattice/catwalk,
-/obj/structure/lattice/catwalk,
-/turf/open/floor/plating/snowed/smoothed,
-/area/icemoon/surface/outdoors/unexplored)
 "mPt" = (
 /obj/structure/closet/secure_closet/exile,
 /turf/open/floor/plasteel/dark,
@@ -40059,7 +40006,6 @@
 /turf/open/floor/plasteel/dark,
 /area/commons/fitness)
 "nAE" = (
-/obj/structure/lattice/catwalk,
 /obj/structure/railing{
 	dir = 4
 	},
@@ -40321,11 +40267,8 @@
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
 "nEx" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/open/floor/plating/asteroid/snow/icemoon/snaxi,
+/obj/structure/railing,
+/turf/open/floor/catwalk_floor,
 /area/icemoon/surface/outdoors/unexplored)
 "nFg" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer1{
@@ -45773,18 +45716,6 @@
 /obj/item/clothing/neck/stethoscope,
 /turf/open/floor/plasteel/white,
 /area/security/brig)
-"pBG" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/machinery/light/floor,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/lattice/catwalk,
-/obj/structure/lattice/catwalk,
-/turf/open/floor/plating/snowed/smoothed,
-/area/maintenance/department/electrical)
 "pBJ" = (
 /turf/open/floor/plasteel/dark,
 /area/commons/cryopod)
@@ -48020,7 +47951,6 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/lattice/catwalk,
 /turf/open/floor/catwalk_floor,
 /area/icemoon/surface/outdoors/unexplored)
 "qpQ" = (
@@ -48451,7 +48381,6 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/structure/lattice/catwalk,
 /turf/open/floor/catwalk_floor,
 /area/icemoon/surface/outdoors/unexplored)
 "qyE" = (
@@ -56648,9 +56577,7 @@
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "tfo" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/lattice/catwalk,
-/obj/structure/railing{
+/obj/structure/railing/corner{
 	dir = 1
 	},
 /turf/open/floor/plating/asteroid/snow/icemoon/snaxi,
@@ -57533,8 +57460,6 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/lattice/catwalk,
-/obj/structure/lattice/catwalk,
 /obj/structure/railing{
 	dir = 1
 	},
@@ -57575,7 +57500,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/lattice/catwalk,
 /turf/open/floor/catwalk_floor,
 /area/icemoon/surface/outdoors/unexplored)
 "tvP" = (
@@ -68726,7 +68650,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/lattice/catwalk,
 /turf/open/floor/catwalk_floor,
 /area/maintenance/department/electrical)
 "xmv" = (
@@ -238714,7 +238637,7 @@ qOf
 qOf
 qOf
 frJ
-cgE
+frJ
 frJ
 tBf
 tBf
@@ -238973,16 +238896,16 @@ qOf
 frJ
 frJ
 qMy
-keT
-keT
-keT
 qpN
-keT
-keT
-keT
-keT
-nEx
-nEx
+qpN
+qpN
+qpN
+qpN
+qpN
+qpN
+qpN
+wfc
+wfc
 qMy
 kDR
 qNI
@@ -239230,16 +239153,16 @@ qOf
 qOf
 qOf
 qOf
-vRR
-jzR
-jzR
-jzR
-jzR
-jzR
-qDO
-jzR
-kha
-kha
+abU
+keT
+keT
+keT
+keT
+keT
+dnA
+keT
+qOf
+qOf
 qOf
 yiB
 qNI
@@ -239487,16 +239410,16 @@ qOf
 qOf
 qOf
 qOf
-kha
-kha
-jzR
-jzR
-jzR
-jzR
-jzR
-jzR
-jzR
-kha
+qOf
+qOf
+keT
+keT
+keT
+keT
+keT
+keT
+keT
+qOf
 qOf
 yiB
 qNI
@@ -239743,17 +239666,17 @@ qOf
 qOf
 frJ
 frJ
+frJ
+frJ
+frJ
 qMy
-mhL
-mhL
-mhL
 nAE
 nAE
 nAE
 nAE
 nAE
 nAE
-mhL
+paI
 qMy
 yiB
 qNI
@@ -240268,10 +240191,10 @@ tBf
 tBf
 tBf
 tBf
-qMy
+tuu
 yiB
 qNI
-qMy
+frJ
 frJ
 vgC
 frJ
@@ -240525,10 +240448,10 @@ tBf
 tBf
 tBf
 tBf
-tZX
-mPb
-bSk
-kQI
+qMy
+yiB
+qNI
+frJ
 frJ
 vgC
 vgC
@@ -240783,9 +240706,9 @@ tBf
 tBf
 tBf
 qyc
-pBG
-bSk
-kQI
+kDR
+qNI
+frJ
 frJ
 vgC
 vgC
@@ -241039,10 +240962,10 @@ tBf
 tBf
 tBf
 tBf
-lZR
-mmY
-bSk
-kQI
+qyc
+yiB
+qNI
+frJ
 frJ
 frJ
 vgC
@@ -241296,10 +241219,10 @@ tBf
 tBf
 tBf
 tBf
-lZR
+qyc
 tvC
-bSk
-kQI
+qNI
+frJ
 frJ
 frJ
 vgC
@@ -241553,10 +241476,10 @@ tBf
 tBf
 tBf
 tBf
-lZR
+qyc
 tvC
-bSk
-kQI
+qNI
+frJ
 frJ
 vgC
 vgC
@@ -241810,10 +241733,10 @@ tBf
 tBf
 tBf
 tBf
-lZR
+qyc
 tvC
 alt
-kQI
+frJ
 frJ
 frJ
 vgC
@@ -242067,10 +241990,10 @@ vgC
 tBf
 tBf
 tBf
-lZR
+qyc
 tvC
 alt
-kQI
+frJ
 frJ
 vgC
 vgC
@@ -242324,10 +242247,10 @@ vgC
 tBf
 tBf
 tBf
-lZR
+qyc
 tvC
 alt
-kQI
+qMy
 frJ
 frJ
 vgC
@@ -242581,10 +242504,10 @@ vgC
 vgC
 tBf
 tBf
-glr
+qyc
 xmt
 alt
-wZJ
+nEx
 frJ
 frJ
 frJ
@@ -242835,13 +242758,13 @@ frJ
 vgC
 frJ
 frJ
-frJ
+crn
 hdl
 tBf
-glr
+qyc
 tvC
 alt
-wZJ
+nEx
 paI
 dBn
 vgC
@@ -243095,10 +243018,10 @@ frJ
 frJ
 biJ
 pHg
-glr
+qyc
 tvC
 alt
-wZJ
+nEx
 tBf
 tuu
 vgC
@@ -243355,7 +243278,7 @@ qMy
 tut
 tvC
 alt
-wZJ
+nEx
 tBf
 ljJ
 dBn
@@ -243608,11 +243531,11 @@ qOf
 qOf
 qOf
 qOf
-qOf
+som
 tfo
 tvC
 alt
-wZJ
+nEx
 tBf
 tBf
 tuu
@@ -243866,10 +243789,10 @@ qOf
 qOf
 qOf
 qOf
-tZX
+frJ
 tvC
 alt
-wZJ
+nEx
 tBf
 tBf
 ljJ
@@ -244123,10 +244046,10 @@ qOf
 qOf
 qOf
 qOf
-tZX
-mmY
+frJ
+yiB
 alt
-wZJ
+nEx
 tBf
 tBf
 tBf
@@ -244380,10 +244303,10 @@ qOf
 qOf
 qOf
 qOf
-tZX
-dnA
+frJ
+kDR
 alt
-wZJ
+nEx
 tBf
 tBf
 tBf
@@ -244637,10 +244560,10 @@ qOf
 qOf
 qOf
 qOf
-tZX
-mmY
-bSk
-wZJ
+frJ
+yiB
+qNI
+nEx
 tBf
 tBf
 tBf
@@ -244894,10 +244817,10 @@ qOf
 qOf
 qOf
 qOf
-tZX
-mmY
-bSk
-wZJ
+frJ
+yiB
+qNI
+nEx
 tBf
 tBf
 tBf
@@ -245151,10 +245074,10 @@ qOf
 qOf
 qOf
 qOf
-tZX
-mmY
-bSk
-kQI
+frJ
+yiB
+qNI
+biJ
 tBf
 tBf
 tBf
@@ -245668,7 +245591,7 @@ qOf
 frJ
 yiB
 qNI
-frJ
+crn
 hdl
 tBf
 tBf
@@ -246183,7 +246106,7 @@ frJ
 kDR
 qNI
 frJ
-frJ
+crn
 hdl
 tBf
 tBf
@@ -246698,7 +246621,7 @@ yiB
 qNI
 frJ
 frJ
-frJ
+crn
 vgC
 tBf
 tBf

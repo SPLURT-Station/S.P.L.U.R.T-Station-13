@@ -38,11 +38,14 @@
 			B.set_light(2, 0.6, LIGHT_COLOR_BLUE) //more light
 
 /turf/open/floor/plating/asteroid/snow/ice/icemoon/snaxi
+	name = "iced snow"
 	initial_gas_mix = FROZEN_ATMOS
 
 /turf/open/lava/plasma/ice_moon/snaxi
+	name = "liquid plasma"
 	initial_gas_mix = FROZEN_ATMOS
 
 /turf/open/floor/plating/asteroid/snow/icemoon/snaxi
+	name = "snow"
 	initial_gas_mix = FROZEN_ATMOS
 

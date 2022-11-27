@@ -23,5 +23,6 @@
 	return TRUE
 
 /turf/open/chasm/icemoon/snaxi
+	name = "chasm"
 	initial_gas_mix = FROZEN_ATMOS
 

@@ -13,7 +13,7 @@
 	exp_type = EXP_TYPE_CREW
 	considered_combat_role = FALSE
 	alt_titles = list("Maintenance Rat")
-	custom_spawn_text = "<font color='black' size='2'><b>You don't remember how you got here, only that you stowed away on a Cargo shuttle. You must survive with only what you have, and what you can find.</b></font><font color='red' size='4'><b>You are NOT an Antag, and you are NOT Crew. Security may arrest you for trespassing on the Station, you may NOT fight back, but try not to get caught.</b></font>"
+	custom_spawn_text = "<font color='black' size='2'><b>You don't remember how you got here, only that you stowed away on a Cargo shuttle. You must survive with only what you have, and what you can find.</b></font><font color='red' size='4'><b>You are NOT an Antag, and you are NOT Crew. Security may arrest you for trespassing on the Station, you may NOT fight back, but try not to get caught. This role is soley for playing tag with security for sex.</b></font>"
 	threat = 0.5
 
 	outfit = /datum/outfit/job/stowaway

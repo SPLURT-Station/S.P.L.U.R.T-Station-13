@@ -41,10 +41,9 @@
 	head = /obj/item/clothing/head/helmet/blueshirt
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper
 	shoes = /obj/item/clothing/shoes/jackboots
-	l_pocket = /obj/item/restraints/handcuffs
-	r_pocket = /obj/item/assembly/flash/handheld
-	suit_store = /obj/item/gun/energy/e_gun/advtaser
-	backpack_contents = list(/obj/item/reagent_containers/spray/pepper, /obj/item/clothing/accessory/badge/deputy, /obj/item/holosign_creator/security)
+	l_pocket = /obj/item/storage/bag/security
+	r_pocket = /obj/item/melee/classic_baton/telescopic
+	backpack_contents = list(/obj/item/reagent_containers/spray/pepper, /obj/item/clothing/accessory/badge/deputy, /obj/item/holosign_creator/security, /obj/item/assembly/flash/handheld, /obj/item/restraints/handcuffs, /obj/item/reagent_containers/peacehypo)
 
 	backpack = /obj/item/storage/backpack/security/pk
 	satchel = /obj/item/storage/backpack/satchel/sec/pk
@@ -53,16 +52,15 @@
 
 	implants = list(/obj/item/implant/mindshield)
 
-/datum/outfit/plasmaman/peacekeeper // i dare not to touch whatever this is why does it have a fucking telescopic baton
+/datum/outfit/plasmaman/peacekeeper
 	name = "Peacekeeper Plasmaman"
 
 	head = /obj/item/clothing/head/helmet/space/plasmaman/security
 	uniform = /obj/item/clothing/under/plasmaman/security
 	ears = /obj/item/radio/headset/headset_sec/alt
-	r_hand = /obj/item/melee/classic_baton/telescopic
 	r_pocket = /obj/item/storage/bag/security
-	l_pocket = /obj/item/assembly/flash/handheld
-	backpack_contents = list(/obj/item/reagent_containers/spray/pepper, /obj/item/clothing/accessory/badge/deputy)
+	l_pocket = /obj/item/melee/classic_baton/telescopic
+	backpack_contents = list(/obj/item/reagent_containers/spray/pepper, /obj/item/clothing/accessory/badge/deputy, /obj/item/holosign_creator/security, /obj/item/assembly/flash/handheld, /obj/item/restraints/handcuffs, /obj/item/reagent_containers/peacehypo)
 
 	box = /obj/item/storage/box/survival/security
 

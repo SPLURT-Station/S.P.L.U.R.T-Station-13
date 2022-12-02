@@ -4053,6 +4053,7 @@
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "amU" = (
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating{
 	icon_state = "platingdmg2"
 	},
@@ -6633,6 +6634,7 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "avr" = (
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
@@ -82772,6 +82774,13 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/command/storage/eva)
+"wxi" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "wxA" = (
 /obj/machinery/hydroponics/constructable,
 /obj/machinery/airalarm{
@@ -125149,7 +125158,7 @@ afD
 afD
 jPO
 arG
-asB
+wxi
 aup
 dnR
 dnh

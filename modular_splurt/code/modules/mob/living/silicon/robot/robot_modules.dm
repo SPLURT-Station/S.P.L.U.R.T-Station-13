@@ -232,8 +232,6 @@
 	var/list/extra = list(
 		/obj/item/dogborg/jaws/small,
 		/obj/item/storage/bag/borgdelivery,
-		/obj/item/analyzer/nose,
-		/obj/item/soap/tongue,
 		/obj/item/shockpaddles/cyborg/hound
 	)
 	LAZYADD(basic_modules, extra)
@@ -242,21 +240,24 @@
 /obj/item/robot_module/peacekeeper/Initialize()
 	var/list/extra = list(
 		/obj/item/dogborg/jaws/small,
-		/obj/item/storage/bag/borgdelivery,
-		/obj/item/analyzer/nose,
-		/obj/item/soap/tongue
+		/obj/item/storage/bag/borgdelivery
 	)
 	LAZYADD(basic_modules, extra)
 	. = ..()
+
+/obj/item/detective_scanner/borg
+	name = "Cyborg Forensic Scanner"
+	icon = 'modular_sand/icons/mob/dogborg.dmi'
+	icon_state = "nose"
+	desc = "A Cyborg forensic scanner, built into the unit's olfactory sensor"
 
 /obj/item/robot_module/security/Initialize()
 	var/list/extra = list(
 		/obj/item/storage/bag/borgdelivery,
 		/obj/item/dogborg/jaws/big,
 		/obj/item/dogborg/pounce,
-		/obj/item/soap/tongue,
-		/obj/item/analyzer/nose,
-		/obj/item/holosign_creator/security
+		/obj/item/holosign_creator/security,
+		/obj/item/detective_scanner/borg
 	)
 	LAZYADD(basic_modules, extra)
 	. = ..()
@@ -264,7 +265,6 @@
 /obj/item/robot_module/butler/Initialize()
 	var/list/extra = list(
 		/obj/item/dogborg/jaws/small,
-		/obj/item/analyzer/nose,
 		/obj/item/soap/tongue/scrubpup
 	)
 	LAZYADD(basic_modules, extra)
@@ -280,3 +280,25 @@
 	)
 	LAZYADD(basic_modules, extra)
 	. = ..()
+
+//Slaver Borg
+
+/obj/item/robot_module/syndicate/slaver
+	name = "Slaver"
+	added_channels = list(RADIO_CHANNEL_SYNDICATE = 1)
+	basic_modules = list(
+		/obj/item/assembly/flash/cyborg,
+		/obj/item/borg/sight/thermal,
+		/obj/item/restraints/handcuffs/cable/zipties,
+		/obj/item/extinguisher,
+		/obj/item/weldingtool/largetank/cyborg,
+		/obj/item/screwdriver/nuke,
+		/obj/item/wrench/cyborg,
+		/obj/item/crowbar/cyborg,
+		/obj/item/wirecutters/cyborg,
+		/obj/item/multitool/cyborg,
+		/obj/item/slaver/gizmo,
+		/obj/item/card/emag,
+		/obj/item/melee/classic_baton/telescopic/contractor_baton,
+		/obj/item/dogborg/pounce,
+		/obj/item/borg_chameleon)

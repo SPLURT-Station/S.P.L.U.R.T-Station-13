@@ -2070,6 +2070,7 @@
 /area/maintenance/port/fore)
 "aft" = (
 /obj/machinery/atmospherics/pipe/simple/supplymain/hidden,
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "afv" = (
@@ -21050,6 +21051,7 @@
 /area/security/courtroom)
 "aVM" = (
 /obj/structure/chair/stool,
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -70803,6 +70805,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
+"vzG" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/central)
 "vDh" = (
 /obj/effect/landmark/start/blueshield,
 /obj/structure/cable{
@@ -111464,7 +111470,7 @@ arE
 aKT
 arE
 arE
-att
+vzG
 cqr
 arE
 byv

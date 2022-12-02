@@ -5619,6 +5619,7 @@
 	dir = 4
 	},
 /obj/item/clothing/mask/cigarette,
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
 "apu" = (
@@ -55730,6 +55731,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/main)
+"kzR" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/department/science)
 "kAa" = (
 /obj/structure/chair{
 	dir = 8
@@ -56983,6 +56988,12 @@
 /obj/item/pen,
 /turf/open/floor/plasteel,
 /area/security/prison)
+"mth" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/maintenance/department/engine)
 "mtu" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -88864,7 +88875,7 @@ bva
 bva
 bSw
 bYF
-bSw
+mth
 bva
 bva
 gkX
@@ -110948,7 +110959,7 @@ bwm
 svN
 bIQ
 uek
-lWy
+kzR
 bwm
 qnT
 lJr

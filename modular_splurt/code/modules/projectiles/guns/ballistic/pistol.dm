@@ -102,6 +102,17 @@
 /obj/item/gun/ballistic/automatic/pistol/m22pistol/update_icon_state()
 	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
 
+/obj/item/gun/ballistic/automatic/pistol/improvisedpistol
+	name = "\improper Improvised Pistol"
+	desc = "An extremly cheap 9x19 handgun created from bits and bobs salvaged from various parts of the station. Great for mouse hunting, and defending yourself against spess carp."
+	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
+	icon_state = "ipistol"
+	w_class = WEIGHT_CLASS_SMALL
+	mag_type = /obj/item/ammo_box/magazine/m9
+	can_suppress = FALSE
+
+/obj/item/gun/ballistic/automatic/pistol/improvisedpistol/update_icon_state()
+	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
 
 /obj/item/gun/ballistic/automatic/pistol/deagle
 	name = "\improper Desert Eagle (.50 AE)"
@@ -201,5 +212,16 @@
 				/obj/item/gunpart/pistol9slide = 1)
 	tools = list(TOOL_SCREWDRIVER)
 	time = 50
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON
+
+/datum/crafting_recipe/pistoliassemble
+	name = "Assemble Improvised Pistol"
+	result = /obj/item/gun/ballistic/automatic/pistol/improvisedpistol
+	reqs = list(/obj/item/weaponcrafting/receiver = 1,
+				/obj/item/stack/wood = 1,
+				/obj/item/pipe = 1)
+	tools = list(TOOL_SCREWDRIVER)
+	time = 20
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON

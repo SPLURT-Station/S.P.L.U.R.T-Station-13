@@ -107,7 +107,6 @@
 	desc = "An extremly cheap 9x19 handgun created from bits and bobs salvaged from various parts of the station. Great for mouse hunting, and defending yourself against spess carp."
 	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
 	icon_state = "ipistol"
-	w_class = WEIGHT_CLASS_SMALL
 	mag_type = /obj/item/ammo_box/magazine/m9
 	can_suppress = FALSE
 

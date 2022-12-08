@@ -111,9 +111,6 @@
 	mag_type = /obj/item/ammo_box/magazine/m9
 	can_suppress = FALSE
 
-/obj/item/gun/ballistic/automatic/pistol/improvisedpistol/update_icon_state()
-	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
-
 /obj/item/gun/ballistic/automatic/pistol/deagle
 	name = "\improper Desert Eagle (.50 AE)"
 

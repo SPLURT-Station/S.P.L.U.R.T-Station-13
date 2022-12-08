@@ -219,7 +219,7 @@
 	name = "Assemble Improvised Pistol"
 	result = /obj/item/gun/ballistic/automatic/pistol/improvisedpistol
 	reqs = list(/obj/item/weaponcrafting/receiver = 1,
-				/obj/item/stack/wood = 1,
+				/obj/item/stack/sheet/mineral/wood = 1,
 				/obj/item/pipe = 1)
 	tools = list(TOOL_SCREWDRIVER)
 	time = 20

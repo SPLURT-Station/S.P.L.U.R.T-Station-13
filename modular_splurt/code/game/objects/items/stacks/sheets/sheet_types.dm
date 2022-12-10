@@ -120,3 +120,8 @@ GLOBAL_LIST_INIT(micro_bricks_recipes, list( \
 /obj/item/stack/sheet/micro_bricks/get_main_recipes()
 	. = ..()
 	. += GLOB.micro_bricks_recipes
+
+// Hijack recipe loading to add new entries
+/obj/item/stack/sheet/cloth/get_main_recipes()
+	. = ..()
+	. += new/datum/stack_recipe("handmade collar", /obj/item/clothing/neck/petcollar/handmade, 2) \

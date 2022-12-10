@@ -32,3 +32,11 @@
 	name = "stripped trencher gas mask"
 	desc = "A stripped version of No Man's Land-type mask equipment. While you can connect it to air supply, it doesn't block gas flow."
 	armor = 0
+
+// Cosmetic gas mask for Bane Syndrome (masked_mook)
+/obj/item/clothing/mask/gas/cosmetic
+	name = "aesthetic gas mask"
+	desc = "A face-covering mask that resembles a traditional gas mask, but without the breathing functionality."
+	clothing_flags = NONE
+	gas_transfer_coefficient = 0
+	permeability_coefficient = 0

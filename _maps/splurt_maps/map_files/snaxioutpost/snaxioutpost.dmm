@@ -8153,6 +8153,9 @@
 	},
 /turf/open/floor/plating/snowed/smoothed,
 /area/engineering/teg)
+"cNb" = (
+/turf/open/floor/plating/snowed/smoothed,
+/area/icemoon/surface/outdoors)
 "cNn" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 4
@@ -9815,6 +9818,8 @@
 /obj/machinery/light_switch{
 	pixel_y = -23
 	},
+/obj/machinery/limbgrower,
+/obj/item/reagent_containers/glass/beaker/synthflesh,
 /turf/open/floor/plasteel/freezer,
 /area/medical/surgery)
 "doe" = (
@@ -16246,6 +16251,8 @@
 	dir = 4;
 	pixel_x = -22
 	},
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/regular,
 /turf/open/floor/plasteel/freezer,
 /area/medical/surgery)
 "frV" = (
@@ -19466,6 +19473,8 @@
 	dir = 4;
 	pixel_x = -24
 	},
+/obj/structure/table/reinforced,
+/obj/item/storage/backpack/duffelbag/med/surgery,
 /turf/open/floor/plasteel/freezer,
 /area/medical/surgery)
 "guI" = (
@@ -25103,7 +25112,7 @@
 	width = 6
 	},
 /turf/open/floor/plating,
-/area/icemoon/surface/outdoors/unexplored)
+/area/icemoon/surface/outdoors)
 "iky" = (
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 1;
@@ -33657,10 +33666,6 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/carpet,
 /area/maintenance/starboard/aft)
-"liW" = (
-/obj/machinery/limbgrower,
-/turf/open/floor/plasteel/freezer,
-/area/medical/surgery)
 "ljj" = (
 /obj/structure/railing{
 	dir = 8
@@ -49527,6 +49532,8 @@
 /area/science)
 "qLo" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/regular,
 /turf/open/floor/plasteel/freezer,
 /area/medical/surgery)
 "qLs" = (
@@ -50172,15 +50179,20 @@
 /area/hallway/primary/central)
 "qVZ" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/command/glass{
-	name = "Blueshield";
-	req_access_txt = "72"
-	},
 /obj/effect/landmark/navigate_destination/blueshield,
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/blue,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/machinery/door/airlock/command/glass{
+	name = "Blueshield";
+	req_access_txt = "72"
+	},
 /turf/open/floor/plasteel/dark,
 /area/command/blueshieldoffice)
 "qWc" = (
@@ -51179,11 +51191,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/mine/living_quarters)
-"rok" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/backpack/duffelbag/med/surgery,
-/turf/open/floor/plasteel/freezer,
-/area/medical/surgery)
 "roq" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -57946,6 +57953,9 @@
 /obj/machinery/light,
 /turf/open/floor/plating/asteroid/snow/icemoon/snaxi,
 /area/maintenance/solars/port/aft)
+"tvT" = (
+/turf/open/floor/plating,
+/area/icemoon/surface/outdoors)
 "tvX" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -58382,7 +58392,6 @@
 /area/hallway/primary/aft)
 "tEw" = (
 /obj/structure/closet/crate/freezer/surplus_limbs,
-/obj/item/reagent_containers/glass/beaker/synthflesh,
 /turf/open/floor/plasteel/freezer,
 /area/medical/surgery)
 "tEB" = (
@@ -68945,7 +68954,7 @@
 	width = 6
 	},
 /turf/open/floor/plating/snowed/smoothed,
-/area/icemoon/surface/outdoors/unexplored)
+/area/icemoon/surface/outdoors)
 "xiM" = (
 /obj/structure/girder,
 /turf/open/floor/plating/asteroid/snow/icemoon/snaxi,
@@ -68959,7 +68968,7 @@
 	width = 6
 	},
 /turf/open/floor/plating/snowed/smoothed,
-/area/icemoon/surface/outdoors/unexplored)
+/area/icemoon/surface/outdoors)
 "xiX" = (
 /obj/machinery/button/door{
 	id = "misclab";
@@ -69945,6 +69954,9 @@
 /obj/machinery/light/floor,
 /turf/open/floor/plating/snowed/smoothed,
 /area/icemoon/surface/outdoors/unexplored)
+"xyH" = (
+/turf/open/floor/plating/asteroid/snow/icemoon/snaxi,
+/area/icemoon/surface/outdoors)
 "xyK" = (
 /obj/machinery/light{
 	dir = 1
@@ -70274,6 +70286,8 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 10
 	},
+/obj/structure/table/reinforced,
+/obj/item/storage/backpack/duffelbag/med/surgery,
 /turf/open/floor/plasteel/freezer,
 /area/medical/surgery)
 "xFi" = (
@@ -218843,7 +218857,7 @@ iJB
 tFN
 dlH
 rSF
-rok
+rSF
 rSF
 tEw
 fNA
@@ -219100,7 +219114,7 @@ iMI
 tFN
 odf
 mCp
-liW
+rSF
 kzY
 dnK
 fNA
@@ -219357,7 +219371,7 @@ uPM
 tFN
 tvk
 iYJ
-rok
+rSF
 ewG
 rSF
 uZo
@@ -226317,10 +226331,10 @@ nzX
 cNn
 swX
 qfh
-frJ
-frJ
-frJ
-frJ
+xyH
+xyH
+xyH
+xyH
 bWU
 aRI
 vDZ
@@ -226574,10 +226588,10 @@ gCd
 cNn
 mfR
 qfh
-qOf
-qOf
-qOf
-qOf
+cNb
+cNb
+cNb
+cNb
 bWU
 cTH
 isE
@@ -226831,10 +226845,10 @@ gCd
 cNn
 mfR
 qfh
-qOf
-qOf
-qOf
-qOf
+cNb
+cNb
+cNb
+cNb
 uhU
 qFk
 hxu
@@ -227088,10 +227102,10 @@ dJP
 jqB
 kbT
 rCX
-qOf
-qOf
-qOf
-qOf
+cNb
+cNb
+cNb
+cNb
 bWU
 lif
 nOV
@@ -227345,9 +227359,9 @@ wMO
 vpU
 vvz
 qfh
-qOf
-qOf
-qOf
+cNb
+cNb
+cNb
 xiN
 dUY
 bZi
@@ -227602,10 +227616,10 @@ srU
 tiN
 wMO
 qfh
-qOf
-qOf
-qOf
-qOf
+cNb
+cNb
+cNb
+cNb
 bWU
 bWU
 wYM
@@ -227859,10 +227873,10 @@ xWy
 vvg
 wMO
 qfh
-qOf
-qOf
-qOf
-qOf
+cNb
+cNb
+cNb
+cNb
 cgE
 frJ
 wYM
@@ -228116,10 +228130,10 @@ gDY
 rDM
 gDY
 qfh
-frJ
-frJ
-frJ
-frJ
+xyH
+xyH
+xyH
+xyH
 cgE
 frJ
 wYM
@@ -239467,10 +239481,10 @@ dup
 sXW
 mrN
 dup
-pgL
-pgL
-pgL
-pgL
+tvT
+tvT
+tvT
+tvT
 bnM
 pWr
 lGP
@@ -239724,10 +239738,10 @@ dup
 mrN
 jRw
 dup
-pgL
-pgL
-pgL
-pgL
+tvT
+tvT
+tvT
+tvT
 ppZ
 lWg
 qyS
@@ -239981,10 +239995,10 @@ dup
 mrN
 qck
 vmJ
-pgL
-pgL
-pgL
-pgL
+tvT
+tvT
+tvT
+tvT
 rtS
 oLk
 oAh
@@ -240238,9 +240252,9 @@ vmJ
 mrN
 uhl
 tOm
-pgL
-pgL
-pgL
+tvT
+tvT
+tvT
 ikn
 htr
 hxh
@@ -240495,10 +240509,10 @@ vmJ
 mrN
 hwP
 vmJ
-pgL
-pgL
-pgL
-pgL
+tvT
+tvT
+tvT
+tvT
 idn
 idn
 idn
@@ -240752,10 +240766,10 @@ vmJ
 mrN
 fNS
 kfe
-pgL
-pgL
-pgL
-pgL
+tvT
+tvT
+tvT
+tvT
 idn
 buO
 rLa
@@ -243487,10 +243501,10 @@ frJ
 frJ
 qOf
 qMy
-qOf
-qOf
-qOf
-qOf
+cNb
+cNb
+cNb
+cNb
 icl
 icl
 xzx
@@ -243744,10 +243758,10 @@ frJ
 frJ
 qOf
 qOf
-qOf
-qOf
-qOf
-qOf
+cNb
+cNb
+cNb
+cNb
 icl
 dam
 dbz
@@ -244001,10 +244015,10 @@ uEz
 uEz
 kXu
 qOf
-qOf
-qOf
-qOf
-qOf
+cNb
+cNb
+cNb
+cNb
 oXY
 leY
 aLv
@@ -244258,10 +244272,10 @@ frJ
 frJ
 uDn
 qOf
-qOf
-qOf
-qOf
-qOf
+cNb
+cNb
+cNb
+cNb
 oXY
 awi
 mWy
@@ -244515,9 +244529,9 @@ frJ
 frJ
 uDn
 qOf
-qOf
-qOf
-qOf
+cNb
+cNb
+cNb
 xiK
 hNe
 eIr
@@ -244772,10 +244786,10 @@ frJ
 frJ
 uDn
 qOf
-qOf
-qOf
-qOf
-qOf
+cNb
+cNb
+cNb
+cNb
 oXY
 fUu
 ufA
@@ -245029,10 +245043,10 @@ frJ
 frJ
 uDn
 qOf
-qOf
-qOf
-qOf
-qOf
+cNb
+cNb
+cNb
+cNb
 oXY
 cAv
 ufA

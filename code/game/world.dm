@@ -49,8 +49,6 @@ GLOBAL_LIST(topic_status_cache)
 #endif
 
 	LoadVerbs(/datum/verbs/menu)
-	if(CONFIG_GET(flag/usewhitelist))
-		load_whitelist()
 
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
 
@@ -346,7 +344,7 @@ GLOBAL_LIST(topic_status_cache)
 /// Auxtools atmos
 /world/proc/refresh_atmos_grid()
 
-/world/proc/change_fps(new_value = 20)
+/world/proc/change_fps(new_value = 60)
 	if(new_value <= 0)
 		CRASH("change_fps() called with [new_value] new_value.")
 	if(fps == new_value)

@@ -7,21 +7,27 @@
 	return ..()
 
 /obj/effect/mob_spawn/human/ash_walker/western
-	job_description = "Western Ashwalker"
-	short_desc = "You are a Farlander. Your tribe worships the home tendril."
-	flavour_text = "Your original home and tribe razed by Calamity, whoever remained set off to find a new place to live - \
-	these ashen grounds making for a good staying place, filled with flora and huntmeat alike. You're not alone here however, these grounds' natives \
-	restless about your tribe's arrival. Though surely they can be reasoned with.. right?\n\n\
-	Ensure the safety of your tribe. The elders didn't sacrifice themselves for it to perish here."
+	job_description = "Восточные пеплоходы."
+	short_desc = "Вы магмовый скиталец. Ваше племя поклоняется материнскому Дендрилу."
+	flavour_text = "Ваш прошлый дом и материнский Дендрил были разрушены чужаками с Холодных Звёзд и те из ваших сородичей, кто остались \
+	в живых, покинули южные моря на поиски нового дома. Эти земли хороши для вашего нового дома, ибо обилие Дендрилов дарует этим землям \
+	изобилие пищи и материалов для выживания, а также восстановления утерянных знаний и взращивание нового потомства. Однако вы здесь не \
+	одни, туземные сородичи обеспокоены вашим присутствием, а особенно знаниями, которыми вы обладаете. Может есть возможность с ними \
+	договорится? При этом всём чужаки с Небесных Крепостей добрались и до этих земель. \n\n\
+	Будьте на чеку, не дайте трудам потомков, отдавших свои жизни ради вас, пасть Пеплом за зря. Цикл должен продолжаться!"
 	mob_species = /datum/species/lizard/ashwalker/western
 	gender_bias = FEMALE
 
 /obj/effect/mob_spawn/human/ash_walker/eastern
-	job_description = "Eastern Ashwalker"
-	flavour_text = "You've shelter in the Necropolis, it's sacred walls housing your nest, bringing in new kin for your tribe and breathing new life \
-	into your fallen bretheren. Recently however, a foreign tribe came to these grounds, their foul hands threatening your hunt - furthermore, the sky's angels \
-	descend onto these lands, demise of this world as their goal.\n\n\
-	Ensure the safety of your nest, let no abomination even graze your home."
+	job_description = "Западные пеплоходы."
+	short_desc = "Вы магмовый скиталец. Ваше племя поклоняется материнскому Дендрилу."
+	flavour_text = "Ваше племя поклоняется матери Некрополю, как вашей Спасительнице и Наставнице. Священные стены дворца Некрополя \
+	дали вашему Дендрилу и вашему Роду защиту. Испокон веков, ваша священная обитель дарует вам Дар Перерождения, из цикла в цикл за \
+	жертвоприношения матери Некрополю, ради продолжения Великой Охоты. Однако не так давно на ваши земли вторглось Чужеродное Племя. \
+	Несмотря на ваше кровное родство в поклонении Великой Матери, не дайте иноземцам осквернить ваше святилище их изуверскими традициями. \
+	Сверх этого, с небесных крепостей из Холодного Камня, на ваши земли спустились скитальцы с далёких Звёзд. Их рудокопы накладывают \
+	священные пальцы на Некрополь, свои грязные лапы. Не дайте им украсть дары великой матери и лишить вас пищи. \n\n\
+	Охота должна быть здравой, цикл должен продолжаться, грядущие поколения должны жить!"
 	mob_species = /datum/species/lizard/ashwalker/eastern
 	gender_bias = MALE
 

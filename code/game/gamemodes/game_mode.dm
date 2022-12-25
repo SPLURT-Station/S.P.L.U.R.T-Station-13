@@ -278,11 +278,11 @@
 
 /datum/game_mode/proc/send_intercept()
 	if(flipseclevel && !(config_tag == "extended"))//CIT CHANGE - lets the security level be flipped roundstart
-		priority_announce("Thanks to the tireless efforts of our security and intelligence divisions, there are currently no credible threats to [station_name()]. All station construction projects have been authorized. Have a secure shift!", "Security Report", SSstation.announcer.get_rand_report_sound())
+		priority_announce("Благодаря неустанным усилиям наших специальных оперативных подразделений в настоящее время нет никаких действительных угроз для [station_name()]. Все проекты строительства станции утверждены. Безопасной смены!", "Отчёт о безопасности", SSstation.announcer.get_rand_report_sound())
 		return
-	var/intercepttext = "<b><i>Central Command Status Summary</i></b><hr>"
-	intercepttext += "<b>Central Command has intercepted and partially decoded a Syndicate transmission with vital information regarding their movements. The following report outlines the most \
-	likely threats to appear in your sector.</b>"
+	var/intercepttext = "<b><i>Отчёт от Центрального Командования</i></b><hr>"
+	intercepttext += "<b>Центральное Командование перехватило и частично расшифровало передачу Синдиката с важной информацией об их передвижениях. В прилагающемся отчете представлены наиболее \
+	вероятные угрозы в вашем секторе.</b>"
 	var/list/report_weights = config.mode_false_report_weight.Copy()
 	report_weights[config_tag] = 0 //Prevent the current mode from being falsely selected.
 	var/list/reports = list()
@@ -302,13 +302,13 @@
 		intercepttext += report
 
 	if(station_goals.len)
-		intercepttext += "<hr><b>Special Orders for [station_name()]:</b>"
+		intercepttext += "<hr><b>Специальные указы для [station_name()]:</b>"
 		for(var/datum/station_goal/G in station_goals)
 			G.on_report()
 			intercepttext += G.get_report()
 
-	print_command_report(intercepttext, "Central Command Status Summary", announce=FALSE)
-	priority_announce("A summary has been copied and printed to all communications consoles.", "Enemy communication intercepted. Security level elevated.", "intercept")
+	print_command_report(intercepttext, "Отчёт от Центрального Командования", announce=FALSE)
+	priority_announce("Сводка была скопирована и распечатана на всех коммуникационных консолях.", "Данные о угрозе перехвачены. Код повышен.", "intercept")
 	if(GLOB.security_level < SEC_LEVEL_BLUE)
 		set_security_level(SEC_LEVEL_BLUE)
 

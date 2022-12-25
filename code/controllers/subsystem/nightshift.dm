@@ -46,9 +46,9 @@ SUBSYSTEM_DEF(nightshift)
 	nightshift_active = active
 	if(announce)
 		if (active)
-			announce("Good evening, crew. To reduce power consumption and stimulate the circadian rhythms of some species, all of the lights aboard the station have been dimmed for the night.")
+			announce("Добрый вечер, Экипаж Космической Станции. Чтобы снизить потребление энергии и стимулировать Биоритмы некоторых видов, все осветительные приборы на борту станции были приглушены на ночь.")
 		else
-			announce("Good morning, crew. As it is now day time, all of the lights aboard the station have been restored to their former brightness.")
+			announce("Доброе утро, Экипаж Космической Станции. Поскольку сейчас дневное время, все осветительные приборы на борту станции были восстановлены до их прежней яркости.")
 	var/max_level
 	var/configured_level = CONFIG_GET(number/night_shift_public_areas_only)
 	if(isnull(max_level_override))

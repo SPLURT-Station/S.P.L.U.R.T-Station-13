@@ -1,5 +1,5 @@
 /datum/interaction/lewd/grindface
-	description = "Feet grind their face."
+	description = "Потереть лицо партнёра ножками."
 	interaction_sound = null
 	require_target_mouth = TRUE
 	require_user_num_feet = 1
@@ -9,40 +9,37 @@
 /datum/interaction/lewd/grindface/display_interaction(mob/living/user, mob/living/partner)
 	var/message
 
-	var/u_His = user.p_their()
-	var/t_His = partner.p_their()
-
 	var/shoes = user.get_shoes()
 
 	if(user.is_fucking(partner, GRINDING_FACE_WITH_FEET))
 		if(shoes)
-			message = "[pick(list("grinds [u_His] [shoes] into <b>[partner]</b>'s face.",
-				"presses [u_His] footwear down hard on <b>[partner]</b>'s face.",
-				"rubs off the dirt from [u_His] [shoes] onto <b>[partner]</b>'s face."))]</span>"
+			message = "[pick(list("трёт своими ногами лицо <b>[partner]</b>.",
+				"вжимает в лицо <b>[partner]</b> подошву своей обуви и ехидно посмеивается.",
+				"вытирает грязь со своей обуви о лицо <b>[partner]</b> и широко ухмыляется."))]</span>"
 		else
-			message = "[pick(list("grinds [u_His] bare feet into <b>[partner]</b>'s face.",
-				"deviously covers <b>[partner]</b>'s mouth and nose with [u_His] bare feet.",
-				"runs the soles of [u_His] bare feet against <b>[partner]</b>'s lips."))]</span>"
+			message = "[pick(list("трёт своими ножками о лицо <b>[partner]</b>.",
+				"коварно прикрывает своей босой ножкой рот и нос <b>[partner]</b> в широкой ухмылке.",
+				"аккуратно проводит своей босой ножкой вдоль губ <b>[partner]</b> и клонит свою голову в бок."))]</span>"
 
 	else if(user.is_fucking(partner, GRINDING_MOUTH_WITH_FEET))
 		if(shoes)
-			message = "[pick(list("pulls [u_His] [shoes] out of <b>[partner]</b>'s mouth and puts them on [t_His] face.",
-				"slowly retracts [u_His] [shoes] from <b>[partner]</b>'s mouth, putting them on [t_His] face instead."))]</span>"
+			message = "[pick(list("вытягивает носок своей обуви изо рта <b>[partner]</b> и проводит подошвой по лицу партнёра.",
+				"медленно убирает носок своей обуви изо рта <b>[partner]</b> и прижимает влажную подошву к лицу партнёра"))]</span>"
 		else
-			message = "[pick(list("pulls [u_His] bare feet out of <b>[partner]</b>'s mouth and rests them on [t_His] face instead.",
-				"retracts [u_His] bare feet from <b>[partner]</b>'s mouth and grinds them into [t_His] face instead."))]</span>"
+			message = "[pick(list("вытаскивает свои босые ноги изо рта <b>[partner]</b> и проводит ими по лицу своего партнёра.",
+				"медленно уобирает свои влажные босые ноги изо рта <b>[partner]</b> и проводит ими по лицу своего партнёра"))]</span>"
 
 		user.set_is_fucking(partner, GRINDING_FACE_WITH_FEET, null)
 
 	else
 		if(shoes)
-			message = "[pick(list("plants [u_His] [shoes] ontop of <b>[partner]</b>'s face.",
-				"rests [u_His] [shoes] on <b>[partner]</b>'s face and presses down hard.",
-				"harshly places [u_His] [shoes] atop <b>[partner]</b>'s face."))]</span>"
+			message = "[pick(list("укладывает подошву своей обуви поверх лица <b>[partner]</b>.",
+				"кладёт свою обувь на лицо <b>[partner]</b> и с силой на него давит в ехидной улыбке.",
+				"грубо надавливает на лицо своей обувью <b>[partner]</b> и, облизываясь, начинает ей растирать."))]</span>"
 		else
-			message = "[pick(list("plants [u_His] bare feet ontop of <b>[partner]</b>'s face.",
-				"rests [u_His] feet on <b>[partner]</b>'s face, smothering them.",
-				"positions [u_His] bare feet atop <b>[partner]</b>'s face."))]</span>"
+			message = "[pick(list("укладывает свою босую ножку поверх лица <b>[partner]</b>.",
+				"расслабленно укладыват свои босые ножки на лицо <b>[partner]</b> и начинает душить партнёра в ухмылке.",
+				"располагает свои босые ножки поверх лица <b>[partner]</b>"))]</span>"
 
 		user.set_is_fucking(partner, GRINDING_FACE_WITH_FEET, null)
 
@@ -54,7 +51,7 @@
 	partner.handle_post_sex(LOW_LUST, null, user)
 
 /datum/interaction/lewd/grindmouth
-	description = "Feet grind their mouth."
+	description = "Углубиться своими ножками в рот партнёра."
 	interaction_sound = null
 	require_target_mouth = TRUE
 	require_user_num_feet = 1
@@ -109,7 +106,7 @@
 	partner.handle_post_sex(LOW_LUST, null, user)
 
 /datum/interaction/lewd/footjob
-	description = "Jerk them off with your foot."
+	description = "Подрочить партнёру своей ногой."
 	interaction_sound = null
 	require_user_num_feet = 1
 	require_user_feet = REQUIRE_ANY
@@ -140,7 +137,7 @@
 		partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_FEET, user)
 
 /datum/interaction/lewd/footjob/double
-	description = "Jerk them off with both of your feet."
+	description = "Подрочить партнёру своими ножками."
 	require_user_num_feet = 2
 
 /datum/interaction/lewd/footjob/double/display_interaction(mob/living/user, mob/living/partner)
@@ -168,7 +165,7 @@
 		partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_FEET, user)
 
 /datum/interaction/lewd/footjob/vagina
-	description = "Rub their vagina with your foot."
+	description = "Потереть её киску своей ножкой."
 	require_target_vagina = REQUIRE_EXPOSED
 	require_target_penis = null
 

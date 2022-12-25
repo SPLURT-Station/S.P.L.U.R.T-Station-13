@@ -18,7 +18,7 @@
 	hub = "Exadv1.spacestation13"
 	hub_password = "kMZy3U5jJHSiBQjr"
 	name = "SPLURT Station 13"
-	fps = 20
+	fps = 60
 #ifdef FIND_REF_NO_CHECK_TICK
 	loop_checks = FALSE
 #endif

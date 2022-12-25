@@ -1,10 +1,10 @@
 /datum/round_event_control/gremlin
 	name = "Spawn Gremlins"
 	typepath = /datum/round_event/gremlin
-	weight = 15
+	weight = 5
 	max_occurrences = 2
-	earliest_start = 20 MINUTES
-	min_players = 5
+	earliest_start = 60 MINUTES
+	min_players = 15
 
 
 

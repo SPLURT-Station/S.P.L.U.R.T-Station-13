@@ -1,5 +1,5 @@
 /datum/interaction/lewd/handjob
-	description = "Jerk them off."
+	description = "Подрочить партнёру."
 	interaction_sound = null
 	require_user_hands = TRUE
 	require_target_penis = REQUIRE_EXPOSED
@@ -7,16 +7,16 @@
 
 /datum/interaction/lewd/handjob/display_interaction(mob/living/user, mob/living/partner)
 	var/message
-	var/u_His = user.p_their()
+	//var/u_His = user.p_their()
 	var/genital_name = partner.get_penetrating_genital_name()
 
 	if(partner.is_fucking(user, CUM_TARGET_HAND))
-		message = "[pick("jerks \the <b>[partner]</b> off.",
-			"works \the <b>[partner]</b>'s shaft.",
-			"wanks \the <b>[partner]</b>'s [genital_name] hard.")]"
+		message = "[pick("вздрачивает гениталии <b>[partner]</b>.",
+			"активно работает своей ладонью и стимулирует член <b>[partner]</b>.",
+			"пыхтит и яростно дрочит [genital_name] <b>[partner]</b>.")]"
 	else
-		message = "[pick("wraps [u_His] hand around \the <b>[partner]</b>'s [genital_name].",
-			"starts playing with \the <b>[partner]</b>'s [genital_name]")]"
+		message = "[pick("крепко обхватывает и сжимает своей рукой [genital_name] <b>[partner]</b>.",
+			"максимально активно играется с <b>[partner]</b>, в процессе вздрачивая [genital_name].")]"
 		partner.set_is_fucking(user, CUM_TARGET_HAND, partner.getorganslot(ORGAN_SLOT_PENIS))
 
 	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/bang1.ogg',

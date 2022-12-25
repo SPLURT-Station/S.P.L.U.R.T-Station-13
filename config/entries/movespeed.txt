@@ -8,8 +8,8 @@
 ## To speed things up make the number negative, to slow things down, make the number positive.
 
 ## These modify the run/walk speed of all mobs before the mob-specific modifiers are applied.
-RUN_DELAY 1.5
-WALK_DELAY 4
+RUN_DELAY 2.5
+WALK_DELAY 5
 
 ## The variables below affect the movement of specific mob types. THIS AFFECTS ALL SUBTYPES OF THE TYPE YOU CHOOSE!
 ## Entries completely override all subtypes. Later entries have precedence over earlier entries.
@@ -20,6 +20,7 @@ MULTIPLICATIVE_MOVESPEED /mob/living/carbon/alien/humanoid/sentinel -0.75
 MULTIPLICATIVE_MOVESPEED /mob/living/carbon/alien/humanoid/drone -0.5
 MULTIPLICATIVE_MOVESPEED /mob/living/carbon/alien/humanoid/royal/praetorian 0
 MULTIPLICATIVE_MOVESPEED /mob/living/carbon/alien/humanoid/royal/queen 2
+MULTIPLICATIVE_MOVESPEED /mob/living/silicon/robot -0.25
 
 ## The above, only when a mob is FLOATING
 MULTIPLICATIVE_MOVESPEED_FLOATING /mob/living/carbon -0.5
@@ -38,7 +39,7 @@ SPRINTLESS_OFF_BALANCE_SLOWDOWN 0.85
 MELEE_STAGGER_FACTOR 1
 
 ## Sprint speed increase
-SPRINT_SPEED_INCREASE 1
+SPRINT_SPEED_INCREASE 1.5
 
 ## Max tiles/second increase from sprint
 SPRINT_MAX_TILES_INCREASE 5
@@ -50,7 +51,7 @@ SPRINT_ABSOLUTE_MAX_TILES 13
 SPRINT_BUFFER_MAX 24
 
 ## Stamina/tile when bufer empty
-SPRINT_STAMINA_COST 1.4
+SPRINT_STAMINA_COST 10
 
 ## Buffer regen/decisecond - 0.4 = 4/second
-SPRINT_BUFFER_REGEN_PER_DS 0.4
+SPRINT_BUFFER_REGEN_PER_DS 0.5

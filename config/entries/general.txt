@@ -1,8 +1,8 @@
 ## Lobby time: This is the amount of time between rounds that players have to setup their characters and be ready.
-LOBBY_COUNTDOWN 120
+LOBBY_COUNTDOWN 240
 
 ## Round End Time: This is the amount of time after the round ends that players have to murder death kill each other.
-ROUND_END_COUNTDOWN 90
+ROUND_END_COUNTDOWN 150
 
 ## period of time in seconds for players to be considered inactive
 # INACTIVITY_PERIOD 300
@@ -139,14 +139,14 @@ ALLOW_AI_MULTICAM
 ## AWAY MISSIONS ###
 
 ## Uncomment to load one of the missions from awaymissionconfig.txt at roundstart.
-#ROUNDSTART_AWAY
+ROUNDSTART_AWAY
 
 ## Uncomment to load one of the virtual reality levels from vr_config at roundstart.
-#ROUNDSTART_VR
+ROUNDSTART_VR
 
 ## How long the delay is before the Away Mission gate opens. Default is half an hour.
 ## 600 is one minute.
-GATEWAY_DELAY 18000
+#GATEWAY_DELAY 18000
 
 
 ## ACCESS ###
@@ -169,7 +169,7 @@ MINIMAL_ACCESS_THRESHOLD 20
 #SECURITY_HAS_MAINT_ACCESS
 
 ## Uncomment to give everyone maint access.
-#EVERYONE_HAS_MAINT_ACCESS
+EVERYONE_HAS_MAINT_ACCESS
 
 ## Comment this out this to make security officers spawn in departmental security posts
 SEC_START_BRIG
@@ -268,7 +268,7 @@ LAW_WEIGHT ratvar,0
 LAW_WEIGHT buildawall,0
 
 ## Lewd laws. Coom.
-LAW_WEIGHT slut,0
+LAW_WEIGHT slut,16
 LAW_WEIGHT shebang,0
 LAW_WEIGHT milker,0
 LAW_WEIGHT vore_pred,0
@@ -278,7 +278,7 @@ LAW_WEIGHT vore_pred,0
 ## SILICON LAW MAX AMOUNT ###
 ## The maximum number of laws a silicon can have
 ## Attempting to upload laws past this point will fail unless the AI is reset
-SILICON_MAX_LAW_AMOUNT 12
+SILICON_MAX_LAW_AMOUNT 16
 
 ## Roundstart Races
 ##-------------------------------------------------------------------------------------------
@@ -408,16 +408,16 @@ BOMBCAP 20
 ## a less lootfilled or smaller or less round effecting ruin costs less to
 ## spawn, while the converse is true. Alter this number to affect the amount
 ## of ruins.
-LAVALAND_BUDGET 60
+LAVALAND_BUDGET 80
 
 ## Ice Moon Budget
-ICEMOON_BUDGET 90
+ICEMOON_BUDGET 100
 
 ## Space Ruin Budget
-Space_Budget 16
+Space_Budget 20
 
 ## Station Ruin Budget
-STATION_SPACE_BUDGET 10
+STATION_SPACE_BUDGET 20
 
 ## Time in ds from when a player latejoins till the arrival shuttle docks at the station
 ## Must be at least 30. At least 55 recommended to be visually/aurally appropriate
@@ -491,7 +491,7 @@ BOX_RANDOM_ENGINE Box SM 5x5,0
 BOX_RANDOM_ENGINE Box SM 3x,0
 BOX_RANDOM_ENGINE Box TEG,2
 BOX_RANDOM_ENGINE Box Empty,0
-BOX_RANDOM_ENGINE Box Antimatter,0
+BOX_RANDOM_ENGINE Box Antimatter,3
 BOX_RANDOM_ENGINE Box P.A.C.M.A.N,0
 BOX_RANDOM_ENGINE Box RBMK,0
 BOX_RANDOM_ENGINE Box DIY,2
@@ -499,7 +499,7 @@ BOX_RANDOM_ENGINE Box DIY_SM,1
 
 
 ## Whether the suicide verb is allowed.
-# SUICIDE_ALLOWED
+SUICIDE_ALLOWED
 
 ## Allows players to set a hexadecimal color of their choice as skin tone, on top of the standard ones.
 ALLOW_CUSTOM_SKINTONES

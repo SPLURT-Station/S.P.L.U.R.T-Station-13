@@ -339,6 +339,7 @@ SUBSYSTEM_DEF(vote)
 				GLOB.master_mode = "dynamic"
 				if(. == "extended")
 					GLOB.dynamic_extended = TRUE
+					GLOB.master_mode = "extended"
 				message_admins("The gamemode has been voted for, and has been changed to: [GLOB.master_mode]")
 				log_admin("Gamemode has been voted for and switched to: [GLOB.master_mode].")
 			if("restart")

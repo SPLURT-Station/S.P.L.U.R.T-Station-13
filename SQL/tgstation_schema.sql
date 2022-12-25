@@ -593,6 +593,16 @@ CREATE TABLE `discord_links` (
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 
+--
+-- Table structure for table `whitelist`
+--
+DROP TABLE IF EXISTS `whitelist`;
+CREATE TABLE `whitelist` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`ckey` VARCHAR(32) NOT NULL,
+	PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;

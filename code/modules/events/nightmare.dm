@@ -2,7 +2,7 @@
 	name = "Spawn Nightmare"
 	typepath = /datum/round_event/ghost_role/nightmare
 	max_occurrences = 1
-	min_players = 20
+	min_players = 30
 	dynamic_should_hijack = TRUE
 
 /datum/round_event/ghost_role/nightmare

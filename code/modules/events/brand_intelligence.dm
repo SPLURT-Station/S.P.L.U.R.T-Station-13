@@ -1,9 +1,9 @@
 /datum/round_event_control/brand_intelligence
 	name = "Brand Intelligence"
 	typepath = /datum/round_event/brand_intelligence
-	weight = 5
+	weight = 35
 
-	min_players = 15
+	min_players = 20
 	max_occurrences = 1
 
 /datum/round_event/brand_intelligence
@@ -13,19 +13,19 @@
 	var/list/obj/machinery/vending/infectedMachines = list()
 	var/obj/machinery/vending/originMachine
 	var/list/rampant_speeches = list("Try our aggressive new marketing strategies!", \
-									 "You should buy products to feed your lifestyle obsession!", \
-									 "Consume!", \
-									 "Your money can buy happiness!", \
-									 "Engage direct marketing!", \
-									 "Advertising is legalized lying! But don't let that put you off our great deals!", \
-									 "You don't want to buy anything? Yeah, well, I didn't want to buy your mom either.",
-									 "Gamers, rise up!",
-									 "Ok, now, this is epic.",
-									 "HUMAN FUNNY.",
-									 "But I'm already tracer!",
-									 "How do I vore people?",
-									 "ERP?",
-									 "Not epic bros...")
+									"You should buy products to feed your lifestyle obsession!", \
+									"Consume!", \
+									"Your money can buy happiness!", \
+									"Engage direct marketing!", \
+									"Advertising is legalized lying! But don't let that put you off our great deals!", \
+									"You don't want to buy anything? Yeah, well, I didn't want to buy your mom either.",
+									"Gamers, rise up!",
+									"Ok, now, this is epic.",
+									"HUMAN FUNNY.",
+									"But I'm already tracer!",
+									"How do I vore people?",
+									"ERP?",
+									"Not epic bros...")
 
 
 /datum/round_event/brand_intelligence/announce(fake)

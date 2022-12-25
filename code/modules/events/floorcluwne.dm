@@ -1,9 +1,9 @@
 /datum/round_event_control/floor_cluwne
 	name = "Floor Cluwne"
 	typepath = /datum/round_event/floor_cluwne
-	max_occurrences = 0
+	max_occurrences = 5
 	min_players = 20
-	weight = 10
+	weight = 90
 
 
 /datum/round_event/floor_cluwne/start()

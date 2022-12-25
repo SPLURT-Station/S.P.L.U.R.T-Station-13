@@ -1,5 +1,5 @@
 /datum/interaction/lewd/earfuck
-	description = "Fuck their ear."
+	description = "Изнасиловать в ухо."
 	interaction_sound = null
 	require_user_penis = REQUIRE_EXPOSED
 	require_target_ears = REQUIRE_EXPOSED
@@ -17,15 +17,13 @@
 
 /datum/interaction/lewd/earfuck/display_interaction(mob/living/user, mob/living/partner)
 	var/message
-	var/u_His = user.p_their()
-	var/genital_name = user.get_penetrating_genital_name()
 
 	if(user.is_fucking(partner, CUM_TARGET_EARS))
 		message = "[pick(
-			"pounds into \the <b>[partner]</b>'s [partner.has_ears() ? "ear":"earsocker"].",
-			"shoves [u_His] [genital_name] deep into \the <b>[partner]</b>'s skull",
-			"thrusts in and out of \the <b>[partner]</b>'s [partner.has_ears() ? "ear":"eyesocket"].",
-			"goes balls deep into \the <b>[partner]</b>'s cranium over and over again.")]"
+			"долбится в ушную раковину \the <b>[partner]</b>.",
+			"резко и довольно глубоко вводит свой орган в череп \the <b>[partner]</b>",
+			"раз за разом толкается в ушную раковину \the <b>[partner]</b>.",
+			"заходит своим влажным органом по самые яйца в череп \the <b>[partner]</b> снова и снова.")]"
 		var/client/cli = partner.client
 		var/mob/living/carbon/C = partner
 		if(cli && istype(C))
@@ -33,10 +31,12 @@
 				if(prob(15))
 					C.bleed(2)
 				if(prob(25))
-					C.adjustOrganLoss(ORGAN_SLOT_EARS, rand(3,7))
-					C.adjustOrganLoss(ORGAN_SLOT_BRAIN, rand(3,7))
+					C.adjustOrganLoss(ORGAN_SLOT_EARS, rand(10,20))
+					C.adjustOrganLoss(ORGAN_SLOT_BRAIN, rand(7,15))
+				if(prob(1) && istype(partner))
+					partner.adjustBruteLoss(rand(5,7))
 	else
-		message = "forcefully slides [u_His] [genital_name] inside \the <b>[partner]</b>'s [partner.has_ears() ? "ear":"earsocket"]."
+		message = "с силой загоняет свой орган внутрь ушной раковины \the <b>[partner]</b> и громко вздыхает."
 		user.set_is_fucking(partner, CUM_TARGET_EARS, user.getorganslot(ORGAN_SLOT_PENIS))
 
 	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/champ1.ogg',

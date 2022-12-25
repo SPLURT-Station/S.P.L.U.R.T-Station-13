@@ -129,8 +129,8 @@ GLOBAL_LIST(round_end_notifiees)
 	load_admins()
 
 /datum/tgs_chat_command/addbunkerbypass
-	name = "whitelist"
-	help_text = "whitelist <ckey>"
+	name = "bypass_panic_bunker"
+	help_text = "bypass_panic_bunker <ckey>"
 	admin_only = TRUE
 
 /datum/tgs_chat_command/addbunkerbypass/Run(datum/tgs_chat_user/sender, params)

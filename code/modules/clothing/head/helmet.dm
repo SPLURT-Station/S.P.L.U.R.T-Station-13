@@ -13,6 +13,8 @@
 	resistance_flags = NONE
 	flags_cover = HEADCOVERSEYES
 	flags_inv = HIDEHAIR
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 
 	dog_fashion = /datum/dog_fashion/head/helmet
 
@@ -77,11 +79,15 @@
 	armor = list(MELEE = 15, BULLET = 60, LASER = 10, ENERGY = 10, BOMB = 40, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
 	can_flashlight = 1
 	dog_fashion = null
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 
 /obj/item/clothing/head/helmet/old
 	name = "degrading helmet"
 	desc = "Standard issue security helmet. Due to degradation the helmet's visor obstructs the users ability to see long distances."
 	tint = 2
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 
 /obj/item/clothing/head/helmet/blueshirt
 	name = "blue helmet"
@@ -89,6 +95,8 @@
 	icon_state = "blueshift"
 	item_state = "blueshift"
 	custom_premium_price = PRICE_ABOVE_EXPENSIVE
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 
 /obj/item/clothing/head/helmet/riot
 	name = "riot helmet"
@@ -106,6 +114,8 @@
 	toggle_cooldown = 0
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	visor_flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 	dog_fashion = null
 	mutantrace_variation = STYLE_MUZZLE
 
@@ -140,6 +150,8 @@
 	can_toggle = 1
 	toggle_cooldown = 20
 	active_sound = 'sound/items/weeoo1.ogg'
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 	dog_fashion = null
 
 /obj/item/clothing/head/helmet/justice/escape
@@ -148,6 +160,8 @@
 	icon_state = "justice2"
 	toggle_message = "You turn off the light on"
 	alt_toggle_message = "You turn on the light on"
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 
 /obj/item/clothing/head/helmet/swat
 	name = "\improper SWAT helmet"
@@ -160,6 +174,8 @@
 	heat_protection = HEAD
 	max_heat_protection_temperature = SPACE_HELM_MAX_TEMP_PROTECT
 	clothing_flags = STOPSPRESSUREDAMAGE
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 	strip_delay = 80
 	dog_fashion = null
 
@@ -168,11 +184,15 @@
 	desc = "An extremely robust, space-worthy helmet with the Nanotrasen logo emblazoned on the top."
 	icon_state = "swat"
 	item_state = "swat"
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 
 /obj/item/clothing/head/helmet/thunderdome
 	name = "\improper Thunderdome helmet"
 	desc = "<i>'Let the battle commence!'</i>"
 	flags_inv = HIDEEARS|HIDEHAIR
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 	icon_state = "thunderdome"
 	item_state = "thunderdome"
 	armor = list(MELEE = 40, BULLET = 30, LASER = 25,ENERGY = 10, BOMB = 25, BIO = 10, RAD = 0, FIRE = 50, ACID = 50)
@@ -188,6 +208,8 @@
 	desc = "An ancient helmet made of bronze and leather."
 	flags_inv = HIDEEARS|HIDEHAIR
 	flags_cover = HEADCOVERSEYES
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 	armor = list(MELEE = 25, BULLET = 0, LASER = 25, ENERGY = 10, BOMB = 10, BIO = 0, RAD = 0, FIRE = 100, ACID = 50)
 	resistance_flags = FIRE_PROOF
 	icon_state = "roman"
@@ -216,6 +238,8 @@
 	item_state = "gladiator"
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR
 	flags_cover = HEADCOVERSEYES
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 	dog_fashion = null
 
 /obj/item/clothing/head/helmet/redtaghelm
@@ -223,6 +247,8 @@
 	desc = "They have chosen their own end."
 	icon_state = "redtaghelm"
 	flags_cover = HEADCOVERSEYES
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 	item_state = "redtaghelm"
 	armor = list(MELEE = 15, BULLET = 10, LASER = 20,ENERGY = 10, BOMB = 20, BIO = 0, RAD = 0, FIRE = 0, ACID = 50)
 	// Offer about the same protection as a hardhat.
@@ -246,6 +272,8 @@
 	armor = list(MELEE = 41, BULLET = 15, LASER = 5,ENERGY = 5, BOMB = 5, BIO = 2, RAD = 0, FIRE = 0, ACID = 50)
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 	strip_delay = 80
 	dog_fashion = null
 	mutantrace_variation = STYLE_MUZZLE
@@ -284,6 +312,8 @@
 	armor = list(MELEE = 25, BULLET = 25, LASER = 25, ENERGY = 10, BOMB = 10, BIO = 5, RAD = 20, FIRE = 40, ACID = 20)
 	icon_state = "skull"
 	item_state = "skull"
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 	strip_delay = 100
 	mutantrace_variation = STYLE_MUZZLE
 

@@ -1,5 +1,5 @@
 /datum/interaction/lewd/mount
-	description = "Mount with your pussy."
+	description = "Поза наездницы | Женская доминация - Вагинальная."
 	interaction_sound = null
 	require_user_vagina = REQUIRE_EXPOSED
 	require_target_penis = REQUIRE_EXPOSED
@@ -7,14 +7,14 @@
 
 /datum/interaction/lewd/mount/display_interaction(mob/living/user, mob/living/partner)
 	var/message
-	var/u_His = user.p_their()
+	//var/u_His = user.p_their()
 	var/genital_name = partner.get_penetrating_genital_name()
 
 	if(partner.is_fucking(user, CUM_TARGET_VAGINA))
-		message = "[pick("rides \the <b>[partner]</b>'s [genital_name].",
-			"forces <b>[partner]</b>'s [genital_name] on [u_His] pussy")]"
+		message = "[pick("использует [genital_name] <b>[partner]</b> по прямому назначению и тихо стонет.",
+			"с силой загоняет [genital_name] <b>[partner]</b> в свою собственную киску и довольно облизывается.")]"
 	else
-		message = "slides [u_His] pussy onto \the <b>[partner]</b>'s [genital_name]."
+		message = "резко всовывает [genital_name] <b>[partner]</b> в своё влагалище и удовлетворённо выдыхает."
 		partner.set_is_fucking(user, CUM_TARGET_VAGINA, partner.getorganslot(ORGAN_SLOT_PENIS))
 	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/bang1.ogg',
 						'modular_sand/sound/interactions/bang2.ogg',
@@ -25,7 +25,7 @@
 	user.handle_post_sex(NORMAL_LUST, CUM_TARGET_PENIS, partner)
 
 /datum/interaction/lewd/mountass
-	description = "Mount with your ass."
+	description = "Поза Наездинцы | Женская Доминация - Анальная."
 	interaction_sound = null
 	require_user_anus = REQUIRE_EXPOSED
 	require_target_penis = REQUIRE_EXPOSED
@@ -33,14 +33,14 @@
 
 /datum/interaction/lewd/mountass/display_interaction(mob/living/user, mob/living/partner)
 	var/message
-	var/u_His = user.p_their()
+	//.var/u_His = user.p_their()
 	var/genital_name = partner.get_penetrating_genital_name()
 
 	if(partner.is_fucking(user, CUM_TARGET_ANUS))
-		message = "[pick("rides \the <b>[partner]</b>'s [genital_name].",
-			"forces <b>[partner]</b>'s [genital_name] on [u_His] ass")]"
+		message = "[pick("использует [genital_name] <b>[partner]</b> по прямому назначению и тихо стонет.",
+			"с силой загоняет [genital_name] <b>[partner]</b> в своё анальное колечко и довольно облизывается.")]"
 	else
-		message = "lowers [u_His] ass onto \the <b>[partner]</b>'s [genital_name]."
+		message = "резко всовывает [genital_name] <b>[partner]</b> в своё анальное кольцо и удовлетворённо выдыхает."
 		partner.set_is_fucking(user, CUM_TARGET_ANUS, partner.getorganslot(ORGAN_SLOT_PENIS))
 	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/bang1.ogg',
 						'modular_sand/sound/interactions/bang2.ogg',
@@ -51,7 +51,7 @@
 	user.handle_post_sex(NORMAL_LUST, null, partner)
 
 /datum/interaction/lewd/mountface
-	description = "Ass to face."
+	description = "Потереться своей задницей о лицо партнёра."
 	interaction_sound = null
 	require_target_mouth = TRUE
 	require_user_anus = REQUIRE_EXPOSED
@@ -60,15 +60,15 @@
 /datum/interaction/lewd/mountface/display_interaction(mob/living/user, mob/living/partner)
 	var/message
 
-	var/u_His = user.p_their()
+	//var/u_His = user.p_their()
 
 	if(user.is_fucking(partner, GRINDING_FACE_WITH_ANUS))
-		message = "[pick("grinds [u_His] ass into \the <b>[partner]</b>'s face.",
-			"shoves [u_His] ass into \the <b>[partner]</b>'s face.")]"
+		message = "[pick("втирает свою задницу в лицо <b>[partner]</b> и ехидно ухмыляется.",
+			"потирается своей задницей о лицо <b>[partner]</b> и тихо усмехается.")]"
 	else
 		message = "[pick(
-			"grabs the back of \the <b>[partner]</b>'s head and forces it into [u_His] asscheeks.",
-			"squats down and plants [u_His] ass right on \the <b>[partner]</b>'s face")]"
+			"хватается за голову <b>[partner]</b> и с силой вжимает её между своих ягодиц.",
+			"присаживается своей задницей прямо на лицо <b>[partner]</b> и начинает тереться о физиономию.")]"
 		user.set_is_fucking(partner, GRINDING_FACE_WITH_ANUS, null)
 
 	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/squelch1.ogg',
@@ -78,7 +78,7 @@
 	user.handle_post_sex(LOW_LUST, null, partner)
 
 /datum/interaction/lewd/thighs
-	description = "Smother them using your %COCK%."
+	description = "Придушить своего партнёра членом."
 	max_distance = 1
 	require_user_penis = REQUIRE_EXPOSED
 	require_target_mouth = TRUE
@@ -88,7 +88,7 @@
 	var/fucktarget = "penis"
 
 /datum/interaction/lewd/thighs/vagina
-	description = "Smother them using your vagina."
+	description = "Придушить своего партнёра киской."
 	require_user_penis = REQUIRE_NONE
 	require_user_vagina = REQUIRE_EXPOSED
 	write_log_user = "thigh-trapped (vagina)"
@@ -100,10 +100,10 @@
 	var/obj/item/organ/genital/genital = null
 	var/lust_increase = 1
 
-	var/u_His = user.p_their()
-	var/t_His = partner.p_their()
-	var/t_Him = partner.p_them()
-	var/t_Hes = partner.p_theyre()
+	//var/u_His = user.p_their()
+	//var/t_His = partner.p_their()
+	//var/t_Him = partner.p_them()
+	//var/t_Hes = partner.p_theyre()
 
 	if(user.is_fucking(partner, THIGH_SMOTHERING))
 		var/improv = FALSE
@@ -111,39 +111,39 @@
 			if("vagina")
 				if(user.has_vagina())
 					message = pick(list(
-						"presses [u_His] weight down onto \the <b>[partner]</b>'s face, blocking [t_His] vision completely.",
-						"rides \the <b>[partner]</b>'s face, grinding [u_His] wet pussy all over it."))
+						"давит лицо <b>[partner]</b> между своих бёдер и полностью блокирует обзор.",
+						"трётся об лицо <b>[partner]</b>, размазывая влагу со своей киски по нему."))
 				else
 					improv = TRUE
 			if("penis")
 				if(user.has_penis() || user.has_strapon())
 					var/genital_name = user.get_penetrating_genital_name()
-					message = pick(list("presses [u_His] weight down onto \the <b>[partner]</b>'s face, blocking [t_His] vision completely.",
-						"forces [u_His] [genital_name] into \the <b>[partner]</b>'s face as [t_Hes] stuck locked in between [u_His] thighs.",
-						"slips [u_His] [genital_name] into \the <b>[partner]</b>'s helpless mouth, keeping [u_His] shaft pressed hard into [t_His] face."))
+					message = pick(list("давит лицо <b>[partner]</b> между своих бёдер и полностью блокирует обзор.",
+						"прижимает [genital_name] прямо к лицу <b>[partner]</b> и крепко сжимает свои бёдра, хитро улыбаясь.",
+						"просовывает [genital_name] в беспомощный рот <b>[partner]</b> и надёжно фиксирует лицо между своими бёдрами."))
 				else
 					improv = TRUE
 		if(improv)
-			message = "rubs [u_His] groin up and down \the <b>[partner]</b>'s face."
+			message = "трется своим пахом вверх и вниз по лицу <b>[partner]</b>."
 	else
 		var/improv = FALSE
 		switch(fucktarget)
 			if("vagina")
 				if(user.has_vagina())
 					message = pick(list(
-						"clambers over \the <b>[partner]</b>'s face and pins [t_Him] down with [u_His] thighs, [u_His] moist slit rubbing all over \the <b>[partner]</b>'s mouth and nose.",
-						"locks [u_His] legs around \the <b>[partner]</b>'s head before pulling it into [u_His] mound."))
+						"похотливо облизывается и поправляет своё положение на личике <b>[partner]</b>, после чего пару раз сжимает свои бёдра, потирая влажную щель о ротик и носик <b>[partner]</b>.",
+						"обхватывает голову <b>[partner]</b> и с усилием вжимает в свой бутон."))
 				else
 					improv = TRUE
 			if("penis")
 				if(user.has_penis() || user.has_strapon())
 					message = pick(list(
-						"clambers over \the <b>[partner]</b>'s face and pins [t_Him] down with [u_His] thighs, then slowly inching closer and covering [t_His] eyes and nose with [u_His] leaking erection.",
-						"locks [u_His] legs around \the <b>[partner]</b>'s head before pulling it into [u_His] fat package, smothering [t_Him]."))
+						"похотливо облизывается и поправляет своё положение на личике <b>[partner]</b>, после чего пару раз сжимает свои бёдра, выделяя немного предэякулята на лицо <b>[partner]</b>.",
+						"обхватывает голову <b>[partner]</b> и с усилием вжимает в свою промежность, в процессе растирая свои гениталии о личико <b>[partner]</b>."))
 				else
 					improv = TRUE
 		if(improv)
-			message = "deviously locks [u_His] legs around \the <b>[partner]</b>'s head and smothers it in [u_His] thighs."
+			message = "ловко смыкает ноги вокруг головы <b>[partner]</b> и с силой начинает душить."
 		else
 			switch(fucktarget)
 				if("vagina")

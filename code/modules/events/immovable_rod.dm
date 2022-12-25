@@ -10,7 +10,7 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 /datum/round_event_control/immovable_rod
 	name = "Immovable Rod"
 	typepath = /datum/round_event/immovable_rod
-	min_players = 15
+	min_players = 20
 	max_occurrences = 5
 	var/atom/special_target
 
@@ -27,7 +27,7 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	announceWhen = 5
 
 /datum/round_event/immovable_rod/announce(fake)
-	priority_announce("What the fuck was that?!", "General Alert", has_important_message = TRUE)
+	priority_announce("Что это за хуета?!", "General Alert", has_important_message = TRUE)
 
 /datum/round_event/immovable_rod/start()
 	var/datum/round_event_control/immovable_rod/C = control

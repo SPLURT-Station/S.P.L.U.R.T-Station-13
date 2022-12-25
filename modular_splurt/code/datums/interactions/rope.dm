@@ -1,5 +1,5 @@
 /datum/interaction/lewd/bondage_rope_remove
-	description = "Remove bondage rope."
+	description = "Убрать бандажную веревку."
 	interaction_sound = 'modular_splurt/sound/lewd/rope.ogg'
 
 /datum/interaction/lewd/bondage_rope_remove/evaluate_target(mob/living/user, mob/living/target, silent = TRUE)

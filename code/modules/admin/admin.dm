@@ -634,10 +634,10 @@
 			SSblackbox.record_feedback("tally", "admin_verb", 1, "Start Now") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 			return TRUE
 		SSticker.start_immediately = FALSE
-		SSticker.SetTimeLeft(1800)
-		to_chat(world, "<b>The game will start in 180 seconds.</b>")
+		SSticker.SetTimeLeft(6000)
+		to_chat(world, "<b>The game will start in 600 seconds.</b>")
 		SEND_SOUND(world, sound(SSstation.announcer.get_rand_alert_sound()))
-		message_admins("<font color='blue'>[usr.key] has cancelled immediate game start. Game will start in 180 seconds.</font>")
+		message_admins("<font color='blue'>[usr.key] has cancelled immediate game start. Game will start in 600 seconds.</font>")
 		log_admin("[usr.key] has cancelled immediate game start.")
 	else
 		to_chat(usr, "<font color='red'>Error: Start Now: Game has already started.</font>")

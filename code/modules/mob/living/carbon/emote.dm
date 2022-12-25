@@ -88,3 +88,19 @@
 	key = "wink"
 	key_third_person = "winks"
 	message = "winks."
+
+/datum/emote/living/carbon/lick
+	key = "lick"
+	key_third_person = "licks"
+	restraint_check = TRUE
+
+/datum/emote/living/carbon/lick/run_emote(mob/user)
+	. = ..()
+	if(user.get_active_held_item())
+		to_chat(user, span_warning("Your active hand is full, and therefore you can't lick anything! Don't ask why!"))
+		return
+	var/obj/item/soap/tongue/organic/licky = new(user)
+	if(user.put_in_active_hand(licky))
+		to_chat(user, span_notice("You extend your tongue and get ready to lick something."))
+	else
+		qdel(licky)

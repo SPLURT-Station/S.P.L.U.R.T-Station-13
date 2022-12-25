@@ -1,7 +1,7 @@
 /datum/round_event_control/travelling_trader
 	name = "Travelling Trader"
 	typepath = /datum/round_event/travelling_trader
-	weight = 8
+	weight = 15
 	max_occurrences = 2
 	earliest_start = 0 MINUTES
 

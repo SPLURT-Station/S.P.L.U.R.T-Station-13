@@ -1441,3 +1441,14 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 				owner.visible_message("<span class='danger'>[owner] parries [attack_text] with [src]!</span>")
 				return BLOCK_SUCCESS | BLOCK_PHYSICAL_EXTERNAL
 	return NONE
+
+/obj/item/soap/tongue/organic
+	name = "tongue"
+	desc = "Mlem."
+	icon = 'icons/obj/surgery.dmi'
+	icon_state = "tonguenormal"
+	force = 0
+	throwforce = 0
+	item_flags = DROPDEL | ABSTRACT | HAND_ITEM
+	attack_verb = list("licked", "lapped", "mlemmed")
+	hitsound = 'sound/effects/gib_step.ogg'

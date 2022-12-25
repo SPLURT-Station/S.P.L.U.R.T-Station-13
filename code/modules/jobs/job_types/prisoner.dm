@@ -4,8 +4,8 @@
 	department_head = list("The Security Team")
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = 0
-	spawn_positions = 0
+	total_positions = 6
+	spawn_positions = 6
 	supervisors = "the security team"
 	random_spawns_possible = FALSE
 

@@ -180,6 +180,7 @@ If not set, defaults to check_completion instead. Set it. It's used by cryo.
 	if(!invert)
 		target_role_type = role_type
 	..()
+	target_amount = rand(2,6)
 	return target
 
 /datum/objective/assassinate/check_completion()
@@ -191,7 +192,7 @@ If not set, defaults to check_completion instead. Set it. It's used by cryo.
 /datum/objective/assassinate/update_explanation_text()
 	..()
 	if(target && target.current)
-		explanation_text = "Assassinate [target.name], the [!target_role_type ? target.assigned_role : target.special_role]."
+		explanation_text = "Наша цель - [target.name], [!target_role_type ? target.assigned_role : target.special_role]. Пусть эта Цель будет наказана! Изнасилуй, сломай колени и распространи кучу Гексокроцина в [target_amount] общественных местах."
 	else
 		explanation_text = "Free Objective"
 
@@ -205,7 +206,7 @@ If not set, defaults to check_completion instead. Set it. It's used by cryo.
 /datum/objective/assassinate/once/update_explanation_text()
 	..()
 	if(target && target.current)
-		explanation_text = "Kill [target.name], the [!target_role_type ? target.assigned_role : target.special_role]. You only need to kill them once; if they come back, you've still succeeded."
+		explanation_text = "Наша цель - [target.name], [!target_role_type ? target.assigned_role : target.special_role]. Пусть эта Цель будет наказана! Изнасилуй, сломай колени или накорми ядом."
 		START_PROCESSING(SSprocessing,src)
 	else
 		explanation_text = "Free Objective"
@@ -230,7 +231,7 @@ If not set, defaults to check_completion instead. Set it. It's used by cryo.
 /datum/objective/assassinate/internal/update_explanation_text()
 	..()
 	if(target && !target.current)
-		explanation_text = "Assassinate [target.name], who was obliterated"
+		explanation_text = "Наша цель - [target.name], [!target_role_type ? target.assigned_role : target.special_role]. Пусть эта Цель будет наказана! Изнасилуй, сломай колени или накорми ядом."
 
 /datum/objective/mutiny
 	name = "mutiny"
@@ -255,7 +256,7 @@ If not set, defaults to check_completion instead. Set it. It's used by cryo.
 /datum/objective/mutiny/update_explanation_text()
 	..()
 	if(target && target.current)
-		explanation_text = "Assassinate or exile [target.name], the [!target_role_type ? target.assigned_role : target.special_role]."
+		explanation_text = "Наша цель - [target.name], [!target_role_type ? target.assigned_role : target.special_role]. Пусть эта Цель пропадёт наказанной! Сломай колени, изнасилуй и/или выбрось в пространство Гейта с имплантом Изгнанника."
 	else
 		explanation_text = "Free Objective"
 
@@ -278,7 +279,7 @@ If not set, defaults to check_completion instead. Set it. It's used by cryo.
 
 /datum/objective/maroon/update_explanation_text()
 	if(target && target.current)
-		explanation_text = "Prevent [target.name], the [!target_role_type ? target.assigned_role : target.special_role], from escaping alive."
+		explanation_text = "Наша цель - [target.name], [!target_role_type ? target.assigned_role : target.special_role]. Не дай этой цели покинуть станцию!"
 	else
 		explanation_text = "Free Objective"
 
@@ -313,7 +314,7 @@ If not set, defaults to check_completion instead. Set it. It's used by cryo.
 /datum/objective/debrain/update_explanation_text()
 	..()
 	if(target && target.current)
-		explanation_text = "Steal the brain of [target.name], the [!target_role_type ? target.assigned_role : target.special_role]."
+		explanation_text = "Влюби в себя [target.name], [!target_role_type ? target.assigned_role : target.special_role]!"
 	else
 		explanation_text = "Free Objective"
 
@@ -341,7 +342,7 @@ If not set, defaults to check_completion instead. Set it. It's used by cryo.
 /datum/objective/protect/update_explanation_text()
 	..()
 	if(target && target.current)
-		explanation_text = "Protect [target.name], the [!target_role_type ? target.assigned_role : target.special_role]."
+		explanation_text = "Держись рядом и защищай [target.name], [!target_role_type ? target.assigned_role : target.special_role]."
 	else
 		explanation_text = "Free Objective"
 
@@ -354,8 +355,8 @@ If not set, defaults to check_completion instead. Set it. It's used by cryo.
 
 /datum/objective/hijack
 	name = "hijack"
-	explanation_text = "Hijack the emergency shuttle by hacking its navigational protocols through the control console (alt click emergency shuttle console)."
-	team_explanation_text = "Hijack the emergency shuttle by hacking its navigational protocols through the control console (alt click emergency shuttle console). Leave no team member behind."
+	explanation_text = "Захватите Аварийный Шаттл, взломав его навигационные протоколы через консоль управления (щелкните ALT-ЛКМ по консоли аварийного шаттла)! Мы отправляемся на Станцию Синдиката!"
+	team_explanation_text = "Захватите Аварийный Шаттл, взломав его навигационные протоколы через консоль управления (щелкните ALT-ЛКМ по консоли аварийного шаттла)! Мы отправляемся на Станцию Синдиката! Не забудьте про своих коллег."
 	martyr_compatible = 0 //Technically you won't get both anyway.
 	/// Overrides the hijack speed of any antagonist datum it is on ONLY, no other datums are impacted.
 	var/hijack_speed_override = 1
@@ -435,8 +436,8 @@ If not set, defaults to check_completion instead. Set it. It's used by cryo.
 
 /datum/objective/escape
 	name = "escape"
-	explanation_text = "Escape on the shuttle or an escape pod alive and without being in custody."
-	team_explanation_text = "Have all members of your team escape on a shuttle or pod alive, without being in custody."
+	explanation_text = "Сбежать на Шаттле или спасательной капсуле живым(-ой) и без каких бы то не было физических ограничений (наручники и так далее)."
+	team_explanation_text = "Сбежать на Шаттле или спасательной капсуле живыми совместно со своими коллегами и без каких бы то не было физических ограничений (наручники и так далее)."
 
 /datum/objective/escape/check_completion()
 	// Require all owners escape safely.
@@ -467,7 +468,7 @@ If not set, defaults to check_completion instead. Set it. It's used by cryo.
 /datum/objective/breakout/update_explanation_text()
 	..()
 	if(target && target.current)
-		explanation_text = "Make sure [target.name], the [!target_role_type ? target.assigned_role : target.special_role] escapes on the shuttle or an escape pod alive and without being in custody."
+		explanation_text = "Будьте уверены, что [target.name], the [!target_role_type ? target.assigned_role : target.special_role] сбежит на Шаттле или спасательной капсуле живым(-ой) и без каких бы то не было физических ограничений (наручники и так далее)."
 	else
 		explanation_text = "Free Objective"
 
@@ -709,7 +710,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 
 /datum/objective/download/update_explanation_text()
 	..()
-	explanation_text = "Download [target_amount] research node\s."
+	explanation_text = "Удостоверься в том, что эксперимент идёт как по маслу. Скачай [target_amount] технологий на диск."
 
 /datum/objective/download/check_completion()
 	var/datum/techweb/checking = new
@@ -790,7 +791,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 /datum/objective/protect_object/update_explanation_text()
 	. = ..()
 	if(protect_target)
-		explanation_text = "Protect \the [protect_target] at all costs."
+		explanation_text = "Держись рядом и защищай \the [protect_target]. Это очень важно, на кон поставлено всё!"
 	else
 		explanation_text = "Free objective."
 
@@ -907,7 +908,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 /datum/objective/destroy/update_explanation_text()
 	..()
 	if(target && target.current)
-		explanation_text = "Destroy [target.name], the experimental AI."
+		explanation_text = "Уничтожь или укради, или взломай [target.name], экспериментальный Искусственный Интеллект."
 	else
 		explanation_text = "Free Objective"
 

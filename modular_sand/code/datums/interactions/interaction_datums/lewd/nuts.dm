@@ -1,5 +1,5 @@
 /datum/interaction/lewd/nuts
-	description = "Nuts to face."
+	description = "Потереться своими семенниками о лицо партнёра."
 	interaction_sound = null
 	require_user_balls = REQUIRE_EXPOSED
 	require_target_mouth = TRUE
@@ -10,32 +10,30 @@
 /datum/interaction/lewd/nuts/display_interaction(mob/living/user, mob/living/partner)
 	var/message
 
-	var/u_His = user.p_their()
-	var/t_His = partner.p_their()
-
 	var/lust_increase = 1
 
 	if(user.is_fucking(partner, NUTS_TO_FACE))
 		message = pick(list(
-			"grabs the back of <b>[partner]</b>'s head and pulls it into [u_His] crotch.",
-			"jams [u_His] nutsack right into <b>[partner]</b>'s face.",
-			"roughly grinds [u_His] fat nutsack into <b>[partner]</b>'s mouth.",
-			"pulls out [u_His] saliva-covered nuts from <b>[partner]</b>'s violated mouth and then wipes off the slime onto [t_His] face."))
+			"хватается за затылок <b>[partner]</b> и с силой тянет к своей промежности.",
+			"суёт свои яйца прямо в лицо <b>[partner]</b> и широко ухмыляется.",
+			"грубо суёт свои семенники прямо в рот <b>[partner]</b> с самодовольным настроем.",
+			"вытаскивает покрытые слюнкой семенники из осквернённого рта <b>[partner]</b>, а затем вытирает влагу об лицо <b>[partner]</b>."))
 	else
-		message = pick(list("wedges a digit into the side of <b>[partner]</b>'s jaw and pries it open before using [u_His] other hand to shove [u_His] whole nutsack inside!", "stands with [u_His] groin inches away from [partner]'s face, then thrusting [u_His] hips forward and smothering [partner]'s whole face with [u_His] heavy ballsack."))
+		message = pick(list(
+			"втискивает свой палец сбоку в челюсти <b>[partner]</b> и с лёгкостью её разжимает, после чего использует вторую свою руку, чтобы засунуть свои семенники внутрь!",
+			"встает так, чтобы пах находился в нескольких сантиметрах от лица <b>[partner]</b>, затем толкает свои бедра вперед и начинает тереться своими яйцами об лицо <b>[partner]</b>."))
 		user.set_is_fucking(partner, NUTS_TO_FACE, user.getorganslot(ORGAN_SLOT_PENIS))
 
-	/*playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/nuts1.ogg',
-						'modular_sand/sound/interactions/nuts2.ogg',
-						'modular_sand/sound/interactions/nuts3.ogg',
-						'modular_sand/sound/interactions/nuts4.ogg'), 70, 1, -1)*/ //These files don't even exist but nobody noticed because double-quotes were used instead of single.
+	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/foot_dry1.ogg',
+						'modular_sand/sound/interactions/oral1.ogg',
+						'modular_sand/sound/interactions/oral2.ogg',), 70, 1, -1) //These files don't even exist but nobody noticed because double-quotes were used instead of single.
 	user.visible_message("<span class='lewd'><b>\The [user]</b> [message]</span>", ignored_mobs = user.get_unconsenting())
 	user.handle_post_sex(lust_increase, CUM_TARGET_MOUTH, partner)
 
 /datum/interaction/lewd/nut_smack
 	description = "Smack their nuts."
 	interaction_sound = 'modular_sand/sound/interactions/slap.ogg'
-	simple_message = "USER slaps TARGET's nuts!"
+	simple_message = "USER с ухмылкой бьёт семенники TARGET!"
 	require_target_balls = REQUIRE_EXPOSED
 	needs_physical_contact = TRUE
 	max_distance = 1

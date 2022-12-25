@@ -1,7 +1,7 @@
 /datum/round_event_control/supernova
 	name = "Supernova"
 	typepath = /datum/round_event/supernova
-	weight = 5
+	weight = 15
 	max_occurrences = 1
 	min_players = 2
 

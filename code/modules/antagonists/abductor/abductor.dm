@@ -179,7 +179,7 @@
 	target_amount = 6
 
 /datum/objective/experiment/New()
-	explanation_text = "Experiment on [target_amount] humans."
+	explanation_text = "Проведите эксперименты над репродуктивной системой [target_amount] сотрудников Космической Станции. Быть может, нас заинтересуют и иные органы! Отталкиваемся от ситуации."
 
 /datum/objective/experiment/check_completion()
 	for(var/obj/machinery/abductor/experiment/E in GLOB.machines)

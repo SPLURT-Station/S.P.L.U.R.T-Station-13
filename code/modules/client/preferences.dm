@@ -104,6 +104,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/be_victim = null
 	var/use_new_playerpanel = FALSE
 	var/disable_combat_cursor = FALSE
+	var/tg_playerpanel = "TG"
 	var/pda_style = MONO
 	var/pda_color = "#808000"
 	var/pda_skin = PDA_SKIN_ALT

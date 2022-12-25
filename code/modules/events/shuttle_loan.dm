@@ -1,5 +1,5 @@
 #define HIJACK_SYNDIE 1
-#define RUSKY_PARTY 2
+#define RUSKY_PARTY 6
 #define SPIDER_GIFT 3
 #define DEPARTMENT_RESUPPLY 4
 #define ANTIDOTE_NEEDED 5
@@ -31,7 +31,7 @@
 	var/title = "CentCom Free Real Estate"
 	switch(dispatch_type)
 		if(HIJACK_SYNDIE)
-			message = "Cargo: The syndicate are trying to infiltrate your station. If you let them hijack your cargo shuttle, you'll save us a headache."
+			message = "Cargo: The Old Syndicate are trying to infiltrate your station. If you let them hijack your cargo shuttle, you'll save us a headache."
 			title = "CentCom Counter Intelligence"
 		if(RUSKY_PARTY)
 			message = "Cargo: A group of angry Russians want to have a party. Can you send them your cargo shuttle then make them disappear?"

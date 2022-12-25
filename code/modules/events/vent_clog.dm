@@ -1,7 +1,7 @@
 /datum/round_event_control/vent_clog
 	name = "Clogged Vents: Normal"
 	typepath = /datum/round_event/vent_clog
-	weight = 10
+	weight = 15
 	max_occurrences = 3
 
 /datum/round_event/vent_clog
@@ -128,7 +128,8 @@
 /datum/round_event_control/vent_clog/beer
 	name = "Clogged Vents: Beer"
 	typepath = /datum/round_event/vent_clog/beer
-	max_occurrences = 0
+	weight = 30
+	max_occurrences = 4
 
 /datum/round_event/vent_clog/beer
 	reagentsAmount = 100

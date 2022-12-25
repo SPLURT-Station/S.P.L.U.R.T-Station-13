@@ -1,7 +1,7 @@
 /datum/round_event_control/portal_storm_syndicate
 	name = "Portal Storm: Syndicate Shocktroops"
 	typepath = /datum/round_event/portal_storm/syndicate_shocktroop
-	weight = 2
+	weight = 5
 	min_players = 15
 	earliest_start = 30 MINUTES
 
@@ -13,8 +13,8 @@
 /datum/round_event_control/portal_storm_narsie
 	name = "Portal Storm: Constructs"
 	typepath = /datum/round_event/portal_storm/portal_storm_narsie
-	weight = 0
-	max_occurrences = 0
+	weight = 10
+	max_occurrences = 1
 
 /datum/round_event/portal_storm/portal_storm_narsie
 	boss_types = list(/mob/living/simple_animal/hostile/construct/builder = 6)

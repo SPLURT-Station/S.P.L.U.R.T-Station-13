@@ -12,7 +12,7 @@
 				switch(hole)
 					if(CUM_TARGET_VAGINA)
 						if(M.has_vagina(REQUIRE_EXPOSED))
-							message = (user == M) ? pick("fucks [possessive_verb] own pussy with \the [src]","shoves \the [src] into [possessive_verb] pussy", "jams \the [src] into [possessive_verb] pussy") : pick("fucks [M] right in the pussy with \the [src]", "jams \the [src] right into [M]'s pussy")
+							message = (user == M) ? pick("закусывает свою губу и крепко хватается за [possessive_verb] own pussy with \the [src]","shoves \the [src] into [possessive_verb] pussy", "jams \the [src] into [possessive_verb] pussy") : pick("fucks [M] right in the pussy with \the [src]", "jams \the [src] right into [M]'s pussy")
 							lust_amt = NORMAL_LUST
 					if(CUM_TARGET_ANUS)
 						if(M.has_anus(REQUIRE_EXPOSED))

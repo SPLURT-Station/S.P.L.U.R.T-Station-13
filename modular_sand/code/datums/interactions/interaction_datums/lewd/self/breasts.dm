@@ -1,5 +1,5 @@
 /datum/interaction/lewd/titgrope_self
-	description = "Grope your own breasts."
+	description = "Сжать свою грудь."
 	require_user_hands = TRUE
 	require_user_breasts = REQUIRE_ANY
 	user_is_target = TRUE
@@ -10,35 +10,34 @@
 
 /datum/interaction/lewd/titgrope_self/display_interaction(mob/living/user)
 	var/message
-	var/t_His = user.p_their()
 
 	if(user.a_intent == INTENT_HARM)
-		message = "[pick("aggressively gropes [t_His] breast.",
-					"grabs [t_His] breasts.",
-					"tightly squeezes [t_His] breasts.",
-					"slaps at [t_His] breasts.",
-					"gropes [t_His] breasts roughly.")]"
+		message = "[pick("с силой сжимает свои собственные сиськи.",
+					"резко хватается за свои сиськи.",
+					"крепко сжимает свою грудь.",
+					"шлёпает по своим сиськам.",
+					"максимально грубо сжимает свои титьки.")]"
 	else
-		message = "[pick("gently gropes [t_His] breast.",
-					"softly squeezes [t_His] breasts.",
-					"grips [t_His] breasts.",
-					"runs a few fingers over [t_His] breast.",
-					"delicately teases [t_His] nipple.",
-					"traces a touch across [t_His] breast.")]"
+		message = "[pick("нежно ощупывает свою грудь.",
+					"мягко хватается за свою грудь.",
+					"сжимает собственную грудь.",
+					"проводит несколькими пальцами вдоль своей груди.",
+					"деликатно сжимает свой сосок.",
+					"возбуждённо проводит пальцем вдоль своей груди.")]"
 	if(prob(5 + user.get_lust()))
-		user.visible_message("<span class='lewd'><b>\The [user]</b> [pick("shivers in arousal.",
-				"moans quietly.",
-				"breathes out a soft moan.",
-				"gasps.",
-				"shudders softly.",
-				"trembles as [t_His] hands run across bare skin.")]</span>")
+		user.visible_message("<span class='lewd'><b>\The [user]</b> [pick("дрожит от возбуждения.",
+				"тихо стонет.",
+				"выдыхает тихий довольный стон.",
+				"мурлыкает и звучно вздыхает.",
+				"тихонько вздрагивает.",
+				"вздрагивает, хватаясь за причинное место.")]</span>")
 	user.visible_message(message = "<span class='lewd'><b>\The [user]</b> [message]</span>", ignored_mobs = user.get_unconsenting())
 	playlewdinteractionsound(get_turf(user), 'modular_sand/sound/interactions/squelch1.ogg', 50, 1, -1)
 	user.handle_post_sex(NORMAL_LUST, CUM_TARGET_HAND, user)
 
 
 /datum/interaction/lewd/self_nipsuck
-	description = "Suck your own nips."
+	description = "Пососать свои собственные соски."
 	require_user_breasts = REQUIRE_EXPOSED
 	require_user_mouth = TRUE
 	user_is_target = TRUE
@@ -49,7 +48,6 @@
 
 /datum/interaction/lewd/self_nipsuck/display_interaction(mob/living/user, mob/living/target)
 	var/message
-	var/u_His = user.p_their()
 	var/obj/item/organ/genital/breasts/milkers = user.getorganslot(ORGAN_SLOT_BREASTS)
 	var/milktype = milkers?.fluid_id
 	var/modifier
@@ -63,9 +61,9 @@
 	var/milktext = milk.name
 
 	lines = list(
-		"brings [u_His] own milk tanks to [u_His] mouth and sucks deeply into them",
-		"takes a big sip of [u_His] own fresh [lowertext(milktext)]",
-		"fills [u_His] own mouth with a big gulp of [u_His] warm [lowertext(milktext)]"
+		"подносит соски своих собственных ёмкостей для молока ко рту и глубоко всасывает их",
+		"делает большой глоток свежего '[lowertext(milktext)]' и громко выдыхает после такого",
+		"хватается губами за свой сосок и полностью заполняет свою ротовую полость '[lowertext(milktext)]'"
 	)
 
 	message = "<span class='lewd'>\The <b>[user]</b> [pick(lines)]</span>"

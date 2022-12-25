@@ -10,7 +10,7 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
  */
 /datum/gateway_destination
 	var/name = "Unknown Destination"
-	var/wait = 0 /// How long after roundstart this destination becomes active
+	var/wait = 30 /// How long after roundstart this destination becomes active
 	var/enabled = TRUE /// If disabled, the destination won't be available
 	var/hidden = FALSE /// Will not show on gateway controls at all.
 

@@ -127,14 +127,14 @@
 	for(var/obj/item/clothing/cloth in get_equipped_items())
 		if(istype(cloth, /obj/item/clothing/underwear/briefs/strapon))
 			return cloth
-	
+
 	return null
-	
+
 /mob/living/proc/can_penetrating_genital_cum()
 	return has_penis()
 
 /mob/living/proc/get_penetrating_genital_name(long = FALSE)
-	return has_penis() ? (long ? pick(GLOB.dick_nouns) : pick("cock", "dick")) : pick("strapon")
+	return has_penis() ? (long ? pick(GLOB.dick_nouns) : pick("член", "пенис")) : pick("страпон")
 
 /mob/living/proc/has_balls(visibility = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
@@ -413,9 +413,9 @@
 	if(moan == lastmoan)
 		moan--
 	if(!is_muzzled())
-		visible_message(message = "<span class='lewd'><B>\The [src]</B> [pick("moans", "moans in pleasure")].</span>", ignored_mobs = get_unconsenting())
+		visible_message(message = "<span class='lewd'><B>\The [src]</B> [pick("стонет", "стонет в удовольствии")].</span>", ignored_mobs = get_unconsenting())
 	if(is_muzzled())//immursion
-		audible_message("<span class='lewd'><B>[src]</B> [pick("mimes a pleasured moan","moans in silence")].</span>")
+		audible_message("<span class='lewd'><B>[src]</B> [pick("имитирует стон удовольствия","стонет в тишине")].</span>")
 	lastmoan = moan
 
 /mob/living/proc/cum(mob/living/partner, target_orifice)
@@ -759,9 +759,9 @@
 						else
 							message = "squirts on the floor!"
 				else
-					message = pick("orgasms violently!", "twists in orgasm.")
+					message = pick("бурно оргазмирует!", "изгибается в оргазме.")
 	else //todo: better self cum messages
-		message = "cums all over themselves!"
+		message = "кончает прямо на себя!"
 	if(gender == MALE)
 		playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/final_m1.ogg',
 							'modular_sand/sound/interactions/final_m2.ogg',
@@ -823,7 +823,7 @@
 		add_lust(amount)
 	if(get_lust() >= get_lust_tolerance())
 		if(prob(10))
-			to_chat(src, "<b>You struggle to not orgasm!</b>")
+			to_chat(src, "<b>Ты изо всех сил стараешься не кончить раньше времени!</b>")
 			return FALSE
 		if(lust >= get_lust_tolerance()*3)
 			cum(partner, orifice)

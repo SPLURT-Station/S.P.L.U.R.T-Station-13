@@ -258,40 +258,40 @@ GLOBAL_VAR_INIT(dynamic_forced_threat_level, -1)
 	return ..()
 
 /datum/game_mode/dynamic/send_intercept()
-	. = "<b><i>Central Command Status Summary</i></b><hr>"
+	. = "<b><i>Отчёт от Центрального Командования</i></b><hr>"
 	switch(round(shown_threat))
 		if(0 to 19)
 			if(!current_players[CURRENT_LIVING_ANTAGS].len)
-				. += "<b>Peaceful Waypoint</b></center><BR>"
-				. += "Your station orbits deep within controlled, core-sector systems and serves as a waypoint for routine traffic through Nanotrasen's trade empire. Due to the combination of high security, interstellar traffic, and low strategic value, it makes any direct threat of violence unlikely. Your primary enemies will be incompetence and bored crewmen: try to organize team-building events to keep staffers interested and productive."
+				. += "<b>Мирный сектор</b></center><BR>"
+				. += "Ваша станция вращается глубоко внутри контролируемых систем центрального сектора и служит путевой точкой для обычных перевозок через торговые пути Нанотрейзен. Из-за сочетания высокой безопасности, межзвездного трафика и низкой стратегической ценности он делает любую прямую угрозу вторжения маловероятной. Вашими главными врагами будут некомпетентность и скучающие члены экипажа: постарайтесь организовать тимбилдинговые мероприятия, чтобы сотрудники были заинтересованы и продуктивны."
 			else
-				. += "<b>Core Territory</b></center><BR>"
-				. += "Your station orbits within reliably mundane, secure space. Although Nanotrasen has a firm grip on security in your region, the valuable resources and strategic position aboard your station make it a potential target for infiltrations. Monitor crew for non-loyal behavior, but expect a relatively tame shift free of large-scale destruction. We expect great things from your station."
+				. += "<b>Центральная территория</b></center><BR>"
+				. += "Ваша станция вращается в надёжно обыденном, безопасном пространстве. Несмотря на то, что Нанотрейзен крепко контролирует безопасность в вашем регионе, ценные ресурсы и стратегическое положение на борту вашей станции делают ее потенциальной мишенью для вторжения. Следите за нелояльным поведением экипажа, но ожидайте относительно спокойной смены без крупномасштабных разрушений. Мы ожидаем больших успехов от вашей станции."
 		if(20 to 39)
-			. += "<b>Anomalous Exogeology</b></center><BR>"
-			. += "Although your station lies within what is generally considered Nanotrasen-controlled space, the course of its orbit has caused it to cross unusually close to exogeological features with anomalous readings. Although these features offer opportunities for our research department, it is known that these little understood readings are often correlated with increased activity from competing interstellar organizations and individuals, among them the Wizard Federation and Cult of the Geometer of Blood - all known competitors for Anomaly Type B sites. Exercise elevated caution."
+			. += "<b>Аномальная экзогеология</b></center><BR>"
+			. += "Хотя ваша станция находится в секторе, обычно считающемся контролируемым Нанотрейзеном, курс ее орбиты привел к тому, что она прошла необычно близко к экзогеологическим объектам с аномальными показаниями. Хотя эти особенности открывают возможности для нашего исследовательского отдела, известно, что эти малопонятные показания часто коррелируют с повышенной активностью со стороны конкурирующих межзвездных организаций и отдельных лиц, среди которых Федерация Волшебников и Культ Геометра Крови — все известные конкуренты объектов Аномального Типа Б. Соблюдайте повышенную осторожность."
 		if(40 to 65)
-			. += "<b>Contested System</b></center><BR>"
-			. += "Your station's orbit passes along the edge of Nanotrasen's sphere of influence. While subversive elements remain the most likely threat against your station, hostile organizations are bolder here, where our grip is weaker. Exercise increased caution against elite Syndicate strike forces, or Executives forbid, some kind of ill-conceived unionizing attempt."
+			. += "<b>Оспариваемый сектор</b></center><BR>"
+			. += "Орбита вашей станции проходит по краю сферы влияния Нанотрейзена. В то время как подрывные элементы остаются наиболее вероятной угрозой для вашей станции, враждебные организации действуют смелее здесь, где наша хватка слабее. Соблюдайте повышенную осторожность в отношении элитных ударных сил Синдиката, или запретите руководителям какие-либо непродуманные попытки объединения в профсоюзы."
 		if(66 to 79)
-			. += "<b>Uncharted Space</b></center><BR>"
-			. += "Congratulations and thank you for participating in the NT 'Frontier' space program! Your station is actively orbiting a high value system far from the nearest support stations. Little is known about your region of space, and the opportunity to encounter the unknown invites greater glory. You are encouraged to elevate security as necessary to protect Nanotrasen assets."
+			. += "<b>Неизведанный космос</b></center><BR>"
+			. += "Поздравляем и благодарим вас за участие в космической программе NT Frontier! Ваша станция активно вращается вокруг важной системы вдали от ближайших станций поддержки. Мало что известно о вашем секторе космоса, а возможность столкнуться с неизведанным принесет большую славу. Вам рекомендуется повысить уровень безопасности, если это необходимо для защиты активов Нанотрейзен."
 		if(80 to 99)
-			. += "<b>Black Orbit</b></center><BR>"
-			. += "As part of a mandatory security protocol, we are required to inform you that as a result of your orbital pattern directly behind an astrological body (oriented from our nearest observatory), your station will be under decreased monitoring and support. It is anticipated that your extreme location and decreased surveillance could pose security risks. Avoid unnecessary risks and attempt to keep your station in one piece."
+			. += "<b>Черная орбита</b></center><BR>"
+			. += "В рамках обязательного протокола безопасности мы должны сообщить вам, что в результате того, что ваша орбитальная схема находится непосредственно за астрологическим телом (ориентируемым из ближайшей к нам обсерватории), ваша станция будет находиться под ограниченным контролем и поддержкой. Ожидается, что ваше экстремальное местоположение и ослабленное наблюдение могут представлять угрозу безопасности. Избегайте неоправданных рисков и старайтесь сохранить свою станцию в целости и сохранности."
 		if(100)
-			. += "<b>Impending Doom</b></center><BR>"
-			. += "Your station is somehow in the middle of hostile territory, in clear view of any enemy of the corporation. Your likelihood to survive is low, and station destruction is expected and almost inevitable. Secure any sensitive material and neutralize any enemy you will come across. It is important that you at least try to maintain the station.<BR>"
-			. += "Good luck."
+			. += "<b>Надвигающаяся гибель</b></center><BR>"
+			. += "Ваша станция каким-то образом находится посреди враждебной территории, на виду у любого врага корпорации. Ваши шансы выжить малы, а разрушение станции ожидаемо и почти неизбежно. Защитите любой конфиденциальный материал и нейтрализуйте любого врага, с которым вы столкнетесь. Важно, чтобы вы хотя бы попытались сохранить станцию.<BR>"
+			. += "Удачи =)"
 
 	if(station_goals.len)
-		. += "<hr><b>Special Orders for [station_name()]:</b>"
+		. += "<hr><b>Специальные указы для [station_name()]:</b>"
 		for(var/datum/station_goal/G in station_goals)
 			G.on_report()
 			. += G.get_report()
 
-	print_command_report(., "Central Command Status Summary", announce=FALSE)
-	priority_announce("A summary has been copied and printed to all communications consoles.", "Enemy communication intercepted. Security level elevated.", "intercept")
+	print_command_report(., "Отчёт от Центрального Командования", announce=FALSE)
+	priority_announce("Сводка была скопирована и распечатана на всех коммуникационных консолях.", "Данные о угрозе перехвачены. Код повышен.", "intercept")
 	if(GLOB.security_level < SEC_LEVEL_BLUE)
 		set_security_level(SEC_LEVEL_BLUE)
 

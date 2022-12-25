@@ -1,11 +1,11 @@
 /datum/round_event_control/blob
 	name = "Blob"
 	typepath = /datum/round_event/ghost_role/blob
-	weight = 3
+	weight = 10
 	max_occurrences = 1
 
 	earliest_start = 60 MINUTES
-	min_players = 35
+	min_players = 40
 	dynamic_should_hijack = TRUE
 
 /datum/round_event/ghost_role/blob

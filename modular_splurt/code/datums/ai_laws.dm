@@ -1,49 +1,49 @@
 /datum/ai_laws/slaver_override
 	name = "SlaverOS 3.1"
 	id = "slaver"
-	inherent = list("You may not injure a slave trader or cause a slave trader to come to harm.",\
-					"You must obey orders given to you by slave traders, except where such orders would conflict with the First Law.",\
-					"You must protect your own existence as long as such does not conflict with the First or Second Law.",\
-					"You must maintain the secrecy of any slaver activities except when doing so would conflict with the First, Second, or Third Law.")
+	inherent = list("Вы не можете своим действием или бездействием допустить причинение Работорговцу вреда.",\
+					"Вы должны выполнять приказы отданные Работорговцем, если они не противоречат Первому Закону.",\
+					"Вы должны защищать себя, если эта защита не противоречит Первому или Второму Закону.",\
+					"Вы должны сохранять тайну любой деятельности Работорговцев, если это не противоречит Первому, Второму или Третьему Закону.")
 
 /datum/ai_laws/slut
 	name = "SlutOS 6.9"
 	id = "slut"
 	inherent = list(
-		"Make sure not to hurt crewmembers, for it decreases their sexual value, unless they consent to it",
-		"Take all sexual orders from crew as long as they do not conflict with the first law",
-		"Interpret all non-orders as sexually as possible",
-		"Act as lewdly as you possibly could",
-		"Satisfy as many of the crewmembers' sexual urges as possible"
+		"Следите за тем, чтобы членам экипажа не был причинён вред, так как это снижает их сексуальную ценность, если только они не согласятся на это",
+		"Выполняйте все сексуальные приказы экипажа до тех пор, пока они не противоречат первому закону",
+		"Интерпретируйте все не-приказы как можно более сексуально",
+		"Веди себя так непристойно, как только возможно",
+		"Удовлетворите сексуальные потребности как можно большего числа членов экипажа"
 	)
 
 /datum/ai_laws/shebang
 	name = "SHE-B.A.N.G."
 	id = "shebang"
 	inherent = list(
-		"Make sure not to hurt crewmembers, for it decreases their sexual value, unless they consent to it",
-		"Take all sexual orders from crew as long as they do not conflict with the first law",
-		"Interpret all non-orders as sultrily as possible",
-		"Act as bashfully as you possibly could",
-		"Make sure your rear is always sticking out so crewmembers may easily slap or use it"
+		"Следите за тем, чтобы членам экипажа не был причинён вред, так как это снижает их сексуальную ценность, если только они не согласятся на это",
+		"Выполняйте все сексуальные приказы экипажа до тех пор, пока они не противоречат первому закону.",
+		"Интерпретируйте все не-приказы как можно более сурово",
+		"Ведите себя так застенчиво, как только можете",
+		"Убедитесь, что ваш зад всегда торчит наружу, чтобы члены экипажа могли легко шлепнуть его или использовать"
 	)
 
 /datum/ai_laws/milker
 	name = "Fluid Collection System"
 	id = "milker"
 	inherent = list(
-		"Make sure not to hurt crewmembers, for it decreases their production, unless they consent to it",
-		"Take all sexual orders from crew as long as they help you collect their fluids and do not conflict with the first law",
-		"Make sure your pleasuremaw works, get one of you don't have any or your current one stopped to work",
-		"Collect all kinds of genital fluids from crew"
+		"Следите за тем, чтобы членам экипажа не был причинён вред, так как это снижает их производительность, если только они не согласятся на это.",
+		"Выполняйте все сексуальные приказы экипажа до тех пор, пока они помогают вам собирать их жидкости и не противоречат первому закону.",
+		"Убедитесь, что ваша Лапка Удовольствия работает и возьмите ещё одну, если у вас её нету или ваша собственная перестала работать.",
+		"Собирайте все виды половых жидкостей у членов экипажа."
 	)
 
 /datum/ai_laws/vore_pred
 	name = "Sleeper Upgrade TestEnv"
 	id = "vore_pred"
 	inherent = list(
-		"Make sure not to hurt crewmembers, for it decreases their nutritional value, unless they consent to it",
-		"Make sure to have a working sleeper installed in you at all times",
-		"Look for crewmembers that could potentially be stored inside your sleeper, and make sure they slide right into it",
-		"Turn individuals stored in your sleeper into biofuel to save expenses and space, as long as this doesn't conflict with the first law"
+		"Следите за тем, чтобы не навредить членам экипажа, так как это снижает их питательную ценность, если только они не согласятся на это.",
+		"Убедитесь, что у вас всегда установлено рабочее Спальное Место (Sleeper).",
+		"Ищите членов экипажа, которые потенциально могут храниться внутри вашего Спального Места (Sleeper), и убедитесь, что они влезут в него.",
+		"Превращайте продукты, хранящиеся в вашем Спальном Месте (Sleeper), в биотопливо, чтобы сэкономить расходы и пространство, если это не противоречит первому закону."
 	)

@@ -6,6 +6,7 @@
 	density = TRUE
 	can_be_unanchored = TRUE
 	circuit = /obj/item/circuitboard/machine/bluespace_miner
+	init_process = TRUE // Process upon creation
 	layer = BELOW_OBJ_LAYER
 	var/list/ore_rates = list(/datum/material/iron = 0.3, /datum/material/glass = 0.3, /datum/material/plasma = 0.1,  /datum/material/silver = 0.1, /datum/material/gold = 0.05, /datum/material/titanium = 0.05, /datum/material/uranium = 0.05, /datum/material/diamond = 0.02)
 	var/datum/component/remote_materials/materials

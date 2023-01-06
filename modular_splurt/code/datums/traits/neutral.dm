@@ -585,10 +585,13 @@
 
 /datum/quirk/gargoyle/remove()
 	var/mob/living/carbon/human/H = quirk_holder
-	var/datum/action/gargoyle/transform/T = locate() in H.actions
-	var/datum/action/gargoyle/pause/P = locate() in H.actions
-	T.Remove(H)
-	P.Remove(H)
+	if(H)
+		var/datum/action/gargoyle/transform/T = locate() in H.actions
+		if(T)
+			T.Remove(H)
+		var/datum/action/gargoyle/pause/P = locate() in H.actions
+		if(P)
+			P.Remove(H)
 	. = ..()
 
 /mob/living/carbon/human/get_status_tab_items()
@@ -597,7 +600,7 @@
 		var/datum/quirk/gargoyle/T = locate() in roundstart_quirks
 		. += ""
 		. += "Gargoyle Info:"
-		. += "Status: [T.transformed ? "Statue" : T.paused ? "Paused" : "Normal"]"
+		. += "Status: [T.transformed ? "Statue" : T.paused ? "Preserving" : "Normal"]"
 		. += "Cooldown: [T.cooldown ? "[T.cooldown]s" : "Ready"]"
 		. += "Energy: [T.energy]%"
 

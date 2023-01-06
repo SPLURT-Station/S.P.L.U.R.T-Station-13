@@ -537,6 +537,7 @@
 	desc = "You are some form of gargoyle! You can only leave your stone form for so long, and will have to return to it to regain energy. On the bright side, you heal in statue form!"
 	value = 0
 	processing_quirk = TRUE
+	mob_trait = TRAIT_GARGOYLE
 	var/energy = 0
 	var/transformed = 0
 	var/cooldown = 0
@@ -547,12 +548,10 @@
 	.=..()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/datum/action/gargoyle/transform/T = new
-	var/datum/action/gargoyle/check/C = new
 	var/datum/action/gargoyle/pause/P = new
 	energy = 100
 	cooldown = 30
 	T.Grant(H)
-	C.Grant(H)
 	P.Grant(H)
 
 /datum/quirk/gargoyle/on_process()
@@ -571,8 +570,10 @@
 		energy -= 0.05
 
 	if(transformed)
-		if(energy < 99.7)
+		if(energy < 100)
 			energy += 0.3
+		if (energy > 100)
+			energy = 100
 		H.heal_overall_damage(0.5,0.5)
 		H.adjustCloneLoss(-0.5)
 		H.adjustBruteLoss(-0.5)
@@ -585,12 +586,20 @@
 /datum/quirk/gargoyle/remove()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/datum/action/gargoyle/transform/T = locate() in H.actions
-	var/datum/action/gargoyle/check/C = locate() in H.actions
 	var/datum/action/gargoyle/pause/P = locate() in H.actions
 	T.Remove(H)
-	C.Remove(H)
 	P.Remove(H)
 	. = ..()
+
+/mob/living/carbon/human/get_status_tab_items()
+	. = ..()
+	if(HAS_TRAIT(src, TRAIT_GARGOYLE))
+		var/datum/quirk/gargoyle/T = locate() in roundstart_quirks
+		. += ""
+		. += "Gargoyle Info:"
+		. += "Status: [T.transformed ? "Statue" : T.paused ? "Paused" : "Normal"]"
+		. += "Cooldown: [T.cooldown ? "[T.cooldown]s" : "Ready"]"
+		. += "Energy: [T.energy]%"
 
 /datum/quirk/nudist
 	// Mostly derived from masked_mook.
@@ -843,30 +852,18 @@
 		to_chat(H, "<span class='warning'>You have transformed too recently; you cannot yet transform again!</span>")
 		return 0
 
-/datum/action/gargoyle/check
-	name = "Check"
-	desc = "Check your current energy levels."
-	icon_icon = 'icons/mob/actions/actions_clockcult.dmi'
-	button_icon_state = "Linked Vanguard"
-
-/datum/action/gargoyle/check/Trigger()
-	.=..()
-	var/mob/living/carbon/human/H = owner
-	var/datum/quirk/gargoyle/T = locate() in H.roundstart_quirks
-	to_chat(H, "<span class='warning'>You have [T.energy]/100 energy remaining!</span>")
-
 /datum/action/gargoyle/pause
 	name = "Preserve"
 	desc = "Become near-motionless, thusly conserving your energy until you move from your current tile. Note, you will lose a chunk of energy when you inevitably move from your current position, so you cannot abuse this!"
 	icon_icon = 'icons/mob/actions/actions_flightsuit.dmi'
 	button_icon_state = "flightsuit_lock"
 
-datum/action/gargoyle/pause/Trigger()
+/datum/action/gargoyle/pause/Trigger()
 	.=..()
 	var/mob/living/carbon/human/H = owner
 	var/datum/quirk/gargoyle/T = locate() in H.roundstart_quirks
 
-	if(!T.paused)
+	if(!T.paused && !T.transformed)
 		T.paused = 1
 		T.position = H.loc
 		to_chat(H, "<span class='warning'>You are now conserving your energy; this effect will end the moment you move from your current position!</span>")

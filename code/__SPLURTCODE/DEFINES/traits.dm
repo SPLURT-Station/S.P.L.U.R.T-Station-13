@@ -13,6 +13,8 @@
 
 #define TRAIT_TONGUELESS_SPEECH "tongueless-speech" //for dephelm stuff
 
+#define TRAIT_GARGOYLE "gargoyle"
+
 // Hyperstation traits
 #define TRAIT_PHARMA            "hepatic_pharmacokinesis"
 #define TRAIT_CHOKE_SLUT		"choke_slut"

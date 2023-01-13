@@ -63,12 +63,12 @@
 	ammo_type = /obj/item/ammo_casing/c45/stun
 
 /obj/item/ammo_box/magazine/m9
-	name = "Cheap handgun magazine (9mm Lethal)"
+	name = "Cheap pistol magazine (Lethal)"
 	icon = 'modular_splurt/icons/obj/ammo.dmi'
 	icon_state = "m9mmds"
 	ammo_type = /obj/item/ammo_casing/c9mm
 	caliber = "9mm"
-	desc = "A cheap handgun magazine."
+	desc = "A cheap pistol magazine. Hope the spring keeps."
 	max_ammo = 10
 
 /obj/item/ammo_box/magazine/m9/update_icon()
@@ -76,7 +76,7 @@
 	icon_state = "m9mmds-[ammo_count() ? "10" : "0"]"
 
 /obj/item/ammo_box/magazine/m9/rubber
-	name = "Cheap handgun magazine (9mm Rubber)"
+	name = "Cheap pistol magazine (Rubber)"
 	ammo_type = /obj/item/ammo_casing/c9mm/rubber
 
 /obj/item/ammo_box/magazine/m22

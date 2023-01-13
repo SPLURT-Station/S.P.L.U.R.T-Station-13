@@ -118,6 +118,6 @@
 
 /datum/supply_pack/goody/huntingshotgun_single
 	name = "Hunting Shotgun Single-Pack"
-	desc = "Contains a parts kit to assemble a hutning shotgun."
+	desc = "Contains a parts kit to assemble a hunting shotgun."
 	cost = 1700
 	contains = list(/obj/item/gunpart/shotgunhutningstock, /obj/item/gunpart/shotgunhutningbarrel, /obj/item/storage/box/lethalshot)

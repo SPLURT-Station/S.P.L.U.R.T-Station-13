@@ -1,0 +1,30 @@
+{
+   "map_name":"Jaxi Outpost",
+   "map_path":"splurt_maps/map_files/jaxioutpost",
+   "map_file":[
+		"jaxioutpost2layer.dmm"
+   ],
+   "station_ruin_budget":0,
+   "space_ruin_levels":0,
+   "space_empty_levels":0,
+   "shuttles":{
+      "cargo":"cargo_box",
+      "whiteship":"whiteship_box",
+      "emergency":"emergency_box"
+   },
+   "traits":[
+      {
+         "Up":1,
+         "Linkage":null,
+         "Gravity":true,
+         "Baseturf":"/turf/open/floor/plating/asteroid"
+      },
+      {
+         "Down":-1,
+         "Linkage":null,
+         "Gravity":true,
+         "Baseturf":"/turf/open/openspace"
+      }
+   ],
+   "minetype":"none"
+}

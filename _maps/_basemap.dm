@@ -18,6 +18,7 @@
 		#include "map_files\SyndicateStation\SyndicateBoxStation.dmm"
 		#include "splurt_maps\map_files\Smexistation\Snaxi_Splurt.dmm"
 		#include "map_files\BoxedInStation\BoxedInStation.dmm"
+		#include "splurt_maps\map_files\jaxioutpost\jaxioutpost2layer.dmm"
 
 		#ifdef CIBUILDING
 			#include "templates.dm"

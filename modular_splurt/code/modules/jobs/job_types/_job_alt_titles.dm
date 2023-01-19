@@ -76,7 +76,8 @@
 		"Chief Heal Slut",
 		"Head of Medbay",
 		"Surgeon General",
-		"Chief Physician"
+		"Chief Physician",
+		"Doctor Dick"
 	) // Sandcode do not have alt titles for CMO at the moment.
 
 /datum/job/bridgeofficer
@@ -160,7 +161,8 @@
 		"Bar Owner",
 		"Barmaid",
 		"Expediter",
-		"Drunkard"
+		"Drunkard",
+		"Angry Step-Father"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -171,7 +173,8 @@
 		"Waste Management Specialist",
 		"Station Maintainer",
 		"Upkeep Specialist",
-		"Genital Janitor"
+		"Pussy Magnet",
+		"Professional Dick Cleaner"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -193,7 +196,8 @@
 	alt_titles = list(
 		"Jester",
 		"Comedian",
-		"Professional Brain Damager"
+		"Professional Brain Damager",
+		"Escaped Sanatorium Patient"
 	)
 
 /datum/job/cook/New()
@@ -289,7 +293,8 @@
 		"Chemi-Slut",
 		"Mad Scientist",
 		"Homeopathist",
-		"Crocin Junkie"
+		"Crocin Junkie",
+		"Chemi-Slut"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -322,7 +327,8 @@
 		"Mommy",
 		"Daddy",
 		"Sex Therapist",
-		"
+		"Sex Educator",
+		"Psycholo-Slut"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -354,7 +360,9 @@
 		"Biotechnician",
 		"Quarantine Expert",
 		"Immunologist",
-		"Epidemiologist"
+		"Epidemiologist",
+		"Viro-Slut",
+		"STD Specialist"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -370,7 +378,10 @@
 		"Cinder Dick",
 		"Cooperate Auditor",
 		"Private Eye",
-		"Bloodhound"
+		"Bloodhound",
+		"Dicktective",
+		"Cock Inspector",
+		"Slutective"
 	)
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
 		LAZYADD(extra_titles, "Spookective")

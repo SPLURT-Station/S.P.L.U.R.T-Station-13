@@ -286,6 +286,7 @@
 		"Alchemist",
 		"Apothecarist",
 		"Chemical Plumber",
+		"Chemi-Slut",
 		"Mad Scientist",
 		"Homeopathist",
 		"Crocin Junkie"

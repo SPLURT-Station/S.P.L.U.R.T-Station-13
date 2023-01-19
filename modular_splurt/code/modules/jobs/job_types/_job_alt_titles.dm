@@ -317,7 +317,9 @@
 		"Adviser",
 		"Expert Softdom",
 		"Mommy",
-		"Daddy"
+		"Daddy",
+		"Sex Therapist",
+		"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -335,7 +337,8 @@
 	var/list/extra_titles = list(
 		"Trauma Expert",
 		"First Responder",
-		"Crew Retriever"
+		"Search and Rescue",
+		"EMToy"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()

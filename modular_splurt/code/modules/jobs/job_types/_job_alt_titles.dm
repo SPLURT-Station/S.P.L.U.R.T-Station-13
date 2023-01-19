@@ -300,6 +300,7 @@
 		"Medical Intern",
 		"Medical Resident",
 		"Medtech",
+		"Medi-Slut",
 		"Gynecologist",
 		"Urologist",
 		"Medbay Receptionist"

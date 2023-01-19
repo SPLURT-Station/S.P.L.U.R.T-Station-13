@@ -357,6 +357,8 @@
 /datum/job/virologist/New()
 	var/list/extra_titles = list(
 		"Microbiologist",
+		"Biochemist",
+		"Viro-Slut",
 		"Biotechnician",
 		"Quarantine Expert",
 		"Immunologist",

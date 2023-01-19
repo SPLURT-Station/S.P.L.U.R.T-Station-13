@@ -286,7 +286,7 @@
 		"Apothecarist",
 		"Chemical Plumber",
 		"Mad Scientist",
-		"Homeopathist"
+		"Homeopathist",
 		"Crocin Junkie"
 	)
 	LAZYADD(alt_titles, extra_titles)

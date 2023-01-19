@@ -339,6 +339,7 @@
 
 /datum/job/paramedic/New()
 	var/list/extra_titles = list(
+		"Para-Slut",
 		"Trauma Expert",
 		"First Responder",
 		"Search and Rescue",

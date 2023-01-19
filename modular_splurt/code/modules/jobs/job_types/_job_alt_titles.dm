@@ -329,6 +329,7 @@
 /datum/job/geneticist/New()
 	var/list/extra_titles = list(
 		"Genetics Researcher",
+		"Gene-Slut",
 		"DNA Manipulatist",
 		"Genomicist"
 	)

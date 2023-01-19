@@ -73,6 +73,7 @@
 	alt_titles = list(
 		"Medical Director",
 		"Medical Administrator",
+		"Chief Heal Slut",
 		"Head of Medbay",
 		"Surgeon General",
 		"Chief Physician"

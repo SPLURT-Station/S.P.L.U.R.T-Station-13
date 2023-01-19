@@ -12,16 +12,6 @@
 	exp_requirements = 100
 	exp_type = EXP_TYPE_CREW
 	considered_combat_role = FALSE
-	alt_titles = list(
-		"Slutcurity Trainee",
-		"Security Trainee",
-		"Security Assistant",
-		"Security Cadet",
-		"Security Trainee",
-		"Rookie",
-		"Hired Muscle",
-		"Bodyguard"
-		)
 	custom_spawn_text = "<font color='black' size='2'><b> Your job is to help Security and react to minor crimes. Conflict de-escalation through WORDS is your top priority. Only use your taser as a last resort.</b></font><font color='red' size='4'><b>You are NOT a Security Officer.</b></font>"
 
 	outfit = /datum/outfit/job/peacekeeper

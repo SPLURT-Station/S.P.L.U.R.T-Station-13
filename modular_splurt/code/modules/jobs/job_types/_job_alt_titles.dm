@@ -78,6 +78,29 @@
 		"Chief Physician"
 	) // Sandcode do not have alt titles for CMO at the moment.
 
+/datum/job/bridgeofficer
+	alt_titles = list(
+		"Command Secretary",
+		"Command Officer",
+		"Bridge Secretary",
+		"Ensign",
+		"Bridge Bitch",
+		"Bridge Advisor",
+		"Bridge Intern",
+		"Command Assistant"
+	)
+
+/datum/job/blueshield
+	alt_titles = list(
+		"Command Security",
+		"Command Guard",
+		"Command Bodyguard",
+		"Blueguard",
+		"Blueshit",
+		"Command Escort",
+		"Command Security Detail"
+	)
+
 
 // Engineering
 /datum/job/atmos/New()
@@ -123,7 +146,8 @@
 		"Freeloader",
 		"Station Pet",
 		"Shitter",
-		"Lab Rat"
+		"Lab Rat",
+		"Free-Use Toy"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -145,7 +169,8 @@
 		"Glorified Zoomba",
 		"Waste Management Specialist",
 		"Station Maintainer",
-		"Upkeep Specialist"
+		"Upkeep Specialist",
+		"Genital Janitor"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -164,7 +189,11 @@
 	. = ..()
 
 /datum/job/clown // Sorry, but no TWO entertainer titles.
-	alt_titles = list("Jester", "Comedian", "Brain Damage Inducer")
+	alt_titles = list(
+		"Jester",
+		"Comedian",
+		"Professional Brain Damager"
+	)
 
 /datum/job/cook/New()
 	var/list/extra_titles = list(
@@ -232,7 +261,8 @@
 		"Research Intern",
 		"Junior Scientist",
 		"Rack Researcher",
-		"Pyrotechnician"
+		"Pyrotechnician",
+		"Pleasure Researcher"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -242,7 +272,8 @@
 		"Ripperdoc",
 		"Programmer",
 		"MODsuit Technician",
-		"Biorobotics Doctor"
+		"Synthetics Doctor",
+		"Sextoy Designer"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -256,6 +287,7 @@
 		"Chemical Plumber",
 		"Mad Scientist",
 		"Homeopathist"
+		"Crocin Junkie"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -267,7 +299,8 @@
 		"Medical Resident",
 		"Medtech",
 		"Gynecologist",
-		"Urologist"
+		"Urologist",
+		"Medbay Receptionist"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -281,7 +314,10 @@
 		"Psychotherapist",
 		"Psychoanalyst",
 		"Shrink",
-		"Adviser"
+		"Adviser",
+		"Expert Softdom",
+		"Mommy",
+		"Daddy"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -340,8 +376,9 @@
 		"Guardsman",
 		"Police Officer",
 		"Slutcurity Officer",
-		"Mall Cop",
-		"Flatfoot"
+		"Fed",
+		"Flatfoot",
+		"Gendarme"
 	)
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
 		LAZYADD(extra_titles, "Spookcurity Officer")
@@ -364,6 +401,32 @@
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
 
+/datum/job/brigdoc
+	alt_titles = list(
+		"Security Doctor",
+		"Security Medic",
+		"Brig Doctor",
+		"Brig EMT",
+		"Security Physician",
+		"Security EMT",
+		"Slutcurity Nurse",
+		"Correctional Doctor",
+		"Correctional Medicine Physician"
+	)
+	
+/datum/job/peacekeeper
+	alt_titles = list(
+		"Slutcurity Trainee",
+		"Security Trainee",
+		"Security Assistant",
+		"Security Cadet",
+		"Security Trainee",
+		"Rookie",
+		"Hired Muscle",
+		"Bodyguard",
+		"Mall Cop",
+		"Narc"
+	)
 
 // Cargo
 /datum/job/cargo_tech/New()

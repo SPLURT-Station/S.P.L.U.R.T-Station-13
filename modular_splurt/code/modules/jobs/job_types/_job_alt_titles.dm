@@ -374,6 +374,7 @@
 /datum/job/detective/New()
 	var/list/extra_titles = list(
 		"Gumshoe",
+		"Slutective",
 		"Sleuth",
 		"Van Dorn Agent",
 		"Forensic Investigator",

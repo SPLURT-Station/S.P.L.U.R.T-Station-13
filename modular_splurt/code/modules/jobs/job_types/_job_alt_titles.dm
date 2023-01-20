@@ -349,7 +349,8 @@
 		"Trauma Expert",
 		"First Responder",
 		"Search and Rescue",
-		"EMToy"
+		"EMToy",
+		"EMTwink"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -477,14 +478,3 @@
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
 	
-	
-// Silicon
-/datum/job/ai
-	alt_titles = list(
-		"Sample Alt Title"
-	) // ZERO CLUE if this will work, need to gametest
-	
-/datum/job/cyborg
-	alt_titles = list(
-		"Automaton"
-	) 

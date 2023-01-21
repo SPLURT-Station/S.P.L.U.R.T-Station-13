@@ -191,3 +191,12 @@
 		var/datum/physiology/P = H.physiology
 		P.hunger_mod /= 2
 		P.thirst_mod /= 2
+
+/datum/quirk/no_revive
+	name = "One Shot"
+	desc = "Your life is a precious and fleeting thing. Once it's over, it's over for good. Nothing on the station can revive you."
+	value = -4
+	mob_trait = TRAIT_NOCLONE
+	gain_text = span_danger("Your palms are sweaty, knees weak, arms are heavy.")
+	lose_text = span_notice("You find the determination to keep going.")
+	medical_record_text = "Patient cannot be revived with station-issued technologies. In the event of an emergency; Return to central command for processing."

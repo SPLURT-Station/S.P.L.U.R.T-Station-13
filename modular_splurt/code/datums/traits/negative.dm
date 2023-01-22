@@ -194,9 +194,21 @@
 
 /datum/quirk/no_revive
 	name = "One Shot"
-	desc = "Your life is a precious and fleeting thing. Once it's over, it's over for good. Nothing on the station can revive you."
+	desc = "Your life is a precious and fleeting thing. Once it's over, it's over for good. Not even CentCom can save you."
 	value = -4
-	mob_trait = TRAIT_NOCLONE
+	mob_trait = TRAIT_PERMADEATH
 	gain_text = span_danger("Your palms are sweaty, knees weak, arms are heavy.")
 	lose_text = span_notice("You find the determination to keep going.")
 	medical_record_text = "Patient cannot be revived with station-issued technologies. In the event of an emergency; Return to central command for processing."
+
+/datum/quirk/no_revive/add()
+	. = ..()
+
+	// Add trait: No revival
+	ADD_TRAIT(quirk_holder, TRAIT_NOCLONE, "quirk_oneshot")
+
+/datum/quirk/no_revive/remove()
+	. = ..()
+
+	// Remove trait: No revival
+	REMOVE_TRAIT(quirk_holder, TRAIT_NOCLONE, "quirk_oneshot")

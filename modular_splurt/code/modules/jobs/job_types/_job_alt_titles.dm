@@ -219,7 +219,8 @@
 		"Historian",
 		"Scholar",
 		"Artist",
-		"Novelist"
+		"Novelist",
+		"Bookkeeper"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()

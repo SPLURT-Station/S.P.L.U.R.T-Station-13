@@ -4,6 +4,13 @@
 	// The ever-important funny BYOND dots
 	. = ..()
 
+	// Admin ghost quirk examines
+	// This check requires AI Interact to be enabled!
+	if(IsAdminGhost(usr))
+		// Check for One Shot
+		if(HAS_TRAIT(src, TRAIT_PERMADEATH))
+			. += span_boldwarning("This character has permanent death enabled. Do not revive [p_them()]!")
+
 	// Empathy abilities escape clause
 	// Please change this when adding new quirk detection
 	if(!(HAS_TRAIT(usr, TRAIT_EMPATH) || HAS_TRAIT(usr, TRAIT_FRIENDLY) || src == usr))

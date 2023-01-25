@@ -27,3 +27,5 @@
 
 #define TRAIT_NUDIST			"Nudist"
 
+#define TRAIT_PERMADEATH		"Permadeath"
+

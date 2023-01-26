@@ -10,7 +10,8 @@ Borg Shaker
 	charge_cost = 20 //Lots of reagents all regenerating at once, so the charge cost is lower. They also regenerate faster.
 	recharge_time = 1
 	accepts_reagent_upgrades = FALSE
-	reagent_ids = list(	/datum/reagent/consumable/ethanol/beer,
+	reagent_ids = list(	/datum/reagent/consumable/ethanol,
+						/datum/reagent/consumable/ethanol/beer,
 						/datum/reagent/consumable/ethanol/whiskey,
 						/datum/reagent/consumable/ethanol/vodka,
 						/datum/reagent/consumable/ethanol/rum,
@@ -31,6 +32,12 @@ Borg Shaker
 						/datum/reagent/consumable/ethanol/champagne,
 						/datum/reagent/consumable/ethanol/thirteenloko,
 						/datum/reagent/consumable/ethanol/absinthe,
+						/datum/reagent/consumable/ethanol/amaretto,
+						/datum/reagent/consumable/ethanol/applejack,
+						/datum/reagent/consumable/ethanol/curacao,
+						/datum/reagent/consumable/ethanol/hcider,
+						/datum/reagent/consumable/ethanol/navy_rum,
+						/datum/reagent/consumable/ethanol/sake,
 						/datum/reagent/consumable/ethanol/hooch,
 						/datum/reagent/consumable/ethanol/moonshine)
 

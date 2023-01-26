@@ -273,12 +273,12 @@
 					if(user.has_vagina())
 						message = pick(
 							"licks [t_His] pussy.",
-							"runs their tongue up the shape of [t_His] pussy.",
+							"runs their tongue up [t_His] pussy.",
 							"traces [t_His] slit with their tongue.",
 							"darts the tip of their tongue around [t_His] clit.",
-							"laps slowly at [t_Him].",
+							"tenderly laps at [t_His] mons.",
 							"kisses [t_His] delicate folds.",
-							"tastes [t_Him].",
+							"tastes [t_His] cunt.",
 						)
 					else
 						improv = TRUE
@@ -287,12 +287,12 @@
 						var/genital_name = user.get_penetrating_genital_name()
 						message = pick(
 							"sucks [t_Him] off.",
-							"runs their tongue up the shape of [t_His] [genital_name].",
+							"runs their tongue up [t_His] [genital_name].",
 							"traces [t_His] [genital_name] with their tongue.",
 							"darts the tip of their tongue around tip of [t_His] [genital_name].",
-							"laps slowly at [t_His] shaft.",
+							"tenderly laps at [t_His] shaft.",
 							"kisses the base of [t_His] shaft.",
-							"takes [t_Him] deeper into their mouth.",
+							"takes [t_His] [genital_name] deeper into their mouth.",
 						)
 					else
 						improv = TRUE
@@ -313,7 +313,7 @@
 					message = pick(
 						"buries their face in [t_His] pussy.",
 						"nuzzles [t_His] wet sex.",
-						"finds their face caught between [t_His] thighs.",
+						"embeds their face between [t_His] thighs.",
 						"kneels down between [t_His] legs.",
 						"grips [t_His] legs, pushing them apart.",
 						"sinks their face in between [t_His] thighs.",
@@ -326,21 +326,20 @@
 					message = pick(
 						"takes [t_His] [genital_name] into their mouth.",
 						"wraps their lips around [t_His] [genital_name].",
-						"finds their face between [t_His] thighs.",
+						"embeds their face between [t_His] thighs.",
 						"kneels down between [t_His] legs.",
 						"grips [t_His] legs, kissing at the tip of their [genital_name].",
-						"goes down on [t_Him].",
+						"goes down on [t_His] [genital_name].",
 					)
 				else
 					improv = TRUE
 		if(improv)
 			message = pick(
-				"begins to lick [t_His].",
+				"licks [t_Him].",
 				"starts kissing [t_His] thigh.",
 				"sinks down between [t_His] thighs.",
-				"briefly flashes a puzzled look from between [t_His] legs.",
-				"looks unsure of how to handle [t_His] lack of genitalia.",
-				"seems like they were expecting [t_His] to have a cock or a pussy or ... something.",
+				"flashes a puzzled look from between [t_His] legs.",
+				"looks unsure of how to handle [t_His] barren crotch.",
 			)
 			peepee = null
 		else
@@ -411,10 +410,10 @@
 	var/u_His = p_their()
 	var/list/belly_names = list("stomach", "belly", "gut", "midsection", "rolls")
 	var/list/nuzzles = list(
-		"rubs [u_His] face all across [target]'s [pick(belly_names)]",
-		"nuzzles [target]'s [pick(belly_names)][pick(list(" lovingly", ""))]",
-		"shoves [u_His] face into [target]'s [pick(belly_names)] and gives it kisses all over",
-		"licks right into [target]'s [pick(list("belly button", "navel"))]"
+		"rubs [u_His] face across [target]'s [pick(belly_names)].",
+		"nuzzles [target]'s [pick(belly_names)][pick(list(" lovingly", ""))].",
+		"shoves [u_His] face into [target]'s [pick(belly_names)], kissing it all over!",
+		"licks [target]'s [pick(list("belly button", "navel"))]."
 		)
 
 	message = span_lewd("<b>\The [src]</b> [pick(nuzzles)]. ")
@@ -427,7 +426,7 @@
 	if(is_fucking(partner, CUM_TARGET_BELLY))
 		message = "[pick(
 			"pounds \the <b>[partner]</b>'s belly.",
-			"shoves their [genital_name] deep into \the <b>[partner]</b>'s soft tummy",
+			"shoves their [genital_name] deep into \the <b>[partner]</b>'s soft tummy.",
 			"thrusts in and out of \the <b>[partner]</b>'s navel.",
 			"goes balls deep into \the <b>[partner]</b>'s gut over and over again.")]"
 	else
@@ -445,9 +444,9 @@
 	var/message
 	var/u_His = p_their()
 	var/list/lines = list(
-		"squishes <b>[target]</b>'s face [pick(list("in between", "with"))] [u_His] [pick(GLOB.breast_nouns)]",
-		"presses [u_His] [pick(GLOB.breast_nouns)] into \the <b>[target]</b>'s face",
-		"shoves \the <b>[target]</b>'s whole head into [u_His] cleavage"
+		"squishes <b>[target]</b>'s face [pick(list("in between", "with"))] [u_His] [pick(GLOB.breast_nouns)].",
+		"presses [u_His] [pick(GLOB.breast_nouns)] into \the <b>[target]</b>'s face.",
+		"shoves \the <b>[target]</b>'s whole head into [u_His] cleavage."
 		)
 
 	message = span_lewd("\The <b>[src]</b> [pick(lines)]")
@@ -460,9 +459,9 @@
 	var/message
 	var/t_His = target.p_their()
 	var/list/lines = list("licks \the <b>[target]</b>'s sweat off [t_His] body",
-							"slurps the salty sweat running through <b>[target]</b>'s skin",
-							"has a nice taste of \the <b>[target]</b>'s drenched body",
-							"takes a whiff of \the <b>[target]</b>'s musk and drinks [t_His] warm sweat")
+							"slurps the salty sweat across <b>[target]</b>'s skin.",
+							"samples a taste of \the <b>[target]</b>'s sweat-drenched body.",
+							"drinks in \the <b>[target]</b>'s musk and laps [t_His] humid sweat.")
 
 	message = span_lewd("\The <b>[src]</b> [pick(lines)]")
 	visible_message(message, ignored_mobs = get_unconsenting())
@@ -473,9 +472,9 @@
 	var/u_His = p_their()
 	var/list/musk = list("musky ", "sweaty ", "damp ", "smelly ", "")
 	var/list/lines = list(
-		"shoves \the <b>[target]</b>'s face in [u_His] [pick(musk)] armpit",
-		"squeezes \the <b>[target]</b>'s nose under [u_His] [pick(musk)] pit",
-		"makes sure to squeeze \the <b>[target]</b>'s face well under [u_His] [pick(musk)] armpit and let them take a whiff"
+		"shoves \the <b>[target]</b>'s face into [u_His] [pick(musk)] armpit.",
+		"squeezes \the <b>[target]</b>'s nose under [u_His] [pick(musk)] armpit.",
+		"pushes \the <b>[target]</b>'s face under [u_His] [pick(musk)] arm and forces them to take a whiff!"
 		)
 
 	message = span_lewd("\The <b>[src]</b> [pick(lines)]")
@@ -490,8 +489,8 @@
 	var/u_His = p_their()
 	var/list/musk = list("musky ", "sweaty ", "damp ", "smelly ", "")
 	var/list/lines = list(
-		"shoves [u_His] nose deep into \the <b>[target]</b>'s armpit, giving it a big [pick(list("whiff", "lick", "nuzzle"))].",
-		"presses [u_His] face under \the <b>[target]</b>'s [pick(musk)] pit, [pick(list("tasting and lapping it all over", "sniffing its scent"))]",
+		"shoves [u_His] nose deep into \the <b>[target]</b>'s armpit, giving it a greedy [pick(list("lick", "slurp"))]!",
+		"forces [u_His] face under \the <b>[target]</b>'s [pick(musk)] armpit, [pick(list("drinking in its sweaty taste", "worshipping it with their tongue"))]!",
 		"goes face deep into \the <b>[target]</b> [pick(musk)] armpit, worshipping it with [u_His] tongue and nose"
 	)
 
@@ -512,9 +511,9 @@
 
 	if(is_fucking(target, CUM_TARGET_ARMPIT))
 		lines = list(
-			" slides [u_His] [genital_name] back and forth under \the <b>[target]</b>'s [pick(musk)] armpit",
-			"'s [genital_name] drools pre all over \the <b>[target]</b>'s [pick(musk)] armpit, thoroughly fucking its warm embrace",
-			" shoves [u_His] [genital_name] under \the <b>[target]</b>'s arm, using [t_His] [pick(musk)] pit like a fleshlight"
+			"saws [u_His] [genital_name] back and forth within \the <b>[target]</b>'s [pick(musk)] armpit.",
+			"drools thick ropes of prespunk from their [genital_name] all over \the <b>[target]</b>'s [pick(musk)] armpit as they relish in its embrace!",
+			"shoves [u_His] [genital_name] under \the <b>[target]</b>'s arm, using [t_His] [pick(musk)] pit like a fleshlight!"
 		)
 	else
 		if(target.is_topless())

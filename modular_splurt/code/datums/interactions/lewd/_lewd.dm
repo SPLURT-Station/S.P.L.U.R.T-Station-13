@@ -551,11 +551,11 @@
 	else
 		if(target.is_topless())
 			lines = list(
-				"presents [u_His] [pick(musk)] armpit to \the <b>[target]</b>, lifting [u_His] arm up before clamping it down into [t_His] [genital_name] with a deep squeeze!",
+				"presents [u_His] [pick(musk)] armpit to \the <b>[target]</b>, lifting [u_His] arm up before clamping it down onto [t_His] [genital_name] with a tight squeeze!",
 			)
 		else // https://cdn.discordapp.com/attachments/802990353883070474/962478553117622322/NoName-480p.mp4
 			lines = list(
-				"softly tears a hole in the cloth on the back of [u_His] armpit, stuffing \the <b>[target]</b>'s whole rod right into it with a [pick(musk)] embrace!"
+				"softly tears a hole in the material on the back of [u_His] armpit, stuffing \the <b>[target]</b>'s whole rod into its [pick(musk)] embrace!"
 			)
 		target.set_is_fucking(src, CUM_TARGET_ARMPIT, target.getorganslot(ORGAN_SLOT_PENIS))
 

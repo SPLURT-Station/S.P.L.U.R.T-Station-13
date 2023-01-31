@@ -61,9 +61,9 @@
 	slice_path = /obj/item/reagent_containers/food/snacks/cakeslice/brain
 	slices_num = 5
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/medicine/mannitol = 10, /datum/reagent/consumable/nutriment/vitamin = 10)
-	list_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/medicine/mannitol = 10, /datum/reagent/consumable/nutriment/vitamin = 5)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 20, /datum/reagent/medicine/mannitol = 10, /datum/reagent/consumable/nutriment/vitamin = 5, /datum/reagent/medicine/brain_mush = 20)
 	tastes = list("cake" = 5, "sweetness" = 2, "brains" = 1)
-	foodtype = GRAIN | DAIRY | MEAT | GROSS | SUGAR
+	foodtype = GRAIN | DAIRY | MEAT | GROSS | SUGAR | PRION
 
 
 /obj/item/reagent_containers/food/snacks/cakeslice/brain
@@ -71,9 +71,9 @@
 	desc = "Lemme tell you something about prions. THEY'RE DELICIOUS."
 	icon_state = "braincakeslice"
 	filling_color = "#FF69B4"
-	list_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/medicine/mannitol = 2, /datum/reagent/consumable/nutriment/vitamin = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/medicine/mannitol = 2, /datum/reagent/consumable/nutriment/vitamin = 1, /datum/reagent/medicine/brain_mush = 4)
 	tastes = list("cake" = 5, "sweetness" = 2, "brains" = 1)
-	foodtype = GRAIN | DAIRY | MEAT | GROSS | SUGAR
+	foodtype = GRAIN | DAIRY | MEAT | GROSS | SUGAR | PRION
 
 /obj/item/reagent_containers/food/snacks/store/cake/cheese
 	name = "cheese cake"

@@ -14,6 +14,31 @@
 	current_cycle++
 	holder.remove_reagent(type, metabolization_rate / M.metabolism_efficiency) //medicine reagents stay longer if you have a better metabolism
 
+/datum/reagent/medicine/brain_mush
+	name = "Brain Mush"
+	description = "Liquid, grinded up, grey matter. only a freak would consider drinking this."
+	reagent_state = LIQUID
+	color =  "#ec82e4"
+	taste_description = "Brains"
+	metabolization_rate = 0.15 * REAGENTS_METABOLISM //slow, weak heal that lasts a while. Metabolizies much faster if you are not hurt.
+	var/brain_hurting = 0
+	var/brain_lover_healing = -2
+
+/datum/reagent/medicine/brain_mush/on_mob_life(mob/living/carbon/M)
+	var/is_brainlover = FALSE
+	if(HAS_TRAIT(M, TRAIT_BRAINLOVER))
+		is_brainlover = TRUE
+		SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "brain_nommed", /datum/mood_event/brain_nommed)
+	if(M.getBruteLoss() == 0 && M.getFireLoss() == 0)
+		metabolization_rate = 3 * REAGENTS_METABOLISM //metabolizes much quicker if not injured
+	var/brain_heal_rate = (is_brainlover ? brain_lover_healing : brain_hurting) * REAGENTS_EFFECT_MULTIPLIER
+	if(!M.reagents.has_reagent(/datum/reagent/medicine/bicaridine) && !M.reagents.has_reagent(/datum/reagent/medicine/kelotane))
+		M.adjustFireLoss(brain_heal_rate)
+		M.adjustBruteLoss(brain_heal_rate)
+		M.adjustToxLoss(is_brainlover ? 0 : 0.1)
+		. = TRUE
+		..()
+
 /datum/reagent/medicine/leporazine
 	name = "Leporazine"
 	description = "Leporazine will effectively regulate a patient's body temperature, ensuring it never leaves safe levels."

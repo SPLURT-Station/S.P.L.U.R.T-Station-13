@@ -1,3 +1,4 @@
+/*
 /mob/living/carbon/human/handle_blood()
 	if(iszombie(src)) //We're basically pudding pops.
 		return
@@ -8,28 +9,28 @@
 	var/obj/item/organ/heart/decayed_heart/decaying = getorgan(/obj/item/organ/heart/decayed_heart)
 	if(decaying)
 		. += "Current blood level: [blood_volume]/[BLOOD_VOLUME_MAXIMUM]."
-
+*/
 /datum/species/mammal/undead
-// takes 30% more damage but doesn't crit
+// takes 20% more damage and 10% slower but doesn't crit has low light with heavy flash negative this is now baseline across them all. undead is undead.
 	id = SPECIES_UMAMMAL
 	name = "Undead Anthropomorph"
 	exotic_bloodtype = "U"
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/zombie
-	liked_food = GROSS | MEAT | RAW
+	liked_food = GROSS | MEAT | RAW | PRION
 	disliked_food = NONE
 	blacklisted = 1
 	say_mod = "moans"
-	speedmod = 1.5
-	armor = -0.3
+	speedmod = 1.1
+	armor = -0.2
 	coldmod = 0.67
 	cold_offset = SYNTH_COLD_OFFSET
 	wings_icons = SPECIES_WINGS_SKELETAL
 	species_traits = list(DRINKSBLOOD,NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
-	inherent_traits = list(TRAIT_NOPULSE,TRAIT_STABLEHEART,TRAIT_NOBREATH,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NOSOFTCRIT,TRAIT_FAKEDEATH)
+	inherent_traits = list(TRAIT_BRAINLOVER,TRAIT_NOPULSE,TRAIT_STABLEHEART,TRAIT_BRAINLOVER,TRAIT_NOBREATH,TRAIT_RESISTLOWPRESSURE,TRAIT_RESISTHIGHPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NOSOFTCRIT,TRAIT_NOHARDCRIT,TRAIT_FAKEDEATH)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID|MOB_BEAST
 
 	mutanttongue = /obj/item/organ/tongue/zombie
-
+	mutanteyes = /obj/item/organ/eyes/decayed
 	species_category = SPECIES_CATEGORY_UNDEAD
 
 /datum/species/mammal/undead/on_species_gain(mob/living/carbon/C, datum/species/old_species)
@@ -41,6 +42,11 @@
 	if(!M)
 		M = new()
 		M.Insert(C)
+	var/obj/item/organ/eyes/decayed/I
+	I = C.getorganslot(ORGAN_SLOT_EYES)
+	if(!I)
+		I = new()
+		I.Insert(C, drop_if_replaced = FALSE)
 	var/obj/item/organ/heart/decayed_heart/H
 	H = C.getorgan(/obj/item/organ/heart/decayed_heart)
 	if(!H)
@@ -58,21 +64,21 @@
 	C.set_screwyhud(SCREWYHUD_NONE)
 
 /datum/species/insect/undead
-// Lighter than other zombies. Spaceproofed
 	id = SPECIES_UINSECT
 	name = "Undead Insect"
 	exotic_bloodtype = "U"
 	exotic_blood_color = BLOOD_COLOR_BUG
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/zombie
-	liked_food = GROSS | MEAT | RAW
+	liked_food = GROSS | MEAT | RAW | PRION
 	disliked_food = NONE
 	blacklisted = 1
 	say_mod = "moans"
-	speedmod = 1.2
+	speedmod = 1.1
+	armor = -0.2
 	coldmod = 0.67
 	cold_offset = SYNTH_COLD_OFFSET
 	species_traits = list(DRINKSBLOOD,NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
-	inherent_traits = list(TRAIT_NOPULSE,TRAIT_STABLEHEART,TRAIT_NOBREATH,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_FAKEDEATH)
+	inherent_traits = list(TRAIT_BRAINLOVER,TRAIT_NOPULSE,TRAIT_STABLEHEART,TRAIT_NOBREATH,TRAIT_RESISTLOWPRESSURE,TRAIT_RESISTHIGHPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NOHARDCRIT,TRAIT_NOSOFTCRIT,TRAIT_FAKEDEATH)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID|MOB_BUG
 
 	mutanteyes = /obj/item/organ/eyes/decayed 	//The lamp has abandoned you, monster
@@ -111,24 +117,24 @@
 	..()
 
 /datum/species/lizard/undead
-// heavy and lumbering. 20%less brute/33%less burn. Slow and weak to the cold
 	id = SPECIES_GLIZZY
 	name = "Undead Lizard"
 	exotic_bloodtype = "U"
 	exotic_blood_color = BLOOD_COLOR_LIZARD
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/zombie
-	liked_food = GROSS | MEAT | RAW
+	liked_food = GROSS | MEAT | RAW |PRION
 	blacklisted = 1
 	say_mod = "moans"
-	speedmod = 1.8
-	brutemod = 0.8
-	burnmod = 0.67 //They are fire retardant... because they can't have fire breath
-	species_traits = list(DRINKSBLOOD,NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
-	inherent_traits = list(TRAIT_NOPULSE,TRAIT_STABLEHEART,TRAIT_NOBREATH,TRAIT_RESISTHEAT,TRAIT_RESISTHIGHPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NOHARDCRIT,TRAIT_FAKEDEATH)
+	speedmod = 1.1
+	armor = -0.2
+	coldmod = 0.67
+	cold_offset = SYNTH_COLD_OFFSET
+	species_traits = list(TRAIT_BRAINLOVER,DRINKSBLOOD,NOZOMBIE,NOTRANSSTING,MUTCOLORS,EYECOLOR,LIPS,HAIR,HORNCOLOR,WINGCOLOR,CAN_SCAR,HAS_FLESH,HAS_BONE)
+	inherent_traits = list(TRAIT_NOPULSE,TRAIT_STABLEHEART,TRAIT_NOBREATH,TRAIT_RESISTCOLD,TRAIT_RESISTHIGHPRESSURE,TRAIT_RESISTLOWPRESSURE,TRAIT_RADIMMUNE,TRAIT_EASYDISMEMBER,TRAIT_LIMBATTACHMENT,TRAIT_NOSOFTCRIT,TRAIT_NOHARDCRIT,TRAIT_FAKEDEATH)
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID|MOB_REPTILE
 
 	mutanttongue = /obj/item/organ/tongue/zombie
-
+	mutanteyes = /obj/item/organ/eyes/decayed
 	species_category = SPECIES_CATEGORY_UNDEAD
 
 /datum/species/lizard/undead/on_species_gain(mob/living/carbon/C, datum/species/old_species)
@@ -140,6 +146,11 @@
 	if(!M)
 		M = new()
 		M.Insert(C)
+	var/obj/item/organ/eyes/decayed/I
+	I = C.getorganslot(ORGAN_SLOT_EYES)
+	if(!I)
+		I = new()
+		I.Insert(C, drop_if_replaced = FALSE)
 	var/obj/item/organ/heart/decayed_heart/H
 	H = C.getorgan(/obj/item/organ/heart/decayed_heart)
 	if(!H)
@@ -193,15 +204,15 @@
 /obj/item/organ/heart/decayed_heart/on_life(seconds, times_fired)
 	. = ..()
 	if(owner.health <= HEALTH_THRESHOLD_CRIT)
-		if(reviving || islizard(owner) && !reviving) //Strong lizard blood.
+		if(reviving || islizard(owner) && !reviving)
 			if(owner.blood_volume >= BLOOD_VOLUME_SURVIVE)
-				owner.blood_volume -= 3
+				owner.blood_volume -= 1.5
 				if(owner.getOxyLoss())
-					owner.adjustOxyLoss(-5)
+					owner.adjustOxyLoss(-3)
 				if(owner.getBruteLoss())
-					owner.adjustBruteLoss(-3)
+					owner.adjustBruteLoss(-1.5)
 				if(owner.getFireLoss())
-					owner.adjustFireLoss(-3)
+					owner.adjustFireLoss(-1.5)
 				if(owner.getToxLoss())
 					owner.adjustToxLoss(-1)
 		if(owner.health >= HEALTH_THRESHOLD_CRIT)

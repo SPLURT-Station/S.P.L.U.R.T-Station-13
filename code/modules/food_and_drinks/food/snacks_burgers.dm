@@ -130,9 +130,9 @@
 	desc = "A strange looking burger. It looks almost sentient."
 	icon_state = "brainburger"
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/medicine/mannitol = 6, /datum/reagent/consumable/nutriment/vitamin = 5)
-	list_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/medicine/mannitol = 5, /datum/reagent/consumable/nutriment/vitamin = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/medicine/mannitol = 5, /datum/reagent/consumable/nutriment/vitamin = 1, /datum/reagent/medicine/brain_mush = 10)
 	tastes = list("bun" = 4, "brains" = 2)
-	foodtype = GRAIN | MEAT | GROSS
+	foodtype = GRAIN | MEAT | GROSS | PRION
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /obj/item/reagent_containers/food/snacks/burger/ghost

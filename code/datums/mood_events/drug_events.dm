@@ -7,6 +7,11 @@
 	mood_change = 2
 	timeout = 3600
 
+/datum/mood_event/brain_nommed
+	description = "<span class='nicegreen'>I knocked back the gnawing hunger, a rare reprieve.</span>\n"
+	mood_change = 10
+	timeout = 5000
+
 /datum/mood_event/overdose
 	mood_change = -8
 	timeout = 3000

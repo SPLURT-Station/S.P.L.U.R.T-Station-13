@@ -1,15 +1,3 @@
-/*
-/mob/living/carbon/human/handle_blood()
-	if(iszombie(src)) //We're basically pudding pops.
-		return
-	..()
-
-/mob/living/carbon/get_status_tab_items()
-	. = ..()
-	var/obj/item/organ/heart/decayed_heart/decaying = getorgan(/obj/item/organ/heart/decayed_heart)
-	if(decaying)
-		. += "Current blood level: [blood_volume]/[BLOOD_VOLUME_MAXIMUM]."
-*/
 /datum/species/mammal/undead
 // takes 20% more damage and 10% slower but doesn't crit has low light with heavy flash negative this is now baseline across them all. undead is undead.
 	id = SPECIES_UMAMMAL

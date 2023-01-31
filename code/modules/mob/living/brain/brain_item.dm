@@ -24,6 +24,15 @@
 
 	var/list/datum/brain_trauma/traumas = list()
 
+/obj/item/organ/brain/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/edible, list(/datum/reagent/medicine/brain_mush = 20, /datum/reagent/consumable/nutriment = 6), can_eat_callback = CALLBACK(src, /obj/item/organ/brain/.proc/can_eat_check))
+
+/obj/item/organ/brain/proc/can_eat_check(obj/edible, mob/living/eater, mob/living/feeder)
+  if(HAS_TRAIT(eater, TRAIT_BRAINLOVER))
+    return TRUE
+  return FALSE
+
 /obj/item/organ/brain/Insert(mob/living/carbon/C, special = 0,no_id_transfer = FALSE, drop_if_replaced = TRUE)
 	..()
 

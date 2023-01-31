@@ -29,8 +29,9 @@ Behavior that's still missing from this component that original food items had t
 	var/datum/callback/after_eat
 	///Last time we checked for food likes
 	var/last_check_time
+	var/datum/callback/can_eat_callback
 
-/datum/component/edible/Initialize(list/initial_reagents, food_flags = NONE, foodtypes = NONE, volume = 50, eat_time = 30, list/tastes, list/eatverbs = list("bite","chew","nibble","gnaw","gobble","chomp"), bite_consumption = 2, datum/callback/after_eat)
+/datum/component/edible/Initialize(list/initial_reagents, food_flags = NONE, foodtypes = NONE, volume = 50, eat_time = 30, list/tastes, list/eatverbs = list("bite","chew","nibble","gnaw","gobble","chomp"), bite_consumption = 2, datum/callback/after_eat, datum/callback/can_eat_callback)
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
 
@@ -48,6 +49,7 @@ Behavior that's still missing from this component that original food items had t
 	src.eatverbs = eatverbs
 	src.junkiness = junkiness
 	src.after_eat = after_eat
+	src.can_eat_callback = can_eat_callback
 
 	var/atom/owner = parent
 
@@ -181,6 +183,8 @@ Behavior that's still missing from this component that original food items had t
 	if(covered)
 		var/who = (isnull(feeder) || eater == feeder) ? "your" : "[eater.p_their()]"
 		to_chat(feeder, "<span class='warning'>You have to remove [who] [covered] first!</span>")
+		return FALSE
+	if(can_eat_callback && !can_eat_callback.Invoke(parent, eater, feeder))
 		return FALSE
 	return TRUE
 

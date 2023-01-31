@@ -15,7 +15,15 @@
 	if(GLOB.saliith_plushie && (GLOB.saliith_plushie != src))
 		return INITIALIZE_HINT_QDEL
 
+	// Appear on orbit menu
+	GLOB.poi_list += src
+
 	// Return normally
+	. = ..()
+
+/obj/item/toy/plush/lizardplushie/saliith/Destroy()
+	// Let's not keep the reference hanging around
+	GLOB.poi_list -= src
 	. = ..()
 
 /obj/item/toy/plush/lizardplushie/saliith/ComponentInitialize()
@@ -70,7 +78,7 @@
 	// Define pronouns
 	var/p_they = p_they()
 	//var/p_their = p_their()
-	var/p_s = p_s()	
+	var/p_s = p_s()
 
 	// Check if user is Saliith himself
 	if(user.ckey == "sandpoot")
@@ -152,13 +160,13 @@
 
 		// Move grenade to the user
 		item_grenade.forceMove(user)
-		
+
 		// Set the detonation time
 		item_grenade.preprime(volume = 10)
-		
+
 		// Return
 		return
-	
+
 	// Return normally
 	return ..()
 
@@ -223,7 +231,7 @@
 	return ..()
 
 // Pinpointer for plushie toy
-/obj/item/pinpointer/plushie_saliith 
+/obj/item/pinpointer/plushie_saliith
 	name = "Saliith plushie pinpointer"
 	desc = "A handheld tracking device that locates Saliith's plushie."
 	icon = 'modular_sand/icons/obj/device.dmi'

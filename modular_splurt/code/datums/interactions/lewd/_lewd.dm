@@ -461,7 +461,7 @@
 	var/list/lines = list("licks \the <b>[target]</b>'s sweat off [t_His] body",
 							"slurps the salty sweat across <b>[target]</b>'s skin.",
 							"samples a taste of \the <b>[target]</b>'s sweat-drenched body.",
-							"drinks in \the <b>[target]</b>'s musk and laps [t_His] humid sweat.")
+							"drinks in \the <b>[target]</b>'s musk and laps up [t_His] humid sweat.")
 
 	message = span_lewd("\The <b>[src]</b> [pick(lines)]")
 	visible_message(message, ignored_mobs = get_unconsenting())
@@ -491,7 +491,7 @@
 	var/list/lines = list(
 		"shoves [u_His] nose deep into \the <b>[target]</b>'s armpit, giving it a greedy [pick(list("lick", "slurp"))]!",
 		"forces [u_His] face under \the <b>[target]</b>'s [pick(musk)] armpit, [pick(list("drinking in its sweaty taste", "worshipping it with their tongue"))]!",
-		"goes face deep into \the <b>[target]</b> [pick(musk)] armpit, worshipping it with [u_His] tongue and nose"
+		"goes into \the <b>[target]</b> [pick(musk)] armpit, relishing its overpowering presence over [u_His] senses!"
 	)
 
 	message = span_lewd("\The <b>[src]</b> [pick(lines)]")
@@ -544,18 +544,18 @@
 
 	if(is_fucking(target, CUM_TARGET_ARMPIT))
 		lines = list(
-			"squeezes [u_His] armpit right into \the <b>[target]</b>'s throbbing [genital_name], massaging its length using [u_His] [pick(musk)]armpit!",
-			"presses [u_His] arm down all over \the <b>[target]</b>'s leaking [genital_name], milking it with [u_His] [pick(musk)] pit!",
-			"rubs and grinds [u_His] [pick(musk)] armpit back and forth through \the <b>[target]</b>'s [genital_name], deeply squeezing it to the base!"
+			"squeezes [u_His] [pick(musk)] armpit right around \the <b>[target]</b>'s throbbing [genital_name], thoroughly massaging its length!",
+			"clenches [u_His] arm down upon \the <b>[target]</b>'s leaking [genital_name], milking it for more with [u_His] [pick(musk)] pit!",
+			"forces \the <b>[target]</b>'s [genital_name] to grind back and forth through the squeezing embrace of [u_His] [pick(musk)] armpit!"
 		)
 	else
 		if(target.is_topless())
 			lines = list(
-				"presents [u_His] [pick(musk)] armpit to \the <b>[target]</b>, lifting [u_His] arm up before clamping it down onto [t_His] [genital_name] with a tight squeeze!",
+				"presents [u_His] [pick(musk)] armpit to \the <b>[target]'s</b> [genital_name], lifting [u_His] arm up before squeezing it tightly within!",
 			)
 		else // https://cdn.discordapp.com/attachments/802990353883070474/962478553117622322/NoName-480p.mp4
 			lines = list(
-				"softly tears a hole in the material on the back of [u_His] armpit, stuffing \the <b>[target]</b>'s whole rod into its [pick(musk)] embrace!"
+				"tears a hole in the material on the back of [u_His] armpit, stuffing \the <b>[target]</b>'s whole [genital_name] into its [pick(musk)] embrace!"
 			)
 		target.set_is_fucking(src, CUM_TARGET_ARMPIT, target.getorganslot(ORGAN_SLOT_PENIS))
 

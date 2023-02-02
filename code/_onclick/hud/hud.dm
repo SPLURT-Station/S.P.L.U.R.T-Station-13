@@ -78,6 +78,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	var/atom/movable/screen/healths
 	var/atom/movable/screen/healthdoll
 	var/atom/movable/screen/internals
+	var/atom/movable/screen/arousal
 
 	var/atom/movable/screen/wanted/wanted_lvl
 	// subtypes can override this to force a specific UI style

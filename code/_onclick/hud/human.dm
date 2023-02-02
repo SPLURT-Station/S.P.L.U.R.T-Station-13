@@ -492,6 +492,11 @@
 	internals.hud = src
 	infodisplay += internals
 
+	arousal = new /atom/movable/screen/arousal()
+	arousal.icon_state = (owner.client?.prefs.arousable == 1 ? "arousal0" : "")
+	arousal.hud = src
+	infodisplay += arousal
+
 	healths = new /atom/movable/screen/healths()
 	healths.hud = src
 	infodisplay += healths

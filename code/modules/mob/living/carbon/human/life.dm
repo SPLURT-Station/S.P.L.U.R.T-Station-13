@@ -25,6 +25,9 @@
 	//heart attack stuff
 	handle_heart()
 
+	if(stat != DEAD)
+		update_arousal()
+
 	dna.species.spec_life(src) // for mutantraces
 	return (stat != DEAD) && !QDELETED(src)
 

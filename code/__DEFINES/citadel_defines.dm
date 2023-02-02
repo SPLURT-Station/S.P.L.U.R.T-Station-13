@@ -151,3 +151,4 @@
 //defines for the two colour schemes, advanced and old
 #define OLD_CHARACTER_COLORING			"old_color_system"
 #define ADVANCED_CHARACTER_COLORING		"advanced_color_system"
+#define  ui_arousal "EAST-1:28,CENTER-4:8"

@@ -117,3 +117,41 @@
 	if(cum_splatter_icon)
 		cut_overlay(cum_splatter_icon)
 	return TRUE
+
+//arousal hud display
+
+/atom/movable/screen/arousal
+	name = "arousal"
+	icon_state = "arousal0"
+	icon = 'icons/obj/genitals/hud.dmi'
+	screen_loc = ui_arousal
+
+/atom/movable/screen/arousal/Click()
+	if(!isliving(usr))
+		return FALSE
+	if(isobserver(usr))
+		return
+	if(!usr.client?.prefs.arousable)
+		return
+	var/mob/living/M = usr
+	M.interact_with()
+
+/mob/living/carbon/human/proc/getPercentAroused()
+    var/percentage = ((get_lust() / get_lust_tolerance()) * 100)
+    return percentage
+
+/mob/living/carbon/human/proc/update_arousal()
+	update_arousal_hud()
+
+/mob/living/carbon/human/proc/update_arousal_hud()
+	if(!client || !hud_used)
+		return FALSE
+	else
+		if(hud_used.arousal)
+			var/arousal_state = "arousal0"
+			if(stat != DEAD)
+				var/arousal_percent = getPercentAroused()
+				var/arousal_rounded = min(FLOOR(arousal_percent, 10),100)
+				arousal_state = "arousal[arousal_rounded]"
+			hud_used.arousal.icon_state = arousal_state
+			return TRUE

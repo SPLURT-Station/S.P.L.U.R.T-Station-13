@@ -13,3 +13,5 @@ GLOBAL_LIST_INIT(splurt_ui_styles, list(
 		return GLOB.splurt_ui_styles[ui_style] || GLOB.splurt_ui_styles[GLOB.splurt_ui_styles[1]]
 	else
 		return GLOB.splurt_ui_styles[ui_style] || GLOB.splurt_ui_styles[GLOB.splurt_ui_styles[1]]
+
+/datum/hud/var/atom/movable/screen/arousal

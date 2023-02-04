@@ -265,7 +265,13 @@
 	var/list/extra = list(
 		/obj/item/dogborg/jaws/small,
 		/obj/item/analyzer/nose,
-		/obj/item/soap/tongue/scrubpup
+		/obj/item/soap/tongue/scrubpup,
+		/obj/item/gripper/service,
+		/obj/item/kitchen/rollingpin,
+		/obj/item/kitchen/unrollingpin,
+		/obj/item/kitchen/knife/butcher,
+		/obj/item/kitchen/efink,
+		/obj/item/kitchen/knife
 	)
 	LAZYADD(basic_modules, extra)
 	. = ..()

@@ -26,7 +26,6 @@
 	var/max_accessories = 3
 	var/list/obj/item/clothing/accessory/attached_accessories = list()
 	var/list/mutable_appearance/accessory_overlays = list()
-	var/is_skirt = FALSE
 	//SANDSTORM EDIT END
 
 /obj/item/clothing/under/worn_overlays(isinhands = FALSE, icon_file, used_state, style_flags = NONE)

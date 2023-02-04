@@ -94,6 +94,10 @@
 		C.dna.copy_dna(brainmob.stored_dna)
 		if(HAS_TRAIT(L, TRAIT_NOCLONE))
 			LAZYSET(brainmob.status_traits, TRAIT_NOCLONE, L.status_traits[TRAIT_NOCLONE])
+		// Sandstorm edit: DNC Order quirk
+		if(HAS_TRAIT(L, TRAIT_DNC_ORDER))
+			LAZYSET(brainmob.status_traits, TRAIT_DNC_ORDER, L.status_traits[TRAIT_DNC_ORDER])
+		// End Sandstorm edit
 		var/obj/item/organ/zombie_infection/ZI = L.getorganslot(ORGAN_SLOT_ZOMBIE)
 		if(ZI)
 			brainmob.set_species(ZI.old_species)	//For if the brain is cloned

@@ -66,13 +66,6 @@
 		speech_args[SPEECH_MESSAGE] = message
 
 //Own stuff
-/datum/quirk/no_clone
-	name = "DNC"
-	desc = "You have filed a Do Not Clone order, stating that you do not wish to be cloned. You can still be revived by other means."
-	value = -2
-	mob_trait = TRAIT_NO_CLONE
-	medical_record_text = "Patient has a DNC (Do Not Clone) order and will be rejected by cloning mechanisms as a result."
-
 /datum/quirk/no_guns
 	name = "Fat-Fingered"
 	desc = "Due to the shape of your hands, width of your fingers or just not having fingers at all, you're unable to fire guns without accommodation."

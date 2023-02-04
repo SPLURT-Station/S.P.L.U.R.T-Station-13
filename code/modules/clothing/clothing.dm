@@ -82,12 +82,14 @@
 		if(M.putItemFromInventoryInHandIfPossible(src, H.held_index))
 			add_fingerprint(usr)
 
+
 /obj/item/reagent_containers/food/snacks/clothing
 	name = "oops"
 	desc = "If you're reading this it means I messed up. This is related to moths eating clothes and I didn't know a better way to do it than making a new food object."
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	tastes = list("dust" = 1, "lint" = 1)
-
+/*
+MOVED TO: modular_splurt/code/module/clothing/clothing.dm
 /obj/item/clothing/attack(mob/M, mob/user, def_zone)
 	if(user.a_intent != INTENT_HARM && isinsect(M))
 		var/obj/item/reagent_containers/food/snacks/clothing/clothing_as_food = new
@@ -97,6 +99,9 @@
 		qdel(clothing_as_food)
 	else
 		return ..()
+
+	return ..()
+*/
 
 /obj/item/clothing/attackby(obj/item/W, mob/user, params)
 	if(damaged_clothes && istype(W, repairable_by))
@@ -129,6 +134,7 @@
 	if(user)
 		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 		to_chat(user, "<span class='notice'>You fix the damage on [src].</span>")
+
 
 /**
   * take_damage_zone() is used for dealing damage to specific bodyparts on a worn piece of clothing, meant to be called from [/obj/item/bodypart/proc/check_woundings_mods()]

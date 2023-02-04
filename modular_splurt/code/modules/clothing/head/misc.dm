@@ -51,6 +51,7 @@
 	flags_inv = HIDEHAIR|HIDEEARS
 	resistance_flags = ACID_PROOF
 	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE
+	is_edible = 0
 
 /obj/item/clothing/head/helmet/cbrn/mopp
 	name = "MOPP hood"
@@ -59,6 +60,7 @@
 	item_state = "mopphood"
 	can_flashlight = 1
 	armor = list("melee" = 40, "bullet" = 30, "laser" = 30,"energy" = 10, "bomb" = 25, "bio" = 100, "rad" = 100, "fire" = 40, "acid" = 100)
+	is_edible = 0
 
 /obj/item/clothing/head/helmet/cbrn/mopp/advance
 	name = "advance MOPP hood"
@@ -66,6 +68,7 @@
 	can_flashlight = 1
 	armor = list("melee" = 50, "bullet" = 40, "laser" = 40,"energy" = 20, "bomb" = 35, "bio" = 110, "rad" = 110, "fire" = 50, "acid" = 110)
 	clothing_flags = NONE
+	is_edible = 0
 
 
 // research nods

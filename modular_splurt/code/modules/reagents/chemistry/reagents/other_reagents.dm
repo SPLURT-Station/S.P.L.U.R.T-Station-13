@@ -28,16 +28,18 @@
 
 /datum/reagent/blood/on_mob_life(mob/living/carbon/C)
 	. = ..()
-	if(HAS_TRAIT(C,BLOODFLEDGE))
-		C.adjust_nutrition(6) //3/4ed this, felt it was a bit too much
-		C.adjust_disgust(-3) //makes the churches effects easily negated
+	if(HAS_TRAIT(C,TRAIT_BLOODFLEDGE))
+		C.adjust_nutrition(6)
+		C.adjust_disgust(-2) // Negates the chapel's disgust effect
+		C.adjustStaminaLoss(1) // Mitigates the chapel's stamina effect
 
 /datum/reagent/water/holywater/on_mob_life(mob/living/carbon/M)
 	. = ..()
-	//makes holy water slightly disgusting and hungering for vampires
-	if(HAS_TRAIT(M,BLOODFLEDGE))
-		M.adjust_disgust(1)
-		M.adjust_nutrition(-0.1)
+	// Makes holy water disgusting and hungering for bloodfledges
+	// Directly antithetic to the effects of blood
+	if(HAS_TRAIT(M,TRAIT_BLOODFLEDGE))
+		M.adjust_disgust(2)
+		M.adjust_nutrition(-6)
 
 	// Cursed blood effect moved here
 	if(HAS_TRAIT(M, TRAIT_CURSED_BLOOD))

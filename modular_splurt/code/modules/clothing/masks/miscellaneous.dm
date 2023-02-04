@@ -35,6 +35,7 @@
 	visor_flags_inv = 0
 	flavor_adjust = FALSE
 	armor = list("melee" = 5, "bullet" = 0, "laser" = 5,"energy" = 5, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 40, "acid" = 100)
+	is_edible = 0
 
 /obj/item/clothing/mask/gas/cbrn/mopp
 	name = "MOPP gas mask"

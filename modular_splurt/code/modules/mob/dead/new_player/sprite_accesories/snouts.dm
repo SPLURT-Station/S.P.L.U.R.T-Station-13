@@ -221,6 +221,12 @@
 	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
 	color_src = MUTCOLORS
 
+/datum/sprite_accessory/snouts/mam_snouts/corvidbeak
+	name = "Corvid Beak"
+	icon_state = "corvidbeak"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	matrixed_sections = MATRIX_GREEN
+
 /datum/sprite_accessory/snouts/mam_snouts/deoxys
 	name = "Deoxys"
 	icon_state = "deoxys"

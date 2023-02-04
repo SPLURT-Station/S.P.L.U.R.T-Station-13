@@ -1,3 +1,3 @@
-/datum/techweb_node/datatheory/New()
+/datum/techweb_node/biotech/New()
 	design_ids += "sex_research"
 	. = ..()

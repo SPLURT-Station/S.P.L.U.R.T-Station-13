@@ -136,7 +136,7 @@
 		"Conscript" = list(
 			"name" = "Conscript suit",
 			"desc" = "<span style=\"font-family:Lucida Console;font-size:85%\">..and so he left, with new orders and new questions.</span>",
-			"icon" = 'modular_sand/icons/mob/clothing/suit.dmi',
+			"icon" = 'modular_sand/icons/obj/clothing/suits.dmi',
 			"icon_state" = "commando-armor",
 			"mob_overlay_icon" = 'modular_sand/icons/mob/clothing/suit.dmi',
 			"anthro_mob_worn_overlay" = 'modular_sand/icons/mob/clothing/suit_digi.dmi'
@@ -151,10 +151,15 @@
 	. = ..()
 	switch(current_skin)
 		if("Conscript")
-			if(slot == ITEM_SLOT_OCLOTHING)
-				icon = 'modular_sand/icons/mob/clothing/suit.dmi'
-			else
-				icon = 'modular_sand/icons/obj/clothing/suits.dmi'
+			var/datum/component/armor_plate/armor_comp = GetComponent(/datum/component/armor_plate)
+			var/armor_level = 0
+			var/armor_max = 0
+			if(armor_comp)
+				armor_level = armor_comp.amount
+				armor_max = armor_comp.maxamount
+
+			upgrade_icon(amount = armor_level, maxamount = armor_max)
+
 		else
 			return
 
@@ -171,37 +176,39 @@
 	if(istype(helmet))
 		mining_helmet = helmet
 
+	/// h suffix for helmet
+	var/datum/component/armor_plate/armor_comp_h = mining_helmet.GetComponent(/datum/component/armor_plate)
+	var/armor_level_h = 0
+	var/armor_max_h = 0
+	if(armor_comp_h)
+		armor_level_h = armor_comp_h.amount
+		armor_max_h = armor_comp_h.maxamount
+
 	switch(current_skin)
 		if("Default")
-			if(armor_level != 0)
-				upgrade_icon(amount = armor_level, maxamount = armor_max)
+			upgrade_icon(amount = armor_level, maxamount = armor_max)
 
 			if(mining_helmet)
 				mining_helmet.name = initial(mining_helmet.name)
 				mining_helmet.desc = initial(mining_helmet.desc)
 				mining_helmet.icon = initial(mining_helmet.icon)
 				mining_helmet.icon_state = initial(mining_helmet.icon_state)
-				if(armor_level != 0)
-					mining_helmet.upgrade_icon(amount = armor_level, maxamount = armor_max)
+				mining_helmet.upgrade_icon(amount = armor_level_h, maxamount = armor_max_h)
 				mining_helmet.mob_overlay_icon = initial(mining_helmet.mob_overlay_icon)
 				mining_helmet.anthro_mob_worn_overlay = initial(mining_helmet.anthro_mob_worn_overlay)
 
 		/// Sprited by Dexxiol#3462 :)
 		if("Conscript")
-			if(armor_level != 0)
-				upgrade_icon(amount = armor_level, maxamount = armor_max)
+			upgrade_icon(amount = armor_level, maxamount = armor_max)
 
 			if(mining_helmet)
 				mining_helmet.name = "Conscript helmet"
 				mining_helmet.desc = "It shines briefly, full of life."
-				mining_helmet.icon = 'modular_sand/icons/mob/clothing/head.dmi'
+				mining_helmet.icon = 'modular_sand/icons/obj/clothing/hats.dmi'
 				mining_helmet.icon_state = "commando-helmet"
-				if(armor_level != 0)
-					mining_helmet.upgrade_icon(amount = armor_level, maxamount = armor_max)
+				mining_helmet.upgrade_icon(amount = armor_level_h, maxamount = armor_max_h)
 				mining_helmet.mob_overlay_icon = 'modular_sand/icons/mob/clothing/head.dmi'
 				mining_helmet.anthro_mob_worn_overlay = 'modular_sand/icons/mob/clothing/head_muzzled.dmi'
-			if(current_equipped_slot != ITEM_SLOT_OCLOTHING)
-				icon = 'modular_sand/icons/obj/clothing/suits.dmi'
 
 /obj/item/clothing/head/helmet/space/hardsuit/mining/update_icon_state()
 	switch(suit.current_skin)
@@ -224,7 +231,7 @@
 			icon_state = "commando[hardsuit_type]"
 			if(ishuman(loc))
 				var/mob/living/carbon/human/wearer = loc
-				if(wearer.head == src)
+				if(istype(wearer) && (wearer.head == src))
 					wearer.update_inv_head()
 		else
 			. = ..()
@@ -238,10 +245,10 @@
 				hardsuit_type = "2-armor"
 				if(amount == maxamount)
 					hardsuit_type = "3-armor"
-			icon_state = "commando[hardsuit_type]"
+			icon_state = "commando[hardsuit_type][current_equipped_slot != ITEM_SLOT_OCLOTHING ? "-inhand" : ""]"
 			if(ishuman(loc))
 				var/mob/living/carbon/human/wearer = loc
-				if(wearer.wear_suit == src)
+				if(istype(wearer) && (wearer.wear_suit == src))
 					wearer.update_inv_wear_suit()
 		else
 			. = ..()

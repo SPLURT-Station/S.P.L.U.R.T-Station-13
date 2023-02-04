@@ -1,4 +1,7 @@
 // GWTB-inspired stuff wooo
+/obj/item/clothing/head/helmet
+	is_edible = 0
+
 /obj/item/clothing/head/helmet/goner
 	name = "trencher helmet"
 	desc = "A No Man's Land-type helmet with purple paint applied."

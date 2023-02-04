@@ -83,7 +83,7 @@
 #define HIDETAUR		(1<<11) //gotta hide that snowflake
 #define HIDESNOUT		(1<<12) //or do we actually hide our snoots
 #define HIDEACCESSORY	(1<<13) //hides the jumpsuit accessory.
-//skyrat edit
+//sandstorm edit
 #define HIDEUNDERWEAR	(1<<14) //hides underwear, socks and shirt
 #define HIDEWRISTS		(1<<15) //hides wrists
 //

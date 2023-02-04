@@ -6,3 +6,5 @@
 #define TRAIT_SHELTERED			"sheltered"
 /// Define for the quirk "infertile", self explanatory. Please make this a preference on the Content Preferences Tab.
 #define TRAIT_INFERTILE			"infertile"
+/// DNC trait, used to prevent cloning
+#define TRAIT_DNC_ORDER			"dnc_order"

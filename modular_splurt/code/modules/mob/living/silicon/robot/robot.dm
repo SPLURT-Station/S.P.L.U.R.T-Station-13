@@ -41,3 +41,15 @@
 	laws = new /datum/ai_laws/slaver_override
 	laws.associate(src)
 	update_icons()
+
+/mob/living/silicon/robot/Initialize(mapload)
+	.=..()
+	AddComponent(/datum/component/personal_crafting)
+
+
+/mob/living/silicon/robot/pick_module()
+	.=..()
+	var/datum/hud/R = hud_used
+	var/atom/movable/screen/craft/C = locate() in R.static_inventory
+	C.icon = 'icons/mob/screen_midnight.dmi'
+	C.screen_loc = "CENTER+5:5,SOUTH+1:5"

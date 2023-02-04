@@ -1,3 +1,6 @@
+/obj/item/clothing/mask/gas
+	is_edible = 0
+
 /obj/item/clothing/mask/gas/radmask
 	name = "radiation mask"
 	desc = "An mask that somewhat protects the user from radiation. Not as effective like a radiation hood, but is better than nothing."

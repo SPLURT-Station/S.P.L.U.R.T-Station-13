@@ -502,10 +502,6 @@
 		playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
 
 /obj/machinery/computer/cloning/proc/can_scan(datum/dna/dna, mob/living/mob_occupant, experimental = FALSE, datum/bank_account/account)
-	if(HAS_TRAIT(mob_occupant, TRAIT_NO_CLONE))
-		scantemp = "Subject has an active DNC record on file. Unable to clone."
-		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
-		return
 	if(!istype(dna))
 		scantemp = "Unable to locate valid genetic data."
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)

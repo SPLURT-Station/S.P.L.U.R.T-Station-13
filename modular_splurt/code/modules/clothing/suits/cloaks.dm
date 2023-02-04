@@ -31,6 +31,7 @@
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/neck.dmi'
 	armor = list(MELEE = 35, BULLET = 40, LASER = 25, ENERGY = 10, BOMB = 25, BIO = 20, RAD = 20, FIRE = 60, ACID = 60)
 	body_parts_covered = CHEST|GROIN|ARMS
+	is_edible = 0
 
 /obj/item/clothing/neck/cloak/binary
 	name = "Binary cloak"

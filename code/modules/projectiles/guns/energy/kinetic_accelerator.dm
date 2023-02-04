@@ -181,7 +181,6 @@
 /obj/item/gun/energy/kinetic_accelerator/emp_act(severity)
 	return
 
-/* moved to modular_sand
 /obj/item/gun/energy/kinetic_accelerator/proc/reload()
 	cell.give(cell.maxcharge)
 	process_chamber()
@@ -191,7 +190,7 @@
 		to_chat(loc, "<span class='warning'>[src] silently charges up.</span>")
 	update_icon()
 	overheat = FALSE
-*/
+
 /obj/item/gun/energy/kinetic_accelerator/update_overlays()
 	. = ..()
 	if(!can_shoot())

@@ -1,4 +1,5 @@
-#define BLOOD_DRAIN_NUM 50
+#define BLOODFLEDGE_DRAIN_NUM 50
+#define BLOODFLEDGE_COOLDOWN_BITE 60
 
 //
 // Quirk: Hypnotic Gaze
@@ -109,77 +110,430 @@
 // Quirk: Bloodsucker Fledgling / Vampire
 //
 
-/datum/action/vbite
-	name = "Bite"
-	button_icon_state = "power_feed"
+// Basic action preset
+/datum/action/bloodfledge
+	name = "Broken Bloodfledge Ability"
+	desc = "You shouldn't be seeing this!"
+	button_icon_state = "power_torpor"
+	background_icon_state = "vamp_power_off"
+	buttontooltipstyle = "cult"
 	icon_icon = 'icons/mob/actions/bloodsucker.dmi'
-	desc = "Sink your vampiric fangs into the person you are grabbing."
+	button_icon = 'icons/mob/actions/bloodsucker.dmi'
+
+// Action: Bite
+/datum/action/bloodfledge/bite
+	name = "Fledgling Bite"
+	desc = "Sink your vampiric fangs into the person you are grabbing, and attempt to drink their blood."
+	button_icon_state = "power_feed"
 	var/drain_cooldown = 0
 
-/datum/action/vbite/Trigger()
+/datum/action/bloodfledge/bite/Trigger()
 	. = ..()
-	if(iscarbon(owner))
-		var/mob/living/carbon/H = owner
-		if(H.nutrition >= 500)
-			to_chat(H, span_notice("You are too full to drain any more."))
-			return
-		if(drain_cooldown >= world.time)
-			to_chat(H, span_notice("You just drained blood, wait a few seconds."))
-			return
-		if(!H.pulling || !iscarbon(H.pulling))
-			if(H.getStaminaLoss() >= 80 && H.nutrition > 20)//prevents being stunlocked in the chapel
-				to_chat(H,(span_notice("you use some of your power to energize")))
-				H.adjustStaminaLoss(-20)
-				H.adjust_nutrition(-20)
-				H.resting = TRUE
-		if(H.pulling && (iscarbon(H.pulling) || (istype(H.pulling,/obj/structure/arachnid/cocoon) && locate(/mob/living/carbon) in H.pulling.contents)))
-			var/mob/living/carbon/victim
-			if(iscarbon(H.pulling))
-				victim = H.pulling
-			else if(istype(H.pulling,/obj/structure/arachnid/cocoon))
-				victim = locate(/mob/living/carbon) in H.pulling.contents
-			drain_cooldown = world.time + 25
-			if(victim.anti_magic_check(FALSE, TRUE, FALSE, 0))
-				to_chat(victim, span_warning("[H] tries to bite you, but stops before touching you!"))
-				to_chat(H, span_warning("[victim] is blessed! You stop just in time to avoid catching fire."))
-				return
-			//Here we check now for both the garlic cloves on the neck and for blood in the victims bloodstream.
-			if(!blood_sucking_checks(victim, TRUE, TRUE))
-				return
-			H.visible_message(span_danger("[H] bites down on [victim]'s neck!"))
-			victim.add_splatter_floor(get_turf(victim), TRUE)
-			to_chat(victim, span_userdanger("[H] is draining your blood!"))
-			if(!do_after(H, 30, target = victim))
-				return
-			var/blood_volume_difference = BLOOD_VOLUME_MAXIMUM - H.blood_volume //How much capacity we have left to absorb blood
-			var/drained_blood = min(victim.blood_volume, BLOOD_DRAIN_NUM, blood_volume_difference)
-			H.reagents.add_reagent(/datum/reagent/blood/, drained_blood)
-			to_chat(victim, span_danger("[H] has taken some of your blood!"))
-			to_chat(H, span_notice("You drain some blood!"))
-			playsound(H, 'sound/items/drink.ogg', 30, 1, -2)
-			victim.blood_volume = clamp(victim.blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
-			log_combat(H,victim,"vampire bit")//logs the biting action for admins
-			if(!victim.blood_volume)
-				to_chat(H, span_warning("You finish off [victim]'s blood supply!"))
 
+	// Check for carbon owner
+	if(!iscarbon(owner))
+		return
 
-/datum/action/vrevive
-	name = "Resurrect"
-	button_icon_state = "power_strength"
-	icon_icon = 'icons/mob/actions/bloodsucker.dmi'
-	desc = "Use all your energy to come back to life!"
+	// Define action owner
+	var/mob/living/carbon/action_owner = owner
 
-/datum/action/vrevive/Trigger()
-	. = ..()
-	var/mob/living/carbon/C = owner
-	var/mob/living/carbon/human/H = owner
-	if(H.stat == DEAD && istype(C.loc, /obj/structure/closet/crate/coffin))
-		H.revive(TRUE, FALSE)
-		H.set_nutrition(0)
-		H.Daze(20)
-		H.drunkenness = 70
+	// Check for cooldown
+	if(drain_cooldown >= world.time)
+		// Warn the user, then return
+		to_chat(action_owner, span_notice("That ability isn't ready yet."))
+		return
+
+	// Check for any grabbed target
+	if(!action_owner.pulling)
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("You need a victim first!"))
+		return
+
+	// Limit maximum nutrition
+	if(action_owner.nutrition >= NUTRITION_LEVEL_FAT)
+		// Warn the user, then return
+		to_chat(action_owner, span_notice("You are too full to drain any more."))
+		return
+
+	// Limit maximum potential nutrition
+	if(action_owner.nutrition + BLOODFLEDGE_DRAIN_NUM >= NUTRITION_LEVEL_FAT)
+		// Warn the user, then return
+		to_chat(action_owner, span_notice("You would become too full by draining any more blood."))
+		return
+
+	// Check for muzzle
+	if(action_owner.is_muzzled())
+		// Warn the user, then return
+		to_chat(action_owner, span_notice("You can't bite things while muzzled!"))
+		return
+
+	// Define pulled target
+	var/pull_target = action_owner.pulling
+
+	// Define bite target
+	var/mob/living/carbon/bite_target
+
+	// Check if the target is carbon
+	if(iscarbon(pull_target))
+		// Set the bite target
+		bite_target = pull_target
+
+	// Or cocooned carbon
+	else if(istype(pull_target,/obj/structure/arachnid/cocoon))
+		// Define if cocoon has a valid target
+		// This cannot use pull_target
+		var/possible_cocoon_target = locate(/mob/living/carbon) in action_owner.pulling.contents
+
+		// Check defined cocoon target
+		if(possible_cocoon_target)
+			// Set the bite target
+			bite_target = possible_cocoon_target
+
+	// Or a blood tomato
+	else if(istype(pull_target,/obj/item/reagent_containers/food/snacks/grown/tomato/blood))
+		// Warn the user, then return
+		to_chat(action_owner, span_danger("You plunge your fangs into [pull_target]! It's not very nutritious."))
+		return
+
+		// This doesn't actually interact with the item
+
+	// Or none of the above
 	else
-		to_chat(H,span_warning("You need to be dead and in a coffin to revive!"))
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("You can't drain blood from [pull_target]!"))
+		return
+
+	// Check for anti-magic
+	if(bite_target.anti_magic_check(FALSE, TRUE, FALSE, 0))
+		// Warn the user and target, then return
+		to_chat(bite_target, span_warning("[action_owner] tries to bite you, but stops before touching you!"))
+		to_chat(action_owner, span_warning("[bite_target] is blessed! You stop just in time to avoid catching fire."))
+		return
+
+	// Check for garlic necklace or garlic in the bloodstream
+	if(!blood_sucking_checks(bite_target, TRUE, TRUE))
+		// Warn the user and target, then return
+		to_chat(bite_target, span_warning("[action_owner] tries to bite you, but is warded off by your Allium Sativum!"))
+		to_chat(action_owner, span_warning("You sense that [bite_target] is protected by Allium Sativum, and refrain from biting them."))
+		return
+
+	// Define bite target's blood volume
+	var/target_blood_volume = bite_target.blood_volume
+
+	// Check for sufficient blood volume
+	if(!target_blood_volume)
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("There's not enough blood in [bite_target]!"))
+		return
+
+	// Check if total blood would become too low
+	if((target_blood_volume - BLOODFLEDGE_DRAIN_NUM) <= BLOOD_VOLUME_OKAY)
+		// Check for aggressive grab
+		if(action_owner.grab_state < GRAB_AGGRESSIVE)
+			// Warn the user, then return
+			to_chat(action_owner, span_warning("You sense that [bite_target] is running low on blood. You'll need a tighter grip on [bite_target.p_them()] to continue."))
+			return
+
+		// Check for pacifist
+		if(HAS_TRAIT(action_owner, TRAIT_PACIFISM))
+			// Warn the user, then return
+			to_chat(action_owner, span_warning("You can't drain any more blood from [bite_target] without hurting [bite_target.p_them()]!"))
+			return
+
+	// Set cooldown and action times
+	var/time_cooldown = BLOODFLEDGE_COOLDOWN_BITE
+	var/time_interact = 30
+
+	// Check for voracious
+	if(HAS_TRAIT(action_owner, TRAIT_VORACIOUS))
+		// Make times twice as fast
+		time_cooldown *= 0.5
+		time_interact*= 0.5
+
+	// Set cooldown
+	drain_cooldown = world.time + time_cooldown
+
+	// Display local chat message
+	action_owner.visible_message(span_danger("[action_owner] begins to bite down on [bite_target]'s neck!"))
+
+	// Warn bite target
+	to_chat(bite_target, span_userdanger("[action_owner] has bitten your neck, and is trying to drain your blood!"))
+
+	// Play a bite sound effect
+	playsound(action_owner, 'sound/weapons/bite.ogg', 30, 1, -2)
+
+	// Try to perform action timer
+	if(!do_after(action_owner, time_interact, target = bite_target))
+		// When failing
+		// Display a local chat message
+		action_owner.visible_message(span_danger("[action_owner]'s fangs are prematurely torn from [bite_target]'s neck, spilling [bite_target.p_their()] blood!"))
+
+		// Bite target "drops" the blood
+		// This creates large blood splatter
+		bite_target.bleed(BLOODFLEDGE_DRAIN_NUM, FALSE)
+
+		// Play splatter sound
+		playsound(get_turf(target), 'sound/effects/splat.ogg', 40, 1)
+
+		// Check for masochism
+		if(!HAS_TRAIT(bite_target, TRAIT_MASO))
+			// Force bite_target to play the scream emote
+			bite_target.emote("scream")
+
+		// Log the biting action failure
+		log_combat(action_owner,bite_target,"bloodfledge bitten (interrupted)")
+
+		// Return
+		return
+
+	// Check if bite target species has blood
+	if(NOBLOOD in bite_target.dna.species.species_traits)
+		// Warn the user and target, then return
+		to_chat(bite_target, span_warning("[action_owner] tried to drain you, but didn't find any blood!"))
+		to_chat(action_owner, span_warning("[bite_target] doesn't have any blood to drink!"))
+		return
+
+	// Create blood splatter
+	bite_target.add_splatter_floor(get_turf(bite_target), TRUE)
+
+	// Checks for exotic species blood below
+
+	// Variable for species with non-blood blood volumes
+	var/blood_valid = TRUE
+
+	// Variable for gaining blood volume
+	var/blood_transfer = FALSE
+
+	// Name of blood volume to be taken
+	// Action owner assumes blood until after drinking
+	var/blood_name = "blood"
+
+	// Check bite target for synth blood
+	if(bite_target.mob_biotypes & MOB_ROBOTIC)
+		// Mark blood as invalid
+		blood_valid = FALSE
+
+		// Set blood type name
+		blood_name = "coolant"
+
+		// Check if the action owner is also a synth
+		if (action_owner.mob_biotypes & MOB_ROBOTIC)
+			// Allow gaining blood from this
+			blood_transfer = TRUE
+
+		// Action owner is not a synth
+		else
+			// Warn the user
+			to_chat(action_owner, span_warning("That didn't taste like blood at all..."))
+
+			// Add disgust
+			action_owner.adjust_disgust(2)
+
+			// Cause negative mood
+			SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_synth", /datum/mood_event/drankblood_synth)
+
+	// Check if bite target is a slime
+	if (isslimeperson(bite_target))
+		// Mark blood as invalid
+		blood_valid = FALSE
+
+		// Set blood type name
+		blood_name = "slime"
+
+		// Check if the action owner is also a slime
+		if(isslimeperson(action_owner))
+			// Allow gaining blood from this
+			blood_transfer = TRUE
+
+		// Action owner is not a slime
+		else
+			// Warn the user
+			to_chat(action_owner, span_warning("You feel a sloshing presence inside you, but it dies out after a few moments."))
+
+			// Add disgust
+			action_owner.adjust_disgust(2)
+
+			// Cause negative mood
+			SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_slime", /datum/mood_event/drankblood_slime)
+
+	// End of species blood checks
+
+	// Define user's remaining capacity to absorb blood
+	var/blood_volume_difference = BLOOD_VOLUME_MAXIMUM - action_owner.blood_volume
+	var/drained_blood = min(target_blood_volume, BLOODFLEDGE_DRAIN_NUM, blood_volume_difference)
+
+	// Remove blood from bite target
+	bite_target.blood_volume = clamp(target_blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
+
+	// Perform a blood transfer
+	// This is done to transfer compatible diseases
+	// Grants nothing, unless blood transfer variable is set
+	bite_target.transfer_blood_to(action_owner, (blood_transfer ? drained_blood : 0), TRUE)
+
+	// Check if action owner received valid (nourishing) blood
+	if(blood_valid)
+		// Add blood reagent to the user
+		action_owner.reagents.add_reagent(/datum/reagent/blood/, drained_blood)
+
+	// Alert the bite target and local user of success
+	// Yes, this is AFTER the message for non-valid blood
+	to_chat(bite_target, span_danger("[action_owner] has taken some of your [blood_name]!"))
+	to_chat(action_owner, span_notice("You've drained some of [bite_target]'s [blood_name]!"))
+
+	// Alert the action holder if blood volume limit was exceeded
+	if(blood_transfer && (action_owner.blood_volume >= BLOOD_VOLUME_MAXIMUM))
+		to_chat(action_owner, span_warning("You body fails to absorb any more [blood_name]. The remainder has been lost."))
+
+	// Play a heartbeat sound effect
+	// This was changed to match bloodsucker
+	playsound(action_owner, 'sound/effects/singlebeat.ogg', 30, 1, -2)
+
+	// Log the biting action success
+	log_combat(action_owner,bite_target,"bloodfledge bitten (successfully), transferring [blood_name]")
+
+	// Mood events
+	// Check if bite target is dead or undead
+	if((bite_target.stat >= DEAD) || (bite_target.mob_biotypes & MOB_UNDEAD))
+		// Warn the user
+		to_chat(action_owner, span_warning("The rotten [blood_name] tasted foul."))
+
+		// Add disgust
+		action_owner.adjust_disgust(2)
+
+		// Cause negative mood
+		SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_dead", /datum/mood_event/drankblood_dead)
+
+	// Check if bite target's blood has been depleted
+	if(!bite_target.blood_volume)
+		// Warn the user
+		to_chat(action_owner, span_warning("You've depleted [bite_target]'s [blood_name] supply!"))
+
+		// Cause negative mood
+		SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_killed", /datum/mood_event/drankkilled)
+
+	// Check if bite target has cursed blood
+	if(HAS_TRAIT(bite_target, TRAIT_CURSED_BLOOD))
+		// Check action owner for cursed blood
+		var/owner_cursed = HAS_TRAIT(action_owner, TRAIT_CURSED_BLOOD)
+
+		// Set chat message based on action owner's trait status
+		var/warn_message = (owner_cursed ? "You taste the unholy touch of a familiar curse in [bite_target]\'s blood." : "You experience a sensation of intense dread just after drinking from [bite_target]. Something about their blood feels... wrong.")
+
+		// Alert user in chat
+		to_chat(action_owner, span_notice(warn_message))
+
+		// Set mood type based on curse status
+		var/mood_type = (owner_cursed ? /datum/mood_event/drank_cursed_good : /datum/mood_event/drank_cursed_bad)
+
+		// Cause mood event
+		SEND_SIGNAL(action_owner, COMSIG_ADD_MOOD_EVENT, "bloodfledge_drank_cursed_blood", mood_type)
+
+// Action: Revive
+/datum/action/bloodfledge/revive
+	name = "Fledgling Revive"
+	desc = "Expend all of your remaining energy to escape death."
+	button_icon_state = "power_strength"
+
+/datum/action/bloodfledge/revive/Trigger()
+	. = ..()
+
+	// Define mob
+	var/mob/living/carbon/human/action_owner = owner
+
+	// Early check for being dead
+	// Users are most likely to click this while alive
+	if(action_owner.stat != DEAD)
+		// Warn user in chat
+		to_chat(action_owner, "You can't use this ability while alive!")
+		
+		// Return
+		return
+
+	// Define failure message
+	var/revive_failed
+
+	// Condition: Mob isn't in a closed coffin
+	if(!istype(action_owner.loc, /obj/structure/closet/crate/coffin))
+		revive_failed += "\n- You need to be in a closed coffin!"
+
+	// Condition: Insufficient nutrition (blood)
+	if(action_owner.nutrition <= NUTRITION_LEVEL_STARVING)
+		revive_failed += "\n- You don't have enough blood left!"
+
+	// Condition: Can be revived
+	// This is used by revive(), and must be checked here to prevent false feedback
+	if(!action_owner.can_be_revived())
+		revive_failed += "\n- Your body is too weak to sustain life!"
+
+	// Condition: Damage limit, brute
+	if(action_owner.getBruteLoss() >= MAX_REVIVE_BRUTE_DAMAGE)
+		revive_failed += "\n- Your body is too battered!"
+	
+	// Condition: Damage limit, burn
+	if(action_owner.getFireLoss() >= MAX_REVIVE_FIRE_DAMAGE)
+		revive_failed += "\n- Your body is too badly burned!"
+
+	// Condition: Suicide
+	if(action_owner.suiciding)
+		revive_failed += "\n- You chose this path."		
+
+	// Condition: No revivals
+	if(HAS_TRAIT(action_owner, TRAIT_NOCLONE))
+		revive_failed += "\n- You only had one chance."		
+
+	// Condition: Demonic contract
+	if(action_owner.hellbound)
+		revive_failed += "\n- The soul pact must be honored."		
+
+	// Check for failure
+	if(revive_failed)
+		// Set combined message
+		revive_failed = span_warning("You can't revive right now because: [revive_failed]")
+
+		// Alert user in chat of failure
+		to_chat(action_owner, revive_failed)
+
+		// Return
+		return
+
+	// Define time dead
+	// Used for revive policy
+	var/time_dead = world.time - action_owner.timeofdeath
+
+	// Revive the action owner
+	action_owner.revive()
+
+	// Alert the user in chat of success
+	action_owner.visible_message(span_notice("An ominous energy radiates from the [action_owner.loc]..."), span_warning("You've expended all remaining blood to bring your body back to life!"))
+
+	// Play a haunted sound effect
+	playsound(action_owner, 'sound/hallucinations/growl1.ogg', 30, 1, -2)
+
+	// Remove all nutrition (blood)
+	action_owner.set_nutrition(0)
+
+	// Apply daze effect
+	action_owner.Daze(20)
+
+	// Define time limit for revival
+	// Determines memory loss, using defib time and policies
+	var/revive_time_limit = CONFIG_GET(number/defib_cmd_time_limit) * 10
+
+	// Define revive time threshold
+	// Late causes memory loss, according to policy
+	var/time_late = revive_time_limit && (time_dead > revive_time_limit)
+
+	// Define policy to use
+	var/list/policies = CONFIG_GET(keyed_list/policy)
+	var/time_policy = time_late? policies[POLICYCONFIG_ON_DEFIB_LATE] : policies[POLICYCONFIG_ON_DEFIB_INTACT]
+
+	// Check if policy exists
+	if(time_policy)
+		// Alert user in chat of policy
+		to_chat(action_owner, time_policy)
+
+	// Log the revival and effective policy
+	action_owner.log_message("revived using a vampire quirk ability after being dead for [time_dead] deciseconds. Considered [time_late? "late" : "memory-intact"] revival under configured policy limits.", LOG_GAME)
 
 //
 // Quirk: Werewolf

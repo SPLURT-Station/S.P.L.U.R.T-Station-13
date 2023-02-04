@@ -17,13 +17,12 @@
 #define TRAIT_PHARMA            "hepatic_pharmacokinesis"
 #define TRAIT_CHOKE_SLUT		"choke_slut"
 
-#define BLOODFLEDGE				"BloodFledge"//splurt change
+#define TRAIT_BLOODFLEDGE		"BloodFledge"
 
 #define TRAIT_INCUBUS			"Incubus"
 #define TRAIT_SUCCUBUS			"Succubus"
 
 #define TRAIT_ARACHNID			"Arachnid"
 #define TRAIT_FLUTTER			"flutter"
-
 #define TRAIT_NUDIST			"Nudist"
-
+#define TRAIT_CLOTH_EATER		"cloth_eater"

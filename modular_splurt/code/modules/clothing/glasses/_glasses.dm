@@ -8,3 +8,9 @@
 	flash_protect = 1
 	tint = 1
 	glass_colour_type = /datum/client_colour/glass_colour/gray
+
+/obj/item/clothing/glasses/eyepatch
+	is_edible = 1
+
+/obj/item/clothing/glasses/sunglasses/blindfold
+	is_edible = 1

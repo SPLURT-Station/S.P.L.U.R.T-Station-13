@@ -625,6 +625,7 @@
 	var/targetting = CUM_TARGET_VAGINA
 	equip_delay_self = 2 SECONDS
 	equip_delay_other = 5 SECONDS
+	is_edible = 0
 
 /obj/item/clothing/underwear/briefs/panties/portalpanties/attack_self(mob/user)
 	. = ..()

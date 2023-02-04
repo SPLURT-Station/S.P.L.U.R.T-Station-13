@@ -15,3 +15,10 @@
 /datum/quirk/sheltered/remove() //i mean, the lose text explains it, so i'm making it actually work
 	var/mob/living/carbon/human/H = quirk_holder
 	H.grant_language(/datum/language/common)
+
+/datum/quirk/dnc_order
+	name = "DNC Order"
+	desc = "You have a Do Not Clone order on your record, stating that you may not be cloned. You can still be revived by other means."
+	value = -2
+	mob_trait = TRAIT_DNC_ORDER
+	medical_record_text = "Patient has a DNC (Do Not Clone) order and will be rejected by cloning mechanisms as a result."

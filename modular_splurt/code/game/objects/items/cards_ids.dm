@@ -8,9 +8,12 @@
 	desc = "A cheap ID used by slave traders. This guy seems to run the show."
 
 /obj/item/card/id/vampire
-	name = "Vampire ID"
-	desc = "An ID made to easily recognize vampires without needing to do tests"
+	name = "Bloodfledge ID"
+	desc = "An ID made to easily recognize bloodsucker fledglings without requiring medical scans."
+	icon = 'modular_splurt/icons/obj/card.dmi'
 	icon_state = "vampire"
+	assignment = "Bloodsucker Fledgling"
+	uses_overlays = FALSE
 
 /obj/item/card/id/away/hotel/splurt
 	name = "Staff ID"

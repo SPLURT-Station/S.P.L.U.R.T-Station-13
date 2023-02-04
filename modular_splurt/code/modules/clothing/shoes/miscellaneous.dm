@@ -51,6 +51,7 @@
 	resistance_flags = ACID_PROOF
 	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE
 	armor = list("melee" = 5, "bullet" = 0, "laser" = 5,"energy" = 5, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 40, "acid" = 100)
+	is_edible = 0
 
 /obj/item/clothing/shoes/jackboots/cbrn/mopp
 	name = "MOPP boots"

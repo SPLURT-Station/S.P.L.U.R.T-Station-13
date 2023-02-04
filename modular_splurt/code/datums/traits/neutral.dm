@@ -365,87 +365,164 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	H.adjust_nutrition(-0.09)//increases their nutrition loss rate to encourage them to gain a partner they can essentially leech off of
 
-/datum/quirk/vampire//splurt change start
-	name = "Bloodsucker Fledgeling"
-	desc = "You are a fledgeling of an ancient Bloodsucker bloodline; your skin is incurably pale and your mouth glimmers with vampiric fangs. Only blood will sate your hungers, and holy energies will cause your flesh to char."
-	value = 0
-	medical_record_text = "this person was partially infected by a bloodsucker"
-	mob_trait = BLOODFLEDGE
-	gain_text = span_notice("You feel an otherworldly thirst.")
-	lose_text = span_notice("you feel an otherworldy burden remove itself")
+/datum/quirk/bloodfledge
+	name = "Bloodsucker Fledgling"
+	desc = "You are a fledgling belonging to ancient Bloodsucker bloodline. While the blessing has yet to fully convert you, some things have changed. Only blood will sate your hungers, and holy energies will cause your flesh to char. <b>This is NOT an antagonist role!</b>"
+	value = 2
+	medical_record_text = "Patient exhibits onset symptoms of a sanguine curse."
+	mob_trait = TRAIT_BLOODFLEDGE
+	gain_text = span_notice("You feel a sanguine thirst.")
+	lose_text = span_notice("You feel the sanguine thirst fade away.")
 	processing_quirk = TRUE
 
-/datum/quirk/vampire/add()
+/datum/quirk/bloodfledge/add()
 	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	ADD_TRAIT(H,TRAIT_NO_PROCESS_FOOD,ROUNDSTART_TRAIT)
-	ADD_TRAIT(H,TRAIT_COLDBLOODED,ROUNDSTART_TRAIT)
-	ADD_TRAIT(H,TRAIT_NOBREATH,ROUNDSTART_TRAIT)
-	ADD_TRAIT(H,TRAIT_NOTHIRST,ROUNDSTART_TRAIT)
-	ADD_TRAIT(H,TRAIT_QUICKER_CARRY,ROUNDSTART_TRAIT)
-	ADD_TRAIT(H,TRAIT_AUTO_CATCH_ITEM,ROUNDSTART_TRAIT)//these two make the vampire fast and enables some sexy "bet you didnt think i could do this" romance
-	if(!H.dna.skin_tone_override)
-		H.skin_tone = "albino"
-	var/datum/action/vbite/B = new
-	var/datum/action/vrevive/R = new
-	B.Grant(H)
-	R.Grant(H)
-	H.grant_language(/datum/language/vampiric, TRUE, TRUE, LANGUAGE_BLOODSUCKER)
 
-/datum/quirk/vampire/on_process()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Add quirk traits
+	ADD_TRAIT(quirk_mob,TRAIT_NO_PROCESS_FOOD,ROUNDSTART_TRAIT)
+	ADD_TRAIT(quirk_mob,TRAIT_NOTHIRST,ROUNDSTART_TRAIT)
+
+	// Set skin tone, if possible
+	if(!quirk_mob.dna.skin_tone_override)
+		quirk_mob.skin_tone = "albino"
+
+	// Add quirk ability action datums
+	var/datum/action/bloodfledge/bite/act_bite = new
+	var/datum/action/bloodfledge/revive/act_revive = new
+	act_bite.Grant(quirk_mob)
+	act_revive.Grant(quirk_mob)
+
+	// Add quirk language
+	quirk_mob.grant_language(/datum/language/vampiric, TRUE, TRUE, LANGUAGE_BLOODSUCKER)
+
+/datum/quirk/bloodfledge/on_process()
 	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/area/A = get_area(H)
-	if(istype(A, /area/service/chapel) && H.mind?.assigned_role != "Chaplain")
-		H.adjustStaminaLoss(2)
-		H.adjust_nutrition(-0.3)//changed these to be less deadly and more of an inconvinience
-		H.adjust_disgust(1)
-	if(istype(H.loc, /obj/structure/closet/crate/coffin))//heals the vampire if in a coffin, except burn which fire can be considered holy
-		H.heal_overall_damage(4,4)
-		H.adjust_disgust(-7)
-		H.adjustOxyLoss(-4)
-		H.adjustCloneLoss(-4)
-		H.adjustBruteLoss(-0.3)
-		H.adjustFireLoss(-0.3)
-		if(!is_species(H, /datum/species/jelly)) //checks species
-			H.adjustToxLoss(-5)//heals toxin if not slime
+
+	// Check if the current area is a coffin
+	if(istype(quirk_holder.loc, /obj/structure/closet/crate/coffin))
+		// Define quirk mob
+		var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+		// Quirk mob must be injured
+		if(quirk_mob.health >= quirk_mob.maxHealth)
+			return
+
+		// Prevent healing for robots
+		// This caused numerous technical issues
+		if(quirk_mob.mob_biotypes & MOB_ROBOTIC)
+			// Display a warning chat message (10% chance)
+			if(prob(20))
+				to_chat(quirk_mob, span_warning("Your mechanical body rejects the curse's healing properties!"))
+
+			// Return without healing, due robotic nature
+			return
+
+		// Nutrition (blood) level must be above STARVING
+		if(quirk_mob.nutrition <= NUTRITION_LEVEL_STARVING)
+			// Display a warning chat message (10% chance)
+			if(prob(20))
+				to_chat(quirk_mob, span_warning("You need more blood before you can regenerate!"))
+
+			// Return without healing, due to lack of blood
+			return
+
+		// Define initial health
+		var/health_start = quirk_mob.health
+
+		// Heal brute and burn
+		// Accounts for robotic limbs
+		quirk_mob.heal_overall_damage(2,2)
+		/*
+		// Heal brute
+		quirk_mob.adjustBruteLoss(-2)
+		// Heal burn
+		quirk_mob.adjustFireLoss(-2)
+		*/
+		// Heal oxygen
+		quirk_mob.adjustOxyLoss(-2)
+		// Heal clone
+		quirk_mob.adjustCloneLoss(-2)
+
+		// Check for slime race
+		// NOT a slime
+		if(!isslimeperson(quirk_mob))
+			// Heal toxin
+			quirk_mob.adjustToxLoss(-2)
+		// IS a slime
 		else
-			H.adjustToxLoss(5)//heals toxin if slime
-		return
-	if(H.nutrition == 0)
-		if(H.staminaloss < 99)//makes them tired but dosent stun them
-			H.adjustStaminaLoss(3, FALSE, TRUE)
-		else
-			H.adjustStaminaLoss(-1,FALSE, FALSE)//this also helps with if someone is stuck in the chapel for way too long, and i tested with a stun sword that stunning for sec is still possible
-		if(prob(2)) //2 percent chance (if it was true randome D:<)
-			to_chat(H, span_warning("I need blood NOW!!!"))
+			// Grant toxin (heals slimes)
+			quirk_mob.adjustToxLoss(2)
 
-/datum/quirk/vampire/remove()
+		// Update health
+		quirk_mob.updatehealth()
+
+		// Determine healed amount
+		var/health_restored = quirk_mob.health - health_start
+
+		// Remove nutrition (blood) as compensation for healing
+		// Amount is equal to 50% of healing done
+		quirk_mob.adjust_nutrition(health_restored*-1)
+
+/datum/quirk/bloodfledge/remove()
 	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/datum/action/vbite/B = locate() in H.actions
-	var/datum/action/vrevive/R = locate() in H.actions
-	REMOVE_TRAIT(H, TRAIT_NO_PROCESS_FOOD, ROUNDSTART_TRAIT)
-	REMOVE_TRAIT(H, TRAIT_COLDBLOODED, ROUNDSTART_TRAIT)
-	REMOVE_TRAIT(H, TRAIT_NOBREATH, ROUNDSTART_TRAIT)
-	REMOVE_TRAIT(H, TRAIT_NOTHIRST, ROUNDSTART_TRAIT)
-	REMOVE_TRAIT(H,TRAIT_QUICKER_CARRY,ROUNDSTART_TRAIT)
-	REMOVE_TRAIT(H,TRAIT_AUTO_CATCH_ITEM,ROUNDSTART_TRAIT)
-	B.Remove(H)
-	R.Remove(H)
-	H.remove_language(/datum/language/vampiric, TRUE, TRUE, LANGUAGE_BLOODSUCKER)
+	
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
 
-/datum/quirk/vampire/on_spawn()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/obj/item/card/id/vampire/vcard = new /obj/item/card/id/vampire
-	H.equip_to_slot(vcard, ITEM_SLOT_BACKPACK)
-	vcard.registered_name = H.real_name
-	vcard.update_label(addtext(vcard.registered_name, " the vampire"))
-	//var/obj/item/card/id/I = H.get_idcard(FALSE)   maybe later, hop can just give the extra card proper access if needed, as for banking, that can be set on spawn by the player using the card in hand
-	//vcard.access = I.access
-	H.regenerate_icons()
+	// Remove quirk traits
+	REMOVE_TRAIT(quirk_mob, TRAIT_NO_PROCESS_FOOD, ROUNDSTART_TRAIT)
+	REMOVE_TRAIT(quirk_mob, TRAIT_NOTHIRST, ROUNDSTART_TRAIT)
+
+	// Remove quirk ability action datums
+	var/datum/action/bloodfledge/bite/act_bite = locate() in quirk_mob.actions
+	var/datum/action/bloodfledge/revive/act_revive = locate() in quirk_mob.actions
+	act_bite.Remove(quirk_mob)
+	act_revive.Remove(quirk_mob)
+
+	// Remove quirk language
+	quirk_mob.remove_language(/datum/language/vampiric, TRUE, TRUE, LANGUAGE_BLOODSUCKER)
+
+/datum/quirk/bloodfledge/on_spawn()
 	. = ..()
 
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Create vampire ID card
+	var/obj/item/card/id/vampire/id_vampire = new /obj/item/card/id/vampire(get_turf(quirk_holder))
+
+	// Update card information
+	id_vampire.registered_name = quirk_mob.real_name
+	id_vampire.update_label(addtext(id_vampire.registered_name, "'s Bloodfledge"))
+
+	// Determine banking ID information
+	for(var/bank_account in SSeconomy.bank_accounts)
+		// Define current iteration's account
+		var/datum/bank_account/account = bank_account
+
+		// Check for match
+		if(account.account_id == quirk_mob.account_id)
+			// Add to cards list
+			account.bank_cards += src
+
+			// Assign account
+			id_vampire.registered_account = account
+
+			// Stop searching
+			break
+
+	// Try to add ID to backpack
+	var/id_in_bag = quirk_mob.equip_to_slot_if_possible(id_vampire, ITEM_SLOT_BACKPACK) || FALSE
+
+	// Text for where the item was sent
+	var/id_location = (id_in_bag ? "in your backpack" : "at your feet" )
+
+	// Alert user in chat
+	// This should not post_add, because the ID is added by on_spawn
+	to_chat(quirk_holder, span_boldnotice("There is a bloodfledge's ID card [id_location], linked to your station account. It functions as a spare ID, but lacks job access."))
 
 /datum/quirk/werewolf //adds the werewolf quirk
 	name = "Werewolf"

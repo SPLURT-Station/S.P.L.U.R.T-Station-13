@@ -114,5 +114,72 @@
   - bugfix: Doll with monophobia dont get stress in someone vore belly
   - bugfix: Blind doll with monophobia dont get stress while someone in 1 tile range
 2023-01-21:
+  LeDrascol:
+  - balance: Synthetic Lizardperson, Synthetic Anthropomorph, and IPC no longer experience
+      thirst
+  SandPoot:
+  - rscadd: Added a reskin to the premium kinetic accelerator.
+  - bugfix: Fixed some possible graphical glitches with the mining hardsuit reskin.
+  - tweak: Tweaked skirt peeking into allowing peeking under people that are on top
+      of tables.
+  - refactor: Refactored skirt peeking into element.
   zeroisthebiggay:
   - spellcheck: the meme emotes
+2023-01-22:
+  LeDrascol:
+  - bugfix: Fixed missing newline characters for mood events
+  WoolyAypa:
+  - rscadd: Added a new nullrod re-skin
+  - rscadd: Added papal clothing to the armament beacon choices
+2023-01-23:
+  LunarFleet:
+  - tweak: Allowed borgs to craft
+  - tweak: Changes service borgs' items
+2023-01-24:
+  LeDrascol:
+  - tweak: Bloodfledge flavor text updated
+  - tweak: Bloodfledge ability buttons are bloodsucker themed
+  - tweak: Bloodfledge biting considers many more factors
+  - tweak: Bloodfledge biting limits safe blood transfer while passive grabbing
+  - tweak: Bloodfledge biting splatters blood if interrupted
+  - tweak: Bloodfledge biting from same-species non-standard blood species transfers
+      instead of nourishing
+  - tweak: Bloodfledge biting species penalties do not apply on same-species interactions
+  - tweak: Bloodfledge ID cards will use their holder's financial account
+  - tweak: Bloodfledges will become upset when draining robots, slimes, corpses, or
+      undead
+  - tweak: Bloodfledges are penalized for fully draining any body
+  - tweak: Bloodfledges gain a mood effect from drinking from Cursed Blood users
+  - tweak: Bloodfledges can over-drink and become fat
+  - balance: Bloodsucker Fledgling is now a positive quirk, costing 2 points
+  - balance: Bloodfledges have less arbitrary traits
+  - balance: Bloodfledges can't use the power cord implant
+  - balance: Bloodfledge revive cannot be used while starving, the body is too damaged,
+      or the user suicides
+  - balance: Bloodfledge coffin healing rate reduced slightly
+  - balance: Bloodfledge coffin healing costs hunger based on healed amount
+  - balance: Bloodfledge coffin healing does not work on robots
+  - balance: Bloodfledge bite cooldown increased slightly
+  - balance: Bloodfledge interactions benefit from Voracious
+  - balance: Bloodfledge chapel penalties removed
+  - balance: Holy water is more dangerous for bloodfledges
+  - bugfix: Fixed various spelling mistakes related to Bloodsucker Fledglings
+  - bugfix: Fixed Bloodfledge ID card getting lost with full backpacks
+  - imageadd: Added a new icon and overlay for vampire IDs
+  - imagedel: Removed old non-modular vampire ID icon
+  - refactor: Refactored all Bloodsucker Fledgling code
+  - refactor: Trait BLOODFLEDGE is now TRAIT_BLOODFLEDGE
+2023-01-25:
+  LeDrascol:
+  - rscadd: 'Added quirk: DNC Order'
+  - code_imp: Removed redundant definition of DNC quirk
+  - tweak: Moved Research Rack from Data Theory to Biological Technology
+2023-01-26:
+  Kush1Push1:
+  - rscadd: Ported body markings for head; pilot and pilot jaw.
+  ShamanSliph:
+  - rscadd: 'Added new Quirk: Clothes Eater'
+  - bugfix: Fixed insects getting infinite nutrient from chewing on clothes.
+2023-01-27:
+  AshTheDerg:
+  - tweak: Modified Booze Shaker options

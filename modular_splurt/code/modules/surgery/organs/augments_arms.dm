@@ -24,3 +24,17 @@
 	w_class = WEIGHT_CLASS_BULKY
 	sharpness = SHARP_POINTY
 	attack_verb = list("slashed", "cut")
+
+// Synth power cord interaction override
+/obj/item/apc_powercord/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	// Define user
+	var/mob/living/carbon/human/cord_user = user
+
+	// Check for bloodfledge
+	if(HAS_TRAIT(cord_user, TRAIT_BLOODFLEDGE))
+		// Warn user and return
+		to_chat(cord_user, span_warning("You try to siphon energy from [target], but a sanguine force prevents you from absorbing any charge!"))
+		return
+
+	// Return normally
+	. = ..()

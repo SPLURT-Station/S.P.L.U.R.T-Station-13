@@ -143,3 +143,10 @@
 	desc = "You are able to move about freely in pressurized low-gravity environments be it through the use of wings, magic, or some other physiological nonsense."
 	value = 1
 	mob_trait = TRAIT_FLUTTER
+
+/datum/quirk/cloth_eater
+	name = "Clothes Eater"
+	desc = "You can eat most apparel to gain a boost in mood, and to gain some nutrients. (Insects already have this.)"
+	value = 1
+	var/mood_category ="cloth_eaten"
+	mob_trait = TRAIT_CLOTH_EATER

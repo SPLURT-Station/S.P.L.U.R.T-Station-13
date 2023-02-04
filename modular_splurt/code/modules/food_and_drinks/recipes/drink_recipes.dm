@@ -189,3 +189,104 @@
 		/datum/reagent/consumable/ethanol/moonshine = 2,
 		/datum/reagent/consumable/ethanol/brave_bull = 1
 	)
+
+//Milkshakes
+/datum/chemical_reaction/milkshake_base
+	name = "Plain Milkshake"
+	id = /datum/reagent/consumable/milkshake_base
+	results = list(/datum/reagent/consumable/milkshake_base = 3)
+	required_reagents = list(
+		/datum/reagent/consumable/milk = 1,
+		/datum/reagent/consumable/ice = 1,
+		/datum/reagent/consumable/cream =1
+	)
+
+/datum/chemical_reaction/milkshake_vanilla
+	name = "Vanilla Milkshake"
+	id = /datum/reagent/consumable/milkshake_vanilla
+	results = list(/datum/reagent/consumable/milkshake_vanilla = 2)
+	required_reagents = list(
+		/datum/reagent/consumable/milkshake_base =1,
+		/datum/reagent/consumable/vanilla =1
+	)
+
+/datum/chemical_reaction/milkshake_choc
+	name = "Chocolate Milkshake"
+	id = /datum/reagent/consumable/milkshake_choc
+	results = list(/datum/reagent/consumable/milkshake_choc = 2)
+	required_reagents = list(
+		/datum/reagent/consumable/milkshake_base = 1,
+		/datum/reagent/consumable/coco = 1
+	)
+
+/datum/chemical_reaction/milkshake_strawberry
+	name = "Strawberry Milkshake"
+	id = /datum/reagent/consumable/milkshake_strawberry
+	results = list(/datum/reagent/consumable/milkshake_strawberry = 2)
+	required_reagents = list(
+		/datum/reagent/consumable/milkshake_base = 1,
+		/datum/reagent/consumable/strawberryjuice = 1
+	)
+
+/datum/chemical_reaction/milkshake_banana
+	name = "Banana Milkshake"
+	id = /datum/reagent/consumable/milkshake_banana
+	results = list(/datum/reagent/consumable/milkshake_banana = 2)
+	required_reagents = list(
+		/datum/reagent/consumable/milkshake_base = 1,
+		/datum/reagent/consumable/banana = 1
+	)
+
+/datum/chemical_reaction/milkshake_berry
+	name = "Berry Milkshake"
+	id = /datum/reagent/consumable/milkshake_berry
+	results = list(/datum/reagent/consumable/milkshake_berry = 2)
+	required_reagents = list(
+		/datum/reagent/consumable/milkshake_base = 1,
+		/datum/reagent/consumable/berryjuice = 1
+	)
+
+/datum/chemical_reaction/milkshake_cola
+	name = "Cola Milkshake"
+	id = /datum/reagent/consumable/milkshake_cola
+	results = list(/datum/reagent/consumable/milkshake_cola = 2)
+	required_reagents = list(
+		/datum/reagent/consumable/milkshake_base = 1,
+		/datum/reagent/consumable/space_cola = 1
+	)
+
+/datum/chemical_reaction/milkshake_gibb
+	name = "Dr. Gibb Milkshake"
+	id = /datum/reagent/consumable/milkshake_gibb
+	results = list(/datum/reagent/consumable/milkshake_gibb = 2)
+	required_reagents = list(
+		/datum/reagent/consumable/milkshake_base = 1,
+		/datum/reagent/consumable/dr_gibb = 1
+	)
+
+/datum/chemical_reaction/milkshake_peach
+	name = "Peach Milkshake"
+	id = /datum/reagent/consumable/milkshake_peach
+	results = list(/datum/reagent/consumable/milkshake_peach = 2)
+	required_reagents = list(
+		/datum/reagent/consumable/milkshake_base = 1,
+		/datum/reagent/consumable/peachjuice = 1
+	)
+
+/datum/chemical_reaction/milkshake_pineapple
+	name = "Pineapple Milkshake"
+	id = /datum/reagent/consumable/milkshake_pineapple
+	results = list(/datum/reagent/consumable/milkshake_pineapple = 2)
+	required_reagents = list(
+		/datum/reagent/consumable/milkshake_base = 1,
+		/datum/reagent/consumable/pineapplejuice = 1
+	)
+
+/datum/chemical_reaction/milkshake_melon
+	name = "Watermelon Milkshake"
+	id = /datum/reagent/consumable/milkshake_melon
+	results = list(/datum/reagent/consumable/milkshake_melon = 2)
+	required_reagents = list(
+		/datum/reagent/consumable/milkshake_base = 1,
+		/datum/reagent/consumable/watermelonjuice = 1
+	)

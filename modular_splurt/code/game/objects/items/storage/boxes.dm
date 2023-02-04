@@ -58,7 +58,7 @@
 	desc = "A large collection of condoms, suitable for the safest of sluts!"
 	icon = 'modular_sand/icons/obj/fleshlight.dmi'
 	icon_state = "box"
-	custom_price = PRICE_ALMOST_EXPENSIVE // Half the price of buying individually
+	custom_price = PRICE_BELOW_NORMAL // 20% discount from buying individually
 
 /obj/item/storage/box/bulk_condoms/ComponentInitialize()
 	. = ..()

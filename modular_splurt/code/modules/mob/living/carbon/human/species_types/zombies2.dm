@@ -1,3 +1,4 @@
+/* //striked out for now because I dont know what the fuck was planned here but this is breaking blood regain.
 /mob/living/carbon/human/handle_blood()
 	if(iszombie(src)) //We're basically pudding pops.
 		return
@@ -8,7 +9,7 @@
 	var/obj/item/organ/heart/decayed_heart/decaying = getorgan(/obj/item/organ/heart/decayed_heart)
 	if(decaying)
 		. += "Current blood level: [blood_volume]/[BLOOD_VOLUME_MAXIMUM]."
-
+		*/
 /datum/species/mammal/undead
 // takes 30% more damage but doesn't crit
 	id = SPECIES_UMAMMAL

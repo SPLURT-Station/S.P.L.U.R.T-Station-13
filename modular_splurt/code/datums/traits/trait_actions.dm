@@ -11,70 +11,204 @@
 	button_icon_state = "Hypno_eye"
 	icon_icon = 'modular_splurt/icons/mob/actions/lewd_actions/lewd_icons.dmi'
 	background_icon_state = "bg_alien"
-	var/mob/living/carbon/T //hypnosis target
-	var/mob/living/carbon/human/H //Person with the quirk
 
 /datum/action/innate/Hypnotize/Activate()
-	var/mob/living/carbon/human/H = owner
+	// Define action owner
+	var/mob/living/carbon/human/action_owner = owner
 
-	if(!H.pulling || !isliving(H.pulling) || H.grab_state < GRAB_AGGRESSIVE)
-		to_chat(H, span_warning("You need to aggressively grab someone to hypnotize them!"))
+	// Define target
+	var/grab_target = action_owner.pulling
+
+	// Check for target
+	if(!grab_target)
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("You you need to grab someone first!"))
 		return
 
-	var/mob/living/carbon/T = H.pulling
-
-	if(T.IsSleeping())
-		to_chat(H, "You can't hypnotize [T] whilst they're asleep!")
+	// Check for cyborg
+	if(iscyborg(grab_target))
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("You can't hypnotize a cyborg!"))
 		return
 
-	to_chat(H, span_notice("You stare deeply into [T]'s eyes..."))
-	to_chat(T, span_warning("[H] stares intensely into your eyes..."))
-	if(!do_mob(H, T, 12 SECONDS))
+	// Check for alien
+	// Taken from eyedropper check
+	/*
+	if(isalien(grab_target))
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("[grab_target] doesn\'t seem to have any eyes!"))
+		return
+	*/
+
+	// Check for carbon human target
+	if(!ishuman(grab_target))
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("That's not a valid creature!"))
 		return
 
-	if(H.pulling !=T || H.grab_state < GRAB_AGGRESSIVE)
+	// Check if target is alive
+	if(!isliving(grab_target))
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("You can't hypnotize the dead!"))
 		return
 
-	if(!(H in view(1, H.loc)))
+	// Check for aggressive grab
+	if(action_owner.grab_state < GRAB_AGGRESSIVE)
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("You need a stronger grip before trying this!"))
 		return
 
-	if(!(T.client?.prefs.cit_toggles & HYPNO))
+	// Define target
+	var/mob/living/carbon/human/action_target = grab_target
+
+	// Check if target has a mind
+	if(!action_target.mind)
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("[grab_target] doesn\'t have a compatible mind!"))
 		return
 
-	var/response = alert(T, "Do you wish to fall into a hypnotic sleep?(This will allow [H] to issue hypnotic suggestions)", "Hypnosis", "Yes", "No")
-
-	if(response == "Yes")
-		T.visible_message(span_warning("[T] falls into a deep slumber!"), "<span class = 'danger'>Your eyelids gently shut as you fall into a deep slumber. All you can hear is [H]'s voice as you commit to following all of their suggestions.</span>")
-
-		T.SetSleeping(1200)
-		T.drowsyness = max(T.drowsyness, 40)
-		T = H.pulling
-		var/response2 = alert(H, "Would you like to release your subject or give them a suggestion?", "Hypnosis", "Suggestion", "Release")
-
-		if(response2 == "Suggestion")
-			if(get_dist(H, T) > 1)
-				to_chat(H, "You must stand in whisper range of [T].")
-				return
-
-			var/text = input("What would you like to suggest?", "Hypnotic suggestion", null, null)
-			text = sanitize(text)
-			if(!text)
-				return
-
-			to_chat(H, "You whisper your suggestion in a smooth calming voice to [T]")
-			to_chat(T, span_hypnophrase("...[text]..."))
-
-			T.visible_message(span_warning("[T] wakes up from their deep slumber!"), "<span class ='danger'>Your eyelids gently open as you see [H]'s face staring back at you.</span>")
-			T.SetSleeping(0)
-			T = null
-			return
-
-		if(response2 == "Release")
-			T.SetSleeping(0)
-			return
-	else
-		T.visible_message(span_warning("[T]'s attention breaks, despite the attempt to hypnotize them! They clearly don't want this!"), "<span class ='warning'>Your concentration breaks as you realise you have no interest in following [H]'s words!</span>")
+	/* Unused: Replaced by get_eye_protection
+	// Check if target's eyes are obscured
+	// ... by headwear
+	if((action_target.head && action_target.head.flags_cover & HEADCOVERSEYES))
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("[action_target]'s eyes are obscured by [action_target.head]."))
 		return
+
+	// ... by a mask
+	else if((action_target.wear_mask && action_target.wear_mask.flags_cover & MASKCOVERSEYES))
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("[action_target]'s eyes are obscured by [action_target.wear_mask]."))
+		return
+
+	// ... by glasses
+	else if((action_target.glasses && action_target.glasses.flags_cover & GLASSESCOVERSEYES))
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("[action_target]'s eyes are obscured by [action_target.glasses]."))
+		return
+	*/
+
+	// Check if target has eye protection
+	if(action_target.get_eye_protection())
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("You have difficulty focusing on [action_target]'s eyes due to some form of protection, and are left unable to hypnotize them."))
+		to_chat(action_target, span_notice("[action_owner] stares intensely at you, but stops after a moment."))
+		return
+
+	// Check if target is blind
+	if(HAS_TRAIT(action_target, TRAIT_BLIND))
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("You stare deeply into [action_target]'s eyes, but see nothing but emptiness."))
+		return
+
+	// Check for anti-magic
+	// This does not include TRAIT_HOLY
+	if(action_target.anti_magic_check())
+		// Warn the users, then return
+		to_chat(action_owner, span_warning("You stare deeply into [action_target]'s eyes. They stare back at you as if nothing had happened."))
+		to_chat(action_target, span_notice("[action_owner] stares intensely into your eyes for a moment. You sense nothing out of the ordinary from them."))
+		return
+
+	// Check client pref for hypno
+	if(action_target.client?.prefs.cit_toggles & NEVER_HYPNO)
+		// Warn the users, then return
+		to_chat(action_owner, span_warning("You sense that [action_target] would rather not be hypnotized, and decide to respect their wishes."))
+		to_chat(action_target, span_notice("[action_owner] stares into your eyes with a strange conviction, but turns away after a moment."))
+		return
+	
+	// Check for mindshield implant
+	if(HAS_TRAIT(action_target, TRAIT_MINDSHIELD))
+		// Warn the users, then return
+		to_chat(action_owner, span_warning("You stare deeply into [action_target]'s eyes, but hear a faint buzzing from [action_target.p_their()] head. It seems something is interfering."))
+		to_chat(action_target, span_notice("[action_owner] stares intensely into your eyes for a moment, before a buzzing sound emits from your head."))
+		return
+
+	// Check for sleep immunity
+	// This is required for SetSleeping to trigger
+	if(HAS_TRAIT(action_target, TRAIT_SLEEPIMMUNE))
+		// Warn the users, then return
+		to_chat(action_owner, span_warning("You stare deeply into [action_target]'s eyes, and see nothing but unrelenting energy. You won't be able to subdue [action_target.p_them()] in this state!"))
+		to_chat(action_target, span_notice("[action_owner] stares intensely into your eyes, but sees something unusual about you..."))
+		return
+
+	// Check for sleep
+	if(action_target.IsSleeping())
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("You can't hypnotize [action_target] whilst [action_target.p_theyre()] asleep!"))
+		return
+
+	// Check for combat mode
+	if(SEND_SIGNAL(action_target, COMSIG_COMBAT_MODE_CHECK, COMBAT_MODE_ACTIVE))
+		// Warn the users, then return
+		to_chat(action_owner, span_warning("[action_target] is acting too defensively! You'll need [action_target.p_them()] to lower [action_target.p_their()] guard first!"))
+		to_chat(action_target, span_notice("[action_owner] tries to stare into your eyes, but can't get a read on you."))
+		return
+
+	// Display chat messages
+	to_chat(action_owner, span_notice("You stare deeply into [action_target]'s eyes..."))
+	to_chat(action_target, span_warning("[action_owner] stares intensely into your eyes..."))
+
+	// Try to perform action timer
+	if(!do_mob(action_owner, action_target, 5 SECONDS))
+		// Action timer was interrupted
+		// Warn the user, then return
+		to_chat(action_owner, span_warning("You lose concentration on [action_target], and fail to hypnotize [action_target.p_them()]!"))
+		to_chat(action_target, span_notice("[action_owner]'s gaze is broken prematurely, freeing you from any potential effects."))
+		return
+
+	// Define blank response
+	var/input_consent
+
+	// Check for non-consensual setting
+	if(action_target.client?.prefs.nonconpref != "Yes")
+		// Non-consensual is NOT enabled
+		// Prompt target for consent response
+		input_consent = alert(action_target, "Will you fall into a hypnotic stupor? This will allow [action_owner] to issue hypnotic suggestions.", "Hypnosis", "Yes", "No")
+
+	// When consent is denied
+	if(input_consent == "No")
+		// Warn the users, then return
+		to_chat(action_owner, span_warning("[action_target]'s attention breaks, despite the attempt to hypnotize [action_target.p_them()]! [action_target.p_they()] clearly don't want this!"))
+		to_chat(action_target, span_notice("Your concentration breaks as you realize you have no interest in following [action_owner]'s words!"))
+		return
+
+	// Display local message
+	action_target.visible_message(span_warning("[action_target] falls into a deep slumber!"), span_danger("Your eyelids gently shut as you fall into a deep slumber. All you can hear is [action_owner]'s voice as you commit to following all of their suggestions."))
+
+	// Set sleeping
+	action_target.SetSleeping(1200)
+
+	// Set drowsiness
+	action_target.drowsyness = max(action_target.drowsyness, 40)
+
+	// Prompt action owner for response
+	var/input_suggestion = input("What would you like to suggest [action_target] do? Leave blank to release [action_target.p_them()] instead.", "Hypnotic suggestion", null, null)
+		
+	// Check if input text exists
+	if(!input_suggestion)
+		// Alert user of no input
+		to_chat(action_owner, "You decide not to give [action_target] a suggestion.")
+
+		// Remove sleep, then return
+		action_target.SetSleeping(0)
+		return
+
+	// Sanitize input text
+	input_suggestion = sanitize(input_suggestion)
+
+	// Display message to users
+	to_chat(action_owner, "You whisper your suggestion in a smooth calming voice to [action_target]")
+	to_chat(action_target, span_hypnophrase("...[input_suggestion]..."))
+
+	// Play a sound effect
+	playsound(action_target, 'sound/magic/domain.ogg', 20, 1)
+
+	// Display local message
+	action_target.visible_message(span_warning("[action_target] wakes up from their deep slumber!"), span_danger("Your eyelids gently open as you see [action_owner]'s face staring back at you."))
+	
+	// Remove sleep, then return
+	action_target.SetSleeping(0)
+	return
 
 //
 // Quirk: Hydra Heads

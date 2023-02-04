@@ -22,3 +22,41 @@
 	lose_text = span_love("You feel the warm blow of life flooding your womb, full of newfound, vibrant fertility!")
 	medical_record_text = "Patient doesn't seem able to ovulate properly..."
 */
+
+/datum/quirk/estrous_detection
+	name = "Estrous Detection"
+	desc = "You have a mammalian sense of detecting if someone\'s body longs for breeding."
+	value = 0
+	mob_trait = TRAIT_ESTROUS_DETECT
+	gain_text = span_love("Your senses adjust, allowing a mammalian sense of others' fertility.")
+	lose_text = span_notice("Your sense of others' fertility fades.")
+
+/datum/quirk/estrous_active
+	name = "In Estrous"
+	desc = "Your system burns with the desire to be bred. Satisfying your lust will make you happy, while ignoring it may cause you to become sad and needy."
+	value = 0
+	mob_trait = TRAIT_ESTROUS_ACTIVE
+	gain_text = span_love("You body burns with the desire to be bred.")
+	lose_text = span_notice("You feel more in control of your body and thoughts.")
+
+/datum/quirk/estrous_active/add()
+	// Add examine hook
+	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/quirk_examine_estrous_active)
+
+/datum/quirk/estrous_active/remove()
+	// Remove examine hook
+	UnregisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE)
+
+/datum/quirk/estrous_active/proc/quirk_examine_estrous_active(atom/examine_target, mob/living/carbon/human/examiner, list/examine_list)
+	SIGNAL_HANDLER
+
+	// Check if human examiner exists
+	if(!istype(examiner))
+		return
+
+	// Check if examiner lacks the trait, or is self examining
+	if(!HAS_TRAIT(examiner, TRAIT_ESTROUS_DETECT) || (examiner == quirk_holder))
+		return
+
+	// Add quirk message
+	examine_list += span_love("[quirk_holder.p_they(TRUE)] [quirk_holder.p_are()] currently influenced by the estrous cycle, and long for breeding.")

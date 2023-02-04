@@ -4,9 +4,10 @@
 	weight = 10
 	min_players = 1
 	max_occurrences = 0
+	category = EVENT_CATEGORY_FRIENDLY
 
 /datum/round_event/bruh_moment
-	startWhen = 8
+	start_when = 8
 	fakeable = FALSE
 
 /datum/round_event/bruh_moment/start()

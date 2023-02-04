@@ -9,6 +9,7 @@
 	icon_state 			= "b_condom_wrapped"
 	var/unwrapped		= 0
 	w_class 			= WEIGHT_CLASS_TINY
+	custom_price		= PRICE_CHEAP_AS_FREE // 10 credits
 
 /obj/item/genital_equipment/condom/Initialize()
 	create_reagents(300, DRAWABLE|NO_REACT)

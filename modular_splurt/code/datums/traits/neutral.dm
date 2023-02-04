@@ -61,14 +61,6 @@
 	. = ..()
 	quirk_holder.RemoveElement(/datum/element/wuv/headpat)
 
-/datum/quirk/in_heat
-	name = "In Heat"
-	desc = "Your system burns with the desire to be bred. Satisfying your lust will make you happy, but ignoring it may cause you to become sad and needy."
-	value = 0
-	mob_trait = TRAIT_IN_HEAT
-	gain_text = span_notice("You body burns with the desire to be bred.")
-	lose_text = span_notice("You feel more in control of your body and thoughts.")
-
 /datum/quirk/Hypnotic_gaze
 	name = "Hypnotic Gaze"
 	desc = "Be it through mysterious patterns, flickering colors, or some genetic oddity, prolonged eye contact with you will place the viewer into a highly-suggestible hypnotic trance."
@@ -83,14 +75,6 @@
 	var/datum/action/innate/Hypnotize/spell = new
 	spell.Grant(Hypno_eyes)
 	spell.owner = Hypno_eyes
-
-/datum/quirk/heat
-	name = "Estrus Detection"
-	desc = "You have a animalistic sense of detecting if someone is in heat."
-	value = 0
-	mob_trait = TRAIT_HEAT_DETECT
-	gain_text = span_notice("You feel your senses adjust, allowing a animalistic sense of others' fertility.")
-	lose_text = span_notice("You feel your sense of others' fertility fade.")
 
 /datum/quirk/overweight
 	name = "Overweight"

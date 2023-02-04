@@ -4,6 +4,7 @@
 	min_players = 15
 	max_occurrences = 0 //Deactivated for now
 	var/atom/special_target
+	category = EVENT_CATEGORY_SPACE
 
 /datum/round_event_control/crystalline_reentry/admin_setup()
 	if(!check_rights(R_FUN))
@@ -13,8 +14,8 @@
 		special_target = get_turf(usr)
 
 /datum/round_event/crystalline_reentry
-	announceWhen = 0
-	startWhen = 10
+	announce_when = 0
+	start_when = 10
 	fakeable = FALSE
 
 /datum/round_event/crystalline_reentry/announce(fake)
@@ -34,6 +35,7 @@
 	min_players = 35
 	max_occurrences = 0 //This is only an admin spawn. Ergo, wrath of the gods.
 	var/atom/special_target
+	category = EVENT_CATEGORY_SPACE
 
 /datum/round_event_control/crystalline_wave/admin_setup()
 	if(!check_rights(R_FUN))
@@ -47,9 +49,9 @@
 	message_admins("A crystalline asteroid wave has been triggered. Maybe you should add some music for the players? Consider this random selection: [randselect]")
 
 /datum/round_event/crystalline_wave
-	announceWhen = 0
-	startWhen = 15
-	endWhen = 60 //45 seconds of pain
+	announce_when = 0
+	start_when = 15
+	end_when = 60 //45 seconds of pain
 	fakeable = FALSE
 
 /datum/round_event/crystalline_wave/announce(fake)

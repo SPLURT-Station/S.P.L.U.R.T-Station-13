@@ -1,3 +1,6 @@
+// Configuration defines
+#define AUTODOC_TIME_BASE	CONFIG_GET(number/autodoc_time_surgery_base)
+
 /obj/machinery/autodoc
 	name = "autodoc"
 	desc = "An advanced machine used for inserting organs and implants into the occupant."
@@ -17,8 +20,11 @@
 	. = ..()
 	update_icon()
 
+	// Set initial time based on config
+	surgerytime = max(AUTODOC_TIME_BASE,10)
+
 /obj/machinery/autodoc/RefreshParts()
-	var/max_time = 350
+	var/max_time = AUTODOC_TIME_BASE
 	for(var/obj/item/stock_parts/L in component_parts)
 		max_time -= (L.rating*10)
 	surgerytime = max(max_time,10)
@@ -165,3 +171,5 @@
 		return
 	obj_flags |= EMAGGED
 	to_chat(user, span_warning("You reprogram [src]'s surgery procedures."))
+
+#undef AUTODOC_TIME_BASE

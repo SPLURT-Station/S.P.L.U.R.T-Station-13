@@ -1,0 +1,59 @@
+# Special Sandstorm balance config!
+
+###
+## CRYPTOMINER
+###
+
+## Should cryptominers work in non-atmos turf (ex. space)?
+## Uncomment this to disable atmos processing (cheat mode)
+#CRYPTO_IGNORE_ATMOS
+
+## What point multiplier should cryptominers use?
+## Determined by heat level, or uses MAX in cheat mode
+CRYPTO_MULTIPLIER_MIN 0.2
+CRYPTO_MULTIPLIER_MID 1
+CRYPTO_MULTIPLIER_MAX 3
+
+## What heat thresholds should cryptominers use?
+## This is measured in Kelvins
+CRYPTO_HEAT_THRESHOLD_MIN 225
+CRYPTO_HEAT_THRESHOLD_MID 273
+CRYPTO_HEAT_THRESHOLD_MAX 500
+
+## How much heat should cryptominers produce?
+## This amount is added to the environment on process
+CRYPTO_HEAT_POWER 100
+
+## How long between cryptominers producing resources?
+## Currently unimplemented!
+CRYPTO_MINING_TIME 3000
+
+## What material amount should the cryptominers produce?
+## This is modified by the MULTIPLIER value
+## Currently unimplemented!
+CRYPTO_PAYOUT_AMOUNT 50
+
+## How much power should the cryptominer use?
+## Currently unimplemented!
+CRYPTO_POWER_USE_IDLE 20
+CRYPTO_POWER_USE_ACTIVE 200
+CRYPTO_POWER_USE_PROCESS 20
+
+###
+## AUTODOC
+###
+
+## How long should the autodoc take to perform surgery?
+## This is modified by stock part ratings
+AUTODOC_TIME_SURGERY_BASE 350
+
+###
+## BLUESPACE MINER
+###
+
+## How much should the bluespace miner produce, compared to normal?
+## This is modified by stock part ratings
+BLUESPACEMINER_MULT_OUTPUT 1
+
+## What is the minimum stock part tier to produce bluespace crystals?
+BLUESPACEMINER_CRYSTAL_TIER 5

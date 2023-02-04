@@ -50,3 +50,118 @@
 	glass_name = "glass of töchtaüse syrup"
 	glass_desc = "Not for drinking on its own."
 
+/datum/reagent/consumable/milkshake_base
+	name = "Milkshake"
+	description = "A basic milkshake. Could use something else?"
+	color = "#FFFDD0"
+	nutriment_factor = 1
+	taste_description = "thick, creamy, and sweet"
+	glass_icon_state = "vanillashake"
+	glass_name = "glass of plain milkshake"
+	glass_desc = "A glass of plain milkshake, a bit boring, but still good."
+
+/datum/reagent/consumable/milkshake_vanilla
+	name = "Vanilla Milkshake"
+	description = "A vanilla milkshake. Basic, but delicious."
+	color = "#FFFDD0"
+	nutriment_factor = 1
+	taste_description = "thick, creamy, and sweet"
+	glass_icon_state = "vanillashake"
+	glass_name = "glass of vanilla milkshake"
+	glass_desc = "A glass of vanilla milkshake, a bit boring, but still good."
+
+/datum/reagent/consumable/milkshake_choc
+	name = "Chocolate Milkshake"
+	description = "A delicious Chocolate Milkshake"
+	color = "#7B3F00"
+	nutriment_factor = 1
+	taste_description = "sweet, creamy chocolate"
+	glass_icon_state = "choccyshake"
+	glass_name = "glass of chocolate milkshake"
+	glass_desc = "A glass of chocolate milkshake, what a treat!"
+
+/datum/reagent/consumable/milkshake_strawberry
+	name = "Strawberry Milkshake"
+	description = "Frozen Strawberry Milk!"
+	color = "#F4E1EA"
+	nutriment_factor = 1
+	taste_description = "summer memories"
+	glass_icon_state = "strawberryshake"
+	glass_name = "glass of strawberry milkshake"
+	glass_desc = "A glass of sweet, pink Strawberry Shake"
+
+/datum/reagent/consumable/milkshake_banana
+	name = "Banana Milkshake"
+	description = "Deliciously tricky!"
+	color = "#FFE135"
+	nutriment_factor = 1
+	taste_description = "funny pranks and clowning around"
+	glass_icon_state = "bananashake"
+	glass_name = "glass of Banana Milkshake"
+	glass_desc = "A banana milkshake! Honk!"
+
+/datum/reagent/consumable/milkshake_berry
+	name = "Wild Berry Milkshake"
+	description = "A summer favorite!"
+	color = "#b17179"
+	nutriment_factor = 1
+	taste_description = "warm summer days"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "berryshake"
+	glass_name = "glass of Wild Berry Milkshake"
+	glass_desc = "A berry milkshake"
+
+/datum/reagent/consumable/milkshake_cola
+	name = "Cola Milkshake"
+	description = "Sweet milkshake mixed with cola"
+	color = "#3c3024"
+	nutriment_factor = 1
+	taste_description = "cola and milkshake"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "colashake"
+	glass_name = "glass of Cola Milkshake"
+	glass_desc = "A cola milkshake, it's like a ticker float!"
+
+/datum/reagent/consumable/milkshake_gibb
+	name = "Dr. Gibb Milkshake"
+	description = "Sweet milkshake mixed with Dr. Gibb"
+	color = "#5e312b"
+	nutriment_factor = 1
+	taste_description = "cola and milkshake"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "gibbshake"
+	glass_name = "glass of Gibb Milkshake"
+	glass_desc = "A Dr. Gibb milkshake, it's like a ticker float!"
+
+/datum/reagent/consumable/milkshake_peach
+	name = "Peach Milkshake"
+	description = "A tasty Peach Milkshake"
+	color = "#5e312b"
+	nutriment_factor = 1
+	taste_description = "peaches and cream"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "peachshake"
+	glass_name = "glass of Peace Milkshake"
+	glass_desc = "Peaches and Cream, Peaches and Cream!"
+
+/datum/reagent/consumable/milkshake_pineapple
+	name = "Pineapple Milkshake"
+	description = "A tangy Pineapple Milkshake"
+	color = "#feea63"
+	nutriment_factor = 1
+	taste_description = "citrus and cream"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "pineappleshake"
+	glass_name = "glass of Pineapple Milkshake"
+	glass_desc = "A Pineapple milkshake, a bit sweet and a bit sour, but all delicious!"
+
+/datum/reagent/consumable/milkshake_melon
+	name = "Watermelon Milkshake"
+	description = "Delicous Watermelon Milkshake"
+	color = "#E37383"
+	nutriment_factor = 1
+	taste_description = "warm sun and sweet cream"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "melonshake"
+	glass_name = "glass of Watermelon Milkshake"
+	glass_desc = "A Watermelon milkshake, it's like summer all over again!"

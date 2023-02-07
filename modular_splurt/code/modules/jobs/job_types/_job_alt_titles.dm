@@ -294,7 +294,7 @@
 		"Chemi-Slut",
 		"Mad Scientist",
 		"Homeopathist",
-		"Crocin Junkie",
+		"Junkie",
 		"Chemi-Slut"
 	)
 	LAZYADD(alt_titles, extra_titles)
@@ -450,6 +450,12 @@
 		"Bodyguard",
 		"Mall Cop",
 		"Narc"
+	)
+	
+/datum/job/prisoner
+	alt_titles = list(
+		"Inmate",
+		"Criminal"
 	)
 
 // Cargo

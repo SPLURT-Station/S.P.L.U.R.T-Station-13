@@ -77,7 +77,8 @@
 		"Head of Medbay",
 		"Surgeon General",
 		"Chief Physician",
-		"Doctor Dick"
+		"Doctor Dick",
+		"CMommy"
 	) // Sandcode do not have alt titles for CMO at the moment.
 
 /datum/job/bridgeofficer

@@ -51,5 +51,18 @@
 	desc = "An enhanced taser stick, a favorite of the legendary John Prodman."
 	icon = 'modular_splurt/icons/obj/items_and_weapons.dmi'
 	icon_state = "prova"
+	item_state = "prova"
 	lefthand_file = 'modular_splurt/icons/mob/inhands/weapons/melee_lefthand.dmi'
 	righthand_file = 'modular_splurt/icons/mob/inhands/weapons/melee_righthand.dmi'
+
+/obj/item/melee/baton/prova/loaded //pre-install a cell
+	preload_cell_type = /obj/item/stock_parts/cell/high/plus
+
+/obj/item/melee/baton/prova/Initialize(mapload)
+	. = ..()
+	if(preload_cell_type)
+		if(!ispath(preload_cell_type,/obj/item/stock_parts/cell))
+			log_mapping("[src] at [AREACOORD(src)] had an invalid preload_cell_type: [preload_cell_type].")
+		else
+			cell = new preload_cell_type(src)
+	update_icon()

@@ -40,7 +40,7 @@
 	desc = "A storage case for a high-tech Stun baton. Pick up that can."
 
 /obj/item/storage/secure/briefcase/bsbaton/stunbaton/PopulateContents()
-	new  /obj/item/melee/baton(src)
+	new /obj/item/melee/baton/loaded(src)
 	new /obj/item/storage/belt/security/full(src)
 
 /obj/item/storage/secure/briefcase/bsbaton/stunsword

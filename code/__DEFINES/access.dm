@@ -71,6 +71,7 @@
 #define ACCESS_BLUESHIELD 72
 #define ACCESS_BRIDGE_OFFICER 73
 #define ACCESS_PSYCH 76
+#define ACCESS_PEACEKEEPER 77
 //SPLURT EDIT END
 	//BEGIN CENTCOM ACCESS
 	/*Should leave plenty of room if we need to add more access levels.

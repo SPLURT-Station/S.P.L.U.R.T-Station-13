@@ -76,3 +76,23 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 
+/obj/item/gun/ballistic/revolver/ipistol
+	name = "improvised pistol"
+	icon_state = "ipistol"
+	desc = "An improvised pistol, or Zip Gun. Cheap and easy to make, but only holds one shot."
+	item_state = "gun"
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
+	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/ipistol
+	w_class = WEIGHT_CLASS_SMALL
+
+/datum/crafting_recipe/ipistolassemble
+	name = "Assemble improvised pistol"
+	result = /obj/item/gun/ballistic/revolver/ipistol
+	reqs = list(/obj/item/weaponcrafting/receiver = 1,
+				/obj/item/stack/sheet/metal = 2,
+				/obj/item/ammo_casing/c22lr = 1)
+	tools = list(TOOL_SCREWDRIVER)
+	time = 60
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON

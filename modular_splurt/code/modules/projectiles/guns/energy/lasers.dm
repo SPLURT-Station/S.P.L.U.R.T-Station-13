@@ -63,3 +63,17 @@
 	weapon_weight = WEAPON_LIGHT
 	slot_flags = ITEM_SLOT_BACK
 	can_flashlight = 0
+
+/obj/item/gun/energy/wattz2k
+	name = "Wattz 2000 Laser Rifle"
+	desc = "An accurate laser rifle produced by Wattz and Hertz."
+	icon = 'modular_splurt/icons/obj/guns/energy.dmi'
+	icon_state = "wattz2k"
+	lefthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_righthand.dmi'
+	item_state = "wattz2k"
+	w_class = WEIGHT_CLASS_NORMAL
+	cell_type = /obj/item/stock_parts/cell{charge = 1000; maxcharge = 1000}
+	ammo_type = list(/obj/item/ammo_casing/energy/laser)
+	weapon_weight = WEAPON_LIGHT
+	can_flashlight = 1

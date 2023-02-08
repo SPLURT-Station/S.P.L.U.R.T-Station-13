@@ -48,3 +48,30 @@
 		return
 	message = trim(html_encode(message), MAX_MESSAGE_LEN)
 	emote("narrate", message=message)
+
+/datum/emote/living/subtle/subtle_indicator
+	key = "subtle-indicator"
+	key_third_person = "subtle-indicator"
+
+/mob/living/verb/subtle_indicator()
+	// Set data
+	set name = "Subtle (Indicator)"
+	set category = "IC"
+
+	// Check if say is disabled
+	if(GLOB.say_disabled)
+		// Warn user and return
+		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		return
+
+	// Display typing indicator
+	display_typing_indicator()
+
+	// Prompt user for text input
+	var/input_message = input(usr, "What would you like to subtly emote, with a typing indicator?", "Input subtle emote") as message|null
+
+	// Remove typing indicator
+	clear_typing_indicator()
+
+	// Run subtle emote with input
+	usr.emote("subtle", message = input_message)

@@ -61,14 +61,6 @@
 	. = ..()
 	quirk_holder.RemoveElement(/datum/element/wuv/headpat)
 
-/datum/quirk/in_heat
-	name = "In Heat"
-	desc = "Your system burns with the desire to be bred. Satisfying your lust will make you happy, but ignoring it may cause you to become sad and needy."
-	value = 0
-	mob_trait = TRAIT_IN_HEAT
-	gain_text = span_notice("You body burns with the desire to be bred.")
-	lose_text = span_notice("You feel more in control of your body and thoughts.")
-
 /datum/quirk/Hypnotic_gaze
 	name = "Hypnotic Gaze"
 	desc = "Be it through mysterious patterns, flickering colors, or some genetic oddity, prolonged eye contact with you will place the viewer into a highly-suggestible hypnotic trance."
@@ -83,14 +75,6 @@
 	var/datum/action/innate/Hypnotize/spell = new
 	spell.Grant(Hypno_eyes)
 	spell.owner = Hypno_eyes
-
-/datum/quirk/heat
-	name = "Estrus Detection"
-	desc = "You have a animalistic sense of detecting if someone is in heat."
-	value = 0
-	mob_trait = TRAIT_HEAT_DETECT
-	gain_text = span_notice("You feel your senses adjust, allowing a animalistic sense of others' fertility.")
-	lose_text = span_notice("You feel your sense of others' fertility fade.")
 
 /datum/quirk/overweight
 	name = "Overweight"
@@ -526,21 +510,43 @@
 
 /datum/quirk/werewolf //adds the werewolf quirk
 	name = "Werewolf"
-	desc = "A beastly affliction allows you to shapeshift into a more wolfish appearance at will. This will increase your size (In general and below!) and cause you to behave as though you were an anthropomorphic canine. (This is still being tested. Please send any bugs to nukechicken on discord)"
+	desc = "A beastly affliction allows you to shape-shift into a large anthropomorphic canine at will."
 	value = 0
+	mob_trait = TRAIT_WEREWOLF
+	gain_text = span_notice("You feel the full moon beckon.")
+	lose_text = span_notice("The moon's call hushes into silence.")
+	medical_record_text = "Patient has been reported howling at the night sky."
+	var/list/old_features
 
 /datum/quirk/werewolf/add()
-	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/datum/action/werewolf/W = new
-	W.Grant(H)
+	// Define old features
+	old_features = list("species" = SPECIES_HUMAN, "legs" = "Plantigrade", "size" = 1, "bark")
+
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Record features
+	old_features = quirk_mob.dna.features.Copy()
+	old_features["species"] = quirk_mob.dna.species.type
+	old_features["custom_species"] = quirk_mob.custom_species
+	old_features["size"] = get_size(quirk_mob)
+	old_features["bark"] = quirk_mob.vocal_bark_id
+	old_features["taur"] = quirk_mob.dna.features["taur"]
+	old_features["eye_type"] = quirk_mob.dna.species.eye_type
+
+/datum/quirk/werewolf/post_add()
+	// Define quirk action
+	var/datum/action/cooldown/werewolf/transform/quirk_action = new
+
+	// Grant quirk action
+	quirk_action.Grant(quirk_holder)
 
 /datum/quirk/werewolf/remove()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/datum/action/werewolf/W = locate() in H.actions
-	W.Remove(H)
-	. = ..()
+	// Define quirk action
+	var/datum/action/cooldown/werewolf/transform/quirk_action = locate() in quirk_holder.actions
 
+	// Revoke quirk action
+	quirk_action.Remove(quirk_holder)
 
 /datum/quirk/gargoyle //Mmmm yes stone time
 	name = "Gargoyle"

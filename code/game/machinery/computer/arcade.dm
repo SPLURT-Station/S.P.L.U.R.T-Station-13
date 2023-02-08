@@ -31,6 +31,11 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 		/obj/item/toy/toy_xeno = ARCADE_WEIGHT_TRICK,
 		/obj/item/toy/windupToolbox = ARCADE_WEIGHT_TRICK,
 
+		// SPLURT EDIT
+		/obj/item/handmirror/split_personality = ARCADE_WEIGHT_TRICK,
+		/obj/item/toy/figure/assistant/imaginary_friend = ARCADE_WEIGHT_TRICK,
+		// END SPLURT EDIT
+
 		/mob/living/simple_animal/bot/secbot/grievous/toy = ARCADE_WEIGHT_RARE,
 		/obj/item/clothing/mask/facehugger/toy = ARCADE_WEIGHT_RARE,
 		/obj/item/gun/ballistic/automatic/toy/pistol/unrestricted = ARCADE_WEIGHT_TRICK,

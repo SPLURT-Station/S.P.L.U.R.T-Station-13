@@ -190,12 +190,12 @@
 	name = "security holo badge"
 	desc = "A more futuristic hard-light badge"
 	icon_state = "security_badge_holo"
-	
+
 /obj/item/clothing/accessory/badge/deputy
 	name = "security deputy badge"
 	desc = "A shiny silver badge for deputies on the Security force"
 	icon_state = "security_badge_deputy"
-	
+
 /datum/design/sec_badge
 	name = "Security Badge"
 	desc = "A shiny badge to show the bearer is part of the Security force."
@@ -215,3 +215,41 @@
 	build_path = /obj/item/clothing/accessory/badge/deputy
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/obj/item/handmirror/split_personality
+	name = "dissociative mirror"
+	desc = "An enchanted hand mirror. You may not recognize who stares back."
+	var/item_used
+
+/obj/item/handmirror/split_personality/attack_self(mob/user)
+	// Check if already used
+	if(item_used)
+		// Warn user, then return
+		to_chat(user, span_warning("[src] is no longer functional."))
+		return
+
+	// Check if human user exists
+	if(!ishuman(user))
+		// Warn user, then return
+		to_chat(user, span_warning("You see nothing in [src]."))
+		return
+
+	// Define human user
+	var/mob/living/carbon/human/mirror_user = user
+
+	// Add brain trauma
+	mirror_user.gain_trauma(/datum/brain_trauma/severe/split_personality, TRAUMA_RESILIENCE_SURGERY)
+
+	// Set item used variable
+	// This prevents future use
+	item_used = TRUE
+
+	// Alert in local chat
+	mirror_user.visible_message(span_warning("The [src] shatters in [mirror_user]'s hands!"), span_warning("The mirror shatters in your hands!"))
+
+	// Play mirror break sound
+	playsound(src, 'sound/effects/Glassbr3.ogg', 50, 1)
+
+	// Set flavor text
+	name = "broken hand mirror"
+	desc = "You won\'t get much use out of it."

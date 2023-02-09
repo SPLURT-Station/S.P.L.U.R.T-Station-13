@@ -249,6 +249,24 @@
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
 	matrixed_sections = MATRIX_RED_GREEN
 
+/datum/sprite_accessory/tails/mam_tails/snakelarge
+	name = "Snake Tail (Large)"
+	icon_state = "snakelarge"
+	color_src = MATRIXED
+	icon = 'modular_splurt/icons/mob/64_mam_tails.dmi'
+	dimension_x = 64
+	center = TRUE
+	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/tails_animated/mam_tails_animated/snakelarge
+	name = "Snake Tail (Large)"
+	icon_state = "snakelarge"
+	color_src = MATRIXED
+	icon = 'modular_splurt/icons/mob/64_mam_tails.dmi'
+	dimension_x = 64
+	center = TRUE
+	matrixed_sections = MATRIX_RED_GREEN
+
 //Lizard tails
 /datum/sprite_accessory/tails/lizard/tailmaw
 	name = "Tailmaw"

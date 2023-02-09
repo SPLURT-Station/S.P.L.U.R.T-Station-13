@@ -26,3 +26,4 @@
 #define TRAIT_FLUTTER			"flutter"
 #define TRAIT_NUDIST			"Nudist"
 #define TRAIT_CLOTH_EATER		"cloth_eater"
+#define TRAIT_WEREWOLF			"Werewolf"

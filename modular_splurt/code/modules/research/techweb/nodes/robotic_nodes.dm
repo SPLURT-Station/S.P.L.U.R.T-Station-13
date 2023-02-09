@@ -1,7 +1,7 @@
 /datum/techweb_node/neural_programming
 	design_ids = list("impant_radio")
 
-/datum/techweb_node/ai/Initialize()
+/datum/techweb_node/ai/New()
 	var/extra_designs = list(
 		"slut_module",
 		"shebang_module",

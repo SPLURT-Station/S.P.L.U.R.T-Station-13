@@ -1,11 +1,17 @@
 /datum/preferences
+	max_save_slots = DEFAULT_SAVE_SLOTS
 	var/unholypref = "No" //Goin 2 hell fo dis one
-
 	var/list/gfluid_blacklist = list() //Stuff you don't want people to cum into you
 
 /datum/preferences/New(client/C)
 	if(!GLOB.genital_fluids_list)
 		build_genital_fluids_list() //I DON'T KNOW where else to put it, ok??
+
+	//Extra saves for donators
+	max_save_slots = CONFIG_GET(number/base_save_slots)
+	if(istype(C))
+		var/extra_slots = (IS_CKEY_DONATOR_GROUP(C.key, DONATOR_GROUP_TIER_1) + IS_CKEY_DONATOR_GROUP(C.key, DONATOR_GROUP_TIER_2) + IS_CKEY_DONATOR_GROUP(C.key, DONATOR_GROUP_TIER_3)) * 10
+		max_save_slots += extra_slots
 
 	. = ..()
 

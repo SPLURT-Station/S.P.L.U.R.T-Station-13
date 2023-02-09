@@ -15,6 +15,7 @@
 											"Talon" = 'icons/mob/augmentation/cosmetic_prosthetic/talon.dmi',
 											"Nanotrasen" = 'icons/mob/augmentation/cosmetic_prosthetic/nanotrasen.dmi',
 											"Hephaesthus" = 'icons/mob/augmentation/cosmetic_prosthetic/hephaestus.dmi',
+											"Veymed" = 'icons/mob/augmentation/cosmetic_prosthetic/veymed.dmi', //i don't know if i can module this either
 											"Bishop" = 'icons/mob/augmentation/cosmetic_prosthetic/bishop.dmi',
 											"Xion" = 'icons/mob/augmentation/cosmetic_prosthetic/xion.dmi',
 											"Grayson" = 'icons/mob/augmentation/cosmetic_prosthetic/grayson.dmi',

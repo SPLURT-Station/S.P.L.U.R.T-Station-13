@@ -128,7 +128,7 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/item/camera/camera = new(get_turf(H))
 	H.put_in_hands(camera)
-	H.equip_to_slot(camera, ITEM_SLOT_NECK)
+	H.equip_to_slot(camera, ITEM_SLOT_BACKPACK) //SPLURT Edit
 	H.regenerate_icons()
 
 /datum/quirk/selfaware
@@ -190,7 +190,7 @@
 	// Get targets
 	var/obj/item/organ/eyes/old_eyes = quirk_holder.getorganslot(ORGAN_SLOT_EYES)
 	var/obj/item/organ/eyes/robotic/glow/new_eyes = new
-	
+
 	// Replace eyes
 	qdel(old_eyes)
 	new_eyes.Insert(quirk_holder)

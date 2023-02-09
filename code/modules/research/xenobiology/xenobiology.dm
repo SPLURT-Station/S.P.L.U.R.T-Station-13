@@ -685,6 +685,7 @@
 			to_chat(SM, "<span class='userdanger'>You also become depressingly aware that you are not a real creature, but instead a holoform. Your existence is limited to the parameters of the holodeck.</span>")
 		to_chat(user, "<span class='notice'>[SM] accepts [src] and suddenly becomes attentive and aware. It worked!</span>")
 		SM.copy_languages(user)
+		SM.add_overlay(mutable_appearance('icons/mob/hud.dmi', "brother", ANTAG_LAYER))
 		after_success(user, SM)
 		qdel(src)
 	else
@@ -754,6 +755,7 @@
 	to_chat(SM, "<span class='notice'>In a quick flash, you feel your consciousness flow into [SM]!</span>")
 	to_chat(SM, "<span class='warning'>You are now [SM]. Your allegiances, alliances, and role is still the same as it was prior to consciousness transfer!</span>")
 	SM.name = "[user.real_name]"
+	SM.add_overlay(mutable_appearance('icons/mob/hud.dmi', "brother", ANTAG_LAYER))
 	qdel(src)
 
 /obj/item/slimepotion/slime/steroid

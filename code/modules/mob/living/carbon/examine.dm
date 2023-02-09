@@ -153,10 +153,6 @@
 			if(MOOD_LEVEL_HAPPY4 to INFINITY)
 				. += "[t_He] look[p_s()] ecstatic."
 
-	if(HAS_TRAIT(src, TRAIT_IN_HEAT) && (HAS_TRAIT(user, TRAIT_HEAT_DETECT) || src == user))
-		. += ""
-		. += "<span class='love'>[t_He] [t_is] currently in [gender == MALE ? "rut" : "heat"].</span>"
-
 	if(LAZYLEN(.) > 1)
 		.[1] += "<hr>"
 

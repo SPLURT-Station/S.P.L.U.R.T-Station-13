@@ -64,10 +64,6 @@
 	brutemod = 0.9
 	species_language_holder = /datum/language_holder/lizard/ash
 
-
-#define HEAT_CYCLE_LENGTH 32
-#define HEAT_CYCLE_OFFSET 11
-
 /datum/species/lizard/ashwalker/on_species_gain(mob/living/carbon/human/C, datum/species/old_species)
 	if((C.dna.features["spines"] != "None" ) && (C.dna.features["tail_lizard"] == "None")) //tbh, it's kinda ugly for them not to have a tail yet have floating spines
 		C.dna.features["tail_lizard"] = "Smooth"
@@ -80,12 +76,6 @@
 		C.dna.features["mam_snouts"] = "Sharp"
 	C.dna.features["mcolor2"] = C.dna.features["mcolor"] //for no funne rainbows
 	C.dna.features["mcolor3"] = C.dna.features["mcolor"]
-	ADD_TRAIT(C, TRAIT_HEAT_DETECT, SPECIES_TRAIT)
-	var/temp = text2num(GLOB.round_id)
-	var/tempish = ((temp + (HEAT_CYCLE_OFFSET + 2)) % HEAT_CYCLE_LENGTH)
-	if(tempish <= 2 && tempish >= 0)
-		to_chat(C, "<span class='userlove'>It's this time again.. Your loins lay restless as they await a potential mate.</span>")
-		ADD_TRAIT(C, TRAIT_IN_HEAT, SPECIES_TRAIT)
 
 	if(C.gender == MALE)
 		C.dna.features["has_cock"] = TRUE
@@ -103,6 +93,3 @@
 	C.give_genitals(1)
 	C.update_body()
 	return ..()
-
-#undef HEAT_CYCLE_LENGTH
-#undef HEAT_CYCLE_OFFSET

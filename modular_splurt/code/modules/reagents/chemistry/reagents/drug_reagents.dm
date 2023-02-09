@@ -1,10 +1,17 @@
-//Main code edits
-/datum/reagent/drug/aphrodisiacplus/overdose_process(mob/living/M)
-	if(M && M.client?.prefs.arousable && !(M.client?.prefs.cit_toggles & NO_APHRO))
-		if(!HAS_TRAIT(M, TRAIT_IN_HEAT))
-			to_chat(M, span_userlove("Your need for sex is overpowering!"))
-			M.log_message("Made In Heat by hexacrocin.", LOG_EMOTE)
-			ADD_TRAIT(M, TRAIT_IN_HEAT, APHRO_TRAIT)
+/datum/reagent/drug/aphrodisiacplus/overdose_start(mob/living/M)
+	// Check for pre-existing heat trait
+	if(!HAS_TRAIT(M, TRAIT_ESTROUS_ACTIVE))
+		// Check client preferences
+		if(M && M.client?.prefs.arousable && !(M.client?.prefs.cit_toggles & NO_APHRO))
+			// Add quirk
+			M.add_quirk(/datum/quirk/estrous_active, APHRO_TRAIT)
+
+			// Chat message is handled by the quirk
+
+			// Log interaction
+			M.log_message("Given the In Estrous quirk by hexacrocin overdose.", LOG_EMOTE)
+
+	// Return normally
 	. = ..()
 
 //Own stuff

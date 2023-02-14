@@ -682,15 +682,21 @@
 /datum/quirk/zombie
 	name = "Postmortem Flesh"
 	desc = "You've been freed from the mortal coil, and passed on to become a zombie! Your body rapidly regenerates, and can't be put into critical condition. However, you won't be able to cheat death a second time..."
-	value = 0
+	value = 2
 	medical_record_text = "Scans indicate the patient to be deceased."
 	mob_trait = TRAIT_UNDEAD_QUIRK
 	gain_text = span_notice("Your flesh rots and burns as it clings to life.")
 	lose_text = span_warning("The mortal coil binds you once again.")
-	processing_quirk = TRUE
+	processing_quirk = FALSE // Don't process by default
 
 	// Amount of damage to heal
-	var/regen_amount = -3
+	var/regen_amount = -2
+
+	// Time in ticks after taking damage before regenerating
+	var/regen_delay = 60
+
+	// Cooldown before regeneration can occur
+	var/regen_cooldown
 
 /datum/quirk/zombie/add()
 	// Define quirk mob
@@ -708,11 +714,14 @@
 
 	// Check for halloween
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
-		// Add holiday traits
+		// Prevent dying by traditional means
 		ADD_TRAIT(quirk_mob, TRAIT_NODEATH,TRAIT_UNDEAD_QUIRK)
 
 		// Double regeneration rate
-		regen_amount *= 2
+		regen_amount *= 3
+
+		// Half cooldown time
+		regen_delay *= 0.5
 
 	// Not halloween
 	else
@@ -724,6 +733,9 @@
 
 	// Set screwy health HUD
 	quirk_mob.set_screwyhud(SCREWYHUD_HEALTHY)
+
+	// Add register signal for taking damage
+	RegisterSignal(quirk_holder, COMSIG_MOB_APPLY_DAMAGE, .proc/set_damage_cooldown, TRUE)
 
 /datum/quirk/zombie/post_add()
 	// Check for halloween
@@ -784,12 +796,21 @@
 	// Remove screwy health HUD
 	quirk_mob.set_screwyhud(SCREWYHUD_NONE)
 
+	// Remove signal for taking damage
+	UnregisterSignal(quirk_holder, COMSIG_MOB_APPLY_DAMAGE)
+
 /datum/quirk/zombie/on_process()
+	// Check cooldown time
+	if(regen_cooldown > world.time)
+		return
+
 	// Define quirk mob
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
 
 	// Check if quick holder is damaged
 	if(quirk_mob.health >= quirk_mob.maxHealth)
+		// Stop processing and return
+		STOP_PROCESSING(SSquirks, src)
 		return
 
 	// Check for sufficient blood
@@ -822,3 +843,12 @@
 	// Remove blood as compensation for healing
 	// Value is determined by amount healed
 	quirk_mob.blood_volume -= (quirk_mob.health - health_start)
+
+/datum/quirk/zombie/proc/set_damage_cooldown()
+	SIGNAL_HANDLER
+
+	// Set cooldown time
+	regen_cooldown = world.time + regen_delay
+
+	// Start processing
+	START_PROCESSING(SSquirks, src)

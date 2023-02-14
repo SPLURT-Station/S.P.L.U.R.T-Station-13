@@ -753,6 +753,10 @@
 	// Define quirk mob
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
 
+	// Check if quirk mob still exists
+	if(!istype(quirk_mob))
+		return
+
 	// Define infection organ
 	var/obj/item/organ/undead_infection/organ_infection = quirk_mob.getorganslot(ORGAN_SLOT_ZOMBIE)
 

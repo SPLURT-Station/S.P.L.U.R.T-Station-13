@@ -415,3 +415,13 @@
 	icon_state = "pill5"
 	color = "#830000"
 	list_reagents = list(/datum/reagent/draughtofundeath = 1)
+
+// Block round-start selection for zombies
+/datum/species/mammal/undead/check_roundstart_eligible()
+	return FALSE
+
+/datum/species/insect/undead/check_roundstart_eligible()
+	return FALSE
+
+/datum/species/lizard/undead/check_roundstart_eligible()
+	return FALSE

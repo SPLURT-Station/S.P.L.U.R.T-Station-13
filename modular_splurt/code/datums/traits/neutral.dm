@@ -725,20 +725,29 @@
 	// Set screwy health HUD
 	quirk_mob.set_screwyhud(SCREWYHUD_HEALTHY)
 
-	// Define infection organ
-	var/obj/item/organ/undead_infection/organ_infection = quirk_mob.getorganslot(ORGAN_SLOT_ZOMBIE)
-
-	// Check if zombie organ exists
-	if(!organ_infection)
-		// Create and insert organ
-		organ_infection = new()
-		organ_infection.Insert(quirk_mob)
-
 /datum/quirk/zombie/post_add()
 	// Check for halloween
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
 		// Display notice message
 		to_chat(quirk_holder, span_alert("The spooky season has empowered you with the ability to avoid death forever! Nothing can stop you now!"))
+
+/datum/quirk/zombie/on_spawn()
+	// Get organ target: Infection
+	var/obj/item/organ/undead_infection/organ_infection = quirk_holder.getorganslot(ORGAN_SLOT_ZOMBIE)
+
+	// Check if zombie organ exists
+	if(!organ_infection)
+		// Create and insert organ
+		organ_infection = new()
+		organ_infection.Insert(quirk_holder)
+
+	// Get organ target: Tongue
+	var/obj/item/organ/tongue/old_tongue = quirk_holder.getorganslot(ORGAN_SLOT_TONGUE)
+	var/obj/item/organ/tongue/zombie/new_tongue = new
+
+	// Replace tongue
+	qdel(old_tongue)
+	new_tongue.Insert(quirk_holder)
 
 /datum/quirk/zombie/remove()
 	// Define quirk mob

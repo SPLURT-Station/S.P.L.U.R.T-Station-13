@@ -67046,6 +67046,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/mixing)
+"kGJ" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "kJN" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/structure/table,
@@ -70940,6 +70944,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
+"sdE" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "sfN" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -72146,6 +72160,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
+"uKy" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "uKJ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -91039,7 +91060,7 @@ aiI
 avs
 ahd
 acw
-acw
+kGJ
 acw
 cUe
 abY
@@ -96161,7 +96182,7 @@ aaA
 aaA
 aaA
 abY
-acw
+kGJ
 bJa
 abY
 ahd
@@ -99523,7 +99544,7 @@ cMf
 atH
 acw
 acw
-acw
+kGJ
 acw
 acw
 aeG
@@ -101584,7 +101605,7 @@ aaQ
 aaQ
 aaQ
 aaQ
-acw
+kGJ
 aeG
 abY
 aaA
@@ -102839,7 +102860,7 @@ aaA
 aaA
 aaA
 abY
-acD
+sdE
 acw
 adu
 aec
@@ -103129,7 +103150,7 @@ aaQ
 aDg
 aDg
 aDg
-aeG
+uKy
 acw
 abY
 aaA
@@ -104159,7 +104180,7 @@ bfS
 aDg
 aUL
 cOb
-acw
+kGJ
 aeH
 adr
 adr
@@ -108487,7 +108508,7 @@ abh
 bjq
 acw
 afB
-acw
+kGJ
 acw
 acw
 aoT

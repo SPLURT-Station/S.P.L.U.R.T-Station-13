@@ -29,12 +29,17 @@
 			// And are you under us while we're standing up?
 			if(!(CHECK_BITFIELD(living_peeker.mobility_flags, MOBILITY_STAND)) && (CHECK_BITFIELD(peeked.mobility_flags, MOBILITY_STAND)) && (peeked.loc == living_peeker.loc))
 				return TRUE
+			// Do you happen to be small enough to easily look under us?
+			if(COMPARE_SIZES(peeked, peeker) >= 2)
+				return TRUE
 			// Or are you nearby and we are up high
 			// to-do SOMEONE PLEASE PORT /datum/element/climbable
-			var/obj/structure/high_ground = locate(/obj/structure) in get_turf(peeked)
-			if(high_ground && high_ground.climbable && CHECK_BITFIELD(peeked.mobility_flags, MOBILITY_STAND) && \
-				peeked.Adjacent(peeker))
-				return TRUE
+			var/obj/structure/high_ground_peeked = locate(/obj/structure) in get_turf(peeked)
+			var/obj/structure/high_ground_peeker = locate(/obj/structure) in get_turf(peeker)
+			if(high_ground_peeked && high_ground_peeked.climbable && CHECK_BITFIELD(peeked.mobility_flags, MOBILITY_STAND) && peeked.Adjacent(peeker))
+				// Funnily enough, if we're at the same height, they can't just peek under us!
+				if(!(high_ground_peeker && high_ground_peeker.climbable))
+					return TRUE
 	return FALSE
 
 /datum/element/skirt_peeking/proc/on_examine(mob/living/carbon/human/peeked, mob/peeker, list/examine_list)
@@ -99,3 +104,22 @@
 			string += " on full display."
 
 		examine_content += span_purple(string)
+		// Let's see if we caught them, addtimer so it appears after the peek.
+		addtimer(CALLBACK(src, .proc/try_notice, peeked, peeker), 1)
+
+/// Alright, they've peeked us and everything, did we notice it though?
+/datum/element/skirt_peeking/proc/try_notice(mob/living/carbon/human/peeked, mob/living/peeker)
+	if(!peeked || !peeker)
+		return
+	if(!istype(peeked) || !istype(peeker))
+		return
+	var/obj/item/clothing/under/worn_uniform = peeked.get_item_by_slot(ITEM_SLOT_ICLOTHING)
+	if(!istype(worn_uniform))
+		return
+	var/obj/item/clothing/glasses/eye_blocker = peeker.get_item_by_slot(ITEM_SLOT_EYES)
+	if(!(!peeked.client && (peeked.stat == CONSCIOUS) && !HAS_TRAIT(peeked, TRAIT_BLIND) && !is_blind(peeked) && \
+		!peeker.is_eyes_covered(FALSE) && !(eye_blocker && eye_blocker.tint > 0) && \
+		!(peeker.invisibility > peeked.invisibility) && !(peeker.alpha <= 30)))
+		return
+	to_chat(peeked, span_warning("You notice [peeker] looking under your [worn_uniform.name]!"))
+	to_chat(peeker, span_warning("[peeked] notices you peeking under [peeked.p_their()] [worn_uniform.name]!"))

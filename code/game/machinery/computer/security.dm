@@ -18,6 +18,8 @@
 	var/sortBy = "name"
 	var/order = 1 // -1 = Descending - 1 = Ascending
 
+	var/list/logged_access
+
 	light_color = LIGHT_COLOR_RED
 
 /obj/machinery/computer/secure_data/syndie
@@ -295,6 +297,9 @@ What a mess.*/
 				screen = null
 				active1 = null
 				active2 = null
+
+				logged_access = null
+
 				playsound(src, 'sound/machines/terminal_off.ogg', 50, FALSE)
 
 			if("Log In")
@@ -307,18 +312,27 @@ What a mess.*/
 					authenticated = borg.name
 					rank = "AI"
 					screen = 1
+
+					logged_access = get_all_accesses()
+
 				else if(IsAdminGhost(M))
 					active1 = null
 					active2 = null
 					authenticated = M.client.holder.admin_signature
 					rank = "Central Command"
 					screen = 1
+
+					logged_access = get_centcom_access("CentCom Commander")
+
 				else if(I && check_access(I))
 					active1 = null
 					active2 = null
 					authenticated = I.registered_name
 					rank = I.assignment
 					screen = 1
+
+					logged_access = I.access
+
 				else
 					to_chat(usr, "<span class='danger'>Unauthorized Access.</span>")
 				playsound(src, 'sound/machines/terminal_on.ogg', 50, FALSE)
@@ -583,7 +597,7 @@ What a mess.*/
 							active1.fields["age"] = t1
 					if("species")
 						if(istype(active1, /datum/data/record))
-							var/t1 = input("Select a species", "Species Selection") as null|anything in GLOB.roundstart_races
+							var/t1 = stripped_input("Please input species name", "Sec. records", active1.fields["species"], null)
 							if(!canUseSecurityRecordsConsole(usr, t1, a1))
 								return
 							active1.fields["species"] = t1
@@ -678,9 +692,7 @@ What a mess.*/
 							temp += "<li><a href='?src=[REF(src)];choice=Change Criminal Status;criminal2=released'>Discharged</a></li>"
 							temp += "</ul>"
 					if("rank")
-						var/list/L = list( "Head of Personnel", "Captain", "AI", "Central Command" )
-						//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
-						if((istype(active1, /datum/data/record) && L.Find(rank)))
+						if(istype(active1, /datum/data/record) && ((ACCESS_CAPTAIN in logged_access) || (ACCESS_HOP in logged_access)))
 							temp = "<h5>Rank:</h5>"
 							temp += "<ul>"
 							for(var/rank in get_all_jobs())

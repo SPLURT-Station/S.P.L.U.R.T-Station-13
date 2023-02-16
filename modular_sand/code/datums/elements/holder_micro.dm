@@ -168,9 +168,10 @@
 	set category = "IC"
 	set src in view(usr.client)
 
-	if(!usr.mind) //Mindless boys, honestly just don't, it's better this way
+	if(!src)
 		return
-	if(!usr.mind.interaction_holder)
-		usr.mind.interaction_holder = new(usr.mind)
-	usr.mind.interaction_holder.target = src.held_mob
-	usr.mind.interaction_holder.ui_interact(usr)
+	var/datum/component/interaction_menu_granter/menu = held_mob.GetComponent(/datum/component/interaction_menu_granter)
+	if(menu)
+		menu.open_menu(usr, src)
+	else // you bad
+		remove_verb(src, /mob/proc/interact_with)

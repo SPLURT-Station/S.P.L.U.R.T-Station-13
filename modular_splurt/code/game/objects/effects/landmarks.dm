@@ -23,6 +23,12 @@
 	icon = 'modular_splurt/icons/mob/landmarks.dmi'
 	icon_state = "Psychologist"
 
+/obj/effect/landmark/start/stowaway
+	name = "Stowaway"
+	icon = 'modular_splurt/icons/mob/landmarks.dmi'
+	icon_state = "Stowaway"
+	jobspawn_override = TRUE //spawn in maint
+	delete_after_roundstart = FALSE
 
 //Landmark that creates destinations for the navigate verb to path to
 /obj/effect/landmark/navigate_destination

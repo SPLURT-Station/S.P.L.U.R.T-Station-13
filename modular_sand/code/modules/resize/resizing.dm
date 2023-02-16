@@ -19,12 +19,12 @@
 			return TRUE
 
 		//Doing messages
-		if(abs(get_size(user)/get_size(target) >= 2)) //if the initiator is twice the size of the micro
+		if(COMPARE_SIZES(user, target) >= 2) //if the initiator is twice the size of the micro
 			now_pushing = 0
 			user.forceMove(target.loc)
 
 			//Smaller person being stepped on
-			if(get_size(user) > get_size(target) && iscarbon(src))
+			if(iscarbon(src))
 				if(istype(user) && user.dna.features["taur"] == "Naga" || user.dna.features["taur"] == "Tentacle")
 					target.visible_message(span_notice("[src] carefully slithers around [target]."), span_notice("[src]'s huge tail slithers besides you."))
 				else
@@ -32,7 +32,7 @@
 				return TRUE
 
 		//Smaller person stepping under a larger person
-		if(abs(get_size(target)/get_size(user)) >= 2)
+		if(COMPARE_SIZES(target, user) >= 2)
 			user.forceMove(target.loc)
 			now_pushing = 0
 			micro_step_under(target)
@@ -59,7 +59,7 @@
 			user.forceMove(target.loc)
 			return TRUE
 
-		if(abs(get_size(user)/get_size(target)) >= 2)
+		if(COMPARE_SIZES(user, target) >= 2)
 			log_combat(user, target, "stepped on", addition="[user.a_intent] trample")
 			if(user.a_intent == "disarm" && CHECK_MOBILITY(user, MOBILITY_MOVE) && !user.buckled)
 				now_pushing = 0
@@ -67,7 +67,7 @@
 				user.sizediffStamLoss(target)
 				user.add_movespeed_modifier(/datum/movespeed_modifier/stomp, TRUE) //Full stop
 				addtimer(CALLBACK(user, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP, TRUE), 3) //0.3 seconds
-				if(get_size(user) > get_size(target) && iscarbon(user))
+				if(iscarbon(user))
 					if(istype(user) && user.dna.features["taur"] == "Naga" || user.dna.features["taur"] == "Tentacle")
 						target.visible_message(span_danger("[src] carefully rolls their tail over [target]!"), span_danger("[src]'s huge tail rolls over you!"))
 					else
@@ -83,7 +83,7 @@
 				user.add_movespeed_modifier(/datum/movespeed_modifier/stomp, TRUE)
 				addtimer(CALLBACK(user, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP, TRUE), 10) //1 second
 				//user.Stun(20)
-				if(get_size(user) > get_size(target) && iscarbon(user))
+				if(iscarbon(user))
 					if(istype(user) && (user.dna.features["taur"] == "Naga" || user.dna.features["taur"] == "Tentacle"))
 						target.visible_message(span_danger("[src] mows down [target] under their tail!"), span_userdanger("[src] plows their tail over you mercilessly!"))
 					else
@@ -97,7 +97,7 @@
 				user.sizediffStun(target)
 				user.add_movespeed_modifier(/datum/movespeed_modifier/stomp, TRUE)
 				addtimer(CALLBACK(user, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP, TRUE), 7)//About 3/4th a second
-				if(get_size(user) > get_size(target) && iscarbon(user))
+				if(iscarbon(user))
 					var/feetCover = (user.wear_suit && (user.wear_suit.body_parts_covered & FEET)) || (user.w_uniform && (user.w_uniform.body_parts_covered & FEET) || (user.shoes && (user.shoes.body_parts_covered & FEET)))
 					if(feetCover)
 						if(user?.dna?.features["taur"] == "Naga" || user?.dna?.features["taur"] == "Tentacle")
@@ -116,7 +116,7 @@
 							SEND_SIGNAL(target, COMSIG_MICRO_PICKUP_FEET, user)
 						return TRUE
 
-		if(abs(get_size(target)/get_size(user)) >= 2)
+		if(COMPARE_SIZES(target, user) >= 2)
 			user.forceMove(target.loc)
 			now_pushing = 0
 			micro_step_under(target)
@@ -141,17 +141,17 @@
 
 //Proc for scaling stamina damage on size difference
 /mob/living/carbon/proc/sizediffStamLoss(mob/living/carbon/target)
-	var/S = (get_size(src)/get_size(target)*25) //macro divided by micro, times 25
+	var/S = COMPARE_SIZES(src, target) * 25 //macro divided by micro, times 25
 	target.Knockdown(S) //final result in stamina knockdown
 
 //Proc for scaling stuns on size difference (for grab intent)
 /mob/living/carbon/proc/sizediffStun(mob/living/carbon/target)
-	var/T = (get_size(src)/get_size(target)*2) //Macro divided by micro, times 2
+	var/T = COMPARE_SIZES(src, target) * 2 //Macro divided by micro, times 2
 	target.Stun(T)
 
 //Proc for scaling brute damage on size difference
 /mob/living/carbon/proc/sizediffBruteloss(mob/living/carbon/target)
-	var/B = (get_size(src)/get_size(target)*3) //macro divided by micro, times 3
+	var/B = COMPARE_SIZES(src, target) * 3 //macro divided by micro, times 3
 	target.adjustBruteLoss(B) //final result in brute loss
 
 //Proc for instantly grabbing valid size difference. Code optimizations soon(TM)

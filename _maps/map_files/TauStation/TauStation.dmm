@@ -9301,6 +9301,19 @@
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
 /area/space/nearstation)
+"dlX" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/department/science)
 "dmd" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/turf_decal/tile/neutral{
@@ -24862,6 +24875,15 @@
 	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
+"izV" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/department/medical)
 "iAi" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -26676,6 +26698,16 @@
 	},
 /turf/closed/wall,
 /area/maintenance/department/engine)
+"jju" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "jjE" = (
 /obj/effect/spawner/structure/window,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -35201,6 +35233,13 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/port)
+"miK" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "miN" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -51663,6 +51702,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating,
 /area/maintenance/department/science)
 "rXk" = (
@@ -57062,6 +57102,10 @@
 	},
 /turf/open/floor/plating/beach/sand,
 /area/service/library/artgallery/museum)
+"tND" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "tNF" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -61184,6 +61228,19 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
+"vja" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/department/medical)
 "vjp" = (
 /obj/structure/window/reinforced,
 /obj/machinery/aug_manipulator,
@@ -65490,6 +65547,13 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/medical)
+"wAu" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "wAv" = (
 /obj/machinery/power/apc{
 	areastring = "/area/security/checkpoint/medical";
@@ -69362,6 +69426,10 @@
 "xNa" = (
 /turf/closed/wall/r_wall,
 /area/science/lab)
+"xNf" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/department/science)
 "xNy" = (
 /obj/item/sharpener{
 	pixel_x = 6
@@ -92986,7 +93054,7 @@ ycW
 qkf
 wLl
 wLl
-ycW
+izV
 ycW
 ycW
 wfF
@@ -94534,7 +94602,7 @@ ybK
 ybK
 ybK
 ybK
-ygg
+vja
 vmP
 aBv
 ocO
@@ -98400,7 +98468,7 @@ yde
 trt
 owJ
 uTQ
-ygg
+vja
 xXs
 evJ
 xXs
@@ -106920,7 +106988,7 @@ dvp
 fph
 sdb
 aYi
-wBz
+tND
 uiQ
 uiQ
 uiQ
@@ -107901,7 +107969,7 @@ hce
 hce
 xYK
 fLy
-wim
+dlX
 mxU
 xhN
 jGo
@@ -107939,7 +108007,7 @@ qEt
 oCl
 wBP
 tpI
-aib
+miK
 sdb
 nhq
 dvp
@@ -110999,7 +111067,7 @@ yji
 bQB
 mxU
 mMc
-xUV
+xNf
 xUV
 fOc
 whY
@@ -111712,7 +111780,7 @@ vmU
 eBz
 thT
 eBz
-vfB
+jju
 eBz
 vyq
 wbQ
@@ -117842,7 +117910,7 @@ hpl
 qJe
 fbk
 pkR
-ptR
+wAu
 ptR
 ptR
 ptR

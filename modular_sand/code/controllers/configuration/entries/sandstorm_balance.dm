@@ -64,3 +64,31 @@
 // BSM minimum tier for bluespace crystals
 /datum/config_entry/number/bluespaceminer_crystal_tier
 	config_entry_value = 5
+
+/// TETRIS ARCADE MACHINE ///
+// If the machine should skip producing science points
+/datum/config_entry/flag/tetris_no_science
+
+// Points required per prize vended
+/datum/config_entry/number/tetris_reward_divisor
+	config_entry_value = 1000
+
+// Points required per prize vended
+/datum/config_entry/number/tetris_prizes_max
+	config_entry_value = 5
+
+// Minimum score required to message admins
+/datum/config_entry/number/tetris_score_high
+	config_entry_value = 10000
+
+// Maximum research points that can be generated
+/datum/config_entry/number/tetris_score_max
+	config_entry_value = 100000
+
+// Maximum research points that can be generated
+/datum/config_entry/number/tetris_score_max_sci
+	config_entry_value = 10000
+
+// Minimum time between giving rewards
+/datum/config_entry/number/tetris_time_cooldown
+	config_entry_value = 600

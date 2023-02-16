@@ -16,7 +16,12 @@
 		/obj/item/clothing/under/officesexy = 3,
 		/obj/item/clothing/suit/toggle/tunnelfox = 3,
 		/obj/item/clothing/under/performer = 2,
-		/obj/item/clothing/under/bluedress = 3
+		/obj/item/clothing/under/bluedress = 3,
+		/obj/item/clothing/accessory/shortcrop = 3,
+		/obj/item/clothing/accessory/longcrop = 3,
+		/obj/item/clothing/accessory/formalcrop = 3,
+		/obj/item/clothing/under/misc/leia_outfit = 2,
+		/obj/item/clothing/under/performer/polychromic = 2
 	)
 	var/list/extra_contraband = list(
 		/obj/item/clothing/under/rank/civilian/lawyer/galaxy_red = 3,

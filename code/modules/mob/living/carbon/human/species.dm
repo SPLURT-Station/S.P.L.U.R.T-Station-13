@@ -1523,6 +1523,39 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 				if(SEND_SIGNAL(H.back, COMSIG_TRY_STORAGE_CAN_INSERT, I, H, TRUE))
 					return TRUE
 			return FALSE
+		if(ITEM_SLOT_ACCESSORY)
+			if(istype(I, /obj/item/clothing/accessory/ring))
+				if(istype(H.gloves))
+					var/obj/item/clothing/gloves/attaching_target = H.gloves
+					if(length(attaching_target.attached_accessories) > attaching_target.max_accessories)
+						if(return_warning)
+							return_warning[1] = "\The [attaching_target] is at maximum capacity!"
+						return FALSE
+					if(attaching_target.dummy_thick)
+						if(return_warning)
+							return_warning[1] = "\The [attaching_target] are too bulky and cannot have accessories attached to it!"
+						return FALSE
+					else
+						return TRUE
+				else if(return_warning)
+					return_warning[1] = "\The [H.w_uniform] cannot have any attachments."
+				return FALSE
+			else
+				if(istype(H.w_uniform, /obj/item/clothing/under))
+					var/obj/item/clothing/under/attaching_target = H.w_uniform
+					if(length(attaching_target.attached_accessories) > attaching_target.max_accessories)
+						if(return_warning)
+							return_warning[1] = "\The [attaching_target] is at maximum capacity!"
+						return FALSE
+					if(attaching_target.dummy_thick)
+						if(return_warning)
+							return_warning[1] = "\The [attaching_target] is too bulky and cannot have accessories attached to it!"
+						return FALSE
+					else
+						return TRUE
+				else if(return_warning)
+					return_warning[1] = "\The [H.w_uniform] cannot have any attachments."
+				return FALSE
 	return FALSE //Unsupported slot
 
 /datum/species/proc/equip_delay_self_check(obj/item/I, mob/living/carbon/human/H, bypass_equip_delay_self)

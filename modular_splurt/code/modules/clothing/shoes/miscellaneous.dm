@@ -84,3 +84,15 @@
 	build_path = /obj/item/clothing/shoes/jackboots/cbrn/mopp
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/obj/item/clothing/shoes/highheel_sandals
+	name = "high-heel sandals"
+	desc = "A pair of high-heel sandals"
+	icon = 'modular_splurt/icons/obj/clothing/shoes.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/shoes.dmi'
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/shoes_digi.dmi'
+	icon_state = "highheel_sandals"
+
+/obj/item/clothing/shoes/highheel_sandals/Initialize()
+	. = ..()
+	AddComponent(/datum/component/squeak, list('modular_splurt/sound/effects/footstep/highheel1.ogg' = 1,'modular_splurt/sound/effects/footstep/highheel2.ogg' = 1), 20)

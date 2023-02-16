@@ -157,7 +157,8 @@
 		else if (V.owner.current && ishuman(V.owner.current))
 			var/mob/living/carbon/human/H = V.owner.current
 			var/obj/item/card/id/I =  H.wear_id ? H.wear_id.GetID() : null
-			if (I && (I.assignment in valid_jobs) && !(I.assignment in counted_roles))
+			var/assign = GetJobName(I.assignment)
+			if (I && (assign in valid_jobs) && !(assign in counted_roles))
 				//to_chat(owner, "<span class='userdanger'>PROTEGE OBJECTIVE: (GET ID)</span>")
 				thisRole = I.assignment
 

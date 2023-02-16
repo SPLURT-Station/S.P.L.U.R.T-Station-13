@@ -28,6 +28,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 	var/list/blacklisted = list(
 		"AI",
 		"Assistant",
+		"Stowaway",
 		"Cyborg",
 		"Captain",
 		"Head of Personnel",

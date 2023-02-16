@@ -14,3 +14,15 @@
 		return has_dna.features["body_size"]
 	else
 		return target.size_multiplier
+
+/*
+ * # COMPARE_SIZES(mob/living/user, mob/living/target)
+ * Returns how bigger or smaller the target is in comparison to user
+ * Example:
+ * - user = 2, target = 1, result = 0.5
+ * - user = 1, target = 2, result = 2
+ * Args:
+ * - user = /mob/living
+ * - target = /mob/living
+*/
+#define COMPARE_SIZES(user, target) abs((get_size(user) / get_size(target)))

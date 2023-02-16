@@ -1,59 +1,72 @@
 /// Attempts to open the tgui menu
-/mob/living/verb/interact_with()
+/mob/proc/interact_with()
 	set name = "Interact With"
 	set desc = "Perform an interaction with someone."
 	set category = "IC"
 	set src in view(usr.client)
 
-	if(!usr.mind) //Mindless boys, honestly just don't, it's better this way
+	if(!src)
 		return
-	if(!usr.mind.interaction_holder)
-		usr.mind.interaction_holder = new(usr.mind)
-	usr.mind.interaction_holder.target = src
-	usr.mind.interaction_holder.ui_interact(usr)
-
-/*
-/// Allows "cyborg" players to change gender at will
-/mob/living/silicon/robot/verb/toggle_gender()
-	set name = "Set Gender"
-	set desc = "Allows you to set your gender."
-
-	if(stat != CONSCIOUS)
-		to_chat(usr, span_warning("You cannot toggle your gender while unconcious!"))
-		return
-
-	var/choice = tgui_alert(usr, "Select Gender.", "Gender", list("Both", "Male", "Female"))
-	switch(choice)
-		if("Both")
-			has_penis = TRUE
-			has_vagina = TRUE
-		if("Male")
-			has_penis = TRUE
-			has_vagina = FALSE
-		if("Female")
-			has_penis = FALSE
-			has_vagina = TRUE
-*/
+	// I FUCKING HATE VERBS (NEED TO GRAB COMPONENT FROM USR, NOT SRC)
+	var/datum/component/interaction_menu_granter/menu = usr.GetComponent(/datum/component/interaction_menu_granter)
+	if(menu)
+		menu.open_menu(usr, src)
+	else // you bad
+		remove_verb(usr, /mob/proc/interact_with)
 
 #define INTERACTION_NORMAL 0
 #define INTERACTION_LEWD 1
 #define INTERACTION_EXTREME 2
 
-/datum/mind
-	var/datum/interaction_menu/interaction_holder
-
-/datum/mind/New(key)
-	. = ..()
-	interaction_holder = new(src)
-
 /// The menu itself, only var is target which is the mob you are interacting with
-/datum/interaction_menu
+/datum/component/interaction_menu_granter
 	var/mob/living/target
 
-/datum/interaction_menu/ui_state(mob/user)
-	return GLOB.conscious_state
+/datum/component/interaction_menu_granter/Initialize(...)
+	if(!ismob(parent))
+		return COMPONENT_INCOMPATIBLE
+	var/mob/parent_mob = parent
+	if(!parent_mob.client)
+		return COMPONENT_INCOMPATIBLE
+	add_verb(parent_mob, /mob/proc/interact_with)
+	/// > Why don't you attach it to COMSIG_CLICK_CTRL_SHIFT
+	/// I want to open the ui on myself, not everyone has it and it's just bad practice i guess.
+	RegisterSignal(parent_mob, COMSIG_MOB_CLICKON, .proc/open_menu)
+	. = ..()
 
-/datum/interaction_menu/ui_interact(mob/user, datum/tgui/ui)
+/datum/component/interaction_menu_granter/Destroy(force, ...)
+	var/mob/parent_mob = parent
+	remove_verb(parent_mob, /mob/proc/interact_with)
+	target = null
+	UnregisterSignal(parent_mob, COMSIG_MOB_CLICKON)
+	. = ..()
+
+/datum/component/interaction_menu_granter/proc/open_menu(mob/clicker, mob/clicked, mouse_params)
+	// Don't cancel admin quick spawn
+	if(isobserver(clicked) && check_rights(R_SPAWN, FALSE))
+		return FALSE
+	// COMSIG_MOB_CLICKON is sent for EVERYTHING your mob character clicks, avoid non-mob
+	if(!istype(clicked))
+		return FALSE
+	// Using the verb calls leaves this empty
+	if(mouse_params)
+		var/list/params = params2list(mouse_params)
+		if(!(params[LEFT_CLICK] && params[CTRL_CLICK] && params[SHIFT_CLICK]))
+			// Continue click normally
+			return FALSE
+	target = clicked
+	ui_interact(clicker)
+	return COMSIG_MOB_CANCEL_CLICKON
+
+/datum/component/interaction_menu_granter/ui_state(mob/user)
+	// Funny admin, don't you dare be the extra funny now.
+	if(user.client.holder && !user.client.holder.deadmined)
+		return GLOB.always_state
+	if(user == parent)
+		return GLOB.conscious_state
+	return GLOB.never_state
+
+/datum/component/interaction_menu_granter/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "MobInteraction", "Interactions")
@@ -68,10 +81,10 @@
 		else
 			return 0
 
-/datum/interaction_menu/ui_data(mob/user)
+/datum/component/interaction_menu_granter/ui_data(mob/user)
 	. = ..()
 	//Getting player
-	var/mob/living/self = user
+	var/mob/living/self = parent
 	//Getting info
 	.["isTargetSelf"] = target == self
 	.["interactingWith"] = target != self ? "Interacting with \the [target]..." : "Interacting with yourself..."
@@ -136,22 +149,22 @@
 			genital_entry["arousal_state"] = genital.aroused_state
 			genital_entry["always_accessible"] = genital.always_accessible
 			genitals += list(genital_entry)
-	if(iscarbon(self) && !self.getorganslot(ORGAN_SLOT_ANUS))
-		var/simulated_ass = list()
-		simulated_ass["name"] = "Anus"
-		simulated_ass["key"] = "anus"
-		var/visibility = "Invalid"
-		switch(self.anus_exposed)
-			if(1)
-				visibility = "Always visible"
-			if(0)
-				visibility = "Hidden by underwear"
-			else
-				visibility = "Always hidden"
-		simulated_ass["visibility"] = visibility
-		simulated_ass["possible_choices"] = GLOB.genitals_visibility_toggles - GEN_VISIBLE_NO_CLOTHES
-		simulated_ass["always_accessible"] = self.anus_always_accessible
-		genitals += list(simulated_ass)
+		if(!get_genitals.getorganslot(ORGAN_SLOT_ANUS)) //SPLURT Edit
+			var/simulated_ass = list()
+			simulated_ass["name"] = "Anus"
+			simulated_ass["key"] = "anus"
+			var/visibility = "Invalid"
+			switch(get_genitals.anus_exposed)
+				if(1)
+					visibility = "Always visible"
+				if(0)
+					visibility = "Hidden by underwear"
+				else
+					visibility = "Always hidden"
+			simulated_ass["visibility"] = visibility
+			simulated_ass["possible_choices"] = GLOB.genitals_visibility_toggles - GEN_VISIBLE_NO_CLOTHES
+			simulated_ass["always_accessible"] = get_genitals.anus_always_accessible
+			genitals += list(simulated_ass)
 	.["genitals"] = genitals
 
 	//Get their genitals
@@ -227,18 +240,19 @@
 		else
 			return "No"
 
-/datum/interaction_menu/ui_act(action, params)
+/datum/component/interaction_menu_granter/ui_act(action, params)
 	if(..())
 		return
+	var/mob/living/parent_mob = parent
 	switch(action)
 		if("interact")
 			var/datum/interaction/o = SSinteractions.interactions[params["interaction"]]
 			if(o)
-				o.do_action(usr, target)
+				o.do_action(parent_mob, target)
 				return TRUE
 			return FALSE
 		if("genital")
-			var/mob/living/carbon/self = usr
+			var/mob/living/carbon/self = parent_mob
 			if("visibility" in params)
 				if(params["genital"] == "anus")
 					self.anus_toggle_visibility(params["visibility"])
@@ -301,7 +315,7 @@
 						return TRUE
 					return FALSE
 		if("char_pref")
-			var/datum/preferences/prefs = usr.client.prefs
+			var/datum/preferences/prefs = parent_mob.client.prefs
 			var/value = num_to_pref(params["value"])
 			switch(params["char_pref"])
 				if("erp_pref")
@@ -341,7 +355,7 @@
 			prefs.save_character()
 			return TRUE
 		if("pref")
-			var/datum/preferences/prefs = usr.client.prefs
+			var/datum/preferences/prefs = parent_mob.client.prefs
 			switch(params["pref"])
 				if("verb_consent")
 					TOGGLE_BITFIELD(prefs.toggles, VERB_CONSENT)

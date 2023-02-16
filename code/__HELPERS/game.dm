@@ -578,7 +578,7 @@
 	deadchat_broadcast("<span class='game'> has arrived at the station at <span class='name'>[player_area.name]</span>.</span>", "<span class='game'><span class='name'>[character.real_name]</span> ([rank])</span>", follow_target = character, message_type=DEADCHAT_ARRIVALRATTLE)
 	if((!GLOB.announcement_systems.len) || (!character.mind))
 		return
-	if((character.mind.assigned_role == "Cyborg") || (character.mind.assigned_role == character.mind.special_role))
+	if((character.mind.assigned_role == "Cyborg") || (character.mind.assigned_role == character.mind.special_role) || (character.mind.assigned_role == "Stowaway"))
 		return
 
 	//Skyrat changes

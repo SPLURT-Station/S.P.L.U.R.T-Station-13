@@ -289,13 +289,13 @@
 "abk" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/item/reagent_containers/food/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/food/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
@@ -303,7 +303,7 @@
 /obj/item/reagent_containers/food/condiment/mayonnaise,
 /obj/item/reagent_containers/food/condiment/milk,
 /obj/item/reagent_containers/food/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
@@ -556,6 +556,11 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
+"adG" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "adH" = (
 /obj/structure/transit_tube/curved/flipped,
 /turf/open/floor/plating/snowed/smoothed/icemoon,
@@ -4909,6 +4914,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/cargo/miningdock)
+"brv" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/aft)
 "brB" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/preopen{
@@ -8936,6 +8945,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating,
 /area/maintenance/aft/secondary)
 "crw" = (
@@ -8944,7 +8954,7 @@
 	req_access_txt = "3"
 	},
 /obj/effect/spawner/lootdrop/armory_contraband{
-	loot = list(/obj/item/gun/ballistic/automatic/pistol = 5, /obj/item/gun/ballistic/shotgun/automatic/combat = 5, /obj/item/gun/ballistic/revolver/mateba, /obj/item/gun/ballistic/automatic/pistol/deagle, /obj/item/storage/box/syndie_kit/throwing_weapons = 3)
+	loot = list(/obj/item/gun/ballistic/automatic/pistol=5,/obj/item/gun/ballistic/shotgun/automatic/combat=5,/obj/item/gun/ballistic/revolver/mateba,/obj/item/gun/ballistic/automatic/pistol/deagle,/obj/item/storage/box/syndie_kit/throwing_weapons=3)
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel/dark,
@@ -18523,7 +18533,7 @@
 	input_tag = "mix_in2";
 	name = "Aux Gas Mix Tank Control";
 	output_tag = "mix_out2";
-	sensors = list("mix_sensor2" = "Aux Gas Mix Tank ")
+	sensors = list("mix_sensor2"="Aux Gas Mix Tank ")
 	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
@@ -28123,6 +28133,10 @@
 /obj/structure/girder/displaced,
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/icemoon/surface/outdoors)
+"kKU" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/engineering/storage)
 "kKY" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -28362,7 +28376,7 @@
 /area/engineering/main)
 "kPA" = (
 /obj/effect/spawner/lootdrop{
-	loot = list(/obj/item/gun/ballistic/revolver/russian = 5, /obj/item/storage/box/syndie_kit/throwing_weapons, /obj/item/toy/cards/deck/syndicate = 2);
+	loot = list(/obj/item/gun/ballistic/revolver/russian=5,/obj/item/storage/box/syndie_kit/throwing_weapons,/obj/item/toy/cards/deck/syndicate=2);
 	name = "gambling valuables spawner"
 	},
 /obj/structure/table/wood/poker,
@@ -41504,7 +41518,7 @@
 /area/engineering/break_room)
 "qzP" = (
 /obj/machinery/vending/dinnerware{
-	contraband = list(/obj/item/kitchen/rollingpin = 2, /obj/item/kitchen/knife/butcher = 2, /obj/item/reagent_containers/food/condiment/flour = 4)
+	contraband = list(/obj/item/kitchen/rollingpin=2,/obj/item/kitchen/knife/butcher=2,/obj/item/reagent_containers/food/condiment/flour=4)
 	},
 /turf/open/floor/plasteel/freezer,
 /area/service/kitchen/coldroom)
@@ -44091,6 +44105,10 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard/aft)
+"rGN" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port/central)
 "rGP" = (
 /obj/machinery/turnstile{
 	dir = 8;
@@ -50728,6 +50746,10 @@
 	},
 /turf/open/floor/plating,
 /area/hallway/secondary/exit/departure_lounge)
+"uFI" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "uFT" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 10
@@ -52569,6 +52591,7 @@
 	dir = 1;
 	light_color = "#ffc1c1"
 	},
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "vvH" = (
@@ -55129,6 +55152,10 @@
 	},
 /turf/open/floor/plating,
 /area/security/checkpoint/supply)
+"wvA" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/aft/secondary)
 "wvL" = (
 /obj/machinery/cryopod{
 	dir = 1
@@ -56498,7 +56525,7 @@
 "xcL" = (
 /obj/structure/table,
 /obj/effect/spawner/lootdrop{
-	loot = list(/obj/item/gun/ballistic/revolver/russian = 5, /obj/item/storage/box/syndie_kit/throwing_weapons, /obj/item/toy/cards/deck/syndicate = 2);
+	loot = list(/obj/item/gun/ballistic/revolver/russian=5,/obj/item/storage/box/syndie_kit/throwing_weapons,/obj/item/toy/cards/deck/syndicate=2);
 	name = "gambling valuables spawner"
 	},
 /turf/open/floor/plasteel,
@@ -57148,6 +57175,13 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
+"xqY" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/aft/secondary)
 "xrL" = (
 /obj/machinery/light{
 	dir = 1
@@ -59058,6 +59092,13 @@
 	},
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/tcommsat/server)
+"yle" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port/central)
 "ylx" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 8
@@ -82324,7 +82365,7 @@ nLS
 nLS
 nLS
 xJp
-xJp
+yle
 nLS
 nLS
 jOq
@@ -83351,7 +83392,7 @@ wje
 nLS
 cpX
 dGu
-gdQ
+rGN
 qel
 rRU
 nLS
@@ -91384,7 +91425,7 @@ bfa
 rRa
 cey
 wlV
-wlV
+brv
 ucZ
 eTv
 iIS
@@ -97042,7 +97083,7 @@ sAC
 iBd
 jpS
 wTK
-wGq
+wvA
 wTK
 wGq
 kSv
@@ -98584,7 +98625,7 @@ tJJ
 tJJ
 tnV
 wTK
-jxp
+xqY
 fJr
 wTK
 avT
@@ -108519,7 +108560,7 @@ eDt
 mKy
 qDt
 qDt
-xJU
+adG
 uoz
 xLQ
 vcm
@@ -110826,7 +110867,7 @@ oUQ
 qRF
 lnH
 pwC
-fBS
+kKU
 wFO
 mZp
 wwi
@@ -113913,7 +113954,7 @@ avT
 qDt
 lKk
 rUk
-rUk
+uFI
 qDt
 qDt
 qDt

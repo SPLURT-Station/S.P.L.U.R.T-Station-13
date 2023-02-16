@@ -324,6 +324,24 @@
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
 	matrixed_sections = MATRIX_RED_GREEN
 
+/datum/sprite_accessory/tails/lizard/snakelarge
+	name = "Snake Tail (Large)"
+	icon_state = "snakelarge"
+	color_src = MATRIXED
+	icon = 'modular_splurt/icons/mob/64_mam_tails.dmi'
+	dimension_x = 64
+	center = TRUE
+	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/tails_animated/lizard/snakelarge
+	name = "Snake Tail (Large)"
+	icon_state = "snakelarge"
+	color_src = MATRIXED
+	icon = 'modular_splurt/icons/mob/64_mam_tails.dmi'
+	dimension_x = 64
+	center = TRUE
+	matrixed_sections = MATRIX_RED_GREEN
+
 //Human tails
 /datum/sprite_accessory/tails/human/deer
 	name = "Deer"
@@ -417,4 +435,22 @@
 	icon_state = "nightstalker"
 	color_src = MATRIXED
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/tails/human/snakelarge
+	name = "Snake Tail (Large)"
+	icon_state = "snakelarge"
+	color_src = MATRIXED
+	icon = 'modular_splurt/icons/mob/64_mam_tails.dmi'
+	dimension_x = 64
+	center = TRUE
+	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/tails_animated/human/snakelarge
+	name = "Snake Tail (Large)"
+	icon_state = "snakelarge"
+	color_src = MATRIXED
+	icon = 'modular_splurt/icons/mob/64_mam_tails.dmi'
+	dimension_x = 64
+	center = TRUE
 	matrixed_sections = MATRIX_RED_GREEN

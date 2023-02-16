@@ -1678,12 +1678,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/commons/lounge)
-"aen" = (
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 9
-	},
-/turf/open/floor/plating,
-/area/maintenance/fore)
 "aeo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/circuitboard/machine/sleeper,
@@ -5124,20 +5118,6 @@
 	},
 /turf/open/floor/carpet/arcade,
 /area/commons/arcade)
-"ani" = (
-/obj/machinery/disposal/bin,
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/obj/structure/sign/poster/official/bless_this_spess{
-	pixel_y = -32
-	},
-/turf/open/floor/plasteel,
-/area/security/brig)
 "anj" = (
 /obj/machinery/holopad,
 /obj/effect/turf_decal/bot,
@@ -68150,6 +68130,13 @@
 /obj/machinery/atmospherics/pipe/layer_manifold,
 /turf/open/floor/plating,
 /area/engineering/atmos)
+"dXW" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "dYm" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/turf_decal/stripes/line{
@@ -68888,6 +68875,10 @@
 /obj/structure/chair/stool,
 /turf/open/floor/plasteel,
 /area/cargo/office)
+"iEf" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port/central)
 "iLw" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Advanced Interrogation"
@@ -69175,6 +69166,16 @@
 	},
 /turf/open/floor/plating,
 /area/cargo/storage)
+"kPi" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "kTm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/start/prisoner,
@@ -69337,6 +69338,20 @@
 	},
 /turf/closed/wall/mineral/wood,
 /area/commons/fitness/cogpool)
+"maU" = (
+/obj/machinery/disposal/bin,
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/structure/sign/poster/official/bless_this_spess{
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel,
+/area/security/brig)
 "mfj" = (
 /obj/machinery/firealarm{
 	pixel_y = 26
@@ -70601,6 +70616,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/cargo/storage)
+"ulg" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/orange/hidden,
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "unW" = (
 /obj/effect/landmark/navigate_destination/med,
 /turf/open/floor/plasteel/white,
@@ -70978,6 +71002,13 @@
 /obj/structure/filingcabinet,
 /turf/open/floor/carpet,
 /area/medical/psychology)
+"wUe" = (
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 9
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "wUI" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/structure/table,
@@ -71172,6 +71203,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
+"xWP" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/cyan/hidden{
+	dir = 4
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "xXs" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -95231,7 +95272,7 @@ adb
 anU
 aeQ
 aeM
-ani
+maU
 aew
 aeJ
 aeJ
@@ -98104,7 +98145,7 @@ aQL
 aQL
 aQL
 aTS
-aRW
+iEf
 bcR
 bjG
 blk
@@ -98581,7 +98622,7 @@ amS
 amS
 aDE
 amS
-amS
+ulg
 aKR
 apY
 bRa
@@ -103448,7 +103489,7 @@ hzz
 aaa
 acb
 acS
-aen
+wUe
 afi
 agg
 ahj
@@ -107053,7 +107094,7 @@ ajw
 ajw
 ajw
 awN
-bGc
+xWP
 bGl
 ahA
 aiQ
@@ -111936,7 +111977,7 @@ ahP
 ahP
 akj
 ahP
-aif
+kPi
 aiB
 afK
 ahU
@@ -113319,7 +113360,7 @@ bqM
 btL
 bBm
 btC
-bPm
+dXW
 bta
 btV
 cfG

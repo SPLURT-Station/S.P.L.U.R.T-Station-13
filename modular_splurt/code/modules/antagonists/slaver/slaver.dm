@@ -44,6 +44,7 @@ GLOBAL_LIST_INIT(slavers_ransom_values, list(
 	"Scientist"					= SLAVER_STANDARD_RANSOM,
 	"Roboticist"				= SLAVER_STANDARD_RANSOM,
 	"Prisoner"					= SLAVER_STANDARD_RANSOM,
+	"Stowaway"					= SLAVER_STANDARD_RANSOM,
 	"Curator"					= SLAVER_STANDARD_RANSOM,
 	"Lawyer"					= SLAVER_STANDARD_RANSOM,
 	"Chaplain"					= SLAVER_STANDARD_RANSOM,

@@ -57,3 +57,36 @@ BLUESPACEMINER_MULT_OUTPUT 1
 
 ## What is the minimum stock part tier to produce bluespace crystals?
 BLUESPACEMINER_CRYSTAL_TIER 5
+
+###
+## TETRIS
+###
+
+## The machine produces science points based on score
+## Uncomment this to prevent it from doing so
+#TETRIS_NO_SCIENCE
+
+## How many prizes can the machine dispense
+## This is also limited by TETRIS_SCORE_MAX
+TETRIS_PRIZES_MAX 5
+
+## How many points required per prize vended
+## Amount is equal to SCORE divided by TETRIS_REWARD_DIVISOR
+TETRIS_REWARD_DIVISOR 1000
+
+## Minimum score required to message admins
+## This is intended for detecting suspicious scores
+TETRIS_SCORE_HIGH 10000
+
+## Maximum score that can be displayed
+## Score values past this number are ignored
+TETRIS_SCORE_MAX 100000
+
+## Maximum research points that can be generated
+## Score values past this number are ignored
+TETRIS_SCORE_MAX_SCI 10000
+
+## Minimum time between giving rewards
+## This applies to both prizes and research points
+## Time is measured in ticks
+TETRIS_TIME_COOLDOWN 600

@@ -538,7 +538,7 @@
 /area/security/brig)
 "auc" = (
 /obj/machinery/vending/dinnerware{
-	contraband = list(/obj/item/kitchen/rollingpin = 2, /obj/item/kitchen/knife/butcher = 2, /obj/item/reagent_containers/food/condiment/flour = 4)
+	contraband = list(/obj/item/kitchen/rollingpin=2,/obj/item/kitchen/knife/butcher=2,/obj/item/reagent_containers/food/condiment/flour=4)
 	},
 /obj/machinery/camera{
 	c_tag = "Kitchen";
@@ -4995,6 +4995,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/commons/storage/primary)
+"dsH" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/central)
 "dsJ" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -6894,6 +6898,10 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plasteel,
 /area/commons/storage/tools)
+"eTA" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "eTM" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -7134,6 +7142,19 @@
 /obj/machinery/power/tracker,
 /turf/open/floor/plasteel/airless/solarpanel,
 /area/space/nearstation)
+"fhi" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/central)
 "fjd" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -14964,6 +14985,15 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/security/brig)
+"kOh" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "kOz" = (
 /obj/machinery/computer/rdconsole/core{
 	dir = 4
@@ -17898,6 +17928,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating,
 /area/maintenance/central)
 "mXP" = (
@@ -24431,6 +24462,10 @@
 	},
 /turf/open/space/basic,
 /area/space)
+"siQ" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port/aft)
 "sjb" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
 	dir = 6
@@ -27505,6 +27540,10 @@
 /obj/effect/turf_decal/tile/brown,
 /turf/open/floor/plasteel,
 /area/cargo/qm)
+"uuT" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "uuY" = (
 /obj/machinery/light/small,
 /obj/machinery/camera{
@@ -61569,7 +61608,7 @@ lOA
 lOA
 lOA
 lOA
-lOA
+uuT
 kQV
 blb
 nPv
@@ -64197,7 +64236,7 @@ tZL
 fOl
 erD
 hJA
-wmr
+fhi
 kea
 kea
 kea
@@ -64471,7 +64510,7 @@ inK
 inK
 kea
 iQG
-iQG
+siQ
 hMW
 sew
 hLz
@@ -66992,7 +67031,7 @@ sHB
 oqW
 jhl
 wGd
-tgK
+dsH
 jhl
 saE
 wyw
@@ -69277,7 +69316,7 @@ eNc
 jEc
 ceL
 jpY
-eNc
+eTA
 eNc
 eNc
 qas
@@ -69548,7 +69587,7 @@ nSL
 nSL
 nSL
 nSL
-nSL
+kOh
 nSL
 nSL
 nSL

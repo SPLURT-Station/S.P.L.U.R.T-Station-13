@@ -2634,34 +2634,9 @@
 /obj/machinery/light/floor,
 /turf/open/floor/festive/wooden/wooden1,
 /area/command/corporate_showroom)
-"agT" = (
-/obj/structure/table/wood/fancy/green,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/item/clothing/under/syndicate/baseball,
-/obj/item/clothing/head/beret/sec{
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0);
-	desc = "A replica beret resembling that of a special operations officer under Nanotrasen.";
-	name = "replica officer's beret"
-	},
-/turf/open/floor/festive/wooden/wooden1,
-/area/command/corporate_showroom)
 "agU" = (
 /obj/structure/showcase/mecha/marauder,
 /obj/machinery/light/floor,
-/turf/open/floor/festive/wooden/wooden1,
-/area/command/corporate_showroom)
-"agV" = (
-/obj/structure/table/wood/fancy/red,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/item/clothing/head/centhat{
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0);
-	desc = "A replica hat of a Central Commander's attire. It has a small tag on it saying, 'It's good to be emperor.'";
-	name = "Replica CentCom hat"
-	},
 /turf/open/floor/festive/wooden/wooden1,
 /area/command/corporate_showroom)
 "agW" = (
@@ -20379,13 +20354,6 @@
 	},
 /turf/open/floor/festive/alleyway,
 /area/edina/street/secondary/command)
-"baX" = (
-/obj/machinery/computer/prisoner/management,
-/obj/structure/sign/poster/official/bless_this_spess{
-	pixel_y = 32
-	},
-/turf/open/floor/wood,
-/area/security/warden)
 "baY" = (
 /obj/effect/landmark/start/botanist,
 /turf/open/floor/plasteel,
@@ -35552,14 +35520,6 @@
 	},
 /turf/open/floor/wood,
 /area/service/bar/atrium)
-"bKt" = (
-/obj/machinery/vending/dinnerware{
-	desc = "A vending machine stocked full of condiments to put on food.";
-	name = "\improper Condiments Dispenser";
-	products = list(/obj/item/storage/bag/tray = 10, /obj/item/kitchen/fork = 6, /obj/item/kitchen/knife = 6, /obj/item/reagent_containers/food/drinks/drinkingglass = 20, /obj/item/clothing/suit/apron/chef = 2, /obj/item/storage/box/cups = 10, /obj/item/reagent_containers/food/condiment/pack/ketchup = 20, /obj/item/reagent_containers/food/condiment/pack/mustard = 20, /obj/item/reagent_containers/food/condiment/pack/hotsauce = 20, /obj/item/reagent_containers/food/condiment/pack/astrotame = 20, /obj/item/reagent_containers/food/condiment/saltshaker = 20, /obj/item/reagent_containers/food/condiment/peppermill = 20, /obj/item/reagent_containers/glass/bowl = 30)
-	},
-/turf/open/floor/wood,
-/area/service/bar/atrium)
 "bKu" = (
 /obj/structure/chair/sofa/right{
 	dir = 4
@@ -35852,10 +35812,6 @@
 /obj/structure/fence,
 /turf/open/floor/plating/dirt/space,
 /area/edina)
-"bKZ" = (
-/obj/effect/festive/street/sidewalke,
-/turf/open/floor/festive/cobblestone,
-/area/edina/street/primary/progress)
 "bLa" = (
 /obj/effect/turf_decal/weather/snow/corner{
 	dir = 1
@@ -43298,53 +43254,6 @@
 /area/service/kitchen)
 "cbs" = (
 /obj/structure/reagent_dispensers/keg/milk,
-/turf/open/floor/plasteel/freezer,
-/area/service/kitchen/coldroom)
-"cbt" = (
-/obj/structure/closet/crate/freezer{
-	desc = "A small crate with a cooling system, keeps fresh produce chilled.";
-	name = "Food Chiller"
-	},
-/obj/item/reagent_containers/food/condiment/flour{
-	desc = "A large sack of flour for restaurants, not the home-baker!";
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
-	name = "Large Flour Sack"
-	},
-/obj/item/reagent_containers/food/condiment/flour{
-	desc = "A large sack of flour for restaurants, not the home-baker!";
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
-	name = "Large Flour Sack"
-	},
-/obj/item/reagent_containers/food/condiment/flour{
-	desc = "A large sack of flour for restaurants, not the home-baker!";
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
-	name = "Large Flour Sack"
-	},
-/obj/item/reagent_containers/food/condiment/flour{
-	desc = "A large sack of flour for restaurants, not the home-baker!";
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
-	name = "Large Flour Sack"
-	},
-/obj/item/reagent_containers/food/condiment/rice{
-	desc = "A huge sack of rice. Probably for restaurants that actually go through such a huge volume of it easily, not for the home cook.";
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
-	name = "Large Rice Sack"
-	},
-/obj/item/reagent_containers/food/condiment/rice{
-	desc = "A huge sack of rice. Probably for restaurants that actually go through such a huge volume of it easily, not for the home cook.";
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
-	name = "Large Rice Sack"
-	},
-/obj/item/reagent_containers/food/condiment/rice{
-	desc = "A huge sack of rice. Probably for restaurants that actually go through such a huge volume of it easily, not for the home cook.";
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
-	name = "Large Rice Sack"
-	},
-/obj/item/reagent_containers/food/condiment/rice{
-	desc = "A huge sack of rice. Probably for restaurants that actually go through such a huge volume of it easily, not for the home cook.";
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
-	name = "Large Rice Sack"
-	},
 /turf/open/floor/plasteel/freezer,
 /area/service/kitchen/coldroom)
 "cbu" = (
@@ -53426,6 +53335,13 @@
 	},
 /turf/open/floor/wood,
 /area/maintenance/bar)
+"dny" = (
+/obj/machinery/computer/prisoner/management,
+/obj/structure/sign/poster/official/bless_this_spess{
+	pixel_y = 32
+	},
+/turf/open/floor/wood,
+/area/security/warden)
 "dnQ" = (
 /mob/living/simple_animal/pet/penguin/emperor/shamebrero,
 /turf/open/floor/holofloor/ice,
@@ -54049,6 +53965,53 @@
 /obj/effect/decal/festive/christmas_ivy_string,
 /turf/open/floor/circuit/off,
 /area/science)
+"hGn" = (
+/obj/structure/closet/crate/freezer{
+	desc = "A small crate with a cooling system, keeps fresh produce chilled.";
+	name = "Food Chiller"
+	},
+/obj/item/reagent_containers/food/condiment/flour{
+	desc = "A large sack of flour for restaurants, not the home-baker!";
+	list_reagents = list(/datum/reagent/consumable/flour=90);
+	name = "Large Flour Sack"
+	},
+/obj/item/reagent_containers/food/condiment/flour{
+	desc = "A large sack of flour for restaurants, not the home-baker!";
+	list_reagents = list(/datum/reagent/consumable/flour=90);
+	name = "Large Flour Sack"
+	},
+/obj/item/reagent_containers/food/condiment/flour{
+	desc = "A large sack of flour for restaurants, not the home-baker!";
+	list_reagents = list(/datum/reagent/consumable/flour=90);
+	name = "Large Flour Sack"
+	},
+/obj/item/reagent_containers/food/condiment/flour{
+	desc = "A large sack of flour for restaurants, not the home-baker!";
+	list_reagents = list(/datum/reagent/consumable/flour=90);
+	name = "Large Flour Sack"
+	},
+/obj/item/reagent_containers/food/condiment/rice{
+	desc = "A huge sack of rice. Probably for restaurants that actually go through such a huge volume of it easily, not for the home cook.";
+	list_reagents = list(/datum/reagent/consumable/rice=90);
+	name = "Large Rice Sack"
+	},
+/obj/item/reagent_containers/food/condiment/rice{
+	desc = "A huge sack of rice. Probably for restaurants that actually go through such a huge volume of it easily, not for the home cook.";
+	list_reagents = list(/datum/reagent/consumable/rice=90);
+	name = "Large Rice Sack"
+	},
+/obj/item/reagent_containers/food/condiment/rice{
+	desc = "A huge sack of rice. Probably for restaurants that actually go through such a huge volume of it easily, not for the home cook.";
+	list_reagents = list(/datum/reagent/consumable/rice=90);
+	name = "Large Rice Sack"
+	},
+/obj/item/reagent_containers/food/condiment/rice{
+	desc = "A huge sack of rice. Probably for restaurants that actually go through such a huge volume of it easily, not for the home cook.";
+	list_reagents = list(/datum/reagent/consumable/rice=90);
+	name = "Large Rice Sack"
+	},
+/turf/open/floor/plasteel/freezer,
+/area/service/kitchen/coldroom)
 "hHy" = (
 /obj/structure/closet/crate,
 /obj/item/storage/fancy/candle_box,
@@ -54105,6 +54068,10 @@
 /obj/effect/turf_decal/weather/snow/corner,
 /turf/open/floor/festive/sidewalk,
 /area/edina)
+"hVw" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/festive/cobblestone,
+/area/edina/street/primary/progress)
 "hXd" = (
 /obj/vehicle/ridden/janicart,
 /obj/item/key/janitor,
@@ -54927,6 +54894,19 @@
 /mob/living/simple_animal/pet/fox,
 /turf/open/floor/grass,
 /area/edina)
+"nNk" = (
+/obj/structure/table/wood/fancy/green,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/clothing/under/syndicate/baseball,
+/obj/item/clothing/head/beret/sec{
+	armor = list("melee"=0,"bullet"=0,"laser"=0,"energy"=0,"bomb"=0,"bio"=0,"rad"=0);
+	desc = "A replica beret resembling that of a special operations officer under Nanotrasen.";
+	name = "replica officer's beret"
+	},
+/turf/open/floor/festive/wooden/wooden1,
+/area/command/corporate_showroom)
 "nOZ" = (
 /turf/closed/wall/r_wall,
 /area/engineering/engine_smes)
@@ -55019,6 +54999,14 @@
 /obj/structure/fireplace,
 /turf/open/floor/wood,
 /area/commons/dorms)
+"ooy" = (
+/obj/machinery/vending/dinnerware{
+	desc = "A vending machine stocked full of condiments to put on food.";
+	name = "\improper Condiments Dispenser";
+	products = list(/obj/item/storage/bag/tray=10,/obj/item/kitchen/fork=6,/obj/item/kitchen/knife=6,/obj/item/reagent_containers/food/drinks/drinkingglass=20,/obj/item/clothing/suit/apron/chef=2,/obj/item/storage/box/cups=10,/obj/item/reagent_containers/food/condiment/pack/ketchup=20,/obj/item/reagent_containers/food/condiment/pack/mustard=20,/obj/item/reagent_containers/food/condiment/pack/hotsauce=20,/obj/item/reagent_containers/food/condiment/pack/astrotame=20,/obj/item/reagent_containers/food/condiment/saltshaker=20,/obj/item/reagent_containers/food/condiment/peppermill=20,/obj/item/reagent_containers/glass/bowl=30)
+	},
+/turf/open/floor/wood,
+/area/service/bar/atrium)
 "orN" = (
 /obj/machinery/light/small,
 /turf/open/floor/mineral/titanium/blue,
@@ -55219,6 +55207,11 @@
 	},
 /turf/open/floor/wood,
 /area/commons/dorms)
+"ptw" = (
+/obj/effect/festive/street/sidewalke,
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/festive/cobblestone,
+/area/edina/street/primary/progress)
 "pwQ" = (
 /obj/structure/table/wood,
 /obj/item/phone,
@@ -55289,6 +55282,10 @@
 /obj/machinery/light/small,
 /turf/open/floor/plasteel/dark,
 /area/service/hydroponics)
+"pPZ" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/festive/alleyway,
+/area/science)
 "pQk" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -56245,6 +56242,10 @@
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/plasteel,
 /area/edina)
+"wjE" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/festive/sidewalk,
+/area/edina/street/primary/progress)
 "wlp" = (
 /obj/machinery/door/window/westleft{
 	dir = 2;
@@ -56570,6 +56571,18 @@
 	},
 /turf/open/floor/grass/snow/edina,
 /area/edina/backstreet/supply)
+"xOm" = (
+/obj/structure/table/wood/fancy/red,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/clothing/head/centhat{
+	armor = list("melee"=0,"bullet"=0,"laser"=0,"energy"=0,"bomb"=0,"bio"=0,"rad"=0);
+	desc = "A replica hat of a Central Commander's attire. It has a small tag on it saying, 'It's good to be emperor.'";
+	name = "Replica CentCom hat"
+	},
+/turf/open/floor/festive/wooden/wooden1,
+/area/command/corporate_showroom)
 "xQh" = (
 /obj/structure/table,
 /obj/machinery/reagentgrinder{
@@ -86380,7 +86393,7 @@ cuQ
 cuT
 cuV
 hya
-aKT
+pPZ
 pqA
 aLX
 aLX
@@ -87079,7 +87092,7 @@ aeJ
 afl
 afl
 ago
-agT
+nNk
 ahu
 afl
 afl
@@ -87593,7 +87606,7 @@ aeJ
 afl
 afl
 agq
-agV
+xOm
 ahw
 afl
 afl
@@ -88691,7 +88704,7 @@ aOl
 aQL
 aMG
 cuU
-bFg
+wjE
 bQz
 bTV
 bVm
@@ -99240,7 +99253,7 @@ ccI
 bFS
 bHi
 bIR
-bKt
+ooy
 aqp
 aqp
 bFS
@@ -100723,7 +100736,7 @@ aoR
 aLE
 anQ
 anl
-baX
+dny
 arE
 asS
 atG
@@ -104140,7 +104153,7 @@ bWF
 bWH
 bWH
 cdK
-cbt
+hGn
 bTM
 bKV
 bWy
@@ -105914,7 +105927,7 @@ bAF
 bAF
 bAF
 bAF
-bAF
+hVw
 bAF
 bWE
 bFg
@@ -106166,7 +106179,7 @@ aPA
 aQj
 bAJ
 bGa
-bKZ
+ptw
 bAJ
 bAJ
 bAJ
@@ -107201,7 +107214,7 @@ bAF
 bAF
 bAF
 bAF
-bAF
+hVw
 bFg
 ccD
 bzs
@@ -107712,7 +107725,7 @@ bBU
 bFg
 bAF
 bAF
-bAF
+hVw
 bAF
 bAF
 bAF

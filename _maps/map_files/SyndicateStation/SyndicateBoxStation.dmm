@@ -38700,6 +38700,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
 	},
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "bUv" = (
@@ -41781,6 +41782,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
 	},
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
 "ccq" = (
@@ -46505,6 +46507,7 @@
 /area/maintenance/disposal/incinerator)
 "cqv" = (
 /obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/landmark/start/stowaway,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "cqw" = (
@@ -52217,6 +52220,14 @@
 /obj/structure/alien/weeds,
 /turf/open/floor/mineral/plastitanium,
 /area/commons/dorms)
+"eYX" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "eZa" = (
 /obj/effect/landmark/start/paramedic,
 /turf/open/floor/mineral/plastitanium,
@@ -52983,6 +52994,18 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space/nearstation)
+"fSu" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port/aft)
 "fSO" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /obj/machinery/atmospherics/pipe/simple/orange/visible{
@@ -54460,6 +54483,10 @@
 /obj/effect/turf_decal/tile/green,
 /turf/open/floor/mineral/plastitanium,
 /area/hallway/primary/starboard)
+"ivb" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "ivD" = (
 /turf/open/floor/plating,
 /area/space)
@@ -55501,6 +55528,10 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/engineering/atmos)
+"jZP" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "jZT" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -62943,6 +62974,12 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
+"vgM" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/fore/secondary)
 "vhy" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -64668,6 +64705,10 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/security/brig)
+"xHS" = (
+/obj/effect/landmark/start/stowaway,
+/turf/open/floor/plating,
+/area/maintenance/port/aft)
 "xJC" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 10
@@ -84646,7 +84687,7 @@ fmJ
 ygb
 kiW
 qlV
-amC
+ivb
 ntt
 nBI
 qlV
@@ -85750,7 +85791,7 @@ cqn
 cAh
 chT
 bHE
-bHE
+xHS
 ckv
 bHE
 bCq
@@ -86764,7 +86805,7 @@ bRg
 bCq
 bHE
 bVG
-bHE
+xHS
 bHE
 bCq
 mqZ
@@ -89580,7 +89621,7 @@ bCn
 bGq
 bGq
 bGq
-rGq
+fSu
 bLw
 bGq
 bGq
@@ -89603,7 +89644,7 @@ bVI
 bVI
 aJq
 xgk
-bHE
+xHS
 kEm
 bHE
 bHE
@@ -99282,7 +99323,7 @@ ahT
 ahT
 ahT
 ahT
-ahT
+vgM
 ahT
 alL
 ahT
@@ -106489,7 +106530,7 @@ apB
 aqx
 art
 anf
-anf
+jZP
 auF
 apC
 awH
@@ -110092,7 +110133,7 @@ aFn
 aBB
 awM
 ayg
-ayg
+eYX
 ayg
 ayg
 aCl

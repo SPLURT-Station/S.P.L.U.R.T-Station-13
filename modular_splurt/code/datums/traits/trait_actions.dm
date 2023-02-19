@@ -906,10 +906,31 @@
 			if(!isturf(H.loc))
 				return 0
 			var/obj/structure/statue/gargoyle/S = new(H.loc, H)
-			S.name = "statue of [H.name]"
+
+			// Define statue color
+			var/newcolor
+
+			// Check for blessed blood
+			if(HAS_TRAIT(H, TRAIT_BLESSED_BLOOD))
+				// Set name
+				S.name = "gilded statue of [H.name]"
+
+				// Set color
+				newcolor = list(rgb(255,215,0), rgb(211,211,211), rgb(66,59,24), rgb(0,0,0))
+				
+				// Check for blessed blood glow trait
+				if(HAS_TRAIT(H, TRAIT_BLESSED_GLOWING))
+					// Add holy glow
+					S.set_light(2, 2, LIGHT_COLOR_HOLY_MAGIC)
+					
+					// Update description
+					S.desc = "A brilliantly radiant statue of [H.name], which is overflowing with divine power!"
+			else
+				S.name = "statue of [H.name]"
+				newcolor = list(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
+
 			H.bleedsuppress = 1
 			S.copy_overlays(H)
-			var/newcolor = list(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
 			S.add_atom_colour(newcolor, FIXED_COLOUR_PRIORITY)
 			current = S
 			T.transformed = 1

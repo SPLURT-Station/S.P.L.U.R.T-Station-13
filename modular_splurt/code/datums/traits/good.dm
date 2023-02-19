@@ -165,3 +165,197 @@
 	value = 1
 	var/mood_category ="cloth_eaten"
 	mob_trait = TRAIT_CLOTH_EATER
+
+/datum/quirk/blessed_blood
+	name = "Blessed Blood"
+	desc = "You have been fortified against the dark arts, and made pure by something greater yourself. Demonic forces cannot touch you, and holy ones will favor you. A divine halo will hover over you at all times to show your purity. You could gain even more than that, if you have the right quirks."
+	value = 1
+	mob_trait = TRAIT_BLESSED_BLOOD
+	gain_text = span_notice("A divine light smiles down upon you.")
+	lose_text = span_notice("You have forsaken the great gods...")
+	medical_record_text = "Patient emits a measurable amount of unidentified radiation. Consult a chaplain for advice."
+
+	// Halo overlay effect
+	var/mutable_appearance/quirk_halo
+	//var/mutable_appearance/quirk_halo_emi
+
+	// Holy glow overlay effect
+	var/mutable_appearance/quirk_glow
+
+	// Emitted light effect
+	var/quirk_light
+
+/datum/quirk/blessed_blood/add()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Give holy trait
+	ADD_TRAIT(quirk_mob, TRAIT_HOLY, "qurk_blessed_blood")
+
+/datum/quirk/blessed_blood/post_add()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Define amount of holy points
+	var/holy_points
+
+	// Define deity name
+	var/deity_name = DEFAULT_DEITY
+
+	// Check for custom name
+	if(quirk_holder.client && quirk_holder.client.prefs.custom_names["deity"])
+		deity_name = quirk_holder.client.prefs.custom_names["deity"]
+
+	// Checks to add holy points
+
+	// Check for holy mind (Chaplain)
+	if(quirk_mob.mind && quirk_mob.mind.isholy)
+		// Add points
+		holy_points++
+
+	// Check for spiritual
+	if(HAS_TRAIT(quirk_mob, TRAIT_SPIRITUAL))
+		// Add points
+		holy_points++
+
+	// Check for pacifist and forced pacifism
+	if(HAS_TRAIT(quirk_mob, TRAIT_PACIFISM) &!jobban_isbanned(quirk_mob, "pacifist"))
+		// Add points
+		holy_points++
+
+	// Check for friendly empath
+	// This is a dual check to prevent getting wings too easily
+	if(HAS_TRAIT(quirk_mob, TRAIT_FRIENDLY) && HAS_TRAIT(quirk_mob, TRAIT_EMPATH))
+		// Add points
+		holy_points++
+
+	// Checks for redeeming holy points
+	// These effects stack
+
+	// Play holy noise
+	playsound(get_turf(quirk_mob), 'sound/effects/pray.ogg', 50, 0)
+
+	// Define blessing level messages
+	// Default message based on Isaiah 29:13 and Hebrews 11:6
+	var/message_points_level = "You honor honor [deity_name] with your words, but your heart remains distant. Your faith is nothing but corporate-made rules learned by rote. Without faith, it is impossible to please [deity_name]."
+
+	// Holy points of 0+
+	// Grants a halo
+	if(holy_points >= HOLY_LEVEL_HALO)
+		// Set halo overlay appearance
+		quirk_halo = quirk_halo || mutable_appearance('modular_splurt/icons/obj/clothing/head.dmi', "halo_gold", ABOVE_MOB_LAYER)
+		//quirk_halo_emi = quirk_halo_emi || emissive_appearance('modular_splurt/icons/obj/clothing/head.dmi', "halo_gold_emi", ABOVE_MOB_LAYER)
+
+		// Set halo offset
+		quirk_halo.pixel_y += 4
+		//quirk_halo_emi.pixel_y += 4
+
+		// Add halo to user
+		quirk_mob.add_overlay(quirk_halo)
+		//quirk_mob.add_overlay(quirk_halo_emi)
+
+	// Holy points of 1+
+	// Grants cosmetic wings
+	if(holy_points >= HOLY_LEVEL_WINGS)
+		// Define user's current wing status (taken from flightpotion)
+		var/has_wings = (quirk_mob.dna.species.mutant_bodyparts["deco_wings"] && quirk_mob.dna.features["deco_wings"] != "None" || quirk_mob.dna.species.mutant_bodyparts["insect_wings"] && quirk_mob.dna.features["insect_wings"] != "None")
+
+		// Assign wings if none exist
+		if(!has_wings)
+			quirk_mob.dna.features["deco_wings"] = "Feathery"
+
+		// Update sprite
+		quirk_mob.update_body()
+
+		// Update message level
+		// Based on James 1:22
+		message_points_level = "Do not merely listen to the word, and so deceive yourself. Do as [deity_name] commands."
+
+	// Holy points of 2+
+	// Grants a light emitting glow effect
+	if(holy_points >= HOLY_LEVEL_GLOW)
+		// Set glow overlay appearance
+		quirk_glow = quirk_glow || mutable_appearance('icons/effects/genetics.dmi', "servitude", -MUTATIONS_LAYER)
+
+		// Add glow to user
+		quirk_mob.add_overlay(quirk_glow)
+
+		// Add light effect
+		quirk_light = quirk_mob.mob_light(_color = LIGHT_COLOR_HOLY_MAGIC, _range = 2)
+
+		// Update message level
+		// Based on Matthew 6:33 and James 5:16
+		message_points_level = "You sought first the kingdom of [deity_name] and its righteousness, and its blessings have been added to you. The prayer of a righteous person has great power as it is working."
+
+		// Add trait for glow
+		ADD_TRAIT(quirk_mob, TRAIT_BLESSED_GLOWING, "qurk_blessed_blood")
+
+	// Higher point values temporarily disabled
+	// Use the Divine Prayer Altar instead
+
+	if(holy_points >= HOLY_LEVEL_FLIGHT)
+		message_points_level = "Let the wicked crew forsake their way, and the unrighteous spessmen their thoughts; let them return to [deity_name], that compassion may be given, and [deity_name] will abundantly pardon."
+
+	if(holy_points >= HOLY_LEVEL_TOUCH)
+		message_points_level = "Truly, truly, you have heard the word of [deity_name] and believe They who sent you eternal life. Your kin will not come into judgment, but pass from death to life!"
+
+	/*
+	// Holy points of 3+
+	// Grants flight
+	if(holy_points >= HOLY_LEVEL_FLIGHT)
+		// Define user's existing functional wings (taken from flightpotion)
+		var/has_functional_wings = (quirk_mob.dna.species.mutant_bodyparts["wings"] != null)
+
+		// Check if user already has functional wings
+		if(!has_functional_wings)
+			// Give functional wings
+			quirk_mob.dna.species.GiveSpeciesFlight(quirk_mob, FALSE)
+
+		// Update message level
+		// Based on Isaiah 55:7
+		message_points_level = "Let the wicked crew forsake their way, and the unrighteous spessmen their thoughts; let them return to [deity_name], that compassion may be given, and [deity_name] will abundantly pardon."
+
+	// Holy points of 4+
+	// Grants a touch revival ability
+	if(holy_points >= HOLY_LEVEL_TOUCH)
+		// Add blessed touch spell
+		quirk_mob.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/blessed_hand(src))
+
+		// Update message level
+		// Based on John 5:24
+		message_points_level = "Truly, truly, you have heard the word of [deity_name] and believe They who sent you eternal life. Your kin will not come into judgment, but pass from death to life!"
+	*/
+
+	// Alert user of blessed status and missed synergies
+	to_chat(quirk_holder, span_boldnotice(message_points_level))
+
+/datum/quirk/blessed_blood/remove()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Remove holy traits
+	REMOVE_TRAIT(quirk_mob, TRAIT_HOLY, "qurk_blessed_blood")
+	REMOVE_TRAIT(quirk_mob, TRAIT_BLESSED_GLOWING, "qurk_blessed_blood")
+
+	// Remove overlays
+	quirk_holder.cut_overlay(quirk_halo)
+	//quirk_holder.cut_overlay(quirk_halo_emi)
+	quirk_holder.cut_overlay(quirk_glow)
+
+	// Remove light
+	if(quirk_light)
+		qdel(quirk_light)
+
+	// Remove blessed touch spell
+	quirk_mob.RemoveSpell(/obj/effect/proc_holder/spell/targeted/touch/blessed_hand)
+
+	// Define deity name
+	var/deity_name = DEFAULT_DEITY
+
+	// Check for custom name
+	if(quirk_holder.client && quirk_holder.client.prefs.custom_names["deity"])
+		deity_name = quirk_holder.client.prefs.custom_names["deity"]
+
+	// Display removal message
+	// Based on Titus 1:16
+	to_chat(quirk_holder, span_boldwarning("You claimed to know [deity_name], but by your actions you denied Them. You are detestable, disobedient, and unfit for doing anything good."))

@@ -8,3 +8,6 @@
 	allowed_limb_ids = null
 	override_bp_icon = 'modular_splurt/icons/mob/human_parts_greyscale.dmi'
 	eye_type = "shadekin"
+	
+	// Prevent quirks with this species
+	blacklisted_quirks = list(/datum/quirk/blessed_blood)

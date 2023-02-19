@@ -33,8 +33,47 @@
 		C.adjust_disgust(-2) // Negates the chapel's disgust effect
 		C.adjustStaminaLoss(1) // Mitigates the chapel's stamina effect
 
-/datum/reagent/water/holywater/on_mob_life(mob/living/carbon/M)
+/datum/reagent/water/holywater/on_mob_add(mob/living/carbon/M)
 	. = ..()
+
+	// Check for high level Blessed Blood
+	if(HAS_TRAIT(M,TRAIT_BLESSED_GLOWING))
+		// Alert user of holy water effect
+		to_chat(M, span_nicegreen("The holy water nourishes and energizes you!"))
+
+		// Add positive mood
+		SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "fav_food", /datum/mood_event/favorite_food)
+
+	// Check for low level Blessed Blood
+	else if(HAS_TRAIT(M,TRAIT_BLESSED_BLOOD))
+		// Alert user of holy water effect
+		to_chat(M, span_green("The holy water is nourishing, but you feel it could've done more..."))
+
+/datum/reagent/water/holywater/on_mob_life(mob/living/carbon/M)
+	// Check for high level Blessed Blood
+	if(HAS_TRAIT(M,TRAIT_BLESSED_GLOWING))
+		// Reduce disgust
+		M.adjust_disgust(-3)
+
+		// Restore stamina
+		M.adjustStaminaLoss(3)
+
+		// Reduce hunger and thirst
+		M.adjust_nutrition(3)
+		M.adjust_thirst(3)
+
+		// Negate all other holy water effects
+		return
+
+	// Return normally
+	. = ..()
+
+	// Check for low level Blessed Blood
+	if(HAS_TRAIT(M,TRAIT_BLESSED_BLOOD))
+		// Reduce hunger and thirst
+		M.adjust_nutrition(1)
+		M.adjust_thirst(1)
+
 	// Makes holy water disgusting and hungering for bloodfledges
 	// Directly antithetic to the effects of blood
 	if(HAS_TRAIT(M,TRAIT_BLOODFLEDGE))

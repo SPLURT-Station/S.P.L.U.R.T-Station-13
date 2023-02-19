@@ -1037,6 +1037,35 @@ blockquote.brass {
   }
 }
 
+.blessedphrase {
+  color: #ffa700;
+  font-weight: bold;
+  animation: blessedcolor 1500ms infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blessedcolor {
+  0% {
+    color: #e69600;
+  }
+
+  25% {
+    color: #ffa700;
+  }
+
+  50% {
+    color: #ffb01a;
+  }
+
+  75% {
+    color: #ffb933;
+  }
+
+  100% {
+    color: #ffc14d;
+  }
+}
+
 .velvet	{ /* cit specific, used by MKU */
   color: #660015;
   font-weight: bold;

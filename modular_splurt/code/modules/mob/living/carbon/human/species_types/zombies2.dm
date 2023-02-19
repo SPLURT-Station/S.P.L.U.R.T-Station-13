@@ -33,6 +33,9 @@
 
 	species_category = SPECIES_CATEGORY_UNDEAD
 
+	// Prevent quirks with this species
+	blacklisted_quirks = list(/datum/quirk/blessed_blood)
+
 /datum/species/mammal/undead/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	. = ..()
 	C.set_screwyhud(SCREWYHUD_HEALTHY)
@@ -80,6 +83,9 @@
 	mutanttongue = /obj/item/organ/tongue/zombie
 
 	species_category = SPECIES_CATEGORY_UNDEAD
+
+	// Prevent quirks with this species
+	blacklisted_quirks = list(/datum/quirk/blessed_blood)
 
 /datum/species/insect/undead/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	C.set_screwyhud(SCREWYHUD_HEALTHY)
@@ -131,6 +137,9 @@
 	mutanttongue = /obj/item/organ/tongue/zombie
 
 	species_category = SPECIES_CATEGORY_UNDEAD
+
+	// Prevent quirks with this species
+	blacklisted_quirks = list(/datum/quirk/blessed_blood)
 
 /datum/species/lizard/undead/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	C.set_screwyhud(SCREWYHUD_HEALTHY)

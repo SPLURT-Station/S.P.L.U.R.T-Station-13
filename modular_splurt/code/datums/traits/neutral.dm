@@ -678,3 +678,179 @@
 	var/obj/item/clothing/mask/gas/cosmetic/gasmask = new(get_turf(quirk_holder)) // Uses a custom gas mask
 	H.equip_to_slot(gasmask, ITEM_SLOT_MASK)
 	H.regenerate_icons()
+
+/datum/quirk/zombie
+	name = "Postmortem Flesh"
+	desc = "You've been freed from the mortal coil, and passed on to become a zombie! Your body rapidly regenerates, and can't be put into critical condition. However, you won't be able to cheat death a second time..."
+	value = 2
+	medical_record_text = "Scans indicate the patient to be deceased."
+	mob_trait = TRAIT_UNDEAD_QUIRK
+	gain_text = span_notice("Your flesh rots and burns as it clings to life.")
+	lose_text = span_warning("The mortal coil binds you once again.")
+	processing_quirk = FALSE // Don't process by default
+
+	// Amount of damage to heal
+	var/regen_amount = -2
+
+	// Time in ticks after taking damage before regenerating
+	var/regen_delay = 60
+
+	// Cooldown before regeneration can occur
+	var/regen_cooldown
+
+/datum/quirk/zombie/add()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Add quirk traits, based on zombie race
+	ADD_TRAIT(quirk_mob,TRAIT_EASYDISMEMBER,TRAIT_UNDEAD_QUIRK)
+	ADD_TRAIT(quirk_mob,TRAIT_LIMBATTACHMENT,TRAIT_UNDEAD_QUIRK)
+	ADD_TRAIT(quirk_mob,TRAIT_NOBREATH,TRAIT_UNDEAD_QUIRK)
+	ADD_TRAIT(quirk_mob,TRAIT_FAKEDEATH,TRAIT_UNDEAD_QUIRK)
+	ADD_TRAIT(quirk_mob,TRAIT_NOSOFTCRIT,TRAIT_UNDEAD_QUIRK)
+	ADD_TRAIT(quirk_mob,TRAIT_NOHARDCRIT,TRAIT_UNDEAD_QUIRK)
+	ADD_TRAIT(quirk_mob,TRAIT_NOCLONE,TRAIT_UNDEAD_QUIRK)
+	ADD_TRAIT(quirk_mob,TRAIT_NOMARROW,TRAIT_UNDEAD_QUIRK)
+	ADD_TRAIT(quirk_mob,TRAIT_COLDBLOODED,TRAIT_UNDEAD_QUIRK)
+
+	// Check for halloween
+	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
+		// Prevent dying by traditional means
+		ADD_TRAIT(quirk_mob, TRAIT_NODEATH,TRAIT_UNDEAD_QUIRK)
+
+		// Double regeneration rate
+		regen_amount *= 3
+
+		// Half cooldown time
+		regen_delay *= 0.5
+
+	// Not halloween
+	else
+		// Add speed reduction
+		quirk_mob.add_movespeed_modifier(/datum/movespeed_modifier/undead_quirk_speedmod, TRUE)
+
+	// Add undead biotype
+	quirk_mob.mob_biotypes |= MOB_UNDEAD
+
+	// Set screwy health HUD
+	quirk_mob.set_screwyhud(SCREWYHUD_HEALTHY)
+
+	// Add register signal for taking damage
+	RegisterSignal(quirk_holder, COMSIG_MOB_APPLY_DAMAGE, .proc/set_damage_cooldown, TRUE)
+
+/datum/quirk/zombie/post_add()
+	// Check for halloween
+	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
+		// Display notice message
+		to_chat(quirk_holder, span_alert("The spooky season has empowered you with the ability to avoid death forever! Nothing can stop you now!"))
+
+/datum/quirk/zombie/on_spawn()
+	// Get organ target: Infection
+	var/obj/item/organ/undead_infection/organ_infection = quirk_holder.getorganslot(ORGAN_SLOT_ZOMBIE)
+
+	// Check if zombie organ exists
+	if(!organ_infection)
+		// Create and insert organ
+		organ_infection = new()
+		organ_infection.Insert(quirk_holder)
+
+	// Get organ target: Tongue
+	var/obj/item/organ/tongue/old_tongue = quirk_holder.getorganslot(ORGAN_SLOT_TONGUE)
+	var/obj/item/organ/tongue/zombie/new_tongue = new
+
+	// Replace tongue
+	qdel(old_tongue)
+	new_tongue.Insert(quirk_holder)
+
+/datum/quirk/zombie/remove()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Check if quirk mob still exists
+	if(!istype(quirk_mob))
+		return
+
+	// Define infection organ
+	var/obj/item/organ/undead_infection/organ_infection = quirk_mob.getorganslot(ORGAN_SLOT_ZOMBIE)
+
+	// Check if zombie organ exists
+	if(organ_infection)
+		// Remove organ
+		organ_infection.Remove()
+
+	// Remove quirk traits
+	REMOVE_TRAIT(quirk_mob,TRAIT_EASYDISMEMBER,TRAIT_UNDEAD_QUIRK)
+	REMOVE_TRAIT(quirk_mob,TRAIT_LIMBATTACHMENT,TRAIT_UNDEAD_QUIRK)
+	REMOVE_TRAIT(quirk_mob,TRAIT_NOBREATH,TRAIT_UNDEAD_QUIRK)
+	REMOVE_TRAIT(quirk_mob,TRAIT_FAKEDEATH,TRAIT_UNDEAD_QUIRK)
+	REMOVE_TRAIT(quirk_mob,TRAIT_NOSOFTCRIT,TRAIT_UNDEAD_QUIRK)
+	REMOVE_TRAIT(quirk_mob,TRAIT_NOMARROW,TRAIT_UNDEAD_QUIRK)
+	REMOVE_TRAIT(quirk_mob,TRAIT_NOCLONE,TRAIT_UNDEAD_QUIRK)
+	REMOVE_TRAIT(quirk_mob,TRAIT_NODEATH,TRAIT_UNDEAD_QUIRK)
+	REMOVE_TRAIT(quirk_mob,TRAIT_COLDBLOODED,TRAIT_UNDEAD_QUIRK)
+
+	// Remove undead biotype
+	quirk_mob.mob_biotypes -= MOB_UNDEAD
+
+	// Remove speed reduction
+	quirk_mob.remove_movespeed_modifier(/datum/movespeed_modifier/undead_quirk_speedmod, TRUE)
+
+	// Remove screwy health HUD
+	quirk_mob.set_screwyhud(SCREWYHUD_NONE)
+
+	// Remove signal for taking damage
+	UnregisterSignal(quirk_holder, COMSIG_MOB_APPLY_DAMAGE)
+
+/datum/quirk/zombie/on_process()
+	// Check cooldown time
+	if(regen_cooldown > world.time)
+		return
+
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Check if quick holder is damaged
+	if(quirk_mob.health >= quirk_mob.maxHealth)
+		// Stop processing and return
+		STOP_PROCESSING(SSquirks, src)
+		return
+
+	// Check for sufficient blood
+	if(quirk_mob.blood_volume <= BLOOD_VOLUME_SURVIVE)
+		return
+
+	// Define initial health
+	var/health_start = quirk_mob.health
+
+	// Check for brute damage
+	if(quirk_mob.getBruteLoss())
+		// Remove brute damage
+		quirk_mob.adjustBruteLoss(regen_amount)
+
+	// Check for burn damage
+	if(quirk_mob.getFireLoss())
+		// Remove burn damage
+		quirk_mob.adjustFireLoss(regen_amount)
+
+	// Check for toxin damage
+	if(quirk_mob.getToxLoss())
+		// Remove toxin damage
+		quirk_mob.adjustToxLoss(regen_amount)
+
+	// Check for cellular damage
+	if(quirk_mob.getCloneLoss())
+		// Remove toxin damage
+		quirk_mob.adjustCloneLoss(regen_amount)
+
+	// Remove blood as compensation for healing
+	// Value is determined by amount healed
+	quirk_mob.blood_volume -= (quirk_mob.health - health_start)
+
+/datum/quirk/zombie/proc/set_damage_cooldown()
+	SIGNAL_HANDLER
+
+	// Set cooldown time
+	regen_cooldown = world.time + regen_delay
+
+	// Start processing
+	START_PROCESSING(SSquirks, src)

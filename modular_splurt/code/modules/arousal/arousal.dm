@@ -140,9 +140,6 @@
     var/percentage = ((get_lust() / get_lust_tolerance()) * 100)
     return percentage
 
-/mob/living/carbon/human/proc/update_arousal()
-	update_arousal_hud()
-
 /mob/living/carbon/human/proc/update_arousal_hud()
 	if(!client || !hud_used)
 		return FALSE
@@ -155,3 +152,11 @@
 				arousal_state = "arousal[arousal_rounded]"
 			hud_used.arousal.icon_state = arousal_state
 			return TRUE
+
+/mob/living/carbon/human/adjust_arousal()
+	..()
+	update_arousal_hud()
+
+/mob/living/carbon/human/mob_climax()
+	..()
+	update_arousal_hud()

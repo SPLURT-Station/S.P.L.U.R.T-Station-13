@@ -19,7 +19,6 @@
 		"AI",
 		"Assistant",
 		"Prisoner",
-		"Stowaway",
 		"Cyborg",
 		"Captain",
 		"Head of Personnel",

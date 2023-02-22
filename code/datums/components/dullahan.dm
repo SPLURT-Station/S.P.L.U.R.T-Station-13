@@ -114,17 +114,17 @@
 	cut_overlays()
 
 /obj/item/dullahan_head/proc/add_head_overlay(var/overlay)
-	LAZYADD(overlays_standing, overlay) //SPLURT edit
+	overlays_standing += overlay
 	add_overlay(overlay)
 
 /obj/item/dullahan_head/update_appearance()
 	if(owner && !HAS_TRAIT(owner, TRAIT_HUMAN_NO_RENDER))
-		//remove_head_overlays() //SPLURT edit
+		remove_head_overlays()
 		// to do this without duplicating large amounts of code
 		// it's best to regenerate the head, then remove it once we have the overlays we want
 		owner.regenerate_limb(BODY_ZONE_HEAD, TRUE) // don't heal them
-		//owner.cut_overlays() //SPLURT edit
-		//owner.regenerate_icons(TRUE) // yes i know it's expensive but do you want me to rewrite our entire overlay system, also block recursive calls here by passing in TRUE (it wont go back to call update_appearance this way) //SPLURT edit
+		owner.cut_overlays()
+		owner.regenerate_icons(TRUE) // yes i know it's expensive but do you want me to rewrite our entire overlay system, also block recursive calls here by passing in TRUE (it wont go back to call update_appearance this way)
 		var/obj/item/bodypart/head/head = owner.get_bodypart(BODY_ZONE_HEAD)
 		if(head)
 			add_overlay(head.get_limb_icon(FALSE, TRUE, TRUE))
@@ -154,8 +154,12 @@
 /datum/action/item_action/organ_action/dullahan/Trigger()
 	. = ..()
 	var/mob/living/carbon/human/H = owner
-
-	toggle_monochromacy() //SPLURT edit
+	var/obj/item/organ/eyes/E = owner.getorganslot(ORGAN_SLOT_EYES)
+	if(E)
+		if(E.tint)
+			E.tint = 0
+		else
+			E.tint = INFINITY
 
 	var/datum/component/dullahan/D = H.GetComponent(/datum/component/dullahan)
 	if(D)
@@ -167,7 +171,8 @@
 		return .
 	var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
 	if(eyes)
-		if(eyes.monochromacy_on) //SPLURT edit
+		H.update_tint()
+		if(eyes.tint)
 			H.reset_perspective(H)
 		else
 			H.reset_perspective(dullahan_head)

@@ -623,7 +623,7 @@
 	name = "ORV uniform, assistant"
 	path = /obj/item/clothing/under/trek/orv
 	subcategory = LOADOUT_SUBCATEGORY_UNIFORM_JOBS
-	restricted_roles = list("Assistant", "Stowaway")
+	restricted_roles = list("Assistant")
 
 /datum/gear/uniform/orvsrv
 	name = "ORV uniform, other"

@@ -3,8 +3,7 @@
 	desc = "A tiny gold ring, sized to wrap around a finger."
 	gender = NEUTER
 	w_class = WEIGHT_CLASS_TINY
-	slot_flags = ITEM_SLOT_ACCESSORY | ITEM_SLOT_GLOVES
-	slot_equipment_priority = ITEM_SLOT_ACCESSORY | ITEM_SLOT_GLOVES | ITEM_SLOT_BACKPACK
+	slot_flags = ITEM_SLOT_GLOVES
 	icon = 'icons/obj/ring.dmi'
 	mob_overlay_icon = 'icons/mob/clothing/hands.dmi'
 	icon_state = "ringgold"

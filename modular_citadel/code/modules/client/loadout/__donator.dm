@@ -54,10 +54,9 @@
 
 /datum/gear/donator/kiaramedal
 	name = "Insignia of Steele"
-	slot = ITEM_SLOT_ACCESSORY
+	slot = ITEM_SLOT_BACKPACK
 	path = /obj/item/clothing/accessory/medal/steele
 	ckeywhitelist = list("inferno707")
-	handle_post_equip = TRUE
 
 /datum/gear/donator/hheart
 	name = "The Hollow Heart"

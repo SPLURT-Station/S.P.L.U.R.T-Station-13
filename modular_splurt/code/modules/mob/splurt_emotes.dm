@@ -758,19 +758,6 @@
 	user.nextsoundemote = world.time + 7
 	playsound(user, 'modular_splurt/sound/voice/weh_s.ogg', 50, 1, -1)
 
-/datum/emote/living/waa
-	key = "waa"
-	key_third_person = "waas"
-	message = "let out a waa!"
-
-/datum/emote/living/waa/run_emote(mob/user, params, type_override, intentional)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 10
-	playsound(user, 'modular_splurt/sound/voice/waa.ogg', 50, 1, -1)
-
 /datum/emote/living/mlem
 	key = "mlem"
 	key_third_person = "mlems"

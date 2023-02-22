@@ -167,8 +167,7 @@
 			if(!computer || !authenticated)
 				return
 			if(minor)
-				var/assign = GetJobName(target_id_card)
-				if(!(assign in head_subordinates) && assign != "Assistant")
+				if(!(target_id_card.assignment in head_subordinates) && target_id_card.assignment != "Assistant")
 					return
 
 			target_id_card.access -= get_all_centcom_access() + get_all_accesses()

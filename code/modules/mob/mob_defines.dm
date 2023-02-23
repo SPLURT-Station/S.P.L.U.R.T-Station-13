@@ -55,8 +55,6 @@
 	var/resting = 0			//Carbon
 	var/lying = 0
 	var/lying_prev = 0
-
-	/// Whether the mob is pixel shifted or not
 	var/is_shifted = FALSE
 
 	/// List of movement speed modifiers applying to this mob

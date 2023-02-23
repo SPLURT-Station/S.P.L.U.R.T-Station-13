@@ -45,14 +45,6 @@
 	if(mob.force_moving)
 		return FALSE
 
-	// Sandstorm Edit
-	if(mob.shifting)
-		mob.pixel_shift(direction)
-		return FALSE
-	else if(mob.is_shifted)
-		mob.unpixel_shift()
-	//
-
 	var/mob/living/L = mob  //Already checked for isliving earlier
 	if(L.incorporeal_move)	//Move though walls
 		Process_Incorpmove(direction)

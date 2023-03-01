@@ -12,10 +12,13 @@
 	if(combat_flags & COMBAT_FLAG_ACTIVE_BLOCKING)
 		animate(src, pixel_x = get_standard_pixel_x_offset(), pixel_y = get_standard_pixel_y_offset(), time = 2.5, flags = ANIMATION_END_NOW)
 	else if(moved)
-		unpixel_shift()
+		if(is_shifted)
+			is_shifted = FALSE
+			pixel_x = get_standard_pixel_x_offset(lying)
+			pixel_y = get_standard_pixel_y_offset(lying)
 		if(is_tilted)
 			transform = transform.Turn(-is_tilted)
-			is_tilted = FALSE
+			is_tilted = 0
 
 /mob/living/proc/update_density()
 	density = !lying && !HAS_TRAIT(src, TRAIT_LIVING_NO_DENSITY)

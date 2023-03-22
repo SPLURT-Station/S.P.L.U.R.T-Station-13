@@ -1037,7 +1037,7 @@
 
 	if(incapacitated())
 		return
-	switch(alert("Would you like to enter cryo? This will ghost you. Remember to AHELP before cryoing out of important roles, even with no admins online.",,"Yes.","No."))
+	switch(alert("Would you like to enter cryo? This will ghost you.",,"Yes.","No."))
 		if("Yes.")
 			src.ghostize(FALSE, penalize = TRUE)
 			var/announce_rank = "Artificial Intelligence,"

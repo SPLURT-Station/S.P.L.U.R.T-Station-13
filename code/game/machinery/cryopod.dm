@@ -1,4 +1,4 @@
-#define AHELP_FIRST_MESSAGE "Please adminhelp before leaving the round, even if there are no administrators online!"
+#define AHELP_FIRST_MESSAGE "please let the admins know via ahelp that you are leaving the round, even if none are online."
 
 /*
  * Cryogenic refrigeration unit. Basically a despawner.
@@ -284,20 +284,25 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		var/addendum = ""
 		if(target.mind.assigned_role in GLOB.command_positions)
 			LAZYADD(caught_string, "Head of Staff")
-			addendum = " Be sure to put your locker items back into your locker!"
+			addendum = "be sure to put your locker items back into your locker."
 		if(iscultist(target) || is_servant_of_ratvar(target))
 			LAZYADD(caught_string, "Cultist")
+			addendum = AHELP_FIRST_MESSAGE
 		if(is_devil(target))
 			LAZYADD(caught_string, "Devil")
+			addendum = AHELP_FIRST_MESSAGE
 		if(target.mind.has_antag_datum(/datum/antagonist/gang))
 			LAZYADD(caught_string, "Gangster")
+			addendum = AHELP_FIRST_MESSAGE
 		if(target.mind.has_antag_datum(/datum/antagonist/rev/head))
 			LAZYADD(caught_string, "Head Revolutionary")
+			addendum = AHELP_FIRST_MESSAGE
 		if(target.mind.has_antag_datum(/datum/antagonist/rev))
 			LAZYADD(caught_string, "Revolutionary")
+			addendum = AHELP_FIRST_MESSAGE
 
 		if(caught_string)
-			tgui_alert(target, "You're a [english_list(caught_string)]! [AHELP_FIRST_MESSAGE][addendum]")
+			tgui_alert(target, "You're a [english_list(caught_string)], [addendum]")
 			target.client.cryo_warned = world.time
 
 	if(!istype(target) || !can_interact(user) || !target.Adjacent(user) || !ismob(target) || isanimal(target) || !istype(user.loc, /turf) || target.buckled)

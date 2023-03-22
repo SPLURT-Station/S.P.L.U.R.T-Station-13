@@ -49,6 +49,11 @@
 		else
 			..()
 
+/obj/item/grenade/chem_grenade/tool_act(mob/living/user, obj/item/I, tool_behaviour)
+	if (stage == READY)
+		..(user, I, tool_behaviour)
+	else
+		..(user, I, null)
 
 /obj/item/grenade/chem_grenade/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)

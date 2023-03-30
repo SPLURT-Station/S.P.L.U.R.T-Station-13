@@ -159,7 +159,7 @@
 			if(nanites && nanites.cloud_id != cloud_id)
 				change_cloud(attacker)
 			return
-		if(L.mob_biotypes & (MOB_ORGANIC | MOB_UNDEAD | MOB_ROBOTIC))
+		if(L.mob_biotypes & (MOB_ORGANIC | MOB_UNDEAD | MOB_ROBOTIC) & (MOB_HUMANOID)) //Allows synths to get nanites but doesn't allow cyborgs / pAIs to get nanites.
 			inject_nanites(attacker)
 
 /obj/machinery/public_nanite_chamber/open_machine()

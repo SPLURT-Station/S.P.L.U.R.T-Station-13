@@ -42,7 +42,7 @@
 
 	var/mob/living/L = chamber.occupant
 
-	if(!(L.mob_biotypes & (MOB_ORGANIC|MOB_UNDEAD|MOB_ROBOTIC) & (MOB_HUMANOID))) //Allows synths to get nanites but doesn't allow cyborgs / pAIs to get nanites.
+	if(!(L.mob_biotypes & ((MOB_ORGANIC || MOB_UNDEAD || MOB_ROBOTIC) && MOB_HUMANOID))) //Allows synths to get nanites but doesn't allow cyborgs / pAIs to get nanites.
 		data["status_msg"] = "Occupant not compatible with nanites."
 		return data
 

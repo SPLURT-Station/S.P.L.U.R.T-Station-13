@@ -34,6 +34,7 @@
 	var/lastlusttime = 0
 	var/lust = 0
 	var/multiorgasms = 1
+	var/hair_trigger_mul = 1
 	COOLDOWN_DECLARE(refractory_period)
 	COOLDOWN_DECLARE(last_interaction_time)
 	var/datum/interaction/lewd/last_lewd_datum	//Recording our last lewd datum allows us to do stuff like custom cum messages.
@@ -65,10 +66,11 @@
 
 /mob/living/proc/add_lust(add)
 	var/cur = get_lust() //GetLust handles per-time lust loss
-	if((cur + add) < 0) //in case we retract lust
+	if((cur + add) < 0) //in case we retract lust, doesn't have to account for hair trigger, since we aren't multiplying with a negative
 		lust = 0
 	else
-		lust = cur + add
+		lust = cur + add * hair_trigger_mul
+
 
 
 /mob/living/proc/get_lust()

@@ -869,6 +869,6 @@
 	if (findtext(lowertext(hearing_args[HEARING_RAW_MESSAGE]), sexywords) && sexword_delay < world.time)
 		H.handle_post_sex(5, null, null)
 		sexword_delay = world.time + 10 SECONDS
-		sleep(2) // this is just for aesthetics so the notification is placed after the message in chatbox, if it causes issues feel free to remove :dawgdoin:
+		spawn(2) // this is just for aesthetics so the notification is placed after the message in chatbox, if it causes issues feel free to remove :dawgdoin:
 		to_chat(H, span_lewd(pick(nnngh)))
 

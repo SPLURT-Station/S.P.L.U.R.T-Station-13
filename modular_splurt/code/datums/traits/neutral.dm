@@ -871,3 +871,4 @@
 		sexword_delay = world.time + 10 SECONDS
 		sleep(2) // this is just for aesthetics so the notification is placed after the message in chatbox, if it causes issues feel free to remove :dawgdoin:
 		to_chat(H, span_lewd(pick(nnngh)))
+

@@ -1888,6 +1888,8 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 	var/same_dir = (target.dir & user.dir)
 	var/aim_for_groin  = user.zone_selected == "groin"
 	var/target_aiming_for_groin = target.zone_selected == "groin"
+	var/aim_for_head = user.zone_selected == "head" // Splurt Edit for bonks
+	var/target_aiming_for_head = target.zone_selected == "head" // Splurt Edit for bonks
 
 	if(target.check_martial_melee_block()) //END EDIT
 		target.visible_message("<span class='warning'>[target] blocks [user]'s disarm attempt!</span>", target = user, \
@@ -1945,6 +1947,19 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 			"<span class='notice'>[user] slaps your ass! </span>",\
 			"You hear a slap.", target = user, target_message = "<span class='notice'>You slap [user == target ? "your own" : "\the [target]'s"] ass! </span>")
 
+		return FALSE
+
+//BONK chucklehead! - A SPLURT change.
+	else if(aim_for_head && ( target_on_help || target_restrained || target_aiming_for_head))
+		if(!user.UseStaminaBuffer(3, warn = TRUE))
+			return
+		playsound(target.loc, 'sound/weapons/klonk.ogg', 50, 1, -1)
+
+		target.visible_message(\
+			span_danger("\The [user] bonks [user == target ? "[user.p_them()]self" : "\the [target]"] on the head!"),\
+			span_notice("[user] bonks you on the head! "),\
+			"You hear a bonk.", target = user, target_message = span_notice("You bonk [user == target ? "yourself" : "\the [target]"] on the head! "))
+		user.do_attack_animation(target, ATTACK_EFFECT_FACE_SLAP)
 		return FALSE
 
 	else

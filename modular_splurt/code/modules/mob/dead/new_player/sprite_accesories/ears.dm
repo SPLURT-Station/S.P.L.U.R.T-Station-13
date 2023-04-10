@@ -121,9 +121,3 @@
 	icon_state = "pointy"
 	color_src = MUTCOLORS
 	icon = 'modular_splurt/icons/mob/mam_ears.dmi'
-
-/datum/sprite_accessory/ears/mam_ears/jackal
-	name = "Jackal"
-	icon_state = "jackal"
-	matrixed_sections = MATRIX_RED_BLUE
-	icon = 'modular_splurt/icons/mob/mam_ears.dmi'

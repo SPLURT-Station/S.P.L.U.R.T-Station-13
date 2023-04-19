@@ -527,7 +527,7 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING
 
 /datum/design/pHmeter
-	name = "Chemical Analyser"
+	name = "Chemical Analyzer"
 	desc = "A a electrode attached to a small circuit box that will tell you the pH of a solution."
 	id   = "pHmeter"
 	build_type = PROTOLATHE

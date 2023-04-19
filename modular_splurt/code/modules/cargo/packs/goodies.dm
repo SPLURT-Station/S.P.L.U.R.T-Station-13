@@ -111,7 +111,7 @@
 	contains = list( /obj/item/gunpart/riflebrush2stock, /obj/item/gunpart/riflebrush2barrel, /obj/item/ammo_box/g45l)
 
 /datum/supply_pack/goody/revolver45_single
-	name = ".45 Reolver Single-Pack"
+	name = ".45 Revolver Single-Pack"
 	desc = "Contains a parts kit to assemble a 45 Revolver Gun. Comes with a box of .45 Long"
 	cost = 800
 	contains = list( /obj/item/gunpart/revolver45cylinder, /obj/item/gunpart/revolver45frame, /obj/item/ammo_box/g45l)

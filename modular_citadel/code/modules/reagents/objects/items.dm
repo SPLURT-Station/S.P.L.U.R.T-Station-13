@@ -110,7 +110,7 @@
 	used = TRUE
 
 /obj/item/fermichem/pHmeter
-	name = "Chemistry Analyser"
+	name = "Chemistry Analyzer"
 	desc = "A a electrode attached to a small circuit box that will tell you the pH of a solution. The screen currently displays nothing."
 	icon_state = "pHmeter"
 	icon = 'icons/obj/chemical.dmi'

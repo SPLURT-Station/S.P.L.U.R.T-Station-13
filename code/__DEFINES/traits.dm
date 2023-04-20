@@ -202,6 +202,7 @@
 #define TRAIT_NEVERBONER		"never_aroused"
 #define TRAIT_NYMPHO			"nymphomaniac"
 #define TRAIT_MASO              "masochism"
+#define TRAIT_HAIR_TRIGGER		"hair_trigger"
 #define	TRAIT_HIGH_BLOOD        "high_blood"
 #define TRAIT_PARA              "paraplegic"
 #define TRAIT_EMPATH			"empath"

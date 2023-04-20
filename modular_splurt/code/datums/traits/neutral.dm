@@ -820,3 +820,55 @@
 	var/obj/item/clothing/mask/gas/cosmetic/gasmask = new(get_turf(quirk_holder)) // Uses a custom gas mask
 	H.equip_to_slot(gasmask, ITEM_SLOT_MASK)
 	H.regenerate_icons()
+
+/datum/quirk/prem
+	name = "Hair Trigger"
+	desc = "Your libido is hyperactive to the point where the slightest of sexual stimuli can set you off. Much to your misfortune (or fortune), there is plenty of that around here!"
+	value = 0
+	mob_trait = TRAIT_HAIR_TRIGGER
+	gain_text = "<span class='notice'>You could cum at any given moment.</span>"
+	lose_text = "<span class='notice'>Your hypersensitivity to arousal fades.</span>"
+	var/sexword_delay = 0
+
+/datum/quirk/prem/add()
+	. = ..()
+	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/quirk_examine_prem)
+	RegisterSignal(quirk_holder, COMSIG_MOVABLE_HEAR, .proc/hear_teasing)
+	var/mob/living/carbon/human/H = quirk_holder
+	H.hair_trigger_mul = 5 // the multiplier for how much lust should be added. by default this is a three and therefore quintuplicates the lust you get from interactions
+
+/datum/quirk/prem/remove()
+	UnregisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE)
+	UnregisterSignal(quirk_holder, COMSIG_MOVABLE_HEAR)
+	var/mob/living/carbon/human/H = quirk_holder
+	if(!H)
+		return
+	H.hair_trigger_mul = 1 // this should always be one, if it isn't, arousal related stuff might break
+
+/datum/quirk/prem/proc/quirk_examine_prem(atom/examine_target, mob/living/carbon/human/examiner, list/examine_list)
+	SIGNAL_HANDLER
+
+	var/mob/living/carbon/human/H = examine_target
+	if(!istype(examiner) || H.get_lust() < 10) // if the target is horny, people WILL notice it
+		return
+	examine_list += span_lewd("[H.p_they(TRUE)] [H.p_are()] fidgeting with arousal.")
+
+/datum/quirk/prem/proc/hear_teasing(datum/source, list/hearing_args)
+	SIGNAL_HANDLER
+
+	var/mob/living/carbon/human/H = quirk_holder
+	var/static/regex/sexywords = regex("sex|fuck|hump|dick|cock|penis|pussy|clit|cum|jizz|orgasm|spurt")
+	var/list/nnngh = list(
+		"Hearing that really got you going...",
+		"Calm down... it's just words...",
+		"That sounds exciting...",
+		"It's hard to keep your composure with that kinda talk!",
+	)
+	if (H == hearing_args[HEARING_SPEAKER])
+		return
+	if (findtext(lowertext(hearing_args[HEARING_RAW_MESSAGE]), sexywords) && sexword_delay < world.time)
+		H.handle_post_sex(5, null, null)
+		sexword_delay = world.time + 10 SECONDS
+		spawn(2) // this is just for aesthetics so the notification is placed after the message in chatbox, if it causes issues feel free to remove :dawgdoin:
+		to_chat(H, span_lewd(pick(nnngh)))
+

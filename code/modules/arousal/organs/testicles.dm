@@ -15,6 +15,8 @@
 	fluid_id = /datum/reagent/consumable/semen
 	masturbation_verb = "massage"
 	layer_index = TESTICLES_LAYER_INDEX
+	var/ball_size = COCK_SIZE_DEF //Somewhat arbitrary, but relative to cock inches, because cock length adjustements may affect this
+	var/cock_growth_affects_ball_growth = TRUE
 
 /obj/item/organ/genital/testicles/generate_fluid()
 	if(!linked_organ && !update_link())
@@ -23,11 +25,22 @@
 	// in memoriam "Your balls finally feel full, again." ??-2020
 
 /obj/item/organ/genital/testicles/upon_link()
-	size = linked_organ.size
 	update_size()
 	update_appearance()
 
 /obj/item/organ/genital/testicles/update_size(modified = FALSE)
+	var/rounded_size = round(ball_size)
+	switch(rounded_size)
+		if(-INFINITY to 6)
+			size = BALLS_SIZE_MIN
+		if(7 to 11)
+			size = BALLS_SIZE_DEF
+		if(12 to 36)
+			size = BALLS_SIZE_2
+		if(37 to 48)
+			size = BALLS_SIZE_3
+		if(49 to INFINITY)
+			size = BALLS_SIZE_MAX
 	switch(size)
 		if(BALLS_SIZE_MIN)
 			size_name = "average"
@@ -73,4 +86,25 @@
 		toggle_visibility(GEN_ALLOW_EGG_STUFFING, FALSE)
 	if(D.features["inert_eggs"])
 		AddComponent(/datum/component/ovipositor)
+	if(!isnull(D.features["cock_growth_affects_balls_growth"]))
+		cock_growth_affects_ball_growth = D.features["cock_growth_affects_balls_growth"]
+	if(!isnull(D.features["balls_size"]))
+		ball_size = D.features["balls_size"]
 
+/obj/item/organ/genital/testicles/proc/on_cock_length_growth(length_growth)
+	if(!cock_growth_affects_ball_growth)
+		return
+	adjust_ball_size(length_growth)
+
+/obj/item/organ/genital/testicles/proc/adjust_ball_size(adjust)
+	ball_size += adjust
+	update()
+
+/obj/item/organ/genital/testicles/proc/set_ball_size(value)
+	var/diff = ball_size - value
+	adjust_ball_size(diff)
+
+/obj/item/organ/genital/testicles/proc/adjust_ball_size_clamped(adjust, min = 0, max = INFINITY)
+	var/new_size = clamp(ball_size + adjust, min, max)
+	var/diff = new_size - ball_size
+	adjust_ball_size(diff)

@@ -205,20 +205,19 @@
 	if(!T)//Hyper change// Adds testicles if there are none.
 
 		T = new
-		T.size = BALLS_SIZE_MIN
+		T.update()
 		to_chat(H, "<span class='warning'>Your groin feels warm, as you feel two sensitive orbs taking shape below.</b></span>")
 		T.Insert(H)
 
 	if(!P)//They do have a preponderance for escapism, or so I've heard.
 
 		P = new
-		P.length = 1
+		P.set_length(1)
 		to_chat(H, "<span class='warning'>Your groin feels warm, as you feel a newly forming bulge down below.</b></span>")
-		P.prev_length = 1
 		H.reagents.remove_reagent(type, 5)
 		P.Insert(H)
 
-	P.modify_size(0.1)
+	P.adjust_length(0.1)
 	return ..()
 
 /datum/reagent/fermi/penis_enlarger/overdose_process(mob/living/carbon/human/M) //Turns you into a male if female and ODing, doesn't touch nonbinary and object genders.
@@ -264,7 +263,7 @@
 	if(!(H.client?.prefs.cit_toggles & PENIS_ENLARGEMENT) || !P)
 		return..()
 
-	P.modify_size(-0.1)
+	P.adjust_length(-0.1)
 	..()
 
 /datum/reagent/fermi/PEsmaller_hypo
@@ -291,11 +290,11 @@
 		return ..()
 	var/optimal_size = M.dna.features["cock_length"]
 	if(!optimal_size)//Fast fix for those who don't want it.
-		P.modify_size(-0.2)
+		P.adjust_length(-0.2)
 	else if(P.length > optimal_size)
-		P.modify_size(-0.1, optimal_size)
+		P.adjust_length_clamped(-0.1, optimal_size)
 	else if(P.length < optimal_size)
-		P.modify_size(0.1, 0, optimal_size)
+		P.adjust_length_clamped(0.1, 0, optimal_size)
 	return ..()
 
 
@@ -380,4 +379,83 @@
 		B.modify_size(-0.1, optimal_size)
 	else if(B.size < optimal_size)
 		B.modify_size(0.1, 0, optimal_size)
+	return ..()
+
+/datum/reagent/fermi/balls_enlarger
+	name = "Balls Enlargement Juice"
+	description = "A mixture of natural vitamins and valentines plant extract, causing balls enlargement in humanoids."
+	color = "#e8ff1b"
+	taste_description = "butter with a sweet aftertaste"
+	overdose_threshold = 17
+	can_synth = FALSE
+
+/datum/reagent/fermi/balls_enlarger/on_mob_metabolize(mob/living/carbon/M)
+	. = ..()
+	if(!ishuman(M)) //leaving the monkey feature for those desperate for goon level comedy.
+		if(volume >= 15) //to prevent monkey balls farms
+			var/turf/T = get_turf(M)
+			var/obj/item/organ/genital/testicles/testes = new /obj/item/organ/genital/testicles(T)
+			M.visible_message("<span class='warning'>Testicles suddenly fly out of [M]!</b></span>")
+			var/T2 = get_random_station_turf()
+			M.adjustBruteLoss(25)
+			M.DefaultCombatKnockdown(50)
+			M.Stun(50)
+			testes.throw_at(T2, 8, 1)
+		M.reagents.del_reagent(type)
+		return
+	var/mob/living/carbon/human/H = M
+	if(!H.getorganslot(ORGAN_SLOT_TESTICLES) && H.emergent_genital_call())
+		H.genital_override = TRUE
+
+/datum/reagent/fermi/balls_enlarger/on_mob_life(mob/living/carbon/M)
+	if(!ishuman(M))
+		return ..()
+	var/mob/living/carbon/human/H = M
+	if(!(H.client?.prefs.cit_toggles & BALLS_ENLARGEMENT))
+		return ..()
+	var/obj/item/organ/genital/testicles/testes = M.getorganslot(ORGAN_SLOT_TESTICLES)
+	if(!testes) //If they don't have balls. Give them some!
+		var/obj/item/organ/genital/testicles/new_testes = new
+		new_testes.Insert(M)
+		if(new_testes)
+			if(M.dna.species.use_skintones && M.dna.features["genitals_use_skintone"])
+				new_testes.color = SKINTONE2HEX(H.skin_tone)
+			else if(M.dna.features["balls_color"])
+				new_testes.color = "#[M.dna.features["balls_color"]]"
+			else
+				new_testes.color = SKINTONE2HEX(H.skin_tone)
+			new_testes.set_ball_size(COCK_SIZE_DEF)
+			to_chat(M, "<span class='warning'>You feel a pair of testicles growing out on your crotch.</b></span>")
+			M.reagents.remove_reagent(type, 5)
+			testes = new_testes
+	testes.adjust_ball_size(0.05)
+	..()
+
+/datum/reagent/fermi/balls_shrinker
+	name = "Balls Shrink Juice"
+	color = "#e8ff1b"
+	taste_description = "butter"
+	description = "A medicine used to treat organomegaly in a patient's balls."
+	metabolization_rate = 0.5
+	can_synth = TRUE
+
+/datum/reagent/fermi/balls_shrinker/on_mob_metabolize(mob/living/M)
+	. = ..()
+	if(!ishuman(M))
+		return
+	var/mob/living/carbon/human/H = M
+	if(!H.getorganslot(ORGAN_SLOT_TESTICLES) && H.dna.features["has_balls"])
+		H.give_genital(/obj/item/organ/genital/testicles)
+
+/datum/reagent/fermi/balls_shrinker/on_mob_life(mob/living/carbon/M)
+	var/obj/item/organ/genital/testicles/testes = M.getorganslot(ORGAN_SLOT_BUTT)
+	if(!testes)
+		return ..()
+	var/optimal_size = M.dna.features["balls_size"]
+	if(!optimal_size)//Fast fix for those who don't want it.
+		testes.adjust_ball_size(-0.2)
+	else if(testes.ball_size > optimal_size)
+		testes.adjust_ball_size_clamped(-0.1, optimal_size)
+	else if(testes.ball_size < optimal_size)
+		testes.adjust_ball_size_clamped(0.1, 0, optimal_size)
 	return ..()

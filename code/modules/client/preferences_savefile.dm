@@ -5,7 +5,7 @@
 //	You do not need to raise this if you are adding new values that have sane defaults.
 //	Only raise this value when changing the meaning/format/name/layout of an existing value
 //	where you would want the updater procs below to run
-#define SAVEFILE_VERSION_MAX	57.01
+#define SAVEFILE_VERSION_MAX	58
 
 /*
 SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Carn
@@ -381,6 +381,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 				S["all_quirks"] += "Dullahan"
 			else
 				S["all_quirks"] = list("Dullahan")
+
+	if(current_version < 58)
+		features["balls_size"] = features["cock_length"]
 
 /datum/preferences/proc/load_path(ckey,filename="preferences.sav")
 	if(!ckey)
@@ -771,10 +774,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 "has_balls" = FALSE,
 "balls_color" = "ffffff",
 "balls_shape" = DEF_BALLS_SHAPE,
-"balls_size" = BALLS_SIZE_DEF,
 "balls_cum_rate" = CUM_RATE,
 "balls_cum_mult" = CUM_RATE_MULT,
 "balls_efficiency" = CUM_EFFICIENCY,
+"balls_size"	= COCK_SIZE_DEF,
+"cock_growth_affects_balls_growth" = TRUE,
 "has_breasts" = FALSE,
 "breasts_color" = "ffffff",
 "breasts_size" = BREASTS_SIZE_DEF,
@@ -992,6 +996,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_balls_size"] >> features["balls_size"]
 	S["feature_balls_visibility"] >> features["balls_visibility"]
 	S["feature_balls_fluid"] >> features["balls_fluid"]
+	S["feature_balls_size"] >> features["balls_size"]
+	S["feature_cock_growth_affects_balls_growth"] >> features["cock_growth_affects_balls_growth"]
 	//breasts features
 	S["feature_has_breasts"] >> features["has_breasts"]
 	S["feature_breasts_size"] >> features["breasts_size"]
@@ -1204,6 +1210,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	features["belly_visibility"] = sanitize_inlist(features["belly_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
 	features["anus_visibility"] = sanitize_inlist(features["anus_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
 
+	features["balls_size"] = sanitize_integer(features["balls_size"], min_D, max_D, COCK_SIZE_DEF)
+	features["feature_cock_growth_affects_balls_growth"] = sanitize_integer(features["feature_cock_growth_affects_balls_growth"], FALSE, TRUE, TRUE)
+
 	custom_speech_verb = sanitize_inlist(custom_speech_verb, GLOB.speech_verbs, "default")
 	custom_tongue = sanitize_inlist(custom_tongue, GLOB.roundstart_tongues, "default")
 
@@ -1374,6 +1383,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_balls_visibility"], features["balls_visibility"])
 	WRITE_FILE(S["feature_balls_stuffing"], features["balls_stuffing"])
 	WRITE_FILE(S["feature_balls_fluid"], features["balls_fluid"])
+	WRITE_FILE(S["feature_balls_size"], features["balls_size"])
+	WRITE_FILE(S["feature_cock_growth_affects_balls_growth"], features["cock_growth_affects_balls_growth"])
 
 	WRITE_FILE(S["feature_has_breasts"], features["has_breasts"])
 	WRITE_FILE(S["feature_breasts_size"], features["breasts_size"])

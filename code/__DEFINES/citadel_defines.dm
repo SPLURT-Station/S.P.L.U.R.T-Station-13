@@ -123,6 +123,7 @@
 #define TRASH_FORCEFEED		(1<<15)
 #define BUTT_ENLARGEMENT	(1<<16)
 #define BELLY_INFLATION		(1<<17)
+#define BALLS_ENLARGEMENT	(1<<18)
 //Note: reminder, if you're a coder adding more bitflags here in the event we add more horny things, the maximum is (1<<23).
 #define TOGGLES_CITADEL 0
 

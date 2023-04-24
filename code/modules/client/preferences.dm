@@ -194,11 +194,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 "has_balls" = FALSE,
 "balls_color" = "ffffff",
 "balls_shape" = DEF_BALLS_SHAPE,
-"balls_size" = BALLS_SIZE_DEF,
 "balls_cum_rate" = CUM_RATE,
 "balls_cum_mult" = CUM_RATE_MULT,
 "balls_fluid" = /datum/reagent/consumable/semen,
 "balls_efficiency" = CUM_EFFICIENCY,
+"balls_size"	= COCK_SIZE_DEF,
+"cock_growth_affects_balls_growth" = TRUE,
 "has_breasts" = FALSE,
 "breasts_color" = "ffffff",
 "breasts_size" = BREASTS_SIZE_DEF,
@@ -858,6 +859,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 								dat += "<b>Testicles Shape:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=balls_shape;task=input'>[features["balls_shape"]]</a>"
 								dat += "<b>Testicles Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=balls_visibility;task=input'>[features["balls_visibility"]]</a>"
 								//SPLURT Edit
+								dat += "<b>Balls Size:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=balls_size;task=input'>[features["balls_size"]]</a>"
+								dat += "<b>Cock Growth Affects Ball Size:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=cock_growth_affects_balls_growth'>[features["cock_growth_affects_balls_growth"] == TRUE ? "Yes" : "No"]</a>"
 								dat += "<b>Egg Stuffing:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=balls_stuffing'>[features["balls_stuffing"] == TRUE ? "Yes" : "No"]</a>"
 								dat += "<b>Produces:</b>"
 								var/datum/reagent/balls_fluid = find_reagent_object_from_type(features["balls_fluid"])
@@ -1501,6 +1504,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Breast Enlargement:</b> <a href='?_src_=prefs;preference=breast_enlargement'>[(cit_toggles & BREAST_ENLARGEMENT) ? "Allowed" : "Disallowed"]</a><br>"
 					dat += "<b>Penis Enlargement:</b> <a href='?_src_=prefs;preference=penis_enlargement'>[(cit_toggles & PENIS_ENLARGEMENT) ? "Allowed" : "Disallowed"]</a><br>"
 					dat += "<b>Butt Enlargement:</b> <a href='?_src_=prefs;preference=butt_enlargement'>[(cit_toggles & BUTT_ENLARGEMENT) ? "Allowed" : "Disallowed"]</a><br>"
+					dat += "<b>Balls Enlargement:</b> <a href='?_src_=prefs;preference=balls_enlargement'>[(cit_toggles & BALLS_ENLARGEMENT) ? "Allowed" : "Disallowed"]</a><br>"
 					dat += "<b>Belly Inflation:</b> <a href='?_src_=prefs;preference=belly_inflation'>[(cit_toggles & BELLY_INFLATION) ? "Allowed" : "Disallowed"]</a><br>" //SPLURT Edit
 					dat += "<b>Hypno:</b> <a href='?_src_=prefs;preference=never_hypno'>[(cit_toggles & NEVER_HYPNO) ? "Disallowed" : "Allowed"]</a><br>"
 					dat += "<b>Aphrodisiacs:</b> <a href='?_src_=prefs;preference=aphro'>[(cit_toggles & NO_APHRO) ? "Disallowed" : "Allowed"]</a><br>"
@@ -2789,6 +2793,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_length)
 						features["cock_length"] = clamp(round(new_length), min_D, max_D)
 
+				if("balls_size")
+					var/min_D = CONFIG_GET(number/penis_min_inches_prefs)
+					var/max_D = CONFIG_GET(number/penis_max_inches_prefs)
+					var/new_size = input(user, "Ball size:\n([min_D]-[max_D])", "Character Preference") as num|null
+					if(new_size)
+						features["balls_size"] = clamp(round(new_size), min_D, max_D)
+
 				if("cock_shape")
 					var/new_shape
 					var/list/hockeys = list()
@@ -3297,6 +3308,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						features["belly_size"] = 1
 				if("has_balls")
 					features["has_balls"] = !features["has_balls"]
+				if("cock_growth_affects_balls_growth")
+					features["cock_growth_affects_balls_growth"] = !features["cock_growth_affects_balls_growth"]
 				if("has_breasts")
 					features["has_breasts"] = !features["has_breasts"]
 					if(features["has_breasts"] == FALSE)
@@ -3696,6 +3709,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("butt_enlargement")
 					cit_toggles ^= BUTT_ENLARGEMENT
+
+				if("balls_enlargement")
+					cit_toggles ^= BALLS_ENLARGEMENT
 
 				if("belly_inflation")
 					cit_toggles ^= BELLY_INFLATION

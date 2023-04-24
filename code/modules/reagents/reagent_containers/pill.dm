@@ -271,3 +271,7 @@
 /obj/item/reagent_containers/pill/butt_enlargement
 	name = "butt enlargement pill"
 	list_reagents = list(/datum/reagent/fermi/butt_enlarger = 10)
+
+/obj/item/reagent_containers/pill/balls_enlargement
+	name = "balls enlargement pill"
+	list_reagents = list(/datum/reagent/fermi/balls_enlarger = 10)

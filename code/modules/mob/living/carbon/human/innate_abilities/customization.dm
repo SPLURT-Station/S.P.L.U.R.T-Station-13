@@ -23,7 +23,7 @@
 /datum/action/innate/ability/humanoid_customization/proc/change_form()
 	var/mob/living/carbon/human/H = owner
 
-	var/select_alteration = input(owner, "Select what part of your form to alter", "Form Alteration", "cancel") in list("Body Color", "Eye Color","Hair Style", "Genitals", "Tail", "Snout", "Wings", "Markings", "Ears", "Taur body", "Penis", "Vagina", "Penis Length", "Breast Size", "Breast Shape", "Butt Size", "Belly Size", "Cancel")
+	var/select_alteration = input(owner, "Select what part of your form to alter", "Form Alteration", "cancel") in list("Body Color", "Eye Color","Hair Style", "Genitals", "Tail", "Snout", "Wings", "Markings", "Ears", "Taur body", "Penis", "Vagina", "Penis Length", "Breast Size", "Breast Shape", "Butt Size", "Belly Size", "Balls Size", "Cancel")
 
 	if(select_alteration == "Body Color")
 		var/new_color = input(owner, "Choose your skin color:", "Race change","#"+H.dna.features["mcolor"]) as color|null
@@ -270,6 +270,18 @@
 		H.update_genitals()
 		H.apply_overlay()
 		H.give_genital(/obj/item/organ/genital/belly)
+	else if (select_alteration == "Balls Size")
+		var/min_balls = CONFIG_GET(number/penis_min_inches_prefs)
+		var/max_balls = CONFIG_GET(number/penis_max_inches_prefs)
+		var/new_balls_size = input(owner, "Balls size:\n([min_balls]-[max_balls])", "Genital Alteration") as num|null
+		if(!new_balls_size)
+			return
+		H.dna.features["balls_size"] = new_balls_size
+		var/obj/item/organ/genital/testicles/testes = H.getorganslot(ORGAN_SLOT_TESTICLES)
+		if(!testes)
+			H.give_genital(/obj/item/organ/genital/testicles)
+			testes = H.getorganslot(ORGAN_SLOT_TESTICLES)
+		testes.set_ball_size(new_balls_size)
 
 	else
 		return

@@ -405,6 +405,14 @@
 	for(var/i in 1 to 10)
 		new /obj/item/reagent_containers/pill/butt_enlargement(src)
 
+/obj/item/storage/pill_bottle/balls_enlargement
+	name = "balls enlargement pills"
+	desc = "Bottle of pills that enlarge testicles."
+
+/obj/item/storage/pill_bottle/balls_enlargement/PopulateContents()
+	for(var/i in 1 to 10)
+		new /obj/item/reagent_containers/pill/balls_enlargement(src)
+
 /obj/item/storage/pill_bottle/neurine
 	name = "bottle of neurine pills"
 	desc = "Contains pills to treat non-severe mental traumas."

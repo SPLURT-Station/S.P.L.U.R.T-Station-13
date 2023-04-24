@@ -22,15 +22,6 @@
 	var/diameter = 4.38
 	var/diameter_ratio = COCK_DIAMETER_RATIO_DEF //0.25; check citadel_defines.dm
 
-/obj/item/organ/genital/penis/modify_size(modifier, min = -INFINITY, max = INFINITY)
-	var/new_value = clamp(length + modifier, max(min, min_size ? min_size : -INFINITY), min(max_length ? max_length : INFINITY, max))
-	if(new_value == length)
-		return
-	prev_length = length
-	length = new_value
-	update()
-	..()
-
 /obj/item/organ/genital/penis/update_size(modified = FALSE)
 	if(length <= 0)//I don't actually know what round() does to negative numbers, so to be safe!!
 		if(owner)
@@ -53,9 +44,6 @@
 		if(49 to INFINITY)
 			new_size = 5
 
-	if(linked_organ)
-		linked_organ.size = clamp(size, BALLS_SIZE_MIN, BALLS_SIZE_MAX) //SPLURT Edit. No more randomly massive balls
-		linked_organ.update()
 	size = new_size
 
 	if(owner)
@@ -105,3 +93,26 @@
 	toggle_visibility(D.features["cock_visibility"], FALSE)
 	if(D.features["cock_stuffing"])
 		toggle_visibility(GEN_ALLOW_EGG_STUFFING, FALSE)
+
+/obj/item/organ/genital/penis/proc/update_ball_size_growth(diameter_growth)
+	if(!linked_organ)
+		return
+	var/obj/item/organ/genital/testicles/balls = linked_organ
+	balls.on_cock_length_growth(diameter_growth)
+
+/obj/item/organ/genital/penis/proc/adjust_length(adjust)
+	if(adjust == 0)
+		return
+	prev_length = length
+	length += adjust
+	update_ball_size_growth(adjust)
+	update()
+
+/obj/item/organ/genital/penis/proc/set_length(value)
+	var/diff = length - value
+	adjust_length(diff)
+
+/obj/item/organ/genital/penis/proc/adjust_length_clamped(adjust, min = 0, max = INFINITY)
+	var/new_length = clamp(length + adjust, min, max)
+	var/diff = new_length - length
+	adjust_length(diff)

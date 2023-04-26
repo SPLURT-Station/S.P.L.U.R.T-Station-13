@@ -21,6 +21,10 @@
 	var/prev_length = 6 //really should be renamed to prev_length
 	var/diameter = 4.38
 	var/diameter_ratio = COCK_DIAMETER_RATIO_DEF //0.25; check citadel_defines.dm
+	var/ball_growth_affects_cock_growth = TRUE
+
+/obj/item/organ/genital/penis/get_fluid_size_bonus_multiplier()
+	return clamp(length / 6, 1, INFINITY)
 
 /obj/item/organ/genital/penis/update_size(modified = FALSE)
 	if(length <= 0)//I don't actually know what round() does to negative numbers, so to be safe!!
@@ -93,26 +97,70 @@
 	toggle_visibility(D.features["cock_visibility"], FALSE)
 	if(D.features["cock_stuffing"])
 		toggle_visibility(GEN_ALLOW_EGG_STUFFING, FALSE)
+	var/seperate_ball_size = D.features["seperate_ball_size"]
+	if(seperate_ball_size == TRUE)
+		ball_growth_affects_cock_growth = D.features["linked_ball_cock_growth"]
+	else
+		ball_growth_affects_cock_growth = TRUE
 
-/obj/item/organ/genital/penis/proc/update_ball_size_growth(diameter_growth)
+/obj/item/organ/genital/penis/proc/adjust_linked_balls(adjust, min = 0, max = INFINITY)
 	if(!linked_organ)
 		return
 	var/obj/item/organ/genital/testicles/balls = linked_organ
-	balls.on_cock_length_growth(diameter_growth)
+	balls.on_cock_length_growth(adjust, min, max)
 
+// Updates the linked balls size, possibly setting it to the cock size
+/obj/item/organ/genital/penis/proc/update_linked_balls()
+	if(!linked_organ)
+		return
+	var/obj/item/organ/genital/testicles/balls = linked_organ
+	balls.update_ball_size()
+
+// Unconditionally adjusts length by value
 /obj/item/organ/genital/penis/proc/adjust_length(adjust)
 	if(adjust == 0)
 		return
 	prev_length = length
 	length += adjust
-	update_ball_size_growth(adjust)
 	update()
 
+// Unconditionally sets length by value
 /obj/item/organ/genital/penis/proc/set_length(value)
 	var/diff = length - value
 	adjust_length(diff)
 
+// Adjusts length clamped to min and max arguments, and also to min_length and max_length
 /obj/item/organ/genital/penis/proc/adjust_length_clamped(adjust, min = 0, max = INFINITY)
+	// Clamp to arguments
 	var/new_length = clamp(length + adjust, min, max)
 	var/diff = new_length - length
-	adjust_length(diff)
+	// Clamp to min/max sizes
+	var/new_length2 = clamp(length + diff, min_length, max_length)
+	var/diff2 = new_length2 - length
+	// Finally, apply the difference
+	adjust_length(diff2)
+
+// Possibly grows the cock as balls grow
+/obj/item/organ/genital/penis/proc/on_ball_size_growth(adjust, min, max)
+	if(!ball_growth_affects_cock_growth)
+		return
+	adjust_length_clamped(adjust, min, max)
+
+// If has linked growth with balls, this will update the length to match the balls size
+/obj/item/organ/genital/penis/proc/update_cock_length()
+	if(!ball_growth_affects_cock_growth)
+		return
+	if(!linked_organ)
+		return
+	var/obj/item/organ/genital/testicles/balls = linked_organ
+	set_length(balls.ball_size)
+
+// Adjusts length and possibly grows balls for that adjustement too
+/obj/item/organ/genital/penis/proc/adjust_length_factor_balls(adjust, min = 0, max = INFINITY)
+	adjust_linked_balls(adjust, min, max)
+	adjust_length_clamped(adjust, min, max)
+
+// Sets length and possibly updates ball size to that size
+/obj/item/organ/genital/penis/proc/set_length_factor_balls(value)
+	set_length(value)
+	update_linked_balls()

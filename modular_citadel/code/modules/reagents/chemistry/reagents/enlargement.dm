@@ -216,7 +216,7 @@
 		H.reagents.remove_reagent(type, 5)
 		P.Insert(H)
 
-	P.adjust_length(0.1)
+	P.adjust_length_factor_balls(0.1)
 	return ..()
 
 /datum/reagent/fermi/penis_enlarger/overdose_process(mob/living/carbon/human/M) //Turns you into a male if female and ODing, doesn't touch nonbinary and object genders.
@@ -262,7 +262,7 @@
 	if(!(H.client?.prefs.cit_toggles & PENIS_ENLARGEMENT) || !P)
 		return..()
 
-	P.adjust_length(-0.1)
+	P.adjust_length_factor_balls(-0.1)
 	..()
 
 /datum/reagent/fermi/PEsmaller_hypo
@@ -289,11 +289,11 @@
 		return ..()
 	var/optimal_size = M.dna.features["cock_length"]
 	if(!optimal_size)//Fast fix for those who don't want it.
-		P.adjust_length(-0.2)
+		P.adjust_length_factor_balls(-0.2)
 	else if(P.length > optimal_size)
-		P.adjust_length_clamped(-0.1, optimal_size)
+		P.adjust_length_factor_balls(-0.1, optimal_size)
 	else if(P.length < optimal_size)
-		P.adjust_length_clamped(0.1, 0, optimal_size)
+		P.adjust_length_factor_balls(0.1, 0, optimal_size)
 	return ..()
 
 
@@ -423,11 +423,11 @@
 				new_testes.color = "#[M.dna.features["balls_color"]]"
 			else
 				new_testes.color = SKINTONE2HEX(H.skin_tone)
-			new_testes.set_ball_size(COCK_SIZE_DEF)
+			new_testes.set_ball_size(BALLS_SIZE_DEFAULT)
 			to_chat(M, "<span class='warning'>You feel a pair of testicles growing out on your crotch.</b></span>")
 			M.reagents.remove_reagent(type, 5)
 			testes = new_testes
-	testes.adjust_ball_size(0.05)
+	testes.adjust_ball_size_factor_cock(0.05)
 	..()
 
 /datum/reagent/fermi/balls_shrinker
@@ -452,9 +452,9 @@
 		return ..()
 	var/optimal_size = M.dna.features["balls_size"]
 	if(!optimal_size)//Fast fix for those who don't want it.
-		testes.adjust_ball_size(-0.2)
+		testes.adjust_ball_size_factor_cock(-0.2)
 	else if(testes.ball_size > optimal_size)
-		testes.adjust_ball_size_clamped(-0.1, optimal_size)
+		testes.adjust_ball_size_factor_cock(-0.1, optimal_size)
 	else if(testes.ball_size < optimal_size)
-		testes.adjust_ball_size_clamped(0.1, 0, optimal_size)
+		testes.adjust_ball_size_factor_cock(0.1, 0, optimal_size)
 	return ..()

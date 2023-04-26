@@ -1,8 +1,6 @@
 /obj/item/organ/genital/penis/get_features(mob/living/carbon/human/H)
 	. = ..()
 	original_fluid_id = fluid_id
-	fluid_max_volume += ((length - initial(length))*2.5)*(owner ? get_size(owner) : 1)
-	fluid_rate += ((length - initial(length))/10)*(owner ? get_size(owner) : 1)
 
 /obj/item/organ/genital/penis/climax_modify_size(mob/living/partner, obj/item/organ/genital/source_gen)
 	if(!(owner.client?.prefs.cit_toggles & PENIS_ENLARGEMENT))

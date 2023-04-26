@@ -50,16 +50,23 @@
 
 #define DEF_BALLS_SHAPE		"Single"
 
-//SPLURT change, support for more sizes
-#define BALLS_SIZE_MIN		1
-#define BALLS_SIZE_DEF		2
-#define BALLS_SIZE_2		3
-#define BALLS_SIZE_3		4
-#define BALLS_SIZE_MAX		5
+// Ball size defines, size is analogous to cock size because of how growth affecting both works
+#define BALLS_SIZE_MIN 1
+#define BALLS_SIZE_DEFAULT 6
+#define BALLS_SIZE_MAX 128
 
+//SPLURT change, support for more sizes
+#define BALLS_SPRITE_SIZE_ONE		1
+#define BALLS_SPRITE_SIZE_TWO		2
+#define BALLS_SPRITE_SIZE_THREE		3
+#define BALLS_SPRITE_SIZE_FOUR		4
+#define BALLS_SPRITE_SIZE_FIVE		5
+
+#define BALLS_SPRITE_SIZE_MIN		BALLS_SPRITE_SIZE_ONE
+#define BALLS_SPRITE_SIZE_MAX		BALLS_SPRITE_SIZE_FIVE
+
+#define GENITAL_BASE_MAX_VOLUME 3 //How many units of reagents genitals hold by default
 #define CUM_RATE			2 // units per 10 seconds
-#define CUM_RATE_MULT		1
-#define CUM_EFFICIENCY		1 //amount of nutrition required per life()
 
 #define BREASTS_VOLUME_BASE	50	//base volume for the reagents in the breasts, multiplied by the size then multiplier. 50u for A cups, 850u for HH cups.
 #define BREASTS_VOLUME_MULT	1	//global multiplier for breast volume.

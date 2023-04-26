@@ -3,7 +3,7 @@
 
 /obj/item/organ/genital/testicles/get_fluid()
 	if(linked_organ)
-		return clamp(linked_organ.fluid_rate * ((world.time - linked_organ.last_orgasmed) / (10 SECONDS)) * linked_organ.fluid_mult, 0, linked_organ.fluid_max_volume)
+		return clamp(linked_organ.fluid_rate * ((world.time - linked_organ.last_orgasmed) / (10 SECONDS)), 0, linked_organ.fluid_max_volume)
 	else
 		return 0
 

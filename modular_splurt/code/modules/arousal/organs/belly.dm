@@ -100,8 +100,6 @@
 	prev_size = size
 	size_cached = size
 	original_fluid_id = fluid_id
-	fluid_max_volume += ((size - initial(size))*2.5)*(owner ? get_size(owner) : 1)
-	fluid_rate += ((size - initial(size))/10)*(owner ? get_size(owner) : 1)
 	toggle_visibility(D.features["belly_visibility"], FALSE)
 	if(D.features["belly_stuffing"])
 		toggle_visibility(GEN_ALLOW_EGG_STUFFING, FALSE)

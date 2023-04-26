@@ -21,6 +21,14 @@
 	layer_index = BREASTS_LAYER_INDEX
 	var/prev_size //former cached_size value, to allow update_size() to early return should be there no significant changes.
 
+// Return a higher multiplier if a womb we own is impregnated
+/obj/item/organ/genital/breasts/get_fluid_rate_multiplier()
+	if(!owner)
+		return 1
+	if(!owner.has_status_effect(/datum/status_effect/pregnancy))
+		return 1
+	return 2
+
 /obj/item/organ/genital/breasts/update_appearance()
 	. = ..()
 	var/lowershape = lowertext(shape)

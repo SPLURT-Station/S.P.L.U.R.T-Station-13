@@ -271,11 +271,10 @@
 		H.apply_overlay()
 		H.give_genital(/obj/item/organ/genital/belly)
 	else if (select_alteration == "Balls Size")
-		var/min_balls = CONFIG_GET(number/penis_min_inches_prefs)
-		var/max_balls = CONFIG_GET(number/penis_max_inches_prefs)
-		var/new_balls_size = input(owner, "Balls size:\n([min_balls]-[max_balls])", "Genital Alteration") as num|null
+		var/new_balls_size = input(owner, "Balls size:\n([BALLS_SIZE_MIN]-[BALLS_SIZE_MAX])", "Genital Alteration") as num|null
 		if(!new_balls_size)
 			return
+		new_balls_size = clamp(new_balls_size, BALLS_SIZE_MIN, BALLS_SIZE_MAX)
 		H.dna.features["balls_size"] = new_balls_size
 		var/obj/item/organ/genital/testicles/testes = H.getorganslot(ORGAN_SLOT_TESTICLES)
 		if(!testes)

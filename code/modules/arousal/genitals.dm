@@ -12,15 +12,14 @@
 	var/fluid_transfer_factor = 0 //How much would a partner get in them if they climax using this?
 	var/size = 2 //can vary between num or text, just used in icon_state strings
 	var/datum/reagent/fluid_id = null
-	var/fluid_max_volume = 50
-	var/fluid_efficiency = 1
+	var/fluid_max_volume = GENITAL_BASE_MAX_VOLUME
 	var/fluid_rate = CUM_RATE
-	var/fluid_mult = 1
 	var/last_orgasmed = 0
 	var/aroused_state = FALSE //Boolean used in icon_state strings
 	var/obj/item/organ/genital/linked_organ
 	var/linked_organ_slot //used for linking an apparatus' organ to its other half on update_link().
 	var/layer_index = GENITAL_LAYER_INDEX //Order should be very important. FIRST vagina, THEN testicles, THEN penis, as this affects the order they are rendered in.
+	var/extra_productive = FALSE //Whether the genital is extra-productive, granted by a quirk for testicles
 
 /obj/item/organ/genital/Initialize(mapload, do_update = TRUE)
 	. = ..()
@@ -47,6 +46,7 @@
 /obj/item/organ/genital/proc/update()
 	if(QDELETED(src))
 		return
+	update_fluid_states()
 	update_size()
 	update_appearance()
 	if(genital_flags & UPDATE_OWNER_APPEARANCE && owner && ishuman(owner))
@@ -178,9 +178,41 @@
 
 
 /obj/item/organ/genital/proc/modify_size(modifier, min = -INFINITY, max = INFINITY)
-	fluid_max_volume += modifier*2.5
-	fluid_rate += modifier/10
 	return
+
+// Updates all values of fluid volume, rate and multipliers
+/obj/item/organ/genital/proc/update_fluid_states()
+	var/genital_size_mult = get_fluid_size_bonus_multiplier() - 1
+	var/max_volume_bonus = 2.5 * genital_size_mult
+	var/rate_bonus = 0.1 * genital_size_mult
+	fluid_max_volume = GENITAL_BASE_MAX_VOLUME + max_volume_bonus
+	fluid_rate = CUM_RATE + rate_bonus
+
+	//Add extra space depending on the owner's size
+	if(owner)
+		var/owner_size_mult = get_size(owner) - 1
+		fluid_max_volume += max_volume_bonus * owner_size_mult
+		fluid_rate += rate_bonus * owner_size_mult
+
+	// Handle extra productive genitals from the quirk
+	if(extra_productive)
+		fluid_rate *= 1.5
+		fluid_max_volume *= (5/3) //1.666 repeating as the quirk used to do
+
+	// Extra multiplicator of fluid rate of some conditional things genitals can implement
+	fluid_rate *= get_fluid_rate_multiplier()
+
+/obj/item/organ/genital/proc/set_extra_productive(state)
+	extra_productive = state
+	update_fluid_states()
+
+// Virtual proc to determine a bonus from a genital size, since penis and testicles implement their own scalling
+/obj/item/organ/genital/proc/get_fluid_size_bonus_multiplier()
+	return size
+
+// Virtual proc to get a multiplier for fluid rate, which is important for modifying the rate of certain genitals based on some conditions (ie. breasts giving more milk if impregnated)
+/obj/item/organ/genital/proc/get_fluid_rate_multiplier()
+	return 1
 
 /obj/item/organ/genital/proc/update_size()
 	return
@@ -216,7 +248,7 @@
 
 //post organ duo making arrangements.
 /obj/item/organ/genital/proc/upon_link()
-	return
+	update()
 
 /obj/item/organ/genital/Insert(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
 	. = ..()

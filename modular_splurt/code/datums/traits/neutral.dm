@@ -144,8 +144,7 @@
 	var/mob/living/carbon/M = quirk_holder
 	if(M.getorganslot("testicles"))
 		var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles")
-		T.fluid_mult = 1.5 //Base is 1
-		T.fluid_max_volume = 5
+		T.set_extra_productive(TRUE)
 
 /datum/quirk/cum_plus/remove()
 	var/mob/living/carbon/M = quirk_holder
@@ -153,16 +152,13 @@
 		return
 	if(quirk_holder.getorganslot("testicles"))
 		var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles")
-		T.fluid_mult = 1 //Base is 1
-		T.fluid_max_volume = 3 //Base is 3
+		T.set_extra_productive(FALSE)
 
 /datum/quirk/cum_plus/on_process()
 	var/mob/living/carbon/M = quirk_holder //If you get balls later, then this will still proc
 	if(M.getorganslot("testicles"))
 		var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles")
-		if(T.fluid_max_volume <= 5 || T.fluid_mult <= 0.2) //INVALID EXPRESSION?
-			T.fluid_mult = 1.5 //Base is 0.133
-			T.fluid_max_volume = 5
+		T.set_extra_productive(TRUE)
 
 //well-trained moved to neutral to stop the awkward situation of a dom snapping and the 30 trait powergamers fall to the floor.
 /datum/quirk/well_trained

@@ -396,10 +396,12 @@
 		var/obj/item/organ/genital/breasts/boob = gregnant.getorganslot(ORGAN_SLOT_BREASTS)
 		if(!boob)
 			boob = gregnant.give_genital(/obj/item/organ/genital/breasts)
+	update_parent_breasts_fluids(gregnant)
 	return TRUE
 
 /datum/component/pregnancy/proc/human_pragency_end(mob/living/carbon/human/gregnant)
 	SEND_SIGNAL(gregnant, COMSIG_CLEAR_MOOD_EVENT, "pregnancy")
+	update_parent_breasts_fluids(gregnant)
 
 /datum/component/pregnancy/proc/fetus_mortus()
 	SIGNAL_HANDLER
@@ -426,3 +428,10 @@
 
 	if(def_zone == BODY_ZONE_CHEST && damage > 20 && prob(40))
 		fetus_mortus()
+
+// The owner could have breasts which require updating their fluids to factor in the pregnancy
+/datum/component/pregnancy/proc/update_parent_breasts_fluids(mob/living/carbon/human/carrier)
+	var/obj/item/organ/genital/breasts/honkers = carrier.getorganslot(ORGAN_SLOT_BREASTS)
+	if(!honkers)
+		return
+	honkers.update_fluid_states()

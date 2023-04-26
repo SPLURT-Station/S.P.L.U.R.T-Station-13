@@ -21,8 +21,6 @@
 /obj/item/organ/genital/butt/get_features(mob/living/carbon/human/H)
 	. = ..()
 	original_fluid_id = fluid_id
-	fluid_max_volume += ((size - initial(size))*2.5)*(owner ? get_size(owner) : 1)
-	fluid_rate += ((size - initial(size))/10)*(owner ? get_size(owner) : 1)
 
 /obj/item/organ/genital/butt/climax_modify_size(mob/living/partner, obj/item/organ/genital/source_gen, from_belly = FALSE)
 	if(!(owner.client?.prefs.cit_toggles & BUTT_ENLARGEMENT))

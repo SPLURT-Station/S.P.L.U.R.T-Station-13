@@ -194,12 +194,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 "has_balls" = FALSE,
 "balls_color" = "ffffff",
 "balls_shape" = DEF_BALLS_SHAPE,
-"balls_cum_rate" = CUM_RATE,
-"balls_cum_mult" = CUM_RATE_MULT,
 "balls_fluid" = /datum/reagent/consumable/semen,
-"balls_efficiency" = CUM_EFFICIENCY,
-"balls_size"	= COCK_SIZE_DEF,
-"cock_growth_affects_balls_growth" = TRUE,
+"balls_size"	= BALLS_SIZE_DEFAULT,
+"linked_ball_cock_growth" = TRUE,
+"seperate_ball_size" = FALSE,
 "has_breasts" = FALSE,
 "breasts_color" = "ffffff",
 "breasts_size" = BREASTS_SIZE_DEF,
@@ -861,11 +859,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 								dat += "<b>Testicles Shape:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=balls_shape;task=input'>[features["balls_shape"]]</a>"
 								dat += "<b>Testicles Visibility:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=balls_visibility;task=input'>[features["balls_visibility"]]</a>"
 								//SPLURT Edit
-								dat += "<b>Balls Size:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=balls_size;task=input'>[features["balls_size"]]</a>"
-								dat += "<b>Cock Growth Affects Ball Size:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=cock_growth_affects_balls_growth'>[features["cock_growth_affects_balls_growth"] == TRUE ? "Yes" : "No"]</a>"
+								dat += "<b>Seperate Balls Size:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=seperate_ball_size'>[features["seperate_ball_size"] == TRUE ? "Yes" : "No"]</a>"
+								if(features["seperate_ball_size"])
+									dat += "<b>Balls Size:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=balls_size;task=input'>[features["balls_size"]]</a>"
+									dat += "<b>Linked Cock/Ball Growth:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=linked_ball_cock_growth'>[features["linked_ball_cock_growth"] == TRUE ? "Yes" : "No"]</a>"
+									dat += "<b>Max Size:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=balls_max_size;task=input'>[features["balls_max_size"] ? features["balls_max_size"] : "Disabled"]</a>"
+									dat += "<b>Min Size:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=balls_min_size;task=input'>[features["balls_min_size"] ? features["balls_min_size"] : "Disabled"]</a>"
 								dat += "<b>Egg Stuffing:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=balls_stuffing'>[features["balls_stuffing"] == TRUE ? "Yes" : "No"]</a>"
-								dat += "<b>Max Size:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=balls_max_size;task=input'>[features["balls_max_size"] ? features["balls_max_size"] : "Disabled"]</a>"
-								dat += "<b>Min Size:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=balls_min_size;task=input'>[features["balls_min_size"] ? features["balls_min_size"] : "Disabled"]</a>"
 								dat += "<b>Produces:</b>"
 								var/datum/reagent/balls_fluid = find_reagent_object_from_type(features["balls_fluid"])
 								if(balls_fluid && (balls_fluid in GLOB.genital_fluids_list))
@@ -2804,11 +2804,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						features["cock_length"] = clamp(round(new_length), min_D, max_D)
 
 				if("balls_size")
-					var/min_D = CONFIG_GET(number/penis_min_inches_prefs)
-					var/max_D = CONFIG_GET(number/penis_max_inches_prefs)
-					var/new_size = input(user, "Ball size:\n([min_D]-[max_D])", "Character Preference") as num|null
+					var/new_size = input(user, "Ball size:\n([BALLS_SIZE_MIN]-[BALLS_SIZE_MAX])\nAnalogous to cock length.", "Character Preference") as num|null
 					if(new_size)
-						features["balls_size"] = clamp(round(new_size), min_D, max_D)
+						features["balls_size"] = clamp(round(new_size), BALLS_SIZE_MIN, BALLS_SIZE_MAX)
 
 				if("cock_shape")
 					var/new_shape
@@ -3394,8 +3392,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						features["belly_size"] = 1
 				if("has_balls")
 					features["has_balls"] = !features["has_balls"]
-				if("cock_growth_affects_balls_growth")
-					features["cock_growth_affects_balls_growth"] = !features["cock_growth_affects_balls_growth"]
+				if("linked_ball_cock_growth")
+					features["linked_ball_cock_growth"] = !features["linked_ball_cock_growth"]
+				if("seperate_ball_size")
+					features["seperate_ball_size"] = !features["seperate_ball_size"]
 				if("has_breasts")
 					features["has_breasts"] = !features["has_breasts"]
 					if(features["has_breasts"] == FALSE)

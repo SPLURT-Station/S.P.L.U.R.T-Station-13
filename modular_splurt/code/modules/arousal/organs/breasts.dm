@@ -13,8 +13,6 @@
 		fluid_id = initial(fluid_id)
 	original_fluid_id = fluid_id
 	. = ..()
-	fluid_max_volume += ((size - initial(size))*2.5)*(owner ? get_size(owner) : 1)
-	fluid_rate += ((size - initial(size))/10)*(owner ? get_size(owner) : 1)
 
 /obj/item/organ/genital/breasts/climax_modify_size(mob/living/partner, obj/item/organ/genital/source_gen)
 	if(!(owner.client?.prefs.cit_toggles & BREAST_ENLARGEMENT))

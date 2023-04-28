@@ -19,6 +19,18 @@
 	var/max_ball_size = null // NULLABLE!!
 	var/min_ball_size = null // NULLABLE!!
 	var/cock_growth_affects_ball_growth = TRUE
+	var/last_size_during_alert = BALLS_SIZE_DEFAULT
+
+/obj/item/organ/genital/testicles/proc/on_balls_size_update(previous_size, new_size)
+	var/diff = abs(new_size - last_size_during_alert)
+	if(diff < 1)
+		return
+	last_size_during_alert = new_size
+	if(owner)
+		if (new_size > previous_size)
+			to_chat(owner, "<span class='warning'>Your balls [pick("swell up to", "flourish into", "expand into", "plump up into", "grow eagerly into", "amplify into")] a larger pair.</span>")
+		else
+			to_chat(owner, "<span class='warning'>Your balls [pick("shrink down to", "decrease into", "wobble down into", "diminish into", "deflate into", "contract into")] a smaller pair.</span>")
 
 /obj/item/organ/genital/testicles/get_min_size()
 	return 0 // 0 is the one where the balls disappear
@@ -68,12 +80,6 @@
 			to_chat(owner, "<span class='warning'>You feel your balls shrink down until they're no more!</span>")
 		QDEL_IN(src, 1)
 		return
-
-	if(owner)
-		if (new_size > previous_size)
-			to_chat(owner, "<span class='warning'>Your balls [pick("swell up to", "flourish into", "expand into", "plump up into", "grow eagerly into", "amplify into")] a larger pair.</span>")
-		else
-			to_chat(owner, "<span class='warning'>Your balls [pick("shrink down to", "decrease into", "wobble down into", "diminish into", "deflate into", "contract into")] a smaller pair.</span>")
 
 /obj/item/organ/genital/testicles/update_size(modified = FALSE)
 	var/rounded_size = round(ball_size)
@@ -158,7 +164,9 @@
 /obj/item/organ/genital/testicles/proc/set_ball_size(value)
 	if(ball_size == value)
 		return
+	var/previous_value = ball_size
 	ball_size = value
+	on_balls_size_update(previous_value, ball_size)
 	update()
 
 // Sets the balls size clamping to arguments, and clamping to min/max size prefs

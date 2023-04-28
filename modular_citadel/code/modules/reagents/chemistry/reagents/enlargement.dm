@@ -68,13 +68,12 @@
 			B.color = "#[M.dna.features["breasts_color"]]"
 		else
 			B.color = SKINTONE2HEX(H.skin_tone)
-		B.size = 0
-		B.prev_size = 0
+		B.set_size(0)
 		to_chat(H, "<span class='warning'>Your chest feels warm, tingling with newfound sensitivity.</b></span>")
 		H.reagents.remove_reagent(type, 5)
 		B.Insert(H)
 
-	B.modify_size(0.1)
+	B.generic_adjust_size_float(0.1)
 	return ..()
 
 /datum/reagent/fermi/breast_enlarger/overdose_process(mob/living/carbon/M) //Turns you into a female if male and ODing, doesn't touch nonbinary and object genders.
@@ -90,7 +89,7 @@
 		M.set_gender(FEMALE)
 
 	if(P)
-		P.modify_size(-0.05)
+		P.generic_adjust_size_float(-0.05)
 	if(T && (!P || P.size <= 0))
 		qdel(T)
 	if(!V)
@@ -118,7 +117,7 @@
 	var/obj/item/organ/genital/breasts/B = M.getorganslot(ORGAN_SLOT_BREASTS)
 	if(!(M.client?.prefs.cit_toggles & BREAST_ENLARGEMENT) || !B)
 		return ..()
-	B.modify_size(-0.05)
+	B.generic_adjust_size_float(-0.05)
 	return ..()
 
 /datum/reagent/fermi/BEsmaller_hypo
@@ -146,11 +145,11 @@
 		return..()
 	var/optimal_size = GLOB.breast_values[M.dna.features["breasts_size"]]
 	if(!optimal_size)//Fast fix for those who don't want it.
-		B.modify_size(-0.1)
+		B.generic_adjust_size_float(-0.1)
 	else if(B.size > optimal_size)
-		B.modify_size(-0.05, optimal_size)
+		B.generic_adjust_size_float(-0.05, optimal_size)
 	else if(B.size < optimal_size)
-		B.modify_size(0.05, 0, optimal_size)
+		B.generic_adjust_size_float(0.05, 0, optimal_size)
 	return ..()
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -235,7 +234,7 @@
 		M.set_gender(MALE)
 
 	if(B)
-		B.modify_size(-0.05)
+		B.generic_adjust_size_float(-0.05)
 	if(V && (!B || B.size <= 0))
 		qdel(V)
 	if(W && (!B || B.size <= 0))
@@ -288,12 +287,13 @@
 	if(!P)
 		return ..()
 	var/optimal_size = M.dna.features["cock_length"]
+	var/optimal_ball_size = M.dna.features["balls_size"]
 	if(!optimal_size)//Fast fix for those who don't want it.
 		P.adjust_length_factor_balls(-0.2)
 	else if(P.length > optimal_size)
-		P.adjust_length_factor_balls(-0.1, optimal_size)
+		P.adjust_length_factor_balls(-0.1, optimal_size, INFINITY, optimal_ball_size, INFINITY)
 	else if(P.length < optimal_size)
-		P.adjust_length_factor_balls(0.1, 0, optimal_size)
+		P.adjust_length_factor_balls(0.1, 0, optimal_size, 0, optimal_ball_size)
 	return ..()
 
 
@@ -347,8 +347,7 @@
 			M.reagents.remove_reagent(type, 5)
 			B = nB
 	//If they have, increase size.
-	if(B.size_cached < BUTT_SIZE_MAX) //just in case
-		B.modify_size(0.05)
+	B.generic_adjust_size_float(0.05)
 	..()
 
 /datum/reagent/fermi/AEsmaller_hypo //"BEsmaller" already exists so using "AE" instead, A is for ass.
@@ -373,11 +372,11 @@
 		return ..()
 	var/optimal_size = M.dna.features["butt_size"]
 	if(!optimal_size)//Fast fix for those who don't want it.
-		B.modify_size(-0.2)
+		B.generic_adjust_size_float(-0.2)
 	else if(B.size > optimal_size)
-		B.modify_size(-0.1, optimal_size)
+		B.generic_adjust_size_float(-0.1, optimal_size)
 	else if(B.size < optimal_size)
-		B.modify_size(0.1, 0, optimal_size)
+		B.generic_adjust_size_float(0.1, 0, optimal_size)
 	return ..()
 
 /datum/reagent/fermi/balls_enlarger
@@ -447,14 +446,15 @@
 		H.give_genital(/obj/item/organ/genital/testicles)
 
 /datum/reagent/fermi/balls_shrinker/on_mob_life(mob/living/carbon/M)
-	var/obj/item/organ/genital/testicles/testes = M.getorganslot(ORGAN_SLOT_BUTT)
+	var/obj/item/organ/genital/testicles/testes = M.getorganslot(ORGAN_SLOT_TESTICLES)
 	if(!testes)
 		return ..()
 	var/optimal_size = M.dna.features["balls_size"]
+	var/optimal_cock_size = M.dna.features["cock_length"]
 	if(!optimal_size)//Fast fix for those who don't want it.
 		testes.adjust_ball_size_factor_cock(-0.2)
 	else if(testes.ball_size > optimal_size)
-		testes.adjust_ball_size_factor_cock(-0.1, optimal_size)
+		testes.adjust_ball_size_factor_cock(-0.1, optimal_size, INFINITY, optimal_cock_size, INFINITY)
 	else if(testes.ball_size < optimal_size)
-		testes.adjust_ball_size_factor_cock(0.1, 0, optimal_size)
+		testes.adjust_ball_size_factor_cock(0.1, 0, optimal_size, 0, optimal_cock_size)
 	return ..()

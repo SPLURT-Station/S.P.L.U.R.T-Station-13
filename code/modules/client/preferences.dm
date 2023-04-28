@@ -2804,9 +2804,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						features["cock_length"] = clamp(round(new_length), min_D, max_D)
 
 				if("balls_size")
-					var/new_size = input(user, "Ball size:\n([BALLS_SIZE_MIN]-[BALLS_SIZE_MAX])\nAnalogous to cock length.", "Character Preference") as num|null
+					var/min_ball = CONFIG_GET(number/balls_min_size_prefs)
+					var/max_ball = CONFIG_GET(number/balls_max_size_prefs)
+					var/new_size = input(user, "Ball size:\n([min_ball]-[max_ball])\nAnalogous to cock length.", "Character Preference") as num|null
 					if(new_size)
-						features["balls_size"] = clamp(round(new_size), BALLS_SIZE_MIN, BALLS_SIZE_MAX)
+						features["balls_size"] = clamp(round(new_size), min_ball, max_ball)
 
 				if("cock_shape")
 					var/new_shape

@@ -11,6 +11,7 @@
 	var/unarousal_verb = "You no longer feel aroused"
 	var/fluid_transfer_factor = 0 //How much would a partner get in them if they climax using this?
 	var/size = 2 //can vary between num or text, just used in icon_state strings
+	var/prev_size = 2
 	var/datum/reagent/fluid_id = null
 	var/fluid_max_volume = GENITAL_BASE_MAX_VOLUME
 	var/fluid_rate = CUM_RATE
@@ -20,6 +21,14 @@
 	var/linked_organ_slot //used for linking an apparatus' organ to its other half on update_link().
 	var/layer_index = GENITAL_LAYER_INDEX //Order should be very important. FIRST vagina, THEN testicles, THEN penis, as this affects the order they are rendered in.
 	var/extra_productive = FALSE //Whether the genital is extra-productive, granted by a quirk for testicles
+	var/generic_size_adjust_float = 0.0 //Generic float to keep track of adjustements onto size (size being an int)
+	var/max_size = null // NULLABLE!!
+	var/min_size = null // NULLABLE!!
+	var/datum/reagents/climax_fluids
+	var/datum/reagent/original_fluid_id
+	var/datum/reagent/default_fluid_id
+	var/list/writtentext = ""
+	var/list/obj/item/equipment = list()
 
 /obj/item/organ/genital/Initialize(mapload, do_update = TRUE)
 	. = ..()
@@ -46,18 +55,22 @@
 /obj/item/organ/genital/proc/update()
 	if(QDELETED(src))
 		return
-	update_fluid_states()
+	if(linked_organ_slot || (linked_organ && !owner))
+		update_link()
 	update_size()
+	update_fluid_states()
 	update_appearance()
 	if(genital_flags & UPDATE_OWNER_APPEARANCE && owner && ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		H.update_genitals()
-	if(linked_organ_slot || (linked_organ && !owner))
-		update_link()
 
 //exposure and through-clothing code
 /mob/living/carbon
 	var/list/exposed_genitals = list() //Keeping track of them so we don't have to iterate through every genitalia and see if exposed
+
+/obj/item/organ/genital/proc/set_shape(new_shape)
+	shape = new_shape
+	update()
 
 /obj/item/organ/genital/proc/is_exposed()
 	if(!owner || genital_flags & (GENITAL_INTERNAL|GENITAL_HIDDEN))
@@ -176,8 +189,70 @@
 			human.update_genitals()
 	return
 
+// Returns minimum size of the genital
+/obj/item/organ/genital/proc/get_min_size()
+	return 0
 
-/obj/item/organ/genital/proc/modify_size(modifier, min = -INFINITY, max = INFINITY)
+// Returns maximum size of the genital
+/obj/item/organ/genital/proc/get_max_size()
+	return INFINITY
+
+// Virtual function to adjust size of a genital, some genitals handling size differently override this (penis, testicles)
+/obj/item/organ/genital/proc/generic_adjust_size_float(adjust, min = -INFINITY, max = INFINITY)
+	generic_size_adjust_float += adjust
+	var/size_delta = 0
+	if(generic_size_adjust_float >= 1)
+		var/floor = FLOOR(generic_size_adjust_float, 1)
+		size_delta = floor
+	else if (generic_size_adjust_float <= -1)
+		var/ceil = CEILING(generic_size_adjust_float, 1)
+		size_delta = ceil
+
+	if(size_delta != 0)
+		generic_size_adjust_float -= size_delta
+		adjust_size_clamped(size_delta, min, max)
+
+// Virtual function to set the size of a genital, clamping it too, some genitals handling size differently override this (penis, testicles)
+/obj/item/organ/genital/proc/generic_set_size_clamped(new_size)
+	var/diff = new_size - size
+	adjust_size_clamped(diff)
+
+// Virtual function to set the size of a genital without clamping it, some genitals handling size differently override this (penis, testicles)
+/obj/item/organ/genital/proc/generic_set_size(new_size)
+	set_size(new_size)
+
+// Sets the size of a genital, some genitals derrive their sizes from different values and update them instead
+/obj/item/organ/genital/proc/set_size(new_size)
+	// Clamp to the allowed size standards
+	new_size = clamp(new_size, get_min_size(), get_max_size())
+	if(size == new_size)
+		return
+	prev_size = size
+	size = new_size
+	on_size_update(prev_size, size)
+	update()
+
+// Adjusts the size of a genital, some genitals derrive their sizes from different values and update them instead
+/obj/item/organ/genital/proc/adjust_size(adjust)
+	if(adjust == 0)
+		return
+	set_size(size + adjust)
+
+// Adjusts genital size by an amount taking in consideration min and max arguments and min_size and max_size variables
+/obj/item/organ/genital/proc/adjust_size_clamped(adjust, min = -INFINITY, max = INFINITY)
+	// Clamp to arguments
+	var/new_size = clamp(size + adjust, min, max)
+	var/diff = new_size - size
+	// Clamp to min/max sizes
+	var/min_check_value = min_size ? min_size : 0
+	var/max_check_value = max_size ? max_size : INFINITY
+	var/new_size2 = clamp(size + diff, min_check_value, max_check_value)
+	var/diff2 = new_size2 - size
+	// Finally, apply the difference
+	adjust_size(diff2)
+
+// Virtual proc meant to run events when a size of a genital updates to a different one
+/obj/item/organ/genital/proc/on_size_update(previous_size, new_size)
 	return
 
 // Updates all values of fluid volume, rate and multipliers
@@ -197,7 +272,7 @@
 	// Handle extra productive genitals from the quirk
 	if(extra_productive)
 		fluid_rate *= 1.5
-		fluid_max_volume *= (5/3) //1.666 repeating as the quirk used to do
+		fluid_max_volume *= (5/3) //1.666 repeating increase as the quirk used to do
 
 	// Extra multiplicator of fluid rate of some conditional things genitals can implement
 	fluid_rate *= get_fluid_rate_multiplier()
@@ -214,7 +289,66 @@
 /obj/item/organ/genital/proc/get_fluid_rate_multiplier()
 	return 1
 
+// Virtual proc meant to update size from other conditions
 /obj/item/organ/genital/proc/update_size()
+	return
+
+/obj/item/organ/genital/proc/size_to_state()
+	return size
+
+/obj/item/organ/genital/proc/set_fluid_id(new_fluid_id, mob/living/carbon/human/reagent_owner = null, set_original = FALSE)
+	if(!new_fluid_id)
+		return
+	if(linked_organ && linked_organ.genital_flags & GENITAL_FUID_PRODUCTION)
+		linked_organ.set_fluid_id(new_fluid_id, reagent_owner, set_original)
+	if(!(genital_flags & GENITAL_FUID_PRODUCTION))
+		return
+	if(new_fluid_id == fluid_id && !(set_original && original_fluid_id != fluid_id))
+		return
+	var/datum/reagent/fluid = find_reagent_object_from_type(new_fluid_id)
+	if(!fluid)
+		return
+	if(istype(fluid, /datum/reagent/blood))
+		if(reagent_owner)
+			new_fluid_id = reagent_owner.get_blood_id()
+	else
+		// We only want to check the blacklist if the reagent is not blood apparently
+		if(!(fluid in GLOB.genital_fluids_list))
+			return
+	fluid_id = new_fluid_id
+	if(set_original)
+		original_fluid_id = fluid_id
+
+/obj/item/organ/genital/proc/get_fluid()
+	return clamp(fluid_rate * ((world.time - last_orgasmed) / (10 SECONDS)), 0, fluid_max_volume)
+
+/obj/item/organ/genital/proc/get_fluid_fraction()
+	return get_fluid() / fluid_max_volume
+
+/obj/item/organ/genital/proc/climax_modify_size(mob/living/partner, obj/item/organ/genital/source_gen)
+    return
+
+/obj/item/organ/genital/proc/get_fluid_id()
+	if(fluid_id)
+		return fluid_id
+	else if(linked_organ?.fluid_id)
+		return linked_organ.fluid_id
+	return
+
+/obj/item/organ/genital/proc/get_fluid_name()
+	var/milkies = get_fluid_id()
+	var/message
+	if(!milkies) //No milkies??
+		return
+	var/datum/reagent/R = find_reagent_object_from_type(milkies)
+	message = R.name
+	return message
+
+/obj/item/organ/genital/proc/get_default_fluid()
+	if(default_fluid_id)
+		return default_fluid_id
+	else if(linked_organ?.default_fluid_id)
+		return linked_organ.default_fluid_id
 	return
 
 /obj/item/organ/genital/proc/update_appearance_genitals()
@@ -307,6 +441,8 @@
 /mob/living/carbon/human/proc/update_genitals()
 	if(QDELETED(src))
 		return
+	// Send signal
+	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_GENITALS)
 	var/static/list/relevant_layers = list("[GENITALS_BEHIND_LAYER]" = "BEHIND", "[GENITALS_FRONT_LAYER]" = "FRONT")
 	var/static/list/layers_num
 	if(!layers_num)

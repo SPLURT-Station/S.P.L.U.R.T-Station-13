@@ -13,10 +13,15 @@
 	shape = "donut"
 	layer_index = ANUS_LAYER_INDEX
 
+/obj/item/organ/genital/anus/get_min_size()
+	return 0
+
+/obj/item/organ/genital/anus/get_max_size()
+	return BUTT_SIZE_MAX
+
 /obj/item/organ/genital/anus/update_size()
-	. = ..()
 	if(linked_organ)
-		size = linked_organ.size
+		set_size(linked_organ.size)
 
 /obj/item/organ/genital/anus/update_appearance(updates)
 	var/u_His = owner?.p_their() || "their"

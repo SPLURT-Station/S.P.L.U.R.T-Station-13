@@ -189,98 +189,106 @@
 		H.update_body()
 
 	else if (select_alteration == "Penis")
-		for(var/obj/item/organ/genital/penis/X in H.internal_organs)
-			qdel(X)
-		var/new_shape
-		new_shape = input(owner, "Choose your character's dong", "Genital Alteration") as null|anything in GLOB.cock_shapes_list
-		if(new_shape)
-			H.dna.features["cock_shape"] = new_shape
-		H.update_genitals()
-		H.give_genital(/obj/item/organ/genital/testicles)
-		H.give_genital(/obj/item/organ/genital/penis)
-		H.apply_overlay()
+		var/new_shape = input(owner, "Choose your character's dong", "Genital Alteration") as null|anything in GLOB.cock_shapes_list
+		if(!new_shape)
+			return
+		H.dna.features["cock_shape"] = new_shape
+		var/obj/item/organ/genital/penis/penis = H.getorganslot(ORGAN_SLOT_PENIS)
+		if(!penis)
+			H.give_genital(/obj/item/organ/genital/penis)
+		else
+			penis.set_shape(new_shape)
 
 
 	else if (select_alteration == "Vagina")
-		for(var/obj/item/organ/genital/vagina/X in H.internal_organs)
-			qdel(X)
-		var/new_shape
-		new_shape = input(owner, "Choose your character's pussy", "Genital Alteration") as null|anything in GLOB.vagina_shapes_list
-		if(new_shape)
-			H.dna.features["vag_shape"] = new_shape
-		H.update_genitals()
-		H.give_genital(/obj/item/organ/genital/womb)
-		H.give_genital(/obj/item/organ/genital/vagina)
-		H.apply_overlay()
+		var/new_shape = input(owner, "Choose your character's pussy", "Genital Alteration") as null|anything in GLOB.vagina_shapes_list
+		if(!new_shape)
+			return
+		H.dna.features["vag_shape"] = new_shape
+		var/obj/item/organ/genital/vagina/vagina = H.getorganslot(ORGAN_SLOT_VAGINA)
+		if(!vagina)
+			H.give_genital(/obj/item/organ/genital/vagina)
+		else
+			vagina.set_shape(new_shape)
 
 	else if (select_alteration == "Penis Length")
-		for(var/obj/item/organ/genital/penis/X in H.internal_organs)
-			qdel(X)
 		var/min_D = CONFIG_GET(number/penis_min_inches_prefs)
 		var/max_D = CONFIG_GET(number/penis_max_inches_prefs)
 		var/new_length = input(owner, "Penis length in inches:\n([min_D]-[max_D])", "Genital Alteration") as num|null
-		if(new_length)
-			H.dna.features["cock_length"] = clamp(round(new_length), min_D, max_D)
-		H.update_genitals()
-		H.apply_overlay()
-		H.give_genital(/obj/item/organ/genital/testicles)
-		H.give_genital(/obj/item/organ/genital/penis)
+		if(!new_length)
+			return
+		new_length = clamp(round(new_length), min_D, max_D)
+		H.dna.features["cock_length"] = new_length
+		var/obj/item/organ/genital/penis/penis = H.getorganslot(ORGAN_SLOT_PENIS)
+		if(!penis)
+			H.give_genital(/obj/item/organ/genital/penis)
+		else
+			penis.set_length(new_length)
 
 	else if (select_alteration == "Breast Size")
-		for(var/obj/item/organ/genital/breasts/X in H.internal_organs)
-			qdel(X)
 		var/new_size = input(owner, "Breast Size", "Genital Alteration") as null|anything in CONFIG_GET(keyed_list/breasts_cups_prefs)
-		if(new_size)
-			H.dna.features["breasts_size"] = new_size
-		H.update_genitals()
-		H.apply_overlay()
-		H.give_genital(/obj/item/organ/genital/breasts)
+		if(!new_size)
+			return
+		H.dna.features["breasts_size"] = new_size
+		var/obj/item/organ/genital/breasts/breasts = H.getorganslot(ORGAN_SLOT_BREASTS)
+		if(!breasts)
+			H.give_genital(/obj/item/organ/genital/breasts)
+		else
+			breasts.set_breasts_cup(new_size)
 
 	else if (select_alteration == "Breast Shape")
-		for(var/obj/item/organ/genital/breasts/X in H.internal_organs)
-			qdel(X)
 		var/new_shape
 		new_shape = input(owner, "Breast Shape", "Genital Alteration") as null|anything in GLOB.breasts_shapes_list
-		if(new_shape)
-			H.dna.features["breasts_shape"] = new_shape
-		H.update_genitals()
-		H.apply_overlay()
-		H.give_genital(/obj/item/organ/genital/breasts)
+		if(!new_shape)
+			return
+		H.dna.features["breasts_shape"] = new_shape
+		var/obj/item/organ/genital/breasts/breasts = H.getorganslot(ORGAN_SLOT_BREASTS)
+		if(!breasts)
+			H.give_genital(/obj/item/organ/genital/breasts)
+		else
+			breasts.set_shape(new_shape)
 
 	else if (select_alteration == "Butt Size")
-		for(var/obj/item/organ/genital/butt/X in H.internal_organs)
-			qdel(X)
 		var/min_B = CONFIG_GET(number/butt_min_size_prefs)
 		var/max_B = CONFIG_GET(number/butt_max_size_prefs)
-		var/new_length = input(owner, "Butt size:\n([min_B]-[max_B])", "Genital Alteration") as num|null
-		if(new_length)
-			H.dna.features["butt_size"] = clamp(round(new_length), min_B, max_B)
-		H.update_genitals()
-		H.apply_overlay()
-		H.give_genital(/obj/item/organ/genital/butt)
+		var/new_butt_size = input(owner, "Butt size:\n([min_B]-[max_B])", "Genital Alteration") as num|null
+		if(!new_butt_size)
+			return
+		new_butt_size = clamp(round(new_butt_size), min_B, max_B)
+		H.dna.features["butt_size"] = new_butt_size
+		var/obj/item/organ/genital/butt/butt = H.getorganslot(ORGAN_SLOT_BUTT)
+		if(!butt)
+			H.give_genital(/obj/item/organ/genital/butt)
+		else
+			butt.set_size(new_butt_size)
 
 	else if (select_alteration == "Belly Size")
-		for(var/obj/item/organ/genital/belly/X in H.internal_organs)
-			qdel(X)
 		var/min_belly = CONFIG_GET(number/belly_min_size_prefs)
 		var/max_belly = CONFIG_GET(number/belly_max_size_prefs)
-		var/new_length = input(owner, "Belly size:\n([min_belly]-[max_belly])", "Genital Alteration") as num|null
-		if(new_length)
-			H.dna.features["belly_size"] = clamp(round(new_length), min_belly, max_belly)
-		H.update_genitals()
-		H.apply_overlay()
-		H.give_genital(/obj/item/organ/genital/belly)
+		var/new_belly_size = input(owner, "Belly size:\n([min_belly]-[max_belly])", "Genital Alteration") as num|null
+		if(!new_belly_size)
+			return
+		new_belly_size = clamp(round(new_belly_size), min_belly, max_belly)
+		H.dna.features["belly_size"] = new_belly_size
+		var/obj/item/organ/genital/belly/belly = H.getorganslot(ORGAN_SLOT_BELLY)
+		if(!belly)
+			H.give_genital(/obj/item/organ/genital/belly)
+		else
+			belly.set_size(new_belly_size)
+
 	else if (select_alteration == "Balls Size")
-		var/new_balls_size = input(owner, "Balls size:\n([BALLS_SIZE_MIN]-[BALLS_SIZE_MAX])", "Genital Alteration") as num|null
+		var/min_ball = CONFIG_GET(number/balls_min_size_prefs)
+		var/max_ball = CONFIG_GET(number/balls_max_size_prefs)
+		var/new_balls_size = input(owner, "Balls size:\n([min_ball]-[max_ball])\nSize is analogous to cock length.", "Genital Alteration") as num|null
 		if(!new_balls_size)
 			return
-		new_balls_size = clamp(new_balls_size, BALLS_SIZE_MIN, BALLS_SIZE_MAX)
+		new_balls_size = clamp(new_balls_size, min_ball, max_ball)
 		H.dna.features["balls_size"] = new_balls_size
 		var/obj/item/organ/genital/testicles/testes = H.getorganslot(ORGAN_SLOT_TESTICLES)
 		if(!testes)
 			H.give_genital(/obj/item/organ/genital/testicles)
-			testes = H.getorganslot(ORGAN_SLOT_TESTICLES)
-		testes.set_ball_size(new_balls_size)
+		else
+			testes.set_ball_size(new_balls_size)
 
 	else
 		return

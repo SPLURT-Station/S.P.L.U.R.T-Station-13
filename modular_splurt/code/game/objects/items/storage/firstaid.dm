@@ -14,6 +14,10 @@
 	new /obj/item/reagent_containers/glass/bottle/vial/small/bellyreduction(src)
 	new /obj/item/reagent_containers/glass/bottle/vial/small/bellyreduction(src)
 
+	new /obj/item/reagent_containers/glass/bottle/vial/small/balls_reduction(src)
+	new /obj/item/reagent_containers/glass/bottle/vial/small/balls_reduction(src)
+	new /obj/item/reagent_containers/glass/bottle/vial/small/balls_reduction(src)
+
 	. = ..()
 
 /obj/item/storage/firstaid/tactical/slaver

@@ -13,13 +13,12 @@
 	unarousal_verb = "You no longer feel wet"
 	fluid_transfer_factor = 0.1 //Yes, some amount is exposed to you, go get your AIDS
 	layer_index = VAGINA_LAYER_INDEX
-	var/cap_length = 8//D   E   P   T   H (cap = capacity)
-	var/cap_girth = 12
-	var/cap_girth_ratio = 1.5
-	var/clits = 1
-	var/clit_diam = 0.25
-	var/clit_len = 0.25
-	var/list/vag_types = list("tentacle", "dentata", "hairy", "spade", "furred")
+
+/obj/item/organ/genital/vagina/get_min_size()
+	return 1
+
+/obj/item/organ/genital/vagina/get_max_size()
+	return 1
 
 /obj/item/organ/genital/vagina/update_appearance()
 	. = ..()

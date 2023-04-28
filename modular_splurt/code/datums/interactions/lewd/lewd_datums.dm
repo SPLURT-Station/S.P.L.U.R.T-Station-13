@@ -467,7 +467,7 @@
 /datum/interaction/lewd/deflate_belly/display_interaction(mob/living/carbon/user)
 	var/obj/item/organ/genital/belly/gut = user.getorganslot(ORGAN_SLOT_BELLY)
 	if(gut)
-		gut.modify_size(-1)
+		gut.generic_adjust_size_float(-1)
 
 /datum/interaction/lewd/inflate_belly
 	description = "Inflate belly"
@@ -481,7 +481,7 @@
 /datum/interaction/lewd/inflate_belly/display_interaction(mob/living/carbon/user)
 	var/obj/item/organ/genital/belly/gut = user.getorganslot(ORGAN_SLOT_BELLY)
 	if(gut)
-		gut.modify_size(1)
+		gut.generic_adjust_size_float(1)
 
 /datum/interaction/lewd/nuzzle_belly
 	description = "Nuzzle their belly."

@@ -1336,8 +1336,8 @@
 		if(organ_penis)
 			organ_penis.shape = "Knotted"
 			organ_penis.color = "#ff7c80"
+			organ_penis.adjust_length(6)
 			organ_penis.update()
-			organ_penis.modify_size(6)
 		if(organ_vagina)
 			organ_vagina.shape = "Furred"
 			organ_vagina.color = "#[action_owner.dna.features["mcolor"]]"
@@ -1383,8 +1383,8 @@
 		if(action_owner.has_penis())
 			organ_penis.shape = old_features["cock_shape"]
 			organ_penis.color = "#[old_features["cock_color"]]"
+			organ_penis.adjust_length(-6)
 			organ_penis.update()
-			organ_penis.modify_size(-6)
 		if(action_owner.has_vagina())
 			organ_vagina.shape = old_features["vag_shape"]
 			organ_vagina.color = "#[old_features["vag_color"]]"

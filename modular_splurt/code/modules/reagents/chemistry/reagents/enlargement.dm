@@ -66,13 +66,11 @@
 				B.color = "#[M.dna.features["belly_color"]]"
 			else
 				B.color = SKINTONE2HEX(H.skin_tone)
-			B.size = 1
-			B.size_cached = B.size
+			B.set_size(1)
 			to_chat(M, span_warning("You feel your midsection get warmer... bubbling softly as it seems to start distending</b>"))
 			M.reagents.remove_reagent(type, 5)
 	//If they have, increase size.
-	if(B.size_cached < BELLY_SIZE_MAX) //just in case
-		B.modify_size(0.1)
+	B.generic_adjust_size_float(0.1, 0, BELLY_SIZE_MAX)
 	..()
 
 /datum/reagent/fermi/GEsmaller_hypo
@@ -97,11 +95,11 @@
 		return ..()
 	var/optimal_size = M.dna.features["belly_size"]
 	if(!optimal_size)//Fast fix for those who don't want it.
-		B.modify_size(-0.2)
+		B.generic_adjust_size_float(-0.2)
 	else if(B.size > optimal_size)
-		B.modify_size(-0.1, optimal_size)
+		B.generic_adjust_size_float(-0.1, optimal_size)
 	else if(B.size < optimal_size)
-		B.modify_size(0.1, 0, optimal_size)
+		B.generic_adjust_size_float(0.1, 0, optimal_size)
 	return ..()
 
 /datum/reagent/fermi/butt_enlarger/overdose_process(mob/living/M)

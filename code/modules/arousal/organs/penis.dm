@@ -15,29 +15,61 @@
 	size = 2 //arbitrary value derived from length and diameter for sprites.
 	layer_index = PENIS_LAYER_INDEX
 
-	var/length = 6 //inches
-	var/max_length = 9
-	var/min_length = 2
+	var/length = COCK_SIZE_DEF //inches
+	var/max_length = null // NULLABLE!!
+	var/min_length = null // NULLABLE!!
 	var/prev_length = 6 //really should be renamed to prev_length
 	var/diameter = 4.38
 	var/diameter_ratio = COCK_DIAMETER_RATIO_DEF //0.25; check citadel_defines.dm
 	var/ball_growth_affects_cock_growth = TRUE
+	var/last_length_during_alert = COCK_SIZE_DEF
+
+/obj/item/organ/genital/penis/get_min_size()
+	return 0 // 0 is the one where the pp disappears
+
+/obj/item/organ/genital/penis/get_max_size()
+	return 5
+
+/obj/item/organ/genital/penis/generic_adjust_size_float(adjust, min = -INFINITY, max = INFINITY)
+	adjust_length_clamped(adjust, min, max)
+
+/obj/item/organ/genital/penis/generic_set_size_clamped(new_size)
+	var/diff = new_size - length
+	adjust_length_clamped(diff)
+
+/obj/item/organ/genital/penis/generic_set_size(new_size)
+	set_length(new_size)
 
 /obj/item/organ/genital/penis/get_fluid_size_bonus_multiplier()
-	return clamp(length / 6, 1, INFINITY)
+	return clamp(length / 3, 1, INFINITY)
 
-/obj/item/organ/genital/penis/update_size(modified = FALSE)
-	if(length <= 0)//I don't actually know what round() does to negative numbers, so to be safe!!
+/obj/item/organ/genital/penis/on_size_update(previous_size, new_size)
+	if(new_size <= 0)
 		if(owner)
 			to_chat(owner, "<span class='warning'>You feel your tallywacker shrinking away from your body as your groin flattens out!</b></span>")
 		QDEL_IN(src, 1)
 		if(linked_organ)
 			QDEL_IN(linked_organ, 1)
 		return
+
+/obj/item/organ/genital/penis/proc/on_length_update(previous_length, new_length)
+	var/diff = abs(new_length - last_length_during_alert)
+	if(diff < 1)
+		return
+	last_length_during_alert = new_length
+	if(owner)
+		if (new_length > previous_length)
+			to_chat(owner, "<span class='warning'>Your [pick(GLOB.dick_nouns)] [pick("swells up to", "flourishes into", "expands into", "bursts forth into", "grows eagerly into", "amplifys into")] a [uppertext(get_proper_length())] inch penis.</b></span>")
+		else
+			to_chat(owner, "<span class='warning'>Your [pick(GLOB.dick_nouns)] [pick("shrinks down to", "decreases into", "diminishes into", "deflates into", "shrivels regretfully into", "contracts into")] a [uppertext(get_proper_length())] inch penis.</b></span>")
+
+/obj/item/organ/genital/penis/update_size()
 	var/rounded_length = round(length)
-	var/new_size
+	var/new_size = 1
 	switch(rounded_length)
-		if(0 to 6) //If modest size
+		if(-INFINITY to 0)
+			new_size = 0
+		if(1 to 6) //If modest size
 			new_size = 1
 		if(7 to 11) //If large
 			new_size = 2
@@ -48,22 +80,14 @@
 		if(49 to INFINITY)
 			new_size = 5
 
-	size = new_size
-
-	if(owner)
-		if (round(length) > round(prev_length))
-			to_chat(owner, "<span class='warning'>Your [pick(GLOB.dick_nouns)] [pick("swells up to", "flourishes into", "expands into", "bursts forth into", "grows eagerly into", "amplifys into")] a [uppertext(round(length*get_size(owner)))] inch penis.</b></span>")
-		else if ((round(length) < round(prev_length)) && (length > 0.5))
-			to_chat(owner, "<span class='warning'>Your [pick(GLOB.dick_nouns)] [pick("shrinks down to", "decreases into", "diminishes into", "deflates into", "shrivels regretfully into", "contracts into")] a [uppertext(round(length*get_size(owner)))] inch penis.</b></span>")
-	icon_state = sanitize_text("penis_[shape]_[size]")
-	diameter = (length * diameter_ratio)//Is it just me or is this ludicous, why not make it exponentially decay?
-
+	set_size(new_size)
 
 /obj/item/organ/genital/penis/update_appearance()
 	. = ..()
 	var/datum/sprite_accessory/S = GLOB.cock_shapes_list[shape]
 	var/icon_shape = S ? S.icon_state : "human"
 	icon_state = "penis_[icon_shape]_[size]"
+	//icon_state = sanitize_text("penis_[shape]_[size]") //Which one is it supposed to be??? 2 pieces of code setting differnt icon states
 	var/lowershape = lowertext(shape)
 
 	if(owner)
@@ -80,7 +104,9 @@
 			if(T.taur_mode & S.accepted_taurs) //looks out of place on those.
 				lowershape = "taur, [lowershape]"
 
-	desc = "You see [aroused_state ? "an erect" : "a flaccid"] [lowershape] [name]. You estimate it's about [round(length*get_size(owner), 0.25)] inch[round(length*get_size(owner), 0.25) != 1 ? "es" : ""] long and [round(diameter*get_size(owner), 0.25)] inch[round(diameter*get_size(owner), 0.25) != 1 ? "es" : ""] in diameter."
+	var/proper_len = get_proper_length()
+	var/proper_diam = get_proper_diameter()
+	desc = "You see [aroused_state ? "an erect" : "a flaccid"] [lowershape] [name]. You estimate it's about [proper_len] inch[proper_len != 1 ? "es" : ""] long and [proper_diam] inch[proper_diam != 1 ? "es" : ""] in diameter."
 
 /obj/item/organ/genital/penis/get_features(mob/living/carbon/human/H)
 	var/datum/dna/D = H.dna
@@ -88,7 +114,7 @@
 		color = SKINTONE2HEX(H.skin_tone)
 	else
 		color = "#[D.features["cock_color"]]"
-	length = D.features["cock_length"]
+	set_length(D.features["cock_length"])
 	max_length = D.features["cock_max_length"]
 	min_length = D.features["cock_min_length"]
 	diameter_ratio = D.features["cock_diameter_ratio"]
@@ -103,7 +129,7 @@
 	else
 		ball_growth_affects_cock_growth = TRUE
 
-/obj/item/organ/genital/penis/proc/adjust_linked_balls(adjust, min = 0, max = INFINITY)
+/obj/item/organ/genital/penis/proc/adjust_linked_balls(adjust, min = -INFINITY, max = INFINITY)
 	if(!linked_organ)
 		return
 	var/obj/item/organ/genital/testicles/balls = linked_organ
@@ -116,26 +142,31 @@
 	var/obj/item/organ/genital/testicles/balls = linked_organ
 	balls.update_ball_size()
 
-// Unconditionally adjusts length by value
+// Adjusts length by value
 /obj/item/organ/genital/penis/proc/adjust_length(adjust)
 	if(adjust == 0)
 		return
-	prev_length = length
-	length += adjust
+	set_length(length + adjust)
+
+// Sets length by value
+/obj/item/organ/genital/penis/proc/set_length(value)
+	if(length == value)
+		return
+	var/prev_length = length
+	length = value
+	diameter = (length * diameter_ratio)//Is it just me or is this ludicous, why not make it exponentially decay?
+	on_length_update(prev_length, length)
 	update()
 
-// Unconditionally sets length by value
-/obj/item/organ/genital/penis/proc/set_length(value)
-	var/diff = length - value
-	adjust_length(diff)
-
 // Adjusts length clamped to min and max arguments, and also to min_length and max_length
-/obj/item/organ/genital/penis/proc/adjust_length_clamped(adjust, min = 0, max = INFINITY)
+/obj/item/organ/genital/penis/proc/adjust_length_clamped(adjust, min = -INFINITY, max = INFINITY)
 	// Clamp to arguments
 	var/new_length = clamp(length + adjust, min, max)
 	var/diff = new_length - length
 	// Clamp to min/max sizes
-	var/new_length2 = clamp(length + diff, min_length, max_length)
+	var/min_check_value = min_length ? min_length : 0
+	var/max_check_value = max_length ? max_length : INFINITY
+	var/new_length2 = clamp(length + diff, min_check_value, max_check_value)
 	var/diff2 = new_length2 - length
 	// Finally, apply the difference
 	adjust_length(diff2)
@@ -156,11 +187,61 @@
 	set_length(balls.ball_size)
 
 // Adjusts length and possibly grows balls for that adjustement too
-/obj/item/organ/genital/penis/proc/adjust_length_factor_balls(adjust, min = 0, max = INFINITY)
-	adjust_linked_balls(adjust, min, max)
+/obj/item/organ/genital/penis/proc/adjust_length_factor_balls(adjust, min = -INFINITY, max = INFINITY, ball_min = null, ball_max = null)
+	if(isnull(ball_min))
+		ball_min = min
+	if(isnull(ball_max))
+		ball_max = max
 	adjust_length_clamped(adjust, min, max)
+	adjust_linked_balls(adjust, ball_min, ball_max)
 
 // Sets length and possibly updates ball size to that size
 /obj/item/organ/genital/penis/proc/set_length_factor_balls(value)
 	set_length(value)
 	update_linked_balls()
+
+// Gets the penis length factoring in an owner size, if any owner
+/obj/item/organ/genital/penis/proc/get_proper_diameter()
+	var/proper = diameter
+	if(owner)
+		proper *= get_size(owner)
+	return round(proper, 0.25)
+
+// Gets the penis diameter factoring in an owner size, if any owner
+/obj/item/organ/genital/penis/proc/get_proper_length()
+	var/proper = length
+	if(owner)
+		proper *= get_size(owner)
+	return round(proper)
+
+/obj/item/organ/genital/penis/climax_modify_size(mob/living/partner, obj/item/organ/genital/source_gen)
+	if(!(owner.client?.prefs.cit_toggles & PENIS_ENLARGEMENT))
+		return
+
+	var/datum/reagents/fluid_source = source_gen.climaxable(partner)
+	if(!fluid_source)
+		return
+
+	var/datum/reagents/target
+	if(linked_organ)
+		if(!linked_organ.climax_fluids)
+			linked_organ.climax_fluids = new
+			linked_organ.climax_fluids.maximum_volume = INFINITY
+		target = linked_organ.climax_fluids
+	else
+		if(!climax_fluids)
+			climax_fluids = new
+			climax_fluids.maximum_volume = INFINITY
+		target = climax_fluids
+
+	source_gen.generate_fluid(fluid_source)
+	fluid_source.trans_to(target, fluid_source.total_volume)
+
+	if(target.total_volume >= fluid_max_volume * GENITAL_INFLATION_THRESHOLD)
+		var/previous = size
+		generic_adjust_size_float(target.total_volume / (fluid_max_volume * GENITAL_INFLATION_THRESHOLD))
+		if(size != previous)
+			owner.visible_message(span_lewd("\The <b>[owner]</b>'s [pick(GLOB.dick_nouns)][linked_organ ? " and [pick(list("nuts", "balls", "testicles", "ballsack", "sack"))]" : ""] swell and grow bigger as they get pumped full of \the <b>[partner]</b>'s [lowertext(source_gen.get_fluid_name())]!"), ignored_mobs = owner.get_unconsenting())
+			if(linked_organ)
+				linked_organ.fluid_id = source_gen.get_fluid_id()
+		target.clear_reagents()

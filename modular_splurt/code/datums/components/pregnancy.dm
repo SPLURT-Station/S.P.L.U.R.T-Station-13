@@ -211,9 +211,9 @@
 		return
 	parent.AddComponent(/datum/component/organ_inflation, 1)
 	//if(pregnancy_inflation)
-	//	belly?.modify_size(1)
+	//	belly?.generic_adjust_size_float(1)
 	if(pregnancy_breast_growth)
-		boob?.modify_size(1)
+		boob?.generic_adjust_size_float(1)
 
 /datum/component/pregnancy/proc/handle_incubation()
 	if(carrier && (stage < max_stage) && prob(2))

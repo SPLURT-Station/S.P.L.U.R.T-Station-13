@@ -1,78 +1,43 @@
 /obj/item/organ/genital/belly //I know, I know a belly aint a genital. but it is in the sake of code.
-	name 					= "belly"
-	desc 					= "You see a belly on their midsection."
-	icon_state 				= "belly"
-	icon 					= 'icons/obj/genitals/breasts.dmi' // I have no idea why it's set up like this on hyper
-	zone 					= BODY_ZONE_CHEST
-	slot 					= ORGAN_SLOT_BELLY
-	w_class 				= WEIGHT_CLASS_NORMAL
-	size 					= 0
-	var/size_name 			= "flat"
-	var/statuscheck			= FALSE
-	shape					= "Pair" //Name doesn't matter unless we get more belly shapes
-	genital_flags 			= UPDATE_OWNER_APPEARANCE | GENITAL_UNDIES_HIDDEN | CAN_CUM_INTO | HAS_EQUIPMENT
-	masturbation_verb 		= "massage"
-	var/size_cached			= 0
-	var/prev_size //former size value, to allow update_size() to early return should be there no significant changes.
-	var/sent_full_message	= TRUE //defaults to 1 since they're full to start
-	//var/inflatable			= FALSE //For inflation connoisseurs //This is handled with the BELLY_INFLATION cit toggle now
+	name = "belly"
+	desc = "You see a belly on their midsection."
+	icon_state = "belly"
+	icon = 'icons/obj/genitals/breasts.dmi' // I have no idea why it's set up like this on hyper
+	zone = BODY_ZONE_CHEST
+	slot = ORGAN_SLOT_BELLY
+	w_class = WEIGHT_CLASS_NORMAL
+	size = 0
+	shape = "Pair" //Name doesn't matter unless we get more belly shapes
+	genital_flags = UPDATE_OWNER_APPEARANCE | GENITAL_UNDIES_HIDDEN | CAN_CUM_INTO | HAS_EQUIPMENT
+	masturbation_verb = "massage"
 	layer_index = BELLY_LAYER_INDEX
+	var/sent_full_message = TRUE //defaults to 1 since they're full to start
+	var/statuscheck = FALSE
 
+/obj/item/organ/genital/belly/get_min_size()
+	return -1 // -1 is used to remove the belly and 0 is flat belly
 
-/obj/item/organ/genital/belly/on_life()
-	if(QDELETED(src))
-		return
-	if(!owner)
-		return
+/obj/item/organ/genital/belly/get_max_size()
+	return BELLY_SIZE_MAX
 
-/obj/item/organ/genital/belly/modify_size(modifier, min = -INFINITY, max = INFINITY)
-	var/new_value = clamp(size_cached + modifier, max(min, min_size ? min_size : -INFINITY), min(max_size ? max_size : INFINITY, max))
-	if(new_value == size_cached)
-		return
-	prev_size = size_cached
-	size_cached = new_value
-	size = round(size_cached)
-	update()
-	..()
-
-/obj/item/organ/genital/belly/update_size()//wah
-	var/rounded_size = round(size)
+/obj/item/organ/genital/belly/on_size_update(previous_size, new_size)
 	var/list/belly_names = list("stomach", "belly", "gut", "midsection", "rolls")
-	if(size < 0)//I don't actually know what round() does to negative numbers, so to be safe!!fixed
+	if(new_size < 0)//I don't actually know what round() does to negative numbers, so to be safe!!fixed
 		if(owner)
 			to_chat(owner, span_warning("You feel your [pick(belly_names)] go completely flat."))
 		QDEL_IN(src, 1)
 		return
-
-	if(owner) //Because byond doesn't count from 0, I have to do this.
-		var/mob/living/carbon/human/H = owner
-		var/r_prev_size = round(prev_size)
-		if (rounded_size > r_prev_size)
-			to_chat(H, span_warning("Your guts [pick("swell up to", "gurgle into", "expand into", "plump up into", "grow eagerly into", "fatten up into", "distend into")] a larger midsection."))
-		else if (rounded_size < r_prev_size)
-			to_chat(H, span_warning("Your guts [pick("shrink down to", "decrease into", "wobble down into", "diminish into", "deflate into", "contracts into")] a smaller midsection."))
+	if(owner)
+		if(new_size > previous_size)
+			to_chat(owner, span_warning("Your guts [pick("swell up to", "gurgle into", "expand into", "plump up into", "grow eagerly into", "fatten up into", "distend into")] a larger midsection."))
+		else
+			to_chat(owner, span_warning("Your guts [pick("shrink down to", "decrease into", "wobble down into", "diminish into", "deflate into", "contracts into")] a smaller midsection."))
 
 /obj/item/organ/genital/belly/update_appearance()
 	var/lowershape = lowertext(shape)
 
 	//Reflect the size of dat ass on examine.
-	switch(round(size))
-		if(1)
-			size_name = "average"
-		if(2)
-			size_name = "round"
-		if(3)
-			size_name = "squishable"
-		if(4)
-			size_name = "fat"
-		if(5)
-			size_name = "sagging"
-		if(6)
-			size_name = "gigantic"
-		if(7 to BELLY_SIZE_MAX)
-			size_name = pick("massive","unfathomably bulging","enormous","very generous","humongous","big bubbly")
-		else
-			size_name = "nonexistent"
+	var/size_name = get_belly_size_string()
 
 	desc = "You see a [size_name] [round(size) >= 4 ? "belly, it bounces around and gurgles as [owner] walks" : "belly in [owner?.p_their() ? owner?.p_their() : "their"] midsection"]."
 
@@ -94,11 +59,9 @@
 		color = SKINTONE2HEX(H.skin_tone)
 	else
 		color = "#[D.features["belly_color"]]"
-	size = D.features["belly_size"]
+	set_size(D.features["belly_size"])
 	max_size = D.features["belly_max_size"]
 	min_size = D.features["belly_min_size"]
-	prev_size = size
-	size_cached = size
 	original_fluid_id = fluid_id
 	toggle_visibility(D.features["belly_visibility"], FALSE)
 	if(D.features["belly_stuffing"])
@@ -128,7 +91,7 @@
 	if(climax_fluids.total_volume >= fluid_max_volume * GENITAL_INFLATION_THRESHOLD)
 		var/previous = size
 		var/growth_amount = climax_fluids.total_volume / (fluid_max_volume * GENITAL_INFLATION_THRESHOLD)
-		modify_size(growth_amount)
+		generic_adjust_size_float(growth_amount)
 		if(size > round(previous))
 			owner.visible_message(span_lewd("\The <b>[owner]</b>'s belly bloats outwards as it gets pumped full of[pick(" sweet", "")] [lowertext(source_gen.get_fluid_name())]!"), ignored_mobs = owner.get_unconsenting())
 			fluid_id = source_gen.get_fluid_id()
@@ -139,3 +102,24 @@
 				ass.Insert(owner)
 			ass.climax_modify_size(partner, source_gen, TRUE)
 		climax_fluids.clear_reagents()
+
+/obj/item/organ/genital/belly/proc/get_belly_size_string()
+	var/size_name
+	switch(size)
+		if(-INFINITY to 0)
+			size_name = "nonexistent"
+		if(1)
+			size_name = "average"
+		if(2)
+			size_name = "round"
+		if(3)
+			size_name = "squishable"
+		if(4)
+			size_name = "fat"
+		if(5)
+			size_name = "sagging"
+		if(6)
+			size_name = "gigantic"
+		if(7 to INFINITY)
+			size_name = pick("massive","unfathomably bulging","enormous","very generous","humongous","big bubbly")
+	return size_name

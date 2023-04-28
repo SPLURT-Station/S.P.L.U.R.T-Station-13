@@ -45,9 +45,6 @@
 
 #define DEF_COCK_SHAPE		"Human"
 
-#define BALLS_VOLUME_BASE	25
-#define BALLS_VOLUME_MULT	1
-
 #define DEF_BALLS_SHAPE		"Single"
 
 // Ball size defines, size is analogous to cock size because of how growth affecting both works
@@ -67,9 +64,6 @@
 
 #define GENITAL_BASE_MAX_VOLUME 3 //How many units of reagents genitals hold by default
 #define CUM_RATE			2 // units per 10 seconds
-
-#define BREASTS_VOLUME_BASE	50	//base volume for the reagents in the breasts, multiplied by the size then multiplier. 50u for A cups, 850u for HH cups.
-#define BREASTS_VOLUME_MULT	1	//global multiplier for breast volume.
 
 #define BREASTS_SIZE_DEF	"c" //lowercase cause those sprite accessory don't use uppercased letters.
 

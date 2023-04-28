@@ -86,7 +86,7 @@
 
 					if(/obj/item/organ/genital/testicles)
 						var/obj/item/organ/genital/testicles/nuts = genital
-						appended += " [lowertext(nuts.size_name)] [lowertext(nuts.name)]"
+						appended += " [lowertext(nuts.get_ball_size_string())] [lowertext(nuts.name)]"
 					if(/obj/item/organ/genital/penis)
 						if(genital.aroused_state)
 							appended += " fully erect"
@@ -95,7 +95,7 @@
 						appended += " [lowertext(genital.name)]" // Name it something funny, i dare you.
 					if(/obj/item/organ/genital/butt)
 						var/obj/item/organ/genital/butt/booty = genital
-						appended += " [booty.size_name] [lowertext(booty.name)]" // Maybe " average butt pair" isn't the best for now
+						appended += " [booty.get_butt_size_string()] [lowertext(booty.name)]" // Maybe " average butt pair" isn't the best for now
 					else
 						continue
 				genitals += appended

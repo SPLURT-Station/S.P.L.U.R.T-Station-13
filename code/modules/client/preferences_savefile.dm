@@ -1197,6 +1197,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	var/static/max_diameter_ratio
 	if(!max_diameter_ratio)
 		max_diameter_ratio = CONFIG_GET(number/diameter_ratio_max_size_prefs)
+	var/static/min_balls_size
+	if(!min_balls_size)
+		min_balls_size = CONFIG_GET(number/balls_min_size_prefs)
+	var/static/max_balls_size
+	if(!max_balls_size)
+		max_balls_size = CONFIG_GET(number/balls_max_size_prefs)
 
 
 	var/static/safe_visibilities
@@ -1228,7 +1234,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	features["belly_visibility"] = sanitize_inlist(features["belly_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
 	features["anus_visibility"] = sanitize_inlist(features["anus_visibility"], safe_visibilities, GEN_VISIBLE_NO_UNDIES)
 
-	features["balls_size"] = sanitize_integer(features["balls_size"], BALLS_SIZE_MIN, BALLS_SIZE_MAX, BALLS_SIZE_DEFAULT)
+	features["balls_size"] = sanitize_integer(features["balls_size"], min_balls_size, max_balls_size, BALLS_SIZE_DEFAULT)
 	features["feature_linked_ball_cock_growth"] = sanitize_integer(features["feature_linked_ball_cock_growth"], FALSE, TRUE, TRUE)
 	features["feature_seperate_ball_size"] = sanitize_integer(features["feature_seperate_ball_size"], FALSE, TRUE, FALSE)
 

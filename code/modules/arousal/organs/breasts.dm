@@ -19,9 +19,15 @@
 	orgasm_verb = "leaking"
 	fluid_transfer_factor = 0.5
 	layer_index = BREASTS_LAYER_INDEX
-	var/prev_size //former cached_size value, to allow update_size() to early return should be there no significant changes.
+	default_fluid_id = /datum/reagent/consumable/milk
 
-// Return a higher multiplier if a womb we own is impregnated
+/obj/item/organ/genital/breasts/get_min_size()
+	return -1 //Because 0 is flatchested and -1 is used to remove the breasts
+
+/obj/item/organ/genital/breasts/get_max_size()
+	return 30
+
+// Return a higher multiplier if the owner is pregnant
 /obj/item/organ/genital/breasts/get_fluid_rate_multiplier()
 	if(!owner)
 		return 1
@@ -74,15 +80,6 @@
 //Ridiculous sizes makes you more cumbersome.
 //this is far too lewd wah
 
-/obj/item/organ/genital/breasts/modify_size(modifier, min = -INFINITY, max = INFINITY)
-	var/new_value =  clamp(size + modifier, max(min, min_size ? min_size : -INFINITY), min(max_size ? max_size : INFINITY, max))
-	if(new_value == size)
-		return
-	prev_size = size
-	size = new_value
-	update()
-	..()
-
 /obj/item/organ/genital/breasts/size_to_state()
 	var/str_size
 	switch(size)
@@ -102,22 +99,18 @@
 			str_size = "impossible"
 	return str_size
 
-/obj/item/organ/genital/breasts/update_size()//wah
-	var/rounded_size = round(size)
+/obj/item/organ/genital/breasts/on_size_update(previous_size, new_size)
 	var/size_state = size_to_state()
-	if(rounded_size < 0)//I don't actually know what round() does to negative numbers, so to be safe!!fixed
+	if(new_size < 0)
 		if(owner)
 			to_chat(owner, "<span class='warning'>You feel your breasts shrinking away from your body as your chest flattens out.</span>")
 		QDEL_IN(src, 1)
 		return
-
-	if((rounded_size < 18 || rounded_size ==  25 || rounded_size == 30) && owner )//Because byond doesn't count from 0, I have to do this.
-		var/mob/living/carbon/human/H = owner
-		var/r_prev_size = round(prev_size)
-		if (rounded_size > r_prev_size)
-			to_chat(H, "<span class='warning'>Your breasts [pick("swell up to", "flourish into", "expand into", "burst forth into", "grow eagerly into", "amplify into")] a [uppertext(size_state)]-cup.</span>")
-		else if (rounded_size < r_prev_size)
-			to_chat(H, "<span class='warning'>Your breasts [pick("shrink down to", "decrease into", "diminish into", "deflate into", "shrivel regretfully into", "contracts into")] a [uppertext(size_state)]-cup.</span>")
+	if((new_size < 18 || new_size ==  25 || new_size == 30) && owner )
+		if (new_size > previous_size)
+			to_chat(owner, "<span class='warning'>Your breasts [pick("swell up to", "flourish into", "expand into", "burst forth into", "grow eagerly into", "amplify into")] a [uppertext(size_state)]-cup.</span>")
+		else
+			to_chat(owner, "<span class='warning'>Your breasts [pick("shrink down to", "decrease into", "diminish into", "deflate into", "shrivel regretfully into", "contracts into")] a [uppertext(size_state)]-cup.</span>")
 
 /obj/item/organ/genital/breasts/get_features(mob/living/carbon/human/H)
 	var/datum/dna/D = H.dna
@@ -125,16 +118,46 @@
 		color = SKINTONE2HEX(H.skin_tone)
 	else
 		color = "#[D.features["breasts_color"]]"
-	size = GLOB.breast_values[D.features["breasts_size"]]
+	set_breasts_cup(D.features["breasts_size"])
 	max_size = D.features["breasts_max_size"]
 	min_size = D.features["breasts_min_size"]
 	shape = D.features["breasts_shape"]
 	if(!D.features["breasts_producing"])
 		genital_flags &= ~ (GENITAL_FUID_PRODUCTION|CAN_CLIMAX_WITH|CAN_MASTURBATE_WITH)
-	prev_size = size
 	toggle_visibility(D.features["breasts_visibility"], FALSE)
 	if(D.features["breasts_stuffing"])
 		toggle_visibility(GEN_ALLOW_EGG_STUFFING, FALSE)
+	set_fluid_id(D.features["breasts_fluid"], H, TRUE)
+
+/obj/item/organ/genital/breasts/proc/set_breasts_cup(new_cup)
+	var/size_value = GLOB.breast_values[new_cup]
+	if(!size_value)
+		return
+	set_size(size_value)
+
+/obj/item/organ/genital/breasts/climax_modify_size(mob/living/partner, obj/item/organ/genital/source_gen)
+	if(!(owner.client?.prefs.cit_toggles & BREAST_ENLARGEMENT))
+		return
+
+	var/datum/reagents/fluid_source = source_gen.climaxable(partner)
+	if(!fluid_source)
+		return
+
+	if(!climax_fluids)
+		climax_fluids = new
+		climax_fluids.maximum_volume = INFINITY //Just in case
+
+	source_gen.generate_fluid(fluid_source)
+	fluid_source.trans_to(climax_fluids, fluid_source.total_volume)
+
+	if(climax_fluids.total_volume >= fluid_max_volume * GENITAL_INFLATION_THRESHOLD)
+		var/previous = size
+		generic_adjust_size_float(climax_fluids.total_volume / (fluid_max_volume * GENITAL_INFLATION_THRESHOLD))
+		if(size != previous)
+			owner.visible_message("<span class='lewd'>\The <b>[owner]</b>'s [pick(GLOB.breast_nouns)] swell up with the surge of [lowertext(source_gen.get_fluid_name())] from \the <b>[partner]</b>'s [source_gen.name]", ignored_mobs = owner.get_unconsenting())
+			fluid_id = source_gen.get_fluid_id()
+		climax_fluids.clear_reagents()
+
 
 #undef BREASTS_ICON_MIN_SIZE
 #undef BREASTS_ICON_MAX_SIZE

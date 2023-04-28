@@ -11,6 +11,15 @@
 	config_entry_value = 20
 	min_val = 0
 
+/datum/config_entry/number/balls_min_size_prefs
+	config_entry_value = BALLS_SIZE_MIN
+	min_val = BALLS_SIZE_MIN
+
+/datum/config_entry/number/balls_max_size_prefs
+	config_entry_value = 20
+	min_val = 1
+	max_val = BALLS_SIZE_MAX
+
 /datum/config_entry/number/butt_min_size_prefs
 	config_entry_value = 1
 	min_val = 0

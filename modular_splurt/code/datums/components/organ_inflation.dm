@@ -80,16 +80,16 @@
 	switch(container.slot)
 		if(ORGAN_SLOT_PENIS)
 			var/obj/item/organ/genital/penis/peenus = container.owner.getorganslot(ORGAN_SLOT_PENIS)
-			peenus?.modify_size(new_size)
+			peenus?.generic_adjust_size_float(new_size)
 		if(ORGAN_SLOT_BREASTS)
 			var/obj/item/organ/genital/breasts/breasts = container.owner.getorganslot(ORGAN_SLOT_BREASTS)
-			breasts?.modify_size(new_size)
+			breasts?.generic_adjust_size_float(new_size)
 		else
 			var/obj/item/organ/genital/belly/belly = container.owner.getorganslot(ORGAN_SLOT_BELLY)
 			if(!belly && ishuman(container.owner))
 				var/mob/living/carbon/human/human_owner = container.owner
 				belly = human_owner.give_genital(/obj/item/organ/genital/belly)
-			belly?.modify_size(new_size)
+			belly?.generic_adjust_size_float(new_size)
 
 /datum/component/organ_inflation/proc/deflate_organ()
 	if(!container.owner)
@@ -98,10 +98,10 @@
 	switch(container.slot)
 		if(ORGAN_SLOT_PENIS)
 			var/obj/item/organ/genital/penis/peenus = container.owner.getorganslot(ORGAN_SLOT_PENIS)
-			peenus?.modify_size(-size)
+			peenus?.generic_adjust_size_float(-size)
 		if(ORGAN_SLOT_BREASTS)
 			var/obj/item/organ/genital/breasts/breasts = container.owner.getorganslot(ORGAN_SLOT_BREASTS)
-			breasts?.modify_size(-size)
+			breasts?.generic_adjust_size_float(-size)
 		else
 			var/obj/item/organ/genital/belly/belly = container.owner.getorganslot(ORGAN_SLOT_BELLY)
-			belly?.modify_size(-size)
+			belly?.generic_adjust_size_float(-size)

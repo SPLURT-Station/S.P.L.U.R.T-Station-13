@@ -324,7 +324,8 @@
 	armour_penetration = 20
 	custom_materials = list(/datum/material/titanium=3150, /datum/material/glass=2075, /datum/material/gold=3000, /datum/material/diamond=5000)
 	hitsound = 'modular_sand/sound/weapons/zweihanderslice.ogg'
-	attack_verb = list("smashed", "crushed", "cleaved", "chopped", "pulped")
+	attack_verb_continuous = list("smashs", "crushs", "cleaves", "chops", "pulps")
+	attack_verb_simple = list("smash", "crush", "cleave", "chop", "pulp")
 	sharpness = SHARP_EDGED
 	var/list/trophies = list()
 	var/charged = TRUE

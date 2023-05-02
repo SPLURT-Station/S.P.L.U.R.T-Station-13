@@ -162,8 +162,6 @@
 		return
 	if(is_muzzled())
 		return
-	if(!CheckActionCooldown(CLICK_CD_MELEE))
-		return
 	var/mob/living/carbon/ML = A
 	if(istype(ML))
 		var/dam_zone = pick(BODY_ZONE_CHEST, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
@@ -175,14 +173,17 @@
 		if(prob(75))
 			ML.apply_damage(rand(1,3), BRUTE, affecting, armor)
 			ML.visible_message("<span class='danger'>[name] bites [ML]!</span>", \
-							"<span class='userdanger'>[name] bites [ML]!</span>")
+							"<span class='userdanger'>[name] bites you!</span>", "<span class='hear'>You hear a chomp!</span>", COMBAT_MESSAGE_RANGE, name)
+			to_chat(name, "<span class='danger'>You bite [ML]!</span>")
 			if(armor >= 2)
 				return
 			for(var/thing in diseases)
 				var/datum/disease/D = thing
 				ML.ForceContractDisease(D)
 		else
-			ML.visible_message("<span class='danger'>[src] has attempted to bite [ML]!</span>")
+			ML.visible_message("<span class='danger'>[src]'s bite misses [ML]!</span>", \
+							"<span class='danger'>You avoid [src]'s bite!</span>", "<span class='hear'>You hear jaws snapping shut!</span>", COMBAT_MESSAGE_RANGE, src)
+			to_chat(src, "<span class='danger'>Your bite misses [ML]!</span>")
 	DelayNextAction()
 
 /*

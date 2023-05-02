@@ -65,7 +65,8 @@
 	item_flags = SURGICAL_TOOL
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_TINY
-	attack_verb = list("attacked", "pinched")
+	attack_verb_continuous = list("attacks", "pinchs")
+	attack_verb_simple = list("attack", "pinch")
 	tool_behaviour = TOOL_HEMOSTAT
 	toolspeed = 1
 
@@ -82,7 +83,8 @@
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_TINY
 	toolspeed = 0.5
-	attack_verb = list("attacked", "pinched")
+	attack_verb_continuous = list("attacks", "pinchs")
+	attack_verb_simple = list("attack", "pinch")
 
 /obj/item/hemostat/ashwalker
 	name = "femurstat"
@@ -103,7 +105,8 @@
 	item_flags = SURGICAL_TOOL
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_TINY
-	attack_verb = list("burnt")
+	attack_verb_continuous = list("burns")
+	attack_verb_simple = list("burn")
 	tool_behaviour = TOOL_CAUTERY
 	toolspeed = 1
 	heat = 3500
@@ -121,7 +124,8 @@
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_TINY
 	toolspeed = 0.5
-	attack_verb = list("burnt")
+	attack_verb_continuous = list("burns")
+	attack_verb_simple = list("burn")
 
 /obj/item/cautery/ashwalker
 	name = "coretery"
@@ -143,7 +147,8 @@
 	flags_1 = CONDUCT_1
 	force = 15
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("drilled")
+	attack_verb_continuous = list("drills")
+	attack_verb_simple = list("drill")
 	tool_behaviour = TOOL_DRILL
 	toolspeed = 1
 
@@ -188,7 +193,8 @@
 	force = 10
 	w_class = WEIGHT_CLASS_SMALL
 	toolspeed = 0.5
-	attack_verb = list("drilled")
+	attack_verb_continuous = list("drills")
+	attack_verb_simple = list("drill")
 
 /obj/item/scalpel
 	name = "scalpel"
@@ -205,7 +211,8 @@
 	throw_range = 5
 	custom_materials = list(/datum/material/iron=4000, /datum/material/glass=1000)
 	item_flags = SURGICAL_TOOL
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_verb_continuous = list("attacks", "slashs", "stabs", "slices", "tears", "rips", "dices", "cuts")
+	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "rip", "dice", "cut")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = SHARP_POINTY
 	tool_behaviour = TOOL_SCALPEL
@@ -266,7 +273,8 @@
 	throw_speed = 3
 	throw_range = 5
 	custom_materials = list(/datum/material/iron=4000, /datum/material/glass=1000)
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_verb_continuous = list("attacks", "slashs", "stabs", "slices", "tears", "rips", "dices", "cuts")
+	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "rip", "dice", "cut")
 	toolspeed = 0.5
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = SHARP_POINTY
@@ -300,7 +308,8 @@
 	throw_speed = 2
 	throw_range = 5
 	custom_materials = list(/datum/material/iron=10000, /datum/material/glass=6000)
-	attack_verb = list("attacked", "slashed", "sawed", "cut")
+	attack_verb_continuous = list("attacks", "slashs", "saws", "cuts")
+	attack_verb_simple = list("attack", "slash", "saw", "cut")
 	sharpness = SHARP_EDGED
 	tool_behaviour = TOOL_SAW
 	toolspeed = 1
@@ -330,7 +339,8 @@
 	throw_range = 5
 	custom_materials = list(/datum/material/iron=10000, /datum/material/glass=6000)
 	toolspeed = 0.5
-	attack_verb = list("attacked", "slashed", "sawed", "cut")
+	attack_verb_continuous = list("attacks", "slashs", "saws", "cuts")
+	attack_verb_simple = list("attack", "slash", "saw", "cut")
 	sharpness = SHARP_EDGED
 
 /obj/item/circular_saw/ashwalker
@@ -347,7 +357,8 @@
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "surgical_drapes"
 	w_class = WEIGHT_CLASS_TINY
-	attack_verb = list("slapped")
+	attack_verb_continuous = list("slapped")
+	attack_verb_simple = list("slapped")
 
 /obj/item/surgical_drapes/attack(mob/living/M, mob/user)
 	if(!attempt_initiate_surgery(src, M, user))
@@ -463,7 +474,8 @@
 	flags_1 = CONDUCT_1
 	item_flags = SURGICAL_TOOL
 	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("corrected", "properly set")
+	attack_verb_continuous = list("corrects", "properly sets")
+	attack_verb_simple = list("correct", "properly set")
 	tool_behaviour = TOOL_BONESET
 	toolspeed = 1
 

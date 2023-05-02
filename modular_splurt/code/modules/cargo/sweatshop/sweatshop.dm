@@ -14,7 +14,8 @@
 	sharpness = TRUE
 	w_class = WEIGHT_CLASS_HUGE
 	custom_materials = list(/datum/material/iron=50)
-	attack_verb = list("slashed", "sawed")
+	attack_verb_continuous = list("slashes", "saws")
+	attack_verb_simple = list("slash", "saw")
 
 /obj/item/carpentry/hammer
 	name = "hammer"
@@ -25,7 +26,8 @@
 	sharpness = FALSE
 	w_class = WEIGHT_CLASS_NORMAL
 	custom_materials = list(/datum/material/iron=100)
-	attack_verb = list("bonked", "nailed")
+	attack_verb_continuous = list("bonks", "nails")
+	attack_verb_simple = list("bonk", "nail")
 
 /obj/item/carpentry/glue
 	name = "glue"
@@ -35,7 +37,8 @@
 	sharpness = FALSE
 	w_class = WEIGHT_CLASS_SMALL
 	custom_materials = list(/datum/material/plastic=25)
-	attack_verb = list("glued", "coughed")
+	attack_verb_continuous = list("glues", "coughs")
+	attack_verb_simple = list("glue", "cough")
 
 /obj/item/carpentry/borer
 	name = "manual borer"
@@ -45,7 +48,8 @@
 	sharpness = TRUE
 	w_class = WEIGHT_CLASS_SMALL
 	custom_materials = list(/datum/material/iron=25)
-	attack_verb = list("bored", "drilled")
+	attack_verb_continuous = list("bores", "drills")
+	attack_verb_simple = list("bore", "drill")
 
 /obj/item/carpentry/sandpaper
 	name = "sandpaper strip"
@@ -55,7 +59,8 @@
 	sharpness = FALSE
 	w_class = WEIGHT_CLASS_TINY
 	custom_materials = list(/datum/material/glass=1) //lmao
-	attack_verb = list("sanded", "licked")
+	attack_verb_continuous = list("sands", "licks")
+	attack_verb_simple = list("sand", "lick")
 
 /obj/item/nails
 	name = "metal nails"
@@ -66,7 +71,8 @@
 	sharpness = TRUE
 	w_class = WEIGHT_CLASS_TINY
 	custom_materials = list(/datum/material/iron=10)
-	attack_verb = list("nailed", "screwed")
+	attack_verb_continuous = list("nails", "screws")
+	attack_verb_simple = list("nail", "screw")
 
 /obj/item/cushion
 	name = "basic cushion"
@@ -76,7 +82,8 @@
 	force = 0
 	sharpness = FALSE
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("thomped", "thwacked")
+	attack_verb_continuous = list("thomps", "thwacks")
+	attack_verb_simple = list("thomp", "thwack")
 
 /obj/item/cushion/silk
 	name = "silk cushion"

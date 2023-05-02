@@ -158,7 +158,8 @@
 	throw_speed = 3
 	throw_range = 6
 	hitsound = 'sound/weapons/genhit.ogg'
-	attack_verb = list("stubbed", "poked")
+	attack_verb_continuous = list("stubs", "pokes")
+	attack_verb_simple = list("stub", "poke")
 	resistance_flags = NONE
 
 /obj/item/gunpart/pistol22frame

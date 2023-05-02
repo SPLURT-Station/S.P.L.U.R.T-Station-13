@@ -21,8 +21,8 @@
 	if(extra_damage == A.dna.species.punchdamagelow)
 		playsound(D.loc, A.dna.species.miss_sound, 25, 1, -1)
 		D.visible_message("<span class='warning'>[A] has attempted to [atk_verb] [D]!</span>", \
-			"<span class='userdanger'>[A] has attempted to [atk_verb] [D]!</span>", null, COMBAT_MESSAGE_RANGE)
-		log_combat(A, D, "attempted to hit", atk_verb)
+			"<span class='danger'>You avoid [A]'s [atk_verb]!</span>", "<span class='hear'>You hear a swoosh!</span>", COMBAT_MESSAGE_RANGE, A)
+		to_chat(A, "<span class='warning'>Your [atk_verb] misses [D]!</span>")
 		return TRUE
 
 	var/obj/item/bodypart/affecting = D.get_bodypart(ran_zone(A.zone_selected))
@@ -31,7 +31,8 @@
 	playsound(D.loc, A.dna.species.attack_sound, 25, 1, -1)
 
 	D.visible_message("<span class='danger'>[A] has [atk_verb]ed [D]!</span>", \
-			"<span class='userdanger'>[A] has [atk_verb]ed [D]!</span>", null, COMBAT_MESSAGE_RANGE)
+			"<span class='userdanger'>You're [atk_verb]ed by [A]!</span>", "<span class='hear'>You hear a sickening sound of flesh hitting flesh!</span>", COMBAT_MESSAGE_RANGE, A)
+	to_chat(A, "<span class='danger'>You [atk_verb]ed [D]!</span>")
 
 	D.apply_damage(rand(10,13) + extra_damage, STAMINA, affecting, armor_block)
 	log_combat(A, D, "punched (boxing) ")
@@ -39,7 +40,8 @@
 		var/knockout_prob = (D.getStaminaLoss() + rand(-15,15))*0.75
 		if((D.stat != DEAD) && prob(knockout_prob))
 			D.visible_message("<span class='danger'>[A] has knocked [D] out with a haymaker!</span>", \
-								"<span class='userdanger'>[A] has knocked [D] out with a haymaker!</span>")
+								"<span class='userdanger'>You're knocked unconscious by [A]!</span>", "<span class='hear'>You hear a sickening sound of flesh hitting flesh!</span>", COMBAT_MESSAGE_RANGE, A)
+			to_chat(A, "<span class='danger'>You knock [D] out with a haymaker!</span>")
 			D.apply_effect(200,EFFECT_KNOCKDOWN,armor_block)
 			D.SetSleeping(100)
 			D.forcesay(GLOB.hit_appends)

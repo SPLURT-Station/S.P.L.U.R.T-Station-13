@@ -46,8 +46,9 @@
 		return FALSE
 	var/damage = (damage_roll(A,D) + 5)
 	if(CHECK_MOBILITY(D, MOBILITY_STAND))
-		D.visible_message("<span class='warning'>[A] slams [D] into the ground!</span>", \
-						  	"<span class='userdanger'>[A] slams you into the ground!</span>")
+		D.visible_message("<span class='danger'>[A] kicks [D]'s head, knocking [D.p_them()] out!</span>", \
+						"<span class='userdanger'>You're knocked unconscious by [A]!</span>", "<span class='hear'>You hear a sickening sound of flesh hitting flesh!</span>", null, A)
+		to_chat(A, "<span class='danger'>You kick [D]'s head, knocking [D.p_them()] out!</span>")
 		playsound(get_turf(A), 'sound/weapons/slam.ogg', 50, 1, -1)
 		D.apply_damage(damage, BRUTE)
 		D.DefaultCombatKnockdown(120)
@@ -60,8 +61,9 @@
 	var/damage = damage_roll(A,D)
 	if(!CHECK_MOBILITY(D, MOBILITY_STAND) && CHECK_MOBILITY(D, MOBILITY_USE))
 		log_combat(A, D, "knocked out (Head kick)(CQC)")
-		D.visible_message("<span class='warning'>[A] kicks [D]'s head, knocking [D.p_them()] out!</span>", \
-					  		"<span class='userdanger'>[A] kicks your head, knocking you out!</span>")
+		D.visible_message("<span class='danger'>[A] kicks [D] back!</span>", \
+						"<span class='userdanger'>You're kicked back by [A]!</span>", "<span class='hear'>You hear a sickening sound of flesh hitting flesh!</span>", COMBAT_MESSAGE_RANGE, A)
+		to_chat(A, "<span class='danger'>You kick [D] back!</span>")
 		playsound(get_turf(A), 'sound/weapons/genhit1.ogg', 50, 1, -1)
 		D.SetSleeping(300)
 		D.apply_damage(damage + 5, BRUTE)
@@ -82,7 +84,9 @@
 		return FALSE
 	var/damage = (damage_roll(A,D) + 55)
 	log_combat(A, D, "pressured (CQC)")
-	D.visible_message("<span class='warning'>[A] punches [D]'s neck!</span>")
+	D.visible_message("<span class='danger'>[A] punches [D]'s neck!</span>", \
+	"<span class='userdanger'>Your neck is punched by [A]!</span>", "<span class='hear'>You hear a sickening sound of flesh hitting flesh!</span>", COMBAT_MESSAGE_RANGE, A)
+	to_chat(A, "<span class='danger'>You punch [D]'s neck!</span>")
 	D.apply_damage(damage, STAMINA)
 	playsound(get_turf(A), 'sound/weapons/cqchit1.ogg', 50, 1, -1)
 	return TRUE
@@ -96,7 +100,8 @@
 	if(!D.stat)
 		log_combat(A, D, "restrained (CQC)")
 		D.visible_message("<span class='warning'>[A] locks [D] into a restraining position!</span>", \
-							"<span class='userdanger'>[A] locks you into a restraining position!</span>")
+							"<span class='userdanger'>You're locked into a restraining position by [A]!</span>", "<span class='hear'>You hear shuffling and a muffled groan!</span>", null, A)
+		to_chat(A, "<span class='danger'>You lock [D] into a restraining position!</span>")
 		D.apply_damage(damage, STAMINA)
 		D.Stun(10)
 		restraining = TRUE
@@ -109,8 +114,9 @@
 	var/damage = damage_roll(A,D)
 	if(!D.stat)
 		log_combat(A, D, "consecutive CQC'd (CQC)")
-		D.visible_message("<span class='warning'>[A] strikes [D]'s abdomen, neck and back consecutively</span>", \
-							"<span class='userdanger'>[A] strikes your abdomen, neck and back consecutively!</span>")
+		D.visible_message("<span class='danger'>[A] strikes [D]'s abdomen, neck and back consecutively</span>", \
+						"<span class='userdanger'>Your abdomen, neck and back are struck consecutively by [A]!</span>", "<span class='hear'>You hear a sickening sound of flesh hitting flesh!</span>", COMBAT_MESSAGE_RANGE, A)
+		to_chat(A, "<span class='danger'>You strike [D]'s abdomen, neck and back consecutively!</span>")
 		playsound(get_turf(D), 'sound/weapons/cqchit2.ogg', 50, 1, -1)
 		var/obj/item/I = D.get_active_held_item()
 		if(I && D.temporarilyRemoveItemFromInventory(I))
@@ -131,7 +137,8 @@
 			A.setGrabState(GRAB_AGGRESSIVE) //Instant agressive grab if on grab intent
 			log_combat(A, D, "grabbed", addition="aggressively")
 			D.visible_message("<span class='warning'>[A] violently grabs [D]!</span>", \
-								"<span class='userdanger'>[A] violently grabs you!</span>")
+								"<span class='userdanger'>You're grabbed violently by [A]!</span>", "<span class='hear'>You hear sounds of aggressive fondling!</span>", COMBAT_MESSAGE_RANGE, A)
+			to_chat(A, "<span class='danger'>You violently grab [D]!</span>")
 		return TRUE
 	return FALSE
 
@@ -143,22 +150,24 @@
 		return TRUE
 	log_combat(A, D, "attacked (CQC)")
 	A.do_attack_animation(D)
-	var/picked_hit_type = pick("CQC'd", "Big Bossed")
+	var/picked_hit_type = pick("CQC", "Big Boss")
 	var/bonus_damage = (damage_roll(A,D) + 7)
 	if(!CHECK_MOBILITY(D, MOBILITY_STAND))
 		bonus_damage += 5
-		picked_hit_type = "stomps on"
+		picked_hit_type = "stomp"
 	D.apply_damage(bonus_damage, BRUTE)
-	if(picked_hit_type == "kicks" || picked_hit_type == "stomps on")
+	if(picked_hit_type == "kick" || picked_hit_type == "stomp")
 		playsound(get_turf(D), 'sound/weapons/cqchit2.ogg', 50, 1, -1)
 	else
 		playsound(get_turf(D), 'sound/weapons/cqchit1.ogg', 50, 1, -1)
-	D.visible_message("<span class='danger'>[A] [picked_hit_type] [D]!</span>", \
-					  "<span class='userdanger'>[A] [picked_hit_type] you!</span>")
-	log_combat(A, D, "[picked_hit_type] (CQC)")
+	D.visible_message("<span class='danger'>[A] [picked_hit_type]ed [D]!</span>", \
+					"<span class='userdanger'>You're [picked_hit_type]ed by [A]!</span>", "<span class='hear'>You hear a sickening sound of flesh hitting flesh!</span>", COMBAT_MESSAGE_RANGE, A)
+	to_chat(A, "<span class='danger'>You [picked_hit_type] [D]!</span>")
+	log_combat(A, D, "[picked_hit_type]s (CQC)")
 	if(!CHECK_MOBILITY(A, MOBILITY_STAND) && !D.stat && CHECK_MOBILITY(D, MOBILITY_STAND))
-		D.visible_message("<span class='warning'>[A] leg sweeps [D]!", \
-							"<span class='userdanger'>[A] leg sweeps you!</span>")
+		D.visible_message("<span class='danger'>[A] leg sweeps [D]!", \
+						"<span class='userdanger'>Your legs are sweeped by [A]!</span>", "<span class='hear'>You hear a sickening sound of flesh hitting flesh!</span>", null, A)
+		to_chat(A, "<span class='danger'>You leg sweep [D]!</span>")
 		playsound(get_turf(A), 'sound/effects/hit_kick.ogg', 50, 1, -1)
 		D.apply_damage(bonus_damage, BRUTE)
 		D.DefaultCombatKnockdown(60)
@@ -178,8 +187,9 @@
 		A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
 		if(damage >= stunthreshold)
 			I = D.get_active_held_item()
-			D.visible_message("<span class='warning'>[A] strikes [D]'s jaw with their hand!</span>", \
-							"<span class='userdanger'>[A] strikes your jaw, disorienting you!</span>")
+			D.visible_message("<span class='danger'>[A] strikes [D]'s jaw with their hand!</span>", \
+							"<span class='userdanger'>Your jaw is struck by [A], you feel disoriented!</span>", "<span class='hear'>You hear a sickening sound of flesh hitting flesh!</span>", COMBAT_MESSAGE_RANGE, A)
+			to_chat(A, "<span class='danger'>You strike [D]'s jaw, leaving [D.p_them()] disoriented!</span>")
 			playsound(get_turf(D), 'sound/weapons/cqchit1.ogg', 50, 1, -1)
 			D.drop_all_held_items()
 			D.Jitter(2)
@@ -187,16 +197,24 @@
 			D.apply_damage(damage*2 + 20, STAMINA)
 			D.apply_damage(damage*0.5, BRUTE)
 		else
-			D.visible_message("<span class='danger'>[A] strikes [D] in the chest!</span>", \
-							"<span class='userdanger'>[A] strikes in chest!</span>")
+			D.visible_message("<span class='danger'>[A] strikes [D]'s in the chest with their hand!</span>", \
+							"<span class='userdanger'>Your chest is struck by [A], you let out a gasp!</span>", "<span class='hear'>You hear a thunk!</span>", COMBAT_MESSAGE_RANGE, A)
+			to_chat(A, "<span class='warning'>You strike [D]'s chest, leaving [D.p_them()] gasping!</span>")
 			playsound(D, 'sound/weapons/cqchit1.ogg', 25, 1, -1)
 			D.apply_damage(damage + 15, STAMINA)
 			D.apply_damage(damage*0.5, BRUTE)
 		log_combat(A, D, "disarmed (CQC)", "[I ? " grabbing \the [I]" : ""]")
+		D.visible_message("<span class='danger'>[A] fails to disarm [D]!</span>", \
+			"<span class='userdanger'>You're nearly disarmed by [A]!</span>", "<span class='hear'>You hear a swoosh!</span>", COMBAT_MESSAGE_RANGE, A)
+		to_chat(A, "<span class='warning'>You fail to disarm [D]!</span>")
+		playsound(D, 'sound/weapons/punchmiss.ogg', 25, TRUE, -1)
+	log_combat(A, D, "disarmed (CQC)", "[I ? " grabbing \the [I]" : ""]")
 	if(restraining && A.pulling == D)
 		log_combat(A, D, "knocked out (Chokehold)(CQC)")
 		D.visible_message("<span class='danger'>[A] puts [D] into a chokehold!</span>", \
-							"<span class='userdanger'>[A] puts you into a chokehold!</span>")
+							"<span class='userdanger'>You're put into a chokehold by [A]!</span>", "<span class='hear'>You hear shuffling and a muffled groan!</span>", null, A)
+		to_chat(A, "<span class='danger'>You put [D] into a chokehold!</span>")
+		D.SetSleeping(400)
 		if(D.silent <= 10)
 			D.silent = clamp(D.silent + 10, 0, 10)
 		restraining = FALSE

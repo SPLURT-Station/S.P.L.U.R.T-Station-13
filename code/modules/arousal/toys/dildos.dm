@@ -90,22 +90,26 @@
 /obj/item/dildo/knotted
 	dildo_shape 		= "knotted"
 	name 				= "knotted dildo"
-	attack_verb 		= list("penetrated", "knotted", "slapped", "inseminated")
+	attack_verb_continuous = list("penetrates", "knotts", "slaps", "inseminates")
+	attack_verb_simple = list("penetrate", "knott", "slap", "inseminate")
 
 /obj/item/dildo/human
 	dildo_shape 		= "human"
 	name 				= "human dildo"
-	attack_verb = list("penetrated", "slapped", "inseminated")
+	attack_verb_continuous = list("penetrates", "slaps", "inseminates")
+	attack_verb_simple = list("penetrate", "slap", "inseminate")
 
 /obj/item/dildo/plain
 	dildo_shape 		= "plain"
 	name 				= "plain dildo"
-	attack_verb 		= list("penetrated", "slapped", "inseminated")
+	attack_verb_continuous = list("penetrates", "slaps", "inseminates")
+	attack_verb_simple = list("penetrate", "slap", "inseminate")
 
 /obj/item/dildo/flared
 	dildo_shape 		= "flared"
 	name 				= "flared dildo"
-	attack_verb 		= list("penetrated", "slapped", "neighed", "gaped", "prolapsed", "inseminated")
+	attack_verb_continuous = list("penetrates", "slaps", "neighes", "gapes", "prolapses", "inseminates")
+	attack_verb_simple = list("penetrate", "slap", "neighe", "gape", "prolapse", "inseminate")
 
 /obj/item/dildo/flared/huge
 	name 				= "The Penetrator"

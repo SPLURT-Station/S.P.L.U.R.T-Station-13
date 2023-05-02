@@ -112,7 +112,8 @@
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 3
 	throw_range = 7
-	attack_verb = list("HONKED")
+	attack_verb_continuous = list("HONKS")
+	attack_verb_simple = list("HONK")
 	var/moodlet = "honk" //used to define which kind of moodlet is added to the honked target
 	var/list/honksounds = list('sound/items/bikehorn.ogg' = 1)
 
@@ -167,13 +168,15 @@
 /obj/item/bikehorn/silver
 	name = "silver bike horn"
 	desc = "A shiny bike horn handcrafted in the artisan workshops of Mars, with superior kevlar-reinforced rubber bulb attached to a polished plasteel reed horn."
-	attack_verb = list("elegantly HONKED")
+	attack_verb_continuous = list("elegantly HONKS")
+	attack_verb_simple = list("elegantly HONK")
 	icon_state = "silverhorn"
 
 /obj/item/bikehorn/bluespacehonker
 	name = "bluespace bike horn"
 	desc = "A normal bike horn colored blue and has bluespace dust held in to reed horn allowing for silly honks through space and time, into your in childhood."
-	attack_verb = list("HONKED in bluespace", "HONKED", "quantumly HONKED")
+	attack_verb_continuous = list("HONKS in bluespace", "HONKS", "quantumly HONKS")
+	attack_verb_simple = list("HONKED in bluespace", "HONKED", "quantumly HONKED")
 	icon_state = "bluespacehonker"
 	moodlet = "bshonk"
 

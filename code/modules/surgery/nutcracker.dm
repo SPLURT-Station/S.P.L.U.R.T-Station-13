@@ -6,7 +6,8 @@
 	force = 10
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("smashed", "beaten", "crushed")
+	attack_verb_continuous = list("smashs", "beats", "crushs")
+	attack_verb_simple = list("smash", "beat", "crush")
 
 /obj/item/nutcracker/proc/gib_head(mob/living/carbon/M)
 	var/obj/item/bodypart/head = M.get_bodypart("head")

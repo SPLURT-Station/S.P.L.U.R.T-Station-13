@@ -124,7 +124,8 @@
 	force = 1
 	w_class = WEIGHT_CLASS_NORMAL
 	mutantrace_variation = STYLE_DIGITIGRADE
-	attack_verb = list("whipped")
+	attack_verb_continuous = list("whips")
+	attack_verb_simple = list("whip")
 	hitsound = 'sound/items/towelwhip.ogg'
 	volume = 10
 	total_mass = 2

@@ -17,7 +17,8 @@
 	throw_range = 5
 	force = 5
 	item_flags = NEEDS_PERMIT
-	attack_verb = list("struck", "hit", "bashed")
+	attack_verb_continuous = list("strikes", "hits", "bashes")
+	attack_verb_simple = list("strike", "hit", "bash")
 	attack_speed = CLICK_CD_RANGE
 	var/ranged_attack_speed = CLICK_CD_RANGE
 	var/melee_attack_speed = CLICK_CD_MELEE

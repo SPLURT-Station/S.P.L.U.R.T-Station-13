@@ -9,7 +9,8 @@
 	throwforce = 25
 	armour_penetration = 10
 	sharpness = SHARP_POINTY
-	attack_verb = list("stabbed", "poked", "slashed")
+	attack_verb_continuous = list("attacks", "impales", "stabs", "tears", "lacerates", "gores")
+	attack_verb_simple = list("attack", "impale", "stab", "tear", "lacerate", "gore")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	w_class = WEIGHT_CLASS_BULKY
 	block_parry_data = /datum/block_parry_data/ratvarian_spear

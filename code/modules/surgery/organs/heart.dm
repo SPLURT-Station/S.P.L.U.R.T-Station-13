@@ -17,7 +17,8 @@
 	var/beating = 1
 	var/no_pump = FALSE
 	var/icon_base = "heart"
-	attack_verb = list("beat", "thumped")
+	attack_verb_continuous = list("beats", "thumps")
+	attack_verb_simple = list("beat", "thump")
 	var/beat = BEAT_NONE//is this mob having a heatbeat sound played? if so, which?
 
 	var/failed = FALSE		//to prevent constantly running failing code

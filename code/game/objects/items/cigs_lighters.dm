@@ -50,7 +50,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		item_state = "cigon"
 		name = "lit match"
 		desc = "A match. This one is lit."
-		attack_verb = list("burnt","singed")
+		attack_verb_continuous = list("burns", "sings")
+		attack_verb_simple = list("burn", "sing")
 		START_PROCESSING(SSobj, src)
 		update_icon()
 
@@ -64,7 +65,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		item_state = "cigoff"
 		name = "burnt match"
 		desc = "A match. This one has seen better days."
-		attack_verb = list("flicked")
+		attack_verb_continuous = list("flicks")
+		attack_verb_simple = list("flick")
 		STOP_PROCESSING(SSobj, src)
 
 /obj/item/match/dropped(mob/user)
@@ -173,7 +175,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	lit = TRUE
 	name = "lit [name]"
-	attack_verb = list("burnt", "singed")
+	attack_verb_continuous = list("burns", "sings")
+	attack_verb_simple = list("burn", "sing")
 	hitsound = 'sound/items/welder.ogg'
 	damtype = "fire"
 	force = 4
@@ -568,13 +571,15 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		force = 5
 		damtype = "fire"
 		hitsound = 'sound/items/welder.ogg'
-		attack_verb = list("burnt", "singed")
+		attack_verb_continuous = list("burns", "sings")
+		attack_verb_simple = list("burn", "sing")
 		set_light(2, 0.6, LIGHT_COLOR_FIRE)
 		START_PROCESSING(SSobj, src)
 	else
 		hitsound = "swing_hit"
 		force = 0
-		attack_verb = null //human_defense.dm takes care of it
+		attack_verb_continuous = null
+		attack_verb_simple = null
 		set_light(0)
 		STOP_PROCESSING(SSobj, src)
 	update_icon()

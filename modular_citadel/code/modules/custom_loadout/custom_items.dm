@@ -38,7 +38,8 @@
 	item_state = "darksabre"
 	lefthand_file = 'modular_citadel/icons/mob/inhands/stunsword_left.dmi'
 	righthand_file = 'modular_citadel/icons/mob/inhands/stunsword_right.dmi'
-	attack_verb = list("attacked", "struck", "hit")
+	attack_verb_continuous = list("attacks", "strucks", "hits")
+	attack_verb_simple = list("attack", "struck", "hit")
 
 /obj/item/toy/darksabre/get_belt_overlay()
 	return mutable_appearance('icons/obj/custom.dmi', "darksheath-darksabre")
@@ -115,7 +116,8 @@
 	icon_state = "carrot"
 	item_state = "carrot"
 	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("slapped")
+	attack_verb_continuous = list("slaps")
+	attack_verb_simple = list("slap")
 	resistance_flags = FLAMMABLE
 	squeak_override = list('sound/items/bikehorn.ogg'= 1)
 
@@ -148,7 +150,8 @@
 	icon_state = "pine_c"
 	item_state = "pine_c"
 	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("slapped")
+	attack_verb_continuous = list("slaps")
+	attack_verb_simple = list("slap")
 	resistance_flags = FLAMMABLE
 	squeak_override = list('sound/misc/server-ready.ogg'= 1)
 
@@ -548,7 +551,8 @@
 	icon = 'icons/obj/custom.dmi'
 	icon_state = "fritz"
 	item_state = "fritz"
-	attack_verb = list("barked", "boofed", "shotgun'd")
+	attack_verb_continuous = list("barks", "boofs", "shotgun'ns")
+	attack_verb_simple = list("barks", "boof", "shotgun'n")
 	obj_flags = UNIQUE_RENAME
 	unique_reskin = list(
 		"Goodboye" = list("icon_state" = "fritz"),

@@ -258,4 +258,5 @@
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "skub"
 	w_class = WEIGHT_CLASS_BULKY
-	attack_verb = list("skubbed")
+	attack_verb_continuous = list("skubs")
+	attack_verb_simple = list("skub")

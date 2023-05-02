@@ -9,6 +9,7 @@
 	siemens_coefficient = 0.5
 	body_parts_covered = HANDS
 	slot_flags = ITEM_SLOT_WRISTS
-	attack_verb = list("slapped on the wrist")
+	attack_verb_continuous = list("slaps on the wrist")
+	attack_verb_simple = list("slap on the wrist")
 	strip_delay = 20
 	equip_delay_other = 40

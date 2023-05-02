@@ -19,14 +19,16 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 	desc = "The jaws of the law. Very sharp."
 	icon_state = "jaws_2"
 	force = 10 //Lowered to match secborg. No reason it should be more than a secborg's baton.
-	attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
+	attack_verb_continuous = list("chomps", "bites", "rips", "mauls", "enforces")
+	attack_verb_simple = list("chomp", "bite", "rip", "maule", "enforce")
 
 /obj/item/dogborg/jaws/small
 	name = "puppy jaws"
 	desc = "Rubberized teeth designed to protect accidental harm. Sharp enough for specialized tasks however."
 	icon_state = "jaws_2"
 	force = 6
-	attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
+	attack_verb_continuous = list("nibbles", "bites", "gnawes", "chomps", "noms")
+	attack_verb_simple = list("nibble", "bite", "gnawe", "chomp", "nom")
 	var/status = 0
 
 /obj/item/dogborg/jaws/attack(atom/A, mob/living/silicon/robot/user)
@@ -41,7 +43,8 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 			icon_state = "jaws"
 			desc = "The jaws of the law."
 			force = 12
-			attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
+			attack_verb_continuous = list("chomps", "bites", "rips", "mauls", "enforces")
+			attack_verb_simple = list("chomp", "bite", "rip", "maul", "enforce")
 			status = 1
 			to_chat(user, span_notice("Your jaws are now [status ? "Combat" : "Pup'd"]."))
 		else
@@ -49,7 +52,8 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 			icon_state = "smalljaws"
 			desc = "The jaws of a small dog."
 			force = 5
-			attack_verb = list("nibbled", "bit", "gnawed", "chomped", "nommed")
+			attack_verb_continuous = list("nibbles", "bites", "gnawes", "chomps", "noms")
+			attack_verb_simple = list("nibble", "bite", "gnawe", "chomp", "nom")
 			status = 0
 			if(R.emagged)
 				to_chat(user, span_notice("Your jaws are now [status ? "Combat" : "Pup'd"]."))
@@ -65,7 +69,8 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 	flags_1 = CONDUCT_1
 	force = 0
 	throwforce = 0
-	attack_verb = list("nuzzles", "pushes", "boops")
+	attack_verb_continuous = list("nuzzles", "pushes", "boops")
+	attack_verb_simple = list("nuzzle", "push", "boop")
 	w_class = 1
 
 /obj/item/analyzer/nose/attack_self(mob/user)
@@ -127,7 +132,7 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 	if(!proximity)
 		return
 	do_attack_animation(target, null, src)
-	user.visible_message(span_notice("[user] [pick(attack_verb)] \the [target.name] with their nose!"))
+	user.visible_message(span_notice("[user] [pick(attack_verb_simple)] \the [target.name] with their nose!"))
 
 //Delivery
 /obj/item/storage/bag/borgdelivery

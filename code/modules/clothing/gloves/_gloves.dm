@@ -6,7 +6,8 @@
 	siemens_coefficient = 0.5
 	body_parts_covered = HANDS
 	slot_flags = ITEM_SLOT_GLOVES
-	attack_verb = list("challenged")
+	attack_verb_continuous = list("challenges")
+	attack_verb_simple = list("challenge")
 	var/transfer_prints = FALSE
 	var/transfer_blood = 0
 	strip_delay = 20

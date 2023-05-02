@@ -103,7 +103,8 @@
 	if(!CHECK_MOBILITY(D, MOBILITY_STAND))
 		return FALSE
 	D.visible_message("<span class='warning'>[A] leg sweeps [D]!</span>", \
-					  	"<span class='userdanger'>[A] leg sweeps you!</span>")
+					  	"<span class='userdanger'>Your legs are sweeped by [A]!</span>", "<span class='hear'>You hear a sickening sound of flesh hitting flesh!</span>", null, A)
+	to_chat(A, "<span class='danger'>You leg sweep [D]!</span>")
 	playsound(get_turf(A), 'sound/effects/hit_kick.ogg', 50, 1, -1)
 	D.apply_damage(damage, STAMINA, affecting, armor_block)
 	D.DefaultCombatKnockdown(80, override_hardstun = 1, override_stamdmg = 0)
@@ -113,7 +114,8 @@
 /datum/martial_art/krav_maga/proc/quick_choke(var/mob/living/carbon/human/A, var/mob/living/carbon/human/D)//is actually lung punch
 	var/damage = damage_roll(A,D)
 	D.visible_message("<span class='warning'>[A] pounds [D] on the chest!</span>", \
-				  	"<span class='userdanger'>[A] slams your chest! You can't breathe!</span>")
+				  	"<span class='userdanger'>Your chest is slammed by [A]! You can't breathe!</span>", "<span class='hear'>You hear a sickening sound of flesh hitting flesh!</span>", COMBAT_MESSAGE_RANGE, A)
+	to_chat(A, "<span class='danger'>You pound [D] on the chest!</span>")
 	playsound(get_turf(A), 'sound/effects/hit_punch.ogg', 50, 1, -1)
 	if(D.losebreath <= 10)
 		D.losebreath = clamp(D.losebreath + 5, 0, 10)
@@ -124,7 +126,8 @@
 /datum/martial_art/krav_maga/proc/neck_chop(var/mob/living/carbon/human/A, var/mob/living/carbon/human/D)
 	var/damage = (damage_roll(A,D)*0.5)
 	D.visible_message("<span class='warning'>[A] karate chops [D]'s neck!</span>", \
-				  	"<span class='userdanger'>[A] karate chops your neck, rendering you unable to speak!</span>")
+				  	"<span class='userdanger'>Your neck is karate chopped by [A], rendering you unable to speak!</span>", "<span class='hear'>You hear a sickening sound of flesh hitting flesh!</span>", COMBAT_MESSAGE_RANGE, A)
+	to_chat(A, "<span class='danger'>You karate chop [D]'s neck, rendering [D.p_them()] unable to speak!</span>")
 	playsound(get_turf(A), 'sound/effects/hit_punch.ogg', 50, 1, -1)
 	D.apply_damage(damage, BRUTE)
 	if(D.silent <= 10)
@@ -144,26 +147,43 @@
 	if(check_streak(A,D))
 		return TRUE
 	log_combat(A, D, "punched")
-	var/picked_hit_type = pick("punches", "kicks")
+	var/picked_hit_type = pick("punch", "kick")
 	var/bonus_damage = damage_roll(A,D)
 	if(!CHECK_MOBILITY(D, MOBILITY_STAND))
 		bonus_damage += 10
-		picked_hit_type = "stomps on"
+		picked_hit_type = "stomp"
 	D.apply_damage(bonus_damage, BRUTE, affecting, armor_block)
-	if(picked_hit_type == "kicks" || picked_hit_type == "stomps on")
+	if(picked_hit_type == "kick" || picked_hit_type == "stomp")
 		A.do_attack_animation(D, ATTACK_EFFECT_KICK)
 		playsound(get_turf(D), 'sound/effects/hit_kick.ogg', 50, 1, -1)
 	else
 		A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
 		playsound(get_turf(D), 'sound/effects/hit_punch.ogg', 50, 1, -1)
-	D.visible_message("<span class='danger'>[A] [picked_hit_type] [D]!</span>", \
-					  "<span class='userdanger'>[A] [picked_hit_type] you!</span>")
+	D.visible_message("<span class='danger'>[A] [picked_hit_type]s [D]!</span>", \
+					"<span class='userdanger'>You're [picked_hit_type]ed by [A]!</span>", "<span class='hear'>You hear a sickening sound of flesh hitting flesh!</span>", COMBAT_MESSAGE_RANGE, A)
+	to_chat(A, "<span class='danger'>You [picked_hit_type] [D]!</span>")
 	log_combat(A, D, "[picked_hit_type] with [name]")
 	return TRUE
 
 /datum/martial_art/krav_maga/disarm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(check_streak(A,D))
-		return TRUE
+		return 1
+	var/obj/item/I = null
+	if(prob(60))
+		I = D.get_active_held_item()
+		if(I)
+			if(D.temporarilyRemoveItemFromInventory(I))
+				A.put_in_hands(I)
+		D.visible_message("<span class='danger'>[A] disarms [D]!</span>", \
+						"<span class='userdanger'>You're disarmed by [A]!</span>", "<span class='hear'>You hear aggressive shuffling!</span>", COMBAT_MESSAGE_RANGE, A)
+		to_chat(A, "<span class='danger'>You disarm [D]!</span>")
+		playsound(D, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
+	else
+		D.visible_message("<span class='danger'>[A] fails to disarm [D]!</span>", \
+						"<span class='userdanger'>You're nearly disarmed by [A]!</span>", "<span class='hear'>You hear a swoosh!</span>", COMBAT_MESSAGE_RANGE, A)
+		to_chat(A, "<span class='warning'>You fail to disarm [D]!</span>")
+		playsound(D, 'sound/weapons/punchmiss.ogg', 25, TRUE, -1)
+	log_combat(A, D, "disarmed (Krav Maga)", "[I ? " removing \the [I]" : ""]")
 	var/obj/item/bodypart/affecting = D.get_bodypart(ran_zone(A.zone_selected))
 	var/armor_block = D.run_armor_check(affecting, MELEE)
 	var/damage = damage_roll(A,D)

@@ -8,7 +8,8 @@
 	righthand_file = 'modular_splurt/icons/mob/inhands/weapons/melee_righthand.dmi'
 	slot_flags = ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_BULKY
-	attack_verb = list("smacked", "struck", "cracked", "beaten")
+	attack_verb_continuous = list("smacks", "strucks", "cracks", "beats")
+	attack_verb_simple = list("smack", "struck", "crack", "beat")
 
 /obj/item/nullrod/papal_staff
 	name = "papal staff"
@@ -19,7 +20,8 @@
 	lefthand_file = 'modular_splurt/icons/mob/inhands/weapons/melee_lefthand.dmi'
 	righthand_file = 'modular_splurt/icons/mob/inhands/weapons/melee_righthand.dmi'
 	w_class = WEIGHT_CLASS_BULKY
-	attack_verb = list("smacked", "struck", "cracked", "beaten", "purified")
+	attack_verb_continuous = list("smacks", "struck", "cracks", "beats", "purifies")
+	attack_verb_simple = list("smack", "struck", "crack", "beat", "purify")
 
 /obj/item/clothing/head/mitre
 	name = "papal mitre"

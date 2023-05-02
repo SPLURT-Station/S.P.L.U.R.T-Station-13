@@ -85,7 +85,8 @@
 	w_class = WEIGHT_CLASS_TINY
 	item_state = "beer"
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("stabbed", "slashed", "attacked")
+	attack_verb_continuous = list("stabs", "slashes", "attacks")
+	attack_verb_simple = list("stab", "slash", "attack")
 	var/icon/broken_outline = icon('icons/obj/drinks.dmi', "broken")
 	sharpness = SHARP_EDGED
 
@@ -644,7 +645,8 @@
 	throw_range = 0
 	w_class = WEIGHT_CLASS_TINY
 	item_state = "beer"
-	attack_verb = list("boop", "thunked", "shown")
+	attack_verb_continuous = list("boops", "thunks", "shows")
+	attack_verb_simple = list("boop", "thunk", "show")
 
 /obj/item/export/bottle/gin
 	icon_state = "ginbottle"

@@ -1078,7 +1078,8 @@ GLOBAL_LIST_INIT(hay_recipes, list ( \
 	throw_speed = 1
 	throw_range = 2
 	max_amount = 500
-	attack_verb = list("tickled", "poked", "whipped")
+	attack_verb_continuous = list("tickles", "pokes", "whips")
+	attack_verb_simple = list("tickle", "poke", "whip")
 	hitsound = 'sound/weapons/grenadelaunch.ogg'
 
 /obj/item/stack/sheet/hay/Initialize(mapload, new_amount, merge = TRUE)

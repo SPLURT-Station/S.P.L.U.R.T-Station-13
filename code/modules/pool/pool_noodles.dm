@@ -11,7 +11,8 @@
 	throwforce = 1
 	throw_speed = 10 //weeee
 	hitsound = 'sound/weapons/tap.ogg'
-	attack_verb = list("flogged", "poked", "jabbed", "slapped", "annoyed")
+	attack_verb_continuous = list("flogs", "pokes", "jabs", "slaps", "annoys")
+	attack_verb_simple = list("flog", "poke", "jab", "slap", "annoy")
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 

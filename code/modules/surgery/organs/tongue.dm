@@ -6,7 +6,8 @@
 	icon_state = "tonguenormal"
 	zone = BODY_ZONE_PRECISE_MOUTH
 	slot = ORGAN_SLOT_TONGUE
-	attack_verb = list("licked", "slobbered", "slapped", "frenched", "tongued")
+	attack_verb_continuous = list("licks", "slobbers", "slaps", "frenches", "tongues")
+	attack_verb_simple = list("lick", "slobber", "slap", "french", "tongue")
 	var/list/languages_possible
 	var/say_mod = null
 	var/taste_sensitivity = 15 // lower is more sensitive.
@@ -177,7 +178,8 @@
 	icon_state = "tonguebone"
 	say_mod = "rattles"
 	organ_flags = ORGAN_NO_SPOIL
-	attack_verb = list("bitten", "chattered", "chomped", "enamelled", "boned")
+	attack_verb_continuous = list("bites", "chatters", "chomps", "enamelles", "bones")
+	attack_verb_simple = list("bite", "chatter", "chomp", "enamel", "bone")
 	taste_sensitivity = 101 // skeletons cannot taste anything
 	maxHealth = 75 //Take brute damage instead
 	var/chattering = FALSE
@@ -215,7 +217,8 @@
 	organ_flags = ORGAN_NO_SPOIL
 	icon_state = "tonguerobot"
 	say_mod = "states"
-	attack_verb = list("beeped", "booped")
+	attack_verb_continuous = list("beeps", "boops")
+	attack_verb_simple = list("beep", "boop")
 	initial_accents = list(/datum/accent/span/robot)
 	taste_sensitivity = 25 // not as good as an organic tongue
 	maxHealth = 100 //RoboTongue!
@@ -260,7 +263,8 @@
 	desc = "A sophisticated ethereal organ, capable of synthesising speech via electrical discharge."
 	icon_state = "electrotongue"
 	say_mod = "crackles"
-	attack_verb = list("shocked", "jolted", "zapped")
+	attack_verb_continuous = list("shocks", "jolts", "zaps")
+	attack_verb_simple = list("shock", "jolt", "zap")
 	taste_sensitivity = 101 // Not a tongue, they can't taste shit
 	var/static/list/languages_possible_ethereal = typecacheof(list(
 		/datum/language/common,

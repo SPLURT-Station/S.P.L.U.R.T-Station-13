@@ -6,7 +6,8 @@
 	lefthand_file = 'icons/mob/inhands/misc/books_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/misc/books_righthand.dmi'
 	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("bapped")
+	attack_verb_continuous = list("baps")
+	attack_verb_simple = list("bap")
 	var/screen = 0
 	var/pages = 0
 	var/curr_page = 0

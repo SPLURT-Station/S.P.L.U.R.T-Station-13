@@ -15,7 +15,8 @@
 	w_class = WEIGHT_CLASS_GIGANTIC
 	force = 12
 	total_mass = TOTAL_MASS_NORMAL_ITEM // average toolbox
-	attack_verb = list("robusted")
+	attack_verb_continuous = list("robusts")
+	attack_verb_simple = list("robust")
 	hitsound = 'sound/weapons/smash.ogg'
 	drop_sound = 'sound/items/handling/toolbox_drop.ogg'
 	pickup_sound = 'sound/items/handling/toolbox_pickup.ogg'

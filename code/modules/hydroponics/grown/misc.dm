@@ -267,7 +267,8 @@
 	force = 5
 	throwforce = 5
 	hitsound = 'sound/weapons/klonk.ogg'
-	attack_verb = list("klonked", "donked", "bonked")
+	attack_verb_continuous = list("klonks", "donks", "bonks")
+	attack_verb_simple = list("klonk", "donk", "bonk")
 	distill_reagent = "creme_de_coconut"
 	var/opened = FALSE
 	var/carved = FALSE

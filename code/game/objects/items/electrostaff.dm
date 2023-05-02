@@ -12,7 +12,8 @@
 	throwforce = 15			//if you are a madman and finish someone off with this, power to you.
 	throw_speed = 1
 	item_flags = NO_MAT_REDEMPTION
-	attack_verb = list("struck", "beaten", "thwacked", "pulped")
+	attack_verb_continuous = list("strucks", "beats", "thwacks", "pulps")
+	attack_verb_simple = list("struck", "beat", "thwack", "pulp")
 	total_mass = 5		//yeah this is a heavy thing, beating people with it while it's off is not going to do you any favors. (to curb stun-kill rampaging without it being on)
 	block_parry_data = /datum/block_parry_data/electrostaff
 	attack_speed = CLICK_CD_MELEE

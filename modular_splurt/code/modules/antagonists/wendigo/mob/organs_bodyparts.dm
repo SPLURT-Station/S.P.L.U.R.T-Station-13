@@ -36,23 +36,27 @@
 /obj/item/bodypart/l_arm/wendigo
 	dismemberable = FALSE
 	max_damage = INFINITY
-	attack_verb = list("slashed", "clawed", "mauled")
+	attack_verb_continuous = list("slashs", "claws", "mauls")
+	attack_verb_simple = list("slash", "claw", "maul")
 	animal_origin = WENDIGO_BODYPART
 
 /obj/item/bodypart/r_arm/wendigo
 	dismemberable = FALSE
 	max_damage = INFINITY
-	attack_verb = list("slashed", "clawed", "mauled")
+	attack_verb_continuous = list("slashs", "claws", "mauls")
+	attack_verb_simple = list("slash", "claw", "maul")
 	animal_origin = WENDIGO_BODYPART
 
 /obj/item/bodypart/l_leg/wendigo
 	dismemberable = FALSE
 	max_damage = INFINITY
-	attack_verb = list("pounded", "stomped", "stamped", "kicked")
+	attack_verb_continuous = list("pounds", "stomps", "stamps", "kicks")
+	attack_verb_simple = list("pound", "stomp", "stamp", "kick")
 	animal_origin = WENDIGO_BODYPART
 
 /obj/item/bodypart/r_leg/wendigo
 	dismemberable = FALSE
 	max_damage = INFINITY
-	attack_verb = list("pounded", "stomped", "stamped", "kicked")
+	attack_verb_continuous = list("pounds", "stomps", "stamps", "kicks")
+	attack_verb_simple = list("pound", "stomp", "stamp", "kick")
 	animal_origin = WENDIGO_BODYPART

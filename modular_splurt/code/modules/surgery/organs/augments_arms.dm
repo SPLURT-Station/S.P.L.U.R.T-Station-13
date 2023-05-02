@@ -23,7 +23,8 @@
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_BULKY
 	sharpness = SHARP_POINTY
-	attack_verb = list("slashed", "cut")
+	attack_verb_continuous = list("slashs", "cuts")
+	attack_verb_simple = list("slash", "cut")
 
 // Synth power cord interaction override
 /obj/item/apc_powercord/afterattack(atom/target, mob/user, proximity_flag, click_parameters)

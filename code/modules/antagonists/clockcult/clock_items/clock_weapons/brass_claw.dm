@@ -16,7 +16,8 @@
 	throw_speed = 0
 	armour_penetration = 20
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "rends")
+	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "rend")
 	sharpness = SHARP_EDGED
 	wound_bonus = 5
 	bare_wound_bonus = 15

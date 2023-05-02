@@ -354,7 +354,7 @@
 	if(!istype(I))
 		I = user.get_inactive_held_item()
 	// Create Strings
-	var/method_string =  I?.attack_verb?.len ? pick(I.attack_verb) : pick("harmed","tortured","wrenched","twisted","scoured","beaten","lashed","scathed")
+	var/method_string =  I?.attack_verb_continuous?.len ? pick(I.attack_verb_continuous) : pick("harms","tortures","wrenchs","twists","scoures","beats","lashs","scathes")
 	var/weapon_string = I ? I.name : pick("bare hands","hands","fingers","fists")
 	// Weapon Bonus + SFX
 	if(I)

@@ -15,7 +15,8 @@
 	tool_behaviour = TOOL_MINING
 	toolspeed = 1
 	usesound = list('sound/effects/picaxe1.ogg', 'sound/effects/picaxe2.ogg', 'sound/effects/picaxe3.ogg')
-	attack_verb = list("hit", "pierced", "sliced", "attacked")
+	attack_verb_continuous = list("hits", "pierces", "slices", "attacks")
+	attack_verb_simple = list("hit", "pierce", "slice", "attack")
 	var/digrange = 1
 
 /obj/item/pickaxe/attack_self(mob/user)
@@ -154,7 +155,8 @@
 	item_state = "shovel"
 	w_class = WEIGHT_CLASS_NORMAL
 	custom_materials = list(/datum/material/iron=350)
-	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
+	attack_verb_continuous = list("bashes", "bludgeones", "thrashes", "whacks")
+	attack_verb_simple = list("bash", "bludgeone", "thrash", "whack")
 	sharpness = SHARP_EDGED
 
 /obj/item/shovel/Initialize(mapload)
@@ -198,5 +200,6 @@
 	throwforce = 12
 	w_class = WEIGHT_CLASS_NORMAL
 	toolspeed = 0.7
-	attack_verb = list("slashed", "impaled", "stabbed", "sliced")
+	attack_verb_continuous = list("slashs", "impales", "stabs", "slices")
+	attack_verb_simple = list("slash", "impale", "stab", "slice")
 	sharpness = SHARP_EDGED

@@ -14,7 +14,8 @@
 	throw_range = 6
 	custom_materials = list(/datum/material/iron=1200)
 	hitsound = 'sound/weapons/genhit.ogg'
-	attack_verb = list("stubbed", "poked")
+	attack_verb_continuous = list("stubs", "pokes")
+	attack_verb_simple = list("stub", "poke")
 	resistance_flags = FIRE_PROOF
 	extended = 0
 
@@ -26,7 +27,8 @@
 		w_class = WEIGHT_CLASS_NORMAL
 		throwforce = 23
 		icon_state = "butterflyknife_open"
-		attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+		attack_verb_continuous = list("slashs", "stabs", "slices", "tears", "rips", "dice", "cuts")
+		attack_verb_simple = list("slash", "stab", "slice", "tear", "rip", "dice", "cut")
 		hitsound = 'sound/weapons/bladeslice.ogg'
 		sharpness = SHARP_EDGED
 	else
@@ -34,7 +36,8 @@
 		w_class = WEIGHT_CLASS_SMALL
 		throwforce = 5
 		icon_state = "butterflyknife"
-		attack_verb = list("stubbed", "poked")
+		attack_verb_continuous = list("stubs", "pokes")
+		attack_verb_simple = list("stub", "poke")
 		hitsound = 'sound/weapons/genhit.ogg'
 		sharpness = SHARP_NONE
 

@@ -16,7 +16,8 @@
 	armour_penetration = 10
 	custom_materials = list(/datum/material/iron=1150, /datum/material/glass=2075)
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("smashed", "crushed", "cleaved", "chopped", "pulped")
+	attack_verb_continuous = list("smashes", "crushes", "cleaves", "chops", "pulps")
+	attack_verb_simple = list("smash", "crush", "cleave", "chop", "pulp")
 	sharpness = SHARP_EDGED
 	actions_types = list(/datum/action/item_action/toggle_light)
 	obj_flags = UNIQUE_RENAME
@@ -183,7 +184,8 @@
 	desc = "A modified design of a proto-kinetic crusher, it is still little more of a combination of various mining tools cobbled together \
 	and kit-bashed into a high-tech cleaver on a stick - with a handguard and a goliath hide grip. While it is still of little use to any \
 	but the most skilled and/or suicidal miners against local fauna, it's an elegant weapon for a more civilized hunter."
-	attack_verb = list("stabbed", "diced", "sliced", "cleaved", "chopped", "lacerated", "cut", "jabbed", "punctured")
+	attack_verb_continuous = list("stabs", "dices", "slices", "cleaves", "chops", "lacerates", "cuts", "jabs", "punctures")
+	attack_verb_simple = list("stab", "dice", "slice", "cleave", "chop", "lacerate", "cut", "jab", "puncture")
 	icon_state = "crusher-glaive"
 	item_state = "crusher0-glaive"
 	block_parry_data = /datum/block_parry_data/crusherglaive
@@ -248,7 +250,8 @@
 	often fielded by those who wish to spit in the eyes of God. Sacrifices outright damage for \
 	a reliance on backstabs and the ability to stagger fauna on a parry, \
 	slowing them and increasing the time between their special attacks."
-	attack_verb = list("pummeled", "punched", "jabbed", "hammer-fisted", "uppercut", "slammed")
+	attack_verb_continuous = list("pummeles", "punchs", "jabs", "hammer-fists", "uppercuts", "slams")
+	attack_verb_simple = list("pummele", "punch", "jab", "hammer-fist", "uppercut", "slam")
 	hitsound = 'sound/weapons/resonator_blast.ogg'
 	sharpness = SHARP_NONE // use your survival dagger or smth
 	icon_state = "crusher-hands"

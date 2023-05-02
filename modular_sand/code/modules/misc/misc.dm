@@ -9,7 +9,8 @@
 	throw_speed = 5
 	throw_range = 20
 	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("hit")
+	attack_verb_continuous = list("hits")
+	attack_verb_simple = list("hit")
 	hitsound = 'sound/weapons/smash.ogg'
 
 /obj/item/misc/potato/examine_more(mob/user)

@@ -9,7 +9,8 @@
 	throwforce = 3
 	throw_speed = 4
 	throw_range = 5
-	attack_verb = list("whacked")
+	attack_verb_continuous = list("whacks")
+	attack_verb_simple = list("whack")
 	hitsound = 'sound/weapons/genhit.ogg'
 	usesound = list('sound/items/screwdriver.ogg', 'sound/items/screwdriver2.ogg')
 
@@ -34,7 +35,8 @@
 	throwforce = 3
 	throw_speed = 4
 	throw_range = 5
-	attack_verb = list("stabbed", "screwed", "jabbed","whacked")
+	attack_verb_continuous = list("stabs", "screws", "jabs","whacks")
+	attack_verb_simple = list("stab", "screw", "jab","whack")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	usesound = list('sound/items/screwdriver.ogg', 'sound/items/screwdriver2.ogg')
 	toolspeed = 1.1
@@ -63,7 +65,8 @@
 	throwforce = 3
 	throw_speed = 4
 	throw_range = 5
-	attack_verb = list("cut", "whacked")
+	attack_verb_continuous = list("cuts", "whacks")
+	attack_verb_simple = list("cut", "whack")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	toolspeed = 1.1
 
@@ -89,7 +92,8 @@
 	throw_speed = 4
 	throw_range = 5
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("stabbed", "slashed", "cut")
+	attack_verb_continuous = list("stabs", "slashs", "cuts")
+	attack_verb_simple = list("stab", "slash", "cut")
 
 /obj/item/armyknife/blade/attack_self(mob/user)
 	playsound(get_turf(user), 'sound/weapons/batonextend.ogg', 50, 1)

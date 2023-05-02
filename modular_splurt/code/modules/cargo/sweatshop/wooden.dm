@@ -5,7 +5,8 @@
 	desc = "You shouldn't see this!"
 	icon = 'modular_splurt/icons/obj/cargo/sweatshop/wooden.dmi'
 	sharpness = FALSE
-	attack_verb = list("slapped", "thunked")
+	attack_verb_continuous = list("slaps", "thunks")
+	attack_verb_simple = list("slap", "thunk")
 	var/sawobj = /obj/item/genital_equipment/condom
 	var/glueobj = /obj/item/dildo
 	var/sandobj = /obj/item/carpentry/sandpaper
@@ -43,7 +44,8 @@
 	icon_state = "peg"
 	force = 1
 	w_class = WEIGHT_CLASS_TINY
-	attack_verb = list("donked", "thunked")
+	attack_verb_continuous = list("donks", "thunks")
+	attack_verb_simple = list("donk", "thunk")
 	glueobj = /obj/item/processed/wood/gluepeg
 
 //glue
@@ -54,15 +56,18 @@
 	icon_state = "gluepeg"
 	force = 1
 	w_class = WEIGHT_CLASS_TINY
-	attack_verb = list("pegged", "thunked")
+	attack_verb_continuous = list("pegs", "thunks")
+	attack_verb_simple = list("peg", "thunk")
 
 /obj/item/processed/wood/glueblock
 	name = "glued wood block"
 	desc = "A wooden block. With a bunch of glue used for securing."
 	icon_state = "glueblock"
+	icon_state = "glueblock"
 	force = 2
 	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("blocked", "thunked")
+	attack_verb_continuous = list("blocks", "thunks")
+	attack_verb_simple = list("block", "thunk")
 
 //seat
 /obj/item/processed/wood/seat
@@ -71,7 +76,8 @@
 	icon_state = "seat"
 	force = 2
 	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("slapped", "thunked")
+	attack_verb_continuous = list("slaps", "thunks")
+	attack_verb_simple = list("slap", "thunk")
 
 
 //Stool steps. There's probably an easier way to do this, but I cannot be assed rn, I'll refine after PR

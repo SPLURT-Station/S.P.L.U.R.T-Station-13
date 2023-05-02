@@ -25,7 +25,8 @@
 	throw_range = 5
 	custom_materials = list(/datum/material/iron=80)
 	flags_1 = CONDUCT_1
-	attack_verb = list("attacked", "stabbed", "poked")
+	attack_verb_continuous = list("attacks", "stabs", "pokes")
+	attack_verb_simple = list("attack", "stab", "poke")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 30)
 	sharpness = SHARP_POINTY
@@ -76,7 +77,8 @@
 	throw_speed = 3
 	throw_range = 6
 	custom_materials = list(/datum/material/iron=12000)
-	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_verb_continuous = list("slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
+	attack_verb_simple = list("slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	sharpness = SHARP_POINTY
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
 	var/bayonet = FALSE	//Can this be attached to a gun?
@@ -112,7 +114,8 @@
 	throw_speed = 3
 	throw_range = 6
 	custom_materials = list(/datum/material/iron=12000)
-	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_verb_continuous = list("slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
+	attack_verb_simple = list("slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	sharpness = SHARP_POINTY
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
 	var/bayonet = FALSE	//Can this be attached to a gun?
@@ -176,7 +179,8 @@
 	force = 15
 	throwforce = 10
 	custom_materials = list(/datum/material/iron=18000)
-	attack_verb = list("cleaved", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_verb_continuous = list("cleaves", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
+	attack_verb_simple = list("cleave", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	w_class = WEIGHT_CLASS_NORMAL
 	custom_price = PRICE_EXPENSIVE
 
@@ -188,7 +192,8 @@
 	embedding = list("pain_mult" = 4, "embed_chance" = 65, "fall_chance" = 10, "ignore_throwspeed_threshold" = TRUE)
 	force = 16
 	throwforce = 16
-	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "cut")
+	attack_verb_continuous = list("slashes", "stabs", "slices", "tears", "lacerates", "rips", "cuts")
+	attack_verb_simple = list("slash", "stab", "slice", "tear", "lacerate", "rip", "cut")
 	bayonet = TRUE
 
 /obj/item/kitchen/knife/combat/survival
@@ -265,7 +270,8 @@
 	desc = "A makeshift glass shiv."
 	force = 8
 	throwforce = 12//fuck git
-	attack_verb = list("shanked", "shivved")
+	attack_verb_continuous = list("shanks", "shivs")
+	attack_verb_simple = list("shank", "shiv")
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0)
 	custom_materials = list(/datum/material/glass=400)
 
@@ -291,7 +297,8 @@
 	throw_range = 7
 	w_class = WEIGHT_CLASS_NORMAL
 	custom_materials = list(/datum/material/wood = MINERAL_MATERIAL_AMOUNT * 1.5)
-	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked")
+	attack_verb_continuous = list("bashes", "batters", "bludgeons", "thrashes", "whacks")
+	attack_verb_simple = list("bash", "batter", "bludgeon", "thrash", "whack")
 	custom_price = PRICE_ALMOST_CHEAP
 
 /obj/item/kitchen/rollingpin/suicide_act(mob/living/carbon/user)
@@ -308,7 +315,8 @@
 	throw_range = 7
 	w_class = WEIGHT_CLASS_NORMAL
 	custom_materials = list(/datum/material/wood = MINERAL_MATERIAL_AMOUNT * 1.5)
-	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked")
+	attack_verb_continuous = list("bashes", "batters", "bludgeons", "thrashes", "whacks")
+	attack_verb_simple = list("bash", "batter", "bludgeon", "thrash", "whack")
 	custom_price = PRICE_ALMOST_CHEAP
 
 /obj/item/kitchen/unrollingpin/suicide_act(mob/living/carbon/user)
@@ -320,7 +328,8 @@
 /obj/item/kitchen/knife/scimitar
 	name = "scimitar knife"
 	desc = "A knife used to cleanly butcher. Its razor-sharp edge has been honed for butchering, but has been poorly maintained over the years."
-	attack_verb = list("cleaved", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_verb_continuous = list("cleaves", "slashes", "stabbes", "slices", "tore", "rips", "dices", "cuts")
+	attack_verb_simple = list("cleave", "slash", "stab", "slice", "torn", "rip", "dice", "cut")
 
 /obj/item/kitchen/knife/scimitar/Initialize(mapload)
 	. = ..()

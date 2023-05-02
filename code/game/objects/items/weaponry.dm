@@ -9,7 +9,8 @@
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 3
 	throw_range = 7
-	attack_verb = list("banned")
+	attack_verb_continuous = list("bans")
+	attack_verb_simple = list("ban")
 	max_integrity = 200
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 70)
 	resistance_flags = FIRE_PROOF
@@ -43,7 +44,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throwforce = 1
 	w_class = WEIGHT_CLASS_NORMAL
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
+	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 
 /obj/item/sord/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is trying to impale [user.p_them()]self with [src]! It might be a suicide attempt if it weren't so shitty.</span>", \
@@ -63,7 +65,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	force = 40
 	throwforce = 10
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
+	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	block_chance = 50
 	sharpness = SHARP_EDGED
 	max_integrity = 200
@@ -93,7 +96,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	slot_flags = null
 	block_chance = 0 //RNG WON'T HELP YOU NOW, PANSY
 	light_range = 3
-	attack_verb = list("brutalized", "eviscerated", "disemboweled", "hacked", "carved", "cleaved") //ONLY THE MOST VISCERAL ATTACK VERBS
+	attack_verb_continuous = list("brutalizes", "eviscerates", "disembowels", "hacks", "carves", "cleaves") //ONLY THE MOST VISCERAL ATTACK VERBS
+	attack_verb_simple = list("brutalize", "eviscerate", "disembowel", "hack", "carve", "cleave")
 	var/notches = 0 //HOW MANY PEOPLE HAVE BEEN SLAIN WITH THIS BLADE
 	var/obj/item/disk/nuclear/nuke_disk //OUR STORED NUKE DISK
 
@@ -246,7 +250,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throwforce = 10
 	w_class = WEIGHT_CLASS_HUGE
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
+	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	block_chance = 50
 	sharpness = SHARP_EDGED
 	max_integrity = 200
@@ -317,7 +322,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	var/stamina_damage_increment = 5 //how much extra damage do we do when in non-harm mode
 	throwforce = 10
 	damtype = STAMINA
-	attack_verb = list("whacked", "smacked", "struck")
+	attack_verb_continuous = list("hits", "bludgeons", "whacks", "bonks")
+	attack_verb_simple = list("hit", "bludgeon", "whack", "bonk")
 	total_mass = TOTAL_MASS_MEDIEVAL_WEAPON
 	hitsound = 'sound/weapons/woodbonk.ogg'
 	var/harm = FALSE // TRUE = brute, FALSE = stam
@@ -380,13 +386,15 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	if(harm)
 		force -= stamina_damage_increment
 		damtype = BRUTE
-		attack_verb = list("bashed", "smashed", "attacked")
+		attack_verb_continuous = list("bashs", "smashs", "attacks")
+		attack_verb_simple = list("bash", "smash", "attack")
 		bare_wound_bonus = 15 // having your leg smacked by a wooden stick is probably not great for it if it's naked
 		wound_bonus = 0
 	else
 		force += stamina_damage_increment
 		damtype = STAMINA
-		attack_verb = list("whacked", "smacked", "struck")
+		attack_verb_continuous = list("whacks", "smacks", "strucks")
+		attack_verb_simple = list("whacks", "smacks", "struck")
 		bare_wound_bonus = 0
 		wound_bonus = 0
 	to_chat(user, "<span class='notice'>[src] is now [harm ? "harmful" : "not quite as harmful"].</span>")
@@ -580,7 +588,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throwforce = 10
 	w_class = WEIGHT_CLASS_NORMAL
 	custom_materials = list(/datum/material/iron=1150, /datum/material/glass=75)
-	attack_verb = list("hit", "bludgeoned", "whacked", "bonked")
+	attack_verb_continuous = list("hits", "bludgeons", "whacks", "bonks")
+	attack_verb_simple = list("hit", "bludgeon", "whack", "bonk")
 	wound_bonus = -10
 
 /obj/item/wirerod/Initialize(mapload)
@@ -674,7 +683,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throw_range = 6
 	custom_materials = list(/datum/material/iron=12000)
 	hitsound = 'sound/weapons/genhit.ogg'
-	attack_verb = list("stubbed", "poked")
+	attack_verb_continuous = list("stubs", "pokes")
+	attack_verb_simple = list("stub", "poke")
 	resistance_flags = FIRE_PROOF
 	var/extended = 0
 
@@ -686,7 +696,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 		w_class = WEIGHT_CLASS_NORMAL
 		throwforce = 23
 		icon_state = "switchblade_ext"
-		attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+		attack_verb_continuous = list("slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
+		attack_verb_simple = list("slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 		hitsound = 'sound/weapons/bladeslice.ogg'
 		sharpness = SHARP_EDGED
 	else
@@ -694,7 +705,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 		w_class = WEIGHT_CLASS_SMALL
 		throwforce = 5
 		icon_state = "switchblade"
-		attack_verb = list("stubbed", "poked")
+		attack_verb_continuous = list("stubs", "pokes")
+		attack_verb_simple = list("stub", "poke")
 		hitsound = 'sound/weapons/genhit.ogg'
 		sharpness = SHARP_NONE
 
@@ -712,7 +724,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throw_speed = 3
 	throw_range = 4
 	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("called", "rang")
+	attack_verb_continuous = list("calls", "rings")
+	attack_verb_simple = list("call", "ring")
 	hitsound = 'sound/weapons/ring.ogg'
 
 /obj/item/phone/suicide_act(mob/user)
@@ -734,7 +747,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throwforce = 5
 	w_class = WEIGHT_CLASS_SMALL
 	custom_materials = list(/datum/material/iron=50)
-	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
+	attack_verb_continuous = list("bludgeons", "whacks", "disciplines", "thrashes")
+	attack_verb_simple = list("bludgeon", "whack", "discipline", "thrash")
 
 /obj/item/staff
 	name = "wizard staff"
@@ -749,7 +763,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
 	armour_penetration = 100
-	attack_verb = list("bludgeoned", "whacked", "disciplined")
+	attack_verb_continuous = list("bludgeons", "whacks", "disciplines")
+	attack_verb_simple = list("bludgeon", "whack", "discipline")
 	resistance_flags = FLAMMABLE
 
 /obj/item/staff/broom
@@ -802,7 +817,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throw_range = 0
 	throw_speed = 0
 	sharpness = SHARP_EDGED
-	attack_verb = list("sawed", "torn", "cut", "chopped", "diced")
+	attack_verb_continuous = list("saws", "tears", "lacerates", "cuts", "chops", "dices")
+	attack_verb_simple = list("saw", "tear", "lacerate", "cut", "chop", "dice")
 	hitsound = 'sound/weapons/chainsawhit.ogg'
 	total_mass = TOTAL_MASS_HAND_REPLACEMENT
 	tool_behaviour = TOOL_SAW
@@ -833,7 +849,9 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throwforce = 10
 	throw_speed = 5
 	throw_range = 2
-	attack_verb = list("busted")
+	attack_verb_continuous = list("clubs", "bludgeons")
+	attack_verb_simple = list("club", "bludgeon")
+
 	var/impressiveness = 45
 
 /obj/item/statuebust/Initialize(mapload)
@@ -855,7 +873,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throwforce = 1 // why are you throwing a club do you even weapon
 	throw_speed = 1
 	throw_range = 1
-	attack_verb = list("clubbed", "bludgeoned")
+	attack_verb_continuous = list("clubs", "bludgeons")
+	attack_verb_simple = list("club", "bludgeon")
 
 /obj/item/melee/chainofcommand/tailwhip
 	name = "liz o' nine tails"
@@ -876,7 +895,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	force = 12
 	throwforce = 4
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("smacked", "whacked", "slammed", "smashed")
+	attack_verb_continuous = list("smacks", "whacks", "slams", "smashes")
+	attack_verb_simple = list("smack", "whack", "slam", "smash")
 	///The vehicle counterpart for the board
 	var/board_item_type = /obj/vehicle/ridden/scooter/skateboard
 
@@ -926,7 +946,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	force = 10
 	wound_bonus = -10
 	throwforce = 12
-	attack_verb = list("beat", "smacked")
+	attack_verb_continuous = list("beats", "smacks")
+	attack_verb_simple = list("beat", "smack")
 	custom_materials = list(/datum/material/wood = MINERAL_MATERIAL_AMOUNT * 3.5)
 	w_class = WEIGHT_CLASS_HUGE
 	var/homerun_ready = 0
@@ -1066,7 +1087,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 		w_class = weight_class_on
 		force = force_on
 		throwforce = throwforce_on
-		attack_verb = list("beat", "smacked")
+		attack_verb_continuous = list("beats", "smacks")
+		attack_verb_simple = list("beat", "smack")
 	else
 		to_chat(user, desc["local_off"])
 		icon_state = off_icon_state
@@ -1074,7 +1096,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 		w_class = WEIGHT_CLASS_SMALL
 		force = force_off
 		throwforce = throwforce_off
-		attack_verb = list("drubbed", "beaned")
+		attack_verb_continuous = list("drubs", "beans")
+		attack_verb_simple = list("drub", "bean")
 	playsound(src.loc, on_sound, 50, 1)
 	add_fingerprint(user)
 
@@ -1088,7 +1111,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
 	force = 1
 	throwforce = 1
-	attack_verb = list("swatted", "smacked")
+	attack_verb_continuous = list("swats", "smacks")
+	attack_verb_simple = list("swat", "smack")
 	hitsound = 'sound/effects/snap.ogg'
 	w_class = WEIGHT_CLASS_SMALL
 	//Things in this list will be instantly splatted.  Flyman weakness is handled in the flyman species weakness proc.
@@ -1124,7 +1148,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	force = 0
 	throwforce = 0
 	item_flags = DROPDEL | ABSTRACT | HAND_ITEM
-	attack_verb = list("bopped")
+	attack_verb_continuous = list("bops")
+	attack_verb_simple = list("bop")
 
 /obj/item/circlegame/Initialize(mapload)
 	. = ..()
@@ -1226,7 +1251,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	force = 0
 	throwforce = 0
 	item_flags = DROPDEL | ABSTRACT | HAND_ITEM
-	attack_verb = list("slapped")
+	attack_verb_continuous = list("slaps")
+	attack_verb_simple = list("slap")
 	hitsound = 'sound/effects/snap.ogg'
 
 /obj/item/slapper/attack(mob/M, mob/living/carbon/human/user)
@@ -1410,7 +1436,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throwforce = 20
 	throw_speed = 4
 	sharpness = SHARP_EDGED
-	attack_verb = list("cut", "sliced", "diced")
+	attack_verb_continuous = list("cuts", "slices", "dices")
+	attack_verb_simple = list("cut", "slice", "dice")
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
 	hitsound = 'sound/weapons/bladeslice.ogg'

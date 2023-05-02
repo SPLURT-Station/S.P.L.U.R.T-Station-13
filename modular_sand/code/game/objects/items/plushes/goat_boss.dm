@@ -71,7 +71,8 @@
 	icon_state = "kinggoat"
 	throwforce = 8
 	force = 8
-	attack_verb = list("chomped")
+	attack_verb_continuous = list("chomps")
+	attack_verb_simple = list("chomp")
 	gender = MALE
 
 /obj/item/toy/plush/goatplushie/angry/kinggoat/ascendedkinggoat

@@ -109,8 +109,11 @@ GLOBAL_VAR_INIT(embedpocalypse, FALSE) // if true, all items will be able to emb
 	var/breakouttime = 0
 	var/reskinned = FALSE
 
-	var/list/attack_verb //Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
-	var/list/species_exception = null	// list() of species types, if a species cannot put items in a certain slot, but species type is in list, it will be able to wear that item
+//Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
+	var/list/attack_verb_continuous
+	var/list/attack_verb_simple
+// list() of species types, if a species cannot put items in a certain slot, but species type is in list, it will be able to wear that item
+	var/list/species_exception = null
 
 	var/mob/thrownby = null
 
@@ -180,8 +183,10 @@ GLOBAL_VAR_INIT(embedpocalypse, FALSE) // if true, all items will be able to emb
 
 /obj/item/Initialize(mapload)
 
-	if(attack_verb)
-		attack_verb = typelist("attack_verb", attack_verb)
+	if(attack_verb_continuous)
+		attack_verb_continuous = typelist("attack_verb_continuous", attack_verb_continuous)
+	if(attack_verb_simple)
+		attack_verb_simple = typelist("attack_verb_simple", attack_verb_simple)
 
 	. = ..()
 	for(var/path in actions_types)

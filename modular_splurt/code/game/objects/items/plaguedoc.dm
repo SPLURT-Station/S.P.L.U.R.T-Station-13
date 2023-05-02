@@ -58,7 +58,8 @@
 	throw_speed = 3
 	throw_range = 7
 	toolspeed = 1
-	attack_verb = list("attacked", "slashed", "sawed", "cut")
+	attack_verb_continuous = list("attacks", "slashs", "saws", "cuts")
+	attack_verb_simple = list("attack", "slash", "saw", "cut")
 	sharpness = SHARP_EDGED
 
 /obj/item/storage/backpack/docbag
@@ -113,4 +114,5 @@
 	throwforce = 5
 	w_class = WEIGHT_CLASS_SMALL
 	custom_materials = list(/datum/material/iron=50)
-	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
+	attack_verb_continuous = list("bludgeones", "whacks", "disciplines", "thrashs")
+	attack_verb_simple = list("bludgeone", "whack", "discipline", "thrash")

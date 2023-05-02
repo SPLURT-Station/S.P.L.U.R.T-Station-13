@@ -5,7 +5,8 @@
 	icon_state = "clockwork_slab"
 	item_state = "clockwork_slab"
 	body_parts_covered = HAND_LEFT | ARM_LEFT
-	attack_verb = list("showed the time to")
+	attack_verb_continuous = list("shows the time to")
+	attack_verb_simple = list("show the time to")
 
 /obj/item/clothing/wrists/clockwork_watch/examine(mob/user)
 	. = ..()

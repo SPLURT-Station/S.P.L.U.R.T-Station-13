@@ -16,7 +16,8 @@
 	drop_sound = 'sound/items/handling/wrench_drop.ogg'
 	pickup_sound = 'sound/items/handling/wrench_pickup.ogg'
 
-	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
+	attack_verb_continuous = list("bashes", "batters", "bludgeons", "whacks")
+	attack_verb_simple = list("bash", "batter", "bludgeon", "whack")
 	tool_behaviour = TOOL_WRENCH
 	toolspeed = 1
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 30)
@@ -80,7 +81,8 @@
 	force = 8 //might or might not be too high, subject to change
 	w_class = WEIGHT_CLASS_SMALL
 	throwforce = 8
-	attack_verb = list("drilled", "screwed", "jabbed")
+	attack_verb_continuous = list("drills", "screws", "jabs")
+	attack_verb_simple = list("drill", "screw", "jab")
 	toolspeed = 0.25
 
 /obj/item/wrench/power/attack_self(mob/user)
@@ -101,7 +103,8 @@
 	force = 2 //MEDICAL
 	throwforce = 4
 
-	attack_verb = list("wrenched", "medicaled", "tapped", "jabbed", "whacked")
+	attack_verb_continuous = list("heals", "medicals", "taps", "pokes", "analyzes") //"cobbyed"
+	attack_verb_simple = list("heal", "medical", "tap", "poke", "analyze")
 
 /obj/item/wrench/medical/suicide_act(mob/living/user)
 	user.visible_message("<span class='suicide'>[user] is praying to the medical wrench to take [user.p_their()] soul. It looks like [user.p_theyre()] trying to commit suicide!</span>")

@@ -13,7 +13,8 @@ GLOBAL_LIST_EMPTY(rubber_toolbox_icons)
 	throw_speed = 2
 	throw_range = 7
 	w_class = WEIGHT_CLASS_BULKY
-	attack_verb = list("robusted")
+	attack_verb_continuous = list("robusts")
+	attack_verb_simple = list("robust")
 	hitsound = 'sound/weapons/smash.ogg'
 	drop_sound = 'sound/items/handling/toolbox_drop.ogg'
 	pickup_sound = 'sound/items/handling/toolbox_pickup.ogg'
@@ -204,7 +205,8 @@ GLOBAL_LIST_EMPTY(rubber_toolbox_icons)
 	has_latches = FALSE
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	w_class = WEIGHT_CLASS_HUGE
-	attack_verb = list("robusted", "crushed", "smashed")
+	attack_verb_continuous = list("robusts", "crushs", "smashs")
+	attack_verb_simple = list("robust", "crush", "smash")
 	can_rubberify = FALSE
 	var/fabricator_type = /obj/item/clockwork/replica_fabricator/scarab
 
@@ -379,7 +381,8 @@ GLOBAL_LIST_EMPTY(rubber_toolbox_icons)
 	damtype = STAMINA
 	force += 3 //to compensate the higher stamina K.O. threshold compared to actual health.
 	throwforce += 3
-	attack_verb += "bounced"
+	attack_verb_continuous += "bounces"
+	attack_verb_simple += "bounce"
 	hitsound = 'sound/effects/clownstep1.ogg'
 	if(!GLOB.rubber_toolbox_icons[icon_state])
 		generate_rubber_toolbox_icon()
@@ -401,7 +404,8 @@ GLOBAL_LIST_EMPTY(rubber_toolbox_icons)
 	damtype = STAMINA
 	force = 15
 	throwforce = 15
-	attack_verb = list("robusted", "bounced")
+	attack_verb_continuous = list("robusts", "bounces")
+	attack_verb_simple = list("robust", "bounce")
 	can_rubberify = FALSE //we are already the future.
 
 /obj/item/storage/toolbox/rubber/Initialize(mapload)

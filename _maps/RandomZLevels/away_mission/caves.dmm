@@ -639,7 +639,8 @@
 	name = "Mining cart"
 	},
 /obj/item/pickaxe{
-	attack_verb = list("ineffectively hit");
+	attack_verb_continuous = list("ineffectively hit")
+	attack_verb_simple = list("ineffectively hit");
 	desc = "A pickaxe thats been left to rust.";
 	force = 1;
 	name = "rusty pickaxe";
@@ -899,7 +900,8 @@
 /area/awaymission/caves/research)
 "cQ" = (
 /obj/item/pickaxe{
-	attack_verb = list("ineffectively hit");
+	attack_verb_continuous = list("ineffectively hit")
+	attack_verb_simple = list("ineffectively hit");
 	desc = "A pickaxe thats been left to rust.";
 	force = 1;
 	name = "rusty pickaxe";
@@ -1098,7 +1100,8 @@
 "ds" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/item/pickaxe{
-	attack_verb = list("ineffectively hit");
+	attack_verb_continuous = list("ineffectively hit")
+	attack_verb_simple = list("ineffectively hit");
 	desc = "A pickaxe thats been left to rust.";
 	force = 1;
 	name = "rusty pickaxe";
@@ -1487,7 +1490,8 @@
 "eP" = (
 /obj/structure/table,
 /obj/item/pickaxe{
-	attack_verb = list("ineffectively hit");
+	attack_verb_continuous = list("ineffectively hit")
+	attack_verb_simple = list("ineffectively hit");
 	desc = "A pickaxe thats been left to rust.";
 	force = 1;
 	name = "rusty pickaxe";
@@ -1495,7 +1499,8 @@
 	throwforce = 1
 	},
 /obj/item/pickaxe{
-	attack_verb = list("ineffectively hit");
+	attack_verb_continuous = list("ineffectively hit")
+	attack_verb_simple = list("ineffectively hit");
 	desc = "A pickaxe thats been left to rust.";
 	force = 1;
 	name = "rusty pickaxe";
@@ -1852,7 +1857,8 @@
 	name = "Mining cart"
 	},
 /obj/item/pickaxe{
-	attack_verb = list("ineffectively hit");
+	attack_verb_continuous = list("ineffectively hit")
+	attack_verb_simple = list("ineffectively hit");
 	desc = "A pickaxe thats been left to rust.";
 	force = 1;
 	name = "rusty pickaxe";

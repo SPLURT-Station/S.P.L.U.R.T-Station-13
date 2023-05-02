@@ -639,12 +639,11 @@
 	name = "Mining cart"
 	},
 /obj/item/pickaxe{
-	attack_verb_continuous = list("ineffectively hit")
-	attack_verb_simple = list("ineffectively hit");
-	desc = "A pickaxe thats been left to rust.";
-	force = 1;
-	name = "rusty pickaxe";
-	pixel_x = 5;
+	name = "rusty pickaxe"
+	desc = "A pickaxe that's been left to rust."
+	attack_verb_continuous = list("ineffectively hits")
+	attack_verb_simple = list("ineffectively hit")
+	force = 1
 	throwforce = 1
 	},
 /turf/open/floor/plating/asteroid/basalt{

@@ -30,7 +30,7 @@
 	flags_inv = HIDEHAIR|HIDEEARS
 	rad_flags = RAD_NO_CONTAMINATE
 
-// Centcomm
+// Centcom
 /obj/item/clothing/suit/hooded/wintercoat/centcom
 	name = "centcom winter coat"
 	icon = 'icons/obj/clothing/suits/wintercoat.dmi'
@@ -648,8 +648,9 @@
 /obj/item/clothing/head/hooded/winterhood/timidcostume
 	name = "timid woman hood"
 	desc = "A hood attached to the hoodie."
+	icon =  'icons/obj/clothing/head/winterhood.dmi'
 	icon_state = "timidwoman"
-	item_state = "timidwoman"
+	mob_overlay_icon = 'icons/mob/clothing/head/winterhood.dmi'
 
 // Timid Man
 /obj/item/clothing/suit/hooded/wintercoat/timidcostume/man
@@ -662,5 +663,6 @@
 
 /obj/item/clothing/head/hooded/winterhood/timidcostume/man
 	name = "timid man hood"
+	icon =  'icons/obj/clothing/head/winterhood.dmi'
 	icon_state = "timidman"
-	item_state = "timidman"
+	mob_overlay_icon = 'icons/mob/clothing/head/winterhood.dmi'

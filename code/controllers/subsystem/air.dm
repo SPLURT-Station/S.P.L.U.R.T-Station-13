@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(air)
 
 
 	var/list/currentrun = list()
-	var/currentpart = SSAIR_REBUILD_PIPENETS
+	var/currentpart = SSAIR_ACTIVETURFS
 
 	var/map_loading = TRUE
 

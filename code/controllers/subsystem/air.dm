@@ -52,9 +52,7 @@ SUBSYSTEM_DEF(air)
 	// Max number of turfs to look for a space turf, and max number of turfs that will be decompressed.
 	var/equalize_hard_turf_limit = 2000
 	// Whether equalization is enabled. Can be disabled for performance reasons.
-	var/equalize_enabled = TRUE
-	// Whether equalization should be enabled.
-	var/should_do_equalization = TRUE
+	var/equalize_enabled = FALSE
 	// When above 0, won't equalize; performance handling
 	var/eq_cooldown = 0
 	// Whether turf-to-turf heat exchanging should be enabled.
@@ -159,7 +157,7 @@ SUBSYSTEM_DEF(air)
 		if(state != SS_RUNNING)
 			return
 		resumed = 0
-		currentpart = SSAIR_EQUALIZE
+		currentpart = equalize_enabled ? SSAIR_EQUALIZE : SSAIR_FINALIZE_TURFS
 
 	if(currentpart == SSAIR_EQUALIZE)
 		equalize_turfs(resumed)

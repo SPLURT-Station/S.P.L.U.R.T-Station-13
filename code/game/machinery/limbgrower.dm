@@ -330,7 +330,7 @@
 				var/obj/item/organ/genital/breasts/boobs = new(loc)
 				if(features["has_breasts"])
 					boobs.color = sanitize_hexcolor(features["breasts_color"], 6, TRUE)
-					boobs.size = features["breasts_size"]
+					boobs.size = GLOB.breast_values[features["breasts_size"]]
 					boobs.shape = features["breasts_shape"]
 					if(!features["breasts_producing"])
 						boobs.genital_flags &= ~(GENITAL_FUID_PRODUCTION|CAN_CLIMAX_WITH|CAN_MASTURBATE_WITH)

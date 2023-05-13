@@ -88,11 +88,6 @@
 	basic_modules += /obj/item/reagent_containers/borghypo/borgshaker/sodashaker
 	basic_modules += /obj/item/reagent_containers/borghypo/borgshaker/miscshaker
 	. = ..()
-/*
-/obj/item/robot_module/miner/Initialize(mapload)
-	basic_modules += /obj/item/card/id/miningborg
-	. = ..() 
-*/ //Sandstorm, the main citacode already gives a mining points card to the minerborg, borgs don't need another one.
 
 /datum/robot_energy_storage/plasma
 	name = "Plasma Buffer Container"

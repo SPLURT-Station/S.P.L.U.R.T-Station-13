@@ -1054,6 +1054,28 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	S["feature_inert_eggs"] >> features["inert_eggs"]
 
+	if(S["features_cock_max_length"])
+		S["features_cock_max_length"] >> features["cock_max_length"]
+	if(S["features_balls_max_size"])
+		S["features_balls_max_size"] >> features["balls_max_size"]
+	if(S["features_breasts_max_size"])
+		S["features_breasts_max_size"] >> features["breasts_max_size"]
+	if(S["features_belly_max_size"])
+		S["features_belly_max_size"] >> features["belly_max_size"]
+	if(S["features_butt_max_size"])
+		S["features_butt_max_size"] >> features["butt_max_size"]
+
+	if(S["features_cock_min_length"])
+		S["features_cock_min_length"] >> features["cock_min_length"]
+	if(S["features_balls_min_size"])
+		S["features_balls_min_size"] >> features["balls_min_size"]
+	if(S["features_breasts_min_size"])
+		S["features_breasts_min_size"] >> features["breasts_min_size"]
+	if(S["features_belly_min_size"])
+		S["features_belly_min_size"] >> features["belly_min_size"]
+	if(S["features_butt_min_size"])
+		S["features_butt_min_size"] >> features["butt_min_size"]
+
 	var/char_vr_path = "[vr_path]/character_[default_slot]_v2.json"
 	if(fexists(char_vr_path))
 		var/list/json_from_file = json_decode(file2text(char_vr_path))
@@ -1412,6 +1434,19 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_anus_stuffing"], features["anus_stuffing"])
 
 	WRITE_FILE(S["feature_inert_eggs"], features["inert_eggs"])
+
+
+	WRITE_FILE(S["features_cock_max_length"], features["cock_max_length"])
+	WRITE_FILE(S["features_balls_max_size"], features["balls_max_size"])
+	WRITE_FILE(S["features_breasts_max_size"], features["breasts_max_size"])
+	WRITE_FILE(S["features_belly_max_size"], features["belly_max_size"])
+	WRITE_FILE(S["features_butt_max_size"], features["butt_max_size"])
+
+	WRITE_FILE(S["features_cock_min_length"], features["cock_min_length"])
+	WRITE_FILE(S["features_balls_min_size"], features["balls_min_size"])
+	WRITE_FILE(S["features_breasts_min_size"], features["breasts_min_size"])
+	WRITE_FILE(S["features_belly_min_size"], features["belly_min_size"])
+	WRITE_FILE(S["features_butt_min_size"], features["butt_min_size"])
 
 	WRITE_FILE(S["feature_neckfire"], features["neckfire"])
 	WRITE_FILE(S["feature_neckfire_color"], features["neckfire_color"])

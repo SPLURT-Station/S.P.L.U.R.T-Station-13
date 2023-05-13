@@ -8244,7 +8244,7 @@
 /area/science/xenobiology)
 "cST" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/clothing/under/tuxedo,
+/obj/item/clothing/under/suit/tuxedo,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 8
 	},
@@ -8421,8 +8421,8 @@
 /area/hallway/primary/starboard)
 "cVT" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/clothing/under/wedding_dress,
-/obj/item/clothing/under/tuxedo,
+/obj/item/clothing/under/dress/wedding,
+/obj/item/clothing/under/suit/tuxedo,
 /turf/open/floor/carpet/royalblack,
 /area/commons/dorms)
 "cVU" = (
@@ -13544,11 +13544,11 @@
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
 "eJe" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/incinerator_output{
-	dir = 1
-	},
 /obj/structure/sign/warning/vacuum/external{
 	pixel_y = -32
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 1
 	},
 /turf/open/floor/engine/vacuum,
 /area/maintenance/disposal/incinerator)

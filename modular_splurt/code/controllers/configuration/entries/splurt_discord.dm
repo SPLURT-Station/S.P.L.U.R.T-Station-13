@@ -10,3 +10,5 @@
 	config_entry_value = "verify"
 
 /datum/config_entry/flag/forced_discord_stay
+
+/datum/config_entry/flag/sauce_command_enabled

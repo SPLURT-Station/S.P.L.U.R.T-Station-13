@@ -255,3 +255,9 @@
 	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
 	icon_state = "tajaranshort"
 	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/snouts/mam_snouts/noodle
+	name = "Noodle"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	icon_state = "noodle"
+	matrixed_sections = MATRIX_ALL

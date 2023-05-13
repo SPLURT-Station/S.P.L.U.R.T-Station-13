@@ -1195,7 +1195,7 @@
 							var/new_marking_color = input(user, "Choose your character's marking color:", "Character Preference","#"+color_list[color_number]) as color|null
 							if(new_marking_color)
 								var/temp_hsv = RGBtoHSV(new_marking_color)
-								if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3]) // mutantcolors must be bright, but only if they affect the skin
+								if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3] || !CONFIG_GET(flag/character_color_limits)) // mutantcolors must be bright, but only if they affect the skin
 									color_list[color_number] = "#[sanitize_hexcolor(new_marking_color, 6)]"
 								else
 									to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")

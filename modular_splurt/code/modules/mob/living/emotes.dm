@@ -639,6 +639,36 @@
 	emote_sound = 'modular_splurt/sound/voice/agony.ogg'
 	emote_cooldown = 7 SECONDS
 
+/datum/emote/living/audio/wtune
+	key = "whistle_tune"
+	key_third_person = "whistle_tunes"
+	message = "whistles a tune."
+	message_mime = "makes an expression as if whistling."
+	emote_sound = 'modular_splurt/sound/voice/wtune1.ogg'
+	emote_cooldown = 4.55 SECONDS // Uses longest sound's time.
+
+/datum/emote/living/audio/wtune/run_emote(mob/user, params)
+	// Set random emote sound
+	emote_sound = pick('modular_splurt/sound/voice/wtune1.ogg', 'modular_splurt/sound/voice/wtune2.ogg')
+
+	// Return normally
+	. = ..()
+
+/datum/emote/living/audio/terror
+	key = "terror"
+	key_third_person = "terrors"
+	message = "whistles some dreadful tune..."
+	message_mime = "stares with aura full of dread..."
+	emote_sound = 'modular_splurt/sound/voice/terror1.ogg'
+	emote_cooldown = 13.07 SECONDS // Uses longest sound's time.
+
+/datum/emote/living/audio/terror/run_emote(mob/user, params)
+	// Set random emote sound
+	emote_sound = pick('modular_splurt/sound/voice/terror1.ogg', 'modular_splurt/sound/voice/terror2.ogg')
+
+	// Return normally
+	. = ..()
+
 /datum/emote/living/audio/sicko
 	key = "sicko"
 	key_third_person = "sickos"

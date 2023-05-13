@@ -22,8 +22,8 @@
 				if("f", "g", "h")
 					modifier = 3
 				else
-					if(B.size in B.breast_values)
-						modifier = clamp(B.breast_values[B.size] - 5, 0, INFINITY)
+					if(B.size in GLOB.breast_values)
+						modifier = clamp(GLOB.breast_values[B.size] - 5, 0, INFINITY)
 					else
 						modifier = 1
 			if(B.fluid_id)
@@ -42,8 +42,8 @@
 				if("f", "g", "h")
 					modifier = 3
 				else
-					if(B.size in B.breast_values)
-						modifier = clamp(B.breast_values[B.size] - 5, 0, INFINITY)
+					if(B.size in GLOB.breast_values)
+						modifier = clamp(GLOB.breast_values[B.size] - 5, 0, INFINITY)
 					else
 						modifier = 1
 			if(B.fluid_id)
@@ -63,8 +63,8 @@
 				if("f", "g", "h")
 					modifier = 3
 				else
-					if(B.size in B.breast_values)
-						modifier = clamp(B.breast_values[B.size] - 5, 0, INFINITY)
+					if(B.size in GLOB.breast_values)
+						modifier = clamp(GLOB.breast_values[B.size] - 5, 0, INFINITY)
 					else
 						modifier = 1
 			if(B.fluid_id)

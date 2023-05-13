@@ -1,3 +1,5 @@
+#define PROTOLOCK_ALL_ACCESS CONFIG_GET(flag/protolock_all_access)
+
 /mob/Initialize()
 	. = ..()
 	create_player_panel()
@@ -79,3 +81,9 @@
 
 	// All checks passed
 	return TRUE
+
+//Makes the protolocks able to be disabled
+/mob/can_use_production(obj/machinery/machine_target)
+	if(PROTOLOCK_ALL_ACCESS)
+		return TRUE
+	. = ..()

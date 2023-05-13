@@ -164,7 +164,6 @@
 					/obj/item/clothing/under/costume/christmas/croptop/green = 3,
 					/obj/item/clothing/head/christmashat = 3,
 					/obj/item/clothing/head/christmashatg = 3,
-					/obj/item/clothing/under/wedding_dress = 1,
 					/obj/item/clothing/under/costume/drfreeze = 1)
 	refill_canister = /obj/item/vending_refill/autodrobe
 	default_price = PRICE_ALMOST_CHEAP

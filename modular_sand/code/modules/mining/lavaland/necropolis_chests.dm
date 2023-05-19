@@ -666,43 +666,58 @@
 	name = "lava walking medal"
 	desc = "A golden medal. Capable of making any jumpsuit completely lava proof for a brief window of time."
 	icon_state = "gold"
-	actions_types = list(/datum/action/item_action/lavawalk)
-	var/cool_down = 0
-	var/cooldown_time = 1200 //two full minutes
-	var/effectduration = 100 //10 seconds of lava walking
-	var/storedimmunities = list()
+	var/datum/action/cooldown/lavawalk/lavawalk
+	var/effectduration = 10 SECONDS
+	var/timer
 
-/obj/item/clothing/accessory/lavawalk/on_uniform_equip(obj/item/clothing/under/U, user)
+/obj/item/clothing/accessory/lavawalk/ComponentInitialize()
 	. = ..()
-	var/mob/living/L = U.loc
-	if(L && istype(L))
-		for(var/datum/action/A in actions_types)
-			A.Grant(L)
+	lavawalk = new(src)
+	RegisterSignal(lavawalk, COMSIG_ACTION_TRIGGER, .proc/activate)
 
-/obj/item/clothing/accessory/lavawalk/on_uniform_dropped(obj/item/clothing/under/U, user)
+/obj/item/clothing/accessory/lavawalk/Destroy()
 	. = ..()
-	var/mob/living/L = U.loc
-	if(L && istype(L))
-		for(var/datum/action/A in actions_types)
-			A.Remove(L)
+	var/mob/living/user = get_atom_on_turf(src, /mob/living)
+	if(user && timer)
+		reset_user(user)
+	UnregisterSignal(lavawalk, COMSIG_ACTION_TRIGGER)
+	QDEL_NULL(lavawalk)
 
-/datum/action/item_action/lavawalk
+/obj/item/clothing/accessory/lavawalk/on_uniform_equip(obj/item/clothing/under/U, mob/living/user)
+	. = ..()
+	if(istype(user))
+		lavawalk.Grant(user)
+
+/obj/item/clothing/accessory/lavawalk/on_uniform_dropped(obj/item/clothing/under/U, mob/living/user)
+	. = ..()
+	if(istype(user))
+		if(timer)
+			reset_user(user)
+		lavawalk.Remove(user)
+
+/datum/action/cooldown/lavawalk
 	name = "Lava Walk"
 	desc = "Become immune to lava for a brief period of time."
+	check_flags = AB_CHECK_RESTRAINED|AB_CHECK_STUN|AB_CHECK_CONSCIOUS
+	cooldown_time = 2 MINUTES //two full minutes
+	use_target_appearance = TRUE
 
-/obj/item/clothing/accessory/lavawalk/ui_action_click(mob/user, actiontype)
-	if(istype(actiontype, /datum/action/item_action/lavawalk))
-		if(world.time >= cool_down)
-			var/mob/living/L = user
-			if(istype(L))
-				storedimmunities = L.weather_immunities.Copy()
-				L.weather_immunities |= list("ash", "lava")
-				cool_down = world.time + cooldown_time
-				addtimer(CALLBACK(src, .proc/reset_user, L), effectduration)
+/obj/item/clothing/accessory/lavawalk/proc/activate(datum/action/cooldown/lavawalk/action, obj/item/clothing/accessory/lavawalk/item)
+	var/mob/living/L = usr
+	if(istype(L))
+		to_chat(L, span_notice("\The [src] begins glowing!"))
+		L.balloon_alert(L, "activated")
+		ADD_TRAIT(L, TRAIT_ASHSTORM_IMMUNE, src)
+		ADD_TRAIT(L, TRAIT_LAVA_IMMUNE, src)
+		timer = addtimer(CALLBACK(src, .proc/reset_user, L), effectduration)
+		action.StartCooldown()
 
 /obj/item/clothing/accessory/lavawalk/proc/reset_user(mob/living/user)
-	user.weather_immunities = storedimmunities
-	storedimmunities = list()
+	REMOVE_TRAIT(user, TRAIT_ASHSTORM_IMMUNE, src)
+	REMOVE_TRAIT(user, TRAIT_LAVA_IMMUNE, src)
+	to_chat(user, span_boldwarning("\The [src]'s glow dims."))
+	user.balloon_alert(user, "wore off")
+	QDEL_NULL(timer)
 
 //Nerfing those on the chest because too OP yada yada
 /obj/item/clothing/suit/space/hardsuit/ert/paranormal/inquisitor/damaged

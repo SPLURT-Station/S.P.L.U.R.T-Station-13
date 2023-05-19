@@ -90,6 +90,10 @@
 	gas = GAS_COPIUM
 	value = REAGENT_VALUE_GLORIOUS
 
+// Variant of Copium created by genital fluids
+/datum/reagent/drug/copium/gfluid
+	value = REAGENT_VALUE_COMMON
+
 /datum/reagent/drug/copium/on_mob_life(mob/living/carbon/M)
 	. = ..()
 

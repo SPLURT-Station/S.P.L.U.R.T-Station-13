@@ -404,7 +404,7 @@
   *
   * overridden here and in /mob/dead/observer for different point span classes and sanity checks
   */
-/mob/verb/pointed(atom/A as mob|obj|turf in fov_view())
+/mob/verb/pointed(atom/A as mob|obj|turf in fov_view(), params = "" as text)
 	set name = "Point To"
 	set category = "Object"
 
@@ -419,7 +419,25 @@
 
 	var/turf/our_tile = get_turf(src)
 	var/obj/visual = new /obj/effect/temp_visual/point(our_tile, invisibility)
-	animate(visual, pixel_x = (tile.x - our_tile.x) * world.icon_size + A.pixel_x, pixel_y = (tile.y - our_tile.y) * world.icon_size + A.pixel_y, time = 1.7, easing = EASE_OUT)
+
+	/// Set position
+	var/final_x = (tile.x - our_tile.x) * world.icon_size + A.pixel_x
+	var/final_y = (tile.y - our_tile.y) * world.icon_size + A.pixel_y
+	var/list/click_params = params2list(params)
+	if(length(click_params) && click_params["screen-loc"])
+		var/list/actual_view = getviewsize(client ? client.view : world.view)
+		var/list/split_coords = splittext(click_params["screen-loc"], ",")
+		final_x = (text2num(splittext(split_coords[1], ":")[1]) - actual_view[1] / 2) * world.icon_size + (text2num(splittext(split_coords[1], ":")[2]) - world.icon_size)
+		final_y = (text2num(splittext(split_coords[2], ":")[1]) - actual_view[2] / 2) * world.icon_size + (text2num(splittext(split_coords[2], ":")[2]) - world.icon_size)
+	//
+
+	/// Set rotation
+	var/matrix/rotated_matrix = new()
+	rotated_matrix.TurnTo(0, Get_Pixel_Angle(-final_y, -final_x))
+	visual.transform = rotated_matrix
+	//
+
+	animate(visual, pixel_x = final_x, pixel_y = final_y, time = 1.7, easing = EASE_OUT)
 	SEND_SIGNAL(src, COMSIG_MOB_POINTED, A)
 
 	return TRUE
@@ -765,7 +783,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 			return pick(protection_sources)
 		else
 			return src
-	if((magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC)) || (holy && HAS_TRAIT(src, TRAIT_HOLY)))
+	if((magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC)) || (!self && magic && HAS_TRAIT(src, TRAIT_ANTIMAGIC_NO_SELFBLOCK)) || (holy && HAS_TRAIT(src, TRAIT_HOLY)))
 		return src
 
 //You can buckle on mobs if you're next to them since most are dense

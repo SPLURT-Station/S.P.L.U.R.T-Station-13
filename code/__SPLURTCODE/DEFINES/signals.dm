@@ -4,3 +4,4 @@
 #define COMSIG_ORGAN_REMOVED "organ_removed"
 #define COMSIG_MOB_CLIMAX "mob_coomed"
 #define COMSIG_OBJ_WRITTEN_ON "written_on"
+#define COMSIG_MOB_LUST_UPDATED "mob_lust_updated"

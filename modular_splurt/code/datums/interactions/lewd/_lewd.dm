@@ -6,6 +6,14 @@
 		return has_genital(ORGAN_SLOT_ANUS, visibility)
 	. = ..()
 
+/mob/living/add_lust(add)
+	. = ..()
+	SEND_SIGNAL(src, COMSIG_MOB_LUST_UPDATED)
+
+/mob/living/set_lust(num)
+	. = ..()
+	SEND_SIGNAL(src, COMSIG_MOB_LUST_UPDATED)
+
 /mob/living/moan()
 	var/moaned = lastmoan
 	var/miming = mind ? mind?.miming : FALSE

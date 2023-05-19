@@ -38756,11 +38756,11 @@
 /turf/open/floor/engine/vacuum,
 /area/maintenance/disposal/incinerator)
 "coq" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/incinerator_output{
-	dir = 1
-	},
 /obj/structure/sign/warning/vacuum/external{
 	pixel_y = -32
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 1
 	},
 /turf/open/floor/engine/vacuum,
 /area/maintenance/disposal/incinerator)

@@ -28,42 +28,114 @@
 /mob/proc/set_thirst(change)
 	thirst = max(0, change)
 
-/mob/proc/can_use_production(obj/machinery/rnd/production/machine_target)
+/mob/proc/can_use_production(obj/machinery/machine_target)
+	// Check if access is required
+	if(!machine_target.req_access)
+		return TRUE
+
 	// Check if server is NOT using minimal access
 	// This is intended for low populations
 	if((!PROTOLOCK_DURING_LOWPOP) && (!JOB_MINIMAL_ACCESS))
 		// Allow unrestricted use
-		return TRUE
+		return PROTOLOCK_ACCESS_LOWPOP
 
-	// Define machine user
-	var/mob/living/carbon/human/machine_user = src
-
-	// Check if user exists
-	if(!istype(machine_user))
-		return TRUE
+	// Check if user has access to this machine
+	if(machine_target.allowed(src))
+		return PROTOLOCK_ACCESS_NORMAL
 
 	// Define user ID card
-	var/obj/item/card/id/user_id = machine_user.get_idcard()
+	var/obj/item/card/id/user_id = get_idcard()
 
 	// Check if ID card was found
 	if(!istype(user_id))
-		// Warn in local chat, then return
-		machine_target.say("Access denied: Unable to scan user ID card.")
 		return FALSE
 
 	// Check for Captain
 	if(ACCESS_CAPTAIN in user_id.access)
 		// Allow usage
-		return TRUE
+		return PROTOLOCK_ACCESS_CAPTAIN
 
-	// Check if access requirements are met
-	if(machine_target.check_access(user_id))
+	// Check for ORM access
+	if(ACCESS_MINERAL_STOREROOM in user_id.access)
 		// Allow use
+		return PROTOLOCK_ACCESS_MINERAL
+
+	// User has no access
+	return FALSE
+
+/mob/proc/can_use_production_topic(obj/machinery/rnd/production/machine_target, raw, ls)
+	// Basic actions that are always permitted
+	// This includes syncing research and switching screens
+	if(ls["sync_research"] || ls["switch_screen"])
 		return TRUE
 
-	// User does not have access
-	// Warn in local chat, then return
-	machine_target.say("Access denied: No valid departmental credentials detected.")
+	// Define user's access type
+	var/user_access = usr.can_use_production(machine_target)
+
+	// Switch result based on access type
+	// This currently doesn't do anything special
+	switch(user_access)
+		// Type: Low population
+		if(PROTOLOCK_ACCESS_LOWPOP)
+			return TRUE
+
+		// Type: Standard
+		if(PROTOLOCK_ACCESS_NORMAL)
+			return TRUE
+
+		// Type: Captain
+		if(PROTOLOCK_ACCESS_CAPTAIN)
+			return TRUE
+
+		// Type: Mineral / ORM
+		if(PROTOLOCK_ACCESS_MINERAL)
+			// Check if permitted topic
+			if(ls["ejectsheet"])
+				return TRUE
+
+			// Topic prohibited
+			// Deny usage
+			else
+				return FALSE
+
+	// Default to false
+	return FALSE
+
+/mob/proc/can_use_mechfab_topic(obj/machinery/mecha_part_fabricator/machine_target, action, var/list/params)
+	// Basic actions that are always permitted
+	if(action == "sync_rnd")
+		return TRUE
+
+	// Define user's access type
+	var/user_access = usr.can_use_production(machine_target)
+
+	// Switch result based on access type
+	// This currently doesn't do anything special
+	switch(user_access)
+		// Type: Low population
+		if(PROTOLOCK_ACCESS_LOWPOP)
+			return TRUE
+
+		// Type: Standard
+		if(PROTOLOCK_ACCESS_NORMAL)
+			return TRUE
+
+		// Type: Captain
+		if(PROTOLOCK_ACCESS_CAPTAIN)
+			return TRUE
+
+		// Type: Mineral / ORM
+		if(PROTOLOCK_ACCESS_MINERAL)
+			// Check if permitted topic
+			if(action == "remove_mat")
+				return TRUE
+
+			// Topic prohibited
+			// Deny usage
+			else
+				return FALSE
+
+	// Default to false
 	return FALSE
 
 #undef JOB_MINIMAL_ACCESS

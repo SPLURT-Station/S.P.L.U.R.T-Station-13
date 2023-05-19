@@ -340,12 +340,12 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 
 	else
 		leaping = 1
-		weather_immunities += "lava"
+		//weather_immunities += "lava"
 		pixel_y = 10
 		update_icons()
 		throw_at(A, MAX_K9_LEAP_DIST, 1, spin=0, diagonals_first = 1)
 		cell.use(750) //Less than a stunbaton since stunbatons hit everytime.
-		weather_immunities -= "lava"
+		//weather_immunities -= "lava"
 
 /mob/living/silicon/robot/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 

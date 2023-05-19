@@ -31,7 +31,7 @@
 	var/mob/living/carbon/human/cord_user = user
 
 	// Check for bloodfledge
-	if(HAS_TRAIT(cord_user, TRAIT_BLOODFLEDGE))
+	if(isbloodfledge(cord_user))
 		// Warn user and return
 		to_chat(cord_user, span_warning("You try to siphon energy from [target], but a sanguine force prevents you from absorbing any charge!"))
 		return

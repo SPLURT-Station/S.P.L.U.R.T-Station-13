@@ -249,3 +249,21 @@
 	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
 	icon_state = "tajaran"
 	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/snouts/mam_snouts/tajaran_short
+	name = "Tajaran (Short)"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	icon_state = "tajaranshort"
+	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/snouts/mam_snouts/noodle
+	name = "Noodle"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	icon_state = "noodle"
+	matrixed_sections = MATRIX_ALL
+
+/datum/sprite_accessory/snouts/mam_snouts/renamon
+	name = "Renamon"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	icon_state = "renamon"
+	matrixed_sections = MATRIX_RED_BLUE

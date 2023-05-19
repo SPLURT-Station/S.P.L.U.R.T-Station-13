@@ -1,4 +1,6 @@
 /obj/item/organ/genital
+	var/max_size = 6
+	var/min_size = 1
 	var/datum/reagents/climax_fluids
 	var/datum/reagent/original_fluid_id
 	var/datum/reagent/default_fluid_id
@@ -9,6 +11,15 @@
 	if(owner) //Add extra space depending on the owner's size
 		fluid_max_volume += (modifier*2.5)*(get_size(owner)-1)
 		fluid_rate += (modifier/10)*(get_size(owner)-1)
+
+/obj/item/organ/genital/proc/size_to_state()
+	return size
+
+/obj/item/organ/genital/proc/get_fluid()
+	return clamp(fluid_rate * ((world.time - last_orgasmed) / (10 SECONDS)) * fluid_mult, 0, fluid_max_volume)
+
+/obj/item/organ/genital/proc/get_fluid_fraction()
+	return get_fluid() / fluid_max_volume
 
 /obj/item/organ/genital/proc/climax_modify_size(mob/living/partner, obj/item/organ/genital/source_gen)
     return
@@ -81,3 +92,9 @@
 			selected.loc = owner.loc
 			equipment.Remove(selection)
 */
+
+/mob/living/carbon/human/update_genitals()
+	. = ..()
+
+	// Send signal
+	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_GENITALS)

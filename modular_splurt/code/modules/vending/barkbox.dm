@@ -3,7 +3,8 @@
 		/obj/item/clothing/neck/petcollar/spike = 5,
 		/obj/item/clothing/neck/petcollar/holo = 5,
 		/obj/item/clothing/neck/petcollar/casino = 5,
-		/obj/item/clothing/neck/petcollar/handmade = 5
+		/obj/item/clothing/neck/petcollar/handmade = 5,
+		/obj/item/leash = 4
 	)
 	var/list/extra_contraband = list(
 		/obj/item/clothing/neck/petcollar/locked/spike = 2,

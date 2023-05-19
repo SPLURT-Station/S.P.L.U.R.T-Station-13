@@ -8,7 +8,7 @@
 	req_access = list(ACCESS_MEDICAL)
 
 /obj/machinery/rnd/production/techfab/department/cargo
-	req_access = list(ACCESS_CARGO)
+	req_one_access = list(ACCESS_CARGO, ACCESS_MINING)
 
 /obj/machinery/rnd/production/techfab/department/science
 	req_access = list(ACCESS_RESEARCH)

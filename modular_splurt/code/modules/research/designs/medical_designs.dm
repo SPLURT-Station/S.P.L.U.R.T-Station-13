@@ -74,6 +74,13 @@
 /datum/design/cyberimp_thermals
 	category = list("Cybernetics", "Medical Designs")
 
+// Derivative of glow eyes
+/datum/design/cyberimp_gloweyes/cyberimp_hypnoeyes
+	name = "Mesmer Eyes"
+	desc = "Cybernetic eyes with integrated memetic sub-systems."
+	id = "ci-hypnoeyes"
+	build_path = /obj/item/organ/eyes/robotic/hypno
+
 //Cybernetic implants
 
 /datum/design/cyberimp_breather

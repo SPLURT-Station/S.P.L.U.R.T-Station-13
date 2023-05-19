@@ -34,3 +34,14 @@
 	description = span_warning("I can feel a pale curse from the blood I drank.\n")
 	mood_change = -1
 	timeout = 2 MINUTES
+
+// Matches drinking shared exotic blood
+/datum/mood_event/drankblood_insect
+	description = span_boldwarning("I drank an insect's hemolymph. What is wrong with me?\n")
+	mood_change = -2
+	timeout = 2 MINUTES
+
+/datum/mood_event/drankblood_xeno
+	description = span_boldwarning("I drank xenobiological blood. What is wrong with me?\n")
+	mood_change = -2
+	timeout = 2 MINUTES

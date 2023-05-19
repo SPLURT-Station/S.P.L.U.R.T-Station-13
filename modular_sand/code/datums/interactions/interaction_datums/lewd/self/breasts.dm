@@ -79,8 +79,8 @@
 		if("f", "g", "h")
 			modifier = 3
 		else
-			if(milkers.size in milkers.breast_values)
-				modifier = clamp(milkers.breast_values[milkers.size] - 5, 0, INFINITY)
+			if(milkers.size in GLOB.breast_values)
+				modifier = clamp(GLOB.breast_values[milkers.size] - 5, 0, INFINITY)
 			else
 				modifier = 1
 	user.reagents.add_reagent(milktype, rand(1,3 * modifier))

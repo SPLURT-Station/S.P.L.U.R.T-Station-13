@@ -6,6 +6,8 @@
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 //Own stuff
+
+/* Already exists
 /obj/item/clothing/under/wedding_dress
 	name = "wedding dress"
 	desc = "A luxurious gown for once-in-a-lifetime occasions."
@@ -15,14 +17,7 @@
 	flags_cover = HIDESHOES
 	mutantrace_variation = NONE
 	can_adjust = FALSE
-
-/obj/item/clothing/under/tuxedo
-	name = "tuxedo"
-	desc = "A formal black tuxedo. It exudes classiness."
-	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
-	icon_state = "tuxedo"
-	mutantrace_variation = NONE //temporary
-	can_adjust = FALSE
+*/
 
 /obj/item/clothing/suit/hooded/wintercoat/security/pink
 	name = "pink security winter coat"
@@ -102,6 +97,24 @@
 	body_parts_covered = CHEST|GROIN|LEGS|FEET
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 	flags_inv = HIDESHOES|HIDEUNDERWEAR
+
+/obj/item/clothing/suit/jacket/runner
+	name = "Runner Jacket"
+	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
+	item_state = null
+
+/obj/item/clothing/suit/jacket/runner/engi
+	name = "Engineer Runner Jacket"
+	icon_state = "runner_engi"
+
+/obj/item/clothing/suit/jacket/runner/syndicate
+	name = "Sydnicate Runner Jacket"
+	icon_state = "runner_syndi"
+
+/obj/item/clothing/suit/jacket/runner/winter
+	name = "Winter Runner Jacket"
+	icon_state = "runner_winter"
 
 /*
  * Posshim's Corpus atire

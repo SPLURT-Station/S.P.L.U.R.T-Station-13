@@ -70,11 +70,31 @@
 	lose_text = span_notice("Your eyes return to normal.")
 	medical_record_text = "Prolonged exposure to Patient's eyes exhibits soporific effects."
 
-/datum/quirk/Hypnotic_gaze/on_spawn()
-	var/mob/living/carbon/human/Hypno_eyes = quirk_holder
-	var/datum/action/innate/Hypnotize/spell = new
-	spell.Grant(Hypno_eyes)
-	spell.owner = Hypno_eyes
+/datum/quirk/Hypnotic_gaze/add()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Add quirk ability action datum
+	var/datum/action/cooldown/hypnotize/act_hypno = new
+	act_hypno.Grant(quirk_mob)
+
+	// Add examine text
+	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/quirk_examine_Hypnotic_gaze)
+
+/datum/quirk/Hypnotic_gaze/remove()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Remove quirk ability action datum
+	var/datum/action/cooldown/hypnotize/act_hypno = locate() in quirk_mob.actions
+	act_hypno.Remove(quirk_mob)
+
+	// Remove examine text
+	UnregisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE)
+
+// Quirk examine text
+/datum/quirk/Hypnotic_gaze/proc/quirk_examine_Hypnotic_gaze(atom/examine_target, mob/living/carbon/human/examiner, list/examine_list)
+	examine_list += "[quirk_holder.p_their(TRUE)] eyes glimmer with an entrancing power..."
 
 /datum/quirk/overweight
 	name = "Overweight"
@@ -273,7 +293,7 @@
 /datum/quirk/storage_concealment
 	name = "Dorsualiphobic Augmentation"
 	desc = "You despise the idea of being seen wearing any type of back-mounted storage apparatus! A new technology shields you from the immense shame you may experience, by hiding your equipped backpack."
-	
+
 	// UNUSED: Enable by setting these values to TRUE
 	// The shame is unbearable
 	mood_quirk = FALSE
@@ -281,10 +301,10 @@
 
 /datum/quirk/storage_concealment/on_spawn()
 	. = ..()
-	
+
 	// Create a new augment item
 	var/obj/item/implant/hide_backpack/put_in = new
-	
+
 	// Apply the augment to the quirk holder
 	put_in.implant(quirk_holder, null, TRUE, TRUE)
 
@@ -355,11 +375,9 @@
 	mob_trait = TRAIT_BLOODFLEDGE
 	gain_text = span_notice("You feel a sanguine thirst.")
 	lose_text = span_notice("You feel the sanguine thirst fade away.")
-	processing_quirk = TRUE
+	processing_quirk = FALSE // Handled by crates.dm
 
 /datum/quirk/bloodfledge/add()
-	. = ..()
-
 	// Define quirk mob
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
 
@@ -371,44 +389,60 @@
 	if(!quirk_mob.dna.skin_tone_override)
 		quirk_mob.skin_tone = "albino"
 
-	// Add quirk ability action datums
-	var/datum/action/bloodfledge/bite/act_bite = new
-	var/datum/action/bloodfledge/revive/act_revive = new
-	act_bite.Grant(quirk_mob)
-	act_revive.Grant(quirk_mob)
-
 	// Add quirk language
 	quirk_mob.grant_language(/datum/language/vampiric, TRUE, TRUE, LANGUAGE_BLOODSUCKER)
 
+	// Register examine text
+	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/quirk_examine_bloodfledge)
+
+/datum/quirk/bloodfledge/post_add()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Define and grant ability Bite
+	var/datum/action/cooldown/bloodfledge/bite/act_bite = new
+	act_bite.Grant(quirk_mob)
+
+	// Check for synthetic
+	// Robotic mobs have technical issues with adjusting damage
+	if(quirk_mob.mob_biotypes & MOB_ROBOTIC)
+		// Warn user
+		to_chat(quirk_mob, span_warning("As a synthetic lifeform, your components are only able to grant limited sanguine abilities! Regeneration and revival are not possible."))
+
+	// User is not synthetic
+	else
+		// Define and grant ability Revive
+		var/datum/action/cooldown/bloodfledge/revive/act_revive = new
+		act_revive.Grant(quirk_mob)
+
 /datum/quirk/bloodfledge/on_process()
-	. = ..()
+	// Processing is currently only used for coffin healing
+	// This is started and stopped by a proc in crates.dm
+
+	// Define potential coffin
+	var/quirk_coffin = quirk_holder.loc
 
 	// Check if the current area is a coffin
-	if(istype(quirk_holder.loc, /obj/structure/closet/crate/coffin))
+	if(istype(quirk_coffin, /obj/structure/closet/crate/coffin))
 		// Define quirk mob
 		var/mob/living/carbon/human/quirk_mob = quirk_holder
 
 		// Quirk mob must be injured
 		if(quirk_mob.health >= quirk_mob.maxHealth)
-			return
+			// Warn user
+			to_chat(quirk_mob, span_notice("[quirk_coffin] does nothing more to help you, as your body is fully mended."))
 
-		// Prevent healing for robots
-		// This caused numerous technical issues
-		if(quirk_mob.mob_biotypes & MOB_ROBOTIC)
-			// Display a warning chat message (10% chance)
-			if(prob(20))
-				to_chat(quirk_mob, span_warning("Your mechanical body rejects the curse's healing properties!"))
-
-			// Return without healing, due robotic nature
+			// Stop processing and return
+			STOP_PROCESSING(SSquirks, src)
 			return
 
 		// Nutrition (blood) level must be above STARVING
 		if(quirk_mob.nutrition <= NUTRITION_LEVEL_STARVING)
-			// Display a warning chat message (10% chance)
-			if(prob(20))
-				to_chat(quirk_mob, span_warning("You need more blood before you can regenerate!"))
+			// Warn user
+			to_chat(quirk_mob, span_warning("[quirk_coffin] requires blood to operate, which you are currently lacking. Your connection to the other-world fades once again."))
 
-			// Return without healing, due to lack of blood
+			// Stop processing and return
+			STOP_PROCESSING(SSquirks, src)
 			return
 
 		// Define initial health
@@ -417,12 +451,6 @@
 		// Heal brute and burn
 		// Accounts for robotic limbs
 		quirk_mob.heal_overall_damage(2,2)
-		/*
-		// Heal brute
-		quirk_mob.adjustBruteLoss(-2)
-		// Heal burn
-		quirk_mob.adjustFireLoss(-2)
-		*/
 		// Heal oxygen
 		quirk_mob.adjustOxyLoss(-2)
 		// Heal clone
@@ -448,9 +476,16 @@
 		// Amount is equal to 50% of healing done
 		quirk_mob.adjust_nutrition(health_restored*-1)
 
+	// User is not in a coffin
+	// This should not occur without teleportation
+	else
+		// Warn user
+		to_chat(quirk_holder, span_warning("Your connection to the other-world is broken upon leaving the [quirk_coffin]!"))
+
+		// Stop processing
+		STOP_PROCESSING(SSquirks, src)
+
 /datum/quirk/bloodfledge/remove()
-	. = ..()
-	
 	// Define quirk mob
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
 
@@ -459,17 +494,18 @@
 	REMOVE_TRAIT(quirk_mob, TRAIT_NOTHIRST, ROUNDSTART_TRAIT)
 
 	// Remove quirk ability action datums
-	var/datum/action/bloodfledge/bite/act_bite = locate() in quirk_mob.actions
-	var/datum/action/bloodfledge/revive/act_revive = locate() in quirk_mob.actions
+	var/datum/action/cooldown/bloodfledge/bite/act_bite = locate() in quirk_mob.actions
+	var/datum/action/cooldown/bloodfledge/revive/act_revive = locate() in quirk_mob.actions
 	act_bite.Remove(quirk_mob)
 	act_revive.Remove(quirk_mob)
 
 	// Remove quirk language
 	quirk_mob.remove_language(/datum/language/vampiric, TRUE, TRUE, LANGUAGE_BLOODSUCKER)
 
-/datum/quirk/bloodfledge/on_spawn()
-	. = ..()
+	// Unregister examine text
+	UnregisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE)
 
+/datum/quirk/bloodfledge/on_spawn()
 	// Define quirk mob
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
 
@@ -505,6 +541,55 @@
 	// Alert user in chat
 	// This should not post_add, because the ID is added by on_spawn
 	to_chat(quirk_holder, span_boldnotice("There is a bloodfledge's ID card [id_location], linked to your station account. It functions as a spare ID, but lacks job access."))
+
+/datum/quirk/bloodfledge/proc/quirk_examine_bloodfledge(atom/examine_target, mob/living/carbon/human/examiner, list/examine_list)
+	SIGNAL_HANDLER
+
+	// Check if human examiner exists
+	if(!istype(examiner))
+		return
+
+	// Check if examiner is dumb
+	if(HAS_TRAIT(examiner, TRAIT_DUMB))
+		// Return with no effects
+		return
+
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Define hunger texts
+	var/examine_hunger_public
+	var/examine_hunger_secret
+
+	// Check hunger levels
+	switch(quirk_mob.nutrition)
+		// Hungry
+		if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
+			examine_hunger_secret = "[quirk_holder.p_they(TRUE)] [quirk_holder.p_are()] blood starved!"
+			examine_hunger_public = "[quirk_holder.p_they(TRUE)] seem[quirk_holder.p_s()] on edge from something."
+
+		// Starving
+		if(0 to NUTRITION_LEVEL_STARVING)
+			examine_hunger_secret = "[quirk_holder.p_they(TRUE)] [quirk_holder.p_are()] in dire need of blood!"
+			examine_hunger_public = "[quirk_holder.p_they(TRUE)] [quirk_holder.p_are()] radiating an aura of frenzied hunger!"
+
+		// Invalid hunger
+		else
+			// Return with no message
+			return
+
+	// Check if examiner shares the quirk
+	if(isbloodfledge(examiner))
+		// Add detection text
+		examine_list += span_info("[quirk_holder.p_their(TRUE)] hunger makes it easy to identify [quirk_holder.p_them()] as a fellow Bloodsucker Fledgling!")
+
+		// Add hunger text
+		examine_list += span_warning(examine_hunger_secret)
+
+	// Check if public hunger text exists
+	else
+		// Add hunger text
+		examine_list += span_warning(examine_hunger_public)
 
 /datum/quirk/werewolf //adds the werewolf quirk
 	name = "Werewolf"
@@ -623,8 +708,6 @@
 	. = ..()
 
 /datum/quirk/nudist
-	// Mostly derived from masked_mook.
-	// Spawning with a gear harness is preferable, but failed during testing.
 	name = "Nudist"
 	desc = "Wearing most types of clothing unnerves you. Bring a gear harness!"
 	gain_text = span_notice("You feel spiritually connected to your natural form.")
@@ -632,23 +715,86 @@
 	medical_record_text = "Patient expresses a psychological need to remain unclothed."
 	value = 0
 	mood_quirk = TRUE
-	processing_quirk = TRUE
+	var/is_nude
 
-/datum/quirk/nudist/on_process()
-	var/mob/living/carbon/human/H = quirk_holder
-	// Checking torso exposure appears to be a robust method.
-	if( ( H.is_chest_exposed() && H.is_groin_exposed() ) )
-		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, QMOOD_NUDIST, /datum/mood_event/nudist_positive)
-	else
-		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, QMOOD_NUDIST, /datum/mood_event/nudist_negative)
+/datum/quirk/nudist/add()
+	// Register signal handlers
+	RegisterSignal(quirk_holder, COMSIG_MOB_UPDATE_GENITALS, .proc/check_outfit)
+	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/quirk_examine_nudist)
+
+/datum/quirk/nudist/remove()
+	// Remove mood event
+	SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, QMOOD_NUDIST)
+
+	// Unregister signals
+	UnregisterSignal(quirk_holder, list(COMSIG_MOB_UPDATE_GENITALS, COMSIG_PARENT_EXAMINE))
+
+/datum/quirk/nudist/post_add()
+	// Evaluate outfit
+	check_outfit()
 
 /datum/quirk/nudist/on_spawn()
-	. = ..()
 	// Spawn a Rapid Disrobe Implant
 	var/obj/item/implant/disrobe/quirk_implant = new
 
 	// Implant into quirk holder
 	quirk_implant.implant(quirk_holder, null, TRUE, TRUE)
+
+/datum/quirk/nudist/proc/check_outfit()
+	SIGNAL_HANDLER
+
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Check if torso is uncovered
+	if(quirk_mob.is_chest_exposed() && quirk_mob.is_groin_exposed())
+		// Send positive mood event
+		SEND_SIGNAL(quirk_mob, COMSIG_ADD_MOOD_EVENT, QMOOD_NUDIST, /datum/mood_event/nudist_positive)
+
+		// Check if already set
+		if(is_nude)
+			return
+
+		// Alert user in chat
+		to_chat(quirk_mob, span_nicegreen("You begin to feel better without the restraint of clothing!"))
+
+		// Set nude status
+		is_nude = TRUE
+
+	// Torso is covered
+	else
+		// Send negative mood event
+		SEND_SIGNAL(quirk_mob, COMSIG_ADD_MOOD_EVENT, QMOOD_NUDIST, /datum/mood_event/nudist_negative)
+
+		// Check if already set
+		if(!is_nude)
+			return
+
+		// Alert user in chat
+		to_chat(quirk_mob, span_warning("The clothes feel wrong on your body..."))
+
+		// Set nude status
+		is_nude = FALSE
+
+/datum/quirk/nudist/proc/quirk_examine_nudist(atom/examine_target, mob/living/carbon/human/examiner, list/examine_list)
+	SIGNAL_HANDLER
+
+	// Define default status term
+	var/mood_term = "content with [quirk_holder.p_their()] lack of"
+
+	// Define default span class
+	var/span_class
+
+	// Check if dressed
+	if(!is_nude)
+		// Set negative term
+		mood_term = "disturbed by wearing"
+
+		// Set negative span class
+		span_class = "warning"
+
+	// Add examine text
+	examine_list += "<span class='[span_class]'>[quirk_holder.p_they(TRUE)] appear[quirk_holder.p_s()] [mood_term] clothing.</span>"
 
 /datum/quirk/masked_mook
 	name = "Bane Syndrome"
@@ -674,3 +820,29 @@
 	var/obj/item/clothing/mask/gas/cosmetic/gasmask = new(get_turf(quirk_holder)) // Uses a custom gas mask
 	H.equip_to_slot(gasmask, ITEM_SLOT_MASK)
 	H.regenerate_icons()
+
+/datum/quirk/body_morpher
+	name = "Body Morpher"
+	desc = "Somehow you developed an ability allowing your body to morph and shift itself to modify bodyparts, much like a slimeperson can."
+	value = 0
+	mob_trait = TRAIT_BODY_MORPHER
+	gain_text = span_notice("Your body feels more malleable...")
+	lose_text = span_notice("Your body is more firm.")
+	medical_record_text = "Patient's body seems unusually malleable."
+	var/datum/action/innate/ability/humanoid_customization/alter_form_action
+
+/datum/quirk/body_morpher/add()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Add quirk ability action datum
+	alter_form_action = new
+	alter_form_action.Grant(quirk_mob)
+
+/datum/quirk/body_morpher/remove()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Remove quirk ability action datum
+	alter_form_action.Remove(quirk_mob)
+	QDEL_NULL(alter_form_action)

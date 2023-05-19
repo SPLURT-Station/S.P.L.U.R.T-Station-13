@@ -19,7 +19,8 @@
 /datum/gear/neck/holocollar
 	name = "Holo-collar"
 	path = /obj/item/clothing/neck/petcollar/holo
-	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
+	loadout_initial_colors = list("#33FFFF")
 
 /datum/gear/neck/casinoslave
 	name = "Casino Collar"
@@ -45,3 +46,9 @@
 	name = "Normalizer Collar"
 	path = /obj/item/clothing/neck/syntech/collar
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
+
+/datum/gear/neck/polypetcollar
+	name = "Collar (poly)"
+	path = /obj/item/clothing/neck/petcollar/poly
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
+	loadout_initial_colors = list("#00bb70", "#FFC600")

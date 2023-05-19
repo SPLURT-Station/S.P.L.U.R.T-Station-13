@@ -723,6 +723,9 @@
 	button.maptext_height = 12
 
 /datum/action/cooldown/IsAvailable(silent = FALSE)
+	. = ..()
+	if(!.)
+		return
 	return next_use_time <= world.time
 
 /datum/action/cooldown/proc/StartCooldown()

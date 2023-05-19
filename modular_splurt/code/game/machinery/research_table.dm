@@ -139,7 +139,7 @@
 	for(var/obj/item/organ/genital/genital in buckled_mob.internal_organs)
 		if(istype(genital, /obj/item/organ/genital/breasts))
 			var/obj/item/organ/genital/breasts/breasts = genital
-			points_awarded += breasts.fluid_rate + breasts.breast_values[breasts.size] // Breasts use letters instead of numbers!
+			points_awarded += breasts.fluid_rate + GLOB.breast_values[breasts.size]
 			continue
 		points_awarded += genital.fluid_rate + genital.size
 	points_awarded *= tier

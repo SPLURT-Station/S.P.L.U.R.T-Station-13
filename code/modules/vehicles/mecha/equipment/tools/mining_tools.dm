@@ -18,6 +18,7 @@
 	toolspeed = 0.9
 	var/drill_delay = 7
 	var/drill_level = DRILL_BASIC
+	var/is_drilling = 0;
 	mech_flags = EXOSUIT_MODULE_WORKING | EXOSUIT_MODULE_COMBAT
 
 /obj/item/mecha_parts/mecha_equipment/drill/Initialize(mapload)
@@ -25,34 +26,58 @@
 	AddComponent(/datum/component/butchering, 50, 100, null, null, TRUE)
 
 /obj/item/mecha_parts/mecha_equipment/drill/action(mob/source, atom/target, params)
-	if(!action_checks(target))
+	//Are we already drilling?
+	if(is_drilling)
 		return
-	if(isspaceturf(target))
+	is_drilling = 1
+	//Is the mech not in a position to start drilling, maybe due to damage? Is the tile literal space?
+	if(!action_checks(target) || isspaceturf(target))
+		is_drilling = 0
 		return
 	if(isobj(target))
 		var/obj/target_obj = target
 		if(target_obj.resistance_flags & UNACIDABLE)
+			is_drilling = 0
 			return
 	target.visible_message("<span class='warning'>[chassis] starts to drill [target].</span>", \
-					"<span class='userdanger'>[chassis] starts to drill [target]...</span>", \
-					 "<span class='hear'>You hear drilling.</span>")
-
+				"<span class='userdanger'>[chassis] starts to drill [target]...</span>", \
+				"<span class='hear'>You hear drilling.</span>")
 	if(do_after_cooldown(target, source))
 		log_message("Started drilling [target]", LOG_MECHA)
+		//If it's a turf, activate special drill through code
 		if(isturf(target))
 			var/turf/T = target
 			T.drill_act(src, source)
+			is_drilling = 0
+			log_message("Stopped drilling [target]", LOG_MECHA)
+			target.visible_message("<span class='warning'>[chassis] finishes drilling [target].</span>", \
+							"<span class='userdanger'>[chassis] finishes drilling [target]...</span>", \
+							"<span class='hear'>You hear the drilling stop.</span>")
 			return
 		while(do_after_mecha(target, source, drill_delay))
+			//Let's make sure they're still within range yeah?
+			if (!in_range(target,source))
+				is_drilling = 0
+				log_message("Stopped drilling [target]", LOG_MECHA)
+				target.visible_message("<span class='warning'>[chassis] stops drilling [target].</span>", \
+							"<span class='userdanger'>[chassis] stops drilling [target]...</span>", \
+							"<span class='hear'>You hear the drilling stop.</span>")
+				return
 			if(isliving(target))
 				drill_mob(target, source)
 				playsound(src,'sound/weapons/drill.ogg',40,TRUE)
 			else if(isobj(target))
 				var/obj/O = target
-				O.take_damage(15, BRUTE, 0, FALSE, get_dir(chassis, target))
+				O.take_damage(force, BRUTE, 0, FALSE, get_dir(chassis, target))
 				playsound(src,'sound/weapons/drill.ogg',40,TRUE)
 			else
+				is_drilling = 0
+				log_message("Stopped drilling [target]", LOG_MECHA)
+				target.visible_message("<span class='warning'>[chassis] stops drilling [target].</span>", \
+							"<span class='userdanger'>[chassis] stops drilling [target]...</span>", \
+							"<span class='hear'>You hear the drilling stop.</span>")
 				return
+	is_drilling = 0
 	return ..()
 
 /turf/proc/drill_act(obj/item/mecha_parts/mecha_equipment/drill/drill, mob/user)
@@ -147,7 +172,6 @@
 	drill_level = DRILL_HARDENED
 	force = 15
 	toolspeed = 0.7
-
 
 /obj/item/mecha_parts/mecha_equipment/mining_scanner
 	name = "exosuit mining scanner"

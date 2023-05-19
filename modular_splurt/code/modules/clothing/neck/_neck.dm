@@ -35,7 +35,7 @@
 	icon = 'modular_splurt/icons/obj/clothing/neck/collars.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/neck.dmi'
 	icon_state = "collar_holo"
-	poly_states = 0
+	poly_colors = list("#33FFFF")
 
 /obj/item/clothing/neck/petcollar/locked/holo
 	name = "Holo-collar"
@@ -77,3 +77,11 @@
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/neck.dmi'
 	icon_state = "collar_handmade"
 	poly_states = 0
+
+/obj/item/clothing/neck/petcollar/poly
+	name = "pet collar (poly)"
+	icon = 'modular_splurt/icons/obj/clothing/neck/collars.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/neck.dmi'
+	icon_state = "petcollar"
+	poly_states = 2
+	poly_colors = list("#00bb70", "#FFC600")

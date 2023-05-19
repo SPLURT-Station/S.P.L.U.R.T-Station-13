@@ -6,3 +6,120 @@
   Koboboldic:
   - rscadd: Added stirrups versions of socks, thighs, leggings and pantyhose as new
       underwear options. Also a corset(as underwear too) and latex socks as extra.
+2023-03-03:
+  WoolyAypa:
+  - rscadd: Better polychromic version of the petcollar and holo-collar
+  - rscadd: Shorter alt for the tajaran snout
+2023-03-04:
+  LeDrascol:
+  - rscadd: Added mime messages for all SPLURT audio emotes
+  - tweak: All SPLURT audio emotes now use length-based cooldowns
+  - refactor: Refactored SPLURT audio emote code
+  - bugfix: Fixed Cargo protolathe access (MAILSORTING instead of CARGO)
+2023-03-05:
+  thux-tk:
+  - rscadd: new arousal meter to humanoid mob's interface
+2023-03-06:
+  Anonymous:
+  - rscadd: 'Emotes: \*bark2; \*yap; \*howl; \*coyhowl.'
+2023-03-07:
+  Anonymous:
+  - rscadd: 'I am gonna sugarcoat it: \*tt.'
+  LeDrascol:
+  - rscadd: Added Bloodfledge quirk examine text
+  - rscadd: Added Bloodfledge integration with Dumb trait
+  - rscadd: Added Bloodfledge body part region targeting support
+  - rscadd: Added Bloodfledge coffin examine text and usage message
+  - rscadd: Added warning to flight potion for bloodfledge users
+  - tweak: Bloodfledge quirk actions use proper cooldown buttons
+  - tweak: Bloodfledge Bite failure splatters blood onto participants
+  - tweak: Bloodfledge Bite can transfer some of the target's reagents
+  - tweak: Bloodfledge Bite interaction time is skipped for targets with no blood
+  - tweak: Drinking blood now grants Strange Nutriment instead of nourishing directly
+  - balance: Bloodfledge robots will not gain the Revive ability (technical issues)
+  - balance: Bloodfledge Revive has a five-minute cooldown
+  - balance: Bloodfledge Revive will always work regardless of health
+  - balance: Bloodfledge Bite cannot drink from mechanical limbs
+  - balance: Bloodfledge Bite will not work directly on Synthetic Lizard faces
+  - balance: Bloodfledge Bite failure triggers cooldown to prevent abuse
+  - balance: Bloodfledge Bite failure causes minor damage and bleeding to compatible
+      regions
+  - balance: Bloodfledge Bite failure only drops 20% of bite amount (from 100%)
+  - balance: Bloodfledge abilities do not function under anti-magic, garlic, or a
+      staked heart
+  - balance: Blood must be ingested to gain nutrition
+  - balance: Blood ingestion will NOT grant nutrition if used by it's original donor
+  - balance: Blood ingestion will not clear disgust or stamina loss
+2023-03-08:
+  LeDrascol:
+  - rscadd: Added better feedback for production machinery topic access denial
+  - tweak: Production machinery access checks now work for all mobs
+  - balance: Production machinery can now be used in 'mineral mode' by crew with ORM
+      access
+2023-03-10:
+  Anonymous:
+  - rscadd: Prison jumpsuits can be re-skinned into other color-coded security level,
+      including protective custody and "vampire" variant.
+2023-03-11:
+  LeDrascol:
+  - rscadd: Added genital fluid blacklist entries for missing effect reagents
+  - code_imp: Added comments explaining the function of every functional consumable
+      reagent
+  - refactor: Refactored genital fluid list generation
+  - refactor: Refactored getter function for allowed genital fluids list
+2023-03-13:
+  BongaTheProto:
+  - bugfix: fixes datum reference, typepath, and other tgui-dependant variable editing
+      options
+2023-03-14:
+  BongaTheProto:
+  - bugfix: Makes you able to interact with mobs you pick up again
+  Dexxiol:
+  - imageadd: fixed cargo technician rolled up sleeves, duffelbags and yoga pants
+  LeDrascol:
+  - tweak: Reverted R&D consoles locking by default
+2023-03-19:
+  KathrinBailey:
+  - balance: The supermatter delamination will now respect the bombcap, basically,
+      it'll never go beyond a maxcap explosion.
+  - balance: The supermatter delamination now will be reduced in size if there aren't
+      many engineers.
+  LeDrascol:
+  - rscadd: Added Nudist examine text
+  - rscadd: Added Nudist state change messages
+2023-03-23:
+  KeplerWasTaken:
+  - bugfix: Lavaland Syndicate Base now has the correct R&D Board
+  - bugfix: Exosuit Drill Mech can no longer drill multiple times at once
+  - bugfix: Exosuit Drill Mech can no longer drill people past melee range
+  - bugfix: Exosuit Drill Mech now does the correct amount of damage to objects
+  LeDrascol:
+  - rscadd: 'Added new cybernetic organ: Mesmer Eyes'
+  - rscadd: Added examine text to the Hypnotic Gaze quirk
+  - tweak: Hypnotic Gaze consent prompt now includes additional information
+  - tweak: Brainwashed victims are no longer shown in the round-end panel
+  - admin: Hypnotic Gaze quirk can now be added and removed mid-round
+  - balance: Mech fabricators now use their access restrictions
+  - balance: Removed access requirements for maintenance and off-station mech fabricators
+2023-03-29:
+  Anonymous (feat. Bagzerk):
+  - rscadd: 'Emote: \*agony.'
+2023-03-30:
+  BongaTheProto:
+  - balance: Removes the locks on protolathes and other machines
+  - balance: Well actually makes it a config but it's set to disable the locks so
+      potato tomato
+  CloverIsLucky:
+  - rscdel: Removed duplicated mining points card.
+  KeplerWasTaken:
+  - rscdel: Removes Die of Fate from Academy
+  - rscdel: Removes Die of Fate from Greed Ruin
+  - tweak: BO and BS arrival on station messages are now more fitting
+  - bugfix: Head of Staff and AI cryo messages no longer say you need to ahelp
+  PhazeJump:
+  - bugfix: Fixed the eastern dragon tail
+  - bugfix: Added a file for succubus tail wagging sprite
+  - bugfix: Added some code for the succubus tail not to disappear while wagging
+2023-03-31:
+  legumesan:
+  - rscadd: new hairstyle

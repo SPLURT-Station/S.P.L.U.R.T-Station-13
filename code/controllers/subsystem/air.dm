@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(air)
 
 
 	var/list/currentrun = list()
-	var/currentpart = SSAIR_FINALIZE_TURFS
+	var/currentpart = SSAIR_REBUILD_PIPENETS
 
 	var/map_loading = TRUE
 
@@ -142,6 +142,18 @@ SUBSYSTEM_DEF(air)
 	cur_thread_wait_ticks = 0
 
 	var/timer = TICK_USAGE_REAL
+
+	if(currentpart == SSAIR_REBUILD_PIPENETS)
+		timer = TICK_USAGE_REAL
+		var/list/pipenet_rebuilds = pipenets_needing_rebuilt
+		for(var/thing in pipenet_rebuilds)
+			var/obj/machinery/atmospherics/AT = thing
+			if(!istype(AT))
+				continue
+			AT.build_network()
+		cost_rebuilds = MC_AVERAGE(cost_rebuilds, TICK_DELTA_TO_MS(TICK_USAGE_REAL - timer))
+		pipenets_needing_rebuilt.Cut()
+		currentpart == SSAIR_ACTIVETURFS
 
 	if(currentpart == SSAIR_ACTIVETURFS)
 		timer = TICK_USAGE_REAL

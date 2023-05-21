@@ -492,6 +492,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["use_new_playerpanel"]	>> use_new_playerpanel
 	S["gfluid_blacklist"]		>> gfluid_blacklist
 	S["new_character_creator"]	>> new_character_creator
+	S["view_pixelshift"]		>> view_pixelshift
 
 	//favorite outfits
 	S["favorite_outfits"] >> favorite_outfits
@@ -699,6 +700,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["use_new_playerpanel"], use_new_playerpanel)
 	WRITE_FILE(S["gfluid_blacklist"], gfluid_blacklist)
 	WRITE_FILE(S["new_character_creator"], new_character_creator)
+	WRITE_FILE(S["view_pixelshift"], view_pixelshift)
 
 	var/mob/living/carbon/human/H = parent.mob
 	if(istype(H))

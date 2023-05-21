@@ -8,6 +8,19 @@
 	QDEL_NULL(mob_panel)
 	. = ..()
 
+//pixelshift overrides
+/mob/northshift()
+	pixel_shift(NORTH)
+
+/mob/southshift()
+	pixel_shift(SOUTH)
+
+/mob/eastshift()
+	pixel_shift(EAST)
+
+/mob/westshift()
+	pixel_shift(WEST)
+
 /mob/verb/tilt_left()
 	set hidden = TRUE
 	if(!canface() || is_tilted < -45)

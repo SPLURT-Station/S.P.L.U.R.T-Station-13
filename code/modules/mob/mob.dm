@@ -696,12 +696,12 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	setDir(SOUTH)
 	client.last_turn = world.time + MOB_FACE_DIRECTION_DELAY
 	return TRUE
-/*
+
 /mob/verb/eastshift()
 	set hidden = TRUE
 	if(!canface())
 		return FALSE
-	if(pixel_x <= 32)
+	if(pixel_x <= PIXEL_SHIFT_MAXIMUM + base_pixel_x)
 		pixel_x++
 		is_shifted = TRUE
 
@@ -709,7 +709,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	set hidden = TRUE
 	if(!canface())
 		return FALSE
-	if(pixel_x >= -32)
+	if(pixel_x >= -PIXEL_SHIFT_MAXIMUM + base_pixel_x)
 		pixel_x--
 		is_shifted = TRUE
 
@@ -717,7 +717,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	set hidden = TRUE
 	if(!canface())
 		return FALSE
-	if(pixel_y <= 32)
+	if(pixel_y <= PIXEL_SHIFT_MAXIMUM + base_pixel_y)
 		pixel_y++
 		is_shifted = TRUE
 
@@ -725,10 +725,10 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	set hidden = TRUE
 	if(!canface())
 		return FALSE
-	if(pixel_y >= -32)
+	if(pixel_y >= -PIXEL_SHIFT_MAXIMUM + base_pixel_y)
 		pixel_y--
 		is_shifted = TRUE
-*/
+
 /mob/proc/IsAdvancedToolUser()//This might need a rename but it should replace the can this mob use things check
 	return FALSE
 

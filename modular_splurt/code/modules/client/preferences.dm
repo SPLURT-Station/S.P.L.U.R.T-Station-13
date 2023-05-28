@@ -8,6 +8,10 @@
 	var/unholypref = "No" //Goin 2 hell fo dis one
 	var/list/gfluid_blacklist = list() //Stuff you don't want people to cum into you
 	var/new_character_creator = TRUE // old/new character creator
+	var/show_in_directory = 1	//Show in Character Directory
+	var/directory_tag = "Unset" //Sorting tag to use in character directory
+	var/directory_erptag = "Unset"	//ditto, but for non-vore scenes
+	var/directory_ad = ""		//Advertisement stuff to show in character directory.
 
 /datum/preferences/New(client/C)
 	// Check if readable fluids list exists

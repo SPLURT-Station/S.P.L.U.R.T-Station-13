@@ -29,6 +29,9 @@
 		/obj/item/restraints/bondage_rope = 5,
 		/obj/item/clothing/under/domina = 5,
 		/obj/item/clothing/under/performer = 3,
+		/obj/item/storage/box/chastity_cage = 6,
+		/obj/item/storage/box/chastity_cage/metal = 3,
+		/obj/item/storage/box/chastity_cage/belt = 2,
 		/obj/item/clothing/shoes/invisiboots = 10, // Added here to go with the Gear Harness
 		/obj/item/clothing/shoes/highheel_sandals = 3,
 		/obj/item/clothing/neck/petcollar/poly = 5
@@ -44,7 +47,16 @@
 		/obj/item/dildo/flared/huge = 3,
 		/obj/item/clothing/neck/petcollar/locked/holo = 2,
 		/obj/item/storage/box/aphrodisiac_pump/plus = 3,
-		/obj/item/storage/box/implant_disrobe = 3
+		/obj/item/storage/box/implant_disrobe = 3,
+		/obj/item/storage/box/chastity_cage/estim = 2,
+		/obj/item/reagent_containers/glass/bottle/camphor = 2,
+		/obj/item/storage/pill_bottle/PEsmaller = 3,
+		/obj/item/storage/pill_bottle/BEsmaller = 3,
+		/obj/item/storage/pill_bottle/anal_allure = 3,
+		/obj/item/storage/pill_bottle/breast_buzzer = 3,
+		/obj/item/storage/pill_bottle/peen_pop = 3,
+		/obj/item/chastity_hypno/magazine = 6,
+		/obj/item/chastity_hypno/watch = 2
 	)
 	var/list/extra_premium = list(
 		/obj/item/clothing/mask/muzzle/ballgag = 3

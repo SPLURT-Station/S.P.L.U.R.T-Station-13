@@ -164,6 +164,15 @@
 	var/obj/item/organ/genital/picked_organ
 	picked_organ = input(src, "Choose which genitalia to toggle arousal on", "Set genital arousal", null) in genital_list
 	if(picked_organ)
+		//SPLURT edit
+		if(CHECK_BITFIELD(picked_organ.genital_flags, GENITAL_CHASTENED))
+			to_chat(src, "<span class='userlove'>Your [pick(GLOB.dick_nouns)] twitches against its cage!</span>")
+			return
+		if(CHECK_BITFIELD(picked_organ.genital_flags, GENITAL_IMPOTENT))
+			if(istype(picked_organ, /obj/item/organ/genital/penis))
+				to_chat(src, "<span class='userlove'>Your [pick(GLOB.dick_nouns)] simply won't go up!</span>")
+			return
+		//
 		var/original_state = picked_organ.aroused_state
 		picked_organ.set_aroused_state(!picked_organ.aroused_state)
 		if(original_state != picked_organ.aroused_state)
@@ -292,6 +301,10 @@
 	var/list/genitals_to_add
 	var/list/fully_exposed
 	for(var/obj/item/organ/genital/G in internal_organs)
+		//SPLURT edit
+		if(CHECK_BITFIELD(G.genital_flags, GENITAL_CHASTENED)) //Checks if the genital's chastened
+			continue
+		//
 		if(G.is_exposed()) //Checks appropriate clothing slot and if it's through_clothes
 			LAZYADD(gen_index[G.layer_index], G)
 	if(has_strapon(REQUIRE_EXPOSED))

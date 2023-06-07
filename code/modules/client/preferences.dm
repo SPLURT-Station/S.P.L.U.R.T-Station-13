@@ -1518,6 +1518,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Aphrodisiacs:</b> <a href='?_src_=prefs;preference=aphro'>[(cit_toggles & NO_APHRO) ? "Disallowed" : "Allowed"]</a><br>"
 					dat += "<b>Ass Slapping:</b> <a href='?_src_=prefs;preference=ass_slap'>[(cit_toggles & NO_ASS_SLAP) ? "Disallowed" : "Allowed"]</a><br>"
 					//SPLURT EDIT
+					dat += "<b>Chastity Interactions :</b> <a href='?_src_=prefs;preference=chastitypref'>[(cit_toggles & CHASTITY) ? "Allowed" : "Disallowed"]</a><br>"
+					dat += "<b>Genital Stimulation Modifiers :</b> <a href='?_src_=prefs;preference=stimulationpref'>[(cit_toggles & STIMULATION) ? "Allowed" : "Disallowed"]</a><br>"
+					dat += "<b>Edging :</b> <a href='?_src_=prefs;preference=edgingpref'>[(cit_toggles & EDGING) ? "Allowed" : "Disallowed"]</a><br>"
 					dat += "<span style='border-radius: 2px;border:1px dotted white;cursor:help;' title='Enables verbs involving farts, shit and piss.'>?</span> "
 					dat += "<b>Unholy ERP verbs :</b> <a href='?_src_=prefs;preference=unholypref'>[unholypref]</a><br>" //https://www.youtube.com/watch?v=OHKARc-GObU
 					//END OF SPLURT EDIT
@@ -3902,6 +3905,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("preferences_tab")
 					if(href_list["tab"])
 						preferences_tab = text2num(href_list["tab"])
+
+				if("chastitypref")
+					cit_toggles ^= CHASTITY
+				if("stimulationpref")
+					cit_toggles ^= STIMULATION
+				if("edgingpref")
+					cit_toggles ^= EDGING
+				//
 
 	if(href_list["preference"] == "gear")
 		if(href_list["clear_loadout"])

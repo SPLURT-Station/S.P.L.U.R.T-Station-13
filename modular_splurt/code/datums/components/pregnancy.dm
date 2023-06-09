@@ -8,6 +8,7 @@
 
 	var/obj/item/organ/container
 	var/mob/living/carrier
+	var/obj/machinery/incubator/incubator_carrier
 
 	var/datum/dna/father_dna
 	var/datum/dna/mother_dna
@@ -120,6 +121,12 @@
 	if(oviposition)
 		RegisterSignal(carrier, COMSIG_MOB_CLIMAX, .proc/on_climax)
 
+/datum/component/pregnancy/proc/register_machine()
+	RegisterSignal(incubator_carrier, COMSIG_MACHINERY_INCUBATOR_PROCESS, .proc/handle_machine_incubator)
+
+/datum/component/pregnancy/proc/unregister_machine()
+	UnregisterSignal(incubator_carrier, COMSIG_MACHINERY_INCUBATOR_PROCESS, .proc/handle_machine_incubator)
+
 /datum/component/pregnancy/proc/unregister_carrier()
 	UnregisterSignal(carrier, COMSIG_MOB_DEATH)
 	UnregisterSignal(carrier, COMSIG_LIVING_BIOLOGICAL_LIFE)
@@ -172,11 +179,25 @@
 		pregnancy_breast_growth = carrier.client?.prefs?.pregnancy_breast_growth
 		register_carrier()
 		generic_pragency_start()
+	else if(istype(destination, /obj/machinery/incubator))
+		var/obj/machinery/incubator/inc = destination
+		incubator_carrier = inc
+		register_machine()
 	else if(carrier)
 		generic_pragency_end()
 		unregister_carrier()
+		unregister_machine()
 		carrier = null
 		container = null
+		incubator_carrier = null
+
+/datum/component/pregnancy/proc/handle_machine_incubator()
+	SIGNAL_HANDLER
+
+	if(COOLDOWN_FINISHED(src, stage_time))
+		stage += 1
+		stage = min(stage, max_stage)
+		COOLDOWN_START(src, stage_time, PREGNANCY_STAGE_DURATION)
 
 /datum/component/pregnancy/proc/handle_life(seconds)
 	SIGNAL_HANDLER

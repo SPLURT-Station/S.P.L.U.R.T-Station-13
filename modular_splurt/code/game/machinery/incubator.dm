@@ -41,7 +41,7 @@
 		return
 	toggle_power()
 
-/obj/machinery/incubator/toggle_power()
+/obj/machinery/incubator/proc/toggle_power()
 	is_on = !is_on
 	if(is_on)
 		START_PROCESSING(SSmachines, src)

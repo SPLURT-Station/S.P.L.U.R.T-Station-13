@@ -59,6 +59,11 @@
 	for(var/obj/item/viable_egg in contents)
 		SEND_SIGNAL(viable_egg, COMSIG_MACHINERY_INCUBATOR_PROCESS)
 
+/obj/machinery/incubator/Destroy()
+	for(var/obj/item/viable_egg in contents)
+		viable_egg.forceMove(get_turf(src))
+	. = ..()
+
 /obj/item/circuitboard/machine/incubator
 	name = "Egg Incubator (Machine Board)"
 	icon_state = "medical"

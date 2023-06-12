@@ -37,7 +37,7 @@ SAFE_VISIBILITY_TOGGLES Always hidden
 ## Pun-Pun movement slowdown given to characters with a body size smaller than this value,
 ## to compensate for their smaller hitbox.
 ## To disable, just make sure the value is lower than 'body_size_min'
-THRESHOLD_BODY_SIZE_PENALTY 1
+THRESHOLD_BODY_SIZE_PENALTY 0.85
 
 ## Multiplier used in the smaller strides slowdown calculation.
 ## Doesn't apply to floating or crawling mobs.

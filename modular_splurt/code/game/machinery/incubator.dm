@@ -40,6 +40,10 @@
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
 	toggle_power()
+	if(is_on)
+		to_chat(user, span_notice("You turn \The [src] on"))
+	else
+		to_chat(user, span_notice("You turn \The [src] off"))
 
 /obj/machinery/incubator/proc/toggle_power()
 	is_on = !is_on
@@ -63,6 +67,46 @@
 	for(var/obj/item/viable_egg in contents)
 		viable_egg.forceMove(get_turf(src))
 	. = ..()
+
+/obj/machinery/computer/robotics/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "IncubatorControl", name)
+		ui.open()
+
+/obj/machinery/incubator/ui_data(mob/user)
+	. = list()
+	.["is_on"] = is_on
+	.["eggs"] = list()
+	for(var/obj/item/egg_item in contents)
+		var/datum/component/pregnancy/preggo = egg_item.GetComponent(/datum/component/pregnancy)
+		if(!preggo)
+			continue
+		var/stage = preggo.stage / preggo.max_stage
+		var/list/data = list(
+			name = egg_item.name,
+			stage = preggo.stage / preggo.max_stage,
+			ref = REF(egg_item)
+		)
+		.["eggs"] += list(data)
+
+/obj/machinery/incubator/ui_act(action, params)
+	if(..())
+		return
+	switch(action)
+		if("toggle_power")
+			toggle_power()
+			if(is_on)
+				to_chat(usr, span_notice("You turn \The [src] on"))
+			else
+				to_chat(usr, span_notice("You turn \The [src] off"))
+		if("remove")
+			var/ref = params["ref"]
+			var/obj/item/eggo = locate(ref) in contents
+			if(!eggo)
+				return
+			usr.put_in_active_hand(eggo)
+
 
 /obj/item/circuitboard/machine/incubator
 	name = "Egg Incubator (Machine Board)"

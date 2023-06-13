@@ -1,6 +1,6 @@
 import { Window } from '../layouts';
-import { Stack, Button, Table, Section, ProgressBar } from '../components';
-import { useBackend, useLocalState } from '../backend';
+import { Button, Table, Section, ProgressBar } from '../components';
+import { useBackend } from '../backend';
 
 type IncubatorData = {
   eggs: EggsData[],
@@ -27,6 +27,7 @@ export const IncubatorControl = (props, context) => {
         <Section title="Incubator" buttons={(
           <Button
             icon="power-off"
+            selected={is_on}
             onClick={
               () => act("toggle_power")
             }

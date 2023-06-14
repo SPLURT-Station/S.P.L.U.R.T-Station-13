@@ -118,10 +118,9 @@ Code:
 				else
 					to_chat(U, span_love("[src] vibrates against your [G.name]!"))
 
-			var/intencity = 6*mode
-			U.handle_post_sex(intencity, null, src) //give pleasure
-			playsound(U.loc, 'modular_splurt/sound/lewd/vibrate.ogg', (intencity+5), 1, -1) //vibe intencity scaled up abit for sound
-
+			var/intensity = 6*mode
+			U.handle_post_sex(intensity, null, src, G) //give pleasure
+			playsound(U.loc, 'modular_splurt/sound/lewd/vibrate.ogg', (intensity+5), 1, -1) //vibe intensity scaled up abit for sound
 
 			switch(mode)
 				if(1) //low, setting for RP, it wont force your character to do anything.

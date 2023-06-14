@@ -30,4 +30,4 @@
 						'modular_sand/sound/interactions/bang3.ogg'), 70, 1, -1)
 	user.visible_message(message = span_lewd("<b>\The [user]</b> [message]"), ignored_mobs = user.get_unconsenting())
 	if(user.can_penetrating_genital_cum())
-		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_HAND, user)
+		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_HAND, user, ORGAN_SLOT_PENIS) //SPLURT edit

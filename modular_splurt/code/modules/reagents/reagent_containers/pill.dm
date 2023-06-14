@@ -25,3 +25,33 @@
 	desc = "Used to temporarily suppress violent, homicidal, or suicidal behavior in patients."
 	list_reagents = list(/datum/reagent/pax = 5)
 	icon_state = "pill12"
+
+/obj/item/reagent_containers/pill/anal_allure
+	name = "anal allure pill"
+	desc = "Significantly increases arousal gain from stimulation to the user's anus."
+	list_reagents = list(/datum/reagent/drug/genital_stimulator/anal_allure = 5)
+	icon_state = "pill15"
+
+/obj/item/reagent_containers/pill/breast_buzzer
+	name = "breast buzzer pill"
+	desc = "Significantly increases arousal gain from stimulation to the user's breasts."
+	list_reagents = list(/datum/reagent/drug/genital_stimulator/breast_buzzer = 5)
+	icon_state = "pill15"
+
+/obj/item/reagent_containers/pill/peen_pop
+	name = "peen pop pill"
+	desc = "Significantly increases arousal gain from stimulation to the user's penis."
+	list_reagents = list(/datum/reagent/drug/genital_stimulator/peen_pop = 5)
+	icon_state = "pill15"
+
+/obj/item/reagent_containers/pill/PEsmaller
+	name = "penis reduction pill"
+	desc = "Causes atrophy of the penis."
+	list_reagents = list(/datum/reagent/fermi/PEsmaller = 5)
+	icon_state = "pill19"
+
+/obj/item/reagent_containers/pill/BEsmaller
+	name = "breast reduction pill"
+	desc = "Causes atrophy of the mammary glands."
+	list_reagents = list(/datum/reagent/fermi/BEsmaller = 5)
+	icon_state = "pill19"

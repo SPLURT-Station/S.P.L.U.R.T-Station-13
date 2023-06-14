@@ -74,7 +74,7 @@
 	var/mob/M = user.mob
 	M.westface()
 	return TRUE
-/*
+
 /datum/keybinding/mob/shift_north
 	hotkey_keys = list("CtrlShiftW", "CtrlShiftNorth")
 	name = "pixel_shift_north"
@@ -122,7 +122,7 @@
 	var/mob/M = user.mob
 	M.westshift()
 	return TRUE
-*/
+
 /datum/keybinding/living/hold_sprint
 	hotkey_keys = list()
 	classic_keys = list()

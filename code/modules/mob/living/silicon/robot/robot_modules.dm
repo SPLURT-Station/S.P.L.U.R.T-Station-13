@@ -410,7 +410,8 @@
 		"BootyS" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootymedicalS"), // SPLURT Addon (Hyper Port)
 		"Haydee" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "haydeemedical"), // SPLURT Addon (Hyper Port)
 		"Borgi" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "borgi-medi-b"), // SPLURT Adoon (Skyrat Port)
-		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakemedbox")
+		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakemedbox"),
+		"Assaultron" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "assaultron_medical") // SPLURT Addon
 		)
 		var/list/L = list("Medihound" = "medihound", "Medihound Dark" = "medihounddark", "Vale" = "valemed")
 		for(var/a in L)
@@ -533,6 +534,10 @@
 			moduleselect_icon = "medihound"
 			moduleselect_alternate_icon = 'modular_citadel/icons/ui/screen_cyborg.dmi'
 			dogborg = TRUE
+		if("Assaultron") // SPLURT Addon (Hyper Port)
+			cyborg_base_icon = "assaultron_medical"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+			hat_offset = 3
 		else
 			return FALSE
 	return ..()
@@ -605,7 +610,8 @@
 		"Engihound" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "engihound-b"), // SPLURT Adoon (Skyrat Port)
 		"Engihound Dark" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "engihounddark-b"), // SPLURT Adoon (Skyrat Port)
 		"Otie" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "otiee-b"), // SPLURT Adoon (Skyrat Port)
-		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakeengbox")
+		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakeengbox"),
+		"Assaultron" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "assaultron_engi") // SPLURT Addon
 		)
 		var/list/L = list("Pup Dozer" = "pupdozer", "Vale" = "valeeng")
 		for(var/a in L)
@@ -728,6 +734,10 @@
 			cyborg_icon_override = 'modular_sand/icons/mob/cyborg/drakemech.dmi'
 			sleeper_overlay = "drakesecsleeper"
 			dogborg = TRUE
+		if("Assaultron") // SPLURT Addon (Hyper Port)
+			cyborg_base_icon = "assaultron_engi"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+			hat_offset = 3
 		else
 			return FALSE
 	return ..()
@@ -783,7 +793,10 @@
 		"Blade" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "bladesec-b"), // SPLURT Addon
 		"EdgyBoy" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "badboi-b"), // SPLURT Addon (VIRGO Port)
 		"EdgyGirl" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "prettyboi-b"), // SPLURT Addon (VIRGO Port)
-		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakesecbox")
+		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakesecbox"),
+
+		"Assaultron" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "assaultron_sec") // SPLURT Addon
+
 		)
 		var/list/L = list("K9" = "k9", "Vale" = "valesec", "K9 Dark" = "k9dark")
 		for(var/a in L)
@@ -907,6 +920,12 @@
 			sleeper_overlay = "drakesecsleeper"
 			cyborg_icon_override = 'modular_sand/icons/mob/cyborg/drakemech.dmi'
 			dogborg = TRUE
+
+		if("Assaultron") // SPLURT Addon
+			cyborg_base_icon = "assaultron_sec"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+			hat_offset = 3
+
 		else
 			return FALSE
 	return ..()
@@ -961,7 +980,8 @@
 		"BootyM" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootypeaceM"), // SPLURT Addon (Hyper Port)
 		"BootyS" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootypeaceS"), // SPLURT Addon (Hyper Port)
 		"Vale" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "valepeace-b"), // SPLURT Adoon (Skyrat Port)
-		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakepeacebox")
+		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakepeacebox"),
+		"Assaultron" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "assaultron_peacekeeper"), // SPLURT Adoon
 		))
 	var/peace_borg_icon = show_radial_menu(R, R , peace_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
 	switch(peace_borg_icon)
@@ -1019,6 +1039,10 @@
 			sleeper_overlay = "drakepeacesleeper"
 			cyborg_icon_override = 'modular_sand/icons/mob/cyborg/drakemech.dmi'
 			dogborg = TRUE
+		if("Assaultron") // SPLURT Addon
+			cyborg_base_icon = "assaultron_peacekeeper"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+			hat_offset = 3
 		else
 			return FALSE
 	return ..()
@@ -1169,7 +1193,7 @@
 		"(Janitor) Marina" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "marinajan"),
 		"(Janitor) Sleek" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "sleekjan"),
 		"(Janitor) Can" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "canjan"),
-		"(Janitor) Heavy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "heavyjan"),
+		"(Janitor) Heavy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "heavyres"),
 		"(Janitor) MissM" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "missm_janitor"), // SPLURT Addon (Skyrat Port)
 		"(Janitor) Protectron" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "protectron_janitor"), // SPLURT Addon (Skyrat Port)
 		"(Janitor) Zoomba" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "zoomba_jani"), // SPLURT Addon (Skyrat Port)
@@ -1184,7 +1208,9 @@
 		"(Janitor) BootyS" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootyjanitorS"), // SPLURT Addon (Hyper Port)
 		"(Janitor) Borgi" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "borgi-jani-b"), // SPLURT Addon (Skyrat Port)
 		"(Janitor) Otie" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "otiej-b"), // SPLURT Addon (Skyrat Port)
-		"(Janitor) Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakejanitbox")
+		"(Janitor) Fembot" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "fembot-service"), // SPLURT Addon
+		"(Janitor) Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakejanitbox"),
+		"Assaultron" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "assaultron_service"), // SPLURT Addon
 		)
 		var/list/L = list("(Service) DarkK9" = "k50", "(Service) Vale" = "valeserv", "(Service) ValeDark" = "valeservdark",
 						"(Janitor) Scrubpuppy" = "scrubpup")
@@ -1356,11 +1382,19 @@
 			cyborg_icon_override = 'modular_splurt/icons/mob/widerobot.dmi'
 			sleeper_overlay = "otiejsleeper"
 			dogborg = TRUE
+		if("(Janitor) Fembot") // SPLURT Addon
+			cyborg_base_icon = "fembot-service"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+			sleeper_overlay = "fembotsleeper"
 		if("(Janitor) Drake") // Dergborg brought to you by Navier#1236 | Skyrat | Commissioned Artist: deviantart.com/mizartz
 			cyborg_base_icon = "drakejanit"
 			cyborg_icon_override = 'modular_sand/icons/mob/cyborg/drakemech.dmi'
 			sleeper_overlay = "drakesecsleeper"
 			dogborg = TRUE
+		if("Assaultron") // SPLURT Addon
+			cyborg_base_icon = "assaultron_service"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+			hat_offset = 3
 		else
 			return FALSE
 	return ..()
@@ -1421,7 +1455,8 @@
 		"Cargohound" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "cargohound-b"), // SPLURT Adoon (Skyrat Port)
 		"Cargohound Dark" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "cargohounddark-b"), // SPLURT Adoon (Skyrat Port)
 		"Otie" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "otiec-b"), // SPLURT Adoon (Skyrat Port)
-		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakeminebox")
+		"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakeminebox"),
+		"Assaultron" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "assaultron_mining"), // SPLURT
 		)
 		var/list/L = list("Blade" = "blade", "Vale" = "valemine")
 		for(var/a in L)
@@ -1475,7 +1510,7 @@
 			cyborg_base_icon = "miningdrone"
 			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
 			hat_offset = 3
-		if("Robomaid") // SPLURT Addon (Old Skyrat Port)
+		if("RoboMaid") // SPLURT Addon (Old Skyrat Port)
 			cyborg_base_icon = "robomaid_miner"
 			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
 			hat_offset = 3
@@ -1521,6 +1556,10 @@
 			cyborg_icon_override = 'modular_sand/icons/mob/cyborg/drakemech.dmi'
 			sleeper_overlay = "drakeminesleeper"
 			dogborg = TRUE
+		if("Assaultron") // SPLURT Addon
+			cyborg_base_icon = "assaultron_mining"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+			hat_offset = 3
 		else
 			return FALSE
 	return ..()

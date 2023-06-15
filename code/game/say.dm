@@ -11,6 +11,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	"[FREQ_SERVICE]" = "servradio",
 	"[FREQ_SECURITY]" = "secradio",
 	"[FREQ_COMMAND]" = "comradio",
+	"[FREQ_HOTEL]" = "servradio", //SPLURT EDIT ADDITION
 	"[FREQ_AI_PRIVATE]" = "aiprivradio",
 	"[FREQ_SYNDICATE]" = "syndradio",
 	"[FREQ_CENTCOM]" = "centcomradio",

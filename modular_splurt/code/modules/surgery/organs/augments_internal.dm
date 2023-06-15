@@ -79,7 +79,7 @@
 			var/tamanho = FATHER.wanted_size_t-T.size
 			T.modify_size(tamanho)
 		if(B)
-			var/tamanho = FATHER.wanted_size_b-B.cached_size
+			var/tamanho = FATHER.wanted_size_b-B.size
 			B.modify_size(tamanho)
 	else
 		if(P)
@@ -89,7 +89,7 @@
 			var/tamanho = initial(T.size)-T.size
 			T.modify_size(tamanho)
 		if(B)
-			var/tamanho = B.prev_size-B.cached_size
+			var/tamanho = B.prev_size-B.size
 			B.modify_size(tamanho)
 
 /datum/condenser_implant/condenser/ui_data(mob/user)

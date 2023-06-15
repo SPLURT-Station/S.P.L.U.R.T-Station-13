@@ -6,3 +6,4 @@
 /mob/living/carbon/human/Initialize()
 	LAZYADD(hud_possible, ANTAGTARGET_HUD)
 	. = ..()
+	RegisterSignal(src, COMSIG_MOB_CLIMAX, .proc/check_orgasm)

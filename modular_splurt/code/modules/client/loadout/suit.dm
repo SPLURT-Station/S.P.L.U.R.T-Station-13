@@ -74,6 +74,21 @@
 	path = /obj/item/clothing/suit/toggle/rp_jacket/white
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
 
+/datum/gear/suit/jacket_runner_engi
+	name = "Engineer Runner Jacket"
+	path = /obj/item/clothing/suit/jacket/runner/engi
+	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
+
+/datum/gear/suit/jacket_runner_syndicate
+	name = "Syndicate Runner Jacket"
+	path = /obj/item/clothing/suit/jacket/runner/syndicate
+	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
+
+/datum/gear/suit/jacket_runner_winter
+	name = "Winter Runner Jacket"
+	path = /obj/item/clothing/suit/jacket/runner/winter
+	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
+
 /datum/gear/suit/baroness
 	name = "Baroness Dress"
 	path = /obj/item/clothing/suit/baroness

@@ -55,10 +55,17 @@
 		return
 
 	if(locate(src.type) in target_organ.contents)
-		to_chat(user, span_notice("\The <b>[target]</b>'s [target_organ] already has a rod inside!"))
+		if(user == target)
+			to_chat(user, span_notice("You already have a rod inside your [target_organ]!"))
+		else
+			to_chat(user, span_notice("\The <b>[target]</b>'s [target_organ] already has a rod inside!"))
 		return
 
-	target.visible_message(span_warning("\The <b>[user]</b> is trying to insert a rod inside \the <b>[target]</b>!"),\
+	if(user == target)
+		target.visible_message(span_warning("\The <b>[user]</b> is trying to insert a rod inside themselves!"),\
+						span_warning("You try to insert a rod inside yourself!"))
+	else
+		target.visible_message(span_warning("\The <b>[user]</b> is trying to insert a rod inside \the <b>[target]</b>!"),\
 						span_warning("\The <b>[user]</b> is trying to insert a rod inside you!"))
 
 	if(!do_mob(user, target, 4 SECONDS))
@@ -81,15 +88,18 @@
 		return
 
 	if(locate(src.type) in target_organ.contents)
-		to_chat(user, span_notice("\The <b>[target]</b>'s [target_organ] already has a vibrator inside!"))
+		if(user == target)
+			to_chat(user, span_notice("You already have a vibrator inside your [target_organ]!"))
+		else
+			to_chat(user, span_notice("\The <b>[target]</b>'s [target_organ] already has a vibrator inside!"))
 		return
 
-	if(style == "long")
-		target.visible_message(span_warning("\The <b>[user]</b> is trying to insert a vibrator inside \the <b>[target]</b>!"),\
-						span_warning("\The <b>[user]</b> is trying to insert a vibrator inside you!"))
+	if(user == target)
+		target.visible_message(span_warning("\The <b>[user]</b> is trying to [style == "long" ? "insert" : "attach"] a vibrator [style == "long" ? "inside" : "to"] themselves!"),\
+			span_warning("You try to [style == "long" ? "insert" : "attach"] a vibrator [style == "long" ? "inside" : "to"] yourself!"))
 	else
-		target.visible_message(span_userlove("\The <b>[user]</b> is trying to attach a vibrator to \the <b>[target]</b>!"),\
-						span_warning("\The <b>[user]</b> is trying to attach a vibrator to you!"))
+		target.visible_message(span_warning("\The <b>[user]</b> is trying to [style == "long" ? "insert" : "attach"] a vibrator [style == "long" ? "inside" : "to"] \the <b>[target]</b>!"),\
+			span_warning("\The <b>[user]</b> is trying to [style == "long" ? "insert" : "attach"] a vibrator [style == "long" ? "inside" : "to"] you!"))
 
 	if(!do_mob(user, target, 5 SECONDS))
 		return
@@ -115,7 +125,11 @@
 		to_chat(user, span_warning("This genital can't be stuffed!"))
 		return
 
-	target.visible_message(span_warning("\The <b>[user]</b> is trying to insert an egg inside \the <b>[target]</b>!"),\
+	if(user == target)
+		target.visible_message(span_warning("\The <b>[user]</b> is trying to insert an egg inside themselves!"),\
+					span_warning("You try to insert an egg inside yourself!"))
+	else
+		target.visible_message(span_warning("\The <b>[user]</b> is trying to insert an egg inside \the <b>[target]</b>!"),\
 					span_warning("\The <b>[user]</b> is trying to insert an egg inside you!"))
 
 	if(!do_mob(user, target, 5 SECONDS))

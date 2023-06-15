@@ -4,6 +4,10 @@
 	var/list/obj/item/clothing/accessory/ring/attached_accessories = list()
 	var/list/mutable_appearance/accessory_overlays = list()
 
+/obj/item/clothing/gloves/Destroy()
+	QDEL_LIST(attached_accessories)
+	return ..()
+
 /obj/item/clothing/gloves/worn_overlays(isinhands = FALSE, icon_file, used_state, style_flags = NONE)
 	. = ..()
 	if(!isinhands)

@@ -3,6 +3,11 @@
 	ammo_type = /obj/item/ammo_casing/shotgun/rubbershot
 	max_ammo = 2
 
+/obj/item/ammo_box/magazine/internal/shot/eshotty
+	name = "eshotgun internal magazine"
+	ammo_type = /obj/item/ammo_casing/shotgun/buckshot
+	max_ammo = 8
+
 /obj/item/ammo_box/magazine/internal/shot/varmitrifle
 	name = "varmit rifle internal magazine"
 	ammo_type = /obj/item/ammo_casing/c22lr

@@ -32,4 +32,6 @@
 	new /obj/item/storage/photo_album/RD(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/rd(src)
 	new /obj/item/analyzer/hilbertsanalyzer(src)
+	new /obj/item/mod/construction/armor/research(src)
 
+	new /obj/item/mod/construction/armor/research(src)

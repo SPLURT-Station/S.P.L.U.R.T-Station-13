@@ -77,3 +77,10 @@
 	cost = 2
 	path = /obj/item/reagent_containers/food/snacks/grown/poppy/geranium
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
+
+/datum/gear/head/deckers
+	name = "Decker Headphones"
+	description = "A sweet pair of headphones."
+	cost = 2
+	path = /obj/item/clothing/head/deckers
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION

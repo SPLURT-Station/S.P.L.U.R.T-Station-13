@@ -735,8 +735,39 @@
 				to_send += "\n<span class='info'>Your [damaged_message] [damaged_plural ? "are" : "is"] hurt.</span>"
 
 			if(roundstart_quirks.len)
-				to_send += "<span class='notice'>You have these quirks: [get_trait_string()].</span>\n"
+				to_send += "\n<span class='notice'>You have these quirks: [get_trait_string()].</span>"
+			//SPLURT edit
+			for(var/obj/item/organ/genital/G in internal_organs)
+				if(CHECK_BITFIELD(G.genital_flags, GENITAL_IMPOTENT))
+					if(istype(G, /obj/item/organ/genital/breasts))
+						to_send += "<span class='lewd'>\nYour [G.name] are frustratingly numb to any pleasurable sensations.</span>"
+					else
+						to_send += "<span class='lewd'>\nYour [G.name] is frustratingly numb to any pleasurable sensations.</span>"
+				if(CHECK_BITFIELD(G.genital_flags, GENITAL_EDGINGONLY))
+					to_send += "<span class='lewd'>\nYour [G.name] quivers with need, seemingly growing increasingly aroused without ever quite reaching climax.</span>"
+				if(CHECK_BITFIELD(G.genital_flags, GENITAL_DISAPPOINTING))
+					if(istype(G, /obj/item/organ/genital/breasts))
+						to_send += "<span class='lewd'>\nYour [G.name] dribbles a fine stream of slick milk as it throbs desperately for a satisfying, yet unlikely release.</span>"
+					else
+						to_send += "<span class='lewd'>\nYour [G.name] dribbles a fine stream of slick lubricant as it throbs desperately for a satisfying, yet unlikely release.</span>"
+				if(CHECK_BITFIELD(G.genital_flags, GENITAL_OVERSTIM))
+					to_send += "<span class='lewd'>\nYour [G.name] bristles with need, jolting you with pleasure at every slight touch.</span>"
+				if(CHECK_BITFIELD(G.genital_flags, GENITAL_HYPERSENS))
+					if(istype(G, /obj/item/organ/genital/breasts))
+						to_send += "<span class='lewd'>\nYour [G.name] are quivering with maddening lust. Even a strong draft or a shifting of your clothes is nearly enough to blank your mind of everything except the need for more.</span>"
+					to_send += "<span class='lewd'>\nYour [G.name] is quivering with maddening lust. Even a strong draft or a shifting of your clothes is nearly enough to blank your mind of everything except the need for more.</span>"
 
+			if(HAS_TRAIT(src, TRAIT_IMPOTENT_ANUS))
+				to_send += "<span class='lewd'>\nYour anus is frustratingly numb to any pleasurable sensations.</span>"
+			if(HAS_TRAIT(src, TRAIT_EDGINGONLY_ANUS))
+				to_send += "<span class='lewd'>\nYour anus winks with need, seemingly growing increasingly aroused without ever quite reaching climax.</span>"
+			if(HAS_TRAIT(src, TRAIT_DISAPPOINTING_ANUS))
+				to_send += "<span class='lewd'>\nYour anus winks, desperately asking for something to stuff it.</span>"
+			if(HAS_TRAIT(src, TRAIT_OVERSTIM_ANUS))
+				to_send += "<span class='lewd'>\nYour anus bristles with need, jolting you with pleasure at every slight touch.</span>"
+			if(HAS_TRAIT(src, TRAIT_HYPERSENS_ANUS))
+				to_send += "<span class='lewd'>\nYour anus is quivering with maddening lust. Even a strong draft or a shifting of your clothes is nearly enough to blank your mind of everything except the need for more.</span>"
+			//
 			to_chat(src, examine_block(to_send))
 		else
 			if(wear_suit)

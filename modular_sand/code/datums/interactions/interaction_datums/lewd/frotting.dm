@@ -16,9 +16,9 @@
 	user.set_is_fucking(partner, CUM_TARGET_PENIS, user.getorganslot(ORGAN_SLOT_PENIS))
 	user.visible_message(span_lewd("<b>\The [user]</b> [message]"), ignored_mobs = user.get_unconsenting())
 	if(user.can_penetrating_genital_cum())
-		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_PENIS, partner)
+		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_PENIS, partner, ORGAN_SLOT_PENIS) //SPLURT edit
 	if(partner.can_penetrating_genital_cum())
-		partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_PENIS, user)
+		partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_PENIS, user, ORGAN_SLOT_PENIS) //SPLURT edit
 
 /datum/interaction/lewd/tribadism
 	description = "Grind your pussy against theirs."
@@ -44,5 +44,5 @@
 						'modular_sand/sound/interactions/squelch2.ogg',
 						'modular_sand/sound/interactions/squelch3.ogg'), 70, 1, -1)
 	user.visible_message(span_lewd("<b>\The [user]</b> [message]"), ignored_mobs = user.get_unconsenting())
-	partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_VAGINA, user)
-	user.handle_post_sex(NORMAL_LUST, CUM_TARGET_VAGINA, partner)
+	partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_VAGINA, user, ORGAN_SLOT_VAGINA) //SPLURT edit
+	user.handle_post_sex(NORMAL_LUST, CUM_TARGET_VAGINA, partner, ORGAN_SLOT_VAGINA) //SPLURT edit

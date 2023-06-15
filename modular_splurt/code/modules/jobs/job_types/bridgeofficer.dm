@@ -16,8 +16,9 @@
 	considered_combat_role = FALSE
 	outfit = /datum/outfit/job/bridgeofficer
 	plasma_outfit = /datum/outfit/plasmaman/bridgeofficer
-	custom_spawn_text = "<font color='red'>Bridge Officer: You are here to assist the bridge staff with whatever they need. You have very limited access. You are not Secuirty and you are not in the line of secceustion. You have no power, listen to the Captain and the HOP.</font>"
-	access = list( ACCESS_HEADS, ACCESS_MAINT_TUNNELS, ACCESS_BRIDGE_OFFICER, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH)
+	//SPLURT CHANGES (Changes the custom spawn text for the Bridge Officer)
+	custom_spawn_text = "<font color='red'>You are an assistant who's primary focus is serving the Heads of Staff. Nothing more. Nothing less.</font>"
+	access = list(ACCESS_HEADS, ACCESS_MAINT_TUNNELS, ACCESS_BRIDGE_OFFICER, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH)
 	minimal_access = list(ACCESS_HEADS, ACCESS_MAINT_TUNNELS, ACCESS_BRIDGE_OFFICER, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH)
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_CIV

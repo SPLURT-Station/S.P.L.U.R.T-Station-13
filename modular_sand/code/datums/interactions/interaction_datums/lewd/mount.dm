@@ -21,8 +21,8 @@
 						'modular_sand/sound/interactions/bang3.ogg'), 70, 1, -1)
 	user.visible_message(span_lewd("<b>\The [user]</b> [message]"), ignored_mobs = user.get_unconsenting())
 	if(partner.can_penetrating_genital_cum())
-		partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_VAGINA, user)
-	user.handle_post_sex(NORMAL_LUST, CUM_TARGET_PENIS, partner)
+		partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_VAGINA, user, ORGAN_SLOT_PENIS) //SPLURT edit
+	user.handle_post_sex(NORMAL_LUST, CUM_TARGET_PENIS, partner, ORGAN_SLOT_VAGINA) //SPLURT edit
 
 /datum/interaction/lewd/mountass
 	description = "Mount with your ass."
@@ -47,8 +47,8 @@
 						'modular_sand/sound/interactions/bang3.ogg'), 70, 1, -1)
 	user.visible_message(span_lewd("<b>\The [user]</b> [message]"), ignored_mobs = user.get_unconsenting())
 	if(partner.can_penetrating_genital_cum())
-		partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_ANUS, user)
-	user.handle_post_sex(NORMAL_LUST, null, partner)
+		partner.handle_post_sex(NORMAL_LUST, CUM_TARGET_ANUS, user, ORGAN_SLOT_PENIS) //SPLURT edit
+	user.handle_post_sex(NORMAL_LUST, null, partner, "anus")
 
 /datum/interaction/lewd/mountface
 	description = "Ass to face."
@@ -158,8 +158,8 @@
 					'modular_sand/sound/interactions/foot_dry3.ogg')
 	playlewdinteractionsound(get_turf(user), file, 70, 1, -1)
 	user.visible_message(span_lewd("<b>\The [user]</b> [message]"), ignored_mobs = user.get_unconsenting())
-	user.handle_post_sex(lust_increase, THIGH_SMOTHERING, partner)
+	user.handle_post_sex(lust_increase, THIGH_SMOTHERING, partner, genital) //SPLURT edit
 	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/oral1.ogg',
 						'modular_sand/sound/interactions/oral2.ogg'), 70, 1, -1)
 	if(fucktarget != "penis" || user.can_penetrating_genital_cum())
-		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_MOUTH, partner)
+		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_MOUTH, partner, genital) //SPLURT edit

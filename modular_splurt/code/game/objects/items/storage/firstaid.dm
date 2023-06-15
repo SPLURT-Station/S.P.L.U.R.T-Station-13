@@ -48,9 +48,49 @@
 		new /obj/item/reagent_containers/pill/lsdpsych(src)
 
 /obj/item/storage/pill_bottle/paxpsych
-	name = "pacification pill"
+	name = "pacification pill bottle"
 	desc = "Contains pills used to temporarily pacify patients that are deemed a harm to themselves or others."
 
 /obj/item/storage/pill_bottle/paxpsych/PopulateContents()
 	for(var/i in 1 to 5)
 		new /obj/item/reagent_containers/pill/paxpsych(src)
+
+/obj/item/storage/pill_bottle/anal_allure
+	name = "anal allure pill bottle"
+	desc = "Increase the pleasure!"
+
+/obj/item/storage/pill_bottle/anal_allure/PopulateContents()
+	for(var/i in 1 to 10)
+		new /obj/item/reagent_containers/pill/anal_allure(src)
+
+/obj/item/storage/pill_bottle/breast_buzzer
+	name = "breast buzzer pill bottle"
+	desc = "Increase the pleasure!"
+
+/obj/item/storage/pill_bottle/breast_buzzer/PopulateContents()
+	for(var/i in 1 to 10)
+		new /obj/item/reagent_containers/pill/breast_buzzer(src)
+
+/obj/item/storage/pill_bottle/peen_pop
+	name = "peen pop pill bottle"
+	desc = "Increase the pleasure!"
+
+/obj/item/storage/pill_bottle/peen_pop/PopulateContents()
+	for(var/i in 1 to 10)
+		new /obj/item/reagent_containers/pill/peen_pop(src)
+
+/obj/item/storage/pill_bottle/PEsmaller
+	name = "penis reduction pills"
+	desc = "You want penis reduction pills?"
+
+/obj/item/storage/pill_bottle/PEsmaller/PopulateContents()
+	for(var/i in 1 to 10)
+		new /obj/item/reagent_containers/pill/PEsmaller(src)
+
+/obj/item/storage/pill_bottle/BEsmaller
+	name = "breast reduction pills"
+	desc = "You want breast reduction pills?"
+
+/obj/item/storage/pill_bottle/BEsmaller/PopulateContents()
+	for(var/i in 1 to 10)
+		new /obj/item/reagent_containers/pill/PEsmaller(src)

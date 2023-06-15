@@ -9,8 +9,12 @@ import { Window } from '../layouts';
 type HeaderInfo = {
   isTargetSelf: boolean;
   interactingWith: string;
+  lust: number;
+  maxLust: number;
   selfAttributes: string[];
   theirAttributes: string[];
+  theirLust: number;
+  theirMaxLust: number;
 }
 
 type ContentInfo = {
@@ -31,31 +35,10 @@ type GenitalData = {
   name: string,
   key: string,
   visibility: string,
-  extras: string,
-  extra_choices: string[],
   possible_choices: string[],
   can_arouse: boolean,
   arousal_state: boolean,
   always_accessible: boolean,
-}
-
-type GenitalManagerInfo = {
-  isTargetSelf: boolean;
-  genital_fluids: GenitalFluid[];
-  genital_interactibles: GenitalInteractionInfos[];
-}
-
-type GenitalInteractionInfos = {
-  name: string,
-  key: string,
-  possible_choices: string[],
-  equipments: string[],
-}
-
-type GenitalFluid = {
-  name: string,
-  key: string,
-  fluids: number,
 }
 
 type CharacterPrefsInfo = {
@@ -89,6 +72,9 @@ type ContentPrefsInfo = {
   no_aphro: boolean,
   no_ass_slap: boolean,
   no_auto_wag: boolean,
+  chastity_pref: boolean,
+  stimulation_pref: boolean,
+  edging_pref: boolean,
 }
 
 export const MobInteraction = (props, context) => {
@@ -96,41 +82,57 @@ export const MobInteraction = (props, context) => {
   const {
     isTargetSelf,
     interactingWith,
+    lust,
+    maxLust,
     selfAttributes,
     theirAttributes,
+    theirLust,
+    theirMaxLust,
   } = data;
   const [tabIndex, setTabIndex] = useLocalState(context, 'tabIndex', 0);
 
   return (
     <Window
-      width={530}
+      width={430}
       height={700}
       resizable>
       <Window.Content overflow="auto">
         <Section title={interactingWith}>
           <Table>
-            <Table.Cell>
-              <BlockQuote>
-                You...<br />
-                {selfAttributes.map(attribute => (
-                  <div key={attribute}>
-                    {attribute}<br />
-                  </div>
-                ))}
-              </BlockQuote>
-            </Table.Cell>
-            {!isTargetSelf ? (
+            <Table.Row>
               <Table.Cell>
                 <BlockQuote>
-                  They...<br />
-                  {theirAttributes.map(attribute => (
+                  You...<br />
+                  {selfAttributes.map(attribute => (
                     <div key={attribute}>
                       {attribute}<br />
                     </div>
                   ))}
                 </BlockQuote>
               </Table.Cell>
-            ) : (null)}
+              {!isTargetSelf ? (
+                <Table.Cell>
+                  <BlockQuote>
+                    They...<br />
+                    {theirAttributes.map(attribute => (
+                      <div key={attribute}>
+                        {attribute}<br />
+                      </div>
+                    ))}
+                  </BlockQuote>
+                </Table.Cell>
+              ) : (null)}
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>
+                <ProgressBar value={lust} maxValue={maxLust} color="purple" mt="10px"><Icon name="heart" /></ProgressBar>
+              </Table.Cell>
+              {(!isTargetSelf && !isNaN(theirLust)) ? (
+                <Table.Cell>
+                  <ProgressBar value={theirLust} maxValue={theirMaxLust} color="purple"><Icon name="heart" /></ProgressBar>
+                </Table.Cell>
+              ) : (null)}
+            </Table.Row>
           </Table>
         </Section>
         <Section>
@@ -147,9 +149,6 @@ export const MobInteraction = (props, context) => {
             <Tabs.Tab selected={tabIndex === 3} onClick={() => setTabIndex(3)}>
               Preferences
             </Tabs.Tab>
-            <Tabs.Tab selected={tabIndex === 4} onClick={() => setTabIndex(4)}>
-              Genital Manager
-            </Tabs.Tab>
           </Tabs>
           {tabIndex === 0 && (
             <InteractionsTab />
@@ -159,8 +158,6 @@ export const MobInteraction = (props, context) => {
             <CharacterPrefsTab />
           ) || tabIndex === 3 && (
             <ContentPreferencesTab />
-          ) || tabIndex === 4 && (
-            <GenitalManagerTab />
           ) || ("Somehow, you've got into an invalid page, please report this.")}
         </Section>
       </Window.Content>
@@ -243,7 +240,6 @@ const ModeToIcon = {
   "Hidden by clothes": "tshirt",
   "Hidden by underwear": "low-vision",
   "Always hidden": "eye-slash",
-  "Allows egg stuffing": "egg",
 };
 
 /*
@@ -295,19 +291,6 @@ const GenitalTab = (props, context) => {
                     genital: genital.key,
                     set_arousal: !genital.arousal_state,
                   })} />
-                  {genital.extra_choices instanceof Array
-                    ? genital.extra_choices.map(choice => (
-                      <Button
-                        width="50%"
-                        key={choice}
-                        tooltip={choice}
-                        icon={ModeToIcon[choice]}
-                        color={genital.extras === choice ? "green" : "default"}
-                        onClick={() => act('genital', {
-                          genital: genital.key,
-                          visibility: choice,
-                        })} />
-                    )) : null}
                 <Button
                   width="49%"
                   key={genital.always_accessible}
@@ -334,71 +317,6 @@ const GenitalTab = (props, context) => {
   );
 };
 
-const GenitalManagerTab = (props, context) => {
-  const { act, data } = useBackend<GenitalManagerInfo>(context);
-  const isTargetSelf = data.isTargetSelf;
-  const genital_fluids = data.genital_fluids || [];
-  const genital_interactibles = data.genital_interactibles || [];
-  return (
-    genital_fluids.length || genital_interactibles.length ? (
-      <>
-        <Section title="Genital Fluids">
-          <LabeledList>
-            {genital_fluids.map(genital => (
-              <LabeledList.Item key={genital['key']} label={genital['name']}>
-                <ProgressBar
-                  key={genital['key']}
-                  value={genital['fluid'] ? genital['fluid'] : 0.0}
-                  color="white" />
-              </LabeledList.Item>
-            ))}
-          </LabeledList>
-        </Section>
-        <Section title="Actions">
-          {genital_interactibles.map(genital => (
-            <Section key={genital.key} title={genital.name}>
-              {
-                genital.equipments.length ? (
-                  <>
-                    <b>Equipments:</b>
-                    <Table direction="column">
-                      {genital.equipments.map(equipment => (
-                        <TableRow key={equipment}>
-                          {equipment}
-                        </TableRow>
-                      ))}
-                    </Table>
-                    <Divider />
-                  </>
-                ) : null
-              }
-
-              {genital.possible_choices.map(choice => (
-                <Button
-                  key={choice}
-                  content={choice}
-                  tooltip={choice}
-                  onClick={() => act('genital_interaction', {
-                    genital: genital.key,
-                    action: choice,
-                  })} />
-              ))}
-            </Section>
-          ))}
-        </Section>
-      </>
-    ) : (
-      <Section align="center">
-        {
-          isTargetSelf
-            ? "You don't seem to have any genitals... Or any that you could do anything with"
-            : "They don't seem to have any genitals... Or any that you could do anything with"
-        }
-      </Section>
-    )
-  );
-};
-
 const CharacterPrefsTab = (props, context) => {
   const { act, data } = useBackend<CharacterPrefsInfo>(context);
   const {
@@ -410,7 +328,7 @@ const CharacterPrefsTab = (props, context) => {
     extreme_harm,
   } = data;
   return (
-    <Stack direction="column">
+    <Flex direction="column">
       <LabeledList>
         <LabeledList.Item label="ERP Preference">
           <Button
@@ -546,7 +464,7 @@ const CharacterPrefsTab = (props, context) => {
           </LabeledList.Item>
         ) : (null)}
       </LabeledList>
-    </Stack>
+    </Flex>
   );
 };
 
@@ -574,6 +492,9 @@ const ContentPreferencesTab = (props, context) => {
     no_aphro,
     no_ass_slap,
     no_auto_wag,
+    chastity_pref,
+    stimulation_pref,
+    edging_pref,
   } = data;
   return (
     <Table>
@@ -826,6 +747,42 @@ const ContentPreferencesTab = (props, context) => {
           selected={no_auto_wag}
           onClick={() => act('pref', {
             pref: 'no_auto_wag',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Chastity Interactions"
+          icon={chastity_pref ? "toggle-on" : "toggle-off"}
+          selected={chastity_pref}
+          onClick={() => act('pref', {
+            pref: 'chastity_pref',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Genital Stimulation Modifiers"
+          icon={stimulation_pref ? "toggle-on" : "toggle-off"}
+          selected={stimulation_pref}
+          onClick={() => act('pref', {
+            pref: 'stimulation_pref',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Edging"
+          icon={edging_pref ? "toggle-on" : "toggle-off"}
+          selected={edging_pref}
+          onClick={() => act('pref', {
+            pref: 'edging_pref',
           })}
         />
       </Table.Row>

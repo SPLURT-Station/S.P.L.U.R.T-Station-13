@@ -176,4 +176,4 @@
 	if(!src)
 		to_chat(usr, span_warning("Your interaction target is gone!"))
 		return
-	menu.open_menu(usr, src)
+	menu.open_menu(usr, held_mob)

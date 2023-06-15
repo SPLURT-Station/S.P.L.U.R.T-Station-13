@@ -18916,9 +18916,6 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 6
-	},
 /turf/open/floor/engine,
 /area/maintenance/disposal/incinerator)
 "aFW" = (
@@ -18942,9 +18939,6 @@
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 5
 	},
 /obj/machinery/igniter{
 	id = "Incinerator"
@@ -77085,7 +77079,7 @@
 /area/maintenance/port/fore)
 "cwH" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
-	dir = 8
+	dir = 1
 	},
 /turf/open/floor/engine/vacuum,
 /area/maintenance/disposal/incinerator)
@@ -84416,9 +84410,7 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "jHJ" = (
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 9
-	},
+/obj/item/pipe/directional,
 /turf/closed/wall/r_wall,
 /area/maintenance/disposal/incinerator)
 "jHS" = (

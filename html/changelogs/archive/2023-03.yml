@@ -50,3 +50,76 @@
   - balance: Blood must be ingested to gain nutrition
   - balance: Blood ingestion will NOT grant nutrition if used by it's original donor
   - balance: Blood ingestion will not clear disgust or stamina loss
+2023-03-08:
+  LeDrascol:
+  - rscadd: Added better feedback for production machinery topic access denial
+  - tweak: Production machinery access checks now work for all mobs
+  - balance: Production machinery can now be used in 'mineral mode' by crew with ORM
+      access
+2023-03-10:
+  Anonymous:
+  - rscadd: Prison jumpsuits can be re-skinned into other color-coded security level,
+      including protective custody and "vampire" variant.
+2023-03-11:
+  LeDrascol:
+  - rscadd: Added genital fluid blacklist entries for missing effect reagents
+  - code_imp: Added comments explaining the function of every functional consumable
+      reagent
+  - refactor: Refactored genital fluid list generation
+  - refactor: Refactored getter function for allowed genital fluids list
+2023-03-13:
+  BongaTheProto:
+  - bugfix: fixes datum reference, typepath, and other tgui-dependant variable editing
+      options
+2023-03-14:
+  BongaTheProto:
+  - bugfix: Makes you able to interact with mobs you pick up again
+  Dexxiol:
+  - imageadd: fixed cargo technician rolled up sleeves, duffelbags and yoga pants
+  LeDrascol:
+  - tweak: Reverted R&D consoles locking by default
+2023-03-19:
+  KathrinBailey:
+  - balance: The supermatter delamination will now respect the bombcap, basically,
+      it'll never go beyond a maxcap explosion.
+  - balance: The supermatter delamination now will be reduced in size if there aren't
+      many engineers.
+  LeDrascol:
+  - rscadd: Added Nudist examine text
+  - rscadd: Added Nudist state change messages
+2023-03-23:
+  KeplerWasTaken:
+  - bugfix: Lavaland Syndicate Base now has the correct R&D Board
+  - bugfix: Exosuit Drill Mech can no longer drill multiple times at once
+  - bugfix: Exosuit Drill Mech can no longer drill people past melee range
+  - bugfix: Exosuit Drill Mech now does the correct amount of damage to objects
+  LeDrascol:
+  - rscadd: 'Added new cybernetic organ: Mesmer Eyes'
+  - rscadd: Added examine text to the Hypnotic Gaze quirk
+  - tweak: Hypnotic Gaze consent prompt now includes additional information
+  - tweak: Brainwashed victims are no longer shown in the round-end panel
+  - admin: Hypnotic Gaze quirk can now be added and removed mid-round
+  - balance: Mech fabricators now use their access restrictions
+  - balance: Removed access requirements for maintenance and off-station mech fabricators
+2023-03-29:
+  Anonymous (feat. Bagzerk):
+  - rscadd: 'Emote: \*agony.'
+2023-03-30:
+  BongaTheProto:
+  - balance: Removes the locks on protolathes and other machines
+  - balance: Well actually makes it a config but it's set to disable the locks so
+      potato tomato
+  CloverIsLucky:
+  - rscdel: Removed duplicated mining points card.
+  KeplerWasTaken:
+  - rscdel: Removes Die of Fate from Academy
+  - rscdel: Removes Die of Fate from Greed Ruin
+  - tweak: BO and BS arrival on station messages are now more fitting
+  - bugfix: Head of Staff and AI cryo messages no longer say you need to ahelp
+  PhazeJump:
+  - bugfix: Fixed the eastern dragon tail
+  - bugfix: Added a file for succubus tail wagging sprite
+  - bugfix: Added some code for the succubus tail not to disappear while wagging
+2023-03-31:
+  legumesan:
+  - rscadd: new hairstyle

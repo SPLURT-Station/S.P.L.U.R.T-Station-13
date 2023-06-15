@@ -160,3 +160,13 @@
 	name = "Deathhawk"
 	icon = 'modular_splurt/icons/mob/hair.dmi'
 	icon_state = "hair_deathhawk"
+
+/datum/sprite_accessory/hair/fluffball
+	name = "Fluffball"
+	icon = 'modular_splurt/icons/mob/hair.dmi'
+	icon_state = "hair_fluffball"
+
+/datum/sprite_accessory/hair/phoebe
+	name = "Phoebe"
+	icon = 'modular_splurt/icons/mob/hair.dmi'
+	icon_state = "hair_phoebe"

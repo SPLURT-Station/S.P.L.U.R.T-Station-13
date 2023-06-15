@@ -41,7 +41,7 @@
 			if(do_after(src, rand(10, 20), 0, target)) //did they get deleted in that second?
 				// var/main_fluid = lowertext(fluid_source.get_master_reagent_name())  // doesn't work no more (should delete probably)
 				var/main_fluid = G.get_fluid_name()
-				var/fluid_ammount = clamp((G.fluid_rate * ((world.time - G.last_orgasmed) / (10 SECONDS)) * G.fluid_mult),0,G.fluid_max_volume)
+				var/fluid_ammount = G.get_fluid()
 				if (fluid_ammount <= 2)
 					to_chat(src, span_revennotice("[target.p_their(TRUE)] [G.name] spasms pitifully, almost nothing will come out."))
 				else

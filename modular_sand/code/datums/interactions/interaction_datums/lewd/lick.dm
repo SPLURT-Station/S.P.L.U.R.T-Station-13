@@ -8,7 +8,7 @@
 /datum/interaction/lewd/rimjob/display_interaction(mob/living/user, mob/living/partner)
 	user.visible_message(span_lewd("<b>\The [user]</b> licks \the <b>[partner]</b>'s asshole."), ignored_mobs = user.get_unconsenting())
 	playlewdinteractionsound(get_turf(user), 'modular_sand/sound/interactions/champ_fingering.ogg', 50, 1, -1)
-	partner.handle_post_sex(NORMAL_LUST, null, user)
+	partner.handle_post_sex(NORMAL_LUST, null, user, "anus") //SPLURT edit
 
 /datum/interaction/lewd/lickfeet
 	description = "Lick their feet."

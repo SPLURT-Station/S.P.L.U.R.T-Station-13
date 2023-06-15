@@ -41,8 +41,8 @@
 		if("f", "g", "h")
 			modifier = 3
 		else
-			if(milkers.size in milkers.breast_values)
-				modifier = clamp(milkers.breast_values[milkers.size] - 5, 0, INFINITY)
+			if(milkers.size in GLOB.breast_values)
+				modifier = clamp(GLOB.breast_values[milkers.size] - 5, 0, INFINITY)
 			else
 				modifier = 1
 	target.reagents.add_reagent(milktype, rand(1,3 * modifier))
@@ -97,7 +97,7 @@
 						 span_lewd("\The <b>[target]</b> guides <b>[user]</b>'s hand across bare breasts."),
 						 span_lewd("\The <b>[target]</b> teasingly laces a few fingers over <b>[user]</b>'s knuckles.")))
 			if(target.get_lust() < 10)
-				target.add_lust(1)
+				target.handle_post_sex(NORMAL_LUST, CUM_TARGET_HAND, user, ORGAN_SLOT_BREASTS) //SPLURT edit
 	if(target.a_intent == INTENT_GRAB)
 		user.visible_message(
 				pick(span_lewd("\The <b>[target]</b> grips <b>[user]</b>'s wrist tight."),

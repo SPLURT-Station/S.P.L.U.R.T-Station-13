@@ -90,6 +90,10 @@
 	gas = GAS_COPIUM
 	value = REAGENT_VALUE_GLORIOUS
 
+// Variant of Copium created by genital fluids
+/datum/reagent/drug/copium/gfluid
+	value = REAGENT_VALUE_COMMON
+
 /datum/reagent/drug/copium/on_mob_life(mob/living/carbon/M)
 	. = ..()
 
@@ -124,5 +128,94 @@
 		var/temp = holder ? holder.chem_temp : T20C
 		T.atmos_spawn_air("copium=[volume];TEMP=[temp]")
 	return
+
+
+/datum/reagent/drug/genital_purity
+	name = "Nope"
+	taste_description = "purity"
+	metabolization_rate = 0.2
+	var/mod_flag = GENITAL_IMPOTENT
+	var/genital
+
+/datum/reagent/drug/genital_purity/on_mob_metabolize(mob/living/carbon/C)
+	..()
+	if(!(C.client?.prefs.cit_toggles & CHASTITY))
+		return
+
+	var/obj/item/organ/genital/G = C.getorganslot(genital)
+	if(!G)
+		return
+
+	G.set_aroused_state(0, "impotence") //just so it goes down if it's a penis
+	ENABLE_BITFIELD(G.genital_flags, mod_flag)
+
+/datum/reagent/drug/genital_purity/on_mob_end_metabolize(mob/living/carbon/C)
+	var/obj/item/organ/genital/G = C.getorganslot(genital)
+	if(!genital)
+		return
+
+	DISABLE_BITFIELD(G.genital_flags, mod_flag)
+
+	..()
+
+/datum/reagent/drug/genital_purity/penis_purity
+	name = "Penis Purity"
+	color = COLOR_STRONG_VIOLET
+	genital = ORGAN_SLOT_PENIS
+
+/datum/reagent/drug/genital_purity/virtuous_vagina
+	name = "Virtuous Vagina"
+	color = COLOR_LIGHT_PINK
+	genital = ORGAN_SLOT_VAGINA
+
+/datum/reagent/drug/genital_stimulator
+	name = "Nope"
+	metabolization_rate = 0.2
+	taste_description = "excitement"
+	var/mod_flag = GENITAL_OVERSTIM
+	var/trait_mod_flag = TRAIT_OVERSTIM_ANUS //In case the genital is abstract
+	var/genital
+
+/datum/reagent/drug/genital_stimulator/on_mob_metabolize(mob/living/carbon/C)
+	..()
+	if(!(C.client?.prefs.cit_toggles & STIMULATION))
+		return
+
+	if(genital == "anus" && !C.dna.features["has_anus"])
+		ADD_TRAIT(C, trait_mod_flag, ORGAN_TRAIT)
+		return
+
+	var/obj/item/organ/genital/G = C.getorganslot(genital)
+	if(!G)
+		return
+	else
+		G.genital_flags |= mod_flag
+
+/datum/reagent/drug/genital_stimulator/on_mob_end_metabolize(mob/living/carbon/C)
+	var/obj/item/organ/genital/G = C.getorganslot(genital)
+	if(!genital)
+		return
+
+	if(G == "anus" && !C.dna.features["has_anus"])
+		REMOVE_TRAIT(C, trait_mod_flag, ORGAN_TRAIT)
+	else
+		DISABLE_BITFIELD(G.genital_flags, mod_flag)
+
+	..()
+
+/datum/reagent/drug/genital_stimulator/anal_allure
+	name = "Anal Allure"
+	color = COLOR_DARK_RED
+	genital = "anus"
+
+/datum/reagent/drug/genital_stimulator/breast_buzzer
+	name = "Breast Buzzer"
+	color = COLOR_PINK
+	genital = ORGAN_SLOT_BREASTS
+
+/datum/reagent/drug/genital_stimulator/peen_pop
+	name = "Peen Pop"
+	color = COLOR_MOSTLY_PURE_ORANGE
+	genital = ORGAN_SLOT_PENIS
 
 #undef QUIRK_ESTROUS_ACTIVE

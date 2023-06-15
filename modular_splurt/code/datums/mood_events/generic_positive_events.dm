@@ -38,3 +38,8 @@
 	description = span_nicegreen("I tasted familiarity from the blood I drank!\n")
 	mood_change = 2
 	timeout = 2 MINUTES
+
+/datum/mood_event/brainwashed
+	description = span_mind_control("I\'ve been shown the path, and I must follow it!\n")
+	mood_change = 1
+	hidden = TRUE

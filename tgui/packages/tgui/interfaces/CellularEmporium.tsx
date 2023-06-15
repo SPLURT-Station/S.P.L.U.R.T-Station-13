@@ -81,7 +81,7 @@ const AbilityList = (props, context) => {
                     }
                     onClick={() =>
                       act('evolve', {
-                        path: ability.path,
+                        name: ability.name,
                       })}
                   />
                 </Stack.Item>

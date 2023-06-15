@@ -285,19 +285,25 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		if(target.mind.assigned_role in GLOB.command_positions)
 			LAZYADD(caught_string, "Head of Staff")
 			addendum = " Be sure to put your locker items back into your locker!"
+		//SPLURT CHANGES (Addendums changed, only tells antags to ahelp and not heads)
 		if(iscultist(target) || is_servant_of_ratvar(target))
 			LAZYADD(caught_string, "Cultist")
+			addendum = AHELP_FIRST_MESSAGE
 		if(is_devil(target))
 			LAZYADD(caught_string, "Devil")
+			addendum = AHELP_FIRST_MESSAGE
 		if(target.mind.has_antag_datum(/datum/antagonist/gang))
 			LAZYADD(caught_string, "Gangster")
+			addendum = AHELP_FIRST_MESSAGE
 		if(target.mind.has_antag_datum(/datum/antagonist/rev/head))
 			LAZYADD(caught_string, "Head Revolutionary")
+			addendum = AHELP_FIRST_MESSAGE
 		if(target.mind.has_antag_datum(/datum/antagonist/rev))
 			LAZYADD(caught_string, "Revolutionary")
+			addendum = AHELP_FIRST_MESSAGE
 
 		if(caught_string)
-			tgui_alert(target, "You're a [english_list(caught_string)]! [AHELP_FIRST_MESSAGE][addendum]")
+			tgui_alert(target, "You're a [english_list(caught_string)]. [addendum]")
 			target.client.cryo_warned = world.time
 
 	if(!istype(target) || !can_interact(user) || !target.Adjacent(user) || !ismob(target) || isanimal(target) || !istype(user.loc, /turf) || target.buckled)

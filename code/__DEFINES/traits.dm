@@ -210,6 +210,7 @@
 #define TRAIT_TAGGER			"tagger"
 #define TRAIT_PHOTOGRAPHER		"photographer"
 #define TRAIT_MUSICIAN			"musician"
+#define TRAIT_SEXSPELLS			"sexspells"
 #define TRAIT_PERMABONER		"permanent_arousal"
 #define TRAIT_NEVERBONER		"never_aroused"
 #define TRAIT_NYMPHO			"nymphomaniac"

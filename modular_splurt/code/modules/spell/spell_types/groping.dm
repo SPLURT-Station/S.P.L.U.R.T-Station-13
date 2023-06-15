@@ -28,13 +28,13 @@
 	..()
 
 /obj/effect/proc_holder/spell/grope/cast(list/targets, mob/user = usr)
-	victim.be_groped()
+	victim.be_groped(user)
 
 /mob/living/carbon/human
 	var/is_being_groped = 0
 
-/mob/living/carbon/human/proc/be_groped()
-	is_being_groped = 1
+/mob/living/carbon/human/proc/be_groped(var/mob/living/carbon/human/H)
+	is_being_groped = H
 	update_groped_icon()
 
 /mob/living/carbon/human/proc/update_groped_icon()
@@ -46,8 +46,17 @@
 		overlays_standing[GROPING_LAYER] = null
 		return 0
 
-
-
+/mob/living/carbon/human/Life()
+	. = ..()
+	if(is_being_groped)
+		if(prob(50))
+			var/datum/interaction/lewd/titgrope/TG = new
+			TG.do_action(is_being_groped, src)
+			qdel(TG)
+		else
+			var/datum/interaction/lewd/finger/FI = new
+			FI.do_action(is_being_groped, src)
+			qdel(FI)
 
 
 /datum/quirk/sex_magician

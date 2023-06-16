@@ -492,6 +492,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["use_new_playerpanel"]	>> use_new_playerpanel
 	S["gfluid_blacklist"]		>> gfluid_blacklist
 	S["new_character_creator"]	>> new_character_creator
+	S["view_pixelshift"]		>> view_pixelshift
 
 	//favorite outfits
 	S["favorite_outfits"] >> favorite_outfits
@@ -699,6 +700,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["use_new_playerpanel"], use_new_playerpanel)
 	WRITE_FILE(S["gfluid_blacklist"], gfluid_blacklist)
 	WRITE_FILE(S["new_character_creator"], new_character_creator)
+	WRITE_FILE(S["view_pixelshift"], view_pixelshift)
 
 	var/mob/living/carbon/human/H = parent.mob
 	if(istype(H))
@@ -1300,6 +1302,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	cit_character_pref_load(S)
 
+	splurt_character_pref_load(S)
+
 	return 1
 
 /datum/preferences/proc/save_character(bypass_cooldown = FALSE)
@@ -1544,6 +1548,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		S["tcg_decks"] << safe_json_encode(list())
 
 	cit_character_pref_save(S)
+
+	splurt_character_pref_save(S)
 
 	return 1
 

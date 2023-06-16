@@ -101,3 +101,9 @@
 	name = "High-rise Horns"
 	icon = 'modular_splurt/icons/mob/32x48_mutant_bodyparts.dmi'
 	icon_state = "highrisehorns"
+
+/datum/sprite_accessory/horns/halo
+	name = "Halo"
+	icon = 'modular_splurt/icons/mob/mutant_bodyparts.dmi'
+	icon_state = "halo"
+	relevant_layers = list(HORNS_LAYER, BODY_FRONT_LAYER)

@@ -34,7 +34,7 @@
 				"trembles as [t_His] hands run across bare skin.")]</span>")
 	user.visible_message(message = span_lewd("<b>\The [user]</b> [message]"), ignored_mobs = user.get_unconsenting())
 	playlewdinteractionsound(get_turf(user), 'modular_sand/sound/interactions/squelch1.ogg', 50, 1, -1)
-	user.handle_post_sex(NORMAL_LUST, CUM_TARGET_HAND, user)
+	user.handle_post_sex(NORMAL_LUST, CUM_TARGET_HAND, user, ORGAN_SLOT_BREASTS) //SPLURT edit
 
 
 /datum/interaction/lewd/self_nipsuck
@@ -83,4 +83,4 @@
 				modifier = clamp(GLOB.breast_values[milkers.size] - 5, 0, INFINITY)
 			else
 				modifier = 1
-	user.reagents.add_reagent(milktype, rand(1,3 * modifier))
+	user.reagents.add_reagent(milktype, rand(1,3 * modifier) * user.get_fluid_mod(milkers)) //SPLURT edit

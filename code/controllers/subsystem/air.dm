@@ -219,7 +219,7 @@ SUBSYSTEM_DEF(air)
 		if(state != SS_RUNNING)
 			return
 		resumed = 0
-		currentpart = heat_enabled ? SSAIR_TURF_CONDUCTION : SSAIR_ACTIVETURFS
+		currentpart = heat_enabled ? SSAIR_TURF_CONDUCTION : SSAIR_REBUILD_PIPENETS
 
 	// Heat -- slow and of questionable usefulness. Off by default for this reason. Pretty cool, though.
 	if(currentpart == SSAIR_TURF_CONDUCTION)

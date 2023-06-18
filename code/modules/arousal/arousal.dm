@@ -87,7 +87,7 @@
 	log_message("Climaxed using [G] with [target]", LOG_EMOTE)
 	if(condomning)
 		to_chat(src, "<span class='userlove'>You feel the condom bubble outwards and fill up with your spunk</span>")
-		R.trans_to(condomclimax(), R.total_volume)
+		R.trans_to(condomning, R.total_volume)
 	else
 		if(spill && R.total_volume >= 5)
 			R.reaction(turfing ? target : target.loc, TOUCH, 1, 0)

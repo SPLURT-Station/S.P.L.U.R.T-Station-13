@@ -60,8 +60,49 @@
 		// Reduced to 50%
 		M.reagents.add_reagent(/datum/reagent/consumable/notriment, reac_volume*0.5)
 
-/datum/reagent/water/holywater/on_mob_life(mob/living/carbon/M)
+/datum/reagent/water/holywater/on_mob_add(mob/living/carbon/M)
 	. = ..()
+
+	// Check for Hallowed.
+	if(HAS_TRAIT(M,TRAIT_HALLOWED))
+		// Alert user of holy water effect.
+		to_chat(M, span_nicegreen("The holy water nourishes and energizes you!"))
+
+		// Add positive mood.
+		SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "fav_food", /datum/mood_event/favorite_food)
+
+/datum/reagent/water/holywater/on_mob_life(mob/living/carbon/M)
+
+	//Makes holy water generally good for Hallowed users.
+	//Holy water is tough to get in comparison to other medicine anyways.
+	if(HAS_TRAIT(M,TRAIT_HALLOWED))
+		// Reduce disgust.
+		M.adjust_disgust(-3)
+
+		// Restore stamina.
+		M.adjustStaminaLoss(3)
+
+		// Reduce hunger and thirst.
+		M.adjust_nutrition(3)
+		M.adjust_thirst(3)
+
+		// Heal brute and burn.
+		// Accounts for robotic limbs.
+		M.heal_overall_damage(2,2)
+		// Heal oxygen.
+		M.adjustOxyLoss(-2)
+		// Heal clone.
+		M.adjustCloneLoss(-2)
+
+		// Need to remove the holy water from consumer eventually.
+		holder.remove_reagent(type, 0.2)
+
+		// Negate all other holy water effects.
+		return
+
+	// Return normally.
+	. = ..()
+
 	// Makes holy water disgusting and hungering for bloodfledges
 	// Directly antithetic to the effects of blood
 	if(HAS_TRAIT(M,TRAIT_BLOODFLEDGE))

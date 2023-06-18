@@ -1,0 +1,42 @@
+/mob/living/simple_animal/hostile/clocktank
+	name = "Clockwork Mini-Tank"
+	desc = "Small as a cat, as powerful as the real deal."
+	icon = 'modular_splurt/icons/mobs/vharmob.dmi'
+	icon_state = "tankclock"
+	icon_living = "tankclock"
+	icon_dead = "idle"
+	gender = NEUTER
+	speak_chance = 0
+	turns_per_move = 2
+	turns_per_move = 3
+	maxHealth = 200
+	health = 200
+	see_in_dark = 7
+	response_help_continuous  = "pets"
+	response_disarm_continuous = "pushes aside"
+	response_harm_continuous   = "shoots"
+	melee_damage_lower = 20
+	melee_damage_upper = 40
+	armour_penetration = 10
+	attack_verb_continuous = "shoots"
+	projectilesound = 'sound/weapons/emitter.ogg'
+	faction = list("ratvar")
+	ranged = 1
+	rapid = 2
+	rapid_fire_delay = 10
+	retreat_distance = 1
+	minimum_distance = 3
+	projectiletype = /obj/item/projectile/beam/clockworkbeam
+	harm_intent_damage = 5
+	obj_damage = 60
+	a_intent = INTENT_HARM
+	death_sound = 'sound/machines/buzz-two.ogg'
+	deathmessage = "beeps violently and explodes..."
+	move_to_delay = 4
+	loot = list(/obj/effect/gibspawner/robot)
+
+/mob/living/simple_animal/hostile/clocktank/weak
+	name = "Weakened Clockwork Mini-Tank"
+	desc = "Even weaker variants of the mini-tank, don't get cocky tho."
+	maxHealth = 30
+	health = 30

@@ -18,8 +18,10 @@
 	icon = 'modular_splurt/icons/obj/lewd_items/chastity.dmi'
 	icon_state = "standard_cage"
 	w_class = WEIGHT_CLASS_TINY
+	genital_slot = ORGAN_SLOT_PENIS
 
 	var/obj/item/key/chastity_key/key
+	var/obj/item/clothing/underwear/chastity_belt/belt
 
 	var/break_require = TOOL_WIRECUTTER //Which tool is required to break the chastity_cage
 	var/break_time = 25 SECONDS
@@ -43,108 +45,111 @@
 	color = pick(list(COLOR_LIGHT_PINK, COLOR_STRONG_VIOLET, null))
 
 /obj/item/genital_equipment/chastity_cage/Destroy()
-	if(owner)
-		if(istype(loc, /obj/item/organ/genital))
-			unequip(loc, owner)
-				
+	if(equipment.holder_genital)
+		item_removed(src, equipment.holder_genital, usr)
 	. = ..()
 
-/obj/item/genital_equipment/chastity_cage/insert_item_organ(mob/living/user, mob/living/carbon/target, obj/item/organ/genital/target_organ)
-	if(!istype(target_organ, /obj/item/organ/genital/penis))
-		return ..()
+/obj/item/genital_equipment/chastity_cage/item_inserting(datum/source, obj/item/organ/genital/G, mob/user)
+	. = TRUE
 
-	if(!(target.client?.prefs.cit_toggles & CHASTITY))
+	if(belt)
+		return TRUE
+
+	if(!(G.owner.client?.prefs.cit_toggles & CHASTITY))
 		to_chat(user, span_warning("They don't want you to do that!"))
-		return
+		return FALSE
 
-	var/obj/item/organ/genital/penis/penor = target_organ
-	equip(user, target, penor)
+	return equip(user, G.owner, G)
 
-	return
+/obj/item/genital_equipment/chastity_cage/item_inserted(datum/source, obj/item/organ/genital/G, mob/user)
+	. = TRUE
 
-/obj/item/genital_equipment/chastity_cage/proc/unequip_process(obj/item/organ/genital/G, mob/user)
-	if(!owner)
-		return
+	RegisterSignal(equipment.get_wearer(), COMSIG_MOB_GENITAL_TRY_INSERTING)
+
+	if(belt)
+		return belt.handle_cage_equipping(source, G, user)
+
+	var/mob/living/carbon/human/H = G.owner
+
+	playsound(source, 'modular_sand/sound/lewd/latex.ogg', 50, 1, -1) // making it a belt sound
+
+	//turn that flag on
+	ENABLE_BITFIELD(G.genital_flags, GENITAL_CHASTENED)
+
+	var/overlay_icon_state
+
+	overlay_icon_state = "worn_[worn_icon_state || icon_state]"
+	if(resizeable)
+		switch(G.size)
+			if(1 to 2)
+				cage_sprite = 1
+			if(3 to 4)
+				cage_sprite = 2
+			if(5)
+				cage_sprite = 3
+
+		overlay_icon_state += "_[cage_sprite]"
+
+	cage_overlay = mutable_appearance(icon, overlay_icon_state, overlay_layer)
+	cage_overlay.color = color //Set the overlay's color to the cage item's
+
+	H.add_overlay(cage_overlay)
+	is_overlay_on = TRUE
+
+	H.update_genitals()
+	RegisterSignal(H, COMSIG_MOB_ITEM_EQUIPPED, .proc/mob_equipped_item)
+	RegisterSignal(H, COMSIG_MOB_ITEM_DROPPED, .proc/mob_dropped_item)
+
+/obj/item/genital_equipment/chastity_cage/item_removing(datum/source, obj/item/organ/genital/G, mob/user)
+	. = TRUE
+
+	if(!equipment.holder_genital)
+		return FALSE
+
+	var/mob/living/carbon/human/H = istype(G) ? G.owner : G["wearer"]
 
 	var/obj/item/I = user.get_active_held_item()
 
 	if(!I)
 		to_chat(user, "<span class='warning'>You need \a [break_require] or its key to take it off!</span>")
-		return
+		return FALSE
 
 	if(I == key)
 		to_chat(user, "<span class='warning'>You wield \the [I.name] and unlock the cage!</span>")
-		unequip(G, owner)
-		return
+		return TRUE
 
 	if(break_require == TOOL_WIRECUTTER && I.tool_behaviour == break_require)
-		if(!do_mob(user, owner, break_time))
-			return
+		if(!do_mob(user, H, break_time))
+			return FALSE
 	else if(break_require == TOOL_WELDER && I.tool_behaviour == break_require)
 		if(!I.tool_start_check(user, 0))
-			return
+			return FALSE
 
-		playsound(owner, pick(list('sound/items/welder.ogg', 'sound/items/welder2.ogg')), 100)
-		if(!do_mob(user, owner, break_time))
-			return
+		playsound(G.owner, pick(list('sound/items/welder.ogg', 'sound/items/welder2.ogg')), 100)
+		if(!do_mob(user, H, break_time))
+			return FALSE
 	else if(break_require == TOOL_MULTITOOL && I.tool_behaviour == break_require)
-		if(!do_mob(user, owner, break_time))
-			return
+		if(!do_mob(user, H, break_time))
+			return FALSE
 	else
 		to_chat(user, "<span class='warning'>You can't take it off with \the [I.name]</span>")
-		return
+		return FALSE
 
 	to_chat(user, "<span class='warning'>You manage to break \the [src] with \the [I.name]!</span>")
 	qdel(src)
+	return FALSE
 
-/obj/item/genital_equipment/chastity_cage/proc/equip(mob/user, mob/living/carbon/target, obj/item/organ/genital/penis/penor)
-	if(target.has_penis(REQUIRE_EXPOSED) && CHECK_BITFIELD(penor?.genital_flags, HAS_EQUIPMENT))
-		if(locate(/obj/item/genital_equipment/chastity_cage) in penor.contents)
-			to_chat(user, "<span class='notice'>\The [target] already have a cage on them!</span>")
-			return
-		if(isliving(target) && isliving(user))
-			target.visible_message("<span class='warning'>\The <b>[user]</b> is trying to put \the [name] on \the <b>[target]</b>!</span>",\
-						"<span class='warning'>\The <b>[user]</b> is trying to put \the [name] on you!</span>")
-		if(!do_mob(user, target, 4 SECONDS))
-			return
-		if(!user.transferItemToLoc(src, penor))
-			return
+/obj/item/genital_equipment/chastity_cage/item_removed(datum/source, obj/item/organ/genital/G, mob/user)
+	. = TRUE
 
-		playsound(target, 'modular_sand/sound/lewd/latex.ogg', 50, 1, -1) // making it a belt sound
-		owner = target
+	UnregisterSignal(equipment.get_wearer(), COMSIG_MOB_GENITAL_TRY_INSERTING)
+	if(belt)
+		return belt.handle_cage_dropping(source, G, user)
 
-		var/mob/living/carbon/human/H = owner
+	if(!CHECK_BITFIELD(G.genital_flags, GENITAL_CHASTENED) && !equipment.holder_genital)
+		return FALSE
 
-		//turn that flag on
-		ENABLE_BITFIELD(penor.genital_flags, GENITAL_CHASTENED)
-
-		var/overlay_icon_state
-
-		overlay_icon_state = "worn_[worn_icon_state || icon_state]"
-		if(resizeable)
-			switch(penor.size)
-				if(1 to 2)
-					cage_sprite = 1
-				if(3 to 4)
-					cage_sprite = 2
-				if(5)
-					cage_sprite = 3
-
-			overlay_icon_state += "_[cage_sprite]"
-
-		cage_overlay = mutable_appearance(icon, overlay_icon_state, overlay_layer)
-		cage_overlay.color = color //Set the overlay's color to the cage item's
-
-		H.add_overlay(cage_overlay)
-		is_overlay_on = TRUE
-
-		H.update_genitals()
-		RegisterSignal(H, COMSIG_MOB_ITEM_EQUIPPED, .proc/mob_equipped_item)
-		RegisterSignal(H, COMSIG_MOB_ITEM_DROPPED, .proc/mob_dropped_item)
-
-/obj/item/genital_equipment/chastity_cage/proc/unequip(obj/item/organ/genital/G, mob/living/carbon/human/H)
-	if(!CHECK_BITFIELD(G.genital_flags, GENITAL_CHASTENED) && !owner)
-		return
+	var/mob/living/carbon/human/H = G.owner
 
 	DISABLE_BITFIELD(G.genital_flags, GENITAL_CHASTENED)
 	H.cut_overlay(cage_overlay)
@@ -152,19 +157,40 @@
 
 	H.update_genitals()
 
-	H.transferItemToLoc(src, get_turf(H))
-	
-	UnregisterSignal(owner, list(COMSIG_MOB_ITEM_EQUIPPED, COMSIG_MOB_ITEM_DROPPED))
+	UnregisterSignal(H, list(COMSIG_MOB_ITEM_EQUIPPED, COMSIG_MOB_ITEM_DROPPED))
 
-	owner = null
+/obj/item/genital_equipment/chastity_cage/proc/equip(mob/user, mob/living/carbon/target, obj/item/organ/genital/penor)
+	. = TRUE
 
+	if(target.has_penis(REQUIRE_EXPOSED) && CHECK_BITFIELD(penor?.genital_flags, HAS_EQUIPMENT))
+		if(locate(/obj/item/genital_equipment/chastity_cage) in penor.contents)
+			to_chat(user, "<span class='notice'>\The [target] already have a cage on them!</span>")
+			return FALSE
+		if(isliving(target) && isliving(user))
+			target.visible_message("<span class='warning'>\The <b>[user]</b> is trying to put \the [name] on \the <b>[target]</b>!</span>",\
+						"<span class='warning'>\The <b>[user]</b> is trying to put \the [name] on you!</span>")
+		if(!do_mob(user, target, 4 SECONDS))
+			return FALSE
+	else
+		return FALSE
+
+/obj/item/genital_equipment/chastity_cage/proc/try_insert_equipment(mob/living/source, obj/item/organ/genital/G, mob/user)
+	SIGNAL_HANDLER
+
+	if(source == equipment.get_wearer())
+		to_chat(user, "<span class='warning'>You got to take [source.p_their()] cage off first!</span>")
+		return TRUE
 
 /obj/item/genital_equipment/chastity_cage/proc/mob_equipped_item(datum/source, obj/item/I)
+	var/mob/living/carbon/human/H = source
 	if(istype(I, /obj/item/clothing/under) && is_overlay_on)
-		owner.cut_overlay(cage_overlay)
+		H.cut_overlay(cage_overlay)
 		is_overlay_on = FALSE
 
 /obj/item/genital_equipment/chastity_cage/proc/mob_dropped_item(datum/source, obj/item/I)
+	var/mob/living/carbon/human/H = source
 	if(istype(I, /obj/item/clothing/under) && !is_overlay_on)
-		owner.add_overlay(cage_overlay)
+		H.add_overlay(cage_overlay)
 		is_overlay_on = TRUE
+
+#undef BLACKLISTED_GENITALS

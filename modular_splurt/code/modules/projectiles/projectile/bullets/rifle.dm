@@ -45,6 +45,48 @@
 	sharpness = SHARP_NONE
 	embedding = null
 
+/obj/item/projectile/bullet/kaiju
+	name = "8.83 Kaiju Bullet"
+	damage = 100
+	wound_bonus = 0
+	wound_falloff_tile = 0
+
+/obj/item/ammo_casing/kaiju
+	name = "8.83 Kaiju bullet casing"
+	desc = "A Kaiju bullet casing."
+	icon_state = "762-casing"
+	caliber = "kaiju"
+	projectile_type = /obj/item/projectile/bullet/kaiju
+
+/obj/item/projectile/bullet/a543
+	name = "5.43mm bullet"
+	damage = 35
+	wound_bonus = -15
+	wound_falloff_tile = 0
+
+/obj/item/ammo_casing/a543
+	name = "5.43mm bullet casing"
+	desc = "A 5.43mm bullet casing."
+	icon_state = "762-casing"
+	caliber = ".543"
+	projectile_type = /obj/item/projectile/bullet/a543
+
+/obj/item/projectile/bullet/a543/rubber
+	name = "5.43mm Rubber bullet"
+	damage = 1
+	armour_penetration = 0
+	wound_bonus = 0
+	stamina = 30
+	sharpness = SHARP_NONE
+	embedding = null
+
+/obj/item/ammo_casing/a543/rubber
+	name = "5.43mm bullet casing"
+	desc = "A 5.43mm bullet casing."
+	icon_state = "762-casing"
+	caliber = ".543"
+	projectile_type = /obj/item/projectile/bullet/a543/rubber
+
 /obj/item/ammo_casing/g45l
 	name= ".45 Long bullet casing (Rubber)"
 	desc = "An .45 Long bullet casing."

@@ -1544,5 +1544,88 @@
 	action_mob.remove_filter("rad_fiend_glow")
 	action_mob.add_filter("rad_fiend_glow", 1, list("type" = "outline", "color" = glow_color+"30", "size" = glow_range))
 
+/datum/action/ropebunny/conversion
+	name = "Convert Bondage"
+	desc = "Convert five cloth into bondage rope, or convert bondage ropes into bondage bolas."
+	icon_icon = 'modular_splurt/icons/obj/clothing/masks.dmi'
+	button_icon_state = "ballgag"
+
+/datum/action/ropebunny/conversion/Trigger()
+	.=..()
+	var/mob/living/carbon/human/H = owner
+	var/obj/item/I = H.get_active_held_item()
+
+	if(istype(I,/obj/item/stack/sheet/cloth))
+		var/obj/item/stack/sheet/cloth/C = I
+		if(C.amount < 5)
+			to_chat(H, span_warning("There is not enough cloth left to make more rope!"))
+			return
+		else
+			C.amount -= 5
+			new /obj/item/restraints/bondage_rope(H.loc)
+			to_chat(H, span_warning("You successfully create a set of bondage ropes."))
+			return
+	if(istype(I,/obj/item/restraints/bondage_rope))
+		new /obj/item/shibola(H.loc)
+		to_chat(H, span_warning("You successfully create a shibari bola."))
+		qdel(I)
+		return
+	else
+		to_chat(H, span_warning("You must either be holding cloth or a bondage rope to use this ability!"))
+
+/mob/living/proc/alterlimbs()
+	set name = "Alter Limbs"
+	set desc = "Remove or attach a limb!"
+	set category = "IC"
+	set src in view(usr.client)
+
+	var/mob/living/carbon/human/U = usr
+	var/mob/living/carbon/human/C = src
+
+	var/obj/item/I = U.get_active_held_item()
+	if(istype(I,/obj/item/bodypart))
+		var/obj/item/bodypart/L = I
+		if(!C.Adjacent(U))
+			to_chat(U, span_warning("You must be adjacent to [C] to do this!"))
+			return
+		if(C.get_bodypart(L.body_zone))
+			to_chat(U, span_warning("[C] already has a limb attached there!"))
+			return
+		C.visible_message(span_warning("[U] is attempting to attach [L] onto [C]!"), span_userdanger("[U] is attempting to re-attach one of your limbs!"))
+		if(do_after(U,40,target = C) && C.Adjacent(U))
+			L.attach_limb(C)
+			C.visible_message(span_warning("[U] successfully attaches [L] onto [C]"), span_userdanger("[U] has successfully attached a [L.name] onto you; you can use that limb again!"))
+			return
+		else
+			to_chat(U, span_warning("You and [C] must both stand still for you to remove one of their limbs!"))
+			return
+	else
+		if(!C.Adjacent(U))
+			to_chat(U, span_warning("You must be adjacent to [C] to do this!"))
+			return
+		if(U.zone_selected == BODY_ZONE_CHEST || U.zone_selected == BODY_ZONE_HEAD)
+			to_chat(U, span_warning("You must target either an arm or a leg!"))
+			return
+		if(U.zone_selected == BODY_ZONE_PRECISE_GROIN || U.zone_selected == BODY_ZONE_PRECISE_EYES || U.zone_selected == BODY_ZONE_PRECISE_MOUTH)
+			to_chat(U, span_warning("There is no limb here; select an arm or a leg!"))
+			return
+		if(!C.get_bodypart(U.zone_selected))
+			to_chat(U, span_warning("They are already missing that limb!"))
+			return
+		C.visible_message(span_warning("[U] is attempting to remove one of [C]'s limbs!"), span_userdanger("[U] is attempting to disconnect one of your limbs!"))
+		var/obj/item/bodypart/B = C.get_bodypart(U.zone_selected)
+		if(C.Adjacent(U) && do_after(U,40,target = C))
+			var/obj/item/bodypart/D = C.get_bodypart(U.zone_selected)
+			if(B != D)
+				to_chat(U, span_warning("You cannot target a different limb while already removing another!"))
+				return
+			D.drop_limb()
+			C.update_equipment_speed_mods()
+			C.visible_message(span_warning("[U] smoothly disconnects [C]'s [D.name]!"), span_userdanger("[U] has forcefully disconnected your [D.name]!"))
+			return
+		else
+			to_chat(U, span_warning("You and [C] must both stand still for you to remove one of their limbs!"))
+			return
+
 #undef HYPNOEYES_COOLDOWN_NORMAL
 #undef HYPNOEYES_COOLDOWN_BRAINWASH

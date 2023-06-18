@@ -1,132 +1,138 @@
-/obj/item/genital_equipment/chastity_cage/belt // I'm making it a genital_equipment, sorry
+/obj/item/clothing/underwear/chastity_belt
 	name = "chastity belt"
 	icon = 'modular_splurt/icons/obj/lewd_items/chastity.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/obj/clothing/underwear.dmi'
 	icon_state = "belt"
-	slot_flags = ITEM_SLOT_UNDERWEAR
-
 	item_flags = NO_UNIFORM_REQUIRED
+	var/obj/item/genital_equipment/chastity_cage/belt
+	var/obj/item/organ/genital/bepis
 
-	mutantrace_variation = STYLE_DIGITIGRADE
-
-	break_require = TOOL_WELDER
-	overlay_layer = -(GENITALS_FRONT_LAYER - 0.05)
-	resizeable = FALSE
-
-	var/obj/item/organ/genital/blocked_genital
-	var/is_equipped
-
-/obj/item/genital_equipment/chastity_cage/Initialize(mapload, obj/item/key/chastity_key/newkey = null)
+/obj/item/clothing/underwear/chastity_belt/Initialize(mapload, obj/item/genital_equipment/chastity_cage/initial_belt)
+	if(initial_belt)
+		belt = initial_belt
+		belt.belt = src
+		belt.forceMove(src)
 	. = ..()
 
-	cage_overlay = mutable_appearance(icon, "worn_[icon_state]", overlay_layer)
-	cage_overlay.color = color
+/obj/item/clothing/underwear/chastity_belt/Destroy()
+	if(bepis)
+		handle_cage_dropping(null, bepis, null)
+	if(!QDELETED(belt))
+		qdel(belt)
+	. = ..()
 
-/obj/item/genital_equipment/chastity_cage/belt/proc/not_sleepy_equipped(mob/user, slot)
-	if(!CHECK_BITFIELD(slot, ITEM_SLOT_UNDERWEAR) || !ishuman(user) || !ishuman(usr))
+/obj/item/clothing/underwear/chastity_belt/attackby(obj/item/W, mob/user, params)
+	if(!istype(W, /obj/item/genital_equipment/chastity_cage))
+		return ..()
+	if(belt)
+		to_chat(user, span_warning("The belt already has a cage!"))
 		return
 
-	var/mob/holder = usr
-	owner = user
+	belt = W
+	belt.belt = src
+	belt.forceMove(src)
 
-	var/mob/living/carbon/human/H = owner
+/obj/item/clothing/underwear/chastity_belt/AltClick(mob/user)
+	if(belt && !bepis)
+		belt.belt = null
+		user.put_in_hands(belt)
+		belt = null
+	. = ..()
+
+/obj/item/clothing/underwear/chastity_belt/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning, bypass_equip_delay_self)
+	if(!belt)
+		return ..()
+
+	if(!(slot == ITEM_SLOT_UNDERWEAR))
+		return ..()
+
+	if(!(M.client?.prefs.cit_toggles & CHASTITY))
+		to_chat(equipper ? equipper : M, span_warning("They don't want you to do that!"))
+		return FALSE
 
 	var/exposed_genitals = list()
+	var/mob/living/carbon/human/wearer = M
 
-	for(var/obj/item/organ/genital/genital in H.internal_organs)
+	for(var/obj/item/organ/genital/genital in wearer.internal_organs)
 		if(genital.is_exposed() && genital.can_be_chastened())
 			LAZYADD(exposed_genitals, genital)
 
 	if(isemptylist(exposed_genitals))
-		to_chat(holder, "<span class='warning'>\The [H] does not have any genitals exposed!</span>")
-		holder.dropItemToGround(src)
-		return
+		to_chat(equipper ? equipper : M, "<span class='warning'>\The [M] does not have any genitals exposed!</span>")
+		return FALSE
 
-	blocked_genital = input(holder, "Choose a genital to block.") as null|anything in ((exposed_genitals + list("anus")) - list("butt"))
+	var/obj/item/organ/genital/blocked_genital = tgui_input_list(equipper ? equipper : M, "Choose a genital to block.", "Exposed genitals", ((exposed_genitals + list(ORGAN_SLOT_ANUS)) - list(ORGAN_SLOT_BUTT)), null)
 	if(!blocked_genital)
-		holder.dropItemToGround(src)
+		return FALSE
+
+	if(blocked_genital != ORGAN_SLOT_ANUS && locate(/obj/item/genital_equipment/chastity_cage) in blocked_genital?.contents)
+		to_chat(equipper ? equipper : M, "<span class='notice'>\The [M] already have a cage on them!</span>")
+		return FALSE
+	else if(blocked_genital == ORGAN_SLOT_ANUS && HAS_TRAIT(M, TRAIT_CHASTENED_ANUS))
+		to_chat(equipper ? equipper : M, "<span class='notice'>\The [M] already have a cage on them!</span>")
+		return FALSE
+
+	bepis = blocked_genital
+	. = ..()
+
+/obj/item/clothing/underwear/chastity_belt/equipped(mob/user, slot)
+	if(!(slot == ITEM_SLOT_UNDERWEAR))
 		return
 
-	if(blocked_genital != "anus" && locate(/obj/item/genital_equipment/chastity_cage) in blocked_genital?.contents)
-		to_chat(holder, "<span class='notice'>\The [H] already have a cage on them!</span>")
-		holder.dropItemToGround(src)
-		return
+	if(bepis == ORGAN_SLOT_ANUS)
+		bepis = list("genital" = bepis, "wearer" = user)
 
-	if(blocked_genital == "anus" && !H.dna.features["has_anus"])
+	if(belt)
+		belt.item_inserted(belt, bepis, null)
+		belt.equipment.holder_genital = bepis
+	. = ..()
+
+/obj/item/clothing/underwear/chastity_belt/dropped(mob/user)
+	if(QDELETED(belt) && bepis)
+		qdel(src)
+	else if(belt && bepis)
+		belt.item_removed(belt, bepis, null)
+		belt.equipment.holder_genital = null
+		bepis = null
+	. = ..()
+
+/obj/item/clothing/underwear/chastity_belt/proc/handle_cage_equipping(datum/source, obj/item/organ/genital/G, mob/user)
+	. = TRUE
+
+	var/mob/living/carbon/human/H
+	if(!istype(G))
+		H = G["wearer"]
 		ADD_TRAIT(H, TRAIT_CHASTENED_ANUS, CLOTHING_TRAIT)
 		H.anus_toggle_visibility(GEN_VISIBLE_NEVER)
 	else
-		ENABLE_BITFIELD(blocked_genital.genital_flags, GENITAL_CHASTENED)
-
-	is_equipped = TRUE
+		H = G.owner
+		ENABLE_BITFIELD(G.genital_flags, GENITAL_CHASTENED)
 
 	H.update_genitals()
-	H.add_overlay(cage_overlay)
-	is_overlay_on = TRUE
+	RegisterSignal(src, COMSIG_MOB_ITEM_DROPPING, .proc/mob_can_unequip)
 
-	RegisterSignal(H, COMSIG_MOB_ITEM_EQUIPPED, .proc/mob_equipped_item)
-	RegisterSignal(H, COMSIG_MOB_ITEM_DROPPED, .proc/mob_dropped_item)
-
-
-/obj/item/genital_equipment/chastity_cage/belt/mob_can_equip(mob/M, equipper, slot, disable_warning, bypass_equip_delay_self, list/return_warning)
-	if(!(M.client?.prefs.cit_toggles & CHASTITY))
-		return FALSE
-	return ..()
-
-/obj/item/genital_equipment/chastity_cage/belt/equipped(mob/user, slot)
-	INVOKE_ASYNC(src, .proc/not_sleepy_equipped, user, slot)
-	. = .. ()
-
-// This sucks
-/obj/item/genital_equipment/chastity_cage/belt/on_attack_hand(mob/user)
-	if(!is_equipped)
-		. = ..()
-	else
-		unequip_process(blocked_genital, user)
-
-/obj/item/genital_equipment/chastity_cage/belt/attackby(obj/item/I, mob/living/user)
-	if(!is_equipped)
-		. = ..()
-	else
-		unequip_process(blocked_genital, user)
-//
-
-/obj/item/genital_equipment/chastity_cage/belt/unequip(obj/item/organ/genital/G, mob/living/carbon/human/H)
-	if(!blocked_genital)
+/obj/item/clothing/underwear/chastity_belt/proc/mob_can_unequip(obj/item/source, force, newloc, no_move, invdrop, silent)
+	if(force)
 		return
 
-	if(blocked_genital == "anus" && !H.dna.features["has_anus"])
+	if(belt && bepis)
+		. = belt.item_removing(belt, bepis, null)
+		. = . ? null : TRUE
+
+	if(!. || QDELETED(belt))
+		return null
+
+/obj/item/clothing/underwear/chastity_belt/proc/handle_cage_dropping(datum/source, obj/item/organ/genital/G, mob/user)
+	. = TRUE
+
+	var/mob/living/carbon/human/H
+	if(!istype(G))
+		H = G["wearer"]
 		REMOVE_TRAIT(H, TRAIT_CHASTENED_ANUS, CLOTHING_TRAIT)
 		H.anus_toggle_visibility(GEN_VISIBLE_NO_UNDIES)
 	else
-		DISABLE_BITFIELD(blocked_genital.genital_flags, GENITAL_CHASTENED)
-
-	is_equipped = FALSE
+		H = G.owner
+		DISABLE_BITFIELD(G.genital_flags, GENITAL_CHASTENED)
 
 	H.update_genitals()
-	H.cut_overlay(cage_overlay)
-	is_overlay_on = FALSE
-
-	blocked_genital = null
-	H.dropItemToGround(src)
-
-	UnregisterSignal(owner, list(COMSIG_MOB_ITEM_EQUIPPED, COMSIG_MOB_ITEM_DROPPED))
-
-/obj/item/genital_equipment/chastity_cage/belt/Destroy()
-	if(owner)
-		if(!ishuman(owner))
-			return
-
-		unequip(blocked_genital, owner)
-
-	. = ..()
-
-/obj/item/genital_equipment/chastity_cage/belt/insert_item_organ(mob/living/carbon/target, mob/living/user, obj/item/organ/genital/target_organ)
-
-/datum/strippable_item/start_unequip(atom/source, mob/user)
-	var/obj/item/genital_equipment/chastity_cage/belt/belt = get_item(source)
-	if(istype(belt))
-		if(belt.blocked_genital && belt.owner)
-			belt.unequip_process(belt.blocked_genital, user)
-		return
-
-	. = ..()
+	UnregisterSignal(src, COMSIG_MOB_ITEM_DROPPING)

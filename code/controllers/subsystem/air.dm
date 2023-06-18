@@ -153,7 +153,7 @@ SUBSYSTEM_DEF(air)
 			AT.build_network()
 		cost_rebuilds = MC_AVERAGE(cost_rebuilds, TICK_DELTA_TO_MS(TICK_USAGE_REAL - timer))
 		pipenets_needing_rebuilt.Cut()
-		currentpart == SSAIR_ACTIVETURFS
+		currentpart = SSAIR_ACTIVETURFS
 
 	if(currentpart == SSAIR_ACTIVETURFS)
 		timer = TICK_USAGE_REAL

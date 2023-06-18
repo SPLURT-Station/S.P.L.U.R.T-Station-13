@@ -12,6 +12,16 @@
 
 	var/is_on = FALSE
 
+
+/obj/machinery/incubator/update_icon_state()
+	if((!is_operational()) || (!is_on))
+		if (panel_open)
+			icon_state = "smoke0-o"
+		else
+			icon_state = "smoke0"
+	else
+		icon_state = "smoke1"
+
 /obj/machinery/incubator/attackby(obj/item/I, mob/user, params)
 	if(default_deconstruction_screwdriver(user, "mixer0_nopower", "mixer0", I))
 		return
@@ -41,9 +51,9 @@
 		return
 	toggle_power()
 	if(is_on)
-		to_chat(user, span_notice("You turn \The [src] on"))
+		to_chat(user, span_notice("You turn [src] on"))
 	else
-		to_chat(user, span_notice("You turn \The [src] off"))
+		to_chat(user, span_notice("You turn [src] off"))
 
 /obj/machinery/incubator/proc/toggle_power()
 	is_on = !is_on
@@ -68,7 +78,7 @@
 		viable_egg.forceMove(get_turf(src))
 	. = ..()
 
-/obj/machinery/computer/robotics/ui_interact(mob/user, datum/tgui/ui)
+/obj/machinery/incubator/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "IncubatorControl", name)
@@ -82,7 +92,6 @@
 		var/datum/component/pregnancy/preggo = egg_item.GetComponent(/datum/component/pregnancy)
 		if(!preggo)
 			continue
-		var/stage = preggo.stage / preggo.max_stage
 		var/list/data = list(
 			name = egg_item.name,
 			stage = preggo.stage / preggo.max_stage,
@@ -97,16 +106,15 @@
 		if("toggle_power")
 			toggle_power()
 			if(is_on)
-				to_chat(usr, span_notice("You turn \The [src] on"))
+				to_chat(usr, span_notice("You turn [src] on"))
 			else
-				to_chat(usr, span_notice("You turn \The [src] off"))
+				to_chat(usr, span_notice("You turn [src] off"))
 		if("remove")
 			var/ref = params["ref"]
 			var/obj/item/eggo = locate(ref) in contents
 			if(!eggo)
 				return
 			usr.put_in_active_hand(eggo)
-
 
 /obj/item/circuitboard/machine/incubator
 	name = "Egg Incubator (Machine Board)"
@@ -117,3 +125,11 @@
 		/obj/item/stack/cable_coil = 2,
 		/obj/item/stock_parts/manipulator = 1,
 		/obj/item/stack/sheet/glass = 2)
+
+/datum/design/board/incubator
+	name = "Machine Design (Egg Incubator)"
+	desc = "The circuit board for an Incubator."
+	id = "incubator"
+	build_path = /obj/item/circuitboard/machine/incubator
+	category = list ("Medical Machinery")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_ENGINEERING

@@ -131,6 +131,12 @@
 	icon_state = "renamon"
 	covered_limbs = list("Head" = MATRIX_BLUE,  "Left Leg" = MATRIX_BLUE, "Right Leg" = MATRIX_BLUE)
 
+/datum/sprite_accessory/mam_body_markings/hearttattoo
+	name = "Groin Heart Tattoo"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "succubustattoo"
+	covered_limbs = list("Chest" = MATRIX_BLUE)
+
 /******************************************
 ************* Insect Markings *************
 *******************************************/

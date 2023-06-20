@@ -86,7 +86,7 @@
 /datum/quirk/rad_fiend/remove()
 	// Define quirk holder mob
 	var/mob/living/carbon/human/quirk_mob = quirk_holder
-	
+
 	// Remove glow control action
 	var/datum/action/rad_fiend/update_glow/quirk_action = locate() in quirk_mob.actions
 	quirk_action.Remove(quirk_mob)
@@ -211,6 +211,25 @@
 	value = 1
 	var/mood_category ="cloth_eaten"
 	mob_trait = TRAIT_CLOTH_EATER
+
+/datum/quirk/ropebunny
+	name = "Rope Bunny"
+	desc = "You have mastered all forms of bondage! You can create bondage rope out of cloth, and bondage bolas out of bondage rope!"
+	value = 2
+
+/datum/quirk/ropebunny/add()
+	.=..()
+	var/mob/living/carbon/human/H = quirk_holder
+	if (!H)
+		return
+	var/datum/action/ropebunny/conversion/C = new
+	C.Grant(H)
+
+/datum/quirk/ropebunny/remove()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/datum/action/ropebunny/conversion/C = locate() in H.actions
+	C.Remove(H)
+	. = ..()
 
 /datum/quirk/hallowed
 	name = "Hallowed"

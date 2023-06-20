@@ -322,6 +322,8 @@
 
 	if(isorgan(location))
 		var/obj/item/organ/recv = location
+		var/datum/component/genital_equipment/equipment = eggo.GetComponent(/datum/component/genital_equipment)
+		equipment.holder_genital = recv
 		carrier.visible_message(span_userlove("[carrier] laid an egg!"), \
 			span_userlove("You laid an egg inside [recv.owner]'s [recv]"))
 	else

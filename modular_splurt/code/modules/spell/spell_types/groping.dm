@@ -71,9 +71,14 @@
 /datum/quirk/sex_magician/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/effect/proc_holder/spell/grope/S = new /obj/effect/proc_holder/spell/grope
+	var/obj/effect/proc_holder/spell/targeted/touch/penis_max/P = new /obj/effect/proc_holder/spell/targeted/touch/penis_max
+	var/obj/effect/proc_holder/spell/targeted/touch/penis/PP = new /obj/effect/proc_holder/spell/targeted/touch/penis
+	var/obj/effect/proc_holder/spell/eyes_of_lust/eol = new /obj/effect/proc_holder/spell/eyes_of_lust
 	H.mind.AddSpell(S)
-
-
+	H.mind.AddSpell(P)
+	H.mind.AddSpell(PP)
+	H.mind.AddSpell(eol)
+	//H.add_arousal_hud()
 
 
 

@@ -1,7 +1,7 @@
 
 /obj/effect/proc_holder/spell/targeted/touch/penis_max
-	name = "Disintegrate"
-	desc = "This spell charges your hand with vile energy that can be used to violently explode victims."
+	name = "Penis Grower"
+	desc = "This spell charges your hand with vile energy that can be used to grow penises."
 	hand_path = /obj/item/melee/touch_attack/penis_max
 	school = "evocation"
 	charge_max = 600
@@ -40,8 +40,8 @@
 
 
 /obj/effect/proc_holder/spell/targeted/touch/penis
-	name = "Disintegrate"
-	desc = "This spell charges your hand with vile energy that can be used to violently explode victims."
+	name = "Penis Grower"
+	desc = "This spell charges your hand with vile energy that can be used to grow penises."
 	hand_path = /obj/item/melee/touch_attack/penis
 	school = "evocation"
 	charge_max = 600

@@ -28,6 +28,7 @@
 //for antag huds. these are used at the /mob level
 #define ANTAG_HUD		"24"
 #define ANTAGTARGET_HUD "25" // Which players consent via their game settings to be a target for antagonists
+#define AROUSAL_HUD		"26"
 
 //by default everything in the hud_list of an atom is an image
 //a value in hud_list with one of these will change that behavior
@@ -69,5 +70,6 @@
 
 // Which players consent via their game settings to be a target for antagonists
 #define DATA_HUD_ANTAGTARGET	30
+#define DATA_HUD_AROUSAL		31
 
 #define ADD_HUD_TO_COOLDOWN 20 //cooldown for being shown the images for any particular data hud

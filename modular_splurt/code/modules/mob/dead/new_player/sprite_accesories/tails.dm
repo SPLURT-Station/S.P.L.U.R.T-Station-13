@@ -460,3 +460,15 @@
 	dimension_x = 64
 	center = TRUE
 	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/tails/human/spade
+	name = "Demon spade"
+	icon_state = "spade"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	matrixed_sections = MATRIX_RED
+
+/datum/sprite_accessory/tails_animated/human/spade
+	name = "Demon spade"
+	icon_state = "spade"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	matrixed_sections = MATRIX_RED

@@ -113,3 +113,10 @@
 	name = "tunnel fox jacket"
 	path = /obj/item/clothing/suit/toggle/tunnelfox
 	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
+
+/datum/gear/suit/invisijacket
+	name = "invisifiber jacket"
+	description = "A jacket made of transparent fibers, often used with reinforcement kits."
+	path = /obj/item/clothing/suit/invisijacket
+	subcategory = LOADOUT_SUBCATEGORY_SUIT_JACKETS
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION

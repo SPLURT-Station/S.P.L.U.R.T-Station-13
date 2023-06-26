@@ -159,6 +159,24 @@
 /obj/item/gun/ballistic/automatic/m46a1/nomag
 	spawnwithmagazine = FALSE
 
+/obj/item/gun/ballistic/automatic/autoaegis
+	name = "Aegis Assault System"
+	desc = "A standart Paradeus assault rifle, different from it's DMR variant, this one isn't a laser rifle."
+	icon = 'modular_splurt/icons/obj/guns/vhariik4032.dmi'
+	icon_state = "aegisauto"
+	item_state = "moistnugget"
+	fire_sound = 'sound/weapons/rifleshot.ogg'
+	weapon_weight = WEAPON_MEDIUM //heavier than the dmr, as it carries bullets instead of energy
+	mag_type = /obj/item/ammo_box/magazine/aegismag
+	fire_delay = 2
+	w_class = WEIGHT_CLASS_NORMAL
+	slot_flags = ITEM_SLOT_BACK
+	automatic_burst_overlay = FALSE
+	spread = 3
+
+/obj/item/gun/ballistic/automatic/autoaegis/nomag
+	spawnwithmagazine = FALSE
+
 /obj/item/gun/ballistic/automatic/caelus
 	name = "AOD Caelus System"
 	desc = "The Area Of Denial Caelus LMG is a LMG developed by Paradeus in early 2400's it still proves effective to this day"
@@ -176,6 +194,25 @@
 	spread = 20 //Pray and Spray
 
 /obj/item/gun/ballistic/automatic/caelus/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/gun/ballistic/automatic/kaijukill
+	name = "Kaiju SMG"
+	desc = "Kaiju SMG made to kill large creatures and powerful beings such as drakes."
+	icon = 'modular_splurt/icons/obj/guns/vhariik4032.dmi'
+	icon_state = "kaiju"
+	item_state = "moistnugget"
+	fire_sound = 'sound/weapons/rifleshot.ogg'
+	weapon_weight = WEAPON_HEAVY
+	mag_type = /obj/item/ammo_box/magazine/kaijumag
+	fire_delay = 2
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK
+	automatic_burst_overlay = FALSE
+	spread = 3
+	pin = /obj/item/firing_pin/kaiju
+
+/obj/item/gun/ballistic/automatic/kaijukill/nomag
 	spawnwithmagazine = FALSE
 
 /obj/item/gun/ballistic/automatic/m9smg

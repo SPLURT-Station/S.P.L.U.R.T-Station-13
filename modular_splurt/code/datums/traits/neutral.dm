@@ -846,3 +846,16 @@
 	// Remove quirk ability action datum
 	alter_form_action.Remove(quirk_mob)
 	QDEL_NULL(alter_form_action)
+
+/datum/quirk/modular
+	name = "Modular Limbs"
+	desc = "Your limbs are able to be attached and detached easily... Unfortunately, everyone around you can alter your limbs too! Right click yourself to use this quirk."
+	value = 0
+
+/datum/quirk/modular/add()
+	var/mob/living/carbon/human/C = quirk_holder
+	add_verb(C,/mob/living/proc/alterlimbs)
+
+/datum/quirk/modular/remove()
+	var/mob/living/carbon/human/C = quirk_holder
+	remove_verb(C,/mob/living/proc/alterlimbs)

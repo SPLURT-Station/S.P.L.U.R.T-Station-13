@@ -69,7 +69,7 @@
 	desc = "An exotic laser rifle manufactured by Paradeus."
 	icon = 'modular_splurt/icons/obj/guns/vhariik4032.dmi'
 	icon_state = "aegisalt"
-	item_state = "aegisalt"
+	item_state = "aegis"
 	lefthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_righthand.dmi'
 	w_class = WEIGHT_CLASS_NORMAL

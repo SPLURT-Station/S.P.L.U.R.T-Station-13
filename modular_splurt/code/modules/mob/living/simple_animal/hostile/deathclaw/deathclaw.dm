@@ -6,6 +6,7 @@
 	icon_living = "deathclaw"
 	icon_dead = "deathclaw_dead"
 	icon_gib = "deathclaw_gib"
+	pixel_x = -16
 	gender = MALE
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
 	stat_attack = UNCONSCIOUS

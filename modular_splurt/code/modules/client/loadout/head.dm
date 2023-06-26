@@ -84,3 +84,9 @@
 	cost = 2
 	path = /obj/item/clothing/head/deckers
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
+
+/datum/gear/head/invisihat
+	name = "invisifiber hat"
+	description = "A hat made of transparent fibers, often used with reinforcement kits."
+	path = /obj/item/clothing/head/invisihat
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION

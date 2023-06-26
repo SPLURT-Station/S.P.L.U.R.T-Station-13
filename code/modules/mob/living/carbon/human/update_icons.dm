@@ -198,7 +198,7 @@ There are several things that need to be remembered:
 			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_UNDERWEAR) + 1]
 			inv.update_icon()
 
-		if(istype(w_underwear, /obj/item/clothing/underwear) || istype(w_underwear, /obj/item/genital_equipment/chastity_cage/belt)) //SPLURT edit
+		if(istype(w_underwear, /obj/item/clothing/underwear))
 			var/obj/item/clothing/underwear/U = w_underwear
 			U.screen_loc = ui_boxers
 			if(client && hud_used && hud_used.hud_shown && hud_used.extra_shown)

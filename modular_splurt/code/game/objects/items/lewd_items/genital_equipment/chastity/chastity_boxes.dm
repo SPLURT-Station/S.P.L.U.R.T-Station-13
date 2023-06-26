@@ -31,7 +31,7 @@
 
 /obj/item/storage/box/chastity_cage/belt/PopulateContents()
 	var/newkey = new /obj/item/key/chastity_key(src)
-	new /obj/item/genital_equipment/chastity_cage/belt(src, newkey)
+	new /obj/item/clothing/underwear/chastity_belt(src, new /obj/item/genital_equipment/chastity_cage(null, newkey))
 //-------------------------------------------//
 
 //----------E-Stim Chastity Cage Box----------//

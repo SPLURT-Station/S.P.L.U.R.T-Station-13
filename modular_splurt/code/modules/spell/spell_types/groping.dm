@@ -11,6 +11,7 @@
 	action_icon_state = "grope"
 	action_icon  = 'modular_splurt/icons/effects/sex_spells.dmi'
 	var/mob/living/carbon/human/victim
+	clothes_req = NONE
 
 /obj/effect/proc_holder/spell/grope/choose_targets(mob/user = usr)
 	perform(user=user)
@@ -18,7 +19,8 @@
 /obj/effect/proc_holder/spell/grope/perform(list/targets, recharge = 1, mob/user = usr)
 	var/list/possible = list()
 	for(var/mob/living/carbon/human/H in view(7, user))
-		possible.Add(H)
+		if(H.client.prefs.magicalpref == "Yes")
+			possible.Add(H)
 	victim = input(user, "Choose the one to be groped", "Command") in possible
 	if(QDELETED(src) || QDELETED(user))
 		return
@@ -73,11 +75,17 @@
 	var/obj/effect/proc_holder/spell/grope/S = new /obj/effect/proc_holder/spell/grope
 	var/obj/effect/proc_holder/spell/targeted/touch/penis_max/P = new /obj/effect/proc_holder/spell/targeted/touch/penis_max
 	var/obj/effect/proc_holder/spell/targeted/touch/penis/PP = new /obj/effect/proc_holder/spell/targeted/touch/penis
-	var/obj/effect/proc_holder/spell/eyes_of_lust/eol = new /obj/effect/proc_holder/spell/eyes_of_lust
+	var/obj/effect/proc_holder/spell/self/eyes_of_lust/eol = new /obj/effect/proc_holder/spell/self/eyes_of_lust
+	var/obj/effect/proc_holder/spell/hypno/hyp = new /obj/effect/proc_holder/spell/hypno
+	var/obj/effect/proc_holder/spell/self/aoe_lust/aoe = new /obj/effect/proc_holder/spell/self/aoe_lust
+	var/obj/effect/proc_holder/spell/targeted/touch/uncover/unc = new /obj/effect/proc_holder/spell/targeted/touch/uncover
 	H.mind.AddSpell(S)
 	H.mind.AddSpell(P)
 	H.mind.AddSpell(PP)
 	H.mind.AddSpell(eol)
+	H.mind.AddSpell(hyp)
+	H.mind.AddSpell(aoe)
+	H.mind.AddSpell(unc)
 	//H.add_arousal_hud()
 
 

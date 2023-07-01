@@ -15,7 +15,10 @@
 /mob/living/carbon/human/Life()
 	. = ..()
 	if(has_quirk(/datum/quirk/sex_magician))
-		arousal_hud_update()
+		var/datum/atom_hud/data/human/arousal/hud = GLOB.huds[DATA_HUD_AROUSAL]
+		for(var/mob/living/carbon/human/H in view(7, src))
+			hud.add_to_hud(H)
+	arousal_hud_update()
 
 /mob/living/carbon/human/proc/arousal_hud_update()
 	var/image/holder = hud_list[AROUSAL_HUD]
@@ -32,27 +35,25 @@
 		if(75 to INFINITY)
 			holder.icon_state = "hudarousal4"
 
-/obj/effect/proc_holder/spell/eyes_of_lust
+/obj/effect/proc_holder/spell/self/eyes_of_lust
 	name = "Eyes of Lust"
 	desc = "Watch the lust."
 	charge_max = 1200 //variable
 	cooldown_min = 0
-	level_max = 1
 	clothes_req = NONE
 	antimagic_allowed = TRUE
 	action_icon_state = "eyes_of_lust"
 	action_icon  = 'modular_splurt/icons/effects/sex_spells.dmi'
 	var/activated = 0
+	clothes_req = NONE
 
-/obj/effect/proc_holder/spell/eyes_of_lust/cast(list/targets, mob/user = usr)
-	if(!ishuman(user))
-		return 0
-	var/mob/living/carbon/human/H = user
+/obj/effect/proc_holder/spell/self/eyes_of_lust/cast(mob/living/carbon/human/user)
+
 	if(!activated)
-		H.add_arousal_hud()
+		user.add_arousal_hud()
 		activated = 1
 	else
-		H.remove_arousal_hud()
+		user.remove_arousal_hud()
 		activated = 0
 
 

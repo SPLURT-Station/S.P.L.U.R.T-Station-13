@@ -6,6 +6,7 @@
 /datum/preferences
 	max_save_slots = DEFAULT_SAVE_SLOTS
 	var/unholypref = "No" //Goin 2 hell fo dis one
+	var/magicalpref = "No" //Goin 2 hell fo dis one
 	var/list/gfluid_blacklist = list() //Stuff you don't want people to cum into you
 	var/new_character_creator = TRUE // old/new character creator
 	var/show_in_directory = 1	//Show in Character Directory

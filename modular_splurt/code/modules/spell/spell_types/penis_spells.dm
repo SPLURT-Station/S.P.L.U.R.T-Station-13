@@ -8,6 +8,7 @@
 	cooldown_min = 200 //100 deciseconds reduction per rank
 	action_icon_state = "penis-increased"
 	action_icon  = 'modular_splurt/icons/effects/sex_spells.dmi'
+	clothes_req = NONE
 
 /obj/item/melee/touch_attack/penis_max
 	name = "\improper penis increase touch"
@@ -27,10 +28,11 @@
 	do_sparks(4, FALSE, M.loc)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		var/obj/item/organ/genital/penis/P = H.getorganslot(ORGAN_SLOT_PENIS)
-		P.modify_size(30)
-		spawn(15 MINUTES)
-			P.modify_size(-30)
+		if(H.client.prefs.magicalpref == "Yes")
+			var/obj/item/organ/genital/penis/P = H.getorganslot(ORGAN_SLOT_PENIS)
+			P.modify_size(30)
+			spawn(15 MINUTES)
+				P.modify_size(-30)
 	return ..()
 
 
@@ -48,6 +50,7 @@
 	cooldown_min = 200 //100 deciseconds reduction per rank
 	action_icon_state = "penis-increase"
 	action_icon  = 'modular_splurt/icons/effects/sex_spells.dmi'
+	clothes_req = NONE
 
 
 /obj/item/melee/touch_attack/penis
@@ -68,6 +71,7 @@
 	do_sparks(4, FALSE, M.loc)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
+		if(H.client.prefs.magicalpref == "Yes")
 		var/obj/item/organ/genital/penis/P = H.getorganslot(ORGAN_SLOT_PENIS)
 		P.modify_size(10)
 		spawn(15 MINUTES)

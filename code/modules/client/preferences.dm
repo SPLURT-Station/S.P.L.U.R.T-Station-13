@@ -1523,6 +1523,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Edging :</b> <a href='?_src_=prefs;preference=edgingpref'>[(cit_toggles & EDGING) ? "Allowed" : "Disallowed"]</a><br>"
 					dat += "<span style='border-radius: 2px;border:1px dotted white;cursor:help;' title='Enables verbs involving farts, shit and piss.'>?</span> "
 					dat += "<b>Unholy ERP verbs :</b> <a href='?_src_=prefs;preference=unholypref'>[unholypref]</a><br>" //https://www.youtube.com/watch?v=OHKARc-GObU
+					dat += "<b>Magical ERP :</b> <a href='?_src_=prefs;preference=magicalpref'>[magicalpref]</a><br>" //https://www.youtube.com/watch?v=OHKARc-GObU
 					//END OF SPLURT EDIT
 					//SKYRAT EDIT
 					dat += "<span style='border-radius: 2px;border:1px dotted white;cursor:help;' title='Enables verbs involving ear/brain fucking.'>?</span> " //SPLURT Edit (wow! editception???)
@@ -3511,6 +3512,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							unholypref = "No"
 						if("No")
 							unholypref = "Yes"
+				if("magicalpref")
+					switch(magicalpref)
+						if("Yes")
+							magicalpref = "No"
+						if("No")
+							magicalpref = "Yes"
 				//Skyrat edit - *someone* offered me actual money for this shit
 				if("extremepref") //i hate myself for doing this
 					switch(extremepref) //why the fuck did this need to use cycling instead of input from a list

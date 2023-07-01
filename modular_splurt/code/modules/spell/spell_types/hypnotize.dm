@@ -12,6 +12,7 @@
 	action_icon  = 'modular_splurt/icons/effects/sex_spells.dmi'
 	var/mob/living/carbon/human/victim
 	var/hypnophrase
+	clothes_req = NONE
 
 /obj/effect/proc_holder/spell/hypno/choose_targets(mob/user = usr)
 	perform(user=user)
@@ -19,7 +20,8 @@
 /obj/effect/proc_holder/spell/hypno/perform(list/targets, recharge = 1, mob/user = usr)
 	var/list/possible = list()
 	for(var/mob/living/carbon/human/H in view(7, user))
-		possible.Add(H)
+		if(H.client.prefs.magicalpref == "Yes")
+			possible.Add(H)
 	victim = input(user, "Choose the one to be hypnotized", "Command") in possible
 	hypnophrase = input(user, "Choose the phrase", "Command") as text
 	if(QDELETED(src) || QDELETED(user))

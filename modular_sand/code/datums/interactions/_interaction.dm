@@ -99,12 +99,12 @@
 	return TRUE
 
 /// Actually doing the action, has a few checks to see if it's valid, usually overwritten to be make things actually happen and what-not
-/datum/interaction/proc/do_action(mob/living/user, mob/living/target)
+/datum/interaction/proc/do_action(mob/living/user, mob/living/target, var/ignore_distance=FALSE)
 	if(!user_is_target)
 		if(user == target) //tactical href fix
 			to_chat(user, span_warning("You cannot target yourself."))
 			return
-	if(get_dist(user, target) > max_distance)
+	if(get_dist(user, target) > max_distance && !ignore_distance)
 		to_chat(user, span_warning("They are too far away."))
 		return
 	if(needs_physical_contact && !(user.Adjacent(target) && target.Adjacent(user)))

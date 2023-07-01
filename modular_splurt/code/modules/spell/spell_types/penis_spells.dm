@@ -72,10 +72,10 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.client.prefs.magicalpref == "Yes")
-		var/obj/item/organ/genital/penis/P = H.getorganslot(ORGAN_SLOT_PENIS)
-		P.modify_size(10)
-		spawn(15 MINUTES)
-			P.modify_size(-10)
+			var/obj/item/organ/genital/penis/P = H.getorganslot(ORGAN_SLOT_PENIS)
+			P.modify_size(10)
+			spawn(15 MINUTES)
+				P.modify_size(-10)
 	return ..()
 
 

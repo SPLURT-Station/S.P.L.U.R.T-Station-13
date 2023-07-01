@@ -53,11 +53,11 @@
 	if(is_being_groped)
 		if(prob(50))
 			var/datum/interaction/lewd/titgrope/TG = new
-			TG.do_action(is_being_groped, src)
+			TG.do_action(is_being_groped, src, TRUE)
 			qdel(TG)
 		else
 			var/datum/interaction/lewd/finger/FI = new
-			FI.do_action(is_being_groped, src)
+			FI.do_action(is_being_groped, src, TRUE)
 			qdel(FI)
 
 

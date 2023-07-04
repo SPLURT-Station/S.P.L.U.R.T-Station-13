@@ -30,7 +30,7 @@
 	do_sparks(4, FALSE, M.loc)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.client.prefs.magicalpref == "Yes")
+		if(H?.client?.prefs?.magicalpref == "Yes")
 			for(var/obj/item/W in H)
 				H.dropItemToGround(W, 1)
 			if(!H.uncovered)

@@ -19,8 +19,9 @@
 /obj/effect/proc_holder/spell/grope/perform(list/targets, recharge = 1, mob/user = usr)
 	var/list/possible = list()
 	for(var/mob/living/carbon/human/H in view(7, user))
-		if(H.client.prefs.magicalpref == "Yes")
-			possible.Add(H)
+		if(H?.client?.prefs?.magicalpref == "No")
+			continue
+		possible.Add(H)
 	victim = input(user, "Choose the one to be groped", "Command") in possible
 	if(QDELETED(src) || QDELETED(user))
 		return

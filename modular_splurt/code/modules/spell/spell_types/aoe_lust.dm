@@ -12,6 +12,7 @@
 
 /obj/effect/proc_holder/spell/self/aoe_lust/cast(mob/living/carbon/human/user)
 	for(var/mob/living/carbon/human/HH in view(5, user))
-		if(HH.client.prefs.magicalpref == "Yes")
-			HH.add_lust(50)
+		if(HH?.client?.prefs?.magicalpref == "No")
+			continue
+		HH.add_lust(50)
 

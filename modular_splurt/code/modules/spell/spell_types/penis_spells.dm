@@ -28,7 +28,9 @@
 	do_sparks(4, FALSE, M.loc)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.client.prefs.magicalpref == "Yes")
+		if(H?.client?.prefs?.magicalpref == "No")
+			return
+		else
 			var/obj/item/organ/genital/penis/P = H.getorganslot(ORGAN_SLOT_PENIS)
 			P.modify_size(30)
 			spawn(15 MINUTES)
@@ -71,7 +73,9 @@
 	do_sparks(4, FALSE, M.loc)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.client.prefs.magicalpref == "Yes")
+		if(H?.client?.prefs?.magicalpref == "No")
+			return
+		else
 			var/obj/item/organ/genital/penis/P = H.getorganslot(ORGAN_SLOT_PENIS)
 			P.modify_size(10)
 			spawn(15 MINUTES)

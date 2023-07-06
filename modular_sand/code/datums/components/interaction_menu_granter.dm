@@ -113,6 +113,7 @@
 					interaction["type"] = INTERACTION_LEWD
 			else
 				interaction["type"] = INTERACTION_NORMAL
+			interaction["additionalDetails"] = I.additional_details
 			sent_interactions += list(interaction)
 	.["interactions"] = sent_interactions
 

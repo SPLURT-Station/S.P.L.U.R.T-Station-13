@@ -17,15 +17,15 @@
 	. = ..()
 	if(!estim_cage)
 		return
-	
+
 	ui_interact(user)
 
 /obj/item/key/chastity_key/estim/proc/activate(mob/user)
-	if(!estim_cage.owner)
+	if(!estim_cage.equipment.holder_genital)
 		return
 	if(!COOLDOWN_FINISHED(src, last_activation))
 		return
-	var/mob/living/carbon/human/H = estim_cage.owner
+	var/mob/living/carbon/human/H = estim_cage.equipment.get_wearer()
 
 	switch(estim_cage.mode)
 		if("shock")
@@ -34,7 +34,7 @@
 			if(power >= max_power)
 				H.do_jitter_animation()
 				H.Stun(3 SECONDS)
-			
+
 			if(HAS_TRAIT(H, TRAIT_MASO))
 				H.adjust_arousal(20*power, "masochism", maso = TRUE)
 				H.set_lust(5)
@@ -63,7 +63,7 @@
 
 			H.adjust_arousal(20*power, "e-stimcage")
 			H.set_lust(5)
-	
+
 	COOLDOWN_START(src, last_activation, 1 SECONDS)
 
 /obj/item/key/chastity_key/estim/ui_status(mob/user)
@@ -79,7 +79,7 @@
 
 /obj/item/key/chastity_key/estim/ui_data(mob/user)
 	var/list/data = list()
-	
+
 	data["power"] = power
 	data["mode"] = estim_cage.mode
 	data["maxPower"] = max_power
@@ -91,7 +91,7 @@
 	. = ..()
 	if(!ishuman(usr))
 		return
-	
+
 	switch(action)
 		if("change_power")
 			power = params["power"]

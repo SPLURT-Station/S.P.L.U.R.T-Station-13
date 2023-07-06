@@ -199,23 +199,20 @@
 				if("remove")
 					var/obj/item/selected_item = locate(params["equipment"], genital.contents)
 					if(selected_item)
-						if(istype(selected_item, /obj/item/genital_equipment/chastity_cage))
-							var/obj/item/genital_equipment/chastity_cage/CG = selected_item
-							CG.unequip_process(genital, actual_target) // >:(
-							return TRUE
-
-						if(!do_mob(self, actual_target, 5 SECONDS))
+						var/datum/component/genital_equipment/is_equipment = selected_item.GetComponent(/datum/component/genital_equipment)
+						if(!is_equipment)
 							return FALSE
-						if(!self.put_in_hands(selected_item))
-							self.transferItemToLoc(get_turf(self))
-						return TRUE
-					return FALSE
+						return is_equipment.remove_genital(genital, self)
+
 				if("insert")
 					var/obj/item/stuff = self.get_active_held_item()
 					if(!istype(stuff))
 						to_chat(self, span_warning("You need to hold an item to insert it!"))
 						return FALSE
-					if(CHECK_BITFIELD(genital.genital_flags, GENITAL_CHASTENED))
-						to_chat(actual_target, "<span class='warning'>You got to take its cage off first!</span>")
+					var/datum/component/genital_equipment/is_equipment = stuff.GetComponent(/datum/component/genital_equipment)
+					if(!is_equipment)
+						to_chat(self, span_warning("You can't insert this item!"))
 						return FALSE
-					stuff.insert_item_organ(self, actual_target, genital)
+					if(SEND_SIGNAL(actual_target, COMSIG_MOB_GENITAL_TRY_INSERTING, genital, self))
+						return FALSE
+					return is_equipment.insert_genital(genital, self)

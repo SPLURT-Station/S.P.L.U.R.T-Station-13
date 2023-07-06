@@ -562,7 +562,6 @@
 	description = "Naturally found in the crocus and gardenia flowers, this drug acts as a natural and safe aphrodisiac."
 	taste_description = "strawberries"
 	color = "#FFADFF"//PINK, rgb(255, 173, 255)
-	can_synth = FALSE
 
 /datum/reagent/drug/aphrodisiac/on_mob_life(mob/living/M)
 	if(M && M.client?.prefs.arousable && !(M.client?.prefs.cit_toggles & NO_APHRO))
@@ -588,7 +587,6 @@
 	color = "#FF2BFF"//dark pink
 	addiction_threshold = 20
 	overdose_threshold = 20
-	can_synth = FALSE
 
 /datum/reagent/drug/aphrodisiacplus/on_mob_life(mob/living/M)
 	if(M && M.client?.prefs.arousable && !(M.client?.prefs.cit_toggles & NO_APHRO))
@@ -644,7 +642,6 @@
 	taste_mult = 2
 	color = "#D9D9D9"//rgb(217, 217, 217)
 	reagent_state = SOLID
-	can_synth = FALSE
 
 /datum/reagent/drug/anaphrodisiac/on_mob_life(mob/living/M)
 	if(M && M.client?.prefs.arousable && prob(16))
@@ -662,7 +659,6 @@
 	color = "#D9D9D9"//rgb(217, 217, 217)
 	reagent_state = SOLID
 	overdose_threshold = 20
-	can_synth = FALSE
 
 /datum/reagent/drug/anaphrodisiacplus/on_mob_life(mob/living/M)
 	if(M && M.client?.prefs.arousable)

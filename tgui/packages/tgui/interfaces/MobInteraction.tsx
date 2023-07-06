@@ -25,6 +25,7 @@ type InteractionData = {
   key: string;
   desc: string;
   type: number;
+  additionalDetails: string[];
 }
 
 type GenitalInfo = {
@@ -200,7 +201,21 @@ const InteractionsTab = (props, context) => {
                 mb={0.3}
                 onClick={() => act('interact', {
                   interaction: interaction.key,
-                })} />
+                })}>
+                {interaction.additionalDetails && (
+                  interaction.additionalDetails.map(detail => (
+                    <Button
+                      key={detail}
+                      position="absolute"
+                      right="0"
+                      width="5.5%"
+                      tooltip={detail.info}
+                      color={detail.color}
+                    >
+                      <Icon name={detail.icon} />
+                    </Button>
+                  )))}
+              </Button>
             </Table.Row>
           ))
         ) : (

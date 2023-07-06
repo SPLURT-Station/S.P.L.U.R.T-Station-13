@@ -431,11 +431,12 @@
 	max_heat_protection_temperature = COAT_MAX_TEMP_PROTECT
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
-/obj/item/clothing/suit/jacket/flannel
+/obj/item/clothing/suit/toggle/jacket/flannel
 	name = "black flannel jacket"
 	desc = "Comfy and supposedly flammable."
-	icon_state = "flannel"
-	item_state = "flannel"
+	icon_state = "flannel_black"
+	item_state = "flannel_black"
+	togglename = "buttons"
 /obj/item/clothing/suit/toggle/jacket/flannel/red
 	name = "red flannel jacket"
 	desc = "Comfy and supposedly flammable."

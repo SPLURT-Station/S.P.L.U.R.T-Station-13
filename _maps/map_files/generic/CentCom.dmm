@@ -6258,12 +6258,12 @@
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
 "fEe" = (
-/obj/structure/table/reinforced,
-/obj/machinery/light{
-	dir = 1;
-	light_color = "#c1caff"
+/obj/effect/turf_decal/tile/red{
+	dir = 1
 	},
-/obj/structure/window/spawner,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/centcom)
 "fEn" = (
@@ -11503,11 +11503,12 @@
 /turf/open/floor/circuit,
 /area/ctf)
 "kHn" = (
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
+/obj/machinery/light,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/centcom)
@@ -15843,6 +15844,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/tdome/tdomeobserve)
+"oQH" = (
+/obj/structure/table/reinforced,
+/obj/structure/window/spawner,
+/turf/open/floor/plasteel,
+/area/centcom)
 "oRn" = (
 /obj/structure/sign/warning/securearea,
 /turf/closed/indestructible/riveted,
@@ -16179,10 +16185,8 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/centcom/holding)
 "pib" = (
-/obj/structure/table/reinforced,
 /obj/machinery/light,
-/obj/structure/window/spawner,
-/obj/structure/window/spawner/north,
+/obj/structure/target_stake,
 /turf/open/floor/plasteel,
 /area/centcom)
 "pii" = (
@@ -57453,13 +57457,13 @@ rFv
 rFv
 rFv
 cqE
-fEe
-oAx
-oAx
-oAx
-oAx
-oAx
-oAx
+pqr
+hPC
+hPC
+hPC
+hPC
+hPC
+hPC
 pib
 cqE
 rFv
@@ -57710,14 +57714,14 @@ rFv
 rFv
 rFv
 cqE
-kVB
-kHn
-kHn
-kHn
-kHn
-kHn
-kHn
-kHn
+oQH
+oAx
+oAx
+oAx
+oAx
+oAx
+oAx
+oAx
 cqE
 cqE
 cqE
@@ -57967,14 +57971,14 @@ rFv
 rFv
 rFv
 cqE
-iem
-hPC
-hPC
-hPC
-hPC
-hPC
-hPC
-nme
+kVB
+fEe
+fEe
+fEe
+fEe
+fEe
+fEe
+kHn
 cqE
 mrG
 mrG

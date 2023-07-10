@@ -5719,12 +5719,11 @@
 /turf/open/floor/plasteel,
 /area/centcom/control)
 "fdy" = (
-/obj/structure/target_stake,
 /obj/machinery/light{
-	dir = 8;
-	light_color = "#e8eaff"
+	dir = 8
 	},
-/turf/open/floor/engine/air,
+/obj/structure/target_stake,
+/turf/open/floor/plasteel,
 /area/centcom)
 "fdY" = (
 /obj/effect/landmark/thunderdome/one,
@@ -6264,7 +6263,7 @@
 	dir = 1;
 	light_color = "#c1caff"
 	},
-/turf/open/floor/engine/air,
+/turf/open/floor/plasteel,
 /area/centcom)
 "fEn" = (
 /obj/structure/closet,
@@ -6631,8 +6630,8 @@
 /turf/open/floor/plating/asteroid/snow/airless,
 /area/syndicate_mothership)
 "fWl" = (
-/obj/machinery/light,
-/turf/open/floor/engine/air,
+/obj/machinery/light/broken,
+/turf/open/floor/plasteel/damturf/damage4,
 /area/centcom)
 "fWr" = (
 /obj/effect/turf_decal/delivery,
@@ -10164,6 +10163,9 @@
 /obj/item/storage/belt/champion/wrestling/holodeck,
 /turf/open/floor/holofloor/wood,
 /area/holodeck/rec_center/wrestlingarena)
+"jBD" = (
+/turf/open/floor/plasteel/damturf/damage5,
+/area/centcom)
 "jBQ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -12673,7 +12675,8 @@
 /turf/open/floor/carpet,
 /area/wizard_station)
 "lKu" = (
-/turf/open/floor/engine/air,
+/obj/structure/target_stake,
+/turf/open/floor/plasteel,
 /area/centcom)
 "lKx" = (
 /obj/machinery/newscaster/security_unit{
@@ -15175,6 +15178,7 @@
 	armor = list("melee" = 90, "bullet" = 90, "laser" = 90, "energy" = 90, "bomb" = 90, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 90);
 	name = "Shooting Range"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/centcom)
 "oog" = (
@@ -15421,7 +15425,7 @@
 /area/ctf)
 "oAx" = (
 /obj/structure/table/reinforced,
-/turf/open/floor/engine/air,
+/turf/open/floor/plasteel,
 /area/centcom)
 "oAH" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -16109,7 +16113,7 @@
 "pib" = (
 /obj/structure/table/reinforced,
 /obj/machinery/light,
-/turf/open/floor/engine/air,
+/turf/open/floor/plasteel,
 /area/centcom)
 "pii" = (
 /obj/docking_port/stationary{
@@ -20410,11 +20414,7 @@
 /turf/open/floor/plasteel,
 /area/tdome/tdomeobserve)
 "tkR" = (
-/obj/machinery/light{
-	dir = 1;
-	light_color = "#c1caff"
-	},
-/turf/open/floor/engine/air,
+/turf/open/floor/plasteel/damturf/damage2,
 /area/centcom)
 "tlD" = (
 /obj/structure/chair/wood/wings{
@@ -23030,8 +23030,7 @@
 /turf/open/floor/mineral/titanium/blue,
 /area/centcom/holding)
 "wfQ" = (
-/obj/structure/target_stake,
-/turf/open/floor/engine/air,
+/turf/open/floor/plasteel/damturf/damage1,
 /area/centcom)
 "wfS" = (
 /obj/effect/turf_decal/tile/bar{
@@ -23166,6 +23165,12 @@
 	},
 /turf/open/floor/circuit/green,
 /area/tdome/arena_source)
+"wpo" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/centcom)
 "wpu" = (
 /obj/machinery/light{
 	dir = 8
@@ -23621,10 +23626,9 @@
 /area/tdome/tdomeobserve)
 "wPu" = (
 /obj/machinery/light{
-	dir = 8;
-	light_color = "#e8eaff"
+	dir = 8
 	},
-/turf/open/floor/engine/air,
+/turf/open/floor/plasteel/damturf/damage1,
 /area/centcom)
 "wPG" = (
 /obj/structure/sign/poster/contraband/lusty_xenomorph{
@@ -56341,14 +56345,14 @@ rFv
 rFv
 rFv
 cqE
-tkR
+pqr
 fdy
-lKu
+hPC
+wpo
+hPC
 wPu
-lKu
-wPu
-lKu
-fWl
+hPC
+nme
 cqE
 rFv
 rFv
@@ -56598,14 +56602,14 @@ rFv
 rFv
 rFv
 cqE
-lKu
-lKu
-lKu
-lKu
+hPC
 wfQ
+hPC
 lKu
-lKu
-lKu
+hPC
+hPC
+tkR
+jBD
 cqE
 rFv
 rFv
@@ -56855,13 +56859,13 @@ rFv
 rFv
 rFv
 cqE
+pqr
+hPC
 tkR
+hPC
+hPC
 lKu
-lKu
-lKu
-lKu
-lKu
-wfQ
+hPC
 fWl
 cqE
 rFv
@@ -57112,14 +57116,14 @@ rFv
 rFv
 rFv
 cqE
-lKu
-lKu
-lKu
-lKu
-lKu
-lKu
-lKu
-lKu
+hPC
+hPC
+hPC
+hPC
+hPC
+hPC
+hPC
+hPC
 cqE
 rFv
 rFv

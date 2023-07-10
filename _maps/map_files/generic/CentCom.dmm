@@ -7616,6 +7616,16 @@
 /area/syndicate_mothership)
 "gSf" = (
 /obj/structure/closet/bombcloset/security,
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/centcom)
 "gSB" = (
@@ -8729,8 +8739,21 @@
 /turf/closed/indestructible/riveted/uranium,
 /area/wizard_station)
 "iem" = (
-/obj/structure/closet/bombcloset/white,
-/turf/closed/indestructible/riveted,
+/obj/machinery/light{
+	dir = 1;
+	light_color = "#c1caff"
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
 /area/centcom)
 "ieM" = (
 /obj/machinery/vending/cigarette,
@@ -11478,6 +11501,15 @@
 	},
 /turf/open/floor/circuit,
 /area/ctf)
+"kHn" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/centcom)
 "kHr" = (
 /obj/structure/bookcase/random,
 /obj/effect/turf_decal/tile/neutral{
@@ -11917,6 +11949,16 @@
 /obj/item/target/alien,
 /obj/item/target,
 /obj/item/target,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/centcom)
 "kVG" = (
@@ -12150,6 +12192,16 @@
 /area/wizard_station)
 "lft" = (
 /obj/structure/closet/bombcloset/white,
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/centcom)
 "lfx" = (
@@ -25175,6 +25227,16 @@
 /area/centcom/control)
 "yiC" = (
 /obj/structure/closet/gimmick/tacticool,
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/green{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/centcom)
 "yiJ" = (
@@ -57652,13 +57714,13 @@ rFv
 rFv
 cqE
 kVB
-hPC
-hPC
-hPC
-hPC
-hPC
-hPC
-hPC
+kHn
+kHn
+kHn
+kHn
+kHn
+kHn
+kHn
 cqE
 cqE
 cqE
@@ -57908,7 +57970,7 @@ rFv
 rFv
 rFv
 cqE
-pqr
+iem
 hPC
 hPC
 hPC
@@ -58422,7 +58484,7 @@ rFv
 rFv
 rFv
 cqE
-pqr
+iem
 hPC
 hPC
 hPC
@@ -58678,7 +58740,7 @@ rFv
 rFv
 rFv
 rFv
-iem
+cqE
 gSf
 hPC
 hPC
@@ -58935,8 +58997,8 @@ rFv
 rFv
 rFv
 rFv
+cqE
 iem
-pqr
 hPC
 hPC
 hPC

@@ -6263,6 +6263,7 @@
 	dir = 1;
 	light_color = "#c1caff"
 	},
+/obj/structure/window/spawner,
 /turf/open/floor/plasteel,
 /area/centcom)
 "fEn" = (
@@ -7623,6 +7624,10 @@
 	},
 /turf/open/floor/plating/asteroid/snow/airless,
 /area/syndicate_mothership)
+"gSf" = (
+/obj/structure/closet/bombcloset/security,
+/turf/open/floor/plasteel,
+/area/centcom)
 "gSB" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -8733,6 +8738,10 @@
 "idY" = (
 /turf/closed/indestructible/riveted/uranium,
 /area/wizard_station)
+"iem" = (
+/obj/structure/closet/bombcloset/white,
+/turf/closed/indestructible/riveted,
+/area/centcom)
 "ieM" = (
 /obj/machinery/vending/cigarette,
 /obj/effect/turf_decal/tile/neutral{
@@ -12185,6 +12194,10 @@
 	},
 /turf/open/floor/carpet,
 /area/wizard_station)
+"lft" = (
+/obj/structure/closet/bombcloset/white,
+/turf/open/floor/plasteel,
+/area/centcom)
 "lfx" = (
 /obj/structure/table,
 /obj/machinery/readybutton,
@@ -15490,6 +15503,8 @@
 /area/ctf)
 "oAx" = (
 /obj/structure/table/reinforced,
+/obj/structure/window/spawner,
+/obj/structure/window/spawner/north,
 /turf/open/floor/plasteel,
 /area/centcom)
 "oAH" = (
@@ -16178,6 +16193,8 @@
 "pib" = (
 /obj/structure/table/reinforced,
 /obj/machinery/light,
+/obj/structure/window/spawner,
+/obj/structure/window/spawner/north,
 /turf/open/floor/plasteel,
 /area/centcom)
 "pii" = (
@@ -25220,6 +25237,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/control)
+"yiC" = (
+/obj/structure/closet/gimmick/tacticool,
+/turf/open/floor/plasteel,
+/area/centcom)
 "yiJ" = (
 /obj/machinery/abductor/console{
 	team_number = 4
@@ -58208,7 +58229,7 @@ rFv
 rFv
 rFv
 cqE
-hPC
+yiC
 hPC
 hPC
 hPC
@@ -58721,8 +58742,8 @@ rFv
 rFv
 rFv
 rFv
-cqE
-hPC
+iem
+gSf
 hPC
 hPC
 hPC
@@ -58978,7 +58999,7 @@ rFv
 rFv
 rFv
 rFv
-cqE
+iem
 pqr
 hPC
 hPC
@@ -59236,7 +59257,7 @@ rFv
 rFv
 rFv
 cqE
-hPC
+lft
 hPC
 hPC
 hPC

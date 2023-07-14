@@ -47,6 +47,15 @@
 		return // no adjusting made here
 	var/enabling = strength > 0
 	for(var/obj/item/organ/genital/G in internal_organs)
+		//SPLURT edit
+		if(CHECK_BITFIELD(G.genital_flags, GENITAL_CHASTENED) && enabling)
+			to_chat(src, "<span class='userlove'>Your [pick(GLOB.dick_nouns)] twitches against its cage!</span>")
+			continue
+		if(CHECK_BITFIELD(G.genital_flags, GENITAL_IMPOTENT) && enabling)
+			if(istype(G, /obj/item/organ/genital/penis))
+				to_chat(src, "<span class='userlove'>Your [pick(GLOB.dick_nouns)] simply won't go up!</span>")
+			continue
+		//
 		if(G.genital_flags & GENITAL_CAN_AROUSE && !G.aroused_state && prob(abs(strength)*G.sensitivity * arousal_rate))
 			G.set_aroused_state(enabling,cause)
 			G.update_appearance()
@@ -78,17 +87,23 @@
 	log_message("Climaxed using [G] with [target]", LOG_EMOTE)
 	if(condomning)
 		to_chat(src, "<span class='userlove'>You feel the condom bubble outwards and fill up with your spunk</span>")
-		R.trans_to(condomclimax(), R.total_volume)
+		R.trans_to(condomning, R.total_volume)
 	else
 		if(spill && R.total_volume >= 5)
 			R.reaction(turfing ? target : target.loc, TOUCH, 1, 0)
 		if(!turfing)
-			R.trans_to(target, R.total_volume * (spill ? G.fluid_transfer_factor : 1), log = TRUE)
+			// sandstorm edit - advanced cum drip
+			var/amount_to_transfer = R.total_volume * (spill ? G.fluid_transfer_factor : 1)
+			R.trans_to(target, amount_to_transfer, log = TRUE)
+			if(ishuman(target))
+				// Nope, on the mouth doesn't count.
+				if(!(istype(last_lewd_datum, /datum/interaction/lewd/facefuck) || istype(last_lewd_datum, /datum/interaction/lewd/throatfuck)))
+					var/datum/reagent/consumable/semen/salty_drink = target.reagents.get_reagent(/datum/reagent/consumable/semen)
+					salty_drink.amount_to_drip += amount_to_transfer
+			//
 	G.last_orgasmed = world.time
 	R.clear_reagents()
-	//skyrat edit - chock i am going to beat you to death
-	//this is not a joke i am actually going to break your
-	//ribcage
+	//sandstorm edit - gain momentum from dirty deeds.
 	if(!Process_Spacemove(turn(dir, 180)))
 		newtonian_move(turn(dir, 180))
 	//
@@ -146,6 +161,13 @@
 			LAZYADD(genitals_list, G)
 	if(LAZYLEN(genitals_list))
 		var/obj/item/organ/genital/ret_organ = input(src, "with what?", "Climax", null) as null|obj in genitals_list
+		//SPLURT edit
+		if(CHECK_BITFIELD(ret_organ.genital_flags, GENITAL_CHASTENED))
+			visible_message("<span class='userlove'><b>\The [src]</b> fumbles with their cage with a whine!</span>",
+							"<span class='userlove'>You can't climax with a cage on it!</span>",
+							ignored_mobs = get_unconsenting())
+			return
+		//
 		return ret_organ
 	else if(!silent)
 		to_chat(src, "<span class='warning'>You cannot climax without available genitals.</span>")
@@ -224,6 +246,11 @@
 
 	if(!client?.prefs.arousable || !has_dna())
 		return
+
+	if(HAS_TRAIT(src, TRAIT_NEVERBONER))
+		to_chat(src, span_warning("You don't feel like it at all."))
+		return
+
 	if(stat == DEAD)
 		if(!forced_climax)
 			to_chat(src, "<span class='warning'>You can't do that while dead!</span>")

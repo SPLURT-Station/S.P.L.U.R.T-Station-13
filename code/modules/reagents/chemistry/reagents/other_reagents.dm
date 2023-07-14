@@ -2528,8 +2528,9 @@
 	var/obj/effect/decal/cleanable/semen/S = locate() in T
 	if(!S)
 		S = new decal_path(T)
-	if(data["blood_DNA"])
-		S.add_blood_DNA(list(data["blood_DNA"] = data["blood_type"]))
+	// Sandstorm edit - cum carries your genetic info (all of it)
+	if(data)
+		S.add_blood_DNA(data)
 
 /obj/effect/decal/cleanable/semen
 	name = "semen"

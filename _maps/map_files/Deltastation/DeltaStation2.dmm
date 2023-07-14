@@ -13735,10 +13735,6 @@
 /area/security/prison)
 "bcL" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/security/glass{
-	name = "Prison Wing";
-	req_access_txt = "1"
-	},
 /obj/structure/cable/white{
 	icon_state = "1-2"
 	},
@@ -13748,6 +13744,10 @@
 	dir = 1
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/security/glass{
+	name = "Prison Wing";
+	req_access_txt = "2"
+	},
 /turf/open/floor/plasteel,
 /area/security/prison)
 "bcM" = (
@@ -13757,16 +13757,16 @@
 /area/security/prison)
 "bcN" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/security/glass{
-	name = "Prison Wing";
-	req_access_txt = "1"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/security/glass{
+	name = "Prison Wing";
+	req_access_txt = "2"
+	},
 /turf/open/floor/plasteel,
 /area/security/prison)
 "bcO" = (
@@ -14560,10 +14560,6 @@
 /area/security/brig)
 "bha" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/security/glass{
-	name = "Prison Wing";
-	req_access_txt = "1"
-	},
 /obj/structure/cable/white{
 	icon_state = "1-2"
 	},
@@ -14574,6 +14570,10 @@
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
+	},
+/obj/machinery/door/airlock/security/glass{
+	name = "Prison Wing";
+	req_access_txt = "2"
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
@@ -14593,7 +14593,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security/glass{
 	name = "Prison Wing";
-	req_access_txt = "1"
+	req_access_txt = "2"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/effect/turf_decal/stripes/line,
@@ -28675,7 +28675,7 @@
 	},
 /obj/machinery/door/airlock/security/glass{
 	name = "Gear Room";
-	req_access_txt = "63"
+	req_access_txt = "1"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4

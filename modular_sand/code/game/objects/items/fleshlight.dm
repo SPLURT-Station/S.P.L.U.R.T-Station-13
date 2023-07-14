@@ -62,7 +62,7 @@
 					lust_amt = NORMAL_LUST
 	if(message)
 		user.visible_message(span_lewd("[user] [message]."))
-		M.handle_post_sex(lust_amt, null, user)
+		M.handle_post_sex(lust_amt, null, user, ORGAN_SLOT_PENIS) //SPLURT edit
 		playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/bang4.ogg',
 							'modular_sand/sound/interactions/bang5.ogg',
 							'modular_sand/sound/interactions/bang6.ogg'), 70, 1, -1)
@@ -420,7 +420,7 @@
 	if(user_message)
 		if(portal_target && (portal_target?.client?.prefs.toggles & VERB_CONSENT || !portal_target.ckey))
 			user.visible_message("<span class='lewd'>[user] [user_message].</span>")
-			if(M.can_penetrating_genital_cum() && M.handle_post_sex(user_lust_amt, target, portal_target))
+			if(M.can_penetrating_genital_cum() && M.handle_post_sex(user_lust_amt, target, portal_target, target)) //SPLURT edit
 				switch(target)
 					if(CUM_TARGET_PENIS)
 						switch(portalunderwear.targetting)
@@ -464,7 +464,7 @@
 					playlewdinteractionsound(loc, 'modular_sand/sound/interactions/champ_fingering.ogg', 50, 1, -1)
 
 			to_chat(portal_target, "<span class='lewd'>Someone uses the linked [name], they [target_message].</span>")
-			if(portal_target.handle_post_sex(target_lust_amt, portalunderwear.targetting, M))
+			if(portal_target.handle_post_sex(target_lust_amt, portalunderwear.targetting, M, portalunderwear.targetting)) //SPLURT edit
 				switch(portalunderwear.targetting)
 					if(CUM_TARGET_VAGINA)
 						switch(target)

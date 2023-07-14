@@ -97,7 +97,7 @@
 						 span_lewd("\The <b>[target]</b> guides <b>[user]</b>'s hand across bare breasts."),
 						 span_lewd("\The <b>[target]</b> teasingly laces a few fingers over <b>[user]</b>'s knuckles.")))
 			if(target.get_lust() < 10)
-				target.add_lust(1)
+				target.handle_post_sex(NORMAL_LUST, CUM_TARGET_HAND, user, ORGAN_SLOT_BREASTS) //SPLURT edit
 	if(target.a_intent == INTENT_GRAB)
 		user.visible_message(
 				pick(span_lewd("\The <b>[target]</b> grips <b>[user]</b>'s wrist tight."),

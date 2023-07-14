@@ -126,6 +126,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/extremepref = "No" //This is for extreme shit, maybe even literal shit, better to keep it on no by default
 	var/extremeharm = "No" //If "extreme content" is enabled, this option serves as a toggle for the related interactions to cause damage or not
 	var/see_chat_emotes = TRUE
+	var/view_pixelshift = FALSE
 	var/enable_personal_chat_color = FALSE
 	var/personal_chat_color = "#ffffff"
 	var/list/alt_titles_preferences = list()
@@ -1286,6 +1287,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					//SKYRAT CHANGES BEGIN
 					dat += "<b>See Runechat for emotes:</b> <a href='?_src_=prefs;preference=see_chat_emotes'>[see_chat_emotes ? "Enabled" : "Disabled"]</a><br>"
 					//SKYRAT CHANGES END
+					dat += "<b>Shift view when pixelshifting:</b> <a href='?_src_=prefs;preference=view_pixelshift'>[view_pixelshift ? "Enabled" : "Disabled"]</a><br>" //SPLURT Edit
 					dat += "<br>"
 					dat += "<b>Action Buttons:</b> <a href='?_src_=prefs;preference=action_buttons'>[(buttons_locked) ? "Locked In Place" : "Unlocked"]</a><br>"
 					dat += "<br>"
@@ -1516,6 +1518,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Aphrodisiacs:</b> <a href='?_src_=prefs;preference=aphro'>[(cit_toggles & NO_APHRO) ? "Disallowed" : "Allowed"]</a><br>"
 					dat += "<b>Ass Slapping:</b> <a href='?_src_=prefs;preference=ass_slap'>[(cit_toggles & NO_ASS_SLAP) ? "Disallowed" : "Allowed"]</a><br>"
 					//SPLURT EDIT
+					dat += "<b>Chastity Interactions :</b> <a href='?_src_=prefs;preference=chastitypref'>[(cit_toggles & CHASTITY) ? "Allowed" : "Disallowed"]</a><br>"
+					dat += "<b>Genital Stimulation Modifiers :</b> <a href='?_src_=prefs;preference=stimulationpref'>[(cit_toggles & STIMULATION) ? "Allowed" : "Disallowed"]</a><br>"
+					dat += "<b>Edging :</b> <a href='?_src_=prefs;preference=edgingpref'>[(cit_toggles & EDGING) ? "Allowed" : "Disallowed"]</a><br>"
 					dat += "<span style='border-radius: 2px;border:1px dotted white;cursor:help;' title='Enables verbs involving farts, shit and piss.'>?</span> "
 					dat += "<b>Unholy ERP verbs :</b> <a href='?_src_=prefs;preference=unholypref'>[unholypref]</a><br>" //https://www.youtube.com/watch?v=OHKARc-GObU
 					//END OF SPLURT EDIT
@@ -3623,6 +3628,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("enable_personal_chat_color")
 					enable_personal_chat_color = !enable_personal_chat_color
 				//End of skyrat changes
+				if("view_pixelshift") //SPLURT Edit
+					view_pixelshift = !view_pixelshift
 				if("action_buttons")
 					buttons_locked = !buttons_locked
 				if("tgui_fancy")
@@ -3898,6 +3905,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("preferences_tab")
 					if(href_list["tab"])
 						preferences_tab = text2num(href_list["tab"])
+
+				if("chastitypref")
+					cit_toggles ^= CHASTITY
+				if("stimulationpref")
+					cit_toggles ^= STIMULATION
+				if("edgingpref")
+					cit_toggles ^= EDGING
+				//
 
 	if(href_list["preference"] == "gear")
 		if(href_list["clear_loadout"])

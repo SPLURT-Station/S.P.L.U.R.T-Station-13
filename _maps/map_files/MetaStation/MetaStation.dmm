@@ -2072,7 +2072,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security/glass{
 	name = "Prison Wing";
-	req_access_txt = "1"
+	req_access_txt = "2"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -2087,7 +2087,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security/glass{
 	name = "Prison Wing";
-	req_access_txt = "1"
+	req_access_txt = "2"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
@@ -14470,7 +14470,7 @@
 "beR" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Security Maintenance";
-	req_access_txt = "1"
+	req_access_txt = "63"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -14829,7 +14829,7 @@
 /obj/machinery/door/window/brigdoor{
 	name = "Arrivals Security Checkpoint";
 	pixel_y = -8;
-	req_access_txt = "1"
+	req_access_txt = "63"
 	},
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -15270,7 +15270,7 @@
 	},
 /obj/machinery/door/airlock/security{
 	name = "Customs Desk";
-	req_access_txt = "1"
+	req_access_txt = "63"
 	},
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/plasteel,
@@ -51580,7 +51580,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security/glass{
 	name = "Prison Wing";
-	req_access_txt = "1"
+	req_access_txt = "2"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -53480,7 +53480,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security/glass{
 	name = "Security Office";
-	req_one_access_txt = "1;4"
+	req_one_access_txt = "2;4"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable/yellow{
@@ -56193,7 +56193,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/security/glass{
 	name = "Security Office";
-	req_one_access_txt = "1;4"
+	req_one_access_txt = "2;4"
 	},
 /turf/open/floor/plasteel,
 /area/security/office)
@@ -61659,7 +61659,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security/glass{
 	name = "Prison Wing";
-	req_access_txt = "1"
+	req_access_txt = "2"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,

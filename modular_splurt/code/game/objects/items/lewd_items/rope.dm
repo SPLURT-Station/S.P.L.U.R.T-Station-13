@@ -85,7 +85,7 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 				C.visible_message(span_danger("[user] is trying to strengthen the rope on [C]!"), \
 								span_userdanger("[user] is trying to strengthen the rope on [C]!"))
 			process_knot(C, user)
-			
+
 		if(ROPE_TARGET_LEGS, ROPE_TARGET_LEGS_OBJECT)
 			if(C.legcuffed != null && !istype(C.legcuffed, /obj/item/restraints/bondage_rope))
 				to_chat(user, span_warning("[C] is already legcuffed..."))
@@ -121,7 +121,7 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 	if(distance > ROPE_MAX_DISTANCE_MASTER)
 		to_chat(user, span_warning("The rope isn't long enough to tie a knot."))
 		return
-	
+
 	for(var/type in GLOB.bondage_rope_objects)
 		if(istype(O, type))
 			finish_knot_object(O, type)
@@ -171,7 +171,7 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 		if(ROPE_TARGET_LEGS_OBJECT)
 			if(C != user || ROPE_SELF_APPLY_INSTANT)
 				apply_legs(C)
-	
+
 	rope_state = ROPE_STATE_DECIDING_OBJECT
 	set_roped_mob(C)
 	set_roped_master(user)
@@ -210,9 +210,9 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 		if(ROPE_TARGET_LEGS)
 			apply_legs(target)
 	forceMove(target)
-	
+
 	set_rope_slowdown(target)
-	
+
 // Sets state to ROPE_STATE_TIED, applies handcuffed effect (if needed) and disappears rope
 /obj/item/restraints/bondage_rope/proc/finish_knot_object(obj/O, O_type)
 	rope_state = ROPE_STATE_TIED
@@ -238,7 +238,7 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 /obj/item/restraints/bondage_rope/proc/check_rope_state()
 	if(rope_state == ROPE_STATE_UNTIED)
 		return TRUE
-	
+
 	if(roped_mob == null)
 		if(roped_master != null)
 			to_chat(roped_master, span_warning("Seems like whoever you were roping... Is gone?"))
@@ -259,7 +259,7 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 		to_chat(roped_mob, span_warning("The thing you were tied to... Is gone?"))
 		reset_rope_state()
 		return FALSE
-	
+
 	return TRUE
 
 // Restores the rope into the initial state
@@ -379,7 +379,7 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 		return
 	target.handcuffed = src
 	target.update_handcuffed()
-	
+
 // Taken from handcuffs code
 /obj/item/restraints/bondage_rope/proc/apply_legs(mob/living/carbon/target)
 	if(target == null || target.legcuffed != null)
@@ -424,7 +424,7 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 		if(src && target_choice && !user.incapacitated() && in_range(user,src))
 			sanitize_inlist(target_choice, GLOB.bondage_rope_targets, "Legs")
 			rope_target = GLOB.bondage_rope_targets[target_choice]
-	
+
 /obj/item/restraints/bondage_rope/proc/set_roped_mob(mob/living/carbon/new_mob)
 	if(roped_mob != null)
 		UnregisterSignal(roped_mob, COMSIG_MOVABLE_MOVED)
@@ -482,3 +482,41 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 		slowdown = GLOB.bondage_rope_slowdowns[roped_object_type]
 	if(target != null)
 		target.update_equipment_speed_mods()
+
+// For the Shibari Bola
+
+/obj/item/restraints/bondage_rope/proc/bola(mob/living/carbon/C)
+	switch(rope_target)
+		if(ROPE_TARGET_HANDS_IN_FRONT, ROPE_TARGET_HANDS_BEHIND)
+			if(C.get_num_arms(FALSE) >= 2 || C.get_arm_ignore())
+				playsound(loc, cuffsound, 30, 1, -2)
+				SSblackbox.record_feedback("tally", "handcuffs", 1, type)
+				if(C.handcuffed == null)
+					rope_state = ROPE_STATE_TIED
+					C.handcuffed = src
+					C.update_handcuffed()
+					forceMove(C)
+					set_rope_slowdown(C)
+				else
+					var/obj/item/restraints/bondage_rope/rope = C.handcuffed
+					LAZYADD(rope.rope_stack, src.color)
+					rope.set_rope_slowdown(C)
+					reset_rope_state()
+					qdel(src)
+		if(ROPE_TARGET_LEGS)
+			if(C.get_num_legs(FALSE) >= 2 || C.get_leg_ignore())
+				playsound(loc, cuffsound, 30, 1, -2)
+				SSblackbox.record_feedback("tally", "handcuffs", 1, type)
+				if(C.legcuffed == null)
+					rope_state = ROPE_STATE_TIED
+					C.legcuffed = src
+					C.update_equipment_speed_mods()
+					C.update_inv_legcuffed()
+					forceMove(C)
+					set_rope_slowdown(C)
+				else
+					var/obj/item/restraints/bondage_rope/rope = C.legcuffed
+					LAZYADD(rope.rope_stack, src.color)
+					rope.set_rope_slowdown(C)
+					reset_rope_state()
+					qdel(src)

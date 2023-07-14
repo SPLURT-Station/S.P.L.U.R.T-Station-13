@@ -26,7 +26,7 @@
 	assignment = "Hotel Security"
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_MAINT, ACCESS_AWAY_SEC, ACCESS_AWAY_ENGINE)
 
-/obj/item/card/id/away/hotel/manager
+/obj/item/card/id/away/hotel/splurt/manager
 	name = "Manager ID"
 	assignment = "Hotel Manager"
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_MAINT, ACCESS_AWAY_ENGINE, ACCESS_AWAY_SEC, ACCESS_AWAY_GENERIC1)

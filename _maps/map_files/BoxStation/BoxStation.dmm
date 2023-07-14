@@ -1824,7 +1824,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/window/westright{
 	name = "Brig Operations";
-	req_one_access_txt = "4; 1"
+	req_one_access_txt = "4; 2"
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
@@ -2714,7 +2714,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/window/westleft{
 	name = "Brig Operations";
-	req_one_access_txt = "4; 1"
+	req_one_access_txt = "4; 2"
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
@@ -7932,7 +7932,7 @@
 "aBl" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Security Maintenance";
-	req_access_txt = "1"
+	req_access_txt = "63"
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
@@ -9405,7 +9405,7 @@
 "aGZ" = (
 /obj/machinery/door/airlock/security{
 	name = "Security Checkpoint";
-	req_access_txt = "1"
+	req_access_txt = "63"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
@@ -9417,7 +9417,7 @@
 /obj/machinery/door/window/westright{
 	dir = 1;
 	name = "Security Checkpoint";
-	req_access_txt = "1"
+	req_access_txt = "63"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/effect/turf_decal/delivery,
@@ -47863,9 +47863,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/machinery/jukebox/disco{
-	anchored = 1
-	},
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -47887,6 +47884,11 @@
 	},
 /obj/effect/turf_decal/trimline/white/filled/corner,
 /obj/effect/landmark/navigate_destination/bar,
+/obj/machinery/jukebox/disco{
+	anchored = 1;
+	req_access = null;
+	req_one_access = null
+	},
 /turf/open/floor/plasteel/dark,
 /area/service/bar)
 "gCt" = (
@@ -53592,7 +53594,7 @@
 	},
 /obj/machinery/door/window/northleft{
 	name = "Brig Operations";
-	req_one_access_txt = "4; 1"
+	req_one_access_txt = "4; 2"
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
@@ -55551,7 +55553,7 @@
 	},
 /obj/machinery/door/window/northright{
 	name = "Brig Operations";
-	req_one_access_txt = "4; 1"
+	req_one_access_txt = "4; 2"
 	},
 /turf/open/floor/plasteel,
 /area/security/brig)
@@ -59766,7 +59768,7 @@
 	id = "secdormone";
 	name = "Door Bolt Control";
 	pixel_y = -26;
-	req_access_txt = "3"
+	req_access_txt = "63"
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/office)
@@ -66159,7 +66161,7 @@
 	id = "secdormtwo";
 	name = "Door Bolt Control";
 	pixel_y = -26;
-	req_access_txt = "3"
+	req_access_txt = "63"
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/office)

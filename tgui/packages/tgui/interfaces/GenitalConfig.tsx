@@ -278,24 +278,24 @@ const Equipments = (props, context) => {
       <Stack.Item>
         <Table mb={1}>
           {items.map((item, index) =>
-          (
-            <Table.Row key={index} className="candystripe">
-              <Table.Cell bold>
-                {item.name}
-              </Table.Cell>
-              <Table.Cell collapsing textAlign="center">
-                <Button
-                  fluid
-                  content="Remove"
-                  onClick={() => act('equipment', {
-                    equipment: item.key,
-                    genital: genital.key,
-                    equipment_action: "remove",
-                  })}
-                />
-              </Table.Cell>
-            </Table.Row>
-          )
+            (
+              <Table.Row key={index} className="candystripe">
+                <Table.Cell bold>
+                  {item.name}
+                </Table.Cell>
+                <Table.Cell collapsing textAlign="center">
+                  <Button
+                    fluid
+                    content="Remove"
+                    onClick={() => act('equipment', {
+                      equipment: item.key,
+                      genital: genital.key,
+                      equipment_action: "remove",
+                    })}
+                  />
+                </Table.Cell>
+              </Table.Row>
+            )
           )}
         </Table>
       </Stack.Item>

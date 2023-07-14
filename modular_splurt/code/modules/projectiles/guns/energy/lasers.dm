@@ -63,3 +63,22 @@
 	weapon_weight = WEAPON_LIGHT
 	slot_flags = ITEM_SLOT_BACK
 	can_flashlight = 0
+
+/obj/item/gun/energy/aegisaltlaser
+	name = "Aegis DMR"
+	desc = "An exotic laser rifle manufactured by Paradeus."
+	icon = 'modular_splurt/icons/obj/guns/vhariik4032.dmi'
+	icon_state = "aegisalt"
+	item_state = "aegis"
+	lefthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_righthand.dmi'
+	w_class = WEIGHT_CLASS_NORMAL
+	cell_type = /obj/item/stock_parts/cell/upgraded/plus{charge = 5000; maxcharge = 5000}
+	ammo_type = list(/obj/item/ammo_casing/energy/laser/hellfire)
+	burst_size = 3
+	weapon_weight = WEAPON_LIGHT
+	slot_flags = ITEM_SLOT_BACK
+	can_flashlight = 1
+	flight_x_offset = 0
+	flight_y_offset = -700
+	selfcharge = TRUE

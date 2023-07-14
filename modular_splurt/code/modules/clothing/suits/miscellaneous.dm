@@ -102,6 +102,7 @@
 	name = "Runner Jacket"
 	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
+	item_state = null
 
 /obj/item/clothing/suit/jacket/runner/engi
 	name = "Engineer Runner Jacket"
@@ -261,3 +262,13 @@
 
 /obj/item/clothing/head/hooded/corpus/jp //sec
 	icon_state = "corpus_jp"
+
+/obj/item/clothing/suit/invisijacket
+	name = "invisifiber jacket"
+	desc = "A jacket made of transparent fibers, often used with reinforcement kits."
+	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
+	// No overlay, because they're invisible!
+	icon_state = "jacket_transparent"
+	// I feel REALLY bad about doing this, but the default overlay is not transparent (null does not work either).
+	item_state = "jacket_transparent"

@@ -25,6 +25,7 @@ type InteractionData = {
   key: string;
   desc: string;
   type: number;
+  additionalDetails: string[];
 }
 
 type GenitalInfo = {
@@ -72,6 +73,9 @@ type ContentPrefsInfo = {
   no_aphro: boolean,
   no_ass_slap: boolean,
   no_auto_wag: boolean,
+  chastity_pref: boolean,
+  stimulation_pref: boolean,
+  edging_pref: boolean,
 }
 
 export const MobInteraction = (props, context) => {
@@ -197,7 +201,21 @@ const InteractionsTab = (props, context) => {
                 mb={0.3}
                 onClick={() => act('interact', {
                   interaction: interaction.key,
-                })} />
+                })}>
+                {interaction.additionalDetails && (
+                  interaction.additionalDetails.map(detail => (
+                    <Button
+                      key={detail}
+                      position="absolute"
+                      right="0"
+                      width="5.5%"
+                      tooltip={detail.info}
+                      color={detail.color}
+                    >
+                      <Icon name={detail.icon} />
+                    </Button>
+                  )))}
+              </Button>
             </Table.Row>
           ))
         ) : (
@@ -489,6 +507,9 @@ const ContentPreferencesTab = (props, context) => {
     no_aphro,
     no_ass_slap,
     no_auto_wag,
+    chastity_pref,
+    stimulation_pref,
+    edging_pref,
   } = data;
   return (
     <Table>
@@ -741,6 +762,42 @@ const ContentPreferencesTab = (props, context) => {
           selected={no_auto_wag}
           onClick={() => act('pref', {
             pref: 'no_auto_wag',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Chastity Interactions"
+          icon={chastity_pref ? "toggle-on" : "toggle-off"}
+          selected={chastity_pref}
+          onClick={() => act('pref', {
+            pref: 'chastity_pref',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Genital Stimulation Modifiers"
+          icon={stimulation_pref ? "toggle-on" : "toggle-off"}
+          selected={stimulation_pref}
+          onClick={() => act('pref', {
+            pref: 'stimulation_pref',
+          })}
+        />
+      </Table.Row>
+      <Table.Row>
+        <Button
+          fluid
+          mb={0.3}
+          content="Edging"
+          icon={edging_pref ? "toggle-on" : "toggle-off"}
+          selected={edging_pref}
+          onClick={() => act('pref', {
+            pref: 'edging_pref',
           })}
         />
       </Table.Row>

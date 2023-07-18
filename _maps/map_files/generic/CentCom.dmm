@@ -2035,11 +2035,8 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced,
-/obj/item/teleportation_scroll{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/teleportation_scroll,
+/obj/item/book/granter/martial/krav_maga,
+/obj/item/book/granter/martial/cqc,
 /turf/open/floor/plasteel/bluespace,
 /area/centcom)
 "bOC" = (
@@ -2879,6 +2876,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/supply)
+"cGF" = (
+/obj/structure/table/wood,
+/obj/item/nullrod,
+/obj/item/nullrod,
+/obj/item/nullrod,
+/turf/open/floor/plasteel,
+/area/centcom)
 "cGR" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 8
@@ -3435,6 +3439,7 @@
 	},
 /obj/structure/table/reinforced,
 /obj/structure/glowshroom/single,
+/obj/item/sharpener/super,
 /obj/item/sharpener/super,
 /turf/open/floor/plasteel,
 /area/centcom)
@@ -4001,6 +4006,9 @@
 /area/tdome/tdomeobserve)
 "dFn" = (
 /obj/structure/table/wood,
+/obj/item/stack/sheet/mineral/bananium{
+	amount = 50
+	},
 /turf/open/floor/plasteel,
 /area/centcom)
 "dFs" = (
@@ -9502,9 +9510,48 @@
 	icon_state = "wood"
 	},
 /area/holodeck/rec_center/lounge)
+"iMN" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/item/storage/box/holy/follower,
+/obj/item/storage/box/holy/hospitaller,
+/obj/item/storage/box/holy/papal,
+/obj/item/storage/box/holy/sentinel,
+/obj/item/storage/box/holy/student,
+/obj/item/storage/box/holy/teutonic,
+/obj/item/storage/box/holy/witchhunter,
+/obj/item/storage/box/holy_grenades,
+/obj/item/storage/box/holy/sentinel,
+/turf/open/floor/plasteel/bluespace,
+/area/centcom)
 "iMR" = (
 /obj/structure/table/reinforced,
 /obj/item/grenade/clusterbuster/cleaner,
+/obj/item/grenade/clusterbuster/antiweed,
+/obj/item/grenade/clusterbuster/clf3,
+/obj/item/grenade/clusterbuster/emp,
+/obj/item/grenade/clusterbuster/facid,
+/obj/item/grenade/clusterbuster/inferno,
+/obj/item/grenade/clusterbuster/metalfoam,
+/obj/item/grenade/clusterbuster/segment,
+/obj/item/grenade/clusterbuster/slime,
+/obj/item/grenade/clusterbuster/slime/volatile,
+/obj/item/grenade/clusterbuster/smoke,
+/obj/item/grenade/clusterbuster/soap,
+/obj/item/grenade/clusterbuster/spawner_manhacks,
+/obj/item/grenade/clusterbuster/spawner_spesscarp,
+/obj/item/grenade/clusterbuster/syndieminibomb,
+/obj/item/grenade/clusterbuster/teargas,
+/obj/item/grenade/clusterbuster/spawner_manhacks,
 /turf/open/floor/plasteel/bluespace,
 /area/centcom)
 "iNO" = (
@@ -12071,8 +12118,8 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/item/switchblade,
 /obj/structure/table/wood,
+/obj/item/gun/ballistic/automatic/pistol/deagle/gold,
 /turf/open/floor/plasteel,
 /area/centcom)
 "kXX" = (
@@ -13049,11 +13096,9 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced,
-/obj/item/uplink/debug,
-/obj/item/uplink/debug,
-/obj/item/uplink/nuclear/debug,
-/obj/item/uplink/nuclear/debug,
-/obj/item/uplink/clownop,
+/obj/item/storage/box/syndicate/contractor_loadout,
+/obj/item/storage/box/syndicate/contractor_loadout,
+/obj/item/storage/box/syndicate/contractor_loadout,
 /turf/open/floor/plasteel,
 /area/centcom)
 "mae" = (
@@ -14363,6 +14408,8 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
+/obj/item/storage/backpack/duffelbag/clown/cream_pie,
+/obj/item/storage/backpack/duffelbag/clown/syndie,
 /turf/open/floor/plasteel/bluespace,
 /area/centcom)
 "nrH" = (
@@ -14734,7 +14781,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/machinery/jukebox/disco/indestructible,
+/obj/machinery/jukebox,
 /turf/open/floor/plasteel/bluespace,
 /area/centcom)
 "nIP" = (
@@ -15764,6 +15811,23 @@
 /obj/effect/turf_decal/tile/red,
 /turf/open/floor/holofloor,
 /area/holodeck/rec_center/firingrange)
+"oKb" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/item/storage/box/hero,
+/obj/item/storage/box/hero/astronaut,
+/obj/item/storage/box/hero/scottish,
+/turf/open/floor/plasteel/bluespace,
+/area/centcom)
 "oKs" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating,
@@ -19120,6 +19184,25 @@
 "rWD" = (
 /turf/open/indestructible/airblock,
 /area/fabric_of_reality)
+"rXi" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/item/abductor/baton,
+/obj/item/abductor/gizmo,
+/obj/item/abductor/silencer,
+/obj/item/clothing/suit/armor/abductor/vest,
+/obj/item/clothing/head/helmet/abductor,
+/turf/open/floor/plasteel/bluespace,
+/area/centcom)
 "rYg" = (
 /obj/structure/table/wood,
 /obj/item/nullrod,
@@ -19339,8 +19422,8 @@
 /obj/item/clothing/suit/space/hardsuit/ert/paranormal,
 /obj/item/clothing/suit/space/hardsuit/ert/paranormal/beserker,
 /obj/item/clothing/suit/space/hardsuit/ert/paranormal/inquisitor,
-/obj/item/clothing/suit/space/hardsuit/shielded/swat,
 /obj/item/clothing/suit/space/hardsuit/syndi/owl,
+/obj/item/clothing/suit/space/hardsuit/shielded/swat,
 /obj/item/clothing/suit/space/hardsuit/syndi/elite,
 /obj/item/clothing/suit/space/hostile_environment,
 /obj/structure/table/reinforced,
@@ -19349,10 +19432,10 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral{
-	dir = 8
+	dir = 1
 	},
 /obj/effect/turf_decal/tile/neutral{
-	dir = 1
+	dir = 8
 	},
 /turf/open/floor/plasteel/bluespace,
 /area/centcom)
@@ -19383,12 +19466,18 @@
 /area/syndicate_mothership)
 "sjF" = (
 /obj/structure/table/wood,
-/obj/item/spellbook{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/spellbook,
-/obj/item/dice/d20/fate,
+/obj/item/coin/gold/debug,
+/obj/item/coin/diamond,
+/obj/item/coin/green,
+/obj/item/coin/iron,
+/obj/item/coin/mythril,
+/obj/item/coin/plasma,
+/obj/item/coin/red,
+/obj/item/coin/runite,
+/obj/item/coin/thunderdome,
+/obj/item/coin/twoheaded,
+/obj/item/coin/antagtoken,
+/obj/item/coin/adamantine,
 /turf/open/floor/wood,
 /area/centcom)
 "sjV" = (
@@ -19933,9 +20022,8 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/item/storage/pill_bottle/stimulant,
-/obj/item/reagent_containers/pill/adminordrazine,
 /obj/structure/table/wood,
+/obj/item/reagent_containers/glass/bottle/adminordrazine,
 /turf/open/floor/plasteel,
 /area/centcom)
 "sIF" = (
@@ -21532,6 +21620,7 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/structure/flora/ausbushes/pointybush,
 /obj/item/reagent_containers/pill/adminordrazine,
+/obj/machinery/nuclearbomb/syndicate/bananium,
 /turf/open/floor/grass,
 /area/centcom)
 "uvz" = (
@@ -22002,8 +22091,8 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced,
-/obj/item/storage/toolbox/brass/prefilled/ratvar/admin,
 /obj/item/storage/toolbox/syndicate,
+/obj/item/his_grace,
 /turf/open/floor/plasteel/bluespace,
 /area/centcom)
 "uSl" = (
@@ -22112,8 +22201,8 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/item/storage/pill_bottle/zoom,
 /obj/structure/table/wood,
+/obj/item/melee/skateboard/hoverboard/admin,
 /turf/open/floor/plasteel,
 /area/centcom)
 "uYx" = (
@@ -22549,6 +22638,7 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced,
+/obj/item/construction/rcd/combat/admin,
 /turf/open/floor/plasteel/bluespace,
 /area/centcom)
 "vuV" = (
@@ -63933,7 +64023,7 @@ rFv
 rFv
 rFv
 rOS
-dFn
+cGF
 dIo
 bfm
 opI
@@ -70367,7 +70457,7 @@ rhm
 rhm
 rhm
 rhm
-nrr
+oKb
 cqE
 rFv
 rFv
@@ -70617,14 +70707,14 @@ rFv
 rFv
 rFv
 cqE
-nrr
+rXi
 iGW
 wYB
 kUu
 shJ
 bjb
 gPu
-nrr
+iMN
 cqE
 rFv
 rFv

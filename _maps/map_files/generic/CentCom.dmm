@@ -776,7 +776,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/green{
+/obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
@@ -1754,7 +1754,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/obj/effect/turf_decal/stripes/white/line{
+/obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -6990,11 +6990,21 @@
 /area/syndicate_mothership)
 "gnW" = (
 /obj/structure/table,
-/obj/item/paper{
-	info = "Hey, you, new to kidnapping crew? The name’s Zydras, professional Slaver and here to help you. So! First step is to actually kidnap crewmembers. Take your things from the lockers - especially the **collection tool** - and hop onto the shuttle. I personally recommend docking somewhere close to arrivals that’s still outside of view from an engineer space-walking. It’s a good spot to enter the station as it typically has multiple airlocks. Don’t forget: **Never try to harm people.** You can use your telebaton, flash, the likes, but harming our kidnappees is not going to please the boss. As for intimidation, giving your kidnappees the easy way in can often save a lot of trouble. Don’t bother going against a target that fights back too well - there’s always easier fish. If you really want to slow someone down, you can craft Bolas out of metal and cable cuffs. Helps catch the quick ones! Once they’re stunned down, grab them and put cuffs onto their asses and use your capture tool to send them right back to the shuttle’s holding cell. It’s recommended you kidnap one crew at a time, else they could attempt to break out together. Once we've got a cutie back at our den, all we do is wait for the station to pay the ransom. In the meantime, you can raise our profits by pinning said slave against the Sex research racks at the end of the holding brig. Nets us money, eases their needs, and we’re busting. When you're done taking advantage of your slavetoy, drag them to the export pad and use the computer to return them home. Don't forget to give back their things, as much as it'd be nice to keep those sunglasses, it gets us in more trouble than we want. Good luck, Slaver!";
-	name = "Zydras' Guide to the slave trade"
+/obj/item/reagent_containers/food/condiment/saltshaker{
+	layer = 3.1;
+	pixel_x = -2;
+	pixel_y = 2
 	},
-/turf/open/floor/plasteel/dark,
+/obj/item/reagent_containers/food/condiment/peppermill{
+	desc = "Often used to flavor food or make people sneeze. Fashionably moved to the left side of the table.";
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/food/condiment/enzyme{
+	pixel_x = 9;
+	pixel_y = 3
+	},
+/turf/open/floor/plasteel/cafeteria,
 /area/slavers)
 "goi" = (
 /obj/structure/chair/comfy/black{
@@ -8775,7 +8785,9 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced,
-/obj/item/storage/fancy/donut_box,
+/obj/item/gun/energy/beam_rifle{
+	pin = /obj/item/firing_pin
+	},
 /turf/open/floor/plasteel,
 /area/centcom)
 "ihZ" = (
@@ -9367,11 +9379,45 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/effect/turf_decal/trimline/red/filled/line{
+/obj/structure/table/reinforced,
+/obj/item/dnainjector/chameleonmut,
+/obj/item/dnainjector/chavmut,
+/obj/item/dnainjector/clumsymut,
+/obj/item/dnainjector/coughmut,
+/obj/item/dnainjector/cryokinesis,
+/obj/item/dnainjector/deafmut,
+/obj/item/dnainjector/dwarf,
+/obj/item/dnainjector/elvismut,
+/obj/item/dnainjector/epimut,
+/obj/item/dnainjector/geladikinesis,
+/obj/item/dnainjector/glassesmut,
+/obj/item/dnainjector/hulkmut,
+/obj/item/dnainjector/insulated,
+/obj/item/dnainjector/lasereyesmut,
+/obj/item/dnainjector/mindread,
+/obj/item/dnainjector/mutemut,
+/obj/item/dnainjector/olfaction,
+/obj/item/dnainjector/radioactive,
+/obj/item/dnainjector/shock,
+/obj/item/dnainjector/smilemut,
+/obj/item/dnainjector/stuttmut,
+/obj/item/dnainjector/swedishmut,
+/obj/item/dnainjector/telemut,
+/obj/item/dnainjector/thermal,
+/obj/item/dnainjector/tourmut,
+/obj/item/dnainjector/unintelligiblemut,
+/obj/item/dnainjector/void,
+/obj/item/dnainjector/wackymut,
+/obj/item/dnainjector/xraymut,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/effect/turf_decal/arrows/red{
-	dir = 8
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
 	},
 /turf/open/floor/plasteel/bluespace,
 /area/centcom)
@@ -12896,6 +12942,13 @@
 	pixel_y = 5;
 	req_access_txt = "7"
 	},
+/obj/machinery/button/ignition{
+	id = "mixingsparker";
+	pixel_x = -25;
+	pixel_y = -5
+	},
+/obj/structure/table/reinforced,
+/obj/item/orion_ship,
 /turf/open/floor/plasteel,
 /area/centcom)
 "lTH" = (
@@ -13013,10 +13066,8 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 8
 	},
-/obj/structure/fans/tiny,
-/obj/machinery/door/airlock/centcom{
-	name = "Slaver Hideout Access";
-	req_access_txt = "152"
+/obj/effect/turf_decal/tile/bar{
+	dir = 4
 	},
 /obj/structure/rack,
 /obj/item/stack/sheet/mineral/wood/twenty,
@@ -13287,8 +13338,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layenia/garden{
-	icon_state = "layenia2"
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -14794,7 +14846,20 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 8
 	},
-/turf/open/floor/plasteel,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/machinery/defibrillator_mount/loaded{
+	pixel_y = 28
+	},
+/obj/machinery/computer/operating,
+/turf/open/floor/plasteel/dark,
 /area/slavers)
 "nPq" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -17467,8 +17532,6 @@
 /obj/effect/turf_decal/tile/green{
 	dir = 8
 	},
-/obj/item/paper/guides/jobs/hydroponics,
-/obj/item/book/manual/hydroponics_pod_people,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding)
 "qxj" = (
@@ -23708,8 +23771,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/turf/open/floor/plating/asteroid/layenia/garden{
-	icon_state = "layenia2"
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8

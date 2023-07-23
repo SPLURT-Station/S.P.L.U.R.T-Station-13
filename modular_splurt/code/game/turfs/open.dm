@@ -42,7 +42,7 @@
 
 /turf/open/floor/plating/layeniaredder
 	name = "crimson rock"
-	desc = "crimson rocks surrond you."
+	desc = "crimson rocks surround you."
 	icon = 'modular_splurt/icons/turf/layenia.dmi'
 	icon_state = "layenia"
 	heat_capacity = INFINITY

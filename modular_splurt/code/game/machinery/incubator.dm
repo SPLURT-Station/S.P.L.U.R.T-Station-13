@@ -5,13 +5,13 @@
 	layer = BELOW_OBJ_LAYER
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "smoke0"
-	use_power = ACTIVE_POWER_USE
+	use_power = IDLE_POWER_USE
 	active_power_usage = 200
+	idle_power_usage = 20
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	circuit = /obj/item/circuitboard/machine/incubator
 
 	var/is_on = FALSE
-
 
 /obj/machinery/incubator/update_icon_state()
 	if((!is_operational()) || (!is_on))
@@ -59,8 +59,10 @@
 	is_on = !is_on
 	if(is_on)
 		START_PROCESSING(SSmachines, src)
+		use_power = ACTIVE_POWER_USE
 	else
 		STOP_PROCESSING(SSmachines, src)
+		use_power = IDLE_POWER_USE
 	update_icon()
 
 /obj/machinery/incubator/process()
@@ -107,29 +109,13 @@
 			toggle_power()
 			if(is_on)
 				to_chat(usr, span_notice("You turn [src] on"))
+				use_power = ACTIVE_POWER_USE
 			else
 				to_chat(usr, span_notice("You turn [src] off"))
+				use_power = IDLE_POWER_USE
 		if("remove")
 			var/ref = params["ref"]
 			var/obj/item/eggo = locate(ref) in contents
 			if(!eggo)
 				return
 			usr.put_in_active_hand(eggo)
-
-/obj/item/circuitboard/machine/incubator
-	name = "Egg Incubator (Machine Board)"
-	icon_state = "medical"
-	build_path = /obj/machinery/incubator
-	req_components = list(
-		/obj/item/reagent_containers/glass/beaker = 2,
-		/obj/item/stack/cable_coil = 2,
-		/obj/item/stock_parts/manipulator = 1,
-		/obj/item/stack/sheet/glass = 2)
-
-/datum/design/board/incubator
-	name = "Machine Design (Egg Incubator)"
-	desc = "The circuit board for an Incubator."
-	id = "incubator"
-	build_path = /obj/item/circuitboard/machine/incubator
-	category = list ("Medical Machinery")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_ENGINEERING

@@ -174,3 +174,19 @@
 
 /datum/design/adv_r_arm
 	category = list("Prosthetics", "Medical Designs")
+
+/datum/design/board/incubator
+	name = "Machine Design (Egg Incubator)"
+	desc = "The circuit board for an Incubator."
+	id = "incubator"
+	build_path = /obj/item/circuitboard/machine/incubator
+	category = list ("Medical Machinery")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_ENGINEERING
+
+/datum/design/board/embryonator
+	name = "Machine Design (Honeystone's Genetic Daycare)"
+	desc = "The circuit board for a genetic daycare machine."
+	id = "embryonator"
+	build_path = /obj/item/circuitboard/machine/embryonator
+	category = list ("Medical Machinery")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_ENGINEERING

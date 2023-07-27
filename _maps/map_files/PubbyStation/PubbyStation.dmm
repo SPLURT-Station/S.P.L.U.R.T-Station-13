@@ -3253,7 +3253,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security/glass{
 	name = "Prison Wing";
-	req_access_txt = "1"
+	req_access_txt = "2"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/effect/turf_decal/tile/red{
@@ -5503,7 +5503,7 @@
 	},
 /obj/machinery/door/airlock/security{
 	name = "Security Access";
-	req_access_txt = "1"
+	req_access_txt = "2"
 	},
 /turf/open/floor/plating,
 /area/maintenance/fore)
@@ -5715,7 +5715,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security{
 	name = "Security Office";
-	req_access_txt = "1"
+	req_access_txt = "2"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -9421,7 +9421,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security/glass{
 	name = "Prison Wing";
-	req_access_txt = "1"
+	req_access_txt = "2"
 	},
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden,
 /obj/effect/turf_decal/tile/red{
@@ -19634,7 +19634,7 @@
 /obj/machinery/door/window/westright{
 	dir = 2;
 	name = "Security Checkpoint";
-	req_access_txt = "1"
+	req_access_txt = "63"
 	},
 /obj/machinery/door/poddoor/preopen{
 	id = "papersplease";
@@ -20725,7 +20725,7 @@
 "aZK" = (
 /obj/machinery/door/airlock/security{
 	name = "Security Checkpoint";
-	req_access_txt = "1"
+	req_access_txt = "63"
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -21203,7 +21203,7 @@
 	name = "Shutters Control Button";
 	pixel_x = -26;
 	pixel_y = 6;
-	req_access_txt = "1"
+	req_access_txt = "63"
 	},
 /obj/machinery/button/flasher{
 	id = "brigentry";
@@ -21649,7 +21649,7 @@
 /obj/machinery/door/window/westright{
 	dir = 1;
 	name = "Security Checkpoint";
-	req_access_txt = "1"
+	req_access_txt = "63"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/door/poddoor/preopen{
@@ -25421,13 +25421,13 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/machinery/portable_atmospherics/scrubber,
 /obj/effect/turf_decal/tile/green{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/green{
 	dir = 4
 	},
+/obj/machinery/lapvend,
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
 "bly" = (
@@ -55035,7 +55035,7 @@
 "jmt" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Brig Desk";
-	req_access_txt = "1"
+	req_access_txt = "2"
 	},
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden,
 /obj/machinery/door/firedoor,
@@ -56609,6 +56609,21 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
+"lRY" = (
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/scrubber,
+/turf/open/floor/plasteel/dark,
+/area/hallway/primary/aft)
 "lTx" = (
 /obj/structure/sign/departments/security{
 	pixel_y = 32
@@ -64328,7 +64343,7 @@
 "wZT" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Medbay Maintenance";
-	req_one_access_txt = "12;45;5;9"
+	req_one_access_txt = "45;5;9"
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/engine)
@@ -99160,7 +99175,7 @@ bkm
 bly
 bmD
 bJI
-boS
+lRY
 bqb
 brs
 bsS

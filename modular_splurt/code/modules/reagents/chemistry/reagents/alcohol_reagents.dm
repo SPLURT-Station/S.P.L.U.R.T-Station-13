@@ -29,7 +29,7 @@
 			return
 
 	// Perform drink effect
-	C.clothing_burst(C)
+	C.clothing_burst(TRUE)
 
 /datum/reagent/consumable/ethanol/lean
 	name = "Lean"

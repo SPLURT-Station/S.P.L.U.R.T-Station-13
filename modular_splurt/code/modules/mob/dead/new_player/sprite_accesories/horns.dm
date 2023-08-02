@@ -50,3 +50,60 @@
 	center = TRUE
 	color_src = MATRIXED
 	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/horns/crippledbull
+	name = "Crippled Bull"
+	icon = 'modular_splurt/icons/mob/mutant_bodyparts.dmi'
+	icon_state = "crippledbull"
+
+/datum/sprite_accessory/horns/hollowpoint
+	name = "Hollow-Points"
+	icon = 'modular_splurt/icons/mob/mutant_bodyparts.dmi'
+	icon_state = "hollowpoint"
+
+/datum/sprite_accessory/horns/ticketrack
+	name = "Ticket Rack"
+	icon = 'modular_splurt/icons/mob/mutant_bodyparts.dmi'
+	icon_state = "ticketrack"
+
+/datum/sprite_accessory/horns/hopefulhorns
+	name = "Hopeful Horns"
+	icon = 'modular_splurt/icons/mob/mutant_bodyparts.dmi'
+	icon_state = "hopefulhorns"
+
+/datum/sprite_accessory/horns/analyticalantlers
+	name = "Analytical Antlers"
+	icon = 'modular_splurt/icons/mob/mutant_bodyparts.dmi'
+	icon_state = "analyticalantlers"
+
+/datum/sprite_accessory/horns/spidersspikes
+	name = "Spiders Spikes"
+	icon = 'modular_splurt/icons/mob/mutant_bodyparts.dmi'
+	icon_state = "spidersspikes"
+
+/datum/sprite_accessory/horns/broadcurls
+	name = "Broad Curls"
+	icon = 'modular_splurt/icons/mob/mutant_bodyparts.dmi'
+	icon_state = "broadcurls"
+	relevant_layers = list(HORNS_LAYER, BODY_FRONT_LAYER)
+
+/datum/sprite_accessory/horns/big/paintedpoints
+	name = "Painted Points"
+	icon = 'modular_splurt/icons/mob/32x48_mutant_bodyparts.dmi'
+	icon_state = "paintedpoints"
+
+/datum/sprite_accessory/horns/big/whoshorns
+	name = "Who's Horns?"
+	icon = 'modular_splurt/icons/mob/32x48_mutant_bodyparts.dmi'
+	icon_state = "whoshorns"
+
+/datum/sprite_accessory/horns/big/highrisehorns
+	name = "High-rise Horns"
+	icon = 'modular_splurt/icons/mob/32x48_mutant_bodyparts.dmi'
+	icon_state = "highrisehorns"
+
+/datum/sprite_accessory/horns/halo
+	name = "Halo"
+	icon = 'modular_splurt/icons/mob/mutant_bodyparts.dmi'
+	icon_state = "halo"
+	relevant_layers = list(HORNS_LAYER, BODY_FRONT_LAYER)

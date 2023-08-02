@@ -1,6 +1,3 @@
-#define MAXIMUM_PIXEL_SHIFT 16
-#define PASSABLE_SHIFT_THRESHOLD 8
-
 /mob
 	/// If we are in the shifting setting.
 	var/shifting = FALSE
@@ -60,40 +57,44 @@
 	passthroughable = NONE
 	// switch(direction) // diagonal pixel-shifting, rejoice
 	if(CHECK_BITFIELD(direction, NORTH))
-		if(pixel_y <= MAXIMUM_PIXEL_SHIFT + base_pixel_y)
+		if(pixel_y <= PIXEL_SHIFT_MAXIMUM + base_pixel_y)
 			pixel_y++
-			client?.pixel_y++
+			if(client?.prefs.view_pixelshift) //SPLURT Edit
+				client?.pixel_y++
 			is_shifted = TRUE
 	if(CHECK_BITFIELD(direction, EAST))
-		if(pixel_x <= MAXIMUM_PIXEL_SHIFT + base_pixel_x)
+		if(pixel_x <= PIXEL_SHIFT_MAXIMUM + base_pixel_x)
 			pixel_x++
-			client?.pixel_x++
+			if(client?.prefs.view_pixelshift) //SPLURT Edit
+				client?.pixel_x++
 			is_shifted = TRUE
 	if(CHECK_BITFIELD(direction, SOUTH))
-		if(pixel_y >= -MAXIMUM_PIXEL_SHIFT + base_pixel_y)
+		if(pixel_y >= -PIXEL_SHIFT_MAXIMUM + base_pixel_y)
 			pixel_y--
-			client?.pixel_y--
+			if(client?.prefs.view_pixelshift) //SPLURT Edit
+				client?.pixel_y--
 			is_shifted = TRUE
 	if(CHECK_BITFIELD(direction, WEST))
-		if(pixel_x >= -MAXIMUM_PIXEL_SHIFT + base_pixel_x)
+		if(pixel_x >= -PIXEL_SHIFT_MAXIMUM + base_pixel_x)
 			pixel_x--
-			client?.pixel_x--
+			if(client?.prefs.view_pixelshift) //SPLURT Edit
+				client?.pixel_x--
 			is_shifted = TRUE
 
 	// Yes, I know this sets it to true for everything if more than one is matched.
 	// Movement doesn't check diagonals, and instead just checks EAST or WEST, depending on where you are for those.
-	if(pixel_y > PASSABLE_SHIFT_THRESHOLD)
+	if(pixel_y > PIXEL_SHIFT_PASSABLE_THRESHOLD)
 		passthroughable |= EAST | SOUTH | WEST
-	if(pixel_x > PASSABLE_SHIFT_THRESHOLD)
+	if(pixel_x > PIXEL_SHIFT_PASSABLE_THRESHOLD)
 		passthroughable |= NORTH | SOUTH | WEST
-	if(pixel_y < -PASSABLE_SHIFT_THRESHOLD)
+	if(pixel_y < -PIXEL_SHIFT_PASSABLE_THRESHOLD)
 		passthroughable |= NORTH | EAST | WEST
-	if(pixel_x < -PASSABLE_SHIFT_THRESHOLD)
+	if(pixel_x < -PIXEL_SHIFT_PASSABLE_THRESHOLD)
 		passthroughable |= NORTH | EAST | SOUTH
 
 /mob/living/Login()
 	. = ..()
-	if(is_shifted)
+	if(is_shifted && client?.prefs.view_pixelshift) //SPLURT Edit
 		client?.pixel_x = pixel_x - base_pixel_x
 		client?.pixel_y = pixel_y - base_pixel_y
 
@@ -102,6 +103,3 @@
 	if(!istype(mover, /obj/item/projectile) && !mover.throwing && passthroughable & get_dir(src, mover))
 		return TRUE
 	return ..()
-
-#undef MAXIMUM_PIXEL_SHIFT
-#undef PASSABLE_SHIFT_THRESHOLD

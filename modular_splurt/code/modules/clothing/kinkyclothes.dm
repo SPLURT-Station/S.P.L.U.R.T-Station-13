@@ -69,18 +69,20 @@
 /obj/item/clothing/under/centcomdress
 	name = "CentCom Dress Uniform"
 	desc = "A stylish yet revealing dress uniform worn in extravagant black and gold, worthy of those who sit around and watch cameras all day in an office."
-	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
 	icon_state = "ccdress"
-	mob_overlay_icon = 'modular_splurt/icons/mobs/suits.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/uniform_digi.dmi'
 	item_state = "r_suit"
 	can_adjust = FALSE
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 	//We will never know why CC can make their skimpy outfits tough as nails
 	body_parts_covered = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	cold_protection = CHEST|GROIN|ARMS
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	heat_protection = CHEST|GROIN|ARMS
-	armor = list("melee" = 60, "bullet" = 80, "laser" = 80, "energy" = 90, "bomb" = 50, "bio" = 100, "rad" = 50, "fire" = 50, "acid" = 50)
+	armor = list("melee" = 60, "bullet" = 80, "laser" = 80, "energy" = 90, "bomb" = 50, "bio" = 100, "rad" = 51, "fire" = 50, "acid" = 50)
 
 /obj/item/clothing/under/centcomdress/vk
 	name = "Virginkiller CentCom Dress Uniform"

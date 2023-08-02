@@ -37,7 +37,7 @@
 	var/mob/living/carbon/target_user = imp_in
 
 	// Perform LPD effect
-	target_user.clothing_burst(target_user)
+	target_user.clothing_burst(TRUE)
 
 /*
  * Action datums

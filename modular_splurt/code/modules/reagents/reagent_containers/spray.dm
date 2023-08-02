@@ -23,3 +23,17 @@
 
 	// Return normally
 	. = ..()
+
+/obj/item/reagent_containers/spray/ultimate
+	name = "ultimate spray bottle"
+	desc = "A bottle to spray above them all."
+	volume = 750
+	amount_per_transfer_from_this = 2
+	current_range = 5
+	spray_range = 5
+	stream_range = 5
+	stream_amount = 2
+	icon = 'modular_splurt/icons/obj/janitor.dmi'
+	icon_state = "cleaneralien"
+	item_state = "cleaneralien"
+	custom_materials = list(/datum/material/iron = 2250, /datum/material/glass = 2250, /datum/material/plasma = 2250, /datum/material/diamond = 370, /datum/material/bluespace = 370)

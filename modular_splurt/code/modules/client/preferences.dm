@@ -8,6 +8,10 @@
 	var/unholypref = "No" //Goin 2 hell fo dis one
 	var/list/gfluid_blacklist = list() //Stuff you don't want people to cum into you
 	var/new_character_creator = TRUE // old/new character creator
+	var/show_in_directory = 1	//Show in Character Directory
+	var/directory_tag = "Unset" //Sorting tag to use in character directory
+	var/directory_erptag = "Unset"	//ditto, but for non-vore scenes
+	var/directory_ad = ""		//Advertisement stuff to show in character directory.
 
 /datum/preferences/New(client/C)
 	// Check if readable fluids list exists
@@ -695,6 +699,7 @@
 			//SKYRAT CHANGES BEGIN
 			dat += "<b>See Runechat for emotes:</b> <a href='?_src_=prefs;preference=see_chat_emotes'>[see_chat_emotes ? "Enabled" : "Disabled"]</a><br>"
 			//SKYRAT CHANGES END
+			dat += "<b>Shift view when pixelshifting:</b> <a href='?_src_=prefs;preference=view_pixelshift'>[view_pixelshift ? "Enabled" : "Disabled"]</a><br>" //SPLURT Edit
 			dat += "<br>"
 			dat += "<b>Action Buttons:</b> <a href='?_src_=prefs;preference=action_buttons'>[(buttons_locked) ? "Locked In Place" : "Unlocked"]</a><br>"
 			dat += "<br>"
@@ -1195,7 +1200,7 @@
 							var/new_marking_color = input(user, "Choose your character's marking color:", "Character Preference","#"+color_list[color_number]) as color|null
 							if(new_marking_color)
 								var/temp_hsv = RGBtoHSV(new_marking_color)
-								if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3]) // mutantcolors must be bright, but only if they affect the skin
+								if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3] || !CONFIG_GET(flag/character_color_limits)) // mutantcolors must be bright, but only if they affect the skin
 									color_list[color_number] = "#[sanitize_hexcolor(new_marking_color, 6)]"
 								else
 									to_chat(user, "<span class='danger'>Invalid color. Your color is not bright enough.</span>")

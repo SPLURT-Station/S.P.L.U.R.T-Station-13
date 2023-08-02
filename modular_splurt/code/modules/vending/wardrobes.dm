@@ -31,9 +31,28 @@
 /obj/machinery/vending/wardrobe/law_wardrobe/Initialize(mapload)
 	var/list/extra_products = list(
 		/obj/item/clothing/under/rank/civilian/lawyer/galaxy_blue = 3,
-		/obj/item/clothing/under/rank/civilian/lawyer/galaxy_red = 3
+		/obj/item/clothing/under/rank/civilian/lawyer/galaxy_red = 3,
+		/obj/item/clothing/under/suit/black_really_collared = 3,
+		/obj/item/clothing/under/suit/black_really_collared/skirt = 3,
+		/obj/item/clothing/under/suit/inferno = 3,
+		/obj/item/clothing/under/suit/inferno/skirt = 3,
+		/obj/item/clothing/under/suit/inferno/beeze
 	)
 	LAZYADD(products, extra_products)
+	. = ..()
+
+/obj/machinery/vending/wardrobe/hydro_wardrobe/Initialize(mapload)
+	var/list/extra_contraband = list(
+		/obj/item/clothing/under/suit/scarface = 2,
+	)
+	LAZYADD(contraband, extra_contraband)
+	. = ..()
+
+/obj/machinery/vending/wardrobe/cargo_wardrobe/Initialize(mapload)
+	var/list/extra_contraband = list(
+		/obj/item/clothing/under/suit/scarface = 2,
+	)
+	LAZYADD(contraband, extra_contraband)
 	. = ..()
 
 /obj/machinery/vending/wardrobe/blueshield_wardrobe

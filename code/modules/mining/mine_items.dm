@@ -75,7 +75,7 @@
 	req_access = list(ACCESS_MINING)
 	circuit = /obj/item/circuitboard/computer/mining_shuttle
 	shuttleId = "mining"
-	possible_destinations = "mining_home;mining_away;landing_zone_dock;mining_public"
+	possible_destinations = "mining_home;mining_away;landing_zone_dock;mining_public;lavaland_common_away"
 	no_destination_swap = TRUE
 	var/static/list/dumb_rev_heads = list()
 
@@ -85,7 +85,7 @@
 	req_access = list()
 	circuit = /obj/item/circuitboard/computer/mining_shuttle/common
 	shuttleId = "mining_shuttle_common"
-	possible_destinations = "commonmining_home;lavaland_common_away"
+	possible_destinations = "commonmining_home;lavaland_common_away_xenoarch;lavaland_common_away_2"
 
 
 /obj/machinery/computer/shuttle/mining/on_attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)

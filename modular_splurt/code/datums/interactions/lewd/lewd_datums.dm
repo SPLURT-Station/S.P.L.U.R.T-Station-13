@@ -705,6 +705,19 @@
 
 	playlewdinteractionsound(target, 'sound/items/bikehorn.ogg', 40, 1, -1)
 
+/datum/interaction/lewd/clothesplosion
+	description = "Explode out of your clothes"
+	user_is_target = TRUE
+	interaction_sound = null
+	max_distance = 0
+	write_log_user = "Exploded out of their clothes"
+
+/datum/interaction/lewd/clothesplosion/display_interaction(mob/living/carbon/user, mob/living/carbon/target)
+	if(!istype(user))
+		return
+
+	user.clothing_burst(FALSE)
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// 									U N H O L Y										   /////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////

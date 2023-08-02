@@ -52,6 +52,7 @@
 				H.confused += 2.5
 				H.stuttering += 1
 				H.vomit(10, 0, 1, 0, 1, 0)
+				H.disgust -= (DISGUST_LEVEL_VERYGROSS/5)
 			H.Dizzy(5)
 		if(H.disgust >= DISGUST_LEVEL_DISGUSTED)
 			if(prob(25))

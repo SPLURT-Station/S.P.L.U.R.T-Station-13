@@ -120,15 +120,24 @@
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
 
-/datum/job/janitor/New()
+/datum/job/janitor/New() // "Custodian" is formally an ERT Janitor's job title. It causes conflict with ID and manifest. Yell at upstream maintainer(s).
+	var/list/rem_titles = list(
+		"Custodian"
+	)
 	var/list/extra_titles = list(
+		"Custodial Technician",
 		"Slutty Maid"
 	)
+	LAZYREMOVE(alt_titles, rem_titles)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
 
 /datum/job/chaplain/New() // Yell at upstream maintainer(s) to fix "Bichop" title.
+	var/list/rem_titles = list(
+		"Bichop"
+	)
 	var/list/extra_titles = list(
+		"Bishop",
 		"Priestess",
 		"Prior",
 		"Monk",
@@ -136,6 +145,7 @@
 		"Counselor"
 	)
 	LAZYADD(alt_titles, extra_titles)
+	LAZYREMOVE(alt_titles, rem_titles)
 	. = ..()
 
 /datum/job/clown // Sorry, but no TWO entertainer titles.
@@ -301,9 +311,13 @@
 		"Police Officer",
 		"Slutcurity Officer"
 	)
+	var/list/rem_titles = list(
+		"Peacekeeper"
+	)
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
 		LAZYADD(extra_titles, "Spookcurity Officer")
 	LAZYADD(alt_titles, extra_titles)
+	LAZYREMOVE(alt_titles, rem_titles)
 	. = ..()
 
 /datum/job/warden/New()

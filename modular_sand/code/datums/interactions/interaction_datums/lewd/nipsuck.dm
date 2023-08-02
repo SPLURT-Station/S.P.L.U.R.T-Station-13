@@ -22,12 +22,12 @@
 				if("f", "g", "h")
 					modifier = 3
 				else
-					if(B.size in B.breast_values)
-						modifier = clamp(B.breast_values[B.size] - 5, 0, INFINITY)
+					if(B.size in GLOB.breast_values)
+						modifier = clamp(GLOB.breast_values[B.size] - 5, 0, INFINITY)
 					else
 						modifier = 1
 			if(B.fluid_id)
-				user.reagents.add_reagent(B.fluid_id, rand(1,2 * modifier))
+				user.reagents.add_reagent(B.fluid_id, rand(1,2 * modifier) * user.get_fluid_mod(B)) //SPLURT edit
 
 	if(user.a_intent == INTENT_HARM)
 		user.visible_message(
@@ -42,8 +42,8 @@
 				if("f", "g", "h")
 					modifier = 3
 				else
-					if(B.size in B.breast_values)
-						modifier = clamp(B.breast_values[B.size] - 5, 0, INFINITY)
+					if(B.size in GLOB.breast_values)
+						modifier = clamp(GLOB.breast_values[B.size] - 5, 0, INFINITY)
 					else
 						modifier = 1
 			if(B.fluid_id)
@@ -63,8 +63,8 @@
 				if("f", "g", "h")
 					modifier = 3
 				else
-					if(B.size in B.breast_values)
-						modifier = clamp(B.breast_values[B.size] - 5, 0, INFINITY)
+					if(B.size in GLOB.breast_values)
+						modifier = clamp(GLOB.breast_values[B.size] - 5, 0, INFINITY)
 					else
 						modifier = 1
 			if(B.fluid_id)
@@ -90,7 +90,7 @@
 						span_lewd("\The <b>[target]</b> trembles as their breasts get molested."),
 						span_lewd("\The <b>[target]</b> quivers in arousal as \the <b>[user]</b> delights themselves on their milk.")))
 			if(target.get_lust() < 5)
-				target.set_lust(5)
+				target.handle_post_sex(5, CUM_TARGET_MOUTH, user, ORGAN_SLOT_BREASTS) //SPLURT edit
 		if(target.a_intent == INTENT_DISARM)
 			if (target.restrained())
 				if(!target.has_breasts())
@@ -120,7 +120,7 @@
 							span_lewd("\The <b>[target]</b> teasingly caresses \the <b>[user]</b>'s neck."),
 							span_lewd("\The <b>[target]</b> rubs their breasts against \the <b>[user]</b>'s head.")))
 			if(target.get_lust() < 10)
-				target.add_lust(1)
+				target.handle_post_sex(NORMAL_LUST, CUM_TARGET_MOUTH, user, ORGAN_SLOT_BREASTS) //SPLURT edit
 	if(target.a_intent == INTENT_GRAB)
 		user.visible_message(
 				pick(span_lewd("\The <b>[target]</b> grips \the <b>[user]</b>'s head tight."),

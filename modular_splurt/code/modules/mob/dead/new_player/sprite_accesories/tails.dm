@@ -194,7 +194,7 @@
 	matrixed_sections = MATRIX_RED_GREEN
 
 /datum/sprite_accessory/tails_animated/mam_tails_animated/easterndragon
-	name = "Eastern Dragon"
+	name = "Dragon Eastern"
 	icon_state = "easternd"
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
 	matrixed_sections = MATRIX_RED_GREEN
@@ -407,6 +407,12 @@
 	icon_state = "succubus"
 	color_src = MUTCOLORS
 
+/datum/sprite_accessory/tails_animated/human/succubus
+	name = "Succubus tail"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	icon_state = "succubus"
+	color_src = MUTCOLORS
+
 /datum/sprite_accessory/tails/mam_tails/kangaroo/alt
 	name = "kangaroo (alt)"
 	icon = 'modular_splurt/icons/mob/64_mam_tails.dmi'
@@ -454,3 +460,15 @@
 	dimension_x = 64
 	center = TRUE
 	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/tails/human/spade
+	name = "Demon spade"
+	icon_state = "spade"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	matrixed_sections = MATRIX_RED
+
+/datum/sprite_accessory/tails_animated/human/spade
+	name = "Demon spade"
+	icon_state = "spade"
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	matrixed_sections = MATRIX_RED

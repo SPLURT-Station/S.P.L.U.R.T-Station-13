@@ -106,3 +106,11 @@
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
+/obj/item/clothing/head/invisihat
+	name = "invisifiber hat"
+	desc = "A hat made of transparent fibers, often used with reinforcement kits."
+	icon = 'modular_splurt/icons/obj/clothing/head.dmi'
+	// No overlay, because they're invisible!
+	icon_state = "hat_transparent"
+	// Makes the invisible hat not screw up hair.
+	dynamic_hair_suffix = ""

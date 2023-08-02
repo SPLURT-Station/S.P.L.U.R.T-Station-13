@@ -125,6 +125,18 @@
 	icon_state = "pilotjaw"
 	covered_limbs = list("Head" = MATRIX_RED_BLUE)
 
+/datum/sprite_accessory/mam_body_markings/renamon
+	name = "Renamon"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "renamon"
+	covered_limbs = list("Head" = MATRIX_BLUE,  "Left Leg" = MATRIX_BLUE, "Right Leg" = MATRIX_BLUE)
+
+/datum/sprite_accessory/mam_body_markings/hearttattoo
+	name = "Groin Heart Tattoo"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "succubustattoo"
+	covered_limbs = list("Chest" = MATRIX_BLUE)
+
 /******************************************
 ************* Insect Markings *************
 *******************************************/
@@ -153,3 +165,10 @@
 	icon_state = "flat"
 	color_src = MATRIXED
 	matrixed_sections = MATRIX_RED_BLUE
+
+/datum/sprite_accessory/insect_fluff/renamon
+	name = "Renamon"
+	icon = 'modular_splurt/icons/mob/neck_fluff.dmi'
+	icon_state = "renamon"
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_GREEN

@@ -109,7 +109,7 @@
 	if(retaliation_message)
 		user.visible_message("<font color=red><b>\The <b>[partner]</b></b> [retaliation_message]</span>", ignored_mobs = user.get_unconsenting())
 	if(fucktarget != "penis" || user.can_penetrating_genital_cum())
-		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_MOUTH, partner)
+		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_MOUTH, partner, genital) //SPLURT edit
 
 /datum/interaction/lewd/throatfuck
 	description = "Fuck their throat. | Does oxy damage."
@@ -162,4 +162,4 @@
 	if(retaliation_message)
 		user.visible_message(message = "<font color=red><b>\The <b>[partner]</b></b> [retaliation_message]</span>", ignored_mobs = user.get_unconsenting())
 	if(user.can_penetrating_genital_cum())
-		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_THROAT, partner)
+		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_THROAT, partner, genital)

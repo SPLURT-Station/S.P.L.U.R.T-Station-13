@@ -631,6 +631,61 @@
 	emote_sound = 'modular_splurt/sound/voice/choir.ogg'
 	emote_cooldown = 6 SECONDS
 
+/datum/emote/living/audio/agony
+	key = "agony"
+	key_third_person = "agonys"
+	message = "let out a choir of agony!"
+	message_mime = "is visibly in agony."
+	emote_sound = 'modular_splurt/sound/voice/agony.ogg'
+	emote_cooldown = 7 SECONDS
+
+/datum/emote/living/audio/wtune
+	key = "whistletune"
+	key_third_person = "whistletunes"
+	message = "whistles a tune."
+	message_mime = "makes an expression as if whistling."
+	emote_sound = 'modular_splurt/sound/voice/wtune1.ogg'
+	emote_cooldown = 4.55 SECONDS // Uses longest sound's time.
+
+/datum/emote/living/audio/wtune/run_emote(mob/user, params)
+	// Set random emote sound
+	emote_sound = pick('modular_splurt/sound/voice/wtune1.ogg', 'modular_splurt/sound/voice/wtune2.ogg')
+
+	// Return normally
+	. = ..()
+
+/datum/emote/living/audio/fiufiu
+	key = "wolfwhistle"
+	key_third_person = "wolfwhistles"
+	message = "wolf-whistles!" // i am not creative
+	message_param = "audibly approves %t's appearance."
+	message_mime = "makes an expression as if <i>inappropriately</i> whistling."
+	emote_sound = 'modular_splurt/sound/voice/wolfwhistle.ogg'
+	emote_cooldown = 0.78 SECONDS
+
+/datum/emote/living/audio/terror
+	key = "terror"
+	key_third_person = "terrors"
+	message = "whistles some dreadful tune..."
+	message_mime = "stares with aura full of dread..."
+	emote_sound = 'modular_splurt/sound/voice/terror1.ogg'
+	emote_cooldown = 13.07 SECONDS // Uses longest sound's time.
+
+/datum/emote/living/audio/terror/run_emote(mob/user, params)
+	// Set random emote sound
+	emote_sound = pick('modular_splurt/sound/voice/terror1.ogg', 'modular_splurt/sound/voice/terror2.ogg')
+
+	// Return normally
+	. = ..()
+
+/datum/emote/living/audio/deathglare
+	key = "glare2"
+	key_third_person = "glares2"
+	message = "<b><i>glares</b></i>."
+	message_param = "<b><i>glares</b></i> at %t."
+	emote_sound = 'modular_splurt/sound/voice/deathglare.ogg'
+	emote_cooldown = 4.4 SECONDS
+
 /datum/emote/living/audio/sicko
 	key = "sicko"
 	key_third_person = "sickos"
@@ -676,7 +731,7 @@
 	emote_cooldown = 0.25 SECONDS
 
 /datum/emote/living/audio/weh4
-	key = "weh-s"
+	key = "weh4"
 	key_third_person = "wehs4"
 	message = "let out a surprised weh!"
 	message_mime = "acts out a surprised weh!"
@@ -706,6 +761,28 @@
 	message_mime = "acts out a yap!"
 	emote_sound = 'modular_splurt/sound/voice/yap.ogg'
 	emote_cooldown = 0.28 SECONDS
+
+/datum/emote/living/audio/bork
+	key = "bork"
+	key_third_person = "borks"
+	message = "borks!"
+	message_mime = "acts out a bork!"
+	emote_sound = 'modular_splurt/sound/voice/bork.ogg'
+	emote_cooldown = 0.4 SECONDS
+
+/datum/emote/living/audio/woof
+	key = "woof"
+	key_third_person = "woofs"
+	message = "woofs!"
+	message_mime = "acts out a woof!"
+	emote_sound = 'modular_splurt/sound/voice/woof.ogg'
+	emote_cooldown = 0.71 SECONDS
+
+/datum/emote/living/audio/woof/alt
+	key = "woof2"
+	key_third_person = "woofs2"
+	emote_sound = 'modular_splurt/sound/voice/woof2.ogg'
+	emote_cooldown = 0.3 SECONDS
 
 /datum/emote/living/audio/howl
 	key = "howl"
@@ -869,3 +946,85 @@
 
 	// Return normally
 	. = ..()
+
+/datum/emote/living/audio/rizz
+	key = "rizz"
+	key_third_person = "rizzes"
+	message = "saw something <u>hot</u>."
+	message_param = "looks at %t with bedroom eyes."
+	message_mime = "makes bedroom eyes."
+	emote_sound = 'modular_splurt/sound/voice/rizz.ogg'
+	emote_cooldown = 1.43 SECONDS
+
+/datum/emote/living/audio/merowr
+	key = "merowr"
+	key_third_person = "merowrs"
+	message = "merowrs!"
+	message_mime = "acts out a merowr!"
+	emote_sound = 'modular_splurt/sound/voice/merowr.ogg'
+	emote_cooldown = 1.2 SECONDS
+
+/datum/emote/living/audio/hoot
+	key = "hoot"
+	key_third_person = "hoots"
+	message = "hoots!"
+	message_mime = "acts out a hoot!"
+	emote_sound = 'modular_splurt/sound/voice/hoot.ogg'
+	emote_cooldown = 2.4 SECONDS
+
+/datum/emote/living/audio/wurble
+	key = "wurble"
+	key_third_person = "wurbles"
+	message = "wurbles!"
+	message_mime = "acts out a wurbling!"
+	emote_sound = 'modular_splurt/sound/voice/wurble.ogg'
+	emote_cooldown = 2.3 SECONDS
+
+/datum/emote/living/audio/warble
+	key = "warble"
+	key_third_person = "warbles"
+	message = "warbles!"
+	message_mime = "acts out a warbling!"
+	emote_sound = 'modular_splurt/sound/voice/warble.ogg'
+	emote_cooldown = 0.4 SECONDS
+
+// At the moment of adding it I just realized there's Tesh test-merge going on, so I've added numeral in case if that gets merged in the long run.
+/datum/emote/living/audio/trill2
+	key = "trill2"
+	key_third_person = "trills2"
+	message = "trills!"
+	message_mime = "acts out a trilling!"
+	emote_sound = 'modular_splurt/sound/voice/trill.ogg'
+	emote_cooldown = 1 SECONDS
+
+/datum/emote/living/audio/rattlesnek
+	key = "rattle"
+	key_third_person = "rattles"
+	message = "rattles!"
+	message_mime = "acts like a rattling snake."
+	emote_sound = 'modular_splurt/sound/voice/rattle.ogg'
+	emote_cooldown = 4 SECONDS
+
+/datum/emote/living/audio/rpurr
+	key = "rpurr"
+	key_third_person = "rpurrs"
+	message = "purrs like raptor!"
+	message_mime = "acts like a purring raptor."
+	emote_sound = 'modular_splurt/sound/voice/raptor_purr.ogg'
+	emote_cooldown = 1.5 SECONDS
+
+/datum/emote/living/audio/bawk
+	key = "bawk"
+	key_third_person = "bawks"
+	message = "bawks!"
+	message_mime = "acts like a bawking chicken."
+	emote_sound = 'modular_splurt/sound/voice/bawk.ogg'
+	emote_cooldown = 0.5 SECONDS
+
+/datum/emote/living/audio/moo
+	key = "moo"
+	key_third_person = "moos"
+	message = "moos!"
+	message_mime = "acts like a mooing cow."
+	emote_sound = 'modular_splurt/sound/voice/moo.ogg'
+	emote_cooldown = 1.7 SECONDS

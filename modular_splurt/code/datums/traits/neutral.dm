@@ -70,11 +70,31 @@
 	lose_text = span_notice("Your eyes return to normal.")
 	medical_record_text = "Prolonged exposure to Patient's eyes exhibits soporific effects."
 
-/datum/quirk/Hypnotic_gaze/on_spawn()
-	var/mob/living/carbon/human/Hypno_eyes = quirk_holder
-	var/datum/action/innate/Hypnotize/spell = new
-	spell.Grant(Hypno_eyes)
-	spell.owner = Hypno_eyes
+/datum/quirk/Hypnotic_gaze/add()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Add quirk ability action datum
+	var/datum/action/cooldown/hypnotize/act_hypno = new
+	act_hypno.Grant(quirk_mob)
+
+	// Add examine text
+	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/quirk_examine_Hypnotic_gaze)
+
+/datum/quirk/Hypnotic_gaze/remove()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Remove quirk ability action datum
+	var/datum/action/cooldown/hypnotize/act_hypno = locate() in quirk_mob.actions
+	act_hypno.Remove(quirk_mob)
+
+	// Remove examine text
+	UnregisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE)
+
+// Quirk examine text
+/datum/quirk/Hypnotic_gaze/proc/quirk_examine_Hypnotic_gaze(atom/examine_target, mob/living/carbon/human/examiner, list/examine_list)
+	examine_list += "[quirk_holder.p_their(TRUE)] eyes glimmer with an entrancing power..."
 
 /datum/quirk/overweight
 	name = "Overweight"
@@ -688,8 +708,6 @@
 	. = ..()
 
 /datum/quirk/nudist
-	// Mostly derived from masked_mook.
-	// Spawning with a gear harness is preferable, but failed during testing.
 	name = "Nudist"
 	desc = "Wearing most types of clothing unnerves you. Bring a gear harness!"
 	gain_text = span_notice("You feel spiritually connected to your natural form.")
@@ -697,23 +715,86 @@
 	medical_record_text = "Patient expresses a psychological need to remain unclothed."
 	value = 0
 	mood_quirk = TRUE
-	processing_quirk = TRUE
+	var/is_nude
 
-/datum/quirk/nudist/on_process()
-	var/mob/living/carbon/human/H = quirk_holder
-	// Checking torso exposure appears to be a robust method.
-	if( ( H.is_chest_exposed() && H.is_groin_exposed() ) )
-		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, QMOOD_NUDIST, /datum/mood_event/nudist_positive)
-	else
-		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, QMOOD_NUDIST, /datum/mood_event/nudist_negative)
+/datum/quirk/nudist/add()
+	// Register signal handlers
+	RegisterSignal(quirk_holder, COMSIG_MOB_UPDATE_GENITALS, .proc/check_outfit)
+	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/quirk_examine_nudist)
+
+/datum/quirk/nudist/remove()
+	// Remove mood event
+	SEND_SIGNAL(quirk_holder, COMSIG_CLEAR_MOOD_EVENT, QMOOD_NUDIST)
+
+	// Unregister signals
+	UnregisterSignal(quirk_holder, list(COMSIG_MOB_UPDATE_GENITALS, COMSIG_PARENT_EXAMINE))
+
+/datum/quirk/nudist/post_add()
+	// Evaluate outfit
+	check_outfit()
 
 /datum/quirk/nudist/on_spawn()
-	. = ..()
 	// Spawn a Rapid Disrobe Implant
 	var/obj/item/implant/disrobe/quirk_implant = new
 
 	// Implant into quirk holder
 	quirk_implant.implant(quirk_holder, null, TRUE, TRUE)
+
+/datum/quirk/nudist/proc/check_outfit()
+	SIGNAL_HANDLER
+
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Check if torso is uncovered
+	if(quirk_mob.is_chest_exposed() && quirk_mob.is_groin_exposed())
+		// Send positive mood event
+		SEND_SIGNAL(quirk_mob, COMSIG_ADD_MOOD_EVENT, QMOOD_NUDIST, /datum/mood_event/nudist_positive)
+
+		// Check if already set
+		if(is_nude)
+			return
+
+		// Alert user in chat
+		to_chat(quirk_mob, span_nicegreen("You begin to feel better without the restraint of clothing!"))
+
+		// Set nude status
+		is_nude = TRUE
+
+	// Torso is covered
+	else
+		// Send negative mood event
+		SEND_SIGNAL(quirk_mob, COMSIG_ADD_MOOD_EVENT, QMOOD_NUDIST, /datum/mood_event/nudist_negative)
+
+		// Check if already set
+		if(!is_nude)
+			return
+
+		// Alert user in chat
+		to_chat(quirk_mob, span_warning("The clothes feel wrong on your body..."))
+
+		// Set nude status
+		is_nude = FALSE
+
+/datum/quirk/nudist/proc/quirk_examine_nudist(atom/examine_target, mob/living/carbon/human/examiner, list/examine_list)
+	SIGNAL_HANDLER
+
+	// Define default status term
+	var/mood_term = "content with [quirk_holder.p_their()] lack of"
+
+	// Define default span class
+	var/span_class
+
+	// Check if dressed
+	if(!is_nude)
+		// Set negative term
+		mood_term = "disturbed by wearing"
+
+		// Set negative span class
+		span_class = "warning"
+
+	// Add examine text
+	examine_list += "<span class='[span_class]'>[quirk_holder.p_they(TRUE)] appear[quirk_holder.p_s()] [mood_term] clothing.</span>"
 
 /datum/quirk/masked_mook
 	name = "Bane Syndrome"
@@ -739,3 +820,42 @@
 	var/obj/item/clothing/mask/gas/cosmetic/gasmask = new(get_turf(quirk_holder)) // Uses a custom gas mask
 	H.equip_to_slot(gasmask, ITEM_SLOT_MASK)
 	H.regenerate_icons()
+
+/datum/quirk/body_morpher
+	name = "Body Morpher"
+	desc = "Somehow you developed an ability allowing your body to morph and shift itself to modify bodyparts, much like a slimeperson can."
+	value = 0
+	mob_trait = TRAIT_BODY_MORPHER
+	gain_text = span_notice("Your body feels more malleable...")
+	lose_text = span_notice("Your body is more firm.")
+	medical_record_text = "Patient's body seems unusually malleable."
+	var/datum/action/innate/ability/humanoid_customization/alter_form_action
+
+/datum/quirk/body_morpher/add()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Add quirk ability action datum
+	alter_form_action = new
+	alter_form_action.Grant(quirk_mob)
+
+/datum/quirk/body_morpher/remove()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Remove quirk ability action datum
+	alter_form_action.Remove(quirk_mob)
+	QDEL_NULL(alter_form_action)
+
+/datum/quirk/modular
+	name = "Modular Limbs"
+	desc = "Your limbs are able to be attached and detached easily... Unfortunately, everyone around you can alter your limbs too! Right click yourself to use this quirk."
+	value = 0
+
+/datum/quirk/modular/add()
+	var/mob/living/carbon/human/C = quirk_holder
+	add_verb(C,/mob/living/proc/alterlimbs)
+
+/datum/quirk/modular/remove()
+	var/mob/living/carbon/human/C = quirk_holder
+	remove_verb(C,/mob/living/proc/alterlimbs)

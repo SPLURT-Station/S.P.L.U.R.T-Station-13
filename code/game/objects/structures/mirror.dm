@@ -184,7 +184,7 @@
 						var/custom_tone = input(user, "Choose your custom skin tone:", "Race change", default) as color|null
 						if(custom_tone)
 							var/temp_hsv = RGBtoHSV(new_s_tone)
-							if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3])
+							if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3] || !CONFIG_GET(flag/character_color_limits)) //SPLURT edit
 								to_chat(H,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
 							else
 								H.skin_tone = custom_tone
@@ -198,7 +198,7 @@
 				if(new_mutantcolor)
 					var/temp_hsv = RGBtoHSV(new_mutantcolor)
 
-					if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3]) // mutantcolors must be bright
+					if(ReadHSV(temp_hsv)[3] >= ReadHSV(MINIMUM_MUTANT_COLOR)[3] || !CONFIG_GET(flag/character_color_limits)) // mutantcolors must be bright //SPLURT edit
 						H.dna.features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
 
 					else

@@ -127,3 +127,9 @@
 	icon_state = "jackal"
 	matrixed_sections = MATRIX_RED_BLUE
 	icon = 'modular_splurt/icons/mob/mam_ears.dmi'
+
+/datum/sprite_accessory/ears/mam_ears/renamon
+	name = "Renamon"
+	icon_state = "renamon"
+	matrixed_sections = MATRIX_ALL
+	icon = 'modular_splurt/icons/mob/mam_ears.dmi'

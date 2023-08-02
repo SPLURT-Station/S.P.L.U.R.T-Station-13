@@ -40,6 +40,9 @@
 
 	var/user_is_target = FALSE //Boolean. Pretty self explanatory.
 
+	/// Refuses to accept more than one entry for some reason, fix sometime
+	var/list/additional_details
+
 /// Checks if user can do an interaction, action_check is for whether you're actually doing it or not (useful for the menu and not removing the buttons)
 /datum/interaction/proc/evaluate_user(mob/living/user, silent = TRUE, action_check = TRUE)
 	if(SSinteractions.is_blacklisted(user))

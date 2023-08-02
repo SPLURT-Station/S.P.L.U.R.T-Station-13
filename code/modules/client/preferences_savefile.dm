@@ -5,7 +5,7 @@
 //	You do not need to raise this if you are adding new values that have sane defaults.
 //	Only raise this value when changing the meaning/format/name/layout of an existing value
 //	where you would want the updater procs below to run
-#define SAVEFILE_VERSION_MAX	57.01
+#define SAVEFILE_VERSION_MAX	58
 
 /*
 SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Carn
@@ -382,6 +382,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			else
 				S["all_quirks"] = list("Dullahan")
 
+	// So, we're already on 57 even though we were meant to be on like, 56? i'm gonna try to correct this,
+	// And i'm so sorry for this.
+	if(current_version < 58)
+		S["screentip_images"] = TRUE // This was meant to default active, i'm so sorry. Turn it off if you must.
+
 /datum/preferences/proc/load_path(ckey,filename="preferences.sav")
 	if(!ckey)
 		return
@@ -423,7 +428,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["outline_enabled"] >> outline_enabled
 	S["screentip_pref"] >> screentip_pref
 	S["screentip_color"] >> screentip_color
-	S["screentip_allow_images"] >> screentip_allow_images
+	S["screentip_images"] >> screentip_images
 	S["hotkeys"] >> hotkeys
 	S["chat_on_map"] >> chat_on_map
 	S["max_chat_length"] >> max_chat_length
@@ -492,6 +497,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["use_new_playerpanel"]	>> use_new_playerpanel
 	S["gfluid_blacklist"]		>> gfluid_blacklist
 	S["new_character_creator"]	>> new_character_creator
+	S["view_pixelshift"]		>> view_pixelshift
 
 	//favorite outfits
 	S["favorite_outfits"] >> favorite_outfits
@@ -638,7 +644,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["outline_color"], outline_color)
 	WRITE_FILE(S["screentip_pref"], screentip_pref)
 	WRITE_FILE(S["screentip_color"], screentip_color)
-	WRITE_FILE(S["screentip_allow_images"], screentip_allow_images)
+	WRITE_FILE(S["screentip_images"], screentip_images)
 	WRITE_FILE(S["hotkeys"], hotkeys)
 	WRITE_FILE(S["chat_on_map"], chat_on_map)
 	WRITE_FILE(S["max_chat_length"], max_chat_length)
@@ -699,6 +705,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["use_new_playerpanel"], use_new_playerpanel)
 	WRITE_FILE(S["gfluid_blacklist"], gfluid_blacklist)
 	WRITE_FILE(S["new_character_creator"], new_character_creator)
+	WRITE_FILE(S["view_pixelshift"], view_pixelshift)
 
 	var/mob/living/carbon/human/H = parent.mob
 	if(istype(H))
@@ -1054,6 +1061,28 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	S["feature_inert_eggs"] >> features["inert_eggs"]
 
+	if(S["features_cock_max_length"])
+		S["features_cock_max_length"] >> features["cock_max_length"]
+	if(S["features_balls_max_size"])
+		S["features_balls_max_size"] >> features["balls_max_size"]
+	if(S["features_breasts_max_size"])
+		S["features_breasts_max_size"] >> features["breasts_max_size"]
+	if(S["features_belly_max_size"])
+		S["features_belly_max_size"] >> features["belly_max_size"]
+	if(S["features_butt_max_size"])
+		S["features_butt_max_size"] >> features["butt_max_size"]
+
+	if(S["features_cock_min_length"])
+		S["features_cock_min_length"] >> features["cock_min_length"]
+	if(S["features_balls_min_size"])
+		S["features_balls_min_size"] >> features["balls_min_size"]
+	if(S["features_breasts_min_size"])
+		S["features_breasts_min_size"] >> features["breasts_min_size"]
+	if(S["features_belly_min_size"])
+		S["features_belly_min_size"] >> features["belly_min_size"]
+	if(S["features_butt_min_size"])
+		S["features_butt_min_size"] >> features["butt_min_size"]
+
 	var/char_vr_path = "[vr_path]/character_[default_slot]_v2.json"
 	if(fexists(char_vr_path))
 		var/list/json_from_file = json_decode(file2text(char_vr_path))
@@ -1278,6 +1307,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	cit_character_pref_load(S)
 
+	splurt_character_pref_load(S)
+
 	return 1
 
 /datum/preferences/proc/save_character(bypass_cooldown = FALSE)
@@ -1413,6 +1444,19 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	WRITE_FILE(S["feature_inert_eggs"], features["inert_eggs"])
 
+
+	WRITE_FILE(S["features_cock_max_length"], features["cock_max_length"])
+	WRITE_FILE(S["features_balls_max_size"], features["balls_max_size"])
+	WRITE_FILE(S["features_breasts_max_size"], features["breasts_max_size"])
+	WRITE_FILE(S["features_belly_max_size"], features["belly_max_size"])
+	WRITE_FILE(S["features_butt_max_size"], features["butt_max_size"])
+
+	WRITE_FILE(S["features_cock_min_length"], features["cock_min_length"])
+	WRITE_FILE(S["features_balls_min_size"], features["balls_min_size"])
+	WRITE_FILE(S["features_breasts_min_size"], features["breasts_min_size"])
+	WRITE_FILE(S["features_belly_min_size"], features["belly_min_size"])
+	WRITE_FILE(S["features_butt_min_size"], features["butt_min_size"])
+
 	WRITE_FILE(S["feature_neckfire"], features["neckfire"])
 	WRITE_FILE(S["feature_neckfire_color"], features["neckfire_color"])
 
@@ -1509,6 +1553,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		S["tcg_decks"] << safe_json_encode(list())
 
 	cit_character_pref_save(S)
+
+	splurt_character_pref_save(S)
 
 	return 1
 

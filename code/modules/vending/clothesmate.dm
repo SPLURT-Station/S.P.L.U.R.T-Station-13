@@ -14,7 +14,7 @@
 					/obj/item/clothing/accessory/pride = 25,
 					/obj/item/clothing/glasses/monocle = 3,
 					/obj/item/clothing/suit/jacket = 4,
-					/obj/item/clothing/suit/jacket/flannel = 4,
+					/obj/item/clothing/suit/toggle/jacket/flannel = 4,
 					/obj/item/clothing/suit/toggle/jacket/flannel/red = 4,
 					/obj/item/clothing/suit/toggle/jacket/flannel/aqua = 4,
 					/obj/item/clothing/suit/toggle/jacket/flannel/brown = 4,

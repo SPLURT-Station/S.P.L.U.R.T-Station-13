@@ -399,7 +399,7 @@ GLOBAL_VAR_INIT(embedpocalypse, FALSE) // if true, all items will be able to emb
 	if(throwing)
 		throwing.finalize(FALSE)
 	if(loc == user)
-		if(!allow_attack_hand_drop(user) || !user.temporarilyRemoveItemFromInventory(src))
+		if(!allow_attack_hand_drop(user) || !user.temporarilyRemoveItemFromInventory(I = src))
 			return
 
 	. = FALSE
@@ -588,17 +588,14 @@ GLOBAL_VAR_INIT(embedpocalypse, FALSE) // if true, all items will be able to emb
 	set category = "Object"
 	set name = "Pick up"
 
-	if(usr.incapacitated() || !Adjacent(usr) || usr.lying)
-		return
-
 	if(iscyborg(usr))
 		var/obj/item/gripper/gripper = usr.get_active_held_item(TRUE)
-		if(istype(gripper))
-			gripper.pre_attack(src, usr, get_dist(src, usr))
+		if(istype(gripper) && !gripper.wrapped)
+			usr.ClickOn(src)
 		return
 
 	if(usr.get_active_held_item() == null) // Let me know if this has any problems -Yota
-		usr.UnarmedAttack(src)
+		usr.ClickOn(src)
 
 //This proc is executed when someone clicks the on-screen UI button.
 //The default action is attack_self().
@@ -1285,3 +1282,7 @@ GLOBAL_VAR_INIT(embedpocalypse, FALSE) // if true, all items will be able to emb
 /obj/item/proc/update_action_buttons(status_only = FALSE, force = FALSE)
 	for(var/datum/action/current_action as anything in actions)
 		current_action.UpdateButtonIcon(status_only, force)
+
+/// Special stuff you want to do when an outfit equips this item.
+/obj/item/proc/on_outfit_equip(mob/living/carbon/human/outfit_wearer, visuals_only, item_slot)
+	return

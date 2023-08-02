@@ -25,8 +25,8 @@
 	if(!owner)
 		return
 
-/obj/item/organ/genital/belly/modify_size(modifier, min = -INFINITY, max = BELLY_SIZE_MAX)
-	var/new_value = clamp(size_cached + modifier, min, max)
+/obj/item/organ/genital/belly/modify_size(modifier, min = -INFINITY, max = INFINITY)
+	var/new_value = clamp(size_cached + modifier, max(min, min_size ? min_size : -INFINITY), min(max_size ? max_size : INFINITY, max))
 	if(new_value == size_cached)
 		return
 	prev_size = size_cached
@@ -95,6 +95,8 @@
 	else
 		color = "#[D.features["belly_color"]]"
 	size = D.features["belly_size"]
+	max_size = D.features["belly_max_size"]
+	min_size = D.features["belly_min_size"]
 	prev_size = size
 	size_cached = size
 	original_fluid_id = fluid_id

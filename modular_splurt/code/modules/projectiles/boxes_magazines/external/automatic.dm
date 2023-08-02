@@ -51,6 +51,84 @@
 	name = "Enbloc clip (.308 Soporific)"
 	ammo_type = /obj/item/ammo_casing/a308/sleepy
 
+/obj/item/ammo_box/magazine/regm4mag
+	name = "STANLEY 20-Round Magazine"
+	desc = "A magazine for the M46A1 Carbine"
+	icon = 'modular_splurt/icons/obj/ammo.dmi'
+	icon_state = "regm4mag"
+	ammo_type = /obj/item/ammo_casing/a543
+	caliber = ".543"
+	max_ammo = 20
+
+/obj/item/ammo_box/magazine/regm4mag/update_icon()
+	..()
+	icon_state = "regm4mag-[ammo_count() ? "20" : "0"]"
+
+/obj/item/ammo_box/magazine/kaijumag
+	name = "KAIJU 20-Round Magazine"
+	desc = "Magazine used by the Kaiju SMG."
+	icon = 'modular_splurt/icons/obj/ammo.dmi'
+	icon_state = "kaijumag"
+	ammo_type = /obj/item/ammo_casing/kaiju
+	caliber = "kaiju"
+	max_ammo = 20
+
+/obj/item/ammo_box/magazine/kaijumag/update_icon()
+	..()
+	icon_state = "kaijumag-[ammo_count() ? "20" : "0"]"
+
+/obj/item/ammo_box/magazine/aegismag
+	name = "AEGIS 20-Round Magazine"
+	desc = "A magazine for the Aegis Assault System"
+	icon = 'modular_splurt/icons/obj/ammo.dmi'
+	icon_state = "aegismag"
+	ammo_type = /obj/item/ammo_casing/a543
+	caliber = ".543"
+	max_ammo = 20
+
+/obj/item/ammo_box/magazine/aegismag/update_icon()
+	..()
+	icon_state = "aegismag-[ammo_count() ? "20" : "0"]"
+
+/obj/item/ammo_box/magazine/rrcmag
+	name = "RRC Shotgun 8-shells Magazine"
+	desc = "A magazine for the RRC Shotgun, why not just make a internal one like the other shotguns? 'cuz no."
+	icon = 'modular_splurt/icons/obj/ammo.dmi'
+	icon_state = "rrcmag"
+	ammo_type = /obj/item/ammo_casing/shotgun/buckshot
+	caliber = "12g"
+	max_ammo = 8
+
+/obj/item/ammo_box/magazine/rrcmag/update_icon()
+	..()
+	icon_state = "rrcmag-[ammo_count() ? "8" : "0"]"
+
+/obj/item/ammo_box/magazine/caelusmag
+	name = "CAELAI 100-Round Magazine"
+	desc = "A magazine for the Caelus LMG"
+	icon = 'modular_splurt/icons/obj/ammo.dmi'
+	icon_state = "caelusmag"
+	ammo_type = /obj/item/ammo_casing/a308
+	caliber = ".308"
+	max_ammo = 100
+
+/obj/item/ammo_box/magazine/caelusmag/update_icon()
+	..()
+	icon_state = "caelusmag-[ammo_count() ? "100" : "0"]"
+
+/obj/item/ammo_box/magazine/m9smgmag
+	name = "M9SMG 10-Round Magazine"
+	desc = "A magazine for the M9SMG"
+	icon = 'modular_splurt/icons/obj/ammo.dmi'
+	icon_state = "m9smgmag"
+	ammo_type = /obj/item/ammo_casing/c45
+	caliber = ".45"
+	max_ammo = 10
+
+/obj/item/ammo_box/magazine/m9smgmag/update_icon()
+	..()
+	icon_state = "m9smgmag-[ammo_count() ? "10" : "0"]"
+
 /obj/item/ammo_box/magazine/fal
 	name = "FTU 20 round magazine (.308)"
 	desc = "A magazine for a FTU Rifle."

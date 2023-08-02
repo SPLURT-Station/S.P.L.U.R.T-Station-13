@@ -18,6 +18,43 @@
 	. = ..()
 	code = rand(1,30)
 
+/obj/item/electropack/vibrator/ComponentInitialize()
+	. = ..()
+	var/list/procs_list = list(
+		"before_inserting" = CALLBACK(src, .proc/item_inserting),
+		"after_inserting" = CALLBACK(src, .proc/item_inserted),
+	)
+	AddComponent(/datum/component/genital_equipment, list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_ANUS, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS, ORGAN_SLOT_BUTT, ORGAN_SLOT_BELLY), procs_list)
+
+/obj/item/electropack/vibrator/proc/item_inserting(datum/source, obj/item/organ/genital/G, mob/user)
+	. = TRUE
+	if(!(G.owner.client?.prefs?.erppref == "Yes"))
+		to_chat(user, span_warning("They don't want you to do that!"))
+		return FALSE
+
+	if(locate(src.type) in G.contents)
+		if(user == G.owner)
+			to_chat(user, span_notice("You already have a vibrator inside your [G]!"))
+		else
+			to_chat(user, span_notice("\The <b>[G.owner]</b>'s [G] already has a vibrator inside!"))
+		return FALSE
+
+	if(user == G.owner)
+		G.owner.visible_message(span_warning("\The <b>[user]</b> is trying to [style == "long" ? "insert" : "attach"] a vibrator [style == "long" ? "inside" : "to"] themselves!"),\
+			span_warning("You try to [style == "long" ? "insert" : "attach"] a vibrator [style == "long" ? "inside" : "to"] yourself!"))
+	else
+		G.owner.visible_message(span_warning("\The <b>[user]</b> is trying to [style == "long" ? "insert" : "attach"] a vibrator [style == "long" ? "inside" : "to"] \the <b>[G.owner]</b>!"),\
+			span_warning("\The <b>[user]</b> is trying to [style == "long" ? "insert" : "attach"] a vibrator [style == "long" ? "inside" : "to"] you!"))
+
+	if(!do_mob(user, G.owner, 5 SECONDS))
+		return FALSE
+
+/obj/item/electropack/vibrator/proc/item_inserted(datum/source, obj/item/organ/genital/G, mob/user)
+	. = TRUE
+	to_chat(user, span_userlove("You attach [src] to <b>\The [G.owner]</b>'s [G]."))
+	playsound(G.owner, 'modular_sand/sound/lewd/champ_fingering.ogg', 50, 1, -1)
+	inside = TRUE
+
 /obj/item/electropack/vibrator/small //can go anywhere
 	name = "small remote vibrator"
 	style = "small"
@@ -58,43 +95,6 @@ Code:
 				mode = 1
 				to_chat(user, span_notice("You twist the bottom of [src], setting it to the low setting."))
 				return
-/*
-/obj/item/electropack/vibrator/attack(mob/living/carbon/C, mob/living/user)
-
-	var/obj/item/organ/genital/picked_organ
-	var/mob/living/carbon/human/S = user
-	var/mob/living/carbon/human/T = C
-	picked_organ = S.pick_receiving_organ(T, HAS_EQUIPMENT, "Vibrator", "Where are you putting it in?")
-	if(picked_organ)
-		C.visible_message(span_warning("<b>\The [user]</b> is trying to attach [src] to <b>\The [T]</b>!"),\
-						span_warning("<b>\The [user]</b> is trying to put [src] on you!"))
-		if(!do_mob(user, C, 5 SECONDS))//warn them and have a delay of 5 seconds to apply.
-			return
-
-		if(style == "long" && !(picked_organ.type == /obj/item/organ/genital/vagina)) //long vibrators dont fit on anything but vaginas, but small ones fit everywhere
-			to_chat(user, span_warning("[src] is too big to fit there, use a smaller version."))
-			return
-
-		if(!picked_organ.equipment[GENITAL_EQUIPMENT_VIBRATOR])
-			if(!(style == "long"))
-				to_chat(user, span_love("You attach [src] to <b>\The [T]</b>'s [picked_organ.name]."))
-			else
-				to_chat(user, span_love("You insert [src] into <b>\The <b>[T]</b>'s [picked_organ.name]."))
-		else
-			to_chat(user, span_notice("They already have a [picked_organ.equipment[GENITAL_EQUIPMENT_VIBRATOR].name] there."))
-			return
-
-		if(!user.transferItemToLoc(src, picked_organ)) //check if you can put it in
-			return
-		playsound(C, 'modular_sand/sound/lewd/champ_fingering.ogg', 50, 1, -1)
-		inside = TRUE
-		picked_organ.equipment[GENITAL_EQUIPMENT_VIBRATOR] = src
-		to_chat(user, span_warning("Done <b>Done</b>")) //Will delete after testing
-
-	else
-		to_chat(user, span_notice("You don't see anywhere to attach this."))
-*/
-
 
 /obj/item/electropack/vibrator/receive_signal(datum/signal/signal)
 	if(!signal || signal.data["code"] != code)
@@ -118,10 +118,9 @@ Code:
 				else
 					to_chat(U, span_love("[src] vibrates against your [G.name]!"))
 
-			var/intencity = 6*mode
-			U.handle_post_sex(intencity, null, src) //give pleasure
-			playsound(U.loc, 'modular_splurt/sound/lewd/vibrate.ogg', (intencity+5), 1, -1) //vibe intencity scaled up abit for sound
-
+			var/intensity = 6*mode
+			U.handle_post_sex(intensity, null, src, G) //give pleasure
+			playsound(U.loc, 'modular_splurt/sound/lewd/vibrate.ogg', (intensity+5), 1, -1) //vibe intensity scaled up abit for sound
 
 			switch(mode)
 				if(1) //low, setting for RP, it wont force your character to do anything.
@@ -136,8 +135,6 @@ Code:
 					U.Stun(30)
 					if(prob(50))
 						U.emote("moan")
-
-
 
 	playsound(src, 'modular_splurt/sound/lewd/vibrate.ogg', 40, 1, -1)
 	if(style == "long") //haha vibrator go brrrrrrr

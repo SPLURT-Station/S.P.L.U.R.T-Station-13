@@ -66,7 +66,7 @@ SUBSYSTEM_DEF(jukeboxes)
 
 
 //Updates jukebox by transferring to different object or modifying falloff.
-/datum/controller/subsystem/jukeboxes/proc/updatejukebox(IDtoupdate, obj/jukebox, jukefalloff) 
+/datum/controller/subsystem/jukeboxes/proc/updatejukebox(IDtoupdate, obj/jukebox, jukefalloff)
 	if(islist(activejukeboxes[IDtoupdate]))
 		if(istype(jukebox))
 			activejukeboxes[IDtoupdate][JUKE_BOX] = jukebox
@@ -95,6 +95,12 @@ SUBSYSTEM_DEF(jukeboxes)
 
 /datum/controller/subsystem/jukeboxes/Initialize()
 	var/list/tracks = flist("config/jukebox_music/sounds/")
+	//SPLURT EDIT
+	var/max_tracks = CONFIG_GET(number/max_jukebox_songs)
+	if(max_tracks >= 0)
+		while(tracks.len > max_tracks)
+			LAZYREMOVE(tracks, pick(tracks))
+	//SPLURT EDIT END
 	for(var/S in tracks)
 		var/datum/track/T = new()
 		T.song_path = file("config/jukebox_music/sounds/[S]")

@@ -1,4 +1,5 @@
 // Honestly, Saliith was just sad when he made this. Leave this file in the game to let people hug him.
+// i agree and support - one of the spriters
 
 /obj/item/toy/plush/lizardplushie/saliith
 	name = "Saliith plushie"
@@ -239,3 +240,12 @@
 
 /obj/item/pinpointer/plushie_saliith/scan_for_target()
 	set_target(GLOB.saliith_plushie, src)
+
+// cube guy thing. beware, very silly
+
+/obj/item/toy/plush/cube
+	name = "Cubical plushie"
+	desc = "That's one weird looking plushie."
+	icon = 'modular_sand/icons/obj/plushes.dmi'
+	icon_state = "cube"
+	squeak_override = list('sound/effects/footstep/rustystep1.ogg' = 1)

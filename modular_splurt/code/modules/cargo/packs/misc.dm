@@ -250,18 +250,19 @@
 					/obj/item/wrench)
 	crate_name = "stripper pole crate"
 
+
 /datum/supply_pack/misc/wedding
-	name = "Wedding Crate"
+	name = "Small Wedding Crate"
 	desc = "Almost everything you need to host a wedding! Don't forget a ring!"
 	cost = 1500
-	contains = list(/obj/item/clothing/under/wedding_dress,
-					/obj/item/clothing/under/tuxedo,
+	contains = list(/obj/item/clothing/under/dress/wedding,
+					/obj/item/clothing/under/suit/tuxedo,
 					/obj/item/storage/belt/cummerbund,
 					/obj/item/bouquet,
 					/obj/item/bouquet/sunflower,
 					/obj/item/bouquet/poppy,
 					/obj/item/reagent_containers/food/drinks/bottle/champagne)
-	crate_name = "wedding crate"
+	crate_name = "small wedding crate"
 
 /datum/supply_pack/misc/random1k
 	name = "1k Surplus Crate"

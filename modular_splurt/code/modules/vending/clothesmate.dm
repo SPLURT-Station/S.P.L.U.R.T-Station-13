@@ -9,6 +9,9 @@
 		/obj/item/clothing/suit/toggle/rp_jacket/purple = 3,
 		/obj/item/clothing/suit/toggle/rp_jacket/red = 3,
 		/obj/item/clothing/suit/toggle/rp_jacket/white = 3,
+		/obj/item/clothing/suit/jacket/runner/engi = 3,
+		/obj/item/clothing/suit/jacket/runner/syndicate = 3,
+		/obj/item/clothing/suit/toggle/rp_jacket/white = 3,
 		/obj/item/clothing/under/goner/fake/poly = 10,
 		/obj/item/clothing/suit/goner/fake/poly = 10,
 		/obj/item/clothing/head/helmet/goner/fake/poly = 10,
@@ -21,7 +24,15 @@
 		/obj/item/clothing/accessory/longcrop = 3,
 		/obj/item/clothing/accessory/formalcrop = 3,
 		/obj/item/clothing/under/misc/leia_outfit = 2,
-		/obj/item/clothing/under/performer/polychromic = 2
+		/obj/item/clothing/under/performer/polychromic = 2,
+		/obj/item/clothing/under/suit/black_really_collared = 3,
+		/obj/item/clothing/under/suit/black_really_collared/skirt = 3,
+		/obj/item/clothing/under/suit/inferno = 3,
+		/obj/item/clothing/under/suit/inferno/skirt = 3,
+		/obj/item/clothing/under/suit/helltaker = 3,
+		/obj/item/clothing/under/suit/helltaker/skirt = 3,
+		/obj/item/clothing/suit/invisijacket = 3,
+		/obj/item/clothing/head/invisihat = 3
 	)
 	var/list/extra_contraband = list(
 		/obj/item/clothing/under/rank/civilian/lawyer/galaxy_red = 3,

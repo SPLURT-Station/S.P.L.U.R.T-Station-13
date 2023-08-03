@@ -10,3 +10,18 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	circuit = /obj/item/circuitboard/machine/embryonator
 
+/obj/machinery/embryonator/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Daycare")
+		ui.open()
+	ui.set_autoupdate(FALSE)
+
+/obj/machinery/embryonator/ui_static_data(mob/user)
+	. = ..()
+
+/obj/machinery/embryonator/ui_data(mob/user)
+	. = ..()
+
+/obj/machinery/embryonator/ui_act(action, params)
+	. = ..()

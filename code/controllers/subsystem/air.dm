@@ -17,6 +17,7 @@ SUBSYSTEM_DEF(air)
 	var/cost_rebuilds = 0
 	var/cost_atmos_machinery = 0
 	var/cost_equalize = 0
+
 	var/thread_wait_ticks = 0
 	var/cur_thread_wait_ticks = 0
 
@@ -134,13 +135,6 @@ SUBSYSTEM_DEF(air)
 	fix_corrupted_atmos()
 
 /datum/controller/subsystem/air/fire(resumed = 0)
-	if(thread_running())
-		cur_thread_wait_ticks++
-		pause()
-		return
-	thread_wait_ticks = MC_AVERAGE(thread_wait_ticks, cur_thread_wait_ticks)
-	cur_thread_wait_ticks = 0
-
 	var/timer = TICK_USAGE_REAL
 
 	if(currentpart == SSAIR_REBUILD_PIPENETS)
@@ -294,19 +288,19 @@ SUBSYSTEM_DEF(air)
 			return
 
 /datum/controller/subsystem/air/proc/process_turf_equalize(resumed = 0)
-	if(process_turf_equalize_auxtools(resumed,TICK_REMAINING_MS))
+	if(process_turf_equalize_auxtools(TICK_REMAINING_MS))
 		pause()
 
 /datum/controller/subsystem/air/proc/process_turfs(resumed = 0)
-	if(process_turfs_auxtools(resumed,TICK_REMAINING_MS))
+	if(process_turfs_auxtools(TICK_REMAINING_MS))
 		pause()
 
 /datum/controller/subsystem/air/proc/process_excited_groups(resumed = 0)
-	if(process_excited_groups_auxtools(resumed,TICK_REMAINING_MS))
+	if(process_excited_groups_auxtools(TICK_REMAINING_MS))
 		pause()
 
 /datum/controller/subsystem/air/proc/finish_turf_processing(resumed = 0)
-	if(finish_turf_processing_auxtools(TICK_REMAINING_MS) || thread_running())
+	if(finish_turf_processing_auxtools(TICK_REMAINING_MS))
 		pause()
 
 /datum/controller/subsystem/air/proc/equalize_turfs(resumed = 0)
@@ -314,7 +308,7 @@ SUBSYSTEM_DEF(air)
 		pause()
 
 /datum/controller/subsystem/air/proc/post_process_turfs(resumed = 0)
-	if(post_process_turfs_auxtools(resumed,TICK_REMAINING_MS))
+	if(post_process_turfs_auxtools(TICK_REMAINING_MS))
 		pause()
 
 /datum/controller/subsystem/air/proc/finish_turf_processing_auxtools()

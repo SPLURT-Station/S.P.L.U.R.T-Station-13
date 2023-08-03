@@ -118,6 +118,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/mine/laborcamp)
+"ck" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/mine/production)
 "cn" = (
 /obj/machinery/door/airlock{
 	id_tag = "miningdorm3";
@@ -154,6 +160,18 @@
 	},
 /turf/open/floor/plasteel,
 /area/mine/living_quarters)
+"dd" = (
+/obj/machinery/door/airlock/external{
+	glass = 1;
+	name = "Mining External Airlock";
+	opacity = 0
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plasteel,
+/area/mine/production)
 "dk" = (
 /obj/structure/table,
 /obj/item/stack/packageWrap,
@@ -985,9 +1003,6 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 30
 	},
-/obj/effect/turf_decal/tile/purple{
-	dir = 8
-	},
 /turf/open/floor/plasteel,
 /area/mine/production)
 "qg" = (
@@ -1268,6 +1283,13 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel,
 /area/mine/living_quarters)
+"tx" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
+	},
+/obj/structure/ladder/teleport/xenoarch,
+/turf/open/floor/plasteel,
+/area/mine/production)
 "tK" = (
 /obj/structure/closet/crate,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
@@ -1668,12 +1690,6 @@
 "Al" = (
 /turf/closed/wall/r_wall,
 /area/mine/maintenance)
-"At" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/mine/production)
 "AC" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -1914,6 +1930,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/mine/production)
+"Ep" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "Ev" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -2532,18 +2554,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3,
 /turf/open/floor/plasteel/white,
 /area/mine/living_quarters)
-"Mw" = (
-/obj/machinery/door/airlock/external{
-	glass = 1;
-	name = "Mining External Airlock";
-	opacity = 0
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plasteel,
-/area/mine/production)
 "MD" = (
 /turf/closed/mineral/random/volcanic,
 /area/lavaland/surface/outdoors/unexplored)
@@ -6688,7 +6698,7 @@ VT
 VT
 Cd
 Ed
-Wf
+tx
 II
 Jo
 Ed
@@ -6876,10 +6886,10 @@ Cd
 Cd
 Cd
 Cd
-At
+Cd
+Ep
 Lm
 Lm
-VT
 VT
 VT
 VT
@@ -6931,12 +6941,12 @@ es
 Vs
 Ed
 tY
-Vs
+ck
+tY
 Ed
 Lm
 Lm
 wz
-VT
 VT
 VT
 VT
@@ -6988,13 +6998,13 @@ es
 lI
 AS
 qR
+es
 lI
-Mw
+dd
 Lm
 Lm
 wz
 wz
-VT
 VT
 VT
 VT
@@ -7046,12 +7056,12 @@ Wf
 Ed
 lS
 qc
+Wf
 Ed
 Lm
 Lm
 Lm
 wz
-VT
 VT
 VT
 VT
@@ -7104,11 +7114,11 @@ Cd
 Cd
 Cd
 Cd
-At
+Cd
+Ep
 Lm
 Lm
 Lm
-VT
 VT
 VT
 VT
@@ -7165,7 +7175,7 @@ Lm
 Lm
 Lm
 Lm
-VT
+Lm
 VT
 VT
 VT
@@ -7222,7 +7232,7 @@ Lm
 Lm
 Lm
 Lm
-VT
+Lm
 VT
 VT
 VT

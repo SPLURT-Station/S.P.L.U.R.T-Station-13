@@ -15,7 +15,7 @@
 	var/obj/item/clothing/head/mob_holder/holder = micro.loc
 	if(istype(holder))
 		var/mob/living/living = get_atom_on_turf(micro.loc, /mob/living)
-		if(living && (abs(get_size(micro)/get_size(living)) > CONFIG_GET(number/max_pick_ratio)))
+		if(living && (COMPARE_SIZES(living, micro)) < (1 / CONFIG_GET(number/max_pick_ratio)))
 			living.visible_message(span_warning("\The [living] drops [micro] as [micro.p_they()] grow\s too big to carry."),
 								span_warning("You drop \The [living] as [living.p_they()] grow\s too big to carry."),
 								target=micro,
@@ -25,8 +25,19 @@
 			holder.release()
 
 /datum/element/mob_holder/micro/on_examine(mob/living/source, mob/user, list/examine_list)
-	if(ishuman(user) && !istype(source.loc, /obj/item/clothing/head/mob_holder) && (abs(get_size(source)/get_size(user)) <= CONFIG_GET(number/max_pick_ratio)))
+	if(ishuman(user) && !istype(source.loc, /obj/item/clothing/head/mob_holder) && (COMPARE_SIZES(user, source)) >= (1 / CONFIG_GET(number/max_pick_ratio)))
 		examine_list += span_notice("Looks like [source.p_they(FALSE)] can be picked up using <b>Alt+Click and grab intent</b>!")
+
+/// Do not inherit from /mob_holder, interactions are different.
+/datum/element/mob_holder/micro/on_requesting_context_from_item(
+	obj/source,
+	list/context,
+	obj/item/held_item,
+	mob/living/user,
+)
+
+	LAZYSET(context[SCREENTIP_CONTEXT_ALT_LMB], INTENT_GRAB, "Pick up")
+	return CONTEXTUAL_SCREENTIP_SET
 
 /datum/element/mob_holder/micro/proc/mob_pickup_micro(mob/living/source, mob/user)
 	var/obj/item/clothing/head/mob_holder/micro/holder = new(get_turf(source), source, worn_state, alt_worn, right_hand, left_hand, inv_slots)
@@ -53,7 +64,7 @@
 		to_chat(user, span_warning("You can't pick yourself up."))
 		source.balloon_alert(user, "cannot pick yourself!")
 		return FALSE
-	if(abs(get_size(source)/get_size(user)) > CONFIG_GET(number/max_pick_ratio))
+	if(COMPARE_SIZES(user, source) < (1 / CONFIG_GET(number/max_pick_ratio)))
 		to_chat(user, span_warning("They're too big to pick up!"))
 		source.balloon_alert(user, "too big to pick up!")
 		return FALSE
@@ -68,8 +79,8 @@
 	source.visible_message(span_warning("[user] starts picking up [source]."), \
 					span_userdanger("[user] starts picking you up!"))
 	source.balloon_alert(user, "picking up")
-	var/p = abs(get_size(source)/get_size(user) * 40) //Scale how fast the pickup will be depending on size difference
-	if(!do_after(user, p, target = source))
+	var/time_required = COMPARE_SIZES(source, user) * 40 //Scale how fast the pickup will be depending on size difference
+	if(!do_after(user, time_required, target = source))
 		return FALSE
 
 	if(user.get_active_held_item())
@@ -177,3 +188,23 @@
 		to_chat(usr, span_warning("Your interaction target is gone!"))
 		return
 	menu.open_menu(usr, held_mob)
+
+/obj/item/clothing/head/mob_holder/micro/GetAccess()
+	. = ..()
+	var/obj/item/held = held_mob.get_active_held_item()
+	if(held)
+		. += held.GetAccess()
+	var/mob/living/carbon/human/human_micro = held_mob
+	if(istype(human_micro))
+		. += human_micro.wear_id?.GetAccess()
+
+/obj/item/clothing/head/mob_holder/micro/GetID()
+	. = ..()
+	if(.)
+		return
+	var/obj/item/held = held_mob.get_active_held_item()
+	if(isidcard(held))
+		return held
+	var/mob/living/carbon/human/human_micro = held_mob
+	if(istype(human_micro) && isidcard(human_micro.wear_id))
+		return human_micro.wear_id

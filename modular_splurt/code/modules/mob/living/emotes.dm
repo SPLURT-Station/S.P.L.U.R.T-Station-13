@@ -640,8 +640,8 @@
 	emote_cooldown = 7 SECONDS
 
 /datum/emote/living/audio/wtune
-	key = "whistle_tune"
-	key_third_person = "whistle_tunes"
+	key = "whistletune"
+	key_third_person = "whistletunes"
 	message = "whistles a tune."
 	message_mime = "makes an expression as if whistling."
 	emote_sound = 'modular_splurt/sound/voice/wtune1.ogg'
@@ -655,8 +655,8 @@
 	. = ..()
 
 /datum/emote/living/audio/fiufiu
-	key = "wolf-whistle"
-	key_third_person = "wolf-whistles"
+	key = "wolfwhistle"
+	key_third_person = "wolfwhistles"
 	message = "wolf-whistles!" // i am not creative
 	message_param = "audibly approves %t's appearance."
 	message_mime = "makes an expression as if <i>inappropriately</i> whistling."
@@ -677,6 +677,14 @@
 
 	// Return normally
 	. = ..()
+
+/datum/emote/living/audio/deathglare
+	key = "glare2"
+	key_third_person = "glares2"
+	message = "<b><i>glares</b></i>."
+	message_param = "<b><i>glares</b></i> at %t."
+	emote_sound = 'modular_splurt/sound/voice/deathglare.ogg'
+	emote_cooldown = 4.4 SECONDS
 
 /datum/emote/living/audio/sicko
 	key = "sicko"
@@ -723,7 +731,7 @@
 	emote_cooldown = 0.25 SECONDS
 
 /datum/emote/living/audio/weh4
-	key = "weh-s"
+	key = "weh4"
 	key_third_person = "wehs4"
 	message = "let out a surprised weh!"
 	message_mime = "acts out a surprised weh!"

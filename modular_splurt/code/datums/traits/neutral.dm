@@ -139,13 +139,14 @@
 	gain_text = span_notice("You feel pressure in your groin.")
 	lose_text = span_notice("You feel a weight lifted from your groin.")
 	medical_record_text = "Patient exhibits increased production of sexual fluids."
+	var/increased
 
 /datum/quirk/cum_plus/add()
 	var/mob/living/carbon/M = quirk_holder
 	if(M.getorganslot("testicles"))
 		var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles")
 		T.fluid_mult = 1.5 //Base is 1
-		T.fluid_max_volume = 5
+		T.fluid_max_volume *= 1.75 //Fixes this.
 
 /datum/quirk/cum_plus/remove()
 	var/mob/living/carbon/M = quirk_holder
@@ -154,15 +155,16 @@
 	if(quirk_holder.getorganslot("testicles"))
 		var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles")
 		T.fluid_mult = 1 //Base is 1
-		T.fluid_max_volume = 3 //Base is 3
+		T.fluid_max_volume = 50 //Base is 50
 
 /datum/quirk/cum_plus/on_process()
-	var/mob/living/carbon/M = quirk_holder //If you get balls later, then this will still proc
+	var/mob/living/carbon/M = quirk_holder //If you get balls later, then get fucked ig.
 	if(M.getorganslot("testicles"))
 		var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles")
-		if(T.fluid_max_volume <= 5 || T.fluid_mult <= 0.2) //INVALID EXPRESSION?
+		if(!increased) //This is literally simpler and way more reliable than what was done before.
+			T.fluid_max_volume *= 1.75 //Lol, lmao even.
 			T.fluid_mult = 1.5 //Base is 0.133
-			T.fluid_max_volume = 5
+			increased = TRUE
 
 //well-trained moved to neutral to stop the awkward situation of a dom snapping and the 30 trait powergamers fall to the floor.
 /datum/quirk/well_trained
@@ -326,7 +328,7 @@
     value = 0
     mob_trait = TRAIT_UNDEAD
     processing_quirk = TRUE
-    var/list/zperks = list(TRAIT_RESISTCOLD,TRAIT_STABLEHEART,TRAIT_EASYDISMEMBER,TRAIT_NOBREATH,TRAIT_NOTHIRST,TRAIT_RADIMMUNE,TRAIT_FAKEDEATH,TRAIT_NOSOFTCRIT, TRAIT_NOPULSE) //Ideally we would prevent them from being cloned. But that's a nono.
+    var/list/zperks = list(TRAIT_RESISTCOLD,TRAIT_STABLEHEART,TRAIT_EASYDISMEMBER,TRAIT_NOBREATH,TRAIT_NOTHIRST,TRAIT_RADIMMUNE,TRAIT_FAKEDEATH,TRAIT_NOSOFTCRIT, TRAIT_NOPULSE) //You cannot clone the dead.
 
 /datum/quirk/undead/add()
     . = ..()

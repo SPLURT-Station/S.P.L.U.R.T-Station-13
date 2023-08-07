@@ -10,6 +10,12 @@
 	if(decaying)
 		. += "Current blood level: [blood_volume]/[BLOOD_VOLUME_MAXIMUM]."
 		*/
+//Hard-disables zombies until configging is done.
+//Lol, lmao.
+
+/datum/species/zombie/check_roundstart_eligible()
+	return FALSE
+
 /datum/species/mammal/undead
 // takes 30% more damage but doesn't crit
 	id = SPECIES_UMAMMAL
@@ -32,6 +38,9 @@
 	mutanttongue = /obj/item/organ/tongue/zombie
 
 	species_category = SPECIES_CATEGORY_UNDEAD
+
+/datum/species/mammal/undead/check_roundstart_eligible()
+	return FALSE
 
 /datum/species/mammal/undead/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	. = ..()
@@ -80,6 +89,9 @@
 	mutanttongue = /obj/item/organ/tongue/zombie
 
 	species_category = SPECIES_CATEGORY_UNDEAD
+
+/datum/species/insect/undead/check_roundstart_eligible()
+	return FALSE
 
 /datum/species/insect/undead/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	C.set_screwyhud(SCREWYHUD_HEALTHY)
@@ -131,6 +143,9 @@
 	mutanttongue = /obj/item/organ/tongue/zombie
 
 	species_category = SPECIES_CATEGORY_UNDEAD
+
+/datum/species/lizard/undead/check_roundstart_eligible()
+	return FALSE
 
 /datum/species/lizard/undead/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	C.set_screwyhud(SCREWYHUD_HEALTHY)

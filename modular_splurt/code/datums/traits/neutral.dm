@@ -322,11 +322,11 @@
 
 /datum/quirk/undead
     name = "Undeath"
-    desc = "Your body, be it anomalous, or just outright refusing to die - has indeed become undead. Due to this, many of the ailments you suffered before no longer apply - and you may be more susceptible to burn-based weaponry."
+    desc = "Your body, be it anomalous, or just outright refusing to die - has indeed become undead. Due to this you may be more susceptible to burn-based weaponry."
     value = 0
     mob_trait = TRAIT_UNDEAD
     processing_quirk = TRUE
-    var/list/zperks = list(TRAIT_RESISTCOLD,TRAIT_STABLEHEART,TRAIT_EASYDISMEMBER,TRAIT_NOBREATH,TRAIT_NOTHIRST,TRAIT_RADIMMUNE,TRAIT_FAKEDEATH,TRAIT_NOSOFTCRIT, TRAIT_NOPULSE) //Wah
+    var/list/zperks = list(TRAIT_RESISTCOLD,TRAIT_STABLEHEART,TRAIT_EASYDISMEMBER,TRAIT_NOBREATH,TRAIT_NOTHIRST,TRAIT_RADIMMUNE,TRAIT_FAKEDEATH,TRAIT_NOSOFTCRIT, TRAIT_NOPULSE) //You cannot clone the dead.
 
 /datum/quirk/undead/add()
     . = ..()
@@ -350,6 +350,7 @@
     H.adjust_nutrition(-0.05)//The Undead are Hungry.
     H.set_screwyhud(SCREWYHUD_HEALTHY) //just in case of hallucinations
     H.adjustOxyLoss(-3) //Helps prevent zombie softlocks
+    H.adjustBruteLoss(-0.5) //The undead will only regenerate if not burnt.
 	if (H.getBruteLoss() > 0 && H.getFireLoss() <= 50)
 		H.adjustBruteLoss(-0.5, forced = TRUE)
 		H.adjustFireLoss(-0.15, forced = TRUE)

@@ -145,7 +145,7 @@
 	var/mob/living/carbon/M = quirk_holder
 	if(M.getorganslot("testicles"))
 		var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles")
-		T.fluid_mult = 1.5 //Base is 1
+		T.fluid_mult += 0.5 //Base is 1
 		T.fluid_max_volume *= 1.75 //Fixes this.
 
 /datum/quirk/cum_plus/remove()
@@ -154,8 +154,8 @@
 		return
 	if(quirk_holder.getorganslot("testicles"))
 		var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles")
-		T.fluid_mult = 1 //Base is 1
-		T.fluid_max_volume = 50 //Base is 50
+		T.fluid_mult -= 0.5 //Base is 1
+		T.fluid_max_volume = *= 0.75 //Base is 50
 
 /datum/quirk/cum_plus/on_process()
 	var/mob/living/carbon/M = quirk_holder //If you get balls later, then get fucked ig.

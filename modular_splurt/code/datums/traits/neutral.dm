@@ -322,7 +322,7 @@
 
 /datum/quirk/undead
     name = "Undeath"
-    desc = "Your body, be it anomalous, or just outright refusing to die - has indeed become undead. Due to this, you are unable to be cloned, and may be more susceptible to burn-based weaponry."
+    desc = "Your body, be it anomalous, or just outright refusing to die - has indeed become undead. Due to this, many of the ailments you suffered before no longer apply - and you may be more susceptible to burn-based weaponry."
     value = 0
     mob_trait = TRAIT_UNDEAD
     processing_quirk = TRUE

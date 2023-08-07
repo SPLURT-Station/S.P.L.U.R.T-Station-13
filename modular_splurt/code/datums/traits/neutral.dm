@@ -350,7 +350,11 @@
     H.adjust_nutrition(-0.05)//The Undead are Hungry.
     H.set_screwyhud(SCREWYHUD_HEALTHY) //just in case of hallucinations
     H.adjustOxyLoss(-3) //Helps prevent zombie softlocks
-    H.adjustBruteLoss(-0.5) //The undead will only regenerate if not burnt.
+	if (H.getBruteLoss() > 0 && H.getFireLoss() <= 50)
+		H.adjustBruteLoss(-0.5, forced = TRUE)
+		H.adjustFireLoss(-0.15, forced = TRUE)
+	else if (H.getToxLoss() <= 90) //Kinda hard to poison the undead. Still plausible
+		H.adjustToxLoss(-0.3, forced = TRUE)
 
 //succubus and incubus below
 /datum/quirk/incubus

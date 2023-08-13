@@ -678,12 +678,12 @@
 		return
 
 
-/proc/printplayer(datum/mind/ply, fleecheck)
+/proc/printplayer(datum/mind/ply, fleecheck) //Nonmodular edit. Prevents antagonists from having their ckey printed at round-end. //SPLURT.
 	var/jobtext = ""
 	if(ply.assigned_role)
-		jobtext = " the <b>[ply.assigned_role]</b>"
+		jobtext = " the <b>[ply.assigned_role]</b>" //The following pref does not work.
 	var/text = (ply.hide_ckey ? \
-		"<b>[ply.key]</b> was <b>[ply.name]</b>[jobtext] and" \
+		"<b>["An Antagonist"]</b> was <b>[ply.name]</b>[jobtext] and" \
 		:  "<b>[ply.name]</b>[jobtext]")
 	if(ply.current)
 		if(ply.current.stat == DEAD)

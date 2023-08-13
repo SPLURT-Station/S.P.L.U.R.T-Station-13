@@ -685,7 +685,7 @@
 	var/text
 	if(ply.hide_ckey)
 		text = (
-			"<b>["An Antagonist"]</b> was <b>[ply.name]</b>[jobtext] and"
+			"<b>[ply.name]</b>[jobtext] and"
 			)
 	else
 		text = (

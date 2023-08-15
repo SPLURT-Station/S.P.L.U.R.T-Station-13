@@ -48,6 +48,6 @@
 
 /mob/living/simple_animal/hostile/carrion/Initialize()
 //Move the sprite into position, cant use Pixel_X and Y, causes issues with the tenticle sprite!
-	..()
+	. = ..()
 	var/matrix/M = transform
 	transform = M.Translate(-32,-32)

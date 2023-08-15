@@ -47,7 +47,9 @@
 /obj/item/genital_equipment/chastity_cage/Destroy()
 	if(equipment.holder_genital)
 		item_removed(src, equipment.holder_genital, usr)
-	. = ..()
+	key = null
+	belt = null
+	return ..()
 
 /obj/item/genital_equipment/chastity_cage/item_inserting(datum/source, obj/item/organ/genital/G, mob/user)
 	. = TRUE

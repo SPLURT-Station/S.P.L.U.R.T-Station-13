@@ -232,6 +232,7 @@
 	QDEL_NULL(shoes)
 	QDEL_NULL(mod)
 	QDEL_NULL(storage)
+	QDEL_NULL(wires)
 	return ..()
 
 /obj/machinery/suit_storage_unit/update_overlays()

@@ -52,7 +52,10 @@
 
 /obj/item/gun/energy/kinetic_accelerator/nopenalty
 	desc = "A self recharging, ranged mining tool that does increased damage in low pressure. This one feels a bit heavier than usual."
-	ammo_type = list(/obj/item/projectile/kinetic/nopenalty)
+	ammo_type = list(/obj/item/ammo_casing/energy/kinetic/nopenalty)
+
+/obj/item/ammo_casing/energy/kinetic/nopenalty
+	projectile_type = /obj/item/projectile/kinetic/nopenalty
 
 /obj/item/projectile/kinetic/nopenalty
 

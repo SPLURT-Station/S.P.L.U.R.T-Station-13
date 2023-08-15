@@ -188,3 +188,23 @@
 		to_chat(usr, span_warning("Your interaction target is gone!"))
 		return
 	menu.open_menu(usr, held_mob)
+
+/obj/item/clothing/head/mob_holder/micro/GetAccess()
+	. = ..()
+	var/obj/item/held = held_mob.get_active_held_item()
+	if(held)
+		. += held.GetAccess()
+	var/mob/living/carbon/human/human_micro = held_mob
+	if(istype(human_micro))
+		. += human_micro.wear_id?.GetAccess()
+
+/obj/item/clothing/head/mob_holder/micro/GetID()
+	. = ..()
+	if(.)
+		return
+	var/obj/item/held = held_mob.get_active_held_item()
+	if(isidcard(held))
+		return held
+	var/mob/living/carbon/human/human_micro = held_mob
+	if(istype(human_micro) && isidcard(human_micro.wear_id))
+		return human_micro.wear_id

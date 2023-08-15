@@ -842,11 +842,13 @@
 
 	if(amount)
 		add_lust(amount)
-	if(get_lust() >= get_lust_tolerance())
+	var/lust = get_lust()
+	var/lust_tolerance = get_lust_tolerance()
+	if(lust >= lust_tolerance)
 		if(prob(10))
 			to_chat(src, "<b>You struggle to not orgasm!</b>")
 			return FALSE
-		if(lust >= get_lust_tolerance()*3)
+		if(lust >= (lust_tolerance * 3))
 			cum(partner, orifice)
 			return TRUE
 	else

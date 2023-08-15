@@ -45,6 +45,8 @@
 	for(var/obj/item/organ/genital/genital in genital_holder.internal_organs)	//Only get the genitals
 		if(CHECK_BITFIELD(genital.genital_flags, GENITAL_INTERNAL))			//Not those though
 			continue
+		if(!(genital.is_exposed() || genital.always_accessible || user_is_target)) //Hidden for a reason
+			continue
 
 		var/list/genital_entry = list()
 		genital_entry["img"] = icon2base64(getFlatIcon(genital, no_anim=TRUE))

@@ -321,7 +321,8 @@ Key procs
 								/datum/language/modular_sand/solcommon = list(LANGUAGE_ATOM),
 								/datum/language/modular_sand/technorussian = list(LANGUAGE_ATOM),
 								/datum/language/modular_sand/dunmeri = list(LANGUAGE_ATOM),
-								/datum/language/modular_sand/sergal = list(LANGUAGE_ATOM))
+								/datum/language/modular_sand/sergal = list(LANGUAGE_ATOM),
+								/datum/language/signlanguage = list(LANGUAGE_ATOM))
 	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
 							/datum/language/machine = list(LANGUAGE_ATOM),
 							/datum/language/draconic = list(LANGUAGE_ATOM),

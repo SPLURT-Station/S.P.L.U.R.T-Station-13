@@ -440,7 +440,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	else
 		if(ishuman(mob_occupant))
 			var/mob/living/carbon/human/H = mob_occupant
-			var/mob/living/carbon/human/H_original_caharcter = H.mind.original_character.resolve()
+			var/mob/living/carbon/human/H_original_caharcter = H?.mind?.original_character?.resolve()
 			if(H.mind && H.client && H.client.prefs && H == H_original_caharcter)
 				H.SaveTCGCards()
 

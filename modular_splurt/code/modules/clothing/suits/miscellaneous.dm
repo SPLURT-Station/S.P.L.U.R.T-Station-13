@@ -109,7 +109,7 @@
 	icon_state = "runner_engi"
 
 /obj/item/clothing/suit/jacket/runner/syndicate
-	name = "Sydnicate Runner Jacket"
+	name = "Syndicate Runner Jacket"
 	icon_state = "runner_syndi"
 
 /obj/item/clothing/suit/jacket/runner/winter

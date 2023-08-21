@@ -1,8 +1,10 @@
-/mob/living/simple_animal/hostile/megafauna/dragon
-	glorymessageshand = list("climbs atop the drake's head as it dangles weakly near the ground, ripping its left horn off and jumping down before swinging it at the drake's face full force, cracking its maw!", "goes around the dragon and rips off their tail, using it's spiked end to beat the dragon's bloodied face until it cracks open and it dies!")
-	glorymessagescrusher = list("chops off the dragon's head by the neck, and it falls down with a strong thud!", "rams into the dragon's skull with the hilt of their crusher repeatedly and cracking holes into their skull each time, turning it's brain into mush!")
-	glorymessagespka = list("shoots at the dragon's wings with their PKA, exploding them into bizarre giblets! They then finish the poor creature off with a point-blank blast to the head, exploding it!")
-	glorymessagespkabayonet = list("goes around the drake and chops off their tail's spike with their bayonet, then climbs onto their head and makes them eat it!")
+/mob/living/simple_animal/hostile/megafauna/dragon/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/glory_kill, \
+		messages_unarmed = list("climbs atop the drake's head as it dangles weakly near the ground, ripping its left horn off and jumping down before swinging it at the drake's face full force, cracking its maw!", "goes around the dragon and rips off their tail, using it's spiked end to beat the dragon's bloodied face until it cracks open and it dies!"), \
+		messages_crusher = list("chops off the dragon's head by the neck, and it falls down with a strong thud!", "rams into the dragon's skull with the hilt of their crusher repeatedly and cracking holes into their skull each time, turning it's brain into mush!"), \
+		messages_pka = list("shoots at the dragon's wings with their PKA, exploding them into bizarre giblets! They then finish the poor creature off with a point-blank blast to the head, exploding it!"), \
+		messages_pka_bayonet = list("goes around the drake and chops off their tail's spike with their bayonet, then climbs onto their head and makes them eat it!"))
 
 /mob/living/simple_animal/hostile/megafauna/dragon/lesser/akatosh
 	name = "Holy Dragon"

@@ -211,7 +211,8 @@
 		"Junior Scientist",
 		"Rack Researcher",
 		"Nanite Programmer",
-		"Tetromino Researcher"
+		"Tetromino Researcher",
+		"Xenoarchaeologist"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -257,7 +258,8 @@
 		"Sex Educator",
 		"Rental Mommy",
 		"Rental Daddy",
-		"Psycholo-Slut"
+		"Psycholo-Slut",
+		"Sexual Advisor"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()

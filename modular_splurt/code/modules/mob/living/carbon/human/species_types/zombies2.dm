@@ -256,7 +256,7 @@
 		Insert(loc)
 	GLOB.zombie_infection_list += src
 
-/obj/item/organ/zombie_infection/Destroy()
+/obj/item/organ/undead_infection/Destroy()
 	GLOB.zombie_infection_list -= src
 	. = ..()
 

@@ -13,3 +13,6 @@
 /datum/config_entry/flag/protolock_all_access
 
 /datum/config_entry/flag/character_color_limits
+
+/datum/config_entry/number/max_jukebox_songs
+	config_entry_value = -1

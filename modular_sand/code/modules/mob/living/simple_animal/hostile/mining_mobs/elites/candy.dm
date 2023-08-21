@@ -42,10 +42,16 @@
 								/datum/action/innate/elite_attack/bloody_trap,
 								/datum/action/innate/elite_attack/meat_shield,
 								/datum/action/innate/elite_attack/knockdown)
-	glorymessageshand = list("tries punching Candy's head, but they parry it and grab their hand! However, another hard punch comes through with the other arm, this time killing the demon swiftly and exploding their skull!", "grabs Candy by their neck, then pressures into until it explodes and it's head comes flying off!")
-	glorymessagescrusher = list("slashes Candy in half vertically with their crusher, each of the parts falling off onto the ground limply!")
-	glorymessagespka = list("shoots at Candy's head, breaking their skull open and revealing their brain! Then, they bash the brain into mush with their PKA's stock!", "kicks Candy into the ground, and repeatedly slams their PKA against their skull until they finally die!")
-	glorymessagespkabayonet = list("stabs through Candy's maw and lifts them into the air, shooting their PKA and exploding their head as the limp body falls off!")
+
+/mob/living/simple_animal/hostile/asteroid/elite/candy/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/glory_kill, \
+		messages_unarmed = list("tries punching Candy's head, but they parry it and grab their hand! However, another hard punch comes through with the other arm, this time killing the demon swiftly and exploding their skull!", "grabs Candy by their neck, then pressures into until it explodes and it's head comes flying off!"), \
+		messages_crusher = list("slashes Candy in half vertically with their crusher, each of the parts falling off onto the ground limply!"), \
+		messages_pka = list("shoots at Candy's head, breaking their skull open and revealing their brain! Then, they bash the brain into mush with their PKA's stock!", "kicks Candy into the ground, and repeatedly slams their PKA against their skull until they finally die!"), \
+		messages_pka_bayonet = list("stabs through Candy's maw and lifts them into the air, shooting their PKA and exploding their head as the limp body falls off!"), \
+		health_given = 50, \
+		threshold = (maxHealth/10 * 0.625))
 
 /datum/action/innate/elite_attack/bloodcharge
 	name = "Blood Charge"

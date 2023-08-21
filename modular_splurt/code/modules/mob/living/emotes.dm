@@ -231,7 +231,7 @@
 	message = "speeeeens!"
 	message_mime = "speeeeens silently!"
 	restraint_check = TRUE
-	mob_type_allowed_typecache = list(/mob/living, /mob/dead/observer)
+	mob_type_allowed_typecache = list(/mob/living)
 	mob_type_ignore_stat_typecache = list(/mob/dead/observer)
 	emote_sound = 'modular_splurt/sound/voice/speen.ogg'
 	// No cooldown var required
@@ -1028,3 +1028,16 @@
 	message_mime = "acts like a mooing cow."
 	emote_sound = 'modular_splurt/sound/voice/moo.ogg'
 	emote_cooldown = 1.7 SECONDS
+
+/datum/emote/living/audio/scream2
+	key = "scream2"
+	key_third_person = "screams2"
+	message = "screams!"
+	message_mime = "acts out a rather silly scream!"
+	emote_sound = 'modular_splurt/sound/voice/cscream1.ogg'
+	emote_cooldown = 3.3 SECONDS // Uses longest sound's time.
+	emote_pitch_variance = FALSE
+
+/datum/emote/living/audio/scream2/run_emote(mob/user, params)
+	emote_sound = pick('modular_splurt/sound/voice/cscream1.ogg', 'modular_splurt/sound/voice/cscream2.ogg', 'modular_splurt/sound/voice/cscream3.ogg', 'modular_splurt/sound/voice/cscream4.ogg', 'modular_splurt/sound/voice/cscream5.ogg', 'modular_splurt/sound/voice/cscream6.ogg', 'modular_splurt/sound/voice/cscream7.ogg', 'modular_splurt/sound/voice/cscream8.ogg', 'modular_splurt/sound/voice/cscream9.ogg', 'modular_splurt/sound/voice/cscream10.ogg')
+	. = ..()

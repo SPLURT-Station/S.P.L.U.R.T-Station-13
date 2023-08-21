@@ -115,7 +115,9 @@
 /obj/item/genital_equipment/chastity_cage/estim/Initialize(mapload, obj/item/key/chastity_key/estim/newkey = null)
 	. = ..()
 	var/obj/item/key/chastity_key/estim/estim_key = key
-	if(!estim_key)
+	if(!estim_key && newkey)
 		estim_key = newkey
+	else
+		return
 	if(!estim_key.estim_cage)
 		estim_key.estim_cage = src

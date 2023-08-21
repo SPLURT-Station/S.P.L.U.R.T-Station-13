@@ -25,7 +25,7 @@
 	if(!owner)
 		return
 
-/obj/item/organ/genital/belly/modify_size(modifier, min = -INFINITY, max = INFINITY)
+/obj/item/organ/genital/belly/modify_size(modifier, min = -INFINITY, max = BELLY_SIZE_MAX)
 	var/new_value = clamp(size_cached + modifier, max(min, min_size ? min_size : -INFINITY), min(max_size ? max_size : INFINITY, max))
 	if(new_value == size_cached)
 		return

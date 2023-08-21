@@ -76,16 +76,17 @@
 	..()
 
 /obj/item/organ/genital/breasts/size_to_state()
+	var/rounded = round(size)
 	var/str_size
-	switch(size)
+	switch(rounded)
 		if(0) //flatchested
 			str_size = "flat"
 		if(1 to 8) //modest
-			str_size = GLOB.breast_values[size]
+			str_size = GLOB.breast_values[rounded]
 		if(9 to 15) //massive
-			str_size = GLOB.breast_values[size]
+			str_size = GLOB.breast_values[rounded]
 		if(16 to 17) //ridiculous
-			str_size = GLOB.breast_values[size]
+			str_size = GLOB.breast_values[rounded]
 		if(18 to 24) //AWOOOOGAAAAAAA
 			str_size = "massive"
 		if(25 to 29) //AWOOOOOOGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA

@@ -176,8 +176,16 @@
 			sup[name] = rank
 			department = 1
 		if(department_check in GLOB.civilian_positions)
-			civ[name] = rank
-			department = 1
+		//SPLURT Changes
+			if (department_check == "Assistant") //Move em stinkers to Misc to prevent clutter
+				misc[name] = rank
+			else
+				civ[name] = rank
+				department = 1
+		//end of SPLURT Changes
+		//old code
+		//civ[name] = rank
+		//department = 1
 		if(department_check in GLOB.nonhuman_positions)
 			bot[name] = rank
 			department = 1

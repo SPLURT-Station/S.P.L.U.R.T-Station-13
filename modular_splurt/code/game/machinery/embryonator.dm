@@ -9,6 +9,8 @@
 	active_power_usage = 150
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	circuit = /obj/item/circuitboard/machine/embryonator
+	var/icon/child_image
+	var/obj/item/embryo_egg
 
 /obj/machinery/embryonator/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -22,6 +24,7 @@
 
 /obj/machinery/embryonator/ui_data(mob/user)
 	. = ..()
+	.["child_image"] = icon2base64(child_image)
 
 /obj/machinery/embryonator/ui_act(action, params)
 	. = ..()

@@ -319,10 +319,9 @@
 	id = /datum/reagent/consumable/ethanol/midnight_tears
 	results = list(/datum/reagent/consumable/ethanol/midnight_tears = 20)
 	required_reagents = list(
-		/datum/reagent/consumable/ethanol/navy_rum = 3,
+		/datum/reagent/consumable/ethanol/rum = 3,
 		/datum/reagent/consumable/ethanol/curacao = 5,
 		/datum/reagent/consumable/sugar = 1,
-		/datum/reagent/consumable/ethanol/bitters = 1,
 		/datum/reagent/consumable/sodawater = 15
 	)
 
@@ -331,10 +330,9 @@
 	id = /datum/reagent/consumable/ethanol/midnight_sky
 	results = list(/datum/reagent/consumable/ethanol/midnight_sky = 25)
 	required_reagents = list(
-		/datum/reagent/consumable/ethanol/navy_rum = 3,
+		/datum/reagent/consumable/ethanol/rum = 3,
 		/datum/reagent/consumable/ethanol/curacao = 2,
 		/datum/reagent/consumable/sugar = 2,
-		/datum/reagent/consumable/ethanol/bitters = 1,
 		/datum/reagent/consumable/space_cola = 15,
 		/datum/reagent/consumable/ice = 2
 	)
@@ -344,9 +342,8 @@
 	id = /datum/reagent/consumable/ethanol/midnight_joy
 	results = list(/datum/reagent/consumable/ethanol/midnight_joy = 25)
 	required_reagents = list(
-		/datum/reagent/consumable/ethanol/navy_rum = 3,
+		/datum/reagent/consumable/ethanol/rum = 3,
 		/datum/reagent/consumable/pineapplejuice = 5,
 		/datum/reagent/consumable/sugar = 1,
-		/datum/reagent/consumable/ethanol/bitters = 1,
 		/datum/reagent/consumable/sodawater = 15
 	)

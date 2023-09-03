@@ -32,8 +32,6 @@ SUBSYSTEM_DEF(vote)
 
 	var/list/stored_modetier_results = list() // The aggregated tier list of the modes available in secret.
 
-	var/transfer_votes_done = 0
-
 /datum/controller/subsystem/vote/fire()	//called by master_controller
 	if(mode)
 		if(end_time < world.time)
@@ -250,18 +248,8 @@ SUBSYSTEM_DEF(vote)
 	if(vote_system == SCORE_VOTING)
 		calculate_scores(vote_title_text)
 	if(vote_system == HIGHEST_MEDIAN_VOTING)
-		calculate_highest_median(vote_title_text)
-	var/list/winners = list()
-	if(mode == "transfer")
-		var/amount_required = CONFIG_GET(number/min_continue_votes) + transfer_votes_done
-		transfer_votes_done += 1
-		text += "\nExtending requires at least [amount_required] votes to win."
-		if(choices[VOTE_CONTINUE] < amount_required || choices[VOTE_TRANSFER] >= choices[VOTE_CONTINUE])
-			winners = list(VOTE_TRANSFER)
-		else
-			winners = list(VOTE_CONTINUE)
-	else
-		winners = vote_system == INSTANT_RUNOFF_VOTING ? get_runoff_results() : get_result()
+		calculate_highest_median(vote_title_text) // nothing uses this at the moment
+	var/list/winners = vote_system == INSTANT_RUNOFF_VOTING ? get_runoff_results() : get_result()
 	var/was_roundtype_vote = mode == "roundtype" || mode == "dynamic"
 	if(winners.len > 0)
 		if(was_roundtype_vote)
@@ -317,7 +305,7 @@ SUBSYSTEM_DEF(vote)
 			if(vote_system == SCHULZE_VOTING)
 				admintext += "\nIt should be noted that this is not a raw tally of votes (impossible in ranked choice) but the score determined by the schulze method of voting, so the numbers will look weird!"
 			else if(vote_system == HIGHEST_MEDIAN_VOTING)
-				admintext += "\nIt should be noted that this is not a raw tally of votes but rather the median score plus a tiebreaker!"
+				admintext += "\nIt should be noted that this is not a raw tally of votes but the number of runoffs done by majority judgement!"
 			for(var/i=1,i<=choices.len,i++)
 				var/votes = choices[choices[i]]
 				admintext += "\n<b>[choices[i]]:</b> [votes ? votes : "0"]" //This is raw data, but the raw data is null by default. If ya don't compensate for it, then it'll look weird!

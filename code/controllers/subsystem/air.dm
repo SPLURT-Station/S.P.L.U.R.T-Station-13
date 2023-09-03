@@ -103,6 +103,7 @@ SUBSYSTEM_DEF(air)
 	setup_pipenets()
 	gas_reactions = init_gas_reactions()
 	auxtools_update_reactions()
+	equalize_enabled = CONFIG_GET(flag/atmos_equalize_enabled)
 	return ..()
 
 /datum/controller/subsystem/air/proc/extools_update_ssair()
@@ -175,7 +176,7 @@ SUBSYSTEM_DEF(air)
 		finish_turf_processing(resumed)
 		if(state != SS_RUNNING)
 			return
-		resumed = 0
+		resumed = FALSE
 		currentpart = SSAIR_PIPENETS
 
 	if(currentpart == SSAIR_PIPENETS || !resumed)
@@ -186,8 +187,6 @@ SUBSYSTEM_DEF(air)
 			return
 		resumed = 0
 		currentpart = SSAIR_ATMOSMACHINERY
-
-	// This is only machinery like filters, mixers that don't interact with air
 	if(currentpart == SSAIR_ATMOSMACHINERY)
 		timer = TICK_USAGE_REAL
 		process_atmos_machinery(resumed)
@@ -214,7 +213,6 @@ SUBSYSTEM_DEF(air)
 			return
 		resumed = 0
 		currentpart = heat_enabled ? SSAIR_TURF_CONDUCTION : SSAIR_REBUILD_PIPENETS
-
 	// Heat -- slow and of questionable usefulness. Off by default for this reason. Pretty cool, though.
 	if(currentpart == SSAIR_TURF_CONDUCTION)
 		timer = TICK_USAGE_REAL
@@ -258,8 +256,6 @@ SUBSYSTEM_DEF(air)
 			atmos_machinery.Remove(M)
 		if(MC_TICK_CHECK)
 			return
-
-/datum/controller/subsystem/air/proc/process_turf_heat()
 
 /datum/controller/subsystem/air/proc/process_hotspots(resumed = 0)
 	if (!resumed)
@@ -321,6 +317,7 @@ SUBSYSTEM_DEF(air)
 /datum/controller/subsystem/air/proc/get_max_gas_mixes()
 /datum/controller/subsystem/air/proc/turf_process_time()
 /datum/controller/subsystem/air/proc/heat_process_time()
+/datum/controller/subsystem/air/proc/process_turf_heat()
 
 /datum/controller/subsystem/air/StartLoadingMap()
 	map_loading = TRUE

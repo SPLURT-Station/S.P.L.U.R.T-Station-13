@@ -164,6 +164,33 @@
 			T.fluid_mult = 1.5 //Base is 0.133
 			T.fluid_max_volume = 5
 
+//You are a CIA agent.
+/datum/quirk/cosglow
+	name = "Cosmetic Glow"
+	desc = "You glow! Be it an obscure radiation emission, or simple Bioluminescent properties.."
+	value = 0
+	mob_trait = TRAIT_COSGLOW
+	gain_text = span_notice("You feel empowered by a three-letter agency!")
+	lose_text = span_notice("You realize that working for the space CIA sucks!")
+
+/datum/quirk/cosglow/add()
+	// Define quirk holder mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+	// Add glow control action
+	var/datum/action/cosglow/update_glow/quirk_action = new
+	quirk_action.Grant(quirk_mob)
+
+/datum/quirk/cosglow/remove()
+	// Define quirk holder mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Remove glow control action
+	var/datum/action/cosglow/update_glow/quirk_action = locate() in quirk_mob.actions
+	quirk_action.Remove(quirk_mob)
+
+	// Remove glow effect
+	quirk_mob.remove_filter("rad_fiend_glow")
+
 //well-trained moved to neutral to stop the awkward situation of a dom snapping and the 30 trait powergamers fall to the floor.
 /datum/quirk/well_trained
 	name = "Well-Trained"

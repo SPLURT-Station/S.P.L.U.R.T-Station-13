@@ -114,18 +114,21 @@
     var/percentage = ((get_lust() / (get_lust_tolerance() * 3)) * 100)
     return percentage
 
-/atom/proc/add_cum_overlay() //This can go in a better spot, for now its here.
-	cum_splatter_icon = icon(initial(icon), initial(icon_state), dir = 1)
-	cum_splatter_icon.Blend("#fff", ICON_ADD)
-	cum_splatter_icon.Blend(icon('modular_splurt/icons/effects/cumoverlay.dmi', "cum_obj"), ICON_MULTIPLY)
+/atom/proc/add_cum_overlay(cum_color) //This can go in a better spot, for now its here.
+	wash_cum()
+	cum_splatter_icon = mutable_appearance('modular_splurt/icons/effects/cumoverlay.dmi', "cum_obj", color = cum_color)
+	add_overlay(cum_splatter_icon)
+
+/mob/living/carbon/human/add_cum_overlay(cum_color, large = FALSE)
+	wash_cum()
+	cum_splatter_icon = mutable_appearance('modular_splurt/icons/effects/cumoverlay.dmi', large ? "cum_large" : "cum_normal", color = cum_color)
 	add_overlay(cum_splatter_icon)
 
 /atom/proc/wash_cum()
-	cut_overlay(mutable_appearance('modular_splurt/icons/effects/cumoverlay.dmi', "cum_normal"))
-	cut_overlay(mutable_appearance('modular_splurt/icons/effects/cumoverlay.dmi', "cum_large"))
 	if(cum_splatter_icon)
 		cut_overlay(cum_splatter_icon)
-	return TRUE
+		QDEL_NULL(cum_splatter_icon)
+		return TRUE
 
 //arousal hud display
 

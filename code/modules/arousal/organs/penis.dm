@@ -88,7 +88,10 @@
 			if(T.taur_mode & S.accepted_taurs) //looks out of place on those.
 				lowershape = "taur, [lowershape]"
 
-	desc = "You see [aroused_state ? "an erect" : "a flaccid"] [lowershape] [name]. You estimate it's about [round(length*get_size(owner), 0.25)] inch[round(length*get_size(owner), 0.25) != 1 ? "es" : ""] long and [round(diameter*get_size(owner), 0.25)] inch[round(diameter*get_size(owner), 0.25) != 1 ? "es" : ""] in diameter."
+	var/adjusted_length = round(length * (owner ? get_size(owner) : 1), 0.25)
+	var/adjusted_diameter = round(diameter * (owner ? get_size(owner) : 1), 0.25)
+
+	desc = "You see [aroused_state ? "an erect" : "a flaccid"] [lowershape] [name]. You estimate it's about [adjusted_length] inch[adjusted_length != 1 ? "es" : ""] long and [adjusted_diameter] inch[adjusted_diameter != 1 ? "es" : ""] in diameter."
 
 /obj/item/organ/genital/penis/get_features(mob/living/carbon/human/H)
 	var/datum/dna/D = H.dna

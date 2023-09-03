@@ -8,12 +8,8 @@
 	use_power = 1
 	idle_power_usage = 200
 	active_power_usage = 5000
+	circuit = /obj/item/circuitboard/machine/telesci_pad
 	var/efficiency
-
-/obj/machinery/telepad/Initialize(mapload)
-	. = ..()
-	var/obj/item/circuitboard/machine/B = new /obj/item/circuitboard/machine/telesci_pad(null)
-	B.apply_default_parts(src)
 
 /obj/item/circuitboard/machine/telesci_pad
 	name = "Telepad (Machine Board)"

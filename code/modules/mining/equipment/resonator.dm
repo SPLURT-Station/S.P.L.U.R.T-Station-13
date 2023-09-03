@@ -96,6 +96,7 @@
 	new /obj/effect/temp_visual/resonance_crush(T)
 	if(ismineralturf(T))
 		var/turf/closed/mineral/M = T
+		replicate(M)
 		M.gets_drilled(creator)
 	check_pressure(T)
 	playsound(T,'sound/weapons/resonator_blast.ogg',50,1)
@@ -115,3 +116,10 @@
 	. = ..()
 	transform = matrix()*1.5
 	animate(src, transform = matrix()*0.1, alpha = 50, time = 4)
+
+/obj/effect/temp_visual/resonance/proc/replicate(turf/closed/mineral/M)	//yogs start: adds replication to resonator fields
+	if(!istype(M) || !M.mineralType) // so we don't end up in the ultimate chain reaction
+		return
+	for(var/turf/closed/mineral/T in orange(1, M))
+		if(istype(T) && T.mineralType)
+			new /obj/effect/temp_visual/resonance(T, creator, null, duration)	//yogs end

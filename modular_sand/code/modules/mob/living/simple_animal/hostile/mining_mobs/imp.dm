@@ -37,10 +37,17 @@
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab = 2, /obj/item/stack/sheet/bone = 4, /obj/item/stack/sheet/leather = 2, /obj/item/stack/ore/plasma = 2)
 	robust_searching = FALSE
 	death_sound = 'modular_sand/sound/misc/impdies.wav'
-	glorymessageshand = list("grabs the imp's eyes and rips them out, shoving the bloody imp aside!", "grabs and crushes the imp's skull apart with their bare hands!", "rips the imp's head clean off with their bare hands!")
-	glorymessagespka = list("sticks their PKA into the imp's mouth and shoots it, showering everything in gore!", "bashes the imp's head into their chest with their PKA!", "shoots off both legs of the imp with their PKA!")
-	glorymessagespkabayonet = list("slices the imp's head off by the neck with the PKA's bayonet!", "repeatedly stabs the imp in their gut with the PKA's bayonet!")
-	glorymessagescrusher = list("chops the imp horizontally in half with their crusher in one swift move!", "chops off the imp's legs with their crusher and kicks their face hard, exploding it while they're in the air!", "slashes each of the imp's arms off by the shoulder with their crusher!")
+
+/mob/living/simple_animal/hostile/asteroid/imp/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/glory_kill, \
+		messages_unarmed = list("grabs the imp's eyes and rips them out, shoving the bloody imp aside!", "grabs and crushes the imp's skull apart with their bare hands!", "rips the imp's head clean off with their bare hands!"), \
+		messages_pka = list("sticks their PKA into the imp's mouth and shoots it, showering everything in gore!", "bashes the imp's head into their chest with their PKA!", "shoots off both legs of the imp with their PKA!"), \
+		messages_pka_bayonet = list("slices the imp's head off by the neck with the PKA's bayonet!", "repeatedly stabs the imp in their gut with the PKA's bayonet!"), \
+		messages_crusher = list("chops the imp horizontally in half with their crusher in one swift move!", "chops off the imp's legs with their crusher and kicks their face hard, exploding it while they're in the air!", "slashes each of the imp's arms off by the shoulder with their crusher!"), \
+		health_given = 7.5, \
+		threshold = (maxHealth/10 * 1.5), \
+		crusher_drop_mod = 2)
 
 /mob/living/simple_animal/hostile/asteroid/imp/attacked_by(obj/item/I, mob/living/user)
 	. = ..()

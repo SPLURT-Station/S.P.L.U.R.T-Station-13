@@ -674,7 +674,7 @@
 	var/atom/A = parent
 	update_actions()
 	for(var/mob/M in range(1, A))
-		if(M.active_storage == src)
+		if(M.active_storage == src && (M != user))
 			close(M)
 
 /datum/component/storage/proc/signal_take_obj(datum/source, atom/movable/AM, new_loc, force = FALSE)

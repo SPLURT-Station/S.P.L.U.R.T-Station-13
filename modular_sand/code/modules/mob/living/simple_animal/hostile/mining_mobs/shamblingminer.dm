@@ -36,10 +36,17 @@
 	robust_searching = FALSE
 	footstep_type = FOOTSTEP_MOB_SHOE
 	minimum_distance = 1
-	glorymessageshand = list("grabs the miner's eyes and rips them out, shoving the bloody miner aside!", "grabs and crushes the miner's skull apart with their bare hands!", "rips the miner's head clean off with their bare hands!")
-	glorymessagespka = list("sticks their PKA into the miner's mouth and shoots it, showering everything in gore!", "bashes the miner's head into their chest with their PKA!", "shoots off both legs of the miner with their PKA!")
-	glorymessagespkabayonet = list("slices the imp's head off by the neck with the PKA's bayonet!", "repeatedly stabs the miner in their gut with the PKA's bayonet!")
-	glorymessagescrusher = list("chops the miner horizontally in half with their crusher in one swift move!", "chops off the miner's legs with their crusher and kicks their face hard, exploding it while they're in the air!", "slashes each of the miner's arms off by the shoulder with their crusher!")
+
+/mob/living/simple_animal/hostile/asteroid/miner/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/glory_kill, \
+		messages_unarmed = list("grabs the miner's eyes and rips them out, shoving the bloody miner aside!", "grabs and crushes the miner's skull apart with their bare hands!", "rips the miner's head clean off with their bare hands!"), \
+		messages_pka = list("sticks their PKA into the miner's mouth and shoots it, showering everything in gore!", "bashes the miner's head into their chest with their PKA!", "shoots off both legs of the miner with their PKA!"), \
+		messages_pka_bayonet = list("slices the imp's head off by the neck with the PKA's bayonet!", "repeatedly stabs the miner in their gut with the PKA's bayonet!"), \
+		messages_crusher = list("chops the miner horizontally in half with their crusher in one swift move!", "chops off the miner's legs with their crusher and kicks their face hard, exploding it while they're in the air!", "slashes each of the miner's arms off by the shoulder with their crusher!"), \
+		health_given = 7.5, \
+		threshold = (maxHealth/10 * 1.5), \
+		crusher_drop_mod = 2)
 
 /mob/living/simple_animal/hostile/asteroid/miner/death(gibbed)
 	. = ..()

@@ -234,7 +234,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	var/list/choices = list()
 	for(var/client/C in GLOB.clients)
 		if(isobserver(C.mob) && see_ghost_names)
-			choices["[C.mob]([C])"] = C
+			choices["[C]"] = C //NONMODULARITY NOTE: Removes the ability to link CKEYs to Characters. Always reapply for privacy reasons.
 		else
 			choices[C] = C
 	choices = sortList(choices)

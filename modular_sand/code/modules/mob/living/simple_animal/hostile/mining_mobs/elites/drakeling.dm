@@ -42,10 +42,16 @@
 								/datum/action/innate/elite_attack/lavaaround,
 								/datum/action/innate/elite_attack/firespew,
 								/datum/action/innate/elite_attack/firemoat)
-	glorymessageshand = list("rips off the little dragon's horns, then shoves them into their mouth!", "grabs the drakeling's head and rips it off violently from their neck with their bare hands!")
-	glorymessagescrusher = list("slashes the drakeling's head in half with their crusher, dividing it in two!")
-	glorymessagespka = list("hits the drakeling's maw repeatedly with the stock of their PKA until it breaks off, then shoots it in the head for good measure!", "grabs the drakeling's neck, and shoots it's head off with their PKA!")
-	glorymessagespkabayonet = list("kicks the drakeling onto the ground belly up, then slices their tummy open with the bayonet as it screams in agony!")
+
+/mob/living/simple_animal/hostile/asteroid/elite/drakeling/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/glory_kill, \
+		messages_unarmed = list("rips off the little dragon's horns, then shoves them into their mouth!", "grabs the drakeling's head and rips it off violently from their neck with their bare hands!"), \
+		messages_crusher = list("slashes the drakeling's head in half with their crusher, dividing it in two!"), \
+		messages_pka = list("hits the drakeling's maw repeatedly with the stock of their PKA until it breaks off, then shoots it in the head for good measure!", "grabs the drakeling's neck, and shoots it's head off with their PKA!"), \
+		messages_pka_bayonet = list("kicks the drakeling onto the ground belly up, then slices their tummy open with the bayonet as it screams in agony!"), \
+		health_given = 50, \
+		threshold = (maxHealth/10 * 0.625))
 
 /datum/action/innate/elite_attack/lavamoat
 	name = "Lava Moat"

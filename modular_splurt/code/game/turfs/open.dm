@@ -61,3 +61,6 @@
 /turf/open/floor/plating/layeniaredder/acid_act(acidpwr, acid_volume)
 	acidpwr = min(acidpwr, 50)
 	. = ..()
+
+/turf/open/openspace
+	heat_capacity = INFINITY

@@ -85,11 +85,15 @@ Difficulty: Medium
 	var/stageThree = FALSE
 	var/currentPower = 0 //Every few seconds this variable gets higher, when it gets high
 						 //enough it will use a special attack then reset the variable to 0w
-	glorymessageshand = list("climbs atop the wolf's head as it dangles weakly near the ground, ripping its left eye off and jumping down before punching through it's cranium!", "goes around the wolf and rips off their tail, using it as whip on the fiend")
-	glorymessagescrusher = list("chops off the wolf's head by it's neck!")
-	glorymessagespka = list("shoots at the wolf's eyes with their PKA, exploding them into giblets!")
-	glorymessagespkabayonet = list("slides down below Sif, using their bayonet to rip it's stomach open!")
 	var/list/hit_things = list()
+
+/mob/living/simple_animal/hostile/megafauna/sif/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/glory_kill, \
+		messages_unarmed = list("climbs atop the wolf's head as it dangles weakly near the ground, ripping its left eye off and jumping down before punching through it's cranium!", "goes around the wolf and rips off their tail, using it as whip on the fiend"), \
+		messages_crusher = list("chops off the wolf's head by it's neck!"), \
+		messages_pka = list("shoots at the wolf's eyes with their PKA, exploding them into giblets!"), \
+		messages_pka_bayonet = list("slides down below Sif, using their bayonet to rip it's stomach open!"))
 
 /obj/item/gps/internal/sif
 	icon_state = null

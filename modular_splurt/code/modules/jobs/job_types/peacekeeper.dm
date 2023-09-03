@@ -122,13 +122,12 @@ Peacekeeper Hypospray
 
 /obj/item/reagent_containers/peacehypo/Initialize(mapload)
 	. = ..()
-
 	for(var/R in reagent_ids)
 		add_reagent(R)
-
 	START_PROCESSING(SSobj, src)
 
 /obj/item/reagent_containers/peacehypo/Destroy()
+	QDEL_LIST(reagent_list)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 

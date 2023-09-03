@@ -32,11 +32,17 @@
 	if(!cached_map)
 		return
 
-	discover_port_offset()
+	//SPLURT EDIT
+	var/offset = discover_offset(/obj/docking_port/mobile)
+
+	port_x_offset = offset[1]
+	port_y_offset = offset[2]
+	//SPLURT EDIT END
 
 	if(!cached_map)
 		cached_map = null
 
+/* SPLURT EDIT - Refractored in modular
 /datum/map_template/shuttle/proc/discover_port_offset()
 	var/key
 	var/list/models = cached_map.grid_models
@@ -56,6 +62,7 @@
 					return
 				++xcrd
 			--ycrd
+*/
 
 /datum/map_template/shuttle/load(turf/T, centered = FALSE, orientation = SOUTH, annihilate = default_annihilate, force_cache = FALSE, rotate_placement_to_orientation = FALSE, register = TRUE)
 	. = ..()

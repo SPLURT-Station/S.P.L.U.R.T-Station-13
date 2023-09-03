@@ -3,9 +3,6 @@
 	desc = "Debug. Parent Clean"
 	icon = 'modular_splurt/code/modules/research/xenoarch/tools.dmi'
 
-/obj/item/xenoarch/Initialize()
-	..()
-
 /obj/item/xenoarch/clean/hammer
 	name = "Parent hammer"
 	desc = "Debug. Parent Hammer."

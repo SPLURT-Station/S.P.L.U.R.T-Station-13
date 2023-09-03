@@ -67,7 +67,7 @@
 //this is far too lewd wah
 
 /obj/item/organ/genital/breasts/modify_size(modifier, min = -INFINITY, max = INFINITY)
-	var/new_value =  clamp(size + modifier, max(min, min_size ? min_size : -INFINITY), min(max_size ? max_size : INFINITY, max))
+	var/new_value =  clamp(size + modifier, max(min, min_size ? GLOB.breast_values[min_size] : -INFINITY), min(max_size ? GLOB.breast_values[max_size] : INFINITY, max))
 	if(new_value == size)
 		return
 	prev_size = size
@@ -76,16 +76,17 @@
 	..()
 
 /obj/item/organ/genital/breasts/size_to_state()
+	var/rounded = round(size)
 	var/str_size
-	switch(size)
+	switch(rounded)
 		if(0) //flatchested
 			str_size = "flat"
 		if(1 to 8) //modest
-			str_size = GLOB.breast_values[size]
+			str_size = GLOB.breast_values[rounded]
 		if(9 to 15) //massive
-			str_size = GLOB.breast_values[size]
+			str_size = GLOB.breast_values[rounded]
 		if(16 to 17) //ridiculous
-			str_size = GLOB.breast_values[size]
+			str_size = GLOB.breast_values[rounded]
 		if(18 to 24) //AWOOOOGAAAAAAA
 			str_size = "massive"
 		if(25 to 29) //AWOOOOOOGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA

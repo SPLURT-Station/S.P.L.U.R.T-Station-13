@@ -3,7 +3,7 @@
 version: 1
 # The BYOND version to use (kept in sync with dependencies.sh by the "TGS Test Suite" CI job)
 # Must be interpreted as a string, keep quoted
-byond: "514.1556"
+byond: "514.1589"
 # Folders to create in "<instance_path>/Configuration/GameStaticFiles/"
 static_files:
   # Config directory should be static
@@ -18,6 +18,6 @@ linux_scripts:
   PreCompile.sh: tools/tgs4_scripts/PreCompile.sh
 # Same as above for Windows hosted servers
 windows_scripts:
-  PreCompile.bat: tools/tgs_scripts/PreCompile.bat
+  PreCompile.bat: tools/tgs4_scripts/PreCompile.bat
 # The security level the game should be run at
 security: Trusted

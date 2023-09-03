@@ -12,3 +12,17 @@
 	cost = 4
 	ckeywhitelist = list()
 	donator_group_id = DONATOR_GROUP_TIER_3
+
+/datum/gear/donator/backpack/lewdpens_box
+	name = "Lewd medipen box"
+	path = /obj/item/storage/box/medipens/lewd
+	cost = 4
+	ckeywhitelist = list()
+	donator_group_id = DONATOR_GROUP_TIER_3
+
+/datum/gear/donator/backpack/midnight_drinking
+	name = "Midnight Drinker box"
+	path = /obj/item/storage/box/drinkingglasses/midnight
+	cost = 1
+	ckeywhitelist = list("killezero")
+	donator_group_id = DONATOR_GROUP_TIER_3

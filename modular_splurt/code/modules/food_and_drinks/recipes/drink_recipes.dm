@@ -330,7 +330,7 @@
 	id = /datum/reagent/consumable/ethanol/midnight_sky
 	results = list(/datum/reagent/consumable/ethanol/midnight_sky = 25)
 	required_reagents = list(
-		/datum/reagent/consumable/ethanol/rum = 3,
+		/datum/reagent/consumable/ethanol/navy_rum = 3,
 		/datum/reagent/consumable/ethanol/curacao = 2,
 		/datum/reagent/consumable/sugar = 2,
 		/datum/reagent/consumable/space_cola = 15,

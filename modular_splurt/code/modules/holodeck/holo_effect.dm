@@ -2,10 +2,10 @@
 /obj/effect/holodeck_effect/mobspawner/funclaw
 	mobtype = /mob/living/simple_animal/hostile/deathclaw/funclaw/gentle
 
-/obj/effect/holodeck_effect/mobspawner/newclaw
+/obj/effect/holodeck_effect/mobspawner/alphaclaw
 	mobtype = /mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/alphaclaw
 
-/obj/effect/holodeck_effect/mobspawner/alphaclaw
+/obj/effect/holodeck_effect/mobspawner/newclaw
 	mobtype = /mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw
 
 /obj/effect/holodeck_effect/mobspawner/femclaw

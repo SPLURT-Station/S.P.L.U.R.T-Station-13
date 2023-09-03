@@ -75,7 +75,3 @@
 	)
 	crate_name = "Carving Stones Crate"
 	crate_type = /obj/structure/closet/crate/wooden
-
-/obj/item/pickaxe/attack_self(mob/user)
-	//Just removes any dig range changing code
-

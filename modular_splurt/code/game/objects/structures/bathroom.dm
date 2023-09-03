@@ -33,8 +33,8 @@
 			return
 		H.visible_message(span_notice("[H] finishes cleaning \the [src]!"), span_notice("You're finally done. Thank fuck."))
 		var /obj/structure/urinal/cleaned = new /obj/structure/urinal(loc, dir, TRUE)
-		cleaned.x = src.x
-		cleaned.y = src.y
+		cleaned.pixel_y = src.pixel_y
+		cleaned.pixel_x = src.pixel_x
 		qdel(src)
 		return
 	return ..()

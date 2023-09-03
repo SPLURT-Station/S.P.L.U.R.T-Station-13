@@ -462,7 +462,7 @@
 	taste_description = "sweet joy"
 	color = "#FFF393"
 
-/datum/reagent/consumable/ethanol/midnight_tears/on_mob_life(mob/living/carbon/C)
+/datum/reagent/consumable/ethanol/midnight_joy/on_mob_life(mob/living/carbon/C)
 	..()
 	if (prob(7))
 		C.emote("giggle")

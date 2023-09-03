@@ -24,5 +24,5 @@
 	name = "Midnight Drinker box"
 	path = /obj/item/storage/box/drinkingglasses/midnight
 	cost = 1
-	ckeywhitelist = list("killezero")
+	ckeywhitelist = list("")
 	donator_group_id = DONATOR_GROUP_TIER_3

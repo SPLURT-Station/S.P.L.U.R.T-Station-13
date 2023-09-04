@@ -262,3 +262,11 @@
 
 /obj/item/gun/ballistic/automatic/smg22/nomag
 	spawnwithmagazine = FALSE
+
+/datum/supply_pack/security/armory/m46a1
+	name = "Pink M46A1 Full-Auto Rifle Crate"
+	desc = "Contains two high-powered, fully automatic rifles rifles chambered in .5x43mm. Requires Armory access to open."
+	cost = 25000
+	contains = list(/obj/item/gun/ballistic/automatic/m46a1,
+					/obj/item/gun/ballistic/automatic/m46a1)
+	crate_name = "m46a1 rifles crate"

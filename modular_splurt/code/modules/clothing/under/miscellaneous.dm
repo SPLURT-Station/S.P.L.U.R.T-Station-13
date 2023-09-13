@@ -51,8 +51,9 @@
 	icon_state = "breachersuit"
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
 	item_state = "breachersuit"
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/uniform_digi.dmi'
 	can_adjust = TRUE
-	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+	mutantrace_variation = STYLE_DIGITIGRADE
 
 /obj/item/clothing/under/bunnysuit
 	name = "bunny outfit"

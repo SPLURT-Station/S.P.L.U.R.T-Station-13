@@ -574,8 +574,8 @@
 	var/tbrute	= round( (brute_dam/max_damage)*3, 1 )
 	var/tburn	= round( (burn_dam/max_damage)*3, 1 )
 	if((tbrute != brutestate) || (tburn != burnstate))
-		brutestate = tbrute
-		burnstate = tburn
+		brutestate = min(tbrute, 3)
+		burnstate = min(tburn, 3) //So, WHY NOBODY THOUGHT ON THIS BEFORE??? //Comicao1
 		return TRUE
 	return FALSE
 

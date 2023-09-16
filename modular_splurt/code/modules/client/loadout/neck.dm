@@ -52,3 +52,35 @@
 	path = /obj/item/clothing/neck/petcollar/poly
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
 	loadout_initial_colors = list("#00bb70", "#FFC600")
+
+/datum/gear/neck/teshari
+	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
+
+/datum/gear/neck/teshari/standard
+	name = "Teshari Cloak"
+	path = /obj/item/clothing/neck/cloak/teshari
+
+
+/datum/gear/neck/teshari/black_red
+	name = "Teshari Cloak Black Red"
+	path = /obj/item/clothing/neck/cloak/teshari/standard/black_red
+
+/datum/gear/neck/teshari/white
+	name = "Teshari Cloak White"
+	path = /obj/item/clothing/neck/cloak/teshari/standard/white
+
+/datum/gear/neck/teshari/rainbow
+	name = "Teshari Cloak Rainbow"
+	path = /obj/item/clothing/neck/cloak/teshari/standard/rainbow
+
+/datum/gear/neck/teshari/orange
+	name = "Teshari Cloak orange"
+	path = /obj/item/clothing/neck/cloak/teshari/standard/orange
+
+/datum/gear/neck/teshari/dark_retrowave
+	name = "Teshari Cloak Dark Retrowave"
+	path = /obj/item/clothing/neck/cloak/teshari/standard/dark_retrowave
+
+/datum/gear/neck/teshari/black_glow
+	name = "Teshari Cloak Dark Black Glow"
+	path = /obj/item/clothing/neck/cloak/teshari/standard/black_glow

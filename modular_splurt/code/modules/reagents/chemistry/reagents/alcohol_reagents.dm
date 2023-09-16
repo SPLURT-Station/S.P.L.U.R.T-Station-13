@@ -382,3 +382,111 @@
 		C.adjustOxyLoss(0.25)
 	. = 1
 	return ..()
+
+/datum/reagent/consumable/ethanol/twinkjuice
+	name = "Twink Juice"
+	description = "A long slender fruity drink with a green thick liquid inside. It smells nice and, and probably tastes fruity."
+	color = "#3fd2ff"
+	taste_description = "a concoction of dubious origins, and dubious purposes"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "twinkdrink"
+	glass_name = "glass of Boy Kisser"
+	glass_desc = "Looking at this, you think about backyards"
+	pH = 6.5
+	value = REAGENT_VALUE_UNCOMMON
+	boozepwr = 5
+	quality = DRINK_FANTASTIC
+	var/drinkerWasAlreadySubmissive = FALSE
+
+/datum/reagent/consumable/ethanol/twinkjuice/on_mob_metabolize(mob/living/L)
+	..()
+	if (ishuman(L))
+		var/mob/living/carbon/human/M = L
+		if(M.client?.prefs.cit_toggles & NO_APHRO)
+			M.log_message("drank [src], but ignored it due to aphrodisiac preference.", LOG_EMOTE)
+			return
+
+		if(!M.has_quirk(/datum/quirk/well_trained))
+			M.log_message("is now under the effect of [src].", LOG_EMOTE)
+			M.add_quirk(/datum/quirk/well_trained, APHRO_TRAIT)
+		else
+			drinkerWasAlreadySubmissive = TRUE
+
+/datum/reagent/consumable/ethanol/twinkjuice/on_mob_end_metabolize(mob/living/L)
+	if (ishuman(L))
+		var/mob/living/carbon/human/M = L
+		if(M.has_quirk(/datum/quirk/well_trained) && !drinkerWasAlreadySubmissive)
+			M.log_message("is no longer under the effect of [src].", LOG_EMOTE)
+			M.remove_quirk(/datum/quirk/well_trained, APHRO_TRAIT)
+
+
+/datum/reagent/consumable/ethanol/midnight_tears
+	name = "Midnight Tears"
+	description = "A reflection of what your Heart feels a weak call for love.\n-Leo Oxto"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "midnight_tears"
+	glass_name = "glass of Midnight Tears"
+	taste_description = "the warm feeling of a hug"
+	color = "#005DE9"
+
+/datum/reagent/consumable/ethanol/midnight_tears/on_mob_life(mob/living/carbon/C)
+	..()
+	if ishuman(C)
+		var/mob/living/carbon/human/H = C
+		if(!H.dna || !H.dna.species || !H.dna.species.can_wag_tail(H))
+			return
+		if(!H.dna.species.is_wagging_tail())
+			H.dna.species.start_wagging_tail(H)
+
+/datum/reagent/consumable/ethanol/midnight_sky
+	name = "Midnight Sky"
+	description = "An escape from all your troubles, may it help you find love and joy.\n-Leo Oxto"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "midnight_sky"
+	glass_name = "glass of Midnight Sky"
+	taste_description = "a calm taste like the calm night"
+	color = "#060709"
+
+/datum/reagent/consumable/ethanol/midnight_sky/on_mob_life(mob/living/carbon/C)
+	..()
+	C.adjustBruteLoss(-0.5)
+	C.adjustFireLoss(-0.5)
+	. = TRUE
+
+/datum/reagent/consumable/ethanol/midnight_joy
+	name = "Midnight Joy"
+	description = " Be sure to spread this feeling, for some lack it in their life, be the reason they have a smile on their face.\n-Leo Oxto"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "midnight_joy"
+	glass_name = "glass of Midnight Joy"
+	taste_description = "sweet joy"
+	color = "#FFF393"
+
+/datum/reagent/consumable/ethanol/midnight_joy/on_mob_life(mob/living/carbon/C)
+	..()
+	if (prob(7))
+		C.emote("giggle")
+
+/obj/item/storage/box/drinkingglasses/midnight
+	name = "Midnight Drinking Box"
+	desc = "A box containing two glasses of each of the three midnight drinks."
+
+/obj/item/storage/box/drinkingglasses/midnight/PopulateContents()
+	new /obj/item/reagent_containers/food/drinks/drinkingglass/filled/midnight_joy(src)
+	new /obj/item/reagent_containers/food/drinks/drinkingglass/filled/midnight_joy(src)
+	new /obj/item/reagent_containers/food/drinks/drinkingglass/filled/midnight_sky(src)
+	new /obj/item/reagent_containers/food/drinks/drinkingglass/filled/midnight_sky(src)
+	new /obj/item/reagent_containers/food/drinks/drinkingglass/filled/midnight_tears(src)
+	new /obj/item/reagent_containers/food/drinks/drinkingglass/filled/midnight_tears(src)
+
+/obj/item/reagent_containers/food/drinks/drinkingglass/filled/midnight_joy
+	name = "Midnight Joy"
+	list_reagents = list(/datum/reagent/consumable/ethanol/midnight_joy = 50)
+
+/obj/item/reagent_containers/food/drinks/drinkingglass/filled/midnight_sky
+	name = "Midnight Sky"
+	list_reagents = list(/datum/reagent/consumable/ethanol/midnight_sky = 50)
+
+/obj/item/reagent_containers/food/drinks/drinkingglass/filled/midnight_tears
+	name = "Midnight Tears"
+	list_reagents = list(/datum/reagent/consumable/ethanol/midnight_tears = 50)

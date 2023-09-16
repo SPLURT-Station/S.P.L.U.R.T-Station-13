@@ -4,10 +4,10 @@
 	icon_state = "cent_headset_alt"
 	item_state = "cent_headset_alt"
 	bowman = TRUE
-	
+
 /obj/item/gun/energy/taser/debug
 	ammo_type = list(/obj/item/ammo_casing/energy/electrode/debug)
-	
+
 /obj/item/ammo_casing/energy/electrode/debug
 	e_cost = 1
 

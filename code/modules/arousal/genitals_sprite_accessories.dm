@@ -15,6 +15,11 @@
 	alt_aroused = TRUE
 	feat_taur = "cock_taur"
 
+/datum/sprite_accessory/penis/teshari
+	icon_state = "taperedteshari"
+	name = "Teshari"
+	icon = 'modular_splurt/icons/obj/genitals/teshari_penis.dmi'
+
 /datum/sprite_accessory/penis/human
 	icon_state = "human"
 	name = "Human"

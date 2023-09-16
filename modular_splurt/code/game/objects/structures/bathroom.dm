@@ -31,8 +31,11 @@
 		if(!do_after(H, 130, target = src))
 			H.visible_message(span_notice("[H] gives up!"), span_warning("Fuck this shit."))
 			return
-		H.visible_message(span_notice("[H] finishes cleaning \the [src]!"), span_notice("You're finally done. Thank fuck.'"))
-		new /obj/structure/urinal(loc, dir, TRUE)
+		H.visible_message(span_notice("[H] finishes cleaning \the [src]!"), span_notice("You're finally done. Thank fuck."))
+		var /obj/structure/urinal/cleaned = new /obj/structure/urinal(loc, dir, TRUE)
+		cleaned.pixel_y = src.pixel_y
+		cleaned.pixel_x = src.pixel_x
+		qdel(src)
 		return
 	return ..()
 

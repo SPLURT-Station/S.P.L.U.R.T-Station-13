@@ -1,3 +1,19 @@
+/datum/species
+	var/icon_accessories
+	var/icon_back
+	var/icon_belt
+	var/icon_ears
+	var/icon_eyes
+	var/icon_feet
+	var/icon_feet64
+	var/icon_hands
+	var/icon_head
+	var/icon_mask
+	var/icon_neck
+	var/icon_suit
+	var/icon_uniform
+
+
 /datum/species/althelp(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(user == target && istype(user))
 		if(HAS_TRAIT(user, TRAIT_FLOORED))

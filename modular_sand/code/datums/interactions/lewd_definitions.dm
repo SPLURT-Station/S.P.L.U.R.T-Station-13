@@ -794,7 +794,7 @@
 			else
 				H.mob_climax(TRUE, "sex", partner, !cumin, target_gen)
 	set_lust(0)
-	SEND_SIGNAL(src, COMSIG_MOB_CAME, target_orifice, partner)
+	SEND_SIGNAL(src, COMSIG_MOB_CAME, target_orifice, partner, cumin, last_genital)
 
 	return TRUE
 

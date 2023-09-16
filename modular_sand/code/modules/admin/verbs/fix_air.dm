@@ -19,4 +19,3 @@
 				continue
 			GM.parse_gas_string(F.initial_gas_mix)
 			F.copy_air(GM)
-			F.update_visuals()

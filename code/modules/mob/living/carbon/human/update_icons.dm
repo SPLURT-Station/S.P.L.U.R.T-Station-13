@@ -155,6 +155,8 @@ There are several things that need to be remembered:
 				target_overlay = "[target_overlay]_d"
 
 			var/alt_worn = U.mob_overlay_icon || 'icons/mob/clothing/uniform.dmi'
+			if(dna.species.icon_uniform)
+				alt_worn = dna.species.icon_uniform
 			var/variant_flag = NONE
 
 			if((DIGITIGRADE in dna.species.species_traits) && U.mutantrace_variation & STYLE_DIGITIGRADE && !(U.mutantrace_variation & STYLE_NO_ANTHRO_ICON))
@@ -382,7 +384,10 @@ There are several things that need to be remembered:
 				if(hud_used.inventory_shown)
 					client.screen += gloves
 			update_observer_view(gloves,1)
-			overlays_standing[GLOVES_LAYER] = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = 'icons/mob/clothing/hands.dmi')
+			var/icon_chosen = 'icons/mob/clothing/hands.dmi'
+			if(dna.species.icon_hands)
+				icon_chosen = dna.species.icon_hands
+			overlays_standing[GLOVES_LAYER] = gloves.build_worn_icon(default_layer = GLOVES_LAYER, default_icon_file = icon_chosen)
 			gloves_overlay = overlays_standing[GLOVES_LAYER]
 			if(OFFSET_GLOVES in dna.species.offset_features)
 				gloves_overlay.pixel_x += dna.species.offset_features[OFFSET_GLOVES][1]
@@ -443,7 +448,10 @@ There are several things that need to be remembered:
 					client.screen += glasses				//Either way, add the item to the HUD
 			update_observer_view(glasses,1)
 			if(!(head && (head.flags_inv & HIDEEYES)) && !(wear_mask && (wear_mask.flags_inv & HIDEEYES)))
-				overlays_standing[GLASSES_LAYER] = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = 'icons/mob/clothing/eyes.dmi', override_state = glasses.icon_state)
+				var/icon_chosen = 'icons/mob/clothing/eyes.dmi'
+				if(dna.species.icon_eyes)
+					icon_chosen = dna.species.icon_eyes
+				overlays_standing[GLASSES_LAYER] = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = icon_chosen, override_state = glasses.icon_state)
 			var/mutable_appearance/glasses_overlay = overlays_standing[GLASSES_LAYER]
 			if(glasses_overlay)
 				if(OFFSET_GLASSES in dna.species.offset_features)
@@ -469,8 +477,10 @@ There are several things that need to be remembered:
 				if(hud_used.inventory_shown)			//if the inventory is open
 					client.screen += ears					//add it to the client's screen
 			update_observer_view(ears,1)
-
-			overlays_standing[EAR_LEFT_LAYER] = ears.build_worn_icon(default_layer = EAR_LEFT_LAYER, default_icon_file = 'modular_sand/icons/mob/clothing/ears.dmi', use_mob_overlay_icon = FALSE)
+			var/icon_chosen = 'modular_sand/icons/mob/clothing/ears.dmi'
+			if(dna.species.icon_ears)
+				icon_chosen = dna.species.icon_ears
+			overlays_standing[EAR_LEFT_LAYER] = ears.build_worn_icon(default_layer = EAR_LEFT_LAYER, default_icon_file = icon_chosen, use_mob_overlay_icon = FALSE)
 			var/mutable_appearance/ears_overlay = overlays_standing[EAR_LEFT_LAYER]
 			if(OFFSET_EARS in dna.species.offset_features)
 				ears_overlay.pixel_x += dna.species.offset_features[OFFSET_EARS][1]
@@ -495,8 +505,10 @@ There are several things that need to be remembered:
 				if(hud_used.inventory_shown)			//if the inventory is open
 					client.screen += ears_extra			//add it to the client's screen
 			update_observer_view(ears_extra,1)
-
-			overlays_standing[EAR_RIGHT_LAYER] = ears_extra.build_worn_icon(default_layer = EAR_RIGHT_LAYER, default_icon_file = 'modular_sand/icons/mob/clothing/ears_extra.dmi', use_mob_overlay_icon = FALSE)
+			var/icon_chosen = 'modular_sand/icons/mob/clothing/ears_extra.dmi'
+			if(dna.species.icon_ears)
+				icon_chosen = dna.species.icon_ears
+			overlays_standing[EAR_RIGHT_LAYER] = ears_extra.build_worn_icon(default_layer = EAR_RIGHT_LAYER, default_icon_file = icon_chosen, use_mob_overlay_icon = FALSE)
 			var/mutable_appearance/ears_overlay = overlays_standing[EAR_RIGHT_LAYER]
 			if(OFFSET_EARS in dna.species.offset_features)
 				ears_overlay.pixel_x += dna.species.offset_features[OFFSET_EARS][1]
@@ -529,6 +541,8 @@ There are several things that need to be remembered:
 			update_observer_view(shoes,1)
 
 			var/alt_icon = S.mob_overlay_icon || 'icons/mob/clothing/feet.dmi'
+			if(dna.species.icon_feet)
+				alt_icon = dna.species.icon_feet
 			var/variation_flag = NONE
 			if((DIGITIGRADE in dna.species.species_traits) && S.mutantrace_variation & STYLE_DIGITIGRADE && !(S.mutantrace_variation & STYLE_NO_ANTHRO_ICON))
 				alt_icon = S.anthro_mob_worn_overlay || 'icons/mob/clothing/feet_digi.dmi'
@@ -558,7 +572,12 @@ There are several things that need to be remembered:
 			var/t_state = s_store.item_state
 			if(!t_state)
 				t_state = s_store.icon_state
-			overlays_standing[SUIT_STORE_LAYER]	= mutable_appearance(((s_store.mob_overlay_icon) ? s_store.mob_overlay_icon : 'icons/mob/clothing/belt_mirror.dmi'), t_state, -SUIT_STORE_LAYER)
+
+			var/icon_chosen = 'icons/mob/clothing/belt_mirror.dmi'
+			if(dna.species.icon_belt)
+				icon_chosen = dna.species.icon_belt
+
+			overlays_standing[SUIT_STORE_LAYER]	= mutable_appearance(((s_store.mob_overlay_icon) ? s_store.mob_overlay_icon : icon_chosen), t_state, -SUIT_STORE_LAYER)
 			var/mutable_appearance/s_store_overlay = overlays_standing[SUIT_STORE_LAYER]
 			if(OFFSET_S_STORE in dna.species.offset_features)
 				s_store_overlay.pixel_x += dna.species.offset_features[OFFSET_S_STORE][1]
@@ -586,6 +605,8 @@ There are several things that need to be remembered:
 			remove_overlay(HEAD_LAYER)
 			var/obj/item/clothing/head/H = head
 			var/alt_icon = H.mob_overlay_icon || 'icons/mob/clothing/head.dmi'
+			if(dna.species.icon_head)
+				alt_icon = dna.species.icon_head
 			var/muzzled = FALSE
 			var/variation_flag = NONE
 			if(dna.species.mutant_bodyparts["mam_snouts"] && dna.features["mam_snouts"] != "None")
@@ -619,8 +640,10 @@ There are several things that need to be remembered:
 			if(client && hud_used && hud_used.hud_shown)
 				client.screen += belt
 			update_observer_view(belt)
-
-			overlays_standing[BELT_LAYER] = belt.build_worn_icon(default_layer = BELT_LAYER, default_icon_file = 'icons/mob/clothing/belt.dmi')
+			var/icon_chosen = 'icons/mob/clothing/belt.dmi'
+			if(dna.species.icon_belt)
+				icon_chosen = dna.species.icon_belt
+			overlays_standing[BELT_LAYER] = belt.build_worn_icon(default_layer = BELT_LAYER, default_icon_file = icon_chosen)
 			var/mutable_appearance/belt_overlay = overlays_standing[BELT_LAYER]
 			if(OFFSET_BELT in dna.species.offset_features)
 				belt_overlay.pixel_x += dna.species.offset_features[OFFSET_BELT][1]
@@ -645,6 +668,8 @@ There are several things that need to be remembered:
 			update_observer_view(wear_suit,1)
 
 			var/worn_icon = wear_suit.mob_overlay_icon || 'icons/mob/clothing/suit.dmi'
+			if(dna.species.icon_suit)
+				worn_icon = dna.species.icon_suit
 			var/worn_state = wear_suit.icon_state
 			var/center = FALSE
 			var/dimension_x = 32
@@ -735,6 +760,8 @@ There are several things that need to be remembered:
 			var/obj/item/clothing/mask/M = wear_mask
 			remove_overlay(FACEMASK_LAYER)
 			var/alt_icon = M.mob_overlay_icon || 'icons/mob/clothing/mask.dmi'
+			if(dna.species.icon_mask)
+				alt_icon = dna.species.icon_mask
 			var/muzzled = FALSE
 			var/variation_flag = NONE
 			if(head && (head.flags_inv & HIDEMASK))

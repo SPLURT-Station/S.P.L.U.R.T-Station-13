@@ -110,7 +110,10 @@
 
 	if(wear_neck)
 		if(!(head && (head.flags_inv & HIDENECK)))
-			overlays_standing[NECK_LAYER] = wear_neck.build_worn_icon(default_layer = NECK_LAYER, default_icon_file = 'icons/mob/clothing/neck.dmi', override_state = wear_neck.icon_state)
+			var/chosen_icon = 'icons/mob/clothing/neck.dmi'
+			if(dna.species.icon_neck)
+				chosen_icon = dna.species.icon_neck
+			overlays_standing[NECK_LAYER] = wear_neck.build_worn_icon(default_layer = NECK_LAYER, default_icon_file = chosen_icon, override_state = wear_neck.icon_state)
 		update_hud_neck(wear_neck)
 
 	apply_overlay(NECK_LAYER)
@@ -123,7 +126,10 @@
 		inv?.update_icon()
 
 	if(back)
-		overlays_standing[BACK_LAYER] = back.build_worn_icon(default_layer = BACK_LAYER, default_icon_file = 'icons/mob/clothing/back.dmi', override_state = back.icon_state)
+		var/chosen_icon = 'icons/mob/clothing/back.dmi'
+		if(dna.species.icon_back)
+			chosen_icon = dna.species.icon_back
+		overlays_standing[BACK_LAYER] = back.build_worn_icon(default_layer = BACK_LAYER, default_icon_file = chosen_icon, override_state = back.icon_state)
 		update_hud_back(back)
 
 	apply_overlay(BACK_LAYER)

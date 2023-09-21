@@ -50,6 +50,14 @@
 	build_path = /obj/item/flamethrower/full
 	category = list("hacked", "Security")
 
+/datum/design/RPED
+	name = "Rapid Part Exchange Device (RPED)"
+	id = "rped"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/iron = 10000, /datum/material/glass = 5000) //hardcore
+	build_path = /obj/item/storage/part_replacer
+	category = list("hacked", "Construction")
+
 /datum/design/rcd
 	name = "Rapid Construction Device (RCD)"
 	id = "rcd"

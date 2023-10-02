@@ -1,5 +1,5 @@
 // Used for translating channels to tokens on examination
-//SKYRAT EDIT REMOVAL BEGIN - MAPPING - (Moved to modular_skyrat/modules/mapping/code/globallist.dm)
+//SPLURT EDIT REMOVAL BEGIN - MAPPING - (Moved to modular_splurt/code/game/objects/structures/globallist.dm)
 /*
 GLOBAL_LIST_INIT(channel_tokens, list(
 	RADIO_CHANNEL_COMMON = RADIO_KEY_COMMON,
@@ -17,7 +17,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	RADIO_CHANNEL_AI_PRIVATE = RADIO_TOKEN_AI_PRIVATE
 ))
 */
-//SKYRAT EDIT REMOVAL END
+//SPLURT EDIT REMOVAL END
 
 /obj/item/radio/headset
 	name = "radio headset"

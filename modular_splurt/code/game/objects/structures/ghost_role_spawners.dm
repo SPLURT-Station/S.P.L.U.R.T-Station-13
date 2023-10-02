@@ -111,3 +111,20 @@
 	head = /obj/item/clothing/head/beret/black
 	id = /obj/item/card/id/away/hotel/splurt/manager
 	ears = /obj/item/radio/headset/headset_srv/hotel/manager
+
+//OUTFITS//
+/datum/outfit/syndicatespace/syndicrew
+	ears = /obj/item/radio/headset/cybersun
+
+/datum/outfit/syndicatespace/syndicaptain
+	ears = /obj/item/radio/headset/cybersun/captain
+
+//ITEMS//
+
+/obj/item/radio/headset/cybersun
+	keyslot = new /obj/item/encryptionkey/headset_cybersun
+
+/obj/item/radio/headset/cybersun/captain
+	name = "cybersun captain bowman headset"
+	desc = "The headset of the boss."
+	command = TRUE

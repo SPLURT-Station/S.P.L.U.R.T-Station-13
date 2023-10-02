@@ -4,22 +4,29 @@
 
 //Own stuff
 /datum/map_template/ruin/space/radiostation
-	prefix = "modular_splurt/_maps/RandomRuins/SpaceRuins/"
-	id = "radiostation"
-	suffix = "radiostation.dmm"
 	name = "NT Radio Station"
 	description = "A mobile NT Radio Station ship."
+	id = "radiostation"
+	prefix = "modular_splurt/_maps/RandomRuins/SpaceRuins/"
+	suffix = "radiostation.dmm"
 
 /datum/map_template/ruin/space/syndielistenspace
-	prefix = "modular_splurt/_maps/RandomRuins/SpaceRuins/"
-	id = "syndielistenspace"
-	suffix = "syndielistenspace.dmm"
 	name = "Syndicate Listening Outpost"
 	description = "A syndicate listening outpost cleverly disguised as an asteroid"
+	id = "syndielistenspace"
+	prefix = "modular_splurt/_maps/RandomRuins/SpaceRuins/"
+	suffix = "syndielistenspace.dmm"
 
 /datum/map_template/ruin/space/spacehotelsplurt
-	prefix = "modular_splurt/_maps/RandomRuins/SpaceRuins/"
-	id = "spacehotelsplurt"
-	suffix = "spacehotelsplurt.dmm"
 	name = "Twin Spires Hotel and Club"
 	description = "A Nanotrasen-partnered interstellar hotel and stripclub"
+	id = "spacehotelsplurt"
+	prefix = "modular_splurt/_maps/RandomRuins/SpaceRuins/"
+	suffix = "spacehotelsplurt.dmm"
+
+/datum/map_template/ruin/space/forgottenship
+	name = "CSBC-12"
+	description = "Cybersun would like to remind it's employees that any battle cruiser will be apropriately maintained, as will it's crew."
+	id = "forgottenship"
+	prefix = "modular_splurt/_maps/RandomRuins/SpaceRuins/"
+	suffix = "forgottenship_splurt.dmm"

@@ -39,9 +39,8 @@
 			other.network_directions += turn(i, 180)
 			continue
 		for(var/obj/structure/cable/C in T)
-			if(C.d1 == turn(i, 180) || C.d2 == turn(i, 180))
-				network_directions += i
-				continue
+			network_directions += i
+			continue
 	return network_directions
 
 /// Directions should only ever have cardinals.

@@ -59,9 +59,7 @@
 /turf/open/floor/plasteel,
 /area/ruin/space/diner/interior)
 "am" = (
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /obj/machinery/power/solar,
 /turf/open/floor/plasteel/solarpanel,
 /area/ruin/space/diner/solars)
@@ -100,9 +98,7 @@
 /area/ruin/space/diner/interior)
 "at" = (
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /obj/machinery/power/solar,
 /turf/open/floor/plasteel/solarpanel,
 /area/ruin/space/diner/solars)
@@ -172,55 +168,33 @@
 /area/ruin/space/diner/interior)
 "aG" = (
 /obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
+/obj/structure/cable,
 /turf/template_noop,
 /area/ruin/space/diner/solars)
 "aH" = (
 /obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/template_noop,
 /area/ruin/space/diner/solars)
 "aI" = (
 /obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
+/obj/structure/cable,
+/obj/structure/cable,
 /turf/template_noop,
 /area/ruin/space/diner/solars)
 "aJ" = (
 /obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
+/obj/structure/cable,
+/obj/structure/cable,
 /turf/template_noop,
 /area/ruin/space/diner/solars)
 "aK" = (
 /obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
+/obj/structure/cable,
 /turf/template_noop,
 /area/ruin/space/diner/solars)
 "aL" = (
@@ -273,9 +247,7 @@
 /area/ruin/space/diner/solars)
 "aU" = (
 /obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/template_noop,
 /area/ruin/space/diner/solars)
 "aV" = (
@@ -335,15 +307,11 @@
 /turf/open/floor/plasteel/stairs/old,
 /area/ruin/space/diner/interior)
 "bf" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /turf/closed/wall/r_wall,
 /area/ruin/space/diner/interior)
 "bg" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /turf/closed/wall/r_wall,
 /area/ruin/space/diner/interior)
 "bh" = (
@@ -367,9 +335,7 @@
 "bk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/hidden,
 /turf/open/floor/plasteel,
 /area/ruin/space/diner/interior)
@@ -433,9 +399,7 @@
 /area/ruin/space/diner/interior)
 "bt" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /obj/machinery/grill,
 /obj/machinery/light/small/broken{
 	dir = 1;
@@ -461,9 +425,7 @@
 /turf/open/floor/plasteel,
 /area/ruin/space/diner/interior)
 "bw" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/closed/wall/r_wall,
 /area/ruin/space/diner/interior)
 "bx" = (
@@ -512,19 +474,13 @@
 	dir = 8;
 	icon_state = "hrwindow_spawner_end"
 	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/diner/interior)
 "bC" = (
 /obj/effect/spawner/structure/window/hollow/reinforced/middle,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/diner/interior)
 "bD" = (
@@ -532,12 +488,8 @@
 	dir = 4;
 	icon_state = "hrwindow_spawner_end"
 	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/diner/interior)
 "bE" = (
@@ -550,9 +502,7 @@
 /area/ruin/space/diner/interior)
 "bF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/general/hidden{
 	dir = 8
 	},
@@ -564,9 +514,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/hidden{
 	dir = 4;
 	icon_state = "pipe11-2"
@@ -575,9 +523,7 @@
 /area/ruin/space/diner/interior)
 "bH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/hidden{
 	dir = 4;
 	icon_state = "pipe11-2"
@@ -590,9 +536,7 @@
 	name = "Staff Entrance"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/hidden{
 	dir = 4;
 	icon_state = "pipe11-2"
@@ -601,20 +545,14 @@
 /area/ruin/space/diner/interior)
 "bJ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/general/hidden,
 /turf/open/floor/plasteel,
 /area/ruin/space/diner/interior)
 "bK" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/hidden{
 	dir = 10;
 	icon_state = "pipe11-2"
@@ -623,19 +561,13 @@
 /area/ruin/space/diner/interior)
 "bL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/space/diner/interior)
 "bM" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/space/diner/interior)
 "bN" = (
@@ -643,21 +575,13 @@
 /obj/structure/closet/secure_closet/freezer/meat{
 	req_access_txt = "200"
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/space/diner/interior)
 "bO" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
+/obj/structure/cable,
+/obj/structure/cable,
 /turf/closed/wall/r_wall,
 /area/ruin/space/diner/interior)
 "bP" = (
@@ -709,19 +633,13 @@
 /area/ruin/space/diner/interior)
 "bV" = (
 /obj/structure/table,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
+/obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/diner/interior)
 "bW" = (
 /obj/structure/table,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /obj/item/storage/toolbox/electrical,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/diner/interior)
@@ -730,16 +648,12 @@
 	dir = 1;
 	icon_state = "hrwindow_spawner_end"
 	},
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/diner/interior)
 "bY" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/hidden,
 /turf/open/floor/plasteel,
 /area/ruin/space/diner/interior)
@@ -787,9 +701,7 @@
 /area/ruin/space/diner/interior)
 "ce" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/hidden,
 /turf/open/floor/plasteel,
 /area/ruin/space/diner/interior)
@@ -803,9 +715,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/space/diner/interior)
 "cg" = (
@@ -818,17 +728,13 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/diner/interior)
 "ci" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/diner/interior)
 "cj" = (
 /obj/effect/spawner/structure/window/hollow/reinforced/end,
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/diner/interior)
 "ck" = (
@@ -923,9 +829,7 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/hidden,
 /turf/open/floor/plasteel,
 /area/ruin/space/diner/interior)
@@ -956,12 +860,8 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/diner/interior)
 "cz" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/hidden{
 	dir = 4;
 	icon_state = "pipe11-2"
@@ -970,9 +870,7 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/diner/interior)
 "cA" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/hidden{
 	dir = 4;
 	icon_state = "pipe11-2"
@@ -984,15 +882,9 @@
 /obj/machinery/door/airlock/public/glass{
 	name = "Teleporter Room"
 	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
+/obj/structure/cable,
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/hidden{
 	dir = 4;
 	icon_state = "pipe11-2"
@@ -1001,9 +893,7 @@
 /area/ruin/space/diner/interior)
 "cC" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/hidden{
 	dir = 4
 	},
@@ -1011,15 +901,9 @@
 /area/ruin/space/diner/interior)
 "cD" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
+/obj/structure/cable,
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/general/hidden{
 	dir = 4
 	},
@@ -1093,9 +977,7 @@
 /area/ruin/space/diner/interior)
 "cL" = (
 /obj/structure/table/wood,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/effect/decal/cleanable/dirt{
 	desc = "A thin layer of dust coating the floor.";
 	name = "dust"
@@ -1122,9 +1004,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/hidden,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
@@ -1166,9 +1046,7 @@
 	icon_state = "hrwindow_spawner_end"
 	},
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/diner/interior)
 "cT" = (
@@ -1178,9 +1056,7 @@
 /area/ruin/space/diner/interior)
 "cU" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/hidden,
 /turf/open/floor/plasteel,
 /area/ruin/space/diner/interior)
@@ -1189,9 +1065,7 @@
 /obj/structure/sign/poster/official/report_crimes{
 	pixel_y = 32
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/ruin/space/diner/interior)
 "cW" = (
@@ -1200,9 +1074,7 @@
 /obj/machinery/door/airlock/public/glass{
 	name = "Diner"
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/ruin/space/diner/interior)
@@ -1211,9 +1083,7 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/ruin/space/diner/interior)
@@ -1222,15 +1092,9 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
+/obj/structure/cable,
+/obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/ruin/space/diner/interior)
@@ -1239,9 +1103,7 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/hidden{
 	dir = 5;
 	icon_state = "pipe11-2"
@@ -1254,9 +1116,7 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/hidden{
 	dir = 4;
 	icon_state = "pipe11-2"
@@ -1269,9 +1129,7 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/general/hidden,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
@@ -1281,12 +1139,8 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/hidden{
 	dir = 4;
 	icon_state = "pipe11-2"
@@ -1299,18 +1153,10 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
+/obj/structure/cable,
+/obj/structure/cable,
+/obj/structure/cable,
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/general/hidden{
 	dir = 9;
 	icon_state = "pipe11-2"
@@ -1323,15 +1169,11 @@
 	name = "Mining Shuttle Dock"
 	},
 /obj/machinery/door/firedoor,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/diner/interior)
 "df" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/diner/interior)
 "dg" = (
@@ -1348,9 +1190,7 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/diner/interior)
 "dj" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/machinery/computer/teleporter{
 	dir = 1;
 	icon_state = "computer"
@@ -1386,9 +1226,7 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/ruin/space/diner/interior)
@@ -1432,9 +1270,7 @@
 	icon_state = "hrwindow_spawner_end"
 	},
 /obj/structure/cable,
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/diner/interior)
 "dx" = (
@@ -1465,9 +1301,7 @@
 /turf/open/floor/carpet,
 /area/ruin/space/diner/interior)
 "dA" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/structure/chair,
 /obj/effect/decal/cleanable/dirt{
 	desc = "A thin layer of dust coating the floor.";
@@ -1481,9 +1315,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/ruin/space/diner/interior)
@@ -1553,9 +1385,7 @@
 	desc = "A thin layer of dust coating the floor.";
 	name = "dust"
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/item/trash/plate,
 /obj/item/reagent_containers/food/snacks/hotdog,
 /turf/open/floor/carpet,
@@ -1696,9 +1526,7 @@
 /area/ruin/space/diner/interior)
 "ea" = (
 /obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /turf/template_noop,
 /area/space/nearstation)
 "eb" = (

@@ -310,7 +310,7 @@
 	category = CAT_MISCELLANEOUS
 
 /datum/crafting_recipe/rcl
-	name = "Makeshift Rapid Cable Layer"
+	name = "Makeshift Rapid Pipe Cleaner Layer"
 	result = /obj/item/rcl/ghetto
 	time = 40
 	tools = list(TOOL_WELDER, TOOL_SCREWDRIVER, TOOL_WRENCH)

@@ -4,7 +4,7 @@
 	icon_state = "tool"
 	icon_deny = "tool-deny"
 	light_mask = "tool-light-mask"
-	products = list(/obj/item/stack/cable_coil/random = 15,
+	products = list(/obj/item/stack/cable_coil = 10,
 					/obj/item/crowbar = 10,
 					/obj/item/weldingtool = 6,
 					/obj/item/wirecutters = 10,

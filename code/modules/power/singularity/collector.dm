@@ -43,6 +43,9 @@
 	QDEL_NULL(Radio)
 	return ..()
 
+/obj/machinery/power/rad_collector/should_have_node()
+	return anchored
+
 /obj/machinery/power/rad_collector/process()
 	if(!loaded_tank)
 		return

@@ -40,7 +40,7 @@
 "ah" = (
 /obj/structure/window/reinforced,
 /obj/structure/frame/machine,
-/obj/item/stack/cable_coil/cut/red,
+/obj/item/stack/cable_coil/cut,
 /turf/open/floor/plating/airless,
 /area/shuttle/pirate)
 "ai" = (
@@ -277,9 +277,7 @@
 /area/shuttle/pirate)
 "aI" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -287,9 +285,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/pirate)
 "aJ" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -312,9 +308,7 @@
 	req_access_txt = "150";
 	specialfunctions = 4
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
@@ -464,9 +458,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/firedoor,
 /turf/open/floor/pod/dark,
@@ -654,9 +646,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
@@ -670,9 +660,7 @@
 	pixel_y = 23;
 	req_access = null
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-2"
-	},
+/obj/structure/cable,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -816,9 +804,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
+/obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/pirate)
@@ -833,12 +819,8 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
+/obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/pirate)
@@ -847,9 +829,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/pirate)
@@ -1019,9 +999,7 @@
 /obj/machinery/computer/monitor/secret{
 	dir = 8
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
+/obj/structure/cable,
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/pod/dark,
@@ -1278,9 +1256,7 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/pirate)
 "cl" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/effect/decal/cleanable/vomit/old,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -1329,9 +1305,7 @@
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate)
 "cp" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate)
@@ -1521,15 +1495,9 @@
 /obj/item/stack/sheet/mineral/plastitanium{
 	amount = 20
 	},
-/obj/item/stack/cable_coil/yellow{
-	pixel_x = -2;
-	pixel_y = 2
-	},
+/obj/item/stack/cable_coil,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/stack/cable_coil/yellow{
-	pixel_x = 2;
-	pixel_y = -2
-	},
+/obj/item/stack/cable_coil,
 /turf/open/floor/pod/dark,
 /area/shuttle/pirate)
 "cI" = (
@@ -1623,9 +1591,7 @@
 /turf/open/floor/wood,
 /area/shuttle/pirate)
 "cO" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/hatch{
@@ -1712,9 +1678,7 @@
 /obj/machinery/power/smes/engineering{
 	charge = 1e+006
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate)
 "cX" = (
@@ -1725,9 +1689,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
 	dir = 6
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /obj/structure/sign/warning/electricshock{
 	pixel_y = 32
 	},
@@ -1735,9 +1697,7 @@
 /area/shuttle/pirate)
 "cY" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
+/obj/structure/cable,
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 4;
 	target_pressure = 405.3
@@ -1879,9 +1839,7 @@
 	dir = 6
 	},
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate)
 "dn" = (
@@ -1894,9 +1852,7 @@
 	},
 /obj/machinery/meter,
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate)
 "do" = (
@@ -1904,9 +1860,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/pod/light,
 /area/shuttle/pirate)
 "dp" = (

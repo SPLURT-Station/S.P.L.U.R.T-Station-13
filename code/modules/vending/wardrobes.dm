@@ -340,7 +340,7 @@
 					/obj/item/watertank/janitor = 2,
 					/obj/item/storage/belt/janitor = 2,
 					/obj/item/screwdriver = 2,
-					/obj/item/stack/cable_coil/random = 4)
+					/obj/item/stack/cable_coil = 4)
 	refill_canister = /obj/item/vending_refill/wardrobe/jani_wardrobe
 	default_price = PRICE_CHEAP
 	extra_price = PRICE_EXPENSIVE * 0.8

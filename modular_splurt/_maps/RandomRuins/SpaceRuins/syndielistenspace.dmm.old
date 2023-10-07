@@ -54,10 +54,7 @@
 /obj/machinery/power/terminal{
 	dir = 1
 	},
-/obj/structure/cable{
-	icon_state = "0-2";
-	pixel_y = 1
-	},
+/obj/structure/cable,
 /obj/structure/reagent_dispensers/fueltank,
 /obj/item/clothing/head/welding,
 /obj/item/weldingtool/largetank,
@@ -693,9 +690,7 @@
 "CT" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/syndielistenspace)
 "Ds" = (
@@ -706,9 +701,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/power/smes/magical,
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/syndielistenspace)
 "DI" = (
@@ -1130,9 +1123,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/storage/box/lights/bulbs,
 /obj/item/stock_parts/cell/high/plus,
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
+/obj/structure/cable,
 /obj/item/stack/sheet/mineral/plasma{
 	amount = 20
 	},
@@ -1606,3 +1597,4 @@ ae
 ae
 ae
 "}
+/obj/structure/cable,

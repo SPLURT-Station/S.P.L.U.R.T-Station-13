@@ -39,7 +39,7 @@
 	throw_speed = 3
 	throw_range = 5
 	custom_materials = list(/datum/material/iron=500)
-	breakouttime = 600 //Deciseconds = 60s = 1 minute
+	breakouttime = 1 MINUTES
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 50)
 	var/cuffsound = 'sound/weapons/handcuffs.ogg'
 	var/trashtype = null //for disposable cuffs
@@ -115,49 +115,36 @@
 	desc = "Looks like some cables tied together. Could be used to tie something up."
 	icon_state = "cuff"
 	item_state = "coil"
-	color =  "#ff0000"
+	color = "#ff0000"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
-	custom_materials = list(/datum/material/iron=150, /datum/material/glass=75)
-	breakouttime = 300 //Deciseconds = 30s
+	custom_materials = list(/datum/material/iron = 150, /datum/material/glass = 75)
+	breakouttime = 30 SECONDS
 	cuffsound = 'sound/weapons/cablecuff.ogg'
 
-/obj/item/restraints/handcuffs/cable/Initialize(mapload)
+/obj/item/restraints/handcuffs/cable/Initialize(mapload, param_color)
 	. = ..()
 
-	var/static/list/hovering_item_typechecks = list(
-		/obj/item/stack/rods = list(
-			SCREENTIP_CONTEXT_LMB = list(INTENT_ANY = "Craft wired rod"),
-		),
+	update_icon()
 
-		/obj/item/stack/sheet/metal = list(
-			SCREENTIP_CONTEXT_LMB = list(INTENT_ANY = "Craft bola"),
-		),
-	)
-
-	AddElement(/datum/element/contextual_screentip_item_typechecks, hovering_item_typechecks)
-
-/obj/item/restraints/handcuffs/cable/attack_self(mob/user)
-	to_chat(user, "<span class='notice'>You start unwinding the cable restraints back into coil</span>")
-	if(!do_after(user, 25, user))
-		return
-	qdel(src)
-	var/obj/item/stack/cable_coil/coil = new(get_turf(user))
-	coil.amount = 15
-	user.put_in_hands(coil)
-	coil.color = color
-	to_chat(user, "<span class='notice'>You unwind the cable restraints back into coil</span>")
+/obj/item/restraints/handcuffs/cable/update_icon()
+	color = null
+	add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 
 /obj/item/restraints/handcuffs/cable/red
+	color = "red"
 	color = "#ff0000"
 
 /obj/item/restraints/handcuffs/cable/yellow
+	color = "yellow"
 	color = "#ffff00"
 
 /obj/item/restraints/handcuffs/cable/blue
+	color = "blue"
 	color = "#1919c8"
 
 /obj/item/restraints/handcuffs/cable/green
+	color = "green"
 	color = "#00aa00"
 
 /obj/item/restraints/handcuffs/cable/pink
@@ -167,17 +154,11 @@
 	color = "#ff8000"
 
 /obj/item/restraints/handcuffs/cable/cyan
+	color = "cyan"
 	color = "#00ffff"
 
 /obj/item/restraints/handcuffs/cable/white
-	color = null
-
-/obj/item/restraints/handcuffs/cable/random
-
-/obj/item/restraints/handcuffs/cable/random/Initialize(mapload)
-	. = ..()
-	var/list/cable_colors = GLOB.cable_colors
-	color = pick(cable_colors)
+	color = "white"
 
 /obj/item/restraints/handcuffs/cable/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/stack/rods))
@@ -217,7 +198,7 @@
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
 	custom_materials = null
-	breakouttime = 450 //Deciseconds = 45s
+	breakouttime = 45 SECONDS
 	trashtype = /obj/item/restraints/handcuffs/cable/zipties/used
 
 /obj/item/restraints/handcuffs/cable/zipties/attack_self() //Zipties arent cable
@@ -236,7 +217,7 @@
 /obj/item/restraints/handcuffs/fake
 	name = "fake handcuffs"
 	desc = "Fake handcuffs meant for gag purposes."
-	breakouttime = 10 //Deciseconds = 1s
+	breakouttime = 1 SECONDS
 	demoralize_criminals = FALSE
 
 /obj/item/restraints/handcuffs/fake/kinky
@@ -261,7 +242,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	slowdown = 7
 	allow_breakout_movement = TRUE
-	breakouttime = 300	//Deciseconds = 30s = 0.5 minute
+	breakouttime = 30 SECONDS
 
 /obj/item/restraints/legcuffs/proc/on_removed()
 	return

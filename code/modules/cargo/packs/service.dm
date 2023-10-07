@@ -100,7 +100,7 @@
 					/obj/item/stack/sheet/metal/ten,
 					/obj/item/stack/sheet/metal/five,
 					/obj/item/stack/sheet/glass/five,
-					/obj/item/stack/cable_coil/random,
+					/obj/item/stack/cable_coil,
 					/obj/item/reagent_containers/rag,
 					/obj/item/book/manual/wiki/barman_recipes,
 					/obj/item/book/granter/action/drink_fling,

@@ -3,7 +3,7 @@
 	name = "mittens"
 	icon_state = "mittens"
 	item_state = "wgloves"
-	//item_color = "white"
+	//color = "white"
 	cold_protection = HANDS
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
 	heat_protection = HANDS
@@ -21,7 +21,7 @@
 		qdel(src)
 		return INITIALIZE_HINT_QDEL
 	item_state = "[picked_c]gloves"
-	//item_color = "[picked_c]"
+	//color = "[picked_c]"
 	color = picked_c
 
 /obj/item/clothing/gloves/mittens/kitten
@@ -29,4 +29,4 @@
 	desc = "These gloves will keep your hands warm, and feature cute kittens"
 	icon_state = "kittenmittens"
 	item_state = "blackgloves"
-	//item_color = "black"
+	//color = "black"

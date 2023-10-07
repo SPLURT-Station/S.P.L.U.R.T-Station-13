@@ -22,14 +22,11 @@ GLOBAL_LIST_INIT(pipe_cleaner_colors, list(
 ////////////////////////////////
 
 /* Cable directions (d1 and d2)
-
-
-  9   1   5
-	\ | /
-  8 - 0 - 4
-	/ | \
-  10  2   6
-
+//  9   1   5
+//    \ | /
+//  8 - 0 - 4
+//    / | \
+//  10  2   6
 If d1 = 0 and d2 = 0, there's no pipe_cleaner
 If d1 = 0 and d2 = dir, it's a O-X pipe_cleaner, getting from the center of the tile to dir (knot pipe_cleaner)
 If d1 = dir1 and d2 = dir2, it's a full X-X pipe_cleaner, getting from dir1 to dir2
@@ -43,7 +40,7 @@ By design, d1 is the smallest direction and d2 is the highest
 	icon_state = "0-1"
 	layer = WIRE_LAYER //Above hidden pipes, GAS_PIPE_HIDDEN_LAYER
 	anchored = TRUE
-	obj_flags = CAN_BE_HIT | ON_BLUEPRINTS
+	obj_flags = CAN_BE_HIT
 	var/d1 = 0   // pipe_cleaner direction 1 (see above)
 	var/d2 = 1   // pipe_cleaner direction 2 (see above)
 	var/obj/item/stack/pipe_cleaner_coil/stored
@@ -85,8 +82,8 @@ By design, d1 is the smallest direction and d2 is the highest
 
 	// ensure d1 & d2 reflect the icon_state for entering and exiting pipe_cleaner
 	var/dash = findtext(icon_state, "-")
-	d1 = text2num( copytext( icon_state, 1, dash ) )
-	d2 = text2num( copytext( icon_state, dash+1 ) )
+	d1 = text2num(copytext(icon_state, 1, dash))
+	d2 = text2num(copytext(icon_state, dash + length(icon_state[dash])))
 
 	if(d1)
 		stored = new/obj/item/stack/pipe_cleaner_coil(null,2,pipe_cleaner_color)
@@ -114,7 +111,7 @@ By design, d1 is the smallest direction and d2 is the highest
 			stored = null
 		else
 			qdel(stored)
-	qdel(src)
+	return ..()
 
 ///////////////////////////////////
 // General procedures
@@ -130,14 +127,8 @@ By design, d1 is the smallest direction and d2 is the highest
 //   - pipe cleaner coil : merge pipe cleaners
 //
 /obj/structure/pipe_cleaner/proc/handlecable(obj/item/W, mob/user, params)
-	var/turf/T = get_turf(src)
-	if(T.intact)
-		return
 	if(W.tool_behaviour == TOOL_WIRECUTTER)
-		user.visible_message("[user] cuts the pipe cleaner.", "<span class='notice'>You cut the pipe cleaner.</span>")
-		stored.add_fingerprint(user)
-		investigate_log("was cut by [key_name(usr)] in [AREACOORD(src)]", INVESTIGATE_WIRES)
-		deconstruct()
+		cut_pipe_cleaner(user)
 		return
 
 	else if(istype(W, /obj/item/stack/pipe_cleaner_coil))
@@ -149,19 +140,25 @@ By design, d1 is the smallest direction and d2 is the highest
 
 	add_fingerprint(user)
 
+/obj/structure/pipe_cleaner/proc/cut_pipe_cleaner(mob/user)
+	user.visible_message("<span class='notice'>[user] pulls up the pipe cleaner.</span>", "<span class='notice'>You pull up the pipe cleaner.</span>")
+	stored.add_fingerprint(user)
+	log_game("[src] was pulled up by [key_name(usr)] in [AREACOORD(src)]")
+	deconstruct()
+
 /obj/structure/pipe_cleaner/attackby(obj/item/W, mob/user, params)
 	handlecable(W, user, params)
 
 
-/obj/structure/pipe_cleaner/singularity_pull(S, current_size)
-	..()
-	if(current_size >= STAGE_FIVE)
-		deconstruct()
-
 /obj/structure/pipe_cleaner/proc/update_stored(length = 1, colorC = "red")
 	stored.amount = length
-	stored.color = colorC
+	stored.pipe_cleaner_color = colorC
 	stored.update_icon()
+
+/obj/structure/pipe_cleaner/AltClick(mob/living/user)
+	if(!user.Adjacent(src))
+		return
+	cut_pipe_cleaner(user)
 
 ///////////////////////////////////////////////
 // The pipe cleaner coil object, used for laying pipe cleaner
@@ -174,54 +171,31 @@ By design, d1 is the smallest direction and d2 is the highest
 /obj/item/stack/pipe_cleaner_coil
 	name = "pipe cleaner coil"
 	desc = "A coil of pipe cleaners. Good for arts and crafts, not to build with."
-	custom_price = 15
 	gender = NEUTER //That's a pipe_cleaner coil sounds better than that's some pipe_cleaner coils
 	icon = 'icons/obj/power.dmi'
 	icon_state = "pipecleaner"
-	item_state = "pipecleaner"
-	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
+	item_state = "coil"
 	max_amount = MAXCOIL
 	amount = MAXCOIL
 	merge_type = /obj/item/stack/pipe_cleaner_coil // This is here to let its children merge between themselves
-	color = "red"
+	var/pipe_cleaner_color = "red"
 	throwforce = 0
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 3
 	throw_range = 5
-	custom_materials = list(/datum/material/iron = 10, /datum/material/glass = 5)
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_BELT
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	singular_name = "pipe cleaner piece"
-	full_w_class = WEIGHT_CLASS_SMALL
-	grind_results = list("copper" = 2) //2 copper per pipe_cleaner in the coil
 	usesound = 'sound/items/deconstruct.ogg'
-
-/obj/item/stack/pipe_cleaner_coil/cyborg
-	is_cyborg = 1
-	custom_materials = list()
-	cost = 1
-
-/obj/item/stack/pipe_cleaner_coil/cyborg/attack_self(mob/user)
-	var/pipe_cleaner_color = input(user,"Pick a pipe cleaner color.","Cable Color") in list("red","yellow","green","blue","pink","orange","cyan","white")
-	color = pipe_cleaner_color
-	update_icon()
-
-/obj/item/stack/pipe_cleaner_coil/suicide_act(mob/user)
-	if(locate(/obj/structure/chair/stool) in get_turf(user))
-		user.visible_message("<span class='suicide'>[user] is making a noose with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	else
-		user.visible_message("<span class='suicide'>[user] is strangling [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
-	return(OXYLOSS)
 
 /obj/item/stack/pipe_cleaner_coil/Initialize(mapload, new_amount = null, param_color = null)
 	. = ..()
 
 	var/list/pipe_cleaner_colors = GLOB.pipe_cleaner_colors
-	color = param_color || color || pick(pipe_cleaner_colors)
-	if(pipe_cleaner_colors[color])
-		color = pipe_cleaner_colors[color]
+	pipe_cleaner_color = param_color || pipe_cleaner_color || pick(pipe_cleaner_colors)
+	if(pipe_cleaner_colors[pipe_cleaner_color])
+		pipe_cleaner_color = pipe_cleaner_colors[pipe_cleaner_color]
 
 	pixel_x = rand(-2,2)
 	pixel_y = rand(-2,2)
@@ -236,7 +210,7 @@ By design, d1 is the smallest direction and d2 is the highest
 	icon_state = "[initial(item_state)][amount < 3 ? amount : ""]"
 	name = "pipe cleaner [amount < 3 ? "piece" : "coil"]"
 	color = null
-	add_atom_colour(color, FIXED_COLOUR_PRIORITY)
+	add_atom_colour(pipe_cleaner_color, FIXED_COLOUR_PRIORITY)
 
 /obj/item/stack/pipe_cleaner_coil/attack_hand(mob/user)
 	. = ..()
@@ -244,7 +218,7 @@ By design, d1 is the smallest direction and d2 is the highest
 		return
 	var/obj/item/stack/pipe_cleaner_coil/new_pipe_cleaner = ..()
 	if(istype(new_pipe_cleaner))
-		new_pipe_cleaner.color = color
+		new_pipe_cleaner.pipe_cleaner_color = pipe_cleaner_color
 		new_pipe_cleaner.update_icon()
 
 //add pipe_cleaners to the stack
@@ -263,7 +237,7 @@ By design, d1 is the smallest direction and d2 is the highest
 
 /obj/item/stack/pipe_cleaner_coil/proc/get_new_pipe_cleaner(location)
 	var/path = /obj/structure/pipe_cleaner
-	return new path(location, color)
+	return new path(location, pipe_cleaner_color)
 
 // called when pipe_cleaner_coil is clicked on a turf
 /obj/item/stack/pipe_cleaner_coil/proc/place_turf(turf/T, mob/user, dirnew)
@@ -310,7 +284,7 @@ By design, d1 is the smallest direction and d2 is the highest
 
 // called when pipe_cleaner_coil is click on an installed obj/pipe_cleaner
 // or click on a turf that already contains a "node" pipe_cleaner
-/obj/item/stack/pipe_cleaner_coil/proc/pipe_cleaner_join(obj/structure/pipe_cleaner/C, mob/user, var/showerror = TRUE, forceddir)
+/obj/item/stack/pipe_cleaner_coil/proc/pipe_cleaner_join(obj/structure/pipe_cleaner/C, mob/user, showerror = TRUE, forceddir)
 	var/turf/U = user.loc
 	if(!isturf(U))
 		return
@@ -390,7 +364,7 @@ By design, d1 is the smallest direction and d2 is the highest
 		C.d2 = nd2
 
 		//updates the stored pipe_cleaner coil
-		C.update_stored(2, color)
+		C.update_stored(2, pipe_cleaner_color)
 
 		C.add_fingerprint(user)
 		C.update_icon()
@@ -404,36 +378,38 @@ By design, d1 is the smallest direction and d2 is the highest
 /////////////////////////////
 
 /obj/item/stack/pipe_cleaner_coil/red
-	color = "red"
+	pipe_cleaner_color = "red"
 	color = "#ff0000"
 
 /obj/item/stack/pipe_cleaner_coil/yellow
-	color = "yellow"
+	pipe_cleaner_color = "yellow"
 	color = "#ffff00"
 
 /obj/item/stack/pipe_cleaner_coil/blue
-	color = "blue"
+	pipe_cleaner_color = "blue"
 	color = "#1919c8"
 
 /obj/item/stack/pipe_cleaner_coil/green
-	color = "green"
+	pipe_cleaner_color = "green"
 	color = "#00aa00"
 
 /obj/item/stack/pipe_cleaner_coil/pink
+	pipe_cleaner_color = "pink"
 	color = "#ff3ccd"
 
 /obj/item/stack/pipe_cleaner_coil/orange
+	pipe_cleaner_color = "orange"
 	color = "#ff8000"
 
 /obj/item/stack/pipe_cleaner_coil/cyan
-	color = "cyan"
+	pipe_cleaner_color = "cyan"
 	color = "#00ffff"
 
 /obj/item/stack/pipe_cleaner_coil/white
-	color = "white"
+	pipe_cleaner_color = "white"
 
 /obj/item/stack/pipe_cleaner_coil/random
-	color = null
+	pipe_cleaner_color = null
 	color = "#ffffff"
 
 
@@ -453,34 +429,36 @@ By design, d1 is the smallest direction and d2 is the highest
 	update_icon()
 
 /obj/item/stack/pipe_cleaner_coil/cut/red
-	color = "red"
+	pipe_cleaner_color = "red"
 	color = "#ff0000"
 
 /obj/item/stack/pipe_cleaner_coil/cut/yellow
-	color = "yellow"
+	pipe_cleaner_color = "yellow"
 	color = "#ffff00"
 
 /obj/item/stack/pipe_cleaner_coil/cut/blue
-	color = "blue"
+	pipe_cleaner_color = "blue"
 	color = "#1919c8"
 
 /obj/item/stack/pipe_cleaner_coil/cut/green
-	color = "green"
+	pipe_cleaner_color = "green"
 	color = "#00aa00"
 
 /obj/item/stack/pipe_cleaner_coil/cut/pink
+	pipe_cleaner_color = "pink"
 	color = "#ff3ccd"
 
 /obj/item/stack/pipe_cleaner_coil/cut/orange
+	pipe_cleaner_color = "orange"
 	color = "#ff8000"
 
 /obj/item/stack/pipe_cleaner_coil/cut/cyan
-	color = "cyan"
+	pipe_cleaner_color = "cyan"
 	color = "#00ffff"
 
 /obj/item/stack/pipe_cleaner_coil/cut/white
-	color = "white"
+	pipe_cleaner_color = "white"
 
 /obj/item/stack/pipe_cleaner_coil/cut/random
-	color = null
+	pipe_cleaner_color = null
 	color = "#ffffff"

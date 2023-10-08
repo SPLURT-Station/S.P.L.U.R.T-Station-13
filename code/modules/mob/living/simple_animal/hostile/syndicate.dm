@@ -15,8 +15,8 @@
 
 
 /mob/living/simple_animal/hostile/syndicate
-	name = "Syndicate Operative"
-	desc = "Death to Nanotrasen."
+	name = "Nanotrasen Assault Officer"
+	desc = "Death to the Syndicate."
 	icon = 'icons/mob/simple_human.dmi'
 	icon_state = "syndicate"
 	icon_living = "syndicate"
@@ -54,7 +54,7 @@
 /mob/living/simple_animal/hostile/syndicate/space
 	icon_state = "syndicate_space"
 	icon_living = "syndicate_space"
-	name = "Syndicate Commando"
+	name = "Nanotrasen Assault Officer"
 	maxHealth = 170
 	health = 170
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
@@ -69,9 +69,9 @@
 /mob/living/simple_animal/hostile/syndicate/space/stormtrooper
 	icon_state = "syndicate_stormtrooper"
 	icon_living = "syndicate_stormtrooper"
-	name = "Syndicate Stormtrooper"
-	maxHealth = 250
-	health = 250
+	name = "Deathsquad Officer"
+	maxHealth = 500
+	health = 500
 
 /mob/living/simple_animal/hostile/syndicate/melee
 	melee_damage_lower = 15
@@ -90,9 +90,9 @@
 /mob/living/simple_animal/hostile/syndicate/melee/space
 	icon_state = "syndicate_space_knife"
 	icon_living = "syndicate_space_knife"
-	name = "Syndicate Commando"
-	maxHealth = 170
-	health = 170
+	name = "Nanotrasen Assault Officer"
+	maxHealth = 200
+	health = 200
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	speed = 1
@@ -105,9 +105,9 @@
 /mob/living/simple_animal/hostile/syndicate/melee/space/stormtrooper
 	icon_state = "syndicate_stormtrooper_knife"
 	icon_living = "syndicate_stormtrooper_knife"
-	name = "Syndicate Stormtrooper"
-	maxHealth = 250
-	health = 250
+	name = "Deathsquad Officer"
+	maxHealth = 500
+	health = 500
 
 /mob/living/simple_animal/hostile/syndicate/melee/sword
 	melee_damage_lower = 30
@@ -139,7 +139,7 @@
 /mob/living/simple_animal/hostile/syndicate/melee/sword/space
 	icon_state = "syndicate_space_sword"
 	icon_living = "syndicate_space_sword"
-	name = "Syndicate Commando"
+	name = "Deathsquad Officer"
 	maxHealth = 170
 	health = 170
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
@@ -184,7 +184,7 @@
 /mob/living/simple_animal/hostile/syndicate/ranged/space
 	icon_state = "syndicate_space_pistol"
 	icon_living = "syndicate_space_pistol"
-	name = "Syndicate Commando"
+	name = "Nanotrasen Assault Officer"
 	maxHealth = 170
 	health = 170
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
@@ -199,9 +199,9 @@
 /mob/living/simple_animal/hostile/syndicate/ranged/space/stormtrooper
 	icon_state = "syndicate_stormtrooper_pistol"
 	icon_living = "syndicate_stormtrooper_pistol"
-	name = "Syndicate Stormtrooper"
-	maxHealth = 250
-	health = 250
+	name = "Deathsquad Officer"
+	maxHealth = 500
+	health = 500
 
 /mob/living/simple_animal/hostile/syndicate/ranged/smg
 	rapid = 2
@@ -217,7 +217,7 @@
 /mob/living/simple_animal/hostile/syndicate/ranged/smg/space
 	icon_state = "syndicate_space_smg"
 	icon_living = "syndicate_space_smg"
-	name = "Syndicate Commando"
+	name = "Nanotrasen Assault Officer"
 	maxHealth = 170
 	health = 170
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
@@ -232,9 +232,9 @@
 /mob/living/simple_animal/hostile/syndicate/ranged/smg/space/stormtrooper
 	icon_state = "syndicate_stormtrooper_smg"
 	icon_living = "syndicate_stormtrooper_smg"
-	name = "Syndicate Stormtrooper"
-	maxHealth = 250
-	health = 250
+	name = "Deathsquad Officer"
+	maxHealth = 500
+	health = 500
 
 /mob/living/simple_animal/hostile/syndicate/ranged/shotgun
 	rapid = 2
@@ -247,7 +247,7 @@
 /mob/living/simple_animal/hostile/syndicate/ranged/shotgun/space
 	icon_state = "syndicate_space_shotgun"
 	icon_living = "syndicate_space_shotgun"
-	name = "Syndicate Commando"
+	name = "Nanotrasen Assault Officer"
 	maxHealth = 170
 	health = 170
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
@@ -262,7 +262,7 @@
 /mob/living/simple_animal/hostile/syndicate/ranged/shotgun/space/stormtrooper
 	icon_state = "syndicate_stormtrooper_shotgun"
 	icon_living = "syndicate_stormtrooper_shotgun"
-	name = "Syndicate Stormtrooper"
+	name = "Deathsquad Officer"
 	maxHealth = 250
 	health = 250
 

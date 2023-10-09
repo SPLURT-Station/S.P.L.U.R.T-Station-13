@@ -43,8 +43,6 @@
 #define ROLE_SPACE_DRAGON			"Space Dragon"
 #define ROLE_SLAVER					"slaver"
 #define ROLE_SLAVER_LEADER			"slave master"
-#define ROLE_SYNDICATE_CYBERSUN			"Cybersun Space Syndicate"		//Ghost role syndi from Forgottenship ruin
-#define ROLE_SYNDICATE_CYBERSUN_CAPTAIN	"Cybersun Space Syndicate Captain"		//Forgottenship captain syndie
 //#define ROLE_MONSTERHUNTER			"monster hunter" Disabled for now
 #define ROLE_GHOSTCAFE				"ghostcafe"
 #define ROLE_MINOR_ANTAG			"minorantag"

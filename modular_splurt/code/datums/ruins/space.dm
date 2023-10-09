@@ -28,5 +28,5 @@
 	name = "CSBC-12"
 	description = "Cybersun would like to remind it's employees that any battle cruiser will be apropriately maintained, as will it's crew."
 	id = "forgottenship"
-	prefix = "modular_splurt/_maps/RandomRuins/SpaceRuins/"
+	prefix = "_maps/RandomRuins/SpaceRuins/"
 	suffix = "forgottenship_splurt.dmm"

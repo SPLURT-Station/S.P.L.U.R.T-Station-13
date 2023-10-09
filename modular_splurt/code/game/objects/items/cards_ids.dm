@@ -30,3 +30,23 @@
 	name = "Manager ID"
 	assignment = "Hotel Manager"
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_MAINT, ACCESS_AWAY_ENGINE, ACCESS_AWAY_SEC, ACCESS_AWAY_GENERIC1)
+
+/obj/item/card/id/syndicate_command/crew_id
+	name = "syndicate ID card"
+	id_type_name = "syndicate ID card"
+	desc = "An ID straight from the Syndicate."
+	registered_name = "Syndicate"
+	assignment = "Syndicate Operative"
+	icon_state = "syndie"
+	access = list(ACCESS_SYNDICATE, ACCESS_ROBOTICS)
+	uses_overlays = FALSE
+
+/obj/item/card/id/syndicate_command/captain_id
+	name = "syndicate captain ID card"
+	id_type_name = "syndicate captain ID card"
+	desc = "An ID straight from the Syndicate."
+	registered_name = "Syndicate"
+	assignment = "Syndicate Ship Captain"
+	icon_state = "syndie"
+	access = list(ACCESS_SYNDICATE, ACCESS_ROBOTICS)
+	uses_overlays = FALSE

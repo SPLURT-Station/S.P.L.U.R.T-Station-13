@@ -44,7 +44,6 @@
 	state_open = 1
 	},
 /obj/effect/spawner/structure/window/plastitanium,
-/obj/structure/grille,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "ag" = (
@@ -139,7 +138,7 @@
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "ar" = (
 /obj/machinery/door/airlock/grunge{
-	name = "Syndicate Ship Airlock";
+	name = "Dorms";
 	req_one_access_txt = "150"
 	},
 /turf/open/floor/mineral/plastitanium,
@@ -353,6 +352,9 @@
 	dir = 9
 	},
 /obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "be" = (
@@ -387,17 +389,22 @@
 /obj/effect/mob_spawn/human/syndicatespace/captain{
 	dir = 4
 	},
-/turf/open/floor/carpet,
+/turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bl" = (
 /obj/structure/dresser,
-/turf/open/floor/carpet,
+/turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bm" = (
 /obj/structure/window/reinforced/spawner/east,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 5
 	},
+/obj/structure/table/glass,
+/obj/item/storage/box/beakers{
+	pixel_y = 7
+	},
+/obj/item/reagent_containers/syringe,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bn" = (
@@ -437,7 +444,7 @@
 /turf/open/floor/pod/dark,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
 "br" = (
-/turf/open/floor/carpet,
+/turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bs" = (
 /obj/machinery/light,
@@ -563,6 +570,7 @@
 	state_open = 1
 	},
 /obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bH" = (
@@ -579,12 +587,11 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bI" = (
-/obj/structure/table/glass,
-/obj/item/storage/box/beakers{
-	pixel_y = 7
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
-/obj/effect/turf_decal/trimline/brown/filled/line{
-	dir = 9
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
@@ -778,11 +785,10 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "cm" = (
-/obj/structure/window/reinforced/spawner/east,
-/obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 6
+/obj/structure/sign/poster/contraband/syndicate_pistol{
+	icon_state = "poster_syndicate"
 	},
-/turf/open/floor/plasteel/dark,
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "cn" = (
 /obj/structure/cable{
@@ -854,15 +860,14 @@
 	state_open = 1
 	},
 /obj/effect/spawner/structure/window/plastitanium,
-/obj/structure/grille,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "cv" = (
-/obj/structure/table/glass,
 /obj/structure/window/reinforced/spawner/east,
-/obj/effect/turf_decal/trimline/brown/filled/line{
-	dir = 5
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
 	},
+/obj/structure/frame/machine,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "cx" = (
@@ -915,6 +920,10 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "cD" = (
+/obj/item/pipe{
+	dir = 2;
+	icon_state = "connector"
+	},
 /obj/machinery/portable_atmospherics/scrubber{
 	anchored = 1
 	},
@@ -934,16 +943,15 @@
 	name = "Syndicate interior door";
 	req_one_access_txt = "150"
 	},
-/obj/effect/turf_decal/trimline/blue/filled/end,
 /obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 10
+	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "cI" = (
-/obj/structure/frame/machine,
 /obj/structure/window/reinforced/spawner,
-/obj/effect/turf_decal/trimline/brown/filled/line{
-	dir = 10
-	},
+/obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "cJ" = (
@@ -1053,7 +1061,7 @@
 /obj/structure/frame/machine,
 /obj/structure/window/reinforced/spawner,
 /obj/structure/window/reinforced/spawner/east,
-/obj/effect/turf_decal/trimline/brown/filled/line{
+/obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 6
 	},
 /turf/open/floor/plasteel/dark,
@@ -1271,6 +1279,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"fC" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "gl" = (
 /obj/structure/closet/crate/secure/gear{
 	req_one_access_txt = "150"
@@ -1448,6 +1460,13 @@
 /obj/item/radio/headset/chameleon/syndicate,
 /turf/open/floor/pod/dark,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
+"na" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Crematorium";
+	req_one_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
 "nL" = (
 /obj/structure/window/reinforced/spawner/east,
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -1555,6 +1574,9 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "rG" = (
@@ -1577,10 +1599,17 @@
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "ss" = (
-/obj/structure/frame/machine,
-/obj/structure/window/reinforced/spawner,
-/obj/effect/turf_decal/trimline/brown/filled/line,
-/turf/open/floor/plasteel/dark,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/obj/item/pipe{
+	icon_state = "manifold";
+	dir = 2
+	},
+/turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "sJ" = (
 /obj/machinery/door/airlock/grunge{
@@ -1631,6 +1660,10 @@
 /obj/item/reagent_containers/food/condiment/milk,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"tQ" = (
+/obj/structure/frame/machine,
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/syndicate_forgotten_cargopod)
 "up" = (
 /obj/structure/closet/secure_closet/freezer/meat{
 	req_access = list(150)
@@ -1727,6 +1760,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
+/obj/effect/turf_decal/trimline/red/filled/line,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "ze" = (
@@ -1773,6 +1807,12 @@
 	dir = 5
 	},
 /turf/open/floor/plasteel/dark,
+/area/ruin/space/has_grav/syndicate_forgotten_ship)
+"CB" = (
+/obj/structure/sign/poster/contraband/syndicate_pistol{
+	icon_state = "poster_cr"
+	},
+/turf/closed/wall/r_wall/syndicate,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "Df" = (
 /obj/machinery/biogenerator,
@@ -1892,7 +1932,12 @@
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "II" = (
-/obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 6
+	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "IP" = (
@@ -1931,7 +1976,6 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "Lr" = (
-/obj/effect/turf_decal/trimline/blue/filled/corner,
 /obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
@@ -1948,9 +1992,7 @@
 	},
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/grunge{
-	armor = list("melee" = 50, "bullet" = 50, "laser" = 50, "energy" = 50, "bomb" = 50, "bio" = 100, "rad" = 100, "fire" = 90, "acid" = 90);
-	desc = "Vault airlock preventing air from going out.";
-	name = "Syndicate Vault Airlock";
+	name = "Vault";
 	req_one_access_txt = "150"
 	},
 /turf/open/floor/pod/dark,
@@ -2038,6 +2080,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/turf_decal/trimline/red/filled/line,
+/obj/effect/turf_decal/stripes,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "Ql" = (
@@ -2054,9 +2097,6 @@
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/space/has_grav/syndicate_forgotten_cargopod)
 "QQ" = (
-/obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 4
-	},
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 8
 	},
@@ -2184,6 +2224,9 @@
 	name = "Syndicate interior door";
 	req_one_access_txt = "150"
 	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 5
+	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "WN" = (
@@ -2193,10 +2236,11 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "Xk" = (
-/obj/effect/turf_decal/trimline/brown/filled/line{
-	dir = 1
+/obj/machinery/light,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
 	},
-/turf/open/floor/plasteel/dark,
+/turf/open/floor/wood,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "Xn" = (
 /obj/structure/window/reinforced/spawner/north,
@@ -2650,9 +2694,9 @@ aa
 af
 dm
 au
-dm
-vh
-vh
+fC
+br
+br
 bZ
 bO
 cg
@@ -2692,8 +2736,8 @@ af
 dk
 dt
 aK
-dm
-dm
+br
+br
 bZ
 bR
 aw
@@ -2733,8 +2777,8 @@ bZ
 bZ
 bZ
 Hp
-dm
-bs
+vh
+Xk
 bZ
 bX
 ck
@@ -2901,7 +2945,7 @@ ao
 bx
 aH
 cD
-az
+ss
 by
 bZ
 Hp
@@ -3040,7 +3084,7 @@ aa
 ba
 ba
 bU
-bb
+QC
 bb
 bj
 bj
@@ -3085,7 +3129,7 @@ dd
 kG
 bj
 bj
-bj
+tQ
 pD
 bb
 ba
@@ -3101,13 +3145,13 @@ aa
 ab
 bZ
 am
-Hp
+cm
 ct
-II
-bI
+bT
+bT
 cI
-co
-bZ
+cV
+al
 bZ
 bZ
 bZ
@@ -3142,11 +3186,11 @@ aa
 bZ
 aj
 al
-ar
+na
 cj
-II
-Xk
-ss
+bT
+bT
+cI
 cV
 al
 dc
@@ -3185,7 +3229,7 @@ bZ
 bZ
 Hp
 bm
-cm
+cv
 cv
 cW
 cM
@@ -3232,8 +3276,8 @@ cK
 rQ
 ky
 VG
-WN
-WN
+bI
+II
 eX
 WN
 Qb
@@ -3644,7 +3688,7 @@ hK
 kH
 qH
 bN
-bZ
+CB
 bZ
 bZ
 aa

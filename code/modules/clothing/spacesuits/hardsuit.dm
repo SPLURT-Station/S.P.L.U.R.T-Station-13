@@ -107,6 +107,7 @@
 	var/obj/item/tank/jetpack/suit/jetpack = null
 	var/hardsuit_type
 
+
 /obj/item/clothing/suit/space/hardsuit/Initialize(mapload)
 	if(jetpack && ispath(jetpack))
 		jetpack = new jetpack(src)

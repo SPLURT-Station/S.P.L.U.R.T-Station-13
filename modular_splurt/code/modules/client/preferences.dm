@@ -146,6 +146,7 @@
 
 			dat += "<table><tr><td width='20%' height='300px' valign='top'>"
 			dat += "<h2>Flavor Text</h2>"
+			// Carbon flavor text
 			dat += "<a href='?_src_=prefs;preference=flavor_text;task=input'><b>Set Examine Text</b></a><br>"
 			if(length(features["flavor_text"]) <= MAX_FLAVOR_PREVIEW_LEN)
 				if(!length(features["flavor_text"]))
@@ -165,15 +166,16 @@
 			else
 				dat += "[TextPreview(html_encode(features["naked_flavor_text"]))]...<BR>"
 			//SPLURT edit end
+			// Silicon flavor text
 			dat += "<h2>Silicon Flavor Text</h2>"
 			dat += "<a href='?_src_=prefs;preference=silicon_flavor_text;task=input'><b>Set Silicon Examine Text</b></a><br>"
-			if(length(features["silicon_flavor_text"]) <= MAX_FLAVOR_PREVIEW_LEN)
+			if(length(features["silicon_flavor_text"]) <= 40)
 				if(!length(features["silicon_flavor_text"]))
-					dat += "\[...\]<BR>"
+					dat += "\[...\]"
 				else
-					dat += "[features["silicon_flavor_text"]]<BR>"
+					dat += "[html_encode(features["silicon_flavor_text"])]"
 			else
-				dat += "[TextPreview(features["silicon_flavor_text"])]...<BR>"
+				dat += "[copytext(html_encode(features["silicon_flavor_text"]), 1, 40)]..."
 			dat += "<h2>OOC notes</h2>"
 			dat += "<a href='?_src_=prefs;preference=ooc_notes;task=input'><b>Set OOC notes</b></a><br>"
 			var/ooc_notes_len = length(features["ooc_notes"])

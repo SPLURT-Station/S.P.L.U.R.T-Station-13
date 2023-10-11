@@ -61,12 +61,6 @@
 	diag_hud_set_health()
 	ADD_TRAIT(src, TRAIT_ASHSTORM_IMMUNE, ROUNDSTART_TRAIT)
 
-/mob/living/silicon/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/flavor_text, _name = "Silicon Flavor Text", _save_key = "silicon_flavor_text")
-	AddElement(/datum/element/flavor_text, "", "Temporary Flavor Text", "This should be used only for things pertaining to the current round!", _save_key = null)
-	AddElement(/datum/element/flavor_text, _name = "OOC Notes", _addendum = "Put information on ERP/vore/lewd-related preferences here. THIS SHOULD NOT CONTAIN REGULAR FLAVORTEXT!!", _save_key = "ooc_notes", _examine_no_preview = TRUE)
-
 /mob/living/silicon/med_hud_set_health()
 	return //we use a different hud
 
@@ -221,8 +215,25 @@
 	if (href_list["laws"]) // With how my law selection code works, I changed statelaws from a verb to a proc, and call it through my law selection panel. --NeoFite
 		statelaws()
 
-	return
+	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	if(href_list["lookup_info"])
+		switch(href_list["lookup_info"])
+			if("ooc_prefs")
+				if(client)
+					var/str = "[src]'s OOC Notes : <br> <b>ERP :</b> [client.prefs.erppref] <b>| Non-Con :</b> [client.prefs.nonconpref] <b>| Vore :</b> [client.prefs.vorepref]"
+					str += "<br>[html_encode(client.prefs.ooc_prefs)]"
+					var/datum/browser/popup = new(usr, "[name]'s ooc info", "[name]'s OOC Information", 500, 200)
+					popup.set_content(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", "[name]'s ooc info", replacetext(client.prefs.features["ooc_notes"], "\n", "<BR>")))
+					popup.open()
+					return
 
+			if("silicon_flavor_text")
+				if(client && length(client.prefs.features["silicon_flavor_text"]))
+					var/datum/browser/popup = new(usr, "[name]'s flavor text", "[name]'s Flavor Text", 500, 200)
+					popup.set_content(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", "[name]'s flavor text", replacetext(client.prefs.features["silicon_flavor_text"], "\n", "<BR>")))
+					popup.open()
+					return
+					//SKYRAT EDIT ADDITION END
 
 /mob/living/silicon/proc/statelaws(force = 0)
 

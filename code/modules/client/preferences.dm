@@ -120,6 +120,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/gender = MALE					//gender of character (well duh)
 	var/age = 30						//age of character
 	//Sandstorm CHANGES BEGIN
+	var/ooc_prefs = ""
 	var/erppref = "Ask"
 	var/nonconpref = "Ask"
 	var/vorepref = "Ask"
@@ -2223,14 +2224,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						features["naked_flavor_text"] = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
 				//SPLURT edit end
 				if("silicon_flavor_text")
-					var/msg = input(usr, "Set the silicon flavor text in your 'examine' verb. This can also be used for OOC notes and preferences!", "Silicon Flavor Text", features["silicon_flavor_text"]) as message|null //Skyrat edit, removed stripped_multiline_input()
+					var/msg = input(usr, "Set the flavor text in your 'examine' verb. This is for describing what people can tell by looking at your character.", "Silicon Flavor Text", features["silicon_flavor_text"]) as message|null
 					if(!isnull(msg))
-						features["silicon_flavor_text"] = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE) //Skyrat edit, uses strip_html_simple()
+						features["silicon_flavor_text"] = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
 
-				if("ooc_notes")
-					var/msg = stripped_multiline_input(usr, "Set always-visible OOC notes related to content preferences. THIS IS NOT FOR CHARACTER DESCRIPTIONS!", "OOC notes", html_decode(features["ooc_notes"]), MAX_FLAVOR_LEN, TRUE)
+				if("ooc_prefs")
+					var/msg = input(usr, "Set your OOC preferences.", "OOC Prefs", ooc_prefs) as message|null
 					if(!isnull(msg))
-						features["ooc_notes"] = msg
+						ooc_prefs = strip_html_simple(msg, MAX_FLAVOR_LEN, TRUE)
 
 				if("hide_ckey")
 					hide_ckey = !hide_ckey
@@ -4287,6 +4288,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			return
 		else
 			custom_names[name_id] = sanitized_name
+
+	ooc_prefs = sanitize_text(ooc_prefs)
 
 /datum/preferences/proc/get_filtered_holoform(filter_type)
 	if(!custom_holoform_icon)

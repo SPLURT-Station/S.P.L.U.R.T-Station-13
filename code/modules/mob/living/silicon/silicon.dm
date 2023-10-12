@@ -215,15 +215,13 @@
 	if (href_list["laws"]) // With how my law selection code works, I changed statelaws from a verb to a proc, and call it through my law selection panel. --NeoFite
 		statelaws()
 
-	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	//SPLURT EDIT ADDITION BEGIN - CUSTOMIZATION
 	if(href_list["lookup_info"])
 		switch(href_list["lookup_info"])
-			if("ooc_prefs")
-				if(client)
-					var/str = "[src]'s OOC Notes : <br> <b>ERP :</b> [client.prefs.erppref] <b>| Non-Con :</b> [client.prefs.nonconpref] <b>| Vore :</b> [client.prefs.vorepref]"
-					str += "<br>[html_encode(client.prefs.ooc_prefs)]"
+			if("ooc_notes")
+				if(client && length(client.prefs.features["ooc_notes"]))
 					var/datum/browser/popup = new(usr, "[name]'s ooc info", "[name]'s OOC Information", 500, 200)
-					popup.set_content(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", "[name]'s ooc info", replacetext(client.prefs.features["ooc_notes"], "\n", "<BR>")))
+					popup.set_content(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", "[name]'s OOC information", replacetext(client.prefs.features["ooc_notes"], "\n", "<BR>")))
 					popup.open()
 					return
 
@@ -233,7 +231,7 @@
 					popup.set_content(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", "[name]'s flavor text", replacetext(client.prefs.features["silicon_flavor_text"], "\n", "<BR>")))
 					popup.open()
 					return
-					//SKYRAT EDIT ADDITION END
+					//SPLURT EDIT ADDITION END
 
 /mob/living/silicon/proc/statelaws(force = 0)
 

@@ -1,7 +1,3 @@
-/obj/machinery/vending/wardrobe/canLoadItem(obj/item/I,mob/user)
-	return (I.type in products)
-
-
 /obj/machinery/vending/wardrobe/bar_wardrobe/Initialize(mapload)
 	var/list/extra_products = list(
 		/obj/item/clothing/neck/petcollar/handmade = 3

@@ -47,9 +47,6 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "ag" = (
-/obj/machinery/light{
-	dir = 1
-	},
 /obj/structure/displaycase{
 	req_one_access_txt = "150";
 	start_showpiece_type = /obj/item/gun/ballistic/automatic/pistol/deagle/camo
@@ -148,6 +145,9 @@
 	mask_type = /obj/item/clothing/mask/gas/syndicate;
 	storage_type = /obj/item/tank/jetpack/oxygen/harness;
 	suit_type = /obj/item/clothing/suit/space/hardsuit/cybersun
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
@@ -343,6 +343,9 @@
 /area/ruin/space/has_grav/syndicate_forgotten_cargopod)
 "bc" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
@@ -628,6 +631,7 @@
 /obj/effect/turf_decal/trimline/red/filled/line,
 /obj/structure/table/reinforced,
 /obj/item/toy/cards/deck/syndicate,
+/obj/machinery/light,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bO" = (
@@ -691,6 +695,9 @@
 /obj/item/encryptionkey/headset_cybersun,
 /obj/item/encryptionkey/headset_cybersun,
 /obj/item/encryptionkey/headset_cybersun,
+/obj/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bW" = (
@@ -1519,10 +1526,6 @@
 /obj/item/kitchen/rollingpin,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
-"pD" = (
-/obj/machinery/light,
-/turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/ruin/space/has_grav/syndicate_forgotten_cargopod)
 "pM" = (
 /obj/structure/table/glass,
 /obj/item/stack/medical/bruise_pack{
@@ -1658,10 +1661,12 @@
 /obj/item/reagent_containers/food/condiment/soymilk,
 /obj/item/reagent_containers/food/condiment/milk,
 /obj/item/reagent_containers/food/condiment/milk,
+/obj/machinery/light/small,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "tQ" = (
 /obj/structure/frame/machine,
+/obj/machinery/light,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_cargopod)
 "up" = (
@@ -3046,7 +3051,7 @@ ba
 aZ
 Mh
 MD
-aZ
+Mh
 Mh
 aZ
 ba
@@ -3130,7 +3135,7 @@ kG
 bj
 bj
 tQ
-pD
+QC
 bb
 ba
 ba
@@ -3152,7 +3157,7 @@ bT
 cI
 cV
 al
-bZ
+Hp
 bZ
 bZ
 bZ

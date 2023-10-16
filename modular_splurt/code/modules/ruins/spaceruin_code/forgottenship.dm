@@ -153,6 +153,7 @@ GLOBAL_VAR_INIT(fscpassword, generate_password())
 /mob/living/simple_animal/hostile/nanotrasen/ranged/assault
 	name = "Nanotrasen Assault Officer"
 	desc = "Nanotrasen Assault Officer. Contact CentCom if you saw him on your station. Prepare to die, if you've been found near Syndicate property."
+	icon = 'modular_splurt/icons/mob/simple_human.dmi'
 	icon_state = "nanotrasenrangedassault"
 	icon_living = "nanotrasenrangedassault"
 	icon_dead = null
@@ -170,7 +171,7 @@ GLOBAL_VAR_INIT(fscpassword, generate_password())
 /mob/living/simple_animal/hostile/nanotrasen/elite
 	name = "Nanotrasen Elite Assault Officer"
 	desc = "Pray for your life, syndicate. Run while you can."
-	icon = 'icons/mob/simple_human.dmi'
+	icon = 'modular_splurt/icons/mob/simple_human.dmi'
 	icon_state = "nanotrasen_ert"
 	icon_living = "nanotrasen_ert"
 	maxHealth = 150

@@ -132,19 +132,15 @@
 	add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 
 /obj/item/restraints/handcuffs/cable/red
-	color = "red"
 	color = "#ff0000"
 
 /obj/item/restraints/handcuffs/cable/yellow
-	color = "yellow"
 	color = "#ffff00"
 
 /obj/item/restraints/handcuffs/cable/blue
-	color = "blue"
 	color = "#1919c8"
 
 /obj/item/restraints/handcuffs/cable/green
-	color = "green"
 	color = "#00aa00"
 
 /obj/item/restraints/handcuffs/cable/pink
@@ -154,11 +150,10 @@
 	color = "#ff8000"
 
 /obj/item/restraints/handcuffs/cable/cyan
-	color = "cyan"
 	color = "#00ffff"
 
 /obj/item/restraints/handcuffs/cable/white
-	color = "white"
+	color = null
 
 /obj/item/restraints/handcuffs/cable/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/stack/rods))

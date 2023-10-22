@@ -25,7 +25,7 @@
 	suffix = "spacehotelsplurt.dmm"
 
 /datum/map_template/ruin/space/forgottenship
-	name = "CSBC-12"
+	name = "SCSBC-12"
 	description = "Cybersun would like to remind it's employees that any battle cruiser will be apropriately maintained, as will it's crew."
 	id = "forgottenship"
 	prefix = "_maps/RandomRuins/SpaceRuins/"

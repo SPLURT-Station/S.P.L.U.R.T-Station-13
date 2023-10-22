@@ -1,5 +1,5 @@
 #define RADIO_CHANNEL_CYBERSUN "Cybersun"
-#define RADIO_KEY_CYBERSUN "q"
-#define RADIO_TOKEN_CYBERSUN ":q"
+#define RADIO_KEY_CYBERSUN "z"
+#define RADIO_TOKEN_CYBERSUN ":z"
 
 #define FREQ_CYBERSUN 1211

@@ -108,6 +108,11 @@ GLOBAL_VAR_INIT(fscpassword, generate_password())
 	icon_state = "syndie-ship"
 	ambientsounds = list('sound/ambience/ambidanger.ogg', 'sound/ambience/ambidanger2.ogg', 'sound/ambience/ambigen9.ogg', 'sound/ambience/ambigen10.ogg')
 
+/area/ruin/space/has_grav/syndicate_forgotten_outpost
+	name = "Syndicate Forgotten Outpost"
+	icon_state = "syndie-ship"
+	ambientsounds = list('sound/ambience/ambigen4.ogg', 'sound/ambience/signal.ogg')
+
 /area/ruin/space/has_grav/syndicate_forgotten_cargopod
 	name = "Syndicate Forgotten Cargo pod"
 	icon_state = "syndie-ship"
@@ -138,6 +143,7 @@ GLOBAL_VAR_INIT(fscpassword, generate_password())
 	desc = "Prototype hardsuit with experimental armor plates, protecting from laser-based weapons very well, while giving limited protection against anything else. Requires the user to activate the inner mechanism in order to unequip it, making it really difficult to take it off from somebody else."
 	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
 	icon_state = "cybersun"
+	item_state = "cybersun"
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
 	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/suit_digi.dmi'
 	hardsuit_type = "cybersun"

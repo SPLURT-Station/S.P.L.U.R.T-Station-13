@@ -143,6 +143,9 @@
 /turf/template_noop,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "ar" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	icon_state = "siding_line"
+	},
 /obj/machinery/door/airlock/grunge{
 	name = "Dorms";
 	req_one_access_txt = "150"
@@ -280,7 +283,9 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "aH" = (
-/obj/structure/sign/poster/contraband/syndicate_pistol,
+/obj/structure/sign/poster/contraband/syndicate_pistol{
+	name = "poster"
+	},
 /turf/closed/wall/r_wall/syndicate,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "aK" = (
@@ -464,7 +469,8 @@
 	dir = 4
 	},
 /obj/structure/sign/poster/contraband/syndicate_recruitment{
-	pixel_y = 32
+	pixel_y = 32;
+	name = "poster"
 	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
@@ -480,11 +486,15 @@
 /obj/structure/closet/crate/secure/gear{
 	req_one_access_txt = "150"
 	},
-/obj/item/clothing/under/chameleon,
-/obj/item/clothing/mask/chameleon,
-/obj/structure/closet/crate/secure/gear{
-	req_one_access_txt = "150"
+/obj/item/storage/box/syndie_kit/chameleon,
+/obj/item/storage/box/syndie_kit/chameleon,
+/obj/item/storage/box/syndie_kit/chameleon,
+/obj/effect/turf_decal/stripes{
+	dir = 1;
+	icon_state = "delivery_red"
 	},
+/obj/item/storage/box/syndie_kit/chameleon,
+/obj/item/storage/box/syndie_kit/chameleon,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
 "br" = (
@@ -496,15 +506,17 @@
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bt" = (
 /obj/structure/table/reinforced,
-/obj/item/dnainjector/thermal,
 /obj/item/stamp/syndicate,
+/obj/item/dnainjector/thermal{
+	pixel_y = 7
+	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bu" = (
 /obj/structure/table/reinforced,
 /obj/machinery/light,
 /obj/item/paper_bin,
-/obj/item/pen,
+/obj/item/pen/fountain/captain,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bx" = (
@@ -571,21 +583,22 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bG" = (
-/obj/machinery/door/airlock/grunge{
-	name = "Captain's room";
-	req_one_access_txt = "150"
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
 	},
 /obj/machinery/door/poddoor{
 	id = "fscaproom";
 	name = "Captain's blast door";
 	state_open = 1
 	},
-/obj/effect/turf_decal/siding/wood,
-/obj/effect/turf_decal/siding/wood,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
+/obj/machinery/door/airlock/grunge{
+	name = "Captain's room";
+	req_one_access_txt = "150"
 	},
-/turf/open/floor/wood,
+/turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "bH" = (
 /obj/structure/chair/comfy/shuttle{
@@ -777,7 +790,8 @@
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "cm" = (
 /obj/structure/sign/poster/contraband/syndicate_pistol{
-	icon_state = "poster_syndicate"
+	icon_state = "poster_syndicate";
+	name = "poster"
 	},
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
@@ -873,11 +887,19 @@
 /obj/item/stack/sheet/mineral/uranium{
 	amount = 15
 	},
+/obj/effect/turf_decal/stripes{
+	dir = 1;
+	icon_state = "delivery_red"
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "cB" = (
 /obj/item/paper/fluff/ruins/forgottenship/powerissues,
 /obj/machinery/portable_atmospherics/pump,
+/obj/effect/turf_decal/stripes{
+	dir = 1;
+	icon_state = "delivery_red"
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "cC" = (
@@ -1054,6 +1076,10 @@
 /obj/item/stock_parts/cell/high/plus{
 	charge = 15000
 	},
+/obj/effect/turf_decal/stripes{
+	dir = 1;
+	icon_state = "delivery_red"
+	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
 "db" = (
@@ -1088,16 +1114,16 @@
 /obj/item/card/id/syndicate,
 /obj/item/card/id/syndicate,
 /obj/item/card/id/syndicate,
-/obj/structure/closet/crate/secure/gear{
-	req_one_access_txt = "150"
+/obj/effect/turf_decal/stripes{
+	dir = 1;
+	icon_state = "delivery_red"
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
 "dj" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/on/layer3{
 	dir = 8;
-	volume_rate = 200;
-	piping_layer = 2
+	volume_rate = 200
 	},
 /turf/open/floor/plating,
 /area/ruin/unpowered/no_grav)
@@ -1158,7 +1184,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/airlock/grunge{
-	name = "Emergency Power";
+	name = "Emergency Engine";
 	req_one_access_txt = "150"
 	},
 /turf/open/floor/plating,
@@ -1257,16 +1283,21 @@
 	req_one_access_txt = "150"
 	},
 /obj/item/stack/circuit_stack/full,
+/obj/effect/turf_decal/stripes{
+	dir = 1;
+	icon_state = "delivery_red"
+	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
 "fg" = (
 /obj/structure/sign/poster/contraband/syndicate_pistol{
-	icon_state = "poster_clean"
+	icon_state = "poster_clean";
+	name = "poster"
 	},
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "fj" = (
-/obj/machinery/atmospherics/pipe/simple/orange/visible,
+/obj/machinery/atmospherics/pipe/simple/orange,
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "fv" = (
@@ -1299,7 +1330,10 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "fI" = (
-/obj/structure/chair/stool,
+/obj/structure/chair/stool/bar{
+	pixel_x = 2;
+	pixel_y = 5
+	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "fO" = (
@@ -1386,7 +1420,8 @@
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "gV" = (
 /obj/structure/sign/poster/contraband/syndicate_pistol{
-	icon_state = "poster_future"
+	icon_state = "poster_future";
+	name = "poster"
 	},
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -1415,10 +1450,10 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "hl" = (
-/obj/machinery/atmospherics/pipe/manifold/orange/visible{
+/obj/machinery/atmospherics/pipe/manifold/orange{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "hm" = (
@@ -1436,6 +1471,10 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	icon_state = "siding_line";
+	dir = 1
+	},
 /obj/machinery/door/airlock/grunge{
 	name = "Bridge";
 	req_one_access_txt = "150"
@@ -1451,6 +1490,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 10
 	},
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -1493,6 +1535,10 @@
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "hU" = (
 /obj/structure/closet/crate/solarpanel_small,
+/obj/effect/turf_decal/stripes{
+	dir = 1;
+	icon_state = "delivery_red"
+	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
 "hY" = (
@@ -1599,6 +1645,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 8
 	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
 /obj/machinery/door/airlock/grunge{
 	name = "Recreation";
 	req_one_access_txt = "150"
@@ -1696,11 +1745,6 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "jx" = (
-/obj/structure/closet/crate/secure/gear{
-	req_one_access_txt = "150"
-	},
-/obj/effect/spawner/lootdrop/maintenance,
-/obj/effect/spawner/lootdrop/maintenance,
 /obj/machinery/power/apc/syndicate{
 	dir = 1;
 	name = "Syndicate Forgotten Ship APC";
@@ -1714,6 +1758,7 @@
 	},
 /obj/item/mop,
 /obj/item/reagent_containers/glass/bucket,
+/obj/structure/closet/crate/trashcart,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "jA" = (
@@ -1767,16 +1812,21 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 6
 	},
-/obj/structure/closet/syndicate,
-/obj/item/melee/baton/stunsword,
 /obj/item/restraints/handcuffs,
 /obj/item/reagent_containers/spray/pepper,
 /obj/item/flashlight/seclite,
 /obj/item/assembly/flash,
 /obj/item/storage/belt/security,
 /obj/item/clothing/suit/armor/vest/old,
-/obj/structure/sign/poster/contraband/syndicate_pistol{
-	icon_state = "poster_maid"
+/obj/item/melee/classic_baton/telescopic/contractor_baton,
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	armor = list("melee" = 70, "bullet" = 40, "laser" = 40, "energy" = 30, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 70, "acid" = 60);
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Security Locker";
+	req_one_access_txt = "150";
+	secure = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -1852,6 +1902,9 @@
 /obj/machinery/door/airlock/grunge{
 	name = "Dorm 4";
 	req_one_access_txt = "150"
+	},
+/obj/effect/turf_decal/siding/red{
+	dir = 8
 	},
 /turf/open/floor/carpet/red,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -1971,7 +2024,8 @@
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "mj" = (
 /obj/structure/sign/poster/contraband/syndicate_pistol{
-	icon_state = "poster_syndicate"
+	icon_state = "poster_syndicate";
+	name = "poster"
 	},
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -2053,6 +2107,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
 /obj/machinery/door/airlock/grunge{
 	name = "Bridge";
 	req_one_access_txt = "150"
@@ -2094,7 +2151,8 @@
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "nU" = (
 /obj/structure/sign/poster/contraband/syndicate_pistol{
-	icon_state = "poster_manifest"
+	icon_state = "poster_manifest";
+	name = "poster"
 	},
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -2151,6 +2209,12 @@
 	dir = 8
 	},
 /obj/item/kirbyplants/random,
+/obj/machinery/camera/xray{
+	c_tag = "Hallway Dorms";
+	dir = 1;
+	network = list("fsci");
+	screen_loc = ""
+	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "oG" = (
@@ -2173,7 +2237,7 @@
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "oS" = (
 /obj/machinery/door/airlock/grunge{
-	name = "Emergency Power";
+	name = "Emergency Engine";
 	req_one_access_txt = "150"
 	},
 /obj/structure/cable/yellow{
@@ -2203,15 +2267,21 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/item/storage/box/lights/tubes,
+/obj/machinery/camera/xray{
+	c_tag = "Engineering";
+	dir = 4;
+	network = list("fsci");
+	screen_loc = ""
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "pi" = (
-/obj/effect/gibspawner/human,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "pk" = (
-/obj/machinery/atmospherics/pipe/simple/orange/visible,
 /obj/machinery/button/ignition/incinerator/syndicatelava{
 	pixel_x = 6;
 	pixel_y = -24
@@ -2219,8 +2289,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/orange,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "pr" = (
@@ -2231,6 +2302,11 @@
 	icon_state = "0-4"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes{
+	dir = 1;
+	icon_state = "delivery"
+	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "pw" = (
@@ -2261,13 +2337,16 @@
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "qd" = (
-/obj/structure/chair/stool,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/stool/bar{
+	pixel_x = 2;
+	pixel_y = 5
+	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "qj" = (
-/obj/machinery/atmospherics/pipe/simple/supplymain/visible{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/supplymain{
+	dir = 8
 	},
 /obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
@@ -2281,7 +2360,8 @@
 "qp" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/structure/sign/poster/contraband/syndicate_pistol{
-	icon_state = "poster_drone"
+	icon_state = "poster_drone";
+	name = "poster"
 	},
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -2373,20 +2453,20 @@
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "qZ" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/manifold/supplymain/visible{
+/obj/machinery/atmospherics/pipe/manifold/supplymain{
 	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 10
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "rj" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3,
-/obj/machinery/atmospherics/pipe/simple/orange/visible{
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/orange{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "rq" = (
@@ -2406,14 +2486,23 @@
 	dir = 10
 	},
 /obj/machinery/suit_storage_unit/open,
+/obj/machinery/camera/xray{
+	c_tag = "Airlock";
+	dir = 5;
+	network = list("fsci");
+	screen_loc = ""
+	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "ry" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 6
 	},
 /obj/effect/turf_decal/trimline/red/filled/corner,
+/obj/machinery/atmospherics/pipe/manifold4w/supply/hidden{
+	icon_state = "manifold-2";
+	dir = 4
+	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "rz" = (
@@ -2451,6 +2540,12 @@
 	dir = 9
 	},
 /obj/effect/decal/cleanable/blood,
+/obj/machinery/camera/xray{
+	c_tag = "Hallway";
+	dir = 4;
+	network = list("fsci");
+	screen_loc = ""
+	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "sb" = (
@@ -2466,11 +2561,13 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "sc" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3{
+/obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/supplymain/visible,
-/obj/machinery/light/small{
+/obj/machinery/atmospherics/pipe/simple/supplymain{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -2478,6 +2575,9 @@
 "sj" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
 	},
 /obj/machinery/door/airlock/grunge{
 	name = "Bridge";
@@ -2489,8 +2589,12 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
 	},
-/obj/machinery/computer/camera_advanced{
-	dir = 4
+/obj/machinery/computer/security{
+	desc = "Used to access interrogation room camera.";
+	dir = 4;
+	name = "Ship cameras console";
+	network = list("fsc","fsci");
+	screen_loc = ""
 	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -2504,7 +2608,8 @@
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "sz" = (
 /obj/structure/sign/poster/contraband/syndicate_pistol{
-	icon_state = "poster_maid"
+	icon_state = "poster_maid";
+	name = "poster"
 	},
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -2531,6 +2636,10 @@
 /obj/item/circuitboard/machine/spaceship_navigation_beacon,
 /obj/structure/closet/crate/secure/gear{
 	req_one_access_txt = "150"
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 1;
+	icon_state = "delivery_red"
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
@@ -2598,6 +2707,11 @@
 	},
 /obj/machinery/light/small{
 	dir = 1
+	},
+/obj/item/storage/box/lights/tubes,
+/obj/effect/turf_decal/stripes{
+	dir = 1;
+	icon_state = "delivery"
 	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -2717,10 +2831,10 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "vy" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3{
-	dir = 5
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 6
 	},
-/turf/closed/wall/r_wall,
+/turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "vA" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -2772,12 +2886,16 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "wq" = (
-/obj/structure/closet/crate/secure/gear{
-	req_one_access_txt = "150"
-	},
 /obj/item/clothing/suit/space/hardsuit/cybersun,
 /obj/machinery/light{
 	dir = 4
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 1;
+	icon_state = "delivery_red"
+	},
+/obj/structure/closet/crate/secure/gear{
+	req_one_access_txt = "150"
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
@@ -2836,14 +2954,18 @@
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "xh" = (
 /obj/structure/sign/poster/contraband/syndicate_pistol{
-	icon_state = "poster_build"
+	icon_state = "poster_build";
+	name = "poster"
 	},
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "xi" = (
-/obj/effect/turf_decal/trimline/red/filled/line,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
+	},
+/obj/effect/turf_decal/trimline/red/filled/corner,
+/obj/effect/turf_decal/trimline/red/filled/corner{
+	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -2947,6 +3069,10 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "yt" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	icon_state = "siding_line";
+	dir = 4
+	},
 /obj/machinery/door/airlock/grunge{
 	name = "Dorm 3";
 	req_one_access_txt = "150"
@@ -2978,10 +3104,10 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "yN" = (
-/obj/machinery/atmospherics/pipe/simple/supplymain/visible{
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3,
+/obj/machinery/atmospherics/pipe/simple/supplymain{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3,
 /obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -2989,6 +3115,9 @@
 /obj/machinery/door/airlock/grunge{
 	name = "Dorm 1";
 	req_one_access_txt = "150"
+	},
+/obj/effect/turf_decal/siding/red{
+	dir = 4
 	},
 /turf/open/floor/carpet/red,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -3020,7 +3149,7 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "zt" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "zy" = (
@@ -3041,9 +3170,15 @@
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "zB" = (
 /obj/structure/closet/cabinet,
-/obj/item/pda/syndicate,
 /turf/open/floor/carpet/red,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
+"zD" = (
+/obj/effect/turf_decal/stripes{
+	dir = 1;
+	icon_state = "delivery_red"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
 "zK" = (
 /obj/effect/turf_decal/trimline/red/filled/line,
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -3122,12 +3257,11 @@
 	dir = 1;
 	luminosity = 2
 	},
-/obj/structure/cable,
 /obj/structure/cable{
-	icon_state = "0-2";
-	pixel_y = 1
+	icon_state = "1-2"
 	},
-/turf/open/floor/engine/vacuum,
+/obj/structure/cable,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "AL" = (
 /obj/machinery/light{
@@ -3136,31 +3270,33 @@
 /turf/open/floor/carpet/red,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "AM" = (
+/obj/effect/turf_decal/trimline/red/filled/end{
+	dir = 4
+	},
+/obj/effect/spawner/lootdrop/armory_contraband,
+/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser,
 /obj/structure/closet/syndicate{
 	anchored = 1;
 	armor = list("melee" = 70, "bullet" = 40, "laser" = 40, "energy" = 30, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 70, "acid" = 60);
 	desc = "A basic closet for all your villainous needs.";
 	locked = 1;
-	name = "Closet";
+	name = "Armory Locker";
 	req_one_access_txt = "150";
 	secure = 1
 	},
-/obj/effect/turf_decal/trimline/red/filled/end{
-	dir = 4
-	},
-/obj/effect/spawner/lootdrop/armory_contraband,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "AN" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 9
 	},
-/obj/structure/closet/crate/trashcart,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "AT" = (
 /obj/structure/sign/poster/contraband/syndicate_pistol{
-	icon_state = "poster_stetchkin"
+	icon_state = "poster_stetchkin";
+	name = "poster"
 	},
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -3214,7 +3350,9 @@
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Bu" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/gibspawner/human,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 5
+	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "By" = (
@@ -3268,12 +3406,20 @@
 	},
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/spawner/lootdrop/armory_contraband,
-/obj/item/storage/belt/military/snack,
-/obj/structure/closet/syndicate,
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	armor = list("melee" = 70, "bullet" = 40, "laser" = 40, "energy" = 30, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 70, "acid" = 60);
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Armory Locker";
+	req_one_access_txt = "150";
+	secure = 1
+	},
+/obj/item/storage/belt/military,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "BL" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3{
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 10
 	},
 /obj/effect/spawner/structure/window/plastitanium,
@@ -3288,7 +3434,8 @@
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "BT" = (
 /obj/structure/sign/poster/contraband/syndicate_pistol{
-	icon_state = "poster_syndie"
+	icon_state = "poster_syndie";
+	name = "poster"
 	},
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -3320,6 +3467,10 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "BZ" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	icon_state = "siding_line";
+	dir = 8
+	},
 /obj/machinery/door/airlock/grunge{
 	name = "Dorm 2";
 	req_one_access_txt = "150"
@@ -3333,6 +3484,13 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
 	},
+/obj/machinery/camera/xray{
+	c_tag = "Emergency Power";
+	dir = 8;
+	network = list("fsc");
+	screen_loc = ""
+	},
+/obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Cy" = (
@@ -3350,7 +3508,8 @@
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "CB" = (
 /obj/structure/sign/poster/contraband/syndicate_pistol{
-	icon_state = "poster_cr"
+	icon_state = "poster_cr";
+	name = "poster"
 	},
 /turf/closed/wall/r_wall/syndicate,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
@@ -3395,7 +3554,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
 	},
-/obj/effect/gibspawner/human,
 /turf/open/floor/carpet/red,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "De" = (
@@ -3439,7 +3597,8 @@
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "DE" = (
 /obj/structure/sign/poster/contraband/syndicate_pistol{
-	icon_state = "poster_eat"
+	icon_state = "poster_eat";
+	name = "poster"
 	},
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -3514,14 +3673,14 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/atmospherics/components/binary/pump/on{
-	target_pressure = 4500
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 8
 	},
 /obj/machinery/airlock_sensor/incinerator_syndicatelava{
 	pixel_x = 22
+	},
+/obj/machinery/atmospherics/components/binary/pump/on{
+	target_pressure = 4500
 	},
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -3721,12 +3880,16 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 9
 	},
-/obj/item/gun/energy/laser,
 /obj/item/ammo_box/c10mm,
-/obj/item/gun/energy/laser,
-/obj/item/restraints/handcuffs,
-/obj/item/restraints/handcuffs,
-/obj/structure/closet/syndicate,
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	armor = list("melee" = 70, "bullet" = 40, "laser" = 40, "energy" = 30, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 70, "acid" = 60);
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Armory Locker";
+	req_one_access_txt = "150";
+	secure = 1
+	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "He" = (
@@ -3817,8 +3980,8 @@
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "Iv" = (
-/obj/machinery/atmospherics/pipe/simple/orange/visible{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/orange{
+	dir = 8
 	},
 /obj/effect/spawner/structure/window/plastitanium,
 /turf/open/floor/plating,
@@ -3860,11 +4023,15 @@
 /turf/template_noop,
 /area/template_noop)
 "JB" = (
-/obj/machinery/computer/camera_advanced{
-	dir = 8
-	},
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 5
+	},
+/obj/machinery/computer/security{
+	desc = "Used to access interrogation room camera.";
+	dir = 8;
+	name = "Ship cameras console";
+	network = list("fsc","fsci");
+	screen_loc = ""
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -3930,6 +4097,9 @@
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Kl" = (
 /mob/living/simple_animal/hostile/nanotrasen/elite,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	icon_state = "siding_thinplating_new_line"
+	},
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Kq" = (
@@ -3999,8 +4169,9 @@
 /obj/structure/closet/crate/secure/gear{
 	req_one_access_txt = "150"
 	},
-/obj/structure/closet/crate/secure/gear{
-	req_one_access_txt = "150"
+/obj/effect/turf_decal/stripes{
+	dir = 1;
+	icon_state = "delivery_red"
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
@@ -4023,7 +4194,8 @@
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "LB" = (
 /obj/structure/sign/poster/contraband/syndicate_pistol{
-	icon_state = "poster_cr"
+	icon_state = "poster_cr";
+	name = "poster"
 	},
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -4086,6 +4258,10 @@
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Mj" = (
 /obj/machinery/ore_silo,
+/obj/effect/turf_decal/stripes{
+	dir = 1;
+	icon_state = "warn_box_red"
+	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
 "Mk" = (
@@ -4125,6 +4301,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
+"MV" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 9
+	},
+/turf/open/floor/carpet/royalblack,
+/area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "MZ" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
@@ -4145,7 +4327,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Nc" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3{
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
 /turf/closed/wall/r_wall,
@@ -4242,10 +4424,6 @@
 	pixel_x = 24
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
-	dir = 4;
-	light_color = "#d8b1b1"
-	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Ot" = (
@@ -4306,16 +4484,16 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/item/ammo_casing/c10mm,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "ON" = (
 /obj/structure/closet/cabinet,
-/obj/item/pda/syndicate,
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Pg" = (
-/obj/machinery/atmospherics/pipe/simple/orange/visible,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3{
+/obj/machinery/atmospherics/pipe/simple/orange,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 5
 	},
 /turf/closed/wall/r_wall,
@@ -4366,10 +4544,10 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "PN" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3,
-/obj/machinery/atmospherics/pipe/simple/orange/visible{
+/obj/machinery/atmospherics/pipe/simple/orange{
 	dir = 9
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "PZ" = (
@@ -4389,7 +4567,7 @@
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Qg" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3{
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
 /turf/closed/wall/r_wall,
@@ -4464,14 +4642,13 @@
 	luminosity = 2
 	},
 /obj/structure/cable,
-/turf/open/floor/engine/vacuum,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "QO" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer3{
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
 	dir = 1;
 	volume_rate = 200;
-	piping_layer = 2;
-	pixel_x = -5
+	layer = 2.35
 	},
 /turf/open/floor/engine/vacuum,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -4483,13 +4660,27 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "QY" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/gibspawner/human,
-/turf/open/floor/plating,
+/obj/machinery/camera/xray{
+	c_tag = "Security";
+	dir = 9;
+	network = list("fsci");
+	screen_loc = ""
+	},
+/turf/open/floor/plasteel/dark,
+/area/ruin/space/has_grav/syndicate_forgotten_outpost)
+"Ra" = (
+/obj/effect/turf_decal/trimline/red/filled/corner{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/binary/pump/on{
+	target_pressure = 4500;
+	dir = 1;
+	on = 0
+	},
+/turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Re" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -4501,7 +4692,8 @@
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Rf" = (
 /obj/structure/sign/poster/contraband/syndicate_pistol{
-	icon_state = "poster_martini"
+	icon_state = "poster_martini";
+	name = "poster"
 	},
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -4630,17 +4822,33 @@
 	},
 /obj/item/modular_computer/laptop,
 /obj/item/modular_computer/laptop,
+/obj/machinery/camera/xray{
+	c_tag = "Medbay";
+	dir = 10;
+	network = list("fsci");
+	screen_loc = ""
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 1;
+	icon_state = "delivery_red"
+	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
 "SY" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	icon_state = "line_end"
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	icon_state = "siding_line"
+	},
 /obj/machinery/door/airlock/grunge{
 	name = "Airlock";
 	req_one_access_txt = "150"
 	},
-/turf/open/floor/mineral/plastitanium,
+/turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Ta" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -4680,9 +4888,7 @@
 	dir = 4;
 	name = "Syndicate Ship Turret";
 	on = 0;
-	shot_delay = 10;
-	pixel_y = -6;
-	pixel_x = 5
+	shot_delay = 10
 	},
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
@@ -4728,16 +4934,8 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "TO" = (
-/obj/machinery/porta_turret/syndicate/energy{
-	armor = list("melee" = 40, "bullet" = 40, "laser" = 60, "energy" = 60, "bomb" = 60, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100);
-	dir = 4;
-	name = "Syndicate Ship Turret";
-	on = 0;
-	shot_delay = 10;
-	pixel_x = 5;
-	pixel_y = 6
-	},
-/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/obj/structure/closet/cabinet,
+/turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "TS" = (
 /obj/machinery/door/poddoor/incinerator_syndicatelava_main,
@@ -4791,8 +4989,16 @@
 	dir = 8
 	},
 /obj/effect/spawner/lootdrop/armory_contraband,
-/obj/item/storage/belt/military/snack,
-/obj/structure/closet/syndicate,
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	armor = list("melee" = 70, "bullet" = 40, "laser" = 40, "energy" = 30, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 70, "acid" = 60);
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Armory Locker";
+	req_one_access_txt = "150";
+	secure = 1
+	},
+/obj/item/storage/belt/military,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Um" = (
@@ -4854,11 +5060,8 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "UI" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3{
-	dir = 8
-	},
-/turf/closed/wall/r_wall,
-/area/ruin/space/has_grav/syndicate_forgotten_outpost)
+/turf/closed/indestructible/rock,
+/area/ruin/unpowered/no_grav)
 "UR" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -4887,14 +5090,14 @@
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Vh" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3{
-	dir = 5
-	},
 /obj/machinery/portable_atmospherics/canister,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 5
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Vl" = (
@@ -4921,6 +5124,9 @@
 "Vu" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	icon_state = "siding_thinplating_new_line"
 	},
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -4961,9 +5167,11 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "VY" = (
-/obj/machinery/atmospherics/pipe/simple/supplymain/visible,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/supplymain{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
@@ -5025,15 +5233,21 @@
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "WQ" = (
-/obj/machinery/atmospherics/pipe/simple/orange/visible{
+/obj/machinery/atmospherics/pipe/simple/orange{
 	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "WR" = (
 /obj/structure/table/wood,
 /obj/machinery/chem_dispenser/drinks/beer/fullupgrade,
+/obj/machinery/camera/xray{
+	c_tag = "Recreations";
+	dir = 6;
+	network = list("fsci");
+	screen_loc = ""
+	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "WV" = (
@@ -5043,6 +5257,10 @@
 	},
 /obj/machinery/light{
 	dir = 8
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 1;
+	icon_state = "delivery_red"
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
@@ -5072,6 +5290,12 @@
 	},
 /obj/machinery/light/broken,
 /turf/open/floor/plasteel/dark,
+/area/ruin/space/has_grav/syndicate_forgotten_outpost)
+"WZ" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	icon_state = "siding_thinplating_new_line"
+	},
+/turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Xd" = (
 /obj/structure/cable/yellow{
@@ -5123,6 +5347,10 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 1;
+	icon_state = "delivery_red"
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
@@ -5237,24 +5465,35 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "Yv" = (
-/obj/structure/closet/syndicate,
-/obj/item/melee/baton/stunsword,
 /obj/item/restraints/handcuffs,
 /obj/item/reagent_containers/spray/pepper,
 /obj/item/flashlight/seclite,
 /obj/item/assembly/flash,
 /obj/item/storage/belt/security,
 /obj/item/clothing/suit/armor/vest/old,
-/obj/structure/sign/poster/contraband/syndicate_pistol{
-	icon_state = "poster_maid"
-	},
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 4
 	},
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/item/melee/classic_baton/telescopic/contractor_baton,
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	armor = list("melee" = 70, "bullet" = 40, "laser" = 40, "energy" = 30, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 70, "acid" = 60);
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Security Locker";
+	req_one_access_txt = "150";
+	secure = 1
+	},
 /turf/open/floor/plasteel/dark,
+/area/ruin/space/has_grav/syndicate_forgotten_outpost)
+"YC" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 5
+	},
+/turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "YI" = (
 /obj/effect/decal/cleanable/dirt,
@@ -5268,23 +5507,25 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "YK" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3,
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 2;
 	name = "O2 to Incinerator";
-	target_pressure = 4500
+	target_pressure = 4500;
+	on = 0
 	},
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "YP" = (
+/obj/effect/turf_decal/siding/wood,
 /obj/machinery/door/airlock/grunge{
 	name = "Dorms";
 	req_one_access_txt = "150"
 	},
-/turf/open/floor/plasteel/dark,
+/turf/open/floor/wood,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "YV" = (
 /obj/machinery/shower{
@@ -5306,15 +5547,11 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 9
 	},
-/obj/structure/closet/emcloset/anchored,
-/obj/item/tank/internals/doubleoxygen{
-	pixel_x = 9;
-	pixel_y = 2
+/obj/item/pipe{
+	dir = 2;
+	icon_state = "connector"
 	},
-/obj/item/tank/internals/doubleoxygen{
-	pixel_x = 9;
-	pixel_y = 2
-	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Za" = (
@@ -5350,7 +5587,7 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "Zu" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3{
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 9
 	},
 /turf/closed/wall/r_wall,
@@ -5369,7 +5606,7 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "ZG" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible/layer3{
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 10
 	},
 /turf/closed/wall/r_wall,
@@ -5411,6 +5648,11 @@
 	icon_state = "1-2"
 	},
 /obj/item/clothing/glasses/welding,
+/obj/effect/turf_decal/stripes{
+	dir = 1;
+	icon_state = "delivery"
+	},
+/obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "ZY" = (
@@ -7162,7 +7404,7 @@ aa
 aa
 aa
 aa
-TO
+Tl
 Hp
 as
 aF
@@ -7391,7 +7633,7 @@ af
 ZE
 xQ
 aK
-br
+TO
 pW
 bZ
 aw
@@ -7762,7 +8004,7 @@ aa
 aa
 aa
 aa
-TO
+Tl
 Hp
 ch
 bZ
@@ -8137,7 +8379,7 @@ cR
 aa
 aa
 aa
-TO
+Tl
 Hp
 am
 cm
@@ -8262,7 +8504,7 @@ GB
 VR
 Yb
 Gh
-Do
+MV
 hw
 nN
 NZ
@@ -8412,7 +8654,7 @@ qV
 LB
 xV
 nN
-Do
+pi
 Kl
 Zx
 NZ
@@ -8469,7 +8711,7 @@ VR
 MR
 RS
 aZ
-Wl
+zD
 co
 Wl
 co
@@ -8487,8 +8729,8 @@ Ge
 VR
 hM
 XA
-Do
-Do
+pi
+WZ
 nN
 We
 lN
@@ -8537,7 +8779,7 @@ wF
 Uw
 VR
 YZ
-EU
+Ra
 Bu
 WX
 VR
@@ -8562,8 +8804,8 @@ Qi
 VR
 XE
 QI
-Do
-Do
+YC
+vy
 kf
 tS
 lN
@@ -8587,7 +8829,7 @@ cR
 aa
 aa
 aa
-TO
+Tl
 Hp
 at
 aW
@@ -8707,7 +8949,7 @@ BB
 sY
 Ok
 sr
-HL
+QY
 VR
 VR
 VR
@@ -8999,7 +9241,7 @@ SJ
 TT
 jA
 Mu
-QY
+pw
 pw
 As
 og
@@ -9037,7 +9279,7 @@ aa
 aa
 aa
 aa
-TO
+Tl
 Hp
 bQ
 bZ
@@ -9189,7 +9431,7 @@ aa
 aa
 aa
 aa
-TO
+Tl
 bZ
 aV
 bF
@@ -9224,16 +9466,16 @@ qj
 Nc
 BL
 yN
-vy
+rt
 GB
 Iv
-UI
 Nc
-ba
-ba
+Nc
+UI
+UI
 mz
-ba
-ba
+UI
+UI
 bU
 bU
 ba
@@ -9299,17 +9541,17 @@ JV
 Nc
 NC
 Qs
-UI
+Nc
 NC
 AA
-UI
 Nc
-ba
+Nc
+UI
 mz
 mz
 mz
-ba
-ba
+UI
+UI
 bU
 ba
 cR
@@ -9374,17 +9616,17 @@ xo
 Nc
 Uo
 xo
-UI
+Nc
 lD
 xo
-UI
 Nc
-ba
+Nc
+UI
 mz
 mz
 mz
 mz
-ba
+UI
 ba
 cR
 cR
@@ -9454,12 +9696,12 @@ VR
 ZG
 Zu
 Nc
-ba
+UI
 mz
 mz
 mz
-ba
-ba
+UI
+UI
 cR
 cR
 aa
@@ -9529,11 +9771,11 @@ ba
 ba
 ba
 Nc
-ba
-ba
+UI
+UI
 mz
-ba
-ba
+UI
+UI
 cR
 cR
 cR
@@ -9605,9 +9847,9 @@ cR
 ba
 dj
 ba
-ba
-ba
-ba
+UI
+UI
+UI
 ba
 cR
 aa
@@ -10105,7 +10347,7 @@ ba
 bU
 bU
 bU
-cR
+ba
 bU
 cR
 bU
@@ -10178,9 +10420,9 @@ aa
 bU
 bU
 bU
-cR
-cR
-cR
+bU
+ba
+bU
 bU
 cR
 bU
@@ -10252,10 +10494,10 @@ aa
 aa
 bU
 bU
-cR
-cR
+bU
 ba
 ba
+bU
 bU
 bU
 cR

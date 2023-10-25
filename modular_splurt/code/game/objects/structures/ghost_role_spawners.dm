@@ -122,12 +122,15 @@
 //ITEMS//
 
 /obj/item/radio/headset/cybersun
+	name = "cybersun crew bowman headset"
+	desc = "The headset of a crew member."
 	keyslot = new /obj/item/encryptionkey/headset_cybersun
 
 /obj/item/radio/headset/cybersun/captain
 	name = "cybersun captain bowman headset"
 	desc = "The headset of the boss."
 	command = TRUE
+	keyslot = new /obj/item/encryptionkey/headset_cybersun
 
 //Forgotten syndicate ship
 
@@ -174,7 +177,7 @@
 	uniform = /obj/item/clothing/under/syndicate/combat
 	glasses = /obj/item/clothing/glasses/night
 	mask = /obj/item/clothing/mask/gas/syndicate
-	ears = /obj/item/radio/headset/syndicate/alt
+	ears = /obj/item/radio/headset/cybersun
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
 	back = /obj/item/storage/backpack
@@ -192,7 +195,7 @@
 	glasses = /obj/item/clothing/glasses/night
 	mask = /obj/item/clothing/mask/gas/syndicate
 	head = /obj/item/clothing/head/HoS/beret/syndicate
-	ears = /obj/item/radio/headset/syndicate/alt/leader
+	ears = /obj/item/radio/headset/cybersun/captain
 	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
 	back = /obj/item/storage/backpack

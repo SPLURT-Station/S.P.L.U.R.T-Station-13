@@ -25,6 +25,11 @@
 
 	client?.last_activity = world.time
 
+//SPLURT Edit Start: Adds auto punctuation
+	if(findtext(message, GLOB.has_eol_punctuation))
+		message += "."
+//SPLURT Edit End: Adds auto punctuation
+
 	say(message)
 
 /mob/verb/me_typing_indicator()

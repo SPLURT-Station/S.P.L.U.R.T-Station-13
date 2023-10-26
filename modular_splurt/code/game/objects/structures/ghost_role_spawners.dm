@@ -160,7 +160,7 @@
 /obj/effect/mob_spawn/human/syndicatespace/captain
 	name = "Syndicate Ship Captain"
 	short_desc = "You are the captain of an old ship, stuck in hostile space."
-	flavour_text = "Your ship docks after a long time somewhere in hostile space, reporting a malfunction. You are stuck here, with Nanotrasen station nearby. Command your crew and turn your ship into the most protected fortress."
+	flavour_text = "Your ship docks after a long time somewhere in hostile space, reporting a malfunction. You are stuck here, with Nanotrasen station nearby. Command your crew and explore the nearby area to secure your location."
 	important_info = "Protect the ship and secret documents in your backpack with your own life."
 	canloadappearance = TRUE
 	outfit = /datum/outfit/syndicatespace/syndicaptain

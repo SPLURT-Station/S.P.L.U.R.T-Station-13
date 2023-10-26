@@ -181,6 +181,47 @@
 /obj/item/gun/ballistic/automatic/autoaegis/nomag
 	spawnwithmagazine = FALSE
 
+/obj/item/gun/ballistic/automatic/pnt31
+	name = "Praetorian"
+	desc = "An exotic Paradeus assault rifle, this one is a forgotten design from what feels like eons ago."
+	icon = 'modular_splurt/icons/obj/guns/vhariik4032.dmi'
+	icon_state = "PNT-31"
+	item_state = "pnt31"
+	lefthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_righthand.dmi'
+	fire_sound = 'sound/weapons/Gunshot_silenced.ogg'
+	weapon_weight = WEAPON_MEDIUM
+	mag_type = /obj/item/ammo_box/magazine/pntmag
+	fire_delay = 2
+	suppressed = TRUE
+	can_unsuppress = FALSE
+	w_class = WEIGHT_CLASS_NORMAL
+	slot_flags = ITEM_SLOT_BACK
+	automatic_burst_overlay = FALSE
+	spread = 2
+
+/obj/item/gun/ballistic/automatic/pnt31/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/gun/ballistic/automatic/pnt31/mod
+	name = "Praetorian MOD"
+	desc = "An exotic Paradeus assault rifle, this one is a is a rather recent design, it even has what some people would call 'skin'."
+	icon_state = "PNTM-31"
+	item_state = "pntm31"
+	lefthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_righthand.dmi'
+	weapon_weight = WEAPON_LIGHT
+	mag_type = /obj/item/ammo_box/magazine/pntmag
+	suppressed = TRUE
+	burst_size = 3
+	fire_delay = 1
+
+/obj/item/gun/ballistic/automatic/pnt31/nomag
+	spawnwithmagazine = FALSE
+
+/obj/item/gun/ballistic/automatic/pnt31/mod/nomag
+	spawnwithmagazine = FALSE
+
 /obj/item/gun/ballistic/automatic/caelus
 	name = "AOD Caelus System"
 	desc = "The Area Of Denial Caelus LMG is a LMG developed by Paradeus in early 2400's it still proves effective to this day"
@@ -262,11 +303,3 @@
 
 /obj/item/gun/ballistic/automatic/smg22/nomag
 	spawnwithmagazine = FALSE
-
-/datum/supply_pack/security/armory/m46a1
-	name = "Pink M46A1 Full-Auto Rifle Crate"
-	desc = "Contains two high-powered, fully automatic rifles rifles chambered in .5x43mm. Requires Armory access to open."
-	cost = 25000
-	contains = list(/obj/item/gun/ballistic/automatic/m46a1,
-					/obj/item/gun/ballistic/automatic/m46a1)
-	crate_name = "m46a1 rifles crate"

@@ -3025,6 +3025,7 @@
 	dir = 8;
 	req_one_access = null
 	},
+/obj/item/paper/fluff/ruins/forgottenship/error,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "xV" = (
@@ -3273,9 +3274,6 @@
 /obj/effect/turf_decal/trimline/red/filled/end{
 	dir = 4
 	},
-/obj/effect/spawner/lootdrop/armory_contraband,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
 /obj/structure/closet/syndicate{
 	anchored = 1;
 	armor = list("melee" = 70, "bullet" = 40, "laser" = 40, "energy" = 30, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 70, "acid" = 60);
@@ -3285,6 +3283,8 @@
 	req_one_access_txt = "150";
 	secure = 1
 	},
+/obj/item/gun/ballistic/automatic/pnt31,
+/obj/item/gun/ballistic/automatic/pnt31,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "AN" = (
@@ -3876,11 +3876,9 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Ha" = (
-/obj/item/ammo_box/c9mm,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 9
 	},
-/obj/item/ammo_box/c10mm,
 /obj/structure/closet/syndicate{
 	anchored = 1;
 	armor = list("melee" = 70, "bullet" = 40, "laser" = 40, "energy" = 30, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 70, "acid" = 60);
@@ -3890,6 +3888,12 @@
 	req_one_access_txt = "150";
 	secure = 1
 	},
+/obj/item/ammo_box/magazine/pntmag,
+/obj/item/ammo_box/magazine/pntmag,
+/obj/item/ammo_box/magazine/pntmag,
+/obj/item/ammo_box/magazine/pntmag,
+/obj/item/ammo_box/a543/lethal,
+/obj/item/ammo_box/a543/lethal,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_ship)
 "He" = (
@@ -4096,10 +4100,10 @@
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Kl" = (
-/mob/living/simple_animal/hostile/nanotrasen/elite,
 /obj/effect/turf_decal/siding/thinplating/dark{
-	icon_state = "siding_thinplating_new_line"
+	dir = 1
 	},
+/mob/living/simple_animal/hostile/nanotrasen/elite/akins,
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Kq" = (
@@ -4262,6 +4266,7 @@
 	dir = 1;
 	icon_state = "warn_box_red"
 	},
+/obj/item/paper/fluff/ruins/forgottenship/emergency,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/powered/syndicate_forgotten_vault)
 "Mk" = (
@@ -4485,6 +4490,7 @@
 	dir = 8
 	},
 /obj/item/ammo_casing/c10mm,
+/obj/item/paper/fluff/ruins/forgottenship/survivor,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "ON" = (
@@ -5182,6 +5188,7 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 4
 	},
+/obj/item/paper/fluff/ruins/forgottenship/distress,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Wd" = (
@@ -5551,7 +5558,9 @@
 	dir = 2;
 	icon_state = "connector"
 	},
-/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/portable_atmospherics/canister/oxygen{
+	anchored = 1
+	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/syndicate_forgotten_outpost)
 "Za" = (
@@ -8654,8 +8663,8 @@ qV
 LB
 xV
 nN
-pi
 Kl
+WZ
 Zx
 NZ
 lN

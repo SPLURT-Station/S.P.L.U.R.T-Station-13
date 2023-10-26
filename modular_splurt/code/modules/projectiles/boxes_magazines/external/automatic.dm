@@ -64,6 +64,19 @@
 	..()
 	icon_state = "regm4mag-[ammo_count() ? "20" : "0"]"
 
+/obj/item/ammo_box/magazine/pntmag
+	name = "Praetorian 20-Round Magazine"
+	desc = "A straight magazine for the Praetorian assault rifle"
+	icon = 'modular_splurt/icons/obj/ammo.dmi'
+	icon_state = "pntmag"
+	ammo_type = /obj/item/ammo_casing/a543
+	caliber = ".543"
+	max_ammo = 20
+
+/obj/item/ammo_box/magazine/pntmag/update_icon()
+	..()
+	icon_state = "pntmag-[ammo_count() ? "20" : "0"]"
+
 /obj/item/ammo_box/magazine/kaijumag
 	name = "KAIJU 20-Round Magazine"
 	desc = "Magazine used by the Kaiju SMG."

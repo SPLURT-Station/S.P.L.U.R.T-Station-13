@@ -50,7 +50,7 @@ GLOBAL_VAR_INIT(fscpassword, generate_password())
 
 /obj/item/paper/fluff/ruins/forgottenship/password/Initialize(mapload)
 	. = ..()
-	info = "Welcome to most advanced cruiser owned by Cyber Sun Industries!<br>You might notice, that this cruiser is equipped with 12 prototype laser turrets making any hostile boarding attempts futile.<br>Other facilities built on the ship are: Simple atmospheric system, Camera system with built-in X-ray visors and Safety module, enabling emergency engines in case of... you know, emergency.<br>Emergency system will bring you to nearest syndicate pod containing everything needed for human life.<br><br><b>In case of emergency, you must remember the pod-door activation code - [GLOB.fscpassword]</b><br><br>Cyber Sun Industries (C) 2484."
+	info = "Welcome to most advanced cruiser owned by Cyber Sun Industries!<br>You might notice, that this cruiser is equipped with 12 prototype laser turrets making any hostile boarding attempts futile.<br><br>Other facilities built on the ship are: Simple atmospheric system, Camera system with built-in X-ray visors and Safety module, enabling emergency engines in case of... you know, emergency.<br><br><br>Emergency system will bring you to nearest syndicate pod containing everything needed for human life.<br><br><b>In case of emergency, you must remember the pod-door activation code - [GLOB.fscpassword]</b><br><br>Cyber Sun Industries (C) 2484.<br>"
 	icon_state = "paper_words"
 	item_state = "paper"
 
@@ -61,6 +61,26 @@ GLOBAL_VAR_INIT(fscpassword, generate_password())
 /obj/item/paper/fluff/ruins/forgottenship/missionobj
 	name = "Mission objectives"
 	info = "Greetings, operatives. You are assigned to SCSBC-12(Syndicate Cyber Sun Battle Cruiser 12) to protect our high-ranking officer while he is on his way to next outpost. While you are travelling, he is the captain of this ship and <b>you must</b> obey his orders.<br><br>Remember, disobeying high-ranking officer orders is a reason for termination."
+
+/obj/item/paper/fluff/ruins/forgottenship/distress
+	name = "Transmission Log"
+	info = "<br><br><b>EMERGENCY TRANSMISSON LOG...</b><br><br><br><b>This is monitoring outpost Delta-Zeta-04; Due to the intercepted communications of Nanotrasen hostile forces approaching the site, this is a warning to all syndicate personel to avoid the outpost. Protocol Blazing Star has been activated, requesting the assistance of ERT Cybersun operatives to defend and secure this location. All personel will begin preperations for close quarters defense against possible intruders. Be advised there is hostile local fauna near the outpost due current ongoing attempts to monitor behavior and potential breeding of the entity CARP for potential bio weapon use.</b><br>"
+
+/obj/item/paper/fluff/ruins/forgottenship/survivor
+	name = "Scribbled Page"
+	info = "<br>To anyone who is reading this, hopefully the response team, this is engineering specialist John J. Jones.<br><br>Nanotrasen Death Squad units have invaded the outpost, we fought hard, but our firepower wasnt enough to deter and eliminate them.<br><br>They slaughtered the entire outpost, Im currently the last one standing, however, I wont give these basterds the satisfaction of taking me alive, may the syndicate be forever!<br>"
+
+/obj/item/paper/fluff/ruins/forgottenship/nanostrasen
+	name = "Nanotrasen Log"
+	info = "<br><br><b>NANOTRASEN DEATHSQAUD LOG...</b><br><br><br>This is NEAO. SGT. Akins Recording this log note, all syndicate forces eliminated from the nearby facility. Bagging the bodies and placed on transport to a processing facility to record rank and name. It appears however, a transmission was sent in term of a distress call, expecting further hostiles to attempt retaking the facility.<br><br>Hostiles have docked at the outpost, appears to be a older cybersun model of cruiser, unknown amount of assailants assuming to be a smaller crew due to ship size. Sent my CPL. Hicks to investigate the shuttle, no appearent life signs potentially abandoned, attempting to sieze control of the vessel and equipment, standby for further information.<br>"
+
+/obj/item/paper/fluff/ruins/forgottenship/emergency
+	name = "Emergency Equipment"
+	info = "<br><br><b>Emergency Equipment</b><br><br><br>Greetings! This is the emergency vault for specialized equipment used in nearby operations and facility maintence, under no circumstances should the equipment be taken/tampered with in the vault without direct orders from a high command syndicate officer. Any attempt in unathorized access/tampering with the equipment in this vault will be means of termination of your employment. br>"
+
+/obj/item/paper/fluff/ruins/forgottenship/error
+	name = "Catasrophic Error Report"
+	info = "<br><br><b>CATASTROPHIC ERROR REPORT... </b><br><br><br>WARNING: System wide anomoly has occured, initiating PROTOCOL SLEEPING PHEONIX, preservation of crew and VIP engaged for long-term cryo stasis. Unable to process destinating cordinates, attempting to retreat back to previous location... Error system unable to register CYBERSUN COMMAND CENTER. Ship going into EMERGENCY POWER MODE!<br><br>Attempting to contact Cybersun High Command... Error has occured unable to ping. Attempting to initate emergency beacon... Error system unable to initate emergency beacon...<br><br>Activating last ditch effort... Activated: Ship will begin to approach the nearest syndicate facility, estimate time: Unknown.<br><br>...<br><br>...<br><br>...<br><br>Outpost Emergency Beacon detected attempting to intercept, intiating de-frosting process, arrival: imminent.<br>"
 
 ///////////	forgottenship items
 
@@ -195,4 +215,27 @@ GLOBAL_VAR_INIT(fscpassword, generate_password())
 	projectiletype = /obj/item/projectile/beam/laser
 	projectilesound = 'sound/weapons/laser.ogg'
 	loot = list(/obj/effect/gibspawner/human)
+	faction = list(ROLE_DEATHSQUAD)
+
+/mob/living/simple_animal/hostile/nanotrasen/elite/akins
+	name = "Nanotrasen Elite Assault Officer Akins"
+	desc = "Nanotrasen will never fall, now die syndicate scum!"
+	icon = 'modular_splurt/icons/mob/simple_human.dmi'
+	icon_state = "nanotrasen_ert"
+	icon_living = "nanotrasen_ert"
+	maxHealth = 250
+	health = 250
+	melee_damage_lower = 15
+	melee_damage_upper = 20
+	ranged = TRUE
+	rapid = 3
+	rapid_fire_delay = 5
+	rapid_melee = 3
+	retreat_distance = 0
+	minimum_distance = 2
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	minbodytemp = 0
+	casingtype = /obj/item/ammo_casing/a543
+	projectilesound = 'sound/weapons/Gunshot_silenced.ogg'
+	loot = list(/obj/effect/gibspawner/human, /obj/item/paper/fluff/ruins/forgottenship/nanostrasen ,/obj/item/gun/ballistic/automatic/pnt31/mod, /obj/item/ammo_box/magazine/pntmag)
 	faction = list(ROLE_DEATHSQUAD)

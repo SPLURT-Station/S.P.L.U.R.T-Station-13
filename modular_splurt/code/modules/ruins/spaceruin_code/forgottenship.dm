@@ -166,10 +166,12 @@ GLOBAL_VAR_INIT(fscpassword, generate_password())
 	item_state = "cybersun"
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
 	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/suit_digi.dmi'
+	taur_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/hardsuits_taur.dmi'
 	hardsuit_type = "cybersun"
 	armor = list("melee" = 30, "bullet" = 40, "laser" = 70, "energy" = 70, "bomb" = 30, "bio" = 100, "rad" = 60, "fire" = 60, "acid" = 60)
 	strip_delay = 600
 	slowdown = 0
+	mutantrace_variation = STYLE_ALL_TAURIC
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/cybersun
 	actions_types = list(/datum/action/item_action/toggle_helmet)
 	jetpack = /obj/item/tank/jetpack/suit

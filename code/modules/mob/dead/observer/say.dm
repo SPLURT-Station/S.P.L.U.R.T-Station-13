@@ -3,11 +3,6 @@
 	if (!message)
 		return
 
-	//SPLURT Edit Start: adds automatic punctuation
-	if(findtext(message, GLOB.has_eol_punctuation))
-		message += "."
-	//SPLURT Edit End: adds automatic punctuation
-
 	var/message_mode = get_message_mode(message)
 	if(client && (message_mode == MODE_ADMIN || message_mode == MODE_DEADMIN))
 		message = copytext_char(message, 3)

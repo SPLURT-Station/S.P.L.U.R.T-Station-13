@@ -44,6 +44,17 @@
 	can_adjust = FALSE
 	mutantrace_variation = NONE
 
+/obj/item/clothing/under/breachersuit
+	name = "breacher suit"
+	desc = "Do not stand at my grave and weep. I am not there. I do not sleep."
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
+	icon_state = "breachersuit"
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
+	item_state = "breachersuit"
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/uniform_digi.dmi'
+	can_adjust = TRUE
+	mutantrace_variation = STYLE_DIGITIGRADE
+
 /obj/item/clothing/under/bunnysuit
 	name = "bunny outfit"
 	desc = "A simple black bunny outfit."

@@ -105,6 +105,219 @@ GLOBAL_VAR_INIT(fscpassword, generate_password())
 	for(var/i in 1 to 5)
 		new /obj/item/firing_pin/implant/pindicate(src)
 
+/////////// forgottenship clothes
+
+/obj/item/clothing/neck/cloak/cybersun
+	name = "cybersun cloak"
+	desc = "Worn by High-Ranking Cybersun Personnel, the cybersun shall rise!"
+	icon_state = "cybersuncloak"
+	icon = 'modular_splurt/icons/obj/clothing/neck.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/neck.dmi'
+	armor = list(MELEE = 35, BULLET = 40, LASER = 25, ENERGY = 10, BOMB = 25, BIO = 20, RAD = 20, FIRE = 60, ACID = 60)
+	body_parts_covered = CHEST|GROIN|ARMS
+	is_edible = 0
+
+/obj/item/storage/belt/esabre_belt
+	name = "energy sabre sheath"
+	desc = "An ornate sheath designed to hold an syndicate officer's blade."
+	icon = 'modular_splurt/icons/obj/clothing/belts.dmi'
+	icon_state = "esheath"
+	item_state = "esheath"
+	lefthand_file = 'modular_splurt/icons/mob/inhands/equipment/belt_lefthand.dmi'
+	righthand_file = 'modular_splurt/icons/mob/inhands/equipment/belt_righthand.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/belt.dmi'
+	w_class = WEIGHT_CLASS_BULKY
+	content_overlays = TRUE
+	onmob_overlays = TRUE
+	var/list/fitting_swords = list(/obj/item/melee/transforming/energy/sword/energy_sabre, /obj/item/melee/baton/stunsword)
+	var/starting_sword = /obj/item/melee/transforming/energy/sword/energy_sabre
+
+/obj/item/storage/belt/esabre_belt/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_items = 1
+	STR.rustle_sound = FALSE
+	STR.max_w_class = WEIGHT_CLASS_BULKY
+	STR.can_hold = typecacheof(fitting_swords)
+	STR.quickdraw = TRUE
+
+/obj/item/storage/belt/esabre_belt/examine(mob/user)
+	. = ..()
+	if(length(contents))
+		. += "<span class='notice'>Alt-click it to quickly draw the blade.</span>"
+
+/obj/item/storage/belt/esabre_belt/PopulateContents()
+	if(starting_sword)
+		new starting_sword(src)
+
+/obj/item/storage/belt/military/assault/cybersun_crew
+	name = "cybersun assault belt"
+	desc = "A tactical assault belt."
+	icon_state = "assaultbelt"
+	item_state = "security"
+
+/obj/item/storage/belt/military/assault/cybersun_crew/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_items = 6
+
+/obj/item/storage/belt/military/assault/cybersun_crew/PopulateContents()
+	new /obj/item/restraints/handcuffs(src)
+	new /obj/item/grenade/flashbang(src)
+	new /obj/item/gun/ballistic/automatic/pistol/modular
+	new /obj/item/ammo_box/magazine/m10mm(src)
+	new /obj/item/ammo_box/magazine/m10mm(src)
+	update_icon()
+
+/obj/item/storage/belt/military/assault/cybersun_captain
+	name = "cybersun assault belt"
+	desc = "A tactical assault belt."
+	icon_state = "assaultbelt"
+	item_state = "security"
+
+/obj/item/storage/belt/military/assault/cybersun_captain/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_items = 6
+
+/obj/item/storage/belt/military/assault/cybersun_captain/PopulateContents()
+	new /obj/item/restraints/handcuffs(src)
+	new /obj/item/grenade/flashbang(src)
+	new /obj/item/melee/classic_baton/telescopic(src)
+	new /obj/item/gun/ballistic/automatic/pistol/APS(src)
+	new /obj/item/ammo_box/magazine/pistolm9mm(src)
+	new /obj/item/ammo_box/magazine/pistolm9mm(src)
+	update_icon()
+
+/////////// forgottenship weapons
+
+/obj/item/melee/transforming/energy/sword/energy_sabre
+	name = "energy sabre"
+	desc = "An elegant weapon, its concentrated beam of energy capable of cutting through armor aand flesh alike."
+	icon = 'modular_splurt/icons/obj/items_and_weapons.dmi'
+	icon_state = "esabre0"
+	icon_state_on = "esabre1"
+	lefthand_file = 'modular_splurt/icons/mob/inhands/weapons/swords_lefthand.dmi'
+	righthand_file = 'modular_splurt/icons/mob/inhands/weapons/swords_righthand.dmi'
+	obj_flags = UNIQUE_RENAME
+	force = 18
+	throwforce = 15
+	hitsound = "swing_hit" //it starts deactivated
+	hitsound_on = 'sound/weapons/nebhit.ogg'
+	attack_verb_off = list("tapped", "poked")
+	attack_verb_on = list ("slashed", "seared", "melted")
+	active = 0
+	throw_speed = 3
+	throw_range = 5
+	sharpness = SHARP_EDGED
+	embedding = list("embed_chance" = 75, "impact_pain_mult" = 10)
+	w_class = WEIGHT_CLASS_BULKY
+	armour_penetration = 75
+	item_flags = NEEDS_PERMIT | ITEM_CAN_PARRY
+	custom_materials = list(/datum/material/iron = 2500)
+	total_mass = 3.4
+	block_parry_data = /datum/block_parry_data/energy_sabre
+	var/datum/effect_system/spark_spread/spark_system
+	possible_colors = null
+	light_color = "#990000"
+
+/obj/item/melee/transforming/energy/sword/energy_sabre/transform_messages(mob/living/user, supress_message_text)
+	playsound(user, active ? 'sound/weapons/saberon.ogg' : 'sound/weapons/saberoff.ogg', 35, 1)
+	if(!supress_message_text)
+		to_chat(user, "<span class='notice'>[src] [active ? "is now active":"can now be concealed"].</span>")
+
+/datum/block_parry_data/energy_sabre
+	parry_time_windup = 0
+	parry_time_active = 25
+	parry_time_spindown = 0
+	// we want to signal to players the most dangerous phase, the time when automatic counterattack is a thing.
+	parry_time_windup_visual_override = 1
+	parry_time_active_visual_override = 3
+	parry_time_spindown_visual_override = 12
+	parry_flags = PARRY_DEFAULT_HANDLE_FEEDBACK		// esword users can attack while
+	parry_time_perfect = 2.5		// first ds isn't perfect
+	parry_time_perfect_leeway = 1.5
+	parry_imperfect_falloff_percent = 5
+	parry_efficiency_to_counterattack = INFINITY
+	parry_efficiency_considered_successful = 65		// VERY generous
+	parry_efficiency_perfect = 100
+	parry_failed_stagger_duration = 4 SECONDS
+	parry_cooldown = 0.5 SECONDS
+	parry_automatic_enabled = TRUE
+	autoparry_single_efficiency = 65
+	autoparry_cooldown_absolute = 3 SECONDS
+
+/obj/item/melee/transforming/energy/sword/energy_sabre/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/butchering, 30, 95, 5) //fast and effective, but as a sword, it might damage the results.
+	AddElement(/datum/element/sword_point)
+
+/obj/item/melee/transforming/energy/sword/energy_sabre/run_block(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, final_block_chance, list/block_return)
+	if(attack_type & ATTACK_TYPE_PROJECTILE)		// Don't bring a sword to a gunfight.
+		return BLOCK_NONE
+	return ..()
+
+/obj/item/melee/transforming/energy/sword/energy_sabre/on_exit_storage(datum/component/storage/S)
+	var/obj/item/storage/belt/esabre_belt/B = S.parent
+	if(istype(B))
+		playsound(B, 'sound/items/unsheath.ogg', 25, 1)
+	..()
+
+/obj/item/melee/transforming/energy/sword/energy_sabre/on_enter_storage(datum/component/storage/S)
+	var/obj/item/storage/belt/esabre_belt/B = S.parent
+	if(istype(B))
+		playsound(B, 'sound/items/sheath.ogg', 25, 1)
+	..()
+
+/obj/item/melee/transforming/energy/sword/energy_sabre/get_belt_overlay()
+	return mutable_appearance('modular_splurt/icons/obj/clothing/belt_overlays.dmi', "esabre")
+
+/obj/item/melee/transforming/energy/sword/energy_sabre/get_worn_belt_overlay(icon_file)
+	return mutable_appearance(icon_file, "-esabre")
+
+/obj/item/melee/transforming/energy/sword/energy_sabre/suicide_act(mob/living/user)
+	user.visible_message("<span class='suicide'>[user] is trying to cut off all [user.p_their()] limbs with [src]! it looks like [user.p_theyre()] trying to commit suicide!</span>")
+	var/i = 0
+	ADD_TRAIT(src, TRAIT_NODROP, SABRE_SUICIDE_TRAIT)
+	if(iscarbon(user))
+		var/mob/living/carbon/Cuser = user
+		var/obj/item/bodypart/holding_bodypart = Cuser.get_holding_bodypart_of_item(src)
+		var/list/limbs_to_dismember
+		var/list/arms = list()
+		var/list/legs = list()
+		var/obj/item/bodypart/bodypart
+
+		for(bodypart in Cuser.bodyparts)
+			if(bodypart == holding_bodypart)
+				continue
+			if(bodypart.body_part & ARMS)
+				arms += bodypart
+			else if (bodypart.body_part & LEGS)
+				legs += bodypart
+
+		limbs_to_dismember = arms + legs
+		if(holding_bodypart)
+			limbs_to_dismember += holding_bodypart
+
+		var/speedbase = abs((4 SECONDS) / limbs_to_dismember.len)
+		for(bodypart in limbs_to_dismember)
+			i++
+			addtimer(CALLBACK(src, .proc/suicide_dismember, user, bodypart), speedbase * i)
+	addtimer(CALLBACK(src, .proc/manual_suicide, user), (5 SECONDS) * i)
+	return MANUAL_SUICIDE
+
+/obj/item/melee/transforming/energy/sword/energy_sabre/proc/suicide_dismember(mob/living/user, obj/item/bodypart/affecting)
+	if(!QDELETED(affecting) && affecting.dismemberable && affecting.owner == user && !QDELETED(user))
+		playsound(user, hitsound, 25, 1)
+		affecting.dismember(BRUTE)
+		user.adjustBruteLoss(20)
+
+/obj/item/melee/transforming/energy/sword/energy_sabre/proc/manual_suicide(mob/living/user, originally_nodropped)
+	if(!QDELETED(user))
+		user.adjustBruteLoss(200)
+		user.death(FALSE)
+	REMOVE_TRAIT(src, TRAIT_NODROP, SABRE_SUICIDE_TRAIT)
+
 ///////////	AI Laws
 
 /obj/item/aiModule/core/full/cybersun

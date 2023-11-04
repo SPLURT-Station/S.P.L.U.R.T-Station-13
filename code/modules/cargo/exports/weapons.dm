@@ -300,7 +300,7 @@
 /datum/export/weapon/sniper
 	cost = 750
 	unit_name = "anti-materiel rifle"
-	export_types = list(/obj/item/gun/ballistic/automatic/sniper_rifle/syndicate)
+	export_types = list(/obj/item/gun/ballistic/rifle/sniper_rifle/syndicate)
 
 /datum/export/weapon/ebow
 	cost = 600

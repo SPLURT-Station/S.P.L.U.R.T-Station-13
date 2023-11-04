@@ -74,7 +74,7 @@
 	new /obj/item/ammo_box/magazine/sniper_rounds/soporific(src)
 	new /obj/item/ammo_box/magazine/sniper_rounds/soporific(src)
 	new /obj/item/ammo_box/magazine/sniper_rounds/soporific(src)
-	new /obj/item/gun/ballistic/automatic/sniper_rifle/sleepy(src)
+	new /obj/item/gun/ballistic/rifle/sniper_rifle/sleepy(src)
 	new /obj/item/suppressor/specialoffer(src)
 
 /obj/item/storage/box/jammers

@@ -102,9 +102,9 @@
 	desc = "A pack of varmint rifles with 3 spare boxes of ammo."
 	access = ACCESS_QM
 	cost = 1700
-	contains = list(/obj/item/gun/ballistic/shotgun/varmintrifle,
-					/obj/item/gun/ballistic/shotgun/varmintrifle,
-					/obj/item/gun/ballistic/shotgun/varmintrifle,
+	contains = list(/obj/item/gun/ballistic/rifle/varmintrifle,
+					/obj/item/gun/ballistic/rifle/varmintrifle,
+					/obj/item/gun/ballistic/rifle/varmintrifle,
 					/obj/item/ammo_box/c22lr,
 					/obj/item/ammo_box/c22lr,
 					/obj/item/ammo_box/c22lr)
@@ -116,9 +116,9 @@
 	desc = "A pack of hunting rifles with 9 stripper clips."
 	access = ACCESS_QM
 	cost = 2800
-	contains = list(/obj/item/gun/ballistic/shotgun/huntingrifle,
-					/obj/item/gun/ballistic/shotgun/huntingrifle,
-					/obj/item/gun/ballistic/shotgun/huntingrifle,
+	contains = list(/obj/item/gun/ballistic/rifle/huntingrifle,
+					/obj/item/gun/ballistic/rifle/huntingrifle,
+					/obj/item/gun/ballistic/rifle/huntingrifle,
 					/obj/item/ammo_box/a308,
 					/obj/item/ammo_box/a308,
 					/obj/item/ammo_box/a308,

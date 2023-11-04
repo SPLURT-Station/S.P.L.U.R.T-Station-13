@@ -19,14 +19,14 @@ obj/item/gun/ballistic/rifle/update_icon()
     add_overlay("[icon_state]_bolt[bolt_locked ? "_locked" : ""]")
 
 obj/item/gun/ballistic/rifle/rack(mob/user = null)
-    if (bolt_locked == FALSE)
-        to_chat(user, "<span class='notice'>You open the bolt of \the [src]</span>")
-        playsound(src, rack_sound, rack_sound_volume, rack_sound_vary)
-        process_chamber(FALSE, FALSE, FALSE)
-        bolt_locked = TRUE
-        update_icon()
-        return
-    drop_bolt()
+	if (bolt_locked == FALSE)
+		to_chat(user, "<span class='notice'>You open the bolt of \the [src]</span>")
+		playsound(src, rack_sound, rack_sound_volume, rack_sound_vary)
+		process_chamber(FALSE, FALSE, FALSE)
+		bolt_locked = TRUE
+		update_icon()
+		return
+	drop_bolt()
 
 obj/item/gun/ballistic/rifle/can_shoot()
     if (bolt_locked)
@@ -102,3 +102,38 @@ obj/item/gun/ballistic/rifle/attackby(obj/item/A, mob/user, params)
 	else
 		user.dropItemToGround(src, TRUE)
 	discard_gun(user)
+
+///////////////////
+// SNIPER RIFLE //
+//////////////////
+
+/obj/item/gun/ballistic/rifle/sniper_rifle
+	name = "sniper rifle"
+	desc = "A long ranged weapon that does significant damage. No, you can't quickscope."
+	icon_state = "sniper"
+	item_state = "sniper"
+	fire_sound = "sound/weapons/sniper_shot.ogg"
+	fire_sound_volume = 90
+	vary_fire_sound = FALSE
+	load_sound = "sound/weapons/sniper_mag_insert.ogg"
+	rack_sound = "sound/weapons/sniper_rack.ogg"
+	recoil = 2
+	weapon_weight = WEAPON_HEAVY
+	mag_type = /obj/item/ammo_box/magazine/sniper_rounds
+	fire_delay = 40
+	burst_size = 1
+	w_class = WEIGHT_CLASS_NORMAL
+	inaccuracy_modifier = 0.5
+	zoomable = TRUE
+	zoom_amt = 10 //Long range, enough to see in front of you, but no tiles behind you.
+	zoom_out_amt = 5
+	slot_flags = ITEM_SLOT_BACK
+	actions_types = list()
+	mag_display = TRUE
+
+/obj/item/gun/ballistic/rifle/sniper_rifle/syndicate
+	name = "syndicate sniper rifle"
+	desc = "An illegally modified .50 cal sniper rifle with suppression compatibility. Quickscoping still doesn't work."
+	can_unsuppress = TRUE
+	can_suppress = TRUE
+	pin = /obj/item/firing_pin/implant/pindicate

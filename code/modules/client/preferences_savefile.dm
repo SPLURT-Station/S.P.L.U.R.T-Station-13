@@ -836,6 +836,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 "butt_stuffing" = FALSE,
 "anus_stuffing" = FALSE,
 "belly_stuffing" = FALSE,
+"breasts_accessible" = FALSE,
+"cock_accessible" = FALSE,
+"balls_accessible" = FALSE,
+"vag_accessible" = FALSE,
+"butt_accessible" = FALSE,
+"anus_accessible" = FALSE,
+"belly_accessible" = FALSE,
 "inert_eggs" = FALSE,
 "ipc_screen" = "Sunburst",
 "ipc_antenna" = "None",
@@ -998,6 +1005,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_cock_diameter"] >> features["cock_diameter"]
 	S["feature_cock_taur"] >> features["cock_taur"]
 	S["feature_cock_visibility"] >> features["cock_visibility"]
+	S["feature_cock_accessible"] >> features["cock_accessible"]
 	//balls features
 	S["feature_has_balls"] >> features["has_balls"]
 	S["feature_balls_color"] >> features["balls_color"]
@@ -1005,6 +1013,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_balls_size"] >> features["balls_size"]
 	S["feature_balls_visibility"] >> features["balls_visibility"]
 	S["feature_balls_fluid"] >> features["balls_fluid"]
+	S["feature_balls_accessible"] >> features["balls_accessible"]
 	//breasts features
 	S["feature_has_breasts"] >> features["has_breasts"]
 	S["feature_breasts_size"] >> features["breasts_size"]
@@ -1013,11 +1022,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_breasts_producing"] >> features["breasts_producing"]
 	S["feature_breasts_fluid"] >> features["breasts_fluid"]
 	S["feature_breasts_visibility"] >> features["breasts_visibility"]
+	S["feature_breasts_accessible"] >> features["breasts_accessible"]
 	//vagina features
 	S["feature_has_vag"] >> features["has_vag"]
 	S["feature_vag_shape"] >> features["vag_shape"]
 	S["feature_vag_color"] >> features["vag_color"]
 	S["feature_vag_visibility"] >> features["vag_visibility"]
+	S["feature_vag_accessible"] >> features["vag_accessible"]
 	//womb features
 	S["feature_has_womb"] >> features["has_womb"]
 	S["feature_womb_fluid"] >> features["womb_fluid"]
@@ -1026,16 +1037,19 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_butt_color"] >> features["butt_color"]
 	S["feature_butt_size"] >> features["butt_size"]
 	S["feature_butt_visibility"] >> features["butt_visibility"]
+	S["feature_butt_accessible"] >> features["butt_accessible"]
 	//belly features
 	S["feature_has_belly"] >> features["has_belly"]
 	S["feature_belly_size"] >> features["belly_size"]
 	S["feature_belly_color"] >> features["belly_color"]
 	S["feature_belly_visibility"] >> features["belly_visibility"]
+	S["feature_belly_accessible"] >> features["belly_accessible"]
 	//anus features
 	S["feature_has_anus"] >> features["has_anus"]
 	S["feature_anus_color"] >> features["anus_color"]
 	S["feature_anus_shape"] >> features["anus_shape"]
 	S["feature_anus_visibility"] >> features["anus_visibility"]
+	S["feature_anus_accessible"] >> features["anus_accessible"]
 
 	// Flavor texts, Made into a standard.
 	S["feature_flavor_text"] >> features["flavor_text"]
@@ -1210,10 +1224,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		max_diameter_ratio = CONFIG_GET(number/diameter_ratio_max_size_prefs)
 
 
-	var/static/safe_visibilities
-	if(!safe_visibilities)
-		var/list/L = CONFIG_GET(keyed_list/safe_visibility_toggles)
-		safe_visibilities = L.Copy()
+	var/safe_visibilities = CONFIG_GET(str_list/safe_visibility_toggles)
 
 	features["breasts_size"] = sanitize_inlist(features["breasts_size"], B_sizes, BREASTS_SIZE_DEF)
 	features["cock_length"] = sanitize_integer(features["cock_length"], min_D, max_D, COCK_SIZE_DEF)
@@ -1296,6 +1307,33 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			job_preferences -= j
 
 	all_quirks = SANITIZE_LIST(all_quirks)
+
+	language = SANITIZE_LIST(language)
+
+	if(length(language))
+		// This line, prevents wiping their languages because the subsystem was not ready
+		var/list/all_possible_languages = SSlanguage.initialized ? SSlanguage.languages_by_name : typesof(/datum/language)
+		var/list/lang_names
+		// Subsystem ready, let's do it with our cached stuff
+		if(length(SSlanguage.languages_by_name))
+			for(var/language_sanitization in all_possible_languages)
+				var/datum/language/language_sanitization_datum = all_possible_languages[language_sanitization]
+				// Don't check for existance, at this point, if it doesn't exist, we need a runtime.
+				if(!language_sanitization_datum.key)
+					continue
+				LAZYADD(lang_names, language_sanitization_datum.name)
+		// Subsystem NOT ready, let's do it the annoying way.
+		else
+			for(var/datum/language/language_sanitization as anything in all_possible_languages)
+				if(!initial(language_sanitization.key))
+					continue
+				LAZYADD(lang_names, initial(language_sanitization.name))
+		for(var/language_entry in language)
+			// Valid language, just ignore it
+			if(LAZYFIND(lang_names, language_entry))
+				continue
+			// Remove the entry if the language does not exist in the codebase
+			LAZYREMOVE(language, language_entry)
 
 	vore_flags = sanitize_integer(vore_flags, 0, MAX_VORE_FLAG, 0)
 	vore_taste = copytext(vore_taste, 1, MAX_TASTE_LEN)
@@ -1404,6 +1442,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_cock_taur"], features["cock_taur"])
 	WRITE_FILE(S["feature_cock_visibility"], features["cock_visibility"])
 	WRITE_FILE(S["feature_cock_stuffing"], features["cock_stuffing"])
+	WRITE_FILE(S["feature_cock_accessible"], features["cock_accessible"])
 
 	WRITE_FILE(S["feature_has_balls"], features["has_balls"])
 	WRITE_FILE(S["feature_balls_color"], features["balls_color"])
@@ -1412,6 +1451,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_balls_visibility"], features["balls_visibility"])
 	WRITE_FILE(S["feature_balls_stuffing"], features["balls_stuffing"])
 	WRITE_FILE(S["feature_balls_fluid"], features["balls_fluid"])
+	WRITE_FILE(S["feature_balls_accessible"], features["balls_accessible"])
 
 	WRITE_FILE(S["feature_has_breasts"], features["has_breasts"])
 	WRITE_FILE(S["feature_breasts_size"], features["breasts_size"])
@@ -1421,12 +1461,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_breasts_producing"], features["breasts_producing"])
 	WRITE_FILE(S["feature_breasts_visibility"], features["breasts_visibility"])
 	WRITE_FILE(S["feature_breasts_stuffing"], features["breasts_stuffing"])
+	WRITE_FILE(S["feature_breasts_accessible"], features["breasts_accessible"])
 
 	WRITE_FILE(S["feature_has_vag"], features["has_vag"])
 	WRITE_FILE(S["feature_vag_shape"], features["vag_shape"])
 	WRITE_FILE(S["feature_vag_color"], features["vag_color"])
 	WRITE_FILE(S["feature_vag_visibility"], features["vag_visibility"])
 	WRITE_FILE(S["feature_vag_stuffing"], features["vag_stuffing"])
+	WRITE_FILE(S["feature_vag_accessible"], features["vag_accessible"])
 
 	WRITE_FILE(S["feature_has_womb"], features["has_womb"])
 	WRITE_FILE(S["feature_womb_fluid"], features["womb_fluid"])
@@ -1436,12 +1478,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_butt_size"], features["butt_size"])
 	WRITE_FILE(S["feature_butt_visibility"], features["butt_visibility"])
 	WRITE_FILE(S["feature_butt_stuffing"], features["butt_stuffing"])
+	WRITE_FILE(S["feature_butt_accessible"], features["butt_accessible"])
 
 	WRITE_FILE(S["feature_has_belly"], features["has_belly"])
 	WRITE_FILE(S["feature_belly_color"], features["belly_color"])
 	WRITE_FILE(S["feature_belly_size"], features["belly_size"])
 	WRITE_FILE(S["feature_belly_visibility"], features["belly_visibility"])
 	WRITE_FILE(S["feature_belly_stuffing"], features["belly_stuffing"])
+	WRITE_FILE(S["feature_belly_accessible"], features["belly_accessible"])
 
 	WRITE_FILE(S["feature_has_anus"], features["has_anus"])
 	WRITE_FILE(S["feature_anus_color"], features["anus_color"])
@@ -1470,6 +1514,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_ooc_notes"], features["ooc_notes"])
 
 	WRITE_FILE(S["feature_color_scheme"], features["color_scheme"])
+
+	WRITE_FILE(S["feature_anus_accessible"], features["anus_accessible"])
 
 	//save every advanced coloring mode thing in one go
 	for(var/feature in features)

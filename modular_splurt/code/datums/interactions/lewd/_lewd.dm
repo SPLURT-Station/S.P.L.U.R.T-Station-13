@@ -14,6 +14,12 @@
 	. = ..()
 	SEND_SIGNAL(src, COMSIG_MOB_LUST_UPDATED)
 
+/mob/living/toggle_anus_always_accessible(accessibility)
+	var/obj/item/organ/genital/anus/donut = getorganslot(ORGAN_SLOT_ANUS)
+	if(donut)
+		return donut.toggle_accessibility(accessibility)
+	. = ..()
+
 /mob/living/moan()
 	var/moaned = lastmoan
 	var/miming = mind ? mind?.miming : FALSE

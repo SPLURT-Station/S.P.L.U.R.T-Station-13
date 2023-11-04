@@ -275,7 +275,7 @@
 		if(CONFIG_GET(string/chat_reboot_role))
 			broadcastmessage += "\n\n<@&[CONFIG_GET(string/chat_reboot_role)]>, the server will reboot shortly!"
 
-		send2chat(broadcastmessage, CONFIG_GET(string/chat_roundend_notice_tag))
+		send2chat(new /datum/tgs_message_content(broadcastmessage), CONFIG_GET(string/chat_roundend_notice_tag))
 
 	CHECK_TICK
 

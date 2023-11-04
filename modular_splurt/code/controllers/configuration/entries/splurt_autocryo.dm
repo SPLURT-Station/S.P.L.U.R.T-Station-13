@@ -1,6 +1,6 @@
 // Time before sending the user to cryo
 /datum/config_entry/number/autocryo_time_trigger
-	config_entry_value = 24000
+	default = 24000
 	min_val = 600
 	integer = TRUE
 
@@ -9,7 +9,7 @@
 
 // Time before deleting a disconnected ghost
 /datum/config_entry/number/ghost_check_time
-	config_entry_value = 10 MINUTES
+	default = 10 MINUTES
 	min_val = 600
 	integer = TRUE
 

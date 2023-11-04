@@ -28,3 +28,11 @@
 	icon_state = "nobl_plush"
 	item_state = "nobl_plush"
 	squeak_override = list('modular_splurt/sound/misc/dog_toy.ogg' = 1)
+
+/obj/item/toy/plush/foth
+	name = "Foth Plushie"
+	desc = "A plushie mixed between a fox and a moth, seemingly representing a magical being with a funny tophat."
+	icon = 'modular_splurt/icons/obj/plushes.dmi'
+	icon_state = "foth_plush"
+	item_state = "foth_plush"
+	squeak_override = list('modular_splurt/sound/misc/fox_squeak.ogg' = 1, 'modular_splurt/sound/misc/fox_squeak1.ogg' = 1, 'modular_splurt/sound/misc/fox_squeak2.ogg' = 1)

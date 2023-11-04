@@ -23,7 +23,7 @@
 /datum/action/innate/ability/humanoid_customization/proc/change_form()
 	var/mob/living/carbon/human/H = owner
 
-	var/select_alteration = input(owner, "Select what part of your form to alter", "Form Alteration", "cancel") in list("Body Color", "Eye Color","Hair Style", "Genitals", "Tail", "Snout", "Wings", "Markings", "Ears", "Taur body", "Penis", "Vagina", "Penis Length", "Breast Size", "Breast Shape", "Butt Size", "Belly Size", "Cancel")
+	var/select_alteration = input(owner, "Select what part of your form to alter", "Form Alteration", "cancel") in list("Body Color", "Eye Color","Hair Style", "Genitals", "Tail", "Snout", "Wings", "Markings", "Ears", "Taur body", "Penis", "Vagina", "Penis Length", "Breast Size", "Breast Shape", "Butt Size", "Belly Size", "Body Size", "Genital Color", "Horns", "Hair Color", "Skin Tone (Non-Mutant)", "Cancel")
 
 	if(select_alteration == "Body Color")
 		var/new_color = input(owner, "Choose your skin color:", "Race change","#"+H.dna.features["mcolor"]) as color|null
@@ -246,7 +246,7 @@
 		H.update_genitals()
 		H.apply_overlay()
 		H.give_genital(/obj/item/organ/genital/breasts)
-
+/// SPLURT EDIT START
 	else if (select_alteration == "Butt Size")
 		for(var/obj/item/organ/genital/butt/X in H.internal_organs)
 			qdel(X)
@@ -271,5 +271,96 @@
 		H.apply_overlay()
 		H.give_genital(/obj/item/organ/genital/belly)
 
+	else if (select_alteration == "Body Size")
+		// Check if the user has the size_normalized component attached, to avoid body size accumulation bug
+		var/datum/component/size_normalized = H.GetComponent(/datum/component/size_normalized)
+		if (size_normalized)
+			to_chat(owner, "<span class='warning'>The normalizer prevents you from adjusting your entire body's size.</span>")
+			return
+		else
+			var/new_body_size = input(owner, "Choose your desired sprite size: ([CONFIG_GET(number/body_size_min)*100]-[CONFIG_GET(number/body_size_max)*100]%)\nWarning: This may make your character look distorted. Additionally, any size under 100% takes a 10% maximum health penalty", "Character Preference", H.dna.features["body_size"]*100) as num|null
+			if(new_body_size)
+				var/chosen_size = clamp(new_body_size * 0.01, CONFIG_GET(number/body_size_min), CONFIG_GET(number/body_size_max))
+				H.update_size(chosen_size)
+
+	else if (select_alteration == "Genital Color")
+		var/genital_part = input(owner, "Select what part of your genitals to alter", "Genital Color", "cancel") in list("Penis", "Butt", "Balls", "Anus", "Vagina", "Breasts", "Belly", "Toggle genitals using skintone", "Cancel")
+		if(genital_part == "Toggle genitals using skintone")
+			var/use_skintone = input(owner, "Do you want to use your skin tone for all genitals? (Only works for Species that support Skin Tones)", "Genital Color") in list("Yes", "No")
+			if(use_skintone == "Yes")
+				H.dna.features["genitals_use_skintone"] = TRUE
+			else
+				H.dna.features["genitals_use_skintone"] = FALSE
+		else
+			var/hex_color = null
+			if (genital_part == "Penis")
+				hex_color = input(owner, "Choose your " + "penis" + " color:", "Genital Color", "#" + H.dna.features["cock_color"]) as color|null
+				genital_part = "cock"
+			else if (genital_part == "Vagina")
+				hex_color = input(owner, "Choose your " + "vagina" + " color:", "Genital Color", "#" + H.dna.features["vag_color"]) as color|null
+				genital_part = "vag"
+			else if (genital_part == "Balls")
+				hex_color = input(owner, "Choose your " + "balls" + " color:", "Genital Color", "#" + H.dna.features["balls_color"]) as color|null
+				genital_part = "balls"
+			else if (genital_part == "Breasts")
+				hex_color = input(owner, "Choose your " + "breasts" + " color:", "Genital Color", "#" + H.dna.features["breasts_color"]) as color|null
+				genital_part = "breasts"
+			else if (genital_part == "Butt")
+				hex_color = input(owner, "Choose your " + "butt" + " color:", "Genital Color", "#" + H.dna.features["butt_color"]) as color|null
+				genital_part = "butt"
+			else if (genital_part == "Anus")
+				hex_color = input(owner, "Choose your " + "anus" + " color:", "Genital Color", "#" + H.dna.features["anus_color"]) as color|null
+				genital_part = "anus"
+			else if (genital_part == "Belly")
+				hex_color = input(owner, "Choose your " + "belly" + " color:", "Genital Color", "#" + H.dna.features["belly_color"]) as color|null
+				genital_part = "belly"
+
+			if (hex_color)
+				H.dna.features[genital_part + "_color"] = sanitize_hexcolor(hex_color, 6)
+				H.dna.features["genitals_use_skintone"] = FALSE
+
+		H.update_genitals()
+
+	else if (select_alteration == "Horns")
+		var/new_horns = input(owner, "Choose your character's horns:", "Character Preference") as null|anything in GLOB.horns_list
+		if(new_horns)
+			H.dna.features["horns"] = new_horns
+
+		var/new_horn_color = input(owner, "Choose your character's horn color:", "Character Preference", "#" + H.dna.features["horns_color"]) as color|null
+		if(new_horn_color)
+			if (new_horn_color == "#000000" && H.dna.features["horns_color"] != "85615A")
+				H.dna.features["horns_color"] = "85615A"
+			else
+				H.dna.features["horns_color"] = sanitize_hexcolor(new_horn_color, 6)
+
+		H.update_body()
+
+	else if (select_alteration == "Hair Color")
+		var/new_hair_color = input(owner, "Choose your character's hair color:", "Character Preference", "#" + H.dna.features["hair_color"]) as color|null
+		if (new_hair_color)
+			H.hair_color = sanitize_hexcolor(new_hair_color, 6)
+		H.update_hair()
+
+	else if(select_alteration == "Skin Tone (Non-Mutant)") // Skin tone, different than mutant color
+		var/list/choices = GLOB.skin_tones - GLOB.nonstandard_skin_tones
+		if(CONFIG_GET(flag/allow_custom_skintones))
+			choices += "custom"
+		var/new_s_tone = input(owner, "Choose your character's skin tone: (This is different than the Body Color option, which changes your character's mutant colors)", "Character Preference")  as null|anything in choices
+		if(new_s_tone)
+			if(new_s_tone == "custom")
+				var/default = H.skin_tone
+				var/custom_tone = input(owner, "Choose your character's skin tone: (This is different than the Body Color option, which changes your character's mutant colors)", "Character Preference", default) as color|null
+				if(custom_tone)
+					var/temp_hsv = RGBtoHSV(custom_tone)
+					if(ReadHSV(temp_hsv)[3] < ReadHSV("#333333")[3] && CONFIG_GET(flag/character_color_limits)) // rgb(50,50,50) //SPLURT EDIT
+						to_chat(owner,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
+					else
+						H.skin_tone = custom_tone
+			else
+				H.skin_tone = new_s_tone
+
+		H.update_body()		
+
+/// SPLURT EDIT END
 	else
 		return

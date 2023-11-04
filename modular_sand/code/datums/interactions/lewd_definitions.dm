@@ -88,8 +88,8 @@
 	lust = num
 	lastlusttime = world.time
 
-/mob/living/proc/toggle_anus_always_accessible()
-	anus_always_accessible = !anus_always_accessible
+/mob/living/proc/toggle_anus_always_accessible(accessibility)
+	anus_always_accessible = isnull(accessibility) ? !anus_always_accessible : accessibility
 
 /mob/living/proc/has_genital(slot, visibility = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
@@ -770,7 +770,7 @@
 					did_anything = FALSE
 			if(did_anything)
 				LAZYADD(obscure_to, src)
-	else //todo: better self cum messages
+	if(!message) //todo: better self cum messages
 		message = "cums all over themselves!"
 	if(gender == MALE)
 		playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/final_m1.ogg',

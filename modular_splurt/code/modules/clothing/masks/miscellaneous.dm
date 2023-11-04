@@ -130,3 +130,11 @@
 	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/mask_muzzle.dmi'
 	icon_state = "ballgag"
 	item_state = "ballgag"
+
+/obj/item/clothing/mask/ninja_replica
+	name = "Replica Ninja Mask"
+	desc = "It's a ninja mask! But this one seems like it's breathable."
+	icon_state = "s-ninja"
+	item_state = "s-ninja_mask"
+	flags_inv = HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
+	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH

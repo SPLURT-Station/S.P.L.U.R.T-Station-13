@@ -19,3 +19,11 @@
 	cost = 2
 	ckeywhitelist = list()
 	donator_group_id = DONATOR_GROUP_TIER_2
+
+// Mask
+/datum/gear/donator/mask/ninja_replica
+	name = "Replica Ninja Mask"
+	path = /obj/item/clothing/mask/ninja_replica
+	cost = 1
+	ckeywhitelist = list()
+	donator_group_id = DONATOR_GROUP_TIER_2

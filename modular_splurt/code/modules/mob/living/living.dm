@@ -73,3 +73,9 @@
 			to_chat(src, "<span class='danger'>I break free off [pulledby]'s grip!</span>")
 			return TRUE
 
+/mob/living/verb/switch_scaling()
+	set name = "Switch scaling mode"
+	set category = "IC"
+	set desc = "Switch sharp/fuzzy scaling for current mob."
+	appearance_flags ^= PIXEL_SCALE
+	fuzzy = !fuzzy

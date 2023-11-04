@@ -1,13 +1,3 @@
-/obj/item/gun/ballistic/automatic/pistol/m1911
-	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
-	can_flashlight = 1
-	flight_x_offset = 19
-	flight_y_offset = 15
-
-/obj/item/gun/ballistic/automatic/pistol/m1911/update_icon_state()
-	icon_state = "[initial(icon_state)][chambered ? "" : "-e"]"
-
-
 /obj/item/gun/ballistic/automatic/pistol/enforcer
 	name = "\improper Mk. 58 Enforcer (.45)"
 	desc = "A polymer frame pistol made by Nanotreason. Won't show up on Space port X-rays and cost more then you make in a month."

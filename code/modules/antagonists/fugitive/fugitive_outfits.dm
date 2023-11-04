@@ -88,7 +88,7 @@
 
 /datum/outfit/russiancorpse/hunter
 	ears = /obj/item/radio/headset
-	r_hand = /obj/item/gun/ballistic/shotgun/boltaction
+	r_hand = /obj/item/gun/ballistic/rifle/boltaction
 
 /datum/outfit/russiancorpse/hunter/pre_equip(mob/living/carbon/human/H)
 	if(prob(50))

@@ -175,7 +175,7 @@
 	cost = 2200
 	access = ACCESS_BAR
 	contraband = TRUE
-	contains = list(/obj/item/gun/ballistic/revolver/doublebarrel)
+	contains = list(/obj/item/gun/ballistic/shotgun/doublebarrel)
 	crate_name = "replacement double-barrel crate"
 	crate_type = /obj/structure/closet/crate/secure
 

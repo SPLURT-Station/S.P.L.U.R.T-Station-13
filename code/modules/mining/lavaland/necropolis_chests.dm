@@ -1228,7 +1228,7 @@
 	log_combat(user, L, "took out a blood contract on", src)
 	qdel(src)
 
-/obj/item/gun/ballistic/revolver/doublebarrel/super
+/obj/item/gun/ballistic/shotgun/doublebarrel/super
 	name = "super combat shotgun"
 	desc = "From the belly of the beast - or rather, demon. Twice as lethal as a less-than-super shotgun, but a tad bulkier."
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF

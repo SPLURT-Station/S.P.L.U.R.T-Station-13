@@ -79,9 +79,6 @@
 		return
 	..()
 
-/obj/item/gun/ballistic/automatic/tommygun
-	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
-
 /obj/item/gun/ballistic/automatic/m1garand //PING!
 	name = "Old Mars Service Rifle (.308)"
 	desc = "A Mars copy of the greatest battle implement ever devised."

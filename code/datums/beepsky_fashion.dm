@@ -76,10 +76,7 @@
 	patrol_emote = "Engaging bounty hunting protocols."
 	patrol_fail_emote = "Unable to find any bounties due to error. Rebooting."
 	arrest_emote = "ARREST_TYPE outlaw CRIMINAL with a bounty of THREAT_LEVEL000 in LOCATION."
-	stun_sounds = list('sound/weapons/Gunshot.ogg',
-		'sound/weapons/Gunshot2.ogg',
-		'sound/weapons/Gunshot3.ogg',
-		'sound/weapons/Gunshot4.ogg')
+	stun_sounds = list('sound/weapons/Gunshot.ogg')
 
 /datum/beepsky_fashion/chef
 	obj_icon_state = "chef"

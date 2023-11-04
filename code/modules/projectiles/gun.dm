@@ -23,6 +23,8 @@
 	var/melee_attack_speed = CLICK_CD_MELEE
 
 	var/gun_flags = NONE
+	var/vary_fire_sound = TRUE
+	var/fire_sound_volume = 50
 	var/fire_sound = "gunshot"
 	var/suppressed = null					//whether or not a message is displayed when fired
 	var/can_suppress = FALSE
@@ -254,9 +256,9 @@
 		user.UseStaminaBuffer(safe_cost)
 
 	if(suppressed)
-		playsound(user, fire_sound, 10, TRUE, ignore_walls = FALSE, extrarange = SILENCED_SOUND_EXTRARANGE, falloff_distance = 0)
+		playsound(user, fire_sound, 10, vary_fire_sound)
 	else
-		playsound(user, fire_sound, 50, 1)
+		playsound(user, fire_sound, fire_sound_volume, vary_fire_sound)
 		if(message)
 			if(pointblank)
 				user.visible_message("<span class='danger'>[user] fires [src] point blank at [pbtarget]!</span>", null, null, COMBAT_MESSAGE_RANGE)

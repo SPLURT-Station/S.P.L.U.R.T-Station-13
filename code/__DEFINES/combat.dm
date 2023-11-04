@@ -194,6 +194,14 @@
 #define EGUN_NO_SELFCHARGE 0
 #define EGUN_SELFCHARGE 1
 #define EGUN_SELFCHARGE_BORG 2
+//Gun bolt types
+#define BOLT_TYPE_STANDARD 1
+#define BOLT_TYPE_OPEN 2
+#define BOLT_TYPE_NO_BOLT 3
+#define BOLT_TYPE_LOCKING 4
+//Sawn off nerfs
+#define SAWN_OFF_ACC_PENALTY 25
+#define SAWN_OFF_RECOIL 1
 
 //Gun suppression
 #define SUPPRESSED_NONE 0

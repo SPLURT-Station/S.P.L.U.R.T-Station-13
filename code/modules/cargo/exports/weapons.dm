@@ -230,7 +230,7 @@
 	cost = 200
 	unit_name = "large-caliber revolver"
 	export_types = list(/obj/item/gun/ballistic/revolver)
-	exclude_types = list(/obj/item/gun/ballistic/revolver/russian, /obj/item/gun/ballistic/revolver/doublebarrel)
+	exclude_types = list(/obj/item/gun/ballistic/revolver/russian, /obj/item/gun/ballistic/shotgun/doublebarrel)
 
 /datum/export/weapon/rocketlauncher
 	cost = 1000
@@ -250,7 +250,7 @@
 /datum/export/weapon/bulldog
 	cost = 400
 	unit_name = "drum-fed compact combat shotgun"
-	export_types = list(/obj/item/gun/ballistic/automatic/shotgun/bulldog)
+	export_types = list(/obj/item/gun/ballistic/shotgun/bulldog)
 
 /datum/export/weapon/smg
 	cost = 350

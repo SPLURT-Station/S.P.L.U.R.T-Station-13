@@ -72,7 +72,7 @@
 	new /obj/item/borg/upgrade/modkit/shotgun(src)
 	new /obj/item/gun/magic/staff/spellblade(src)
 	new /obj/item/crucible(src)
-	new /obj/item/gun/ballistic/revolver/doublebarrel/super(src)
+	new /obj/item/gun/ballistic/shotgun/doublebarrel/super(src)
 	new /obj/item/clothing/suit/space/hardsuit/deathsquad/praetor(src)
 	new /obj/item/borg/upgrade/modkit/shotgun(src)
 
@@ -82,13 +82,13 @@
 	new /obj/item/crusher_trophy/demon_claws(src)
 	new /obj/item/gun/magic/staff/spellblade(src)
 	new /obj/item/crucible(src)
-	new /obj/item/gun/ballistic/revolver/doublebarrel/super(src)
+	new /obj/item/gun/ballistic/shotgun/doublebarrel/super(src)
 	new /obj/item/clothing/suit/space/hardsuit/deathsquad/praetor(src)
 	new /obj/item/crusher_trophy/demon_claws(src)
 
 //super shotty changes (meat hook instead of bursto)
 
-/obj/item/gun/ballistic/revolver/doublebarrel/super
+/obj/item/gun/ballistic/shotgun/doublebarrel/super
 	burst_size = 1
 	actions_types = list(/datum/action/item_action/toggle_hook)
 	icon = 'modular_sand/icons/obj/guns/projectile.dmi'
@@ -105,19 +105,19 @@
 	var/toggled = FALSE
 	var/obj/item/ammo_box/magazine/internal/shot/alternate_magazine
 
-/obj/item/gun/ballistic/revolver/doublebarrel/super/Initialize(mapload)
+/obj/item/gun/ballistic/shotgun/doublebarrel/super/Initialize(mapload)
 	. = ..()
 	if(!alternate_magazine)
 		alternate_magazine = new /obj/item/ammo_box/magazine/internal/shot/dual/heck/hook(src)
 	START_PROCESSING(SSobj, src)
 
-/obj/item/gun/ballistic/revolver/doublebarrel/super/attack_self(mob/living/user)
+/obj/item/gun/ballistic/shotgun/doublebarrel/super/attack_self(mob/living/user)
 	if(toggled)
 		return 0
 	else
 		..()
 
-/obj/item/gun/ballistic/revolver/doublebarrel/super/process()
+/obj/item/gun/ballistic/shotgun/doublebarrel/super/process()
 	if(toggled)
 		charge_tick++
 		if(charge_tick < recharge_rate)
@@ -166,13 +166,13 @@
 /datum/action/item_action/toggle_hook
 	name = "Toggle Hook"
 
-/obj/item/gun/ballistic/revolver/doublebarrel/super/ui_action_click(mob/user, action)
+/obj/item/gun/ballistic/shotgun/doublebarrel/super/ui_action_click(mob/user, action)
 	if(istype(action, /datum/action/item_action/toggle_hook))
 		toggle_hook(user)
 	else
 		..()
 
-/obj/item/gun/ballistic/revolver/doublebarrel/super/proc/toggle_hook(mob/living/user)
+/obj/item/gun/ballistic/shotgun/doublebarrel/super/proc/toggle_hook(mob/living/user)
 	var/current_mag = magazine
 	var/alt_mag = alternate_magazine
 	magazine = alt_mag
@@ -183,11 +183,11 @@
 	else
 		to_chat(user, "You will now fire normal shotgun rounds.")
 
-/obj/item/gun/ballistic/revolver/doublebarrel/super/sawoff(mob/user)
+/obj/item/gun/ballistic/shotgun/doublebarrel/super/sawoff(mob/user)
 	to_chat(user, span_warning("Why would you mutilate this work of art?"))
 	return
 
-/obj/item/gun/ballistic/revolver/doublebarrel/super/upgraded
+/obj/item/gun/ballistic/shotgun/doublebarrel/super/upgraded
 	desc = "It was fearsome before, now it's even worse with an internal system that makes it fire both barrels at once."
 	burst_size = 2
 	burst_shot_delay = 1
@@ -581,7 +581,7 @@
 		if(30)
 			new /obj/item/katana/necropolis(src)
 		if(31)
-			new /obj/item/gun/ballistic/shotgun/boltaction(src)
+			new /obj/item/gun/ballistic/rifle/boltaction(src)
 		if(32)
 			new /obj/item/gun/magic/staff/locker/trashy
 		if(33)
@@ -835,7 +835,7 @@
 		if(30)
 			new /obj/item/katana/necropolis(src)
 		if(31)
-			new /obj/item/gun/ballistic/shotgun/boltaction(src)
+			new /obj/item/gun/ballistic/rifle/boltaction(src)
 		if(32)
 			new /obj/item/gun/magic/staff/locker/trashy
 		if(33)

@@ -93,7 +93,7 @@
 	icon_state = "bandolier"
 	item_state = "bandolier"
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
-	allowed = list(/obj/item/tank/internals, /obj/item/gun/ballistic/shotgun/varmintrifle, /obj/item/gun/ballistic/shotgun/huntingrifle, /obj/item/gun/ballistic/shotgun/hunting, /obj/item/gun/ballistic/shotgun/doublebarrel, /obj/item/gun/ballistic/revolver/doublebarrel/sawn, /obj/item/gun/ballistic/shotgun/leveraction, /obj/item/gun/ballistic/shotgun/brush, /obj/item/gun/ballistic/shotgun/brush2, /obj/item/gun/energy/e_gun)
+	allowed = list(/obj/item/tank/internals, /obj/item/gun/ballistic/shotgun/varmintrifle, /obj/item/gun/ballistic/shotgun/huntingrifle, /obj/item/gun/ballistic/shotgun/hunting, /obj/item/gun/ballistic/shotgun/doublebarrel, /obj/item/gun/ballistic/shotgun/doublebarrel/sawn, /obj/item/gun/ballistic/shotgun/leveraction, /obj/item/gun/ballistic/shotgun/brush, /obj/item/gun/ballistic/shotgun/brush2, /obj/item/gun/energy/e_gun)
 
 /datum/design/r_sling
 	name = "Rifle Sling"

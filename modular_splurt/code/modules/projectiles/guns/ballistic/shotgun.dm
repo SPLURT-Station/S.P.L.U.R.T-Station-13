@@ -1,6 +1,3 @@
-/obj/item/gun/ballistic/shotgun
-	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
-
 /obj/item/gun/ballistic/shotgun/shorty //for spawn in the armory
 	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
 	name = "super shorty shotgun"
@@ -12,7 +9,7 @@
 	slot_flags = ITEM_SLOT_BELT
 	weapon_weight = WEAPON_LIGHT
 
-/obj/item/gun/ballistic/revolver/doublebarrel/sawn //a dedicated sawn off shotgun for crates and what not
+/obj/item/gun/ballistic/shotgun/doublebarrel/sawn //a dedicated sawn off shotgun for crates and what not
 	name = "sawn-off double-barreled shotgun"
 	desc = "Omar's coming!"
 	icon_state = "sawnshotgun"
@@ -103,20 +100,6 @@
 	item_state = "leveraction"
 	fire_sound = "sound/weapons/revolvershot.ogg"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/levergun/brush2
-
-/obj/item/gun/ballistic/shotgun/brush2/attack_self(mob/living/user)
-	if(recentpump > world.time)
-		return
-	if(IS_STAMCRIT(user))//CIT CHANGE - makes pumping shotguns impossible in stamina softcrit
-		to_chat(user, span_warning("You're too exhausted for that."))//CIT CHANGE - ditto
-		return//CIT CHANGE - ditto
-	pump(user, TRUE)
-	if(HAS_TRAIT(user, TRAIT_FAST_PUMP))
-		recentpump = world.time + 2
-	else
-		if(!user.UseStaminaBuffer(2, warn = TRUE))
-			return
-		recentpump = world.time + 5
 
 /obj/item/gun/ballistic/automatic/rrcshotgun
 	name = "RRC Shotgun"
@@ -238,7 +221,7 @@
 
 /datum/crafting_recipe/doublebarrelsawnassemble
 	name = "Assemble sawn off double barrel shotgun"
-	result = /obj/item/gun/ballistic/revolver/doublebarrel/sawn
+	result = /obj/item/gun/ballistic/shotgun/doublebarrel/sawn
 	reqs = list(/obj/item/gunpart/shotgunstock = 1,
 				/obj/item/gunpart/shotgunbarrelsawn = 1)
 	tools = list(TOOL_SCREWDRIVER)
@@ -248,7 +231,7 @@
 
 /datum/crafting_recipe/doublebarrelassemble
 	name = "Assemble double barrel shotgun"
-	result = /obj/item/gun/ballistic/revolver/doublebarrel
+	result = /obj/item/gun/ballistic/shotgun/doublebarrel
 	reqs = list(/obj/item/gunpart/shotgunstock = 1,
 				/obj/item/gunpart/shotgunbarrel = 1)
 	tools = list(TOOL_SCREWDRIVER)

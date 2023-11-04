@@ -92,7 +92,7 @@
 	name = "Bulldog Shotgun"
 	desc = "A fully-loaded semi-automatic drum-fed shotgun. Compatible with all 12g rounds. Designed for close \
 			quarter anti-personnel engagements."
-	item = /obj/item/gun/ballistic/automatic/shotgun/bulldog
+	item = /obj/item/gun/ballistic/shotgun/bulldog
 	cost = 8
 	surplus = 40
 	purchasable_from = UPLINK_NUKE_OPS
@@ -257,7 +257,7 @@
 /datum/uplink_item/dangerous/bolt_action
 	name = "Surplus Rifle"
 	desc = "A horribly outdated bolt action weapon. You've got to be desperate to use this."
-	item = /obj/item/gun/ballistic/shotgun/boltaction
+	item = /obj/item/gun/ballistic/rifle/boltaction
 	cost = 2
 	purchasable_from = UPLINK_NUKE_OPS
 

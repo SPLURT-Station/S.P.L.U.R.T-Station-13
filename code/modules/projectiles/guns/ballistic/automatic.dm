@@ -11,6 +11,7 @@
 	fire_sound_volume = 80
 	vary_fire_sound = FALSE
 	rack_sound = "sound/weapons/smgrack.ogg"
+	mag_display = TRUE
 
 /obj/item/gun/ballistic/automatic/proto
 	name = "\improper Nanotrasen Saber SMG"
@@ -22,7 +23,6 @@
 	burst_size = 1
 	bolt_type = BOLT_TYPE_LOCKING
 	mag_display = TRUE
-	tac_reloads = TRUE
 
 /obj/item/gun/ballistic/automatic/proto/unrestricted
 	pin = /obj/item/firing_pin
@@ -49,7 +49,6 @@
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	empty_indicator = TRUE
-	tac_reloads = TRUE
 
 /obj/item/gun/ballistic/automatic/c20r/unrestricted
 	pin = /obj/item/firing_pin
@@ -207,6 +206,7 @@
 	bolt_type = BOLT_TYPE_OPEN
 	mag_display = TRUE
 	mag_display_ammo = TRUE
+	tac_reloads = FALSE
 	fire_sound = 'sound/weapons/rifleshot.ogg'
 	rack_sound = 'sound/weapons/chunkyrack.ogg'
 
@@ -233,7 +233,7 @@
 		playsound(user, 'sound/weapons/sawopen.ogg', 60, 1)
 	update_icon()
 
-/obj/item/gun/ballistic/automatic/l6_saw/update_icon_state()
+/obj/item/gun/ballistic/automatic/l6_saw/update_icon()
 	. = ..()
 	add_overlay("l6_door_[cover_open ? "open" : "closed"]")
 

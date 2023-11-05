@@ -85,7 +85,7 @@
 	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
 	icon_state = "m1garand"
 	item_state = "moistnugget"
-	fire_sound = 'sound/weapons/rifleshot.ogg'
+	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
 	weapon_weight = WEAPON_HEAVY
 	mag_type = /obj/item/ammo_box/magazine/garand
 	fire_delay = 8
@@ -124,7 +124,7 @@
 	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
 	icon_state = "fnfal"
 	item_state = "moistnugget"
-	fire_sound = 'sound/weapons/rifleshot.ogg'
+	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
 	weapon_weight = WEAPON_HEAVY
 	mag_type = /obj/item/ammo_box/magazine/fal
 	fire_delay = 3
@@ -145,7 +145,7 @@
 	item_state = "pm4"
 	lefthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_righthand.dmi'
-	fire_sound = 'sound/weapons/rifleshot.ogg'
+	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
 	weapon_weight = WEAPON_MEDIUM
 	mag_type = /obj/item/ammo_box/magazine/regm4mag
 	fire_delay = 2
@@ -166,7 +166,7 @@
 	item_state = "aegis"
 	lefthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_righthand.dmi'
-	fire_sound = 'sound/weapons/rifleshot.ogg'
+	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
 	weapon_weight = WEAPON_MEDIUM //heavier than the dmr, as it carries bullets instead of energy
 	mag_type = /obj/item/ammo_box/magazine/aegismag
 	fire_delay = 2
@@ -186,7 +186,7 @@
 	item_state = "cael"
 	lefthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_righthand.dmi'
-	fire_sound = 'sound/weapons/rifleshot.ogg'
+	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
 	weapon_weight = WEAPON_HEAVY
 	mag_type = /obj/item/ammo_box/magazine/caelusmag
 	fire_delay = 2
@@ -207,7 +207,7 @@
 	item_state = "kaiju"
 	lefthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_righthand.dmi'
-	fire_sound = 'sound/weapons/rifleshot.ogg'
+	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
 	weapon_weight = WEAPON_HEAVY
 	mag_type = /obj/item/ammo_box/magazine/kaijumag
 	fire_delay = 2
@@ -228,7 +228,7 @@
 	item_state = "m9sub"
 	lefthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'modular_splurt/icons/mob/inhands/weapons/guns_righthand.dmi'
-	fire_sound = 'sound/weapons/rifleshot.ogg'
+	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
 	weapon_weight = WEAPON_LIGHT
 	mag_type = /obj/item/ammo_box/magazine/m9smgmag
 	fire_delay = 1
@@ -247,7 +247,7 @@
 	icon = 'modular_splurt/icons/obj/guns/projectile.dmi'
 	icon_state = "smg22"
 	item_state = "shotgun"
-	fire_sound = 'sound/weapons/rifleshot.ogg'
+	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
 	weapon_weight = WEAPON_MEDIUM
 	mag_type = /obj/item/ammo_box/magazine/smg22 //This magazine may never be used, who knows
 	fire_delay = 3

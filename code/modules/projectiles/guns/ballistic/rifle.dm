@@ -8,11 +8,11 @@
 	bolt_type = BOLT_TYPE_STANDARD
 	semi_auto = FALSE
 	internal_magazine = TRUE
-	fire_sound = "sound/weapons/rifleshot.ogg"
-	fire_sound_volume = 80
+	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
+	fire_sound_volume = 90
 	vary_fire_sound = FALSE
-	rack_sound = "sound/weapons/mosinboltout.ogg"
-	bolt_drop_sound = "sound/weapons/mosinboltin.ogg"
+	rack_sound = 'sound/weapons/gun/rifle/bolt_out.ogg'
+	bolt_drop_sound = 'sound/weapons/gun/rifle/bolt_in.ogg'
 	tac_reloads = FALSE
 
 obj/item/gun/ballistic/rifle/update_icon()
@@ -113,11 +113,12 @@ obj/item/gun/ballistic/rifle/attackby(obj/item/A, mob/user, params)
 	desc = "A long ranged weapon that does significant damage. No, you can't quickscope."
 	icon_state = "sniper"
 	item_state = "sniper"
-	fire_sound = "sound/weapons/sniper_shot.ogg"
+	fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
 	fire_sound_volume = 90
 	vary_fire_sound = FALSE
-	load_sound = "sound/weapons/sniper_mag_insert.ogg"
-	rack_sound = "sound/weapons/sniper_rack.ogg"
+	load_sound = 'sound/weapons/gun/sniper/mag_insert.ogg'
+	rack_sound = 'sound/weapons/gun/sniper/rack.ogg'
+	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
 	recoil = 2
 	weapon_weight = WEAPON_HEAVY
 	mag_type = /obj/item/ammo_box/magazine/sniper_rounds

@@ -99,7 +99,7 @@
 	ammo_type = /obj/item/ammo_casing/a357
 	caliber = "357"
 	max_ammo = 7
-	multiple_sprites = 1
+	multiple_sprites = AMMO_BOX_PER_BULLET
 
 /obj/item/ammo_box/magazine/m357/ap
 	name = "handgun magazine (.357 AP)"

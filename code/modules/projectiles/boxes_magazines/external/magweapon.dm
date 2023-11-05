@@ -4,7 +4,7 @@
 	ammo_type = /obj/item/ammo_casing/caseless/magnetic/disabler
 	caliber = "mag"
 	max_ammo = 24
-	multiple_sprites = 2
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/mmag/lethal
 	name = "magrifle magazine (lethal)"

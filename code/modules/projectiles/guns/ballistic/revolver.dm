@@ -3,11 +3,12 @@
 	desc = "A suspicious revolver. Uses .357 ammo." //usually used by syndicates
 	icon_state = "revolver"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder
-	fire_sound = "sound/weapons/revolvershot.ogg"
-	load_sound = 'sound/weapons/revolverload.ogg'
-	eject_sound = 'sound/weapons/revolverempty.ogg'
+	fire_sound = 'sound/weapons/gun/revolver/shot_alt.ogg'
+	load_sound = 'sound/weapons/gun/revolver/load_bullet.ogg'
+	eject_sound = 'sound/weapons/gun/revolver/empty.ogg'
 	vary_fire_sound = FALSE
 	fire_sound_volume = 90
+	dry_fire_sound = 'sound/weapons/gun/revolver/dry_fire.ogg'
 	casing_ejector = FALSE
 	recoil = 0.5
 	internal_magazine = TRUE
@@ -45,6 +46,7 @@
 	recent_spin = world.time + spin_delay
 
 	if(do_spin())
+		playsound(usr, "revolver_spin", 30, FALSE)
 		usr.visible_message("[usr] spins [src]'s chamber.", "<span class='notice'>You spin [src]'s chamber.</span>")
 	else
 		verbs -= /obj/item/gun/ballistic/revolver/verb/spin
@@ -87,6 +89,7 @@
 	name = "\improper .38 Mars Special"
 	desc = "A cheap Martian knock-off of a classic law enforcement firearm. Uses .38-special rounds."
 	icon_state = "detective"
+	fire_sound = 'sound/weapons/gun/revolver/shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev38
 	obj_flags = UNIQUE_RENAME
 	unique_reskin = list(
@@ -105,7 +108,7 @@
 /obj/item/gun/ballistic/revolver/detective/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0, stam_cost = 0)
 	if(chambered && !(chambered.caliber in safe_calibers))
 		if(prob(70 - (magazine.ammo_count() * 10)))	//minimum probability of 10, maximum of 60
-			playsound(user, fire_sound, 50, 1)
+			playsound(user, fire_sound, fire_sound_volume, vary_fire_sound)
 			to_chat(user, "<span class='userdanger'>[src] blows up in your face!</span>")
 			user.take_bodypart_damage(0,20)
 			user.dropItemToGround(src)
@@ -126,6 +129,7 @@
 				to_chat(user, "<span class='warning'>You can't modify it!</span>")
 				return TRUE
 			magazine.caliber = list("357")
+			fire_sound = 'sound/weapons/gun/revolver/shot_alt.ogg'
 			desc = "The barrel and chamber assembly seems to have been modified."
 			to_chat(user, "<span class='notice'>You reinforce the barrel of [src]. Now it will fire .357 rounds.</span>")
 	else
@@ -139,6 +143,7 @@
 				to_chat(user, "<span class='warning'>You can't modify it!</span>")
 				return
 			magazine.caliber = list("38")
+			fire_sound = 'sound/weapons/gun/revolver/shot.ogg'
 			desc = initial(desc)
 			to_chat(user, "<span class='notice'>You remove the modifications on [src]. Now it will fire .38 rounds.</span>")
 	return TRUE
@@ -224,7 +229,7 @@
 		if(chambered)
 			var/obj/item/ammo_casing/AC = chambered
 			if(AC.fire_casing(user, user))
-				playsound(user, fire_sound, 50, 1)
+				playsound(user, fire_sound, fire_sound_volume, vary_fire_sound)
 				var/zone = check_zone(user.zone_selected)
 				var/obj/item/bodypart/affecting = H.get_bodypart(zone)
 				if(zone == BODY_ZONE_HEAD || zone == BODY_ZONE_PRECISE_EYES || zone == BODY_ZONE_PRECISE_MOUTH)
@@ -235,11 +240,11 @@
 				return
 
 		user.visible_message("<span class='danger'>*click*</span>")
-		playsound(src, "gun_dry_fire", 30, 1)
+		playsound(src, dry_fire_sound, 30, TRUE)
 
 /obj/item/gun/ballistic/revolver/russian/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0, stam_cost = 0)
 	add_fingerprint(user)
-	playsound(src, "gun_dry_fire", 30, TRUE)
+	playsound(src, dry_fire_sound, 30, TRUE)
 	user.visible_message("<span class='danger'>[user.name] tries to fire \the [src] at the same time, but only succeeds at looking like an idiot.</span>", "<span class='danger'>\The [src]'s anti-combat mechanism prevents you from firing it at the same time!</span>")
 
 /obj/item/gun/ballistic/revolver/russian/proc/shoot_self(mob/living/carbon/human/user, affecting = BODY_ZONE_HEAD)
@@ -292,7 +297,7 @@
 	process_chamber(user)
 	if(!chambered || !chambered.BB)
 		to_chat(user, "<span class='danger'>*click*</span>")
-		playsound(src, "gun_dry_fire", 30, 1)
+		playsound(src, dry_fire_sound, 30, TRUE)
 
 
 /obj/item/gun/ballistic/revolver/mws/process_chamber(mob/living/user)
@@ -343,7 +348,7 @@
 		user.put_in_hands(magazine)
 		magazine.update_icon()
 		if(magazine.ammo_count())
-			playsound(src, 'sound/weapons/gun_magazine_remove_full.ogg', 70, 1)
+			playsound(src, 'sound/weapons/gun/general/magazine_remove_full.ogg', 70, 1)
 		else
 			playsound(src, "gun_remove_empty_magazine", 70, 1)
 		magazine = null

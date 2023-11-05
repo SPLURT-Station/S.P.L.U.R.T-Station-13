@@ -7,17 +7,17 @@
 	fire_delay = 2
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_BURST_SHOT, SELECT_FULLY_AUTOMATIC)
 	semi_auto = TRUE
-	fire_sound = "sound/weapons/smgshot.ogg"
-	fire_sound_volume = 80
+	fire_sound = 'sound/weapons/gun/smg/shot.ogg'
+	fire_sound_volume = 90
 	vary_fire_sound = FALSE
-	rack_sound = "sound/weapons/smgrack.ogg"
+	rack_sound = 'sound/weapons/gun/smg/smgrack.ogg'
+	suppressed_sound = 'sound/weapons/gun/smg/shot_suppressed.ogg'
 	mag_display = TRUE
 
 /obj/item/gun/ballistic/automatic/proto
 	name = "\improper Nanotrasen Saber SMG"
 	desc = "A prototype three-round burst 9mm submachine gun, designated 'SABR'. Has a threaded barrel for suppressors."
 	icon_state = "saber"
-	fire_sound = "sound/weapons/gunshot_smg_alt.ogg"
 	mag_type = /obj/item/ammo_box/magazine/smgm9mm
 	pin = null
 	burst_size = 1
@@ -62,7 +62,6 @@
 	desc = "An outdated personal defence weapon. Uses 4.6x30mm rounds and is designated the WT-550 Semi-Automatic SMG."
 	icon_state = "wt550"
 	item_state = "arg"
-	fire_sound = "sound/weapons/gunshot_smg_alt.ogg"
 	mag_type = /obj/item/ammo_box/magazine/wt550m9
 	can_suppress = FALSE
 	burst_size = 2
@@ -83,6 +82,7 @@
 	burst_size = 2
 	bolt_type = BOLT_TYPE_OPEN
 	mag_display = TRUE
+	rack_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 
 /obj/item/gun/ballistic/automatic/m90
 	name = "\improper M-90gl Carbine"
@@ -90,7 +90,7 @@
 	icon_state = "m90"
 	item_state = "m90"
 	mag_type = /obj/item/ammo_box/magazine/m556
-	fire_sound = 'sound/weapons/rifleshot.ogg'
+	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
 	can_suppress = FALSE
 	automatic_burst_overlay = FALSE
 	var/obj/item/gun/ballistic/revolver/grenadelauncher/underbarrel
@@ -167,7 +167,6 @@
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = 0
 	mag_type = /obj/item/ammo_box/magazine/tommygunm45
-	fire_sound = 'sound/weapons/gunshot_smg.ogg'
 	can_suppress = FALSE
 	burst_size = 4
 	burst_shot_delay = 1
@@ -180,7 +179,6 @@
 	item_state = "arg"
 	slot_flags = 0
 	mag_type = /obj/item/ammo_box/magazine/m556
-	fire_sound = 'sound/weapons/rifleshot.ogg'
 	can_suppress = FALSE
 	burst_size = 3
 	burst_shot_delay = 1
@@ -190,7 +188,7 @@
 /obj/item/gun/ballistic/automatic/l6_saw
 	name = "\improper L6 SAW"
 	desc = "A heavily modified 7.12x82mm light machine gun, designated 'L6 SAW'. Has 'Aussec Armoury - 2531' engraved on the receiver below the designation."
-	icon_state = "l6"
+	icon_state = "l6closed100"
 	item_state = "l6closedmag"
 	fire_sound = "sound/weapons/lmgshot.ogg"
 	w_class = WEIGHT_CLASS_HUGE
@@ -207,8 +205,9 @@
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	tac_reloads = FALSE
-	fire_sound = 'sound/weapons/rifleshot.ogg'
-	rack_sound = 'sound/weapons/chunkyrack.ogg'
+	fire_sound = 'sound/weapons/gun/l6/shot.ogg'
+	rack_sound = 'sound/weapons/gun/l6/l6_rack.ogg'
+	suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
 
 /obj/item/gun/ballistic/automatic/l6_saw/Initialize()
 	. = ..()
@@ -220,17 +219,14 @@
 
 /obj/item/gun/ballistic/automatic/l6_saw/examine(mob/user)
 	..()
-	to_chat(user, "<b>ctrl + click</b> to [cover_open ? "close" : "open"] the dust cover.")
+	to_chat(user, "<b>alt + click</b> to [cover_open ? "close" : "open"] the dust cover.")
 	if(cover_open && magazine)
 		to_chat(user, "<span class='notice'>It seems like you could use an <b>empty hand</b> to remove the magazine.</span>")
 
 /obj/item/gun/ballistic/automatic/l6_saw/AltClick(mob/user)
 	cover_open = !cover_open
 	to_chat(user, "<span class='notice'>You [cover_open ? "open" : "close"] [src]'s cover.</span>")
-	if(cover_open)
-		playsound(user, 'sound/weapons/sawopen.ogg', 60, 1)
-	else
-		playsound(user, 'sound/weapons/sawopen.ogg', 60, 1)
+	playsound(user, 'sound/weapons/gun/l6/l6_door.ogg', 60, TRUE)
 	update_icon()
 
 /obj/item/gun/ballistic/automatic/l6_saw/update_icon()
@@ -267,7 +263,7 @@
 	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm ammo and its bulky frame prevents one-hand firing."
 	icon_state = "surplus"
 	item_state = "moistnugget"
-	fire_sound = 'sound/weapons/rifleshot.ogg'
+	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
 	weapon_weight = WEAPON_HEAVY
 	mag_type = /obj/item/ammo_box/magazine/m10mm/rifle
 	fire_delay = 10

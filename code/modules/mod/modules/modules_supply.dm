@@ -139,10 +139,10 @@
 		if(mod.wearer.transferItemToLoc(holding, src, force = FALSE, silent = TRUE))
 			stored = holding
 			balloon_alert(mod.wearer, "mining instrument stored")
-			playsound(src, 'sound/weapons/revolverempty.ogg', 100, TRUE)
+			playsound(src, 'sound/weapons/gun/revolver/empty.ogg', 100, TRUE)
 	else if(mod.wearer.put_in_active_hand(stored, forced = FALSE, ignore_animation = TRUE))
 		balloon_alert(mod.wearer, "mining instrument retrieved")
-		playsound(src, 'sound/weapons/revolverempty.ogg', 100, TRUE)
+		playsound(src, 'sound/weapons/gun/revolver/empty.ogg', 100, TRUE)
 	else
 		balloon_alert(mod.wearer, "mining instrument storage full!")
 
@@ -187,12 +187,12 @@
 		if(mod.wearer.transferItemToLoc(holding, src, force = FALSE, silent = TRUE))
 			stored = holding
 			balloon_alert(mod.wearer, "mining satchel stored")
-			playsound(src, 'sound/weapons/revolverempty.ogg', 100, TRUE)
+			playsound(src, 'sound/weapons/gun/revolver/empty.ogg', 100, TRUE)
 			RegisterSignal(mod.wearer, COMSIG_MOVABLE_MOVED, .proc/Pickup_ores)
 	else if(mod.wearer.put_in_active_hand(stored, forced = FALSE, ignore_animation = TRUE))
 		UnregisterSignal(mod.wearer, COMSIG_MOVABLE_MOVED)
 		balloon_alert(mod.wearer, "mining satchel retrieved")
-		playsound(src, 'sound/weapons/revolverempty.ogg', 100, TRUE)
+		playsound(src, 'sound/weapons/gun/revolver/empty.ogg', 100, TRUE)
 	else
 		balloon_alert(mod.wearer, "mining satchel storage full!")
 

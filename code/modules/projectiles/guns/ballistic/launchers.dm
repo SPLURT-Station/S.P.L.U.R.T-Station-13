@@ -5,10 +5,10 @@
 	desc = "A break-operated grenade launcher."
 	name = "grenade launcher"
 	icon_state = "dshotgun-sawn"
-	item_state = "gun"
+	item_state = "dshotgun-sawn"
 	inaccuracy_modifier = 0.5
 	mag_type = /obj/item/ammo_box/magazine/internal/grenadelauncher
-	fire_sound = 'sound/weapons/grenadelaunch.ogg'
+	fire_sound = 'sound/weapons/gun/general/grenade_launch.ogg'
 	w_class = WEIGHT_CLASS_NORMAL
 	pin = /obj/item/firing_pin/implant/pindicate
 
@@ -35,7 +35,8 @@
 	name = "gyrojet pistol"
 	desc = "A prototype pistol designed to fire self propelled rockets."
 	icon_state = "gyropistol"
-	fire_sound = 'sound/weapons/rocketlaunch.ogg'
+	item_state = "gyropistol"
+	fire_sound = 'sound/weapons/gun/general/rocket_launch.ogg'
 	mag_type = /obj/item/ammo_box/magazine/m75
 	burst_size = 1
 	fire_delay = 0
@@ -55,7 +56,7 @@
 	can_suppress = FALSE
 	automatic_burst_overlay = FALSE
 	mag_type = /obj/item/ammo_box/magazine/internal/speargun
-	fire_sound = 'sound/weapons/grenadelaunch.ogg'
+	fire_sound = 'sound/weapons/gun/general/grenade_launch.ogg'
 	burst_size = 1
 	fire_delay = 0
 	select = 0
@@ -79,10 +80,11 @@
 /obj/item/gun/ballistic/rocketlauncher
 	name = "\improper PML-9"
 	desc = "A reusable rocket propelled grenade launcher. The words \"NT this way\" and an arrow have been written near the barrel."
+	icon = 'icons/obj/guns/projectile.dmi'
 	icon_state = "rocketlauncher"
 	item_state = "rocketlauncher"
 	mag_type = /obj/item/ammo_box/magazine/internal/rocketlauncher
-	fire_sound = 'sound/weapons/rocketlaunch.ogg'
+	fire_sound = 'sound/weapons/gun/general/rocket_launch.ogg'
 	w_class = WEIGHT_CLASS_BULKY
 	can_suppress = FALSE
 	pin = /obj/item/firing_pin/implant/pindicate
@@ -122,7 +124,7 @@
 			if(!user.put_in_hands(AC))
 				AC.bounce_away(FALSE, NONE)
 			to_chat(user, "<span class='notice'>You remove \the [AC] from \the [src]!</span>")
-			playsound(src, 'sound/weapons/gun_magazine_remove_full.ogg', 70, TRUE)
+			playsound(src, 'sound/weapons/gun/general/magazine_remove_full.ogg', 70, TRUE)
 			chambered = null
 		else
 			to_chat(user, "<span class='notice'>There's no [magazine_wording] in [src].</span>")

@@ -9,7 +9,7 @@
 	item_state = "arg"
 	slot_flags = 0
 	mag_type = /obj/item/ammo_box/magazine/m556	//Uses the m90gl's magazine, just like the NT-ARG
-	fire_sound = 'sound/weapons/rifleshot.ogg'
+	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
 	can_suppress = 0
 	burst_size = 6	//in line with XCOMEU stats. This can fire 5 bursts from a full magazine.
 	fire_delay = 1
@@ -23,7 +23,7 @@
 	icon = 'modular_citadel/icons/obj/guns/cit_guns.dmi'
 	icon_state = "toy9magazine"
 	max_ammo = 30
-	multiple_sprites = 2
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	custom_materials = list(/datum/material/iron = 200)
 
 /obj/item/gun/ballistic/automatic/x9/toy
@@ -64,7 +64,7 @@
 	icon = 'modular_citadel/icons/obj/guns/cit_guns.dmi'
 	icon_state = "toy9magazine"
 	max_ammo = 30
-	multiple_sprites = 2
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	custom_materials = list(/datum/material/iron = 200)
 
 /obj/item/gun/ballistic/automatic/x9/toy
@@ -98,7 +98,7 @@
 	wound_bonus = 15
 	sharpness = SHARP_EDGED
 	wound_falloff_tile = 0
-	
+
 ///ammo casings (CASELESS AMMO CASINGS WOOOOOOOO)///
 
 /obj/item/ammo_casing/caseless/flechetteap
@@ -127,7 +127,7 @@
 	ammo_type = /obj/item/ammo_casing/caseless/flechetteap
 	caliber = "flechette"
 	max_ammo = 40
-	multiple_sprites = 2
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/ammo_box/magazine/flechette/s
 	name = "flechette magazine (serrated)"
@@ -145,7 +145,7 @@
 	slot_flags = 0
 	pin = /obj/item/firing_pin/implant/pindicate
 	mag_type = /obj/item/ammo_box/magazine/flechette
-	fire_sound = 'sound/weapons/rifleshot.ogg'
+	fire_sound = 'sound/weapons/gun/rifle/shot.ogg'
 	can_suppress = 0
 	burst_size = 5
 	fire_delay = 1

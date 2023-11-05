@@ -3,9 +3,9 @@
 	desc = "A traditional shotgun with wood furniture and a four-shell capacity underneath."
 	icon_state = "shotgun"
 	item_state = "shotgun"
-	fire_sound = "sound/weapons/gunshotshotgunshot.ogg"
-	rack_sound = "sound/weapons/shotgunpump.ogg"
-	load_sound = "sound/weapons/shotguninsert.ogg"
+	fire_sound = 'sound/weapons/gun/shotgun/shot.ogg'
+	rack_sound = "sound/weapons/gun/shotgun/rack.ogg"
+	load_sound = "sound/weapons/gun/shotgun/insert_shell.ogg"
 	vary_fire_sound = FALSE
 	fire_sound_volume = 90
 	w_class = WEIGHT_CLASS_BULKY
@@ -170,6 +170,7 @@
 	desc = "A semi-auto, mag-fed shotgun for combat in narrow corridors, nicknamed 'Bulldog' by boarding parties. Compatible only with specialized 8-round drum magazines."
 	icon_state = "bulldog"
 	item_state = "bulldog"
+	fire_sound = 'sound/weapons/gun/shotgun/shot_alt.ogg'
 	w_class = WEIGHT_CLASS_NORMAL
 	weapon_weight = WEAPON_MEDIUM
 	mag_type = /obj/item/ammo_box/magazine/m12g

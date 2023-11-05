@@ -5,7 +5,7 @@
 	icon_state = "saber"
 	item_state = "gun"
 	mag_type = /obj/item/ammo_box/magazine/toy/smg
-	fire_sound = 'sound/weapons/gunshot_smg.ogg'
+	fire_sound = 'sound/items/syringeproj.ogg'
 	force = 0
 	throwforce = 0
 	burst_size = 3
@@ -23,7 +23,7 @@
 	icon_state = "pistol"
 	w_class = WEIGHT_CLASS_SMALL
 	mag_type = /obj/item/ammo_box/magazine/toy/pistol
-	fire_sound = 'sound/weapons/gunshot.ogg'
+	fire_sound = 'sound/items/syringeproj.ogg'
 	burst_size = 1
 	fire_delay = 0
 	actions_types = list()
@@ -49,6 +49,7 @@
 	name = "foam force shotgun"
 	desc = "A toy shotgun with wood furniture and a four-shell capacity underneath. Ages 8 and up."
 	icon = 'icons/obj/guns/toy.dmi'
+	fire_sound = 'sound/items/syringeproj.ogg'
 	force = 0
 	throwforce = 0
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/toy
@@ -81,6 +82,7 @@
 	name = "donksoft SMG"
 	desc = "A bullpup two-round burst toy SMG, designated 'C-20r'. Ages 8 and up."
 	icon = 'icons/obj/guns/toy.dmi'
+	fire_sound = 'sound/items/syringeproj.ogg'
 	can_suppress = TRUE
 	item_flags = NONE
 	mag_type = /obj/item/ammo_box/magazine/toy/smgm45/riot
@@ -98,6 +100,9 @@
 	name = "donksoft LMG"
 	desc = "A heavily modified toy light machine gun, designated 'L6 SAW'. Ages 8 and up."
 	icon = 'icons/obj/guns/toy.dmi'
+	icon_state = "l6closed100"
+	item_state = "l6closedmag"
+	fire_sound = 'sound/items/syringeproj.ogg'
 	can_suppress = FALSE
 	item_flags = NONE
 	mag_type = /obj/item/ammo_box/magazine/toy/m762/riot
@@ -117,7 +122,7 @@
 	icon_state = "foamagrifle"
 	obj_flags = NONE
 	mag_type = /obj/item/ammo_box/magazine/toy/foamag
-	fire_sound = 'sound/weapons/magrifle.ogg'
+	fire_sound = 'sound/items/syringeproj.ogg'
 	burst_size = 1
 	actions_types = null
 	fire_delay = 3
@@ -135,7 +140,7 @@
 	icon_state = "toymag"
 	item_state = "gun"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/toy/mag
-	fire_sound = 'sound/weapons/magpistol.ogg'
+	fire_sound = 'sound/items/syringeproj.ogg'
 	fire_delay = 2
 	recoil = 0.1
 	inaccuracy_modifier = 0.25

@@ -7,7 +7,7 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/derringer
 	fire_delay = 5
 	obj_flags = UNIQUE_RENAME
-	fire_sound = 'sound/weapons/revolvershot.ogg'
+	fire_sound = 'sound/weapons/gun/revolver/shot.ogg'
 	casing_ejector = FALSE
 	w_class = WEIGHT_CLASS_TINY
 
@@ -26,7 +26,7 @@
 	var/num_loaded = magazine.attackby(A, user, params, 1)
 	if(num_loaded)
 		to_chat(user, "<span class='notice'>You load [num_loaded] bullet\s into \the [src].</span>")
-		playsound(user, 'sound/weapons/bulletinsert.ogg', 60, 1)
+		playsound(user, 'sound/weapons/gun/revolver/load_bullet.ogg', 40, FALSE)
 		A.update_icon()
 		update_icon()
 		chamber_round(0)
@@ -69,4 +69,4 @@
 	desc = "Sandalwood grip, wellkempt blue-grey steel barrels, and a crash like thunder itself. Uses the exceedingly rare 45-70 Govt. ammo"
 	icon_state = "derringer"
 	mag_type = /obj/item/ammo_box/magazine/internal/derringer/g4570
-	fire_sound = 'sound/weapons/gunshotshotgunshot.ogg'
+	fire_sound = 'sound/weapons/gun/pistol/shot_alt.ogg'

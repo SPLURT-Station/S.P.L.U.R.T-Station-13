@@ -491,7 +491,7 @@
 /obj/item/ammo_casing/energy/kinetic/etenmm
 	projectile_type = /obj/item/projectile/kinetic/etenmm
 	select_name = "kinetic 10mm"
-	fire_sound = 'sound/weapons/gunshot.ogg'
+	fire_sound = 'sound/weapons/gun/pistol/shot_alt.ogg'
 
 /obj/item/projectile/kinetic/etenmm
 	name = "kinetic 10mm"

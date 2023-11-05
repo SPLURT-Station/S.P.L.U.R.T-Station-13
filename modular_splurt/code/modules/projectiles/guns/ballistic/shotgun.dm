@@ -57,7 +57,7 @@
 	burst_size = 3
 	w_class = WEIGHT_CLASS_NORMAL
 	weapon_weight = WEAPON_MEDIUM
-	fire_sound = 'sound/weapons/gunshotshotgunshot.ogg'
+	fire_sound = 'sound/weapons/gun/shotgun/shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/rrcmag
 
 /obj/item/gun/ballistic/shotgun/eshotgun
@@ -72,7 +72,7 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/eshotty
 	w_class = WEIGHT_CLASS_NORMAL
 	weapon_weight = WEAPON_MEDIUM
-	fire_sound = 'sound/weapons/gunshotshotgunshot.ogg'
+	fire_sound = 'sound/weapons/gun/shotgun/shot.ogg'
 
 /obj/item/gunpart/rifle308sotck
 	name = "hunting rifle stock"

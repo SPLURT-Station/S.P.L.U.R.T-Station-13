@@ -9,7 +9,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	mag_type = /obj/item/ammo_box/magazine/toy/pistol
 	can_suppress = FALSE
-	fire_sound = 'sound/weapons/gunshot_silenced.ogg'
+	fire_sound = 'sound/weapons/gun/pistol/shot_suppressed.ogg'
 	suppressed = TRUE
 	burst_size = 1
 	fire_delay = 0

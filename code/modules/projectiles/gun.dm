@@ -23,12 +23,15 @@
 	var/melee_attack_speed = CLICK_CD_MELEE
 
 	var/gun_flags = NONE
+	var/fire_sound = 'sound/weapons/gun/pistol/shot.ogg'
 	var/vary_fire_sound = TRUE
 	var/fire_sound_volume = 50
-	var/fire_sound = "gunshot"
+	var/dry_fire_sound = 'sound/weapons/gun/general/dry_fire.ogg'
 	var/suppressed = null					//whether or not a message is displayed when fired
 	var/can_suppress = FALSE
 	var/can_unsuppress = TRUE
+	var/suppressed_sound = 'sound/weapons/gun/general/heavy_shot_suppressed.ogg'
+	var/suppressed_volume = 60
 	var/recoil = 0						//boom boom shake the room
 	var/clumsy_check = TRUE
 	var/obj/item/ammo_casing/chambered = null
@@ -245,7 +248,7 @@
 
 /obj/item/gun/proc/shoot_with_empty_chamber(mob/living/user as mob|obj)
 	to_chat(user, "<span class='danger'>*click*</span>")
-	playsound(src, "gun_dry_fire", 30, 1)
+	playsound(src, dry_fire_sound, 30, 1)
 
 /obj/item/gun/proc/shoot_live_shot(mob/living/user, pointblank = FALSE, mob/pbtarget, message = 1, stam_cost = 0)
 	if(recoil)
@@ -256,7 +259,7 @@
 		user.UseStaminaBuffer(safe_cost)
 
 	if(suppressed)
-		playsound(user, fire_sound, 10, vary_fire_sound)
+		playsound(user, suppressed_sound, suppressed_volume, vary_fire_sound, ignore_walls = FALSE)
 	else
 		playsound(user, fire_sound, fire_sound_volume, vary_fire_sound)
 		if(message)
@@ -358,7 +361,7 @@
 				addtimer(CALLBACK(G, /obj/item/gun.proc/process_fire, target, user, TRUE, params, null, bonus_spread, stam_cost), loop_counter)
 
 	var/stam_cost = getstamcost(user)
-	process_fire(target, user, TRUE, params, null, bonus_spread, stam_cost)
+	return process_fire(target, user, TRUE, params, null, bonus_spread, stam_cost)
 
 /obj/item/gun/can_trigger_gun(mob/living/user)
 	. = ..()

@@ -18,7 +18,7 @@
 	response_help_continuous  = "pets"
 	response_disarm_continuous = "pushes aside"
 	response_harm_continuous   = "shoots"
-	projectilesound = 'sound/weapons/Gunshot_silenced.ogg'
+	projectilesound = 'sound/weapons/gun/pistol/shot_suppressed.ogg'
 	ranged = 1
 	rapid = 2
 	rapid_fire_delay = 3

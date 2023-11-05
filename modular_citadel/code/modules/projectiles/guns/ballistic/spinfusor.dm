@@ -36,7 +36,7 @@
 	icon_state = "spinfusor"
 	item_state = "spinfusor"
 	mag_type = /obj/item/ammo_box/magazine/internal/spinfusor
-	fire_sound = 'sound/weapons/rocketlaunch.ogg'
+	fire_sound = 'sound/weapons/gun/general/rocket_launch.ogg'
 	w_class = WEIGHT_CLASS_BULKY
 	can_suppress = 0
 	burst_size = 1

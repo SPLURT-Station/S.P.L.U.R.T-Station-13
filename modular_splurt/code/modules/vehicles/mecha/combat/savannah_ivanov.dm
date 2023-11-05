@@ -109,7 +109,7 @@
 			chassis.spark_system.start()
 		if(SKYFALL_CHARGELEVEL_LAUNCH)
 			chassis.visible_message(span_danger("[chassis] leaps into the air!"))
-			playsound(chassis, 'sound/weapons/rocket_launch.ogg', 50, TRUE)
+			playsound(chassis, 'sound/weapons/gun/general/rocket_launch.ogg', 50, TRUE)
 	if(skyfall_charge_level != SKYFALL_CHARGELEVEL_LAUNCH)
 		skyfall_charge_loop()
 		return

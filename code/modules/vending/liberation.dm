@@ -14,7 +14,7 @@
 					/obj/item/gun/ballistic/automatic/pistol/m1911 = 2,
 					/obj/item/gun/ballistic/automatic/proto/unrestricted = 2,
 					/obj/item/gun/ballistic/shotgun/automatic/combat = 2,
-					/obj/item/gun/ballistic/automatic/gyropistol = 1,
+					/obj/item/gun/ballistic/launcher/gyropistol = 1,
 					/obj/item/gun/ballistic/shotgun = 2,
 					/obj/item/gun/ballistic/automatic/ar = 2)
 	premium = list(/obj/item/ammo_box/magazine/smgm9mm = 2,

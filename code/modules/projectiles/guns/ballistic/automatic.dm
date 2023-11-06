@@ -93,7 +93,7 @@
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
 	can_suppress = FALSE
 	automatic_burst_overlay = FALSE
-	var/obj/item/gun/ballistic/revolver/grenadelauncher/underbarrel
+	var/obj/item/gun/ballistic/launcher/grenade_launcher/underbarrel
 	burst_size = 3
 	burst_shot_delay = 2
 	pin = /obj/item/firing_pin/implant/pindicate
@@ -102,7 +102,7 @@
 
 /obj/item/gun/ballistic/automatic/m90/Initialize(mapload)
 	. = ..()
-	underbarrel = new /obj/item/gun/ballistic/revolver/grenadelauncher(src)
+	underbarrel = new /obj/item/gun/ballistic/launcher/grenade_launcher(src)
 	update_icon()
 
 /obj/item/gun/ballistic/automatic/m90/unrestricted
@@ -110,7 +110,7 @@
 
 /obj/item/gun/ballistic/automatic/m90/unrestricted/Initialize(mapload)
 	. = ..()
-	underbarrel = new /obj/item/gun/ballistic/revolver/grenadelauncher/unrestricted(src)
+	underbarrel = new /obj/item/gun/ballistic/launcher/grenade_launcher/unrestricted(src)
 	update_icon()
 
 /obj/item/gun/ballistic/automatic/m90/afterattack(atom/target, mob/living/user, flag, params)

@@ -235,7 +235,7 @@
 /datum/export/weapon/rocketlauncher
 	cost = 1000
 	unit_name = "PML-9 rocket-propelled grenade launcher"
-	export_types = list(/obj/item/gun/ballistic/rocketlauncher)
+	export_types = list(/obj/item/gun/ballistic/launcher/rocket_launcher)
 
 /datum/export/weapon/antitank
 	cost = 300

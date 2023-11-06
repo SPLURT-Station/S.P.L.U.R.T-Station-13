@@ -414,7 +414,7 @@
 /datum/blackmarket_item/syndi/weapon/pml9
 	name = "PML-9"
 	desc = "A reusable rocket propelled grenade launcher. The words \"NT this way\" and an arrow have been written near the barrel."
-	item = /obj/item/gun/ballistic/rocketlauncher/unrestricted
+	item = /obj/item/gun/ballistic/launcher/rocket_launcher/unrestricted
 	price_min = 15000000
 	price_max = 20000000
 	stock_min = 1

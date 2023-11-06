@@ -1,7 +1,25 @@
 //KEEP IN MIND: These are different from gun/grenadelauncher. These are designed to shoot premade rocket and grenade projectiles, not flashbangs or chemistry casings etc.
 //Put handheld rocket launchers here if someone ever decides to make something so hilarious ~Paprika
 
-/obj/item/gun/ballistic/revolver/grenadelauncher//this is only used for underbarrel grenade launchers at the moment, but admins can still spawn it if they feel like being assholes
+/obj/item/gun/ballistic/launcher
+	desc = "A unknown grenade launcher, you feel like you shouldnt have this."
+	name = "grenade launcher"
+	icon_state = "dshotgun-sawn"
+	item_state = "dshotgun-sawn"
+	w_class = WEIGHT_CLASS_BULKY
+	inaccuracy_modifier = 0.5
+	fire_delay = 2
+	fire_sound = 'sound/weapons/gun/general/grenade_launch.ogg'
+	fire_sound_volume = 90
+	vary_fire_sound = FALSE
+	rack_sound = 'sound/weapons/gun/smg/smgrack.ogg'
+	mag_display = TRUE
+	pin = /obj/item/firing_pin/implant/pindicate
+
+/obj/item/gun/ballistic/launcher
+	pin = /obj/item/firing_pin
+
+/obj/item/gun/ballistic/launcher/grenade_launcher//this is only used for underbarrel grenade launchers at the moment, but admins can still spawn it if they feel like being assholes
 	desc = "A break-operated grenade launcher."
 	name = "grenade launcher"
 	icon_state = "dshotgun-sawn"
@@ -9,18 +27,18 @@
 	inaccuracy_modifier = 0.5
 	mag_type = /obj/item/ammo_box/magazine/internal/grenadelauncher
 	fire_sound = 'sound/weapons/gun/general/grenade_launch.ogg'
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = WEIGHT_CLASS_BULKY
 	pin = /obj/item/firing_pin/implant/pindicate
 
-/obj/item/gun/ballistic/revolver/grenadelauncher/unrestricted
+/obj/item/gun/ballistic/launcher/grenade_launcher/unrestricted
 	pin = /obj/item/firing_pin
 
-/obj/item/gun/ballistic/revolver/grenadelauncher/attackby(obj/item/A, mob/user, params)
+/obj/item/gun/ballistic/launcher/grenade_launcher/attackby(obj/item/A, mob/user, params)
 	..()
 	if(istype(A, /obj/item/ammo_box) || istype(A, /obj/item/ammo_casing))
 		chamber_round()
 
-/obj/item/gun/ballistic/revolver/grenadelauncher/cyborg
+/obj/item/gun/ballistic/launcher/grenade_launcher/cyborg
 	desc = "A 6-shot grenade launcher."
 	name = "multi grenade launcher"
 	icon = 'icons/mecha/mecha_equipment.dmi'
@@ -28,10 +46,10 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/grenademulti
 	pin = /obj/item/firing_pin
 
-/obj/item/gun/ballistic/revolver/grenadelauncher/cyborg/attack_self()
+/obj/item/gun/ballistic/launcher/grenade_launcher/cyborg/attack_self()
 	return
 
-/obj/item/gun/ballistic/automatic/gyropistol
+/obj/item/gun/ballistic/launcher/gyropistol
 	name = "gyrojet pistol"
 	desc = "A prototype pistol designed to fire self propelled rockets."
 	icon_state = "gyropistol"
@@ -43,10 +61,10 @@
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	casing_ejector = FALSE
 
-/obj/item/gun/ballistic/automatic/gyropistol/update_icon_state()
+/obj/item/gun/ballistic/launcher/gyropistol/update_icon_state()
 	icon_state = "[initial(icon_state)][magazine ? "loaded" : ""]"
 
-/obj/item/gun/ballistic/automatic/speargun
+/obj/item/gun/ballistic/launcher/speargun
 	name = "kinetic speargun"
 	desc = "A weapon favored by carp hunters. Fires specialized spears using kinetic energy."
 	icon_state = "speargun"
@@ -54,33 +72,30 @@
 	w_class = WEIGHT_CLASS_BULKY
 	force = 10
 	can_suppress = FALSE
-	automatic_burst_overlay = FALSE
 	mag_type = /obj/item/ammo_box/magazine/internal/speargun
 	fire_sound = 'sound/weapons/gun/general/grenade_launch.ogg'
 	burst_size = 1
 	fire_delay = 0
-	select = 0
 	actions_types = list()
 	casing_ejector = FALSE
 
-/obj/item/gun/ballistic/automatic/speargun/ComponentInitialize()
+/obj/item/gun/ballistic/launcher/speargun/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/update_icon_blocker)
 
-/obj/item/gun/ballistic/automatic/speargun/attack_self()
+/obj/item/gun/ballistic/launcher/speargun/attack_self()
 	return
 
-/obj/item/gun/ballistic/automatic/speargun/attackby(obj/item/A, mob/user, params)
+/obj/item/gun/ballistic/launcher/speargun/attackby(obj/item/A, mob/user, params)
 	var/num_loaded = magazine.attackby(A, user, params, 1)
 	if(num_loaded)
 		to_chat(user, "<span class='notice'>You load [num_loaded] spear\s into \the [src].</span>")
 		update_icon()
 		chamber_round()
 
-/obj/item/gun/ballistic/rocketlauncher
+/obj/item/gun/ballistic/launcher/rocket_launcher
 	name = "\improper PML-9"
 	desc = "A reusable rocket propelled grenade launcher. The words \"NT this way\" and an arrow have been written near the barrel."
-	icon = 'icons/obj/guns/projectile.dmi'
 	icon_state = "rocketlauncher"
 	item_state = "rocketlauncher"
 	mag_type = /obj/item/ammo_box/magazine/internal/rocketlauncher
@@ -96,10 +111,10 @@
 	magazine_wording = "rocket"
 	tac_reloads = FALSE
 
-/obj/item/gun/ballistic/rocketlauncher/unrestricted
+/obj/item/gun/ballistic/launcher/rocket_launcher/unrestricted
 	pin = /obj/item/firing_pin
 
-/obj/item/gun/ballistic/rocketlauncher/handle_atom_del(atom/A)
+/obj/item/gun/ballistic/launcher/rocket_launcher/handle_atom_del(atom/A)
 	if(A == chambered)
 		chambered = null
 		if(!QDELETED(magazine))
@@ -111,13 +126,13 @@
 	update_icon()
 	return ..()
 
-/obj/item/gun/ballistic/rocketlauncher/can_shoot()
+/obj/item/gun/ballistic/launcher/rocket_launcher/can_shoot()
 	return chambered?.BB
 
-/obj/item/gun/ballistic/rocketlauncher/attack_self_tk(mob/user)
+/obj/item/gun/ballistic/launcher/rocket_launcher/attack_self_tk(mob/user)
 	return //too difficult to remove the rocket with TK
 
-/obj/item/gun/ballistic/rocketlauncher/attack_self(mob/living/user)
+/obj/item/gun/ballistic/launcher/rocket_launcher/attack_self(mob/living/user)
 	if(magazine)
 		var/obj/item/ammo_casing/AC = chambered
 		if(AC)
@@ -130,7 +145,7 @@
 			to_chat(user, "<span class='notice'>There's no [magazine_wording] in [src].</span>")
 	update_icon()
 
-/obj/item/gun/ballistic/rocketlauncher/attackby(obj/item/A, mob/user, params)
+/obj/item/gun/ballistic/launcher/rocket_launcher/attackby(obj/item/A, mob/user, params)
 	if(magazine && istype(A, /obj/item/ammo_casing))
 		if(chambered)
 			to_chat(user, "<span class='notice'>[src] already has a [magazine_wording] chambered.</span>")
@@ -141,10 +156,10 @@
 			chamber_round()
 			update_icon()
 
-/obj/item/gun/ballistic/rocketlauncher/update_icon_state()
+/obj/item/gun/ballistic/launcher/rocket_launcher/update_icon_state()
 	icon_state = "[initial(icon_state)]-[chambered ? "1" : "0"]"
 
-/obj/item/gun/ballistic/rocketlauncher/suicide_act(mob/living/user)
+/obj/item/gun/ballistic/launcher/rocket_launcher/suicide_act(mob/living/user)
 	user.visible_message("<span class='warning'>[user] aims [src] at the ground! It looks like [user.p_theyre()] performing a sick rocket jump!</span>", \
 		"<span class='userdanger'>You aim [src] at the ground to perform a bisnasty rocket jump...</span>")
 	if(can_shoot())

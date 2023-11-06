@@ -1624,7 +1624,7 @@
 		/obj/item/crowbar/cyborg,
 		/obj/item/melee/transforming/energy/sword/cyborg,
 		/obj/item/gun/energy/printer,
-		/obj/item/gun/ballistic/revolver/grenadelauncher/cyborg,
+		/obj/item/gun/ballistic/launcher/grenade_launcher/cyborg,
 		/obj/item/card/emag,
 		/obj/item/crowbar/cyborg,
 		/obj/item/pinpointer/syndicate_cyborg)

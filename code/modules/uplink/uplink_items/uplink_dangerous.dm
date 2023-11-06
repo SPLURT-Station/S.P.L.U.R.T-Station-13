@@ -28,7 +28,7 @@
 	name = "84mm Rocket Propelled Grenade Launcher"
 	desc = "A reusable rocket propelled grenade launcher preloaded with a low-yield 84mm HE round. \
 		Guaranteed to send your target out with a bang or your money back!"
-	item = /obj/item/gun/ballistic/rocketlauncher
+	item = /obj/item/gun/ballistic/launcher/rocket_launcher
 	cost = 8
 	surplus = 30
 	purchasable_from = UPLINK_NUKE_OPS

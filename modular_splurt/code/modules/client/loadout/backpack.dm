@@ -105,6 +105,11 @@
 	name = "Towel"
 	path = /obj/item/reagent_containers/rag/towel
 
+/datum/gear/backpack/condenser
+	name = "A condenser"
+	path = /obj/item/autosurgeon/condenser
+	cost = 7
+
 /datum/gear/backpack/standard_chastity_box
 	name = "Chastity Box"
 	path = /obj/item/storage/box/chastity_cage

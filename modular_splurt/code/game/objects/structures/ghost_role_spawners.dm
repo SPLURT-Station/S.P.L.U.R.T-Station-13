@@ -79,6 +79,11 @@
 	back = /obj/item/storage/backpack/satchel
 	ears = /obj/item/radio/headset/headset_srv/hotel
 
+/obj/effect/mob_spawn/human/hotel_staff/splurt/Destroy()
+	var/obj/machinery/cryopod/ghostrole/hotel/S = new(get_turf(src))
+	S.setDir(dir)
+	return ..()
+
 /obj/effect/mob_spawn/human/hotel_staff/splurt/security
 	name = "hotel security sleeper"
 	mob_name = "hotel security member"

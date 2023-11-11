@@ -1494,10 +1494,10 @@
 	button_icon_state = "blank"
 
 	// Glow color to use
-	var/glow_color = "#39ff14" // Neon green
+	var/glow_color
 
 	// Thickness of glow outline
-	var/glow_range = 1 //Less than radfiend
+	var/glow_range
 
 
 /datum/action/cosglow/update_glow/Grant()
@@ -1690,6 +1690,26 @@
 		else
 			to_chat(U, span_warning("You and [C] must both stand still for you to remove one of their limbs!"))
 			return
+
+/datum/action/cooldown/toggle_distant
+	name = "Toggle Distant"
+	desc = "Allows you to let your headpat-guard down, or put it back up."
+	icon_icon = 'modular_splurt/icons/mob/actions/lewd_actions/lewd_icons.dmi'
+	button_icon_state = "pain_max"
+
+/datum/action/cooldown/toggle_distant/Trigger()
+	. = ..()
+	if(!.)
+		return
+
+	var/mob/living/carbon/human/action_owner = owner
+
+	if(HAS_TRAIT(action_owner, TRAIT_DISTANT))
+		REMOVE_TRAIT(action_owner, TRAIT_DISTANT, ROUNDSTART_TRAIT)
+		to_chat(action_owner, span_notice("You let your headpat-guard down!"))
+	else
+		ADD_TRAIT(action_owner, TRAIT_DISTANT, ROUNDSTART_TRAIT)
+		to_chat(action_owner, span_warning("You let your headpat-guard up!"))
 
 #undef HYPNOEYES_COOLDOWN_NORMAL
 #undef HYPNOEYES_COOLDOWN_BRAINWASH

@@ -1,11 +1,15 @@
 //Main code edits
 /obj/item/clothing/mask/muzzle/attack_hand(mob/user, act_intent, attackchain_flags)
-	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		if(src == C.wear_mask)
-			to_chat(user, span_warning("You need help taking this off!"))
-			return
-	..()
+    if(iscarbon(user))
+        var/mob/living/carbon/C = user
+        if(src == C.wear_mask)
+            if(seamless)
+                to_chat(user, span_warning("You need help taking this off!"))
+                return
+            else
+                if(!do_after(C, 60, target = src))
+                    return
+    ..()
 
 //Own stuff
 

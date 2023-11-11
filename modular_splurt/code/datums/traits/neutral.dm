@@ -44,6 +44,21 @@
 	lose_text = span_notice("Having your head pet doesn't sound so bad right about now...")
 	medical_record_text = "Patient cares little with or dislikes being touched."
 
+/datum/quirk/headpat_hater/add()
+
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	var/datum/action/cooldown/toggle_distant/act_toggle = new
+	act_toggle.Grant(quirk_mob)
+
+/datum/quirk/headpat_hater/remove()
+
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	var/datum/action/cooldown/toggle_distant/act_toggle = locate() in quirk_mob.actions
+	if(act_toggle)
+		act_toggle.Remove(quirk_mob)
+
 /datum/quirk/headpat_slut
 	name = "Headpat Slut"
 	desc = "You love the feeling of others touching your head! Maybe a little too much, actually... Others patting your head will provide a bigger mood boost and cause aroused reactions."

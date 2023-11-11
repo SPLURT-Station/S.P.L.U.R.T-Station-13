@@ -102,9 +102,9 @@
 	var/milktext = milk.name
 
 	lines = list(
-		"brings [u_His] own milk tanks to [u_His] mouth and sucks deeply into them",
-		"takes a big sip of [u_His] own fresh [lowertext(milktext)]",
-		"fills [u_His] own mouth with a big gulp of [u_His] warm [lowertext(milktext)]"
+		"brings [u_His] own milk tanks to [u_His] mouth and sucks deeply into them.",
+		"takes a big sip of [u_His] own fresh [lowertext(milktext)].",
+		"fills [u_His] own mouth with a big gulp of [u_His] warm [lowertext(milktext)]."
 	)
 
 	message = span_lewd("\The <b>[user]</b> [pick(lines)]")

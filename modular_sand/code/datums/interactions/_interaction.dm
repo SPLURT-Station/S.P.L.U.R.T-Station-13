@@ -135,7 +135,7 @@
 
 /// After the interaction, the base only plays the sound and only if it has one
 /datum/interaction/proc/post_interaction(mob/living/user, mob/living/target)
-	COOLDOWN_START(user, last_interaction_time, 0.6 SECONDS)
+	COOLDOWN_START(user, last_interaction_time, 0.55 SECONDS)
 	if(interaction_sound)
 		playsound(get_turf(user), interaction_sound, 50, 1, -1)
 	return

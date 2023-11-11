@@ -1,7 +1,7 @@
 /datum/quirk/tough
 	name = "Tough"
 	desc = "Your body is abnormally enduring and can take 10% more damage."
-	value = 4
+	value = 2
 	medical_record_text = "Patient has an abnormally high capacity for injury."
 	gain_text = span_notice("You feel very sturdy.")
 	lose_text = span_notice("You feel less sturdy.")

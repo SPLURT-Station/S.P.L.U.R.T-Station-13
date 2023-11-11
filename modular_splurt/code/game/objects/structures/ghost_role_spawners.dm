@@ -111,3 +111,94 @@
 	head = /obj/item/clothing/head/beret/black
 	id = /obj/item/card/id/away/hotel/splurt/manager
 	ears = /obj/item/radio/headset/headset_srv/hotel/manager
+
+//OUTFITS//
+/datum/outfit/syndicatespace/syndicrew
+	ears = /obj/item/radio/headset/cybersun
+
+/datum/outfit/syndicatespace/syndicaptain
+	ears = /obj/item/radio/headset/cybersun/captain
+
+//ITEMS//
+
+/obj/item/radio/headset/cybersun
+	name = "cybersun crew bowman headset"
+	desc = "The headset of a crew member."
+	keyslot = new /obj/item/encryptionkey/headset_cybersun
+
+/obj/item/radio/headset/cybersun/captain
+	name = "cybersun captain bowman headset"
+	desc = "The headset of the boss."
+	command = TRUE
+	keyslot = new /obj/item/encryptionkey/headset_cybersun
+
+//Forgotten syndicate ship
+
+/obj/effect/mob_spawn/human/syndicatespace
+	name = "Syndicate Ship Crew Member"
+	roundstart = FALSE
+	death = FALSE
+	show_flavour = FALSE
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper_s"
+	short_desc = "You are a syndicate operative on old ship, stuck in hostile space."
+	flavour_text = "Your ship docks after a long time somewhere in hostile space, reporting a malfunction. You are stuck here, with Nanotrasen station nearby. Fix the ship, find a way to power it and follow your captain's orders."
+	important_info = "Obey orders given by your captain. DO NOT let the ship fall into enemy hands."
+	canloadappearance = TRUE
+	outfit = /datum/outfit/syndicatespace/syndicrew
+	assignedrole = ROLE_SYNDICATE_CYBERSUN
+
+/datum/outfit/syndicatespace/syndicrew/post_equip(mob/living/carbon/human/H)
+	H.faction |= ROLE_SYNDICATE
+
+/obj/effect/mob_spawn/human/syndicatespace/special(mob/living/new_spawn)
+	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
+	var/policy = get_policy(assignedrole)
+	if(policy)
+		to_chat(new_spawn, "<span class='bold'>[policy]</span>")
+
+/obj/effect/mob_spawn/human/syndicatespace/captain
+	name = "Syndicate Ship Captain"
+	short_desc = "You are the captain of an old ship, stuck in hostile space."
+	flavour_text = "Your ship docks after a long time somewhere in hostile space, reporting a malfunction. You are stuck here, with Nanotrasen station nearby. Command your crew and explore the nearby area to secure your location."
+	important_info = "Protect the ship and secret documents in your backpack with your own life."
+	canloadappearance = TRUE
+	outfit = /datum/outfit/syndicatespace/syndicaptain
+	assignedrole = ROLE_SYNDICATE_CYBERSUN_CAPTAIN
+
+/datum/outfit/syndicatespace/syndicaptain/post_equip(mob/living/carbon/human/H)
+	H.faction |= ROLE_SYNDICATE
+
+/obj/effect/mob_spawn/human/syndicatespace/captain/Destroy()
+	new/obj/structure/fluff/empty_sleeper/syndicate/captain(get_turf(src))
+	return ..()
+
+/datum/outfit/syndicatespace/syndicrew
+	name = "Syndicate Ship Crew Member"
+	uniform = /obj/item/clothing/under/syndicate/combat
+	mask = /obj/item/clothing/mask/gas/syndicate
+	ears = /obj/item/radio/headset/cybersun
+	shoes = /obj/item/clothing/shoes/combat
+	gloves = /obj/item/clothing/gloves/combat
+	back = /obj/item/storage/backpack
+	r_pocket = /obj/item/kitchen/knife/combat/survival
+	belt = /obj/item/storage/belt/military/assault/cybersun_crew
+	id = /obj/item/card/id/syndicate_command/crew_id
+	backpack_contents = list(/obj/item/paper/fluff/ruins/forgottenship/password)
+	implants = list(/obj/item/implant/weapons_auth)
+
+/datum/outfit/syndicatespace/syndicaptain
+	name = "Syndicate Ship Captain"
+	uniform = /obj/item/clothing/under/syndicate/combat
+	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
+	mask = /obj/item/clothing/mask/gas/syndicate
+	head = /obj/item/clothing/head/HoS/beret/syndicate
+	ears = /obj/item/radio/headset/cybersun/captain
+	shoes = /obj/item/clothing/shoes/combat
+	gloves = /obj/item/clothing/gloves/combat
+	back = /obj/item/storage/backpack
+	r_pocket = /obj/item/kitchen/knife/combat/survival
+	belt = /obj/item/storage/belt/military/assault/cybersun_captain
+	id = /obj/item/card/id/syndicate_command/captain_id
+	backpack_contents = list(/obj/item/documents/syndicate/red, /obj/item/paper/fluff/ruins/forgottenship/password)
+	implants = list(/obj/item/implant/weapons_auth)

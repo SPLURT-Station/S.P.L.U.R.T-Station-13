@@ -42,6 +42,11 @@
 	icon_state = "yellow"
 	has_gravity = STANDARD_GRAVITY
 
+//Cybersun, Forgotten Ship
+/area/ruin/space/has_grav/cybersun
+	name = "Cybersun"
+	icon_state = "spacecontent1"
+
 /obj/effect/mob_spawn/human/space/syndicate/special(mob/living/new_spawn)
 	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
 

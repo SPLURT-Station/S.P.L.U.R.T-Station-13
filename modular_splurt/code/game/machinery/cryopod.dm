@@ -23,9 +23,11 @@ GLOBAL_VAR_INIT(cryo_next_admin_warning, 0) // The last time we told admins abou
 	var/spawner
 
 /obj/machinery/cryopod/ghostrole/Destroy()
-		var/obj/effect/mob_spawn/human/cryocapable/S = new spawner(drop_location())
-		S.setDir(dir)
-		return ..()
+	if(!create_spawner)
+		return..()
+	var/obj/effect/mob_spawn/human/cryocapable/S = new spawner(drop_location())
+	S.setDir(dir)
+	return ..()
 
 /obj/machinery/cryopod/ghostrole/hotel
 	respawn_ghostrole = "Hotel Staff"

@@ -145,6 +145,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 	///Splurt addition - Ghostrole cryoing
 	var/respawn_ghostrole = FALSE
+	var/create_spawner = FALSE
 
 /obj/machinery/cryopod/Initialize(mapload)
 	..()
@@ -205,6 +206,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		var/role = mob_occupant.mind.assigned_role
 		if(role == respawn_ghostrole)
 			despawn_occupant()
+			create_spawner = TRUE
 			qdel(src)
 			return
 

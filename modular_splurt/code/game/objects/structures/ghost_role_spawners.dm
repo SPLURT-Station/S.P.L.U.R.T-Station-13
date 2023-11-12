@@ -195,6 +195,9 @@
 	assignedrole = "Lavaland Syndicate"
 	canloadappearance = TRUE
 
+/obj/effect/mob_spawn/human/cryocapable/lavaland_syndicate/special(mob/living/new_spawn)
+	new_spawn.grant_language(/datum/language/codespeak, TRUE, TRUE, LANGUAGE_MIND)
+
 /obj/effect/mob_spawn/human/cryocapable/lavaland_syndicate/comms
 	name = "Syndicate Comms Agent"
 	job_description = "Off-station Syndicate Comms Agent"

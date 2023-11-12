@@ -20,40 +20,29 @@ GLOBAL_VAR_INIT(cryo_next_admin_warning, 0) // The last time we told admins abou
 		GLOB.cryo_next_admin_warning = world.time + 5 MINUTES
 
 /obj/machinery/cryopod/ghostrole
-	var/refreshing = FALSE
-	var/assignedrole
 	var/spawner
 
-
-/obj/machinery/cryopod/ghostrole/hotel
-	assignedrole = "Hotel Staff"
-	spawner = /obj/effect/mob_spawn/human/hotel_staff/splurt
-
-/obj/machinery/cryopod/ghostrole/process()
-	if(!occupant)
-		return
-
-	var/mob/living/mob_occupant = occupant
-	if(mob_occupant.stat == DEAD)
-		open_machine()
-
-	if(!mob_occupant.client && COOLDOWN_FINISHED(src, despawn_world_time))
-		if(!control_computer_weakref)
-			control_computer_weakref = cryo_find_control_computer(src, urgent = TRUE)
-
-		if(mob_occupant.mind)
-			var/datum/mind/M = mob_occupant.mind
-			if(M.assigned_role == assignedrole)
-				refreshing = TRUE
-
-		despawn_occupant()
-
-		if(refreshing)
-			qdel(src)
-
-
 /obj/machinery/cryopod/ghostrole/Destroy()
-	if(refreshing)
-		var/obj/effect/mob_spawn/human/S = new spawner(drop_location())
+		var/obj/effect/mob_spawn/human/cryocapable/S = new spawner(drop_location())
 		S.setDir(dir)
 		return ..()
+
+/obj/machinery/cryopod/ghostrole/hotel
+	respawn_ghostrole = "Hotel Staff"
+	spawner = /obj/effect/mob_spawn/human/cryocapable/hotel
+
+/obj/machinery/cryopod/ghostrole/hotel/security
+	respawn_ghostrole = "Hotel Staff"
+	spawner = /obj/effect/mob_spawn/human/cryocapable/hotel/security
+
+/obj/machinery/cryopod/ghostrole/hotel/manager
+	respawn_ghostrole = "Hotel Manager"
+	spawner = /obj/effect/mob_spawn/human/cryocapable/hotel/manager
+
+/obj/machinery/cryopod/ghostrole/lavaland_syndicate
+	respawn_ghostrole = "Lavaland Syndicate"
+	spawner = /obj/effect/mob_spawn/human/cryocapable/lavaland_syndicate
+
+/obj/machinery/cryopod/ghostrole/lavaland_syndicate/comms
+	respawn_ghostrole = "Space Syndicate"
+	spawner = /obj/effect/mob_spawn/human/cryocapable/lavaland_syndicate/comms

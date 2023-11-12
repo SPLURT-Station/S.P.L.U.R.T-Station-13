@@ -143,6 +143,9 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	///Weakref to our controller
 	var/datum/weakref/control_computer_weakref
 
+	///Splurt addition - Ghostrole cryoing
+	var/respawn_ghostrole = FALSE
+
 /obj/machinery/cryopod/Initialize(mapload)
 	..()
 	return INITIALIZE_HINT_LATELOAD //Gotta populate the cryopod computer GLOB first
@@ -198,7 +201,14 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		if(!control_computer_weakref)
 			control_computer_weakref = cryo_find_control_computer(src, urgent = TRUE)
 
-		despawn_occupant()
+	if(mob_occupant.mind)	//SPLURT Addition - Ghostrole cryoing
+		var/role = mob_occupant.mind.assigned_role
+		if(role == respawn_ghostrole)
+			despawn_occupant()
+			qdel(src)
+			return
+
+	despawn_occupant()
 
 /proc/cryo_handle_objectives(mob/living/mob_occupant)
 	// Update any existing objectives involving this mob.

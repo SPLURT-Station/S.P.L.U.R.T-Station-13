@@ -54,7 +54,7 @@
 	new_spawn.language_holder.spoken_languages += /datum/language/draconic
 
 //Splurt-Specific Space Hotel Staff
-/obj/effect/mob_spawn/human/hotel_staff/splurt //not free antag u little shits
+/obj/effect/mob_spawn/human/hotel_staff/splurt
 	name = "staff sleeper"
 	desc = "A sleeper designed for long-term stasis between guest visits."
 	mob_name = "hotel staff member"
@@ -78,11 +78,6 @@
 	r_pocket = /obj/item/pda
 	back = /obj/item/storage/backpack/satchel
 	ears = /obj/item/radio/headset/headset_srv/hotel
-
-/obj/effect/mob_spawn/human/hotel_staff/splurt/Destroy()
-	var/obj/machinery/cryopod/ghostrole/hotel/S = new(get_turf(src))
-	S.setDir(dir)
-	return ..()
 
 /obj/effect/mob_spawn/human/hotel_staff/splurt/security
 	name = "hotel security sleeper"
@@ -116,3 +111,96 @@
 	head = /obj/item/clothing/head/beret/black
 	id = /obj/item/card/id/away/hotel/splurt/manager
 	ears = /obj/item/radio/headset/headset_srv/hotel/manager
+
+
+/obj/effect/mob_spawn/human/cryocapable //Cryopod spawning variants to allow players to leave and refresh the spawner
+
+/obj/effect/mob_spawn/human/cryocapable/Destroy()
+	var/obj/machinery/cryopod/ghostrole/S = new(get_turf(src))
+	S.spawner = src.type
+	S.respawn_ghostrole = src.assignedrole
+	S.setDir(dir)
+	return ..()
+
+/obj/effect/mob_spawn/human/cryocapable/hotel
+	name = "staff sleeper"
+	desc = "A sleeper designed for long-term stasis between guest visits."
+	mob_name = "hotel staff member"
+	job_description = "Hotel Staff"
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper_s"
+	objectives = "Cater to visiting guests with your fellow staff. Don't abandon the hotel - you can advertise and link up with potential guests, but always remember who signs your cheques! The customer is always right!"
+	short_desc = "You are a staff member of a top-of-the-line space hotel!"
+	flavour_text = "You are a staff member of a top-of-the-line space hotel! Cater to guests and make sure the manager doesn't fire you."
+	important_info = "Don't abandon the hotel! Brief excursions to pick up guests or set up transit links are permitted, but remember where you work!"
+	assignedrole = "Hotel Staff"
+	death = FALSE
+	roundstart = FALSE
+	random = TRUE
+	canloadappearance = TRUE
+	id_job = "Hotel Staff"
+	id = /obj/item/card/id/away/hotel/splurt
+	uniform = /obj/item/clothing/under/suit/red
+	shoes = /obj/item/clothing/shoes/laceup
+	head = /obj/item/clothing/head/hotel
+	r_pocket = /obj/item/pda
+	back = /obj/item/storage/backpack/satchel
+	ears = /obj/item/radio/headset/headset_srv/hotel
+
+/obj/effect/mob_spawn/human/cryocapable/hotel/security
+	name = "hotel security sleeper"
+	mob_name = "hotel security member"
+	job_description = "Hotel Security"
+	short_desc = "You are a peacekeeper."
+	flavour_text = "You have been assigned to this hotel to protect the interests of the company while keeping the peace between \
+		guests and the staff."
+	important_info = "Don't abandon the hotel! Brief excursions to pick up guests or set up transit links are permitted, but remember where you work!"
+	objectives = "Do not abandon your assigned hotel. Try and keep the peace between staff and guests, non-lethal force heavily advised if possible."
+	id_job = "Hotel Security"
+	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt
+	shoes = /obj/item/clothing/shoes/jackboots
+	suit = /obj/item/clothing/suit/armor/vest/blueshirt
+	head = /obj/item/clothing/head/helmet/blueshirt
+	back = /obj/item/storage/backpack/satchel/sec
+	belt = /obj/item/storage/belt/security/full
+	id = /obj/item/card/id/away/hotel/splurt/security
+
+/obj/effect/mob_spawn/human/cryocapable/hotel/manager
+	name = "hotel manager sleeper"
+	mob_name = "hotel manager"
+	job_description = "Hotel Manager"
+	short_desc = "You are the manager of a space hotel"
+	flavour_text = "You manage one site of a successful chain of space hotels. Your parent company has recently been bought out by Nanotrasen and tasked with servicing some of their stations; you have recieved a selection of fancy tech as a result! Protect the interests of your parent company, ensure your staff are performing to standard and make sure to keep your guests happy!"
+	important_info = "Don't abandon the hotel! Brief excursions to pick up guests or set up transit links are permitted, but remember where you work!"
+	objectives = "Don't abandon your assigned hotel. Cater to visiting guests. Maintain good corporate relations and remember: The customer is always right!"
+	id_job = "Hotel Manager"
+	assignedrole = "Hotel Manager"
+	uniform = /obj/item/clothing/under/suit/black
+	suit = /obj/item/clothing/suit/toggle/lawyer/black
+	head = /obj/item/clothing/head/beret/black
+	id = /obj/item/card/id/away/hotel/splurt/manager
+	ears = /obj/item/radio/headset/headset_srv/hotel/manager
+
+/obj/effect/mob_spawn/human/cryocapable/lavaland_syndicate
+	name = "Syndicate Bioweapon Scientist"
+	roundstart = FALSE
+	death = FALSE
+	job_description = "Off-station Syndicate Scientist"
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper_s"
+	short_desc = "You are a syndicate science technician, employed in a top secret research facility developing biological weapons."
+	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue your research as best you can, and try to keep a low profile."
+	important_info = "The base is rigged with explosives, DO NOT abandon it or let it fall into enemy hands!"
+	outfit = /datum/outfit/lavaland_syndicate
+	assignedrole = "Lavaland Syndicate"
+	canloadappearance = TRUE
+
+/obj/effect/mob_spawn/human/cryocapable/lavaland_syndicate/comms
+	name = "Syndicate Comms Agent"
+	job_description = "Off-station Syndicate Comms Agent"
+	short_desc = "You are a syndicate comms agent, employed in a top secret research facility developing biological weapons."
+	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Monitor enemy activity as best you can, and try to keep a low profile. Use the communication equipment to provide support to any field agents, and sow disinformation to throw Nanotrasen off your trail. Do not let the base fall into enemy hands!"
+	important_info = "DO NOT abandon the base."
+	outfit = /datum/outfit/lavaland_syndicate/comms
+	canloadappearance = TRUE
+	assignedrole = "Space Syndicate"

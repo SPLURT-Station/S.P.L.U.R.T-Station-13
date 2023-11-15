@@ -7477,7 +7477,8 @@
 "aAJ" = (
 /obj/structure/table/wood,
 /obj/item/storage/secure/briefcase,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -7732,7 +7733,8 @@
 "aCl" = (
 /obj/structure/table/wood,
 /obj/item/folder/red,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /turf/open/floor/wood,
 /area/command/meeting_room/council)
 "aCz" = (
@@ -73555,7 +73557,8 @@
 	dir = 1
 	},
 /obj/item/folder/red,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
@@ -75077,7 +75080,8 @@
 /area/engineering/break_room)
 "fOn" = (
 /obj/structure/table/reinforced,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /obj/item/radio,
 /obj/machinery/status_display/ai{
 	pixel_y = 32
@@ -78568,7 +78572,8 @@
 /area/command/gateway)
 "haZ" = (
 /obj/structure/table/reinforced,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /obj/item/taperecorder,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 1
@@ -80157,7 +80162,8 @@
 /area/service/janitor)
 "hCg" = (
 /obj/structure/table/reinforced,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /obj/item/radio,
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_x = 32
@@ -86598,7 +86604,8 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /obj/item/radio,
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -87235,8 +87242,8 @@
 /area/engineering/atmos)
 "jKW" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/splurt_space_law,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /obj/item/taperecorder{
 	pixel_x = 3
 	},
@@ -92293,7 +92300,8 @@
 	pixel_x = -32
 	},
 /obj/structure/table/reinforced,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /obj/item/radio,
 /obj/machinery/button/door{
 	desc = "A remote control switch for the medbay foyer.";
@@ -105447,7 +105455,8 @@
 /obj/structure/cable/white{
 	icon_state = "1-8"
 	},
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /obj/item/camera/detective,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -114449,7 +114458,11 @@
 "sYG" = (
 /obj/structure/table/wood,
 /obj/item/crowbar/red,
-/obj/item/book/manual/splurt_space_law{
+/obj/item/book/manual/splurt_space_law_1{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/book/manual/splurt_space_law_2{
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -117246,7 +117259,8 @@
 /obj/structure/rack,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/crowbar/red,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating,
 /area/maintenance/starboard)
@@ -119598,7 +119612,8 @@
 	pixel_x = -32
 	},
 /obj/structure/table/reinforced,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /obj/item/radio,
 /obj/machinery/button/door{
 	desc = "A remote control switch.";

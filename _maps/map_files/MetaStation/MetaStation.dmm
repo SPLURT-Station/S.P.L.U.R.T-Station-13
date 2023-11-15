@@ -8643,7 +8643,11 @@
 /area/maintenance/starboard/fore)
 "aCg" = (
 /obj/structure/table,
-/obj/item/book/manual/splurt_space_law{
+/obj/item/book/manual/splurt_space_law_1{
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/obj/item/book/manual/splurt_space_law_2{
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -8651,11 +8655,19 @@
 	dir = 1;
 	pixel_y = -24
 	},
-/obj/item/book/manual/splurt_space_law{
+/obj/item/book/manual/splurt_space_law_1{
 	pixel_x = -3;
 	pixel_y = 5
 	},
-/obj/item/book/manual/splurt_space_law{
+/obj/item/book/manual/splurt_space_law_2{
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/obj/item/book/manual/splurt_space_law_1{
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/obj/item/book/manual/splurt_space_law_2{
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -46639,7 +46651,11 @@
 /turf/open/floor/plasteel/dark,
 /area/engineering/storage/tech)
 "dlv" = (
-/obj/item/book/manual/splurt_space_law{
+/obj/item/book/manual/splurt_space_law_1{
+	name = "space law";
+	pixel_y = 2
+	},
+/obj/item/book/manual/splurt_space_law_2{
 	name = "space law";
 	pixel_y = 2
 	},
@@ -49815,8 +49831,8 @@
 /area/engineering/gravity_generator)
 "exM" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/splurt_space_law,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /obj/item/pen/red,
 /obj/machinery/computer/security/telescreen{
 	desc = "Used for watching Prison Wing holding areas.";
@@ -51348,7 +51364,8 @@
 /area/commons/fitness/recreation)
 "flw" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -52748,7 +52765,11 @@
 /area/cargo/storage)
 "gfm" = (
 /obj/structure/table/reinforced,
-/obj/item/book/manual/splurt_space_law{
+/obj/item/book/manual/splurt_space_law_1{
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/obj/item/book/manual/splurt_space_law_2{
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -58748,7 +58769,11 @@
 	c_tag = "Departure Lounge - Security Post";
 	dir = 1
 	},
-/obj/item/book/manual/splurt_space_law{
+/obj/item/book/manual/splurt_space_law_1{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/book/manual/splurt_space_law_2{
 	pixel_x = -4;
 	pixel_y = 4
 	},
@@ -64427,7 +64452,8 @@
 /turf/open/floor/carpet,
 /area/command/corporate_showroom)
 "mxE" = (
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /obj/machinery/newscaster{
 	pixel_y = -32
 	},
@@ -66887,7 +66913,11 @@
 	pixel_x = 30
 	},
 /obj/item/folder/red,
-/obj/item/book/manual/splurt_space_law{
+/obj/item/book/manual/splurt_space_law_1{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/item/book/manual/splurt_space_law_2{
 	pixel_x = 3;
 	pixel_y = 4
 	},
@@ -69932,7 +69962,11 @@
 "pvH" = (
 /obj/structure/table,
 /obj/item/folder/red,
-/obj/item/book/manual/splurt_space_law{
+/obj/item/book/manual/splurt_space_law_1{
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/obj/item/book/manual/splurt_space_law_2{
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -71507,7 +71541,10 @@
 /area/space)
 "qls" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/splurt_space_law{
+/obj/item/book/manual/splurt_space_law_1{
+	pixel_y = 3
+	},
+/obj/item/book/manual/splurt_space_law_2{
 	pixel_y = 3
 	},
 /obj/item/radio/intercom{
@@ -75738,7 +75775,8 @@
 /obj/item/storage/secure/briefcase{
 	pixel_x = -2
 	},
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /obj/item/cartridge/detective,
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -76501,8 +76539,12 @@
 	dir = 1
 	},
 /obj/structure/table/reinforced,
-/obj/item/book/manual/splurt_space_law{
+/obj/item/book/manual/splurt_space_law_1{
 	pixel_x = -3;
+	pixel_y = 5
+	},
+/obj/item/book/manual/splurt_space_law_2{
+	pixel_x = 3;
 	pixel_y = 5
 	},
 /obj/machinery/light_switch{
@@ -77245,7 +77287,11 @@
 /obj/item/folder/red,
 /obj/item/folder/red,
 /obj/structure/table,
-/obj/item/book/manual/splurt_space_law{
+/obj/item/book/manual/splurt_space_law_1{
+	pixel_x = -3;
+	pixel_y = 5
+	},
+/obj/item/book/manual/splurt_space_law_2{
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -79317,7 +79363,8 @@
 /area/security/office)
 "uye" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /turf/open/floor/carpet,
 /area/command/blueshieldoffice)
 "uyq" = (
@@ -79633,7 +79680,8 @@
 /area/maintenance/starboard)
 "uKo" = (
 /obj/structure/table,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -81628,7 +81676,8 @@
 /obj/machinery/computer/secure_data{
 	dir = 8
 	},
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /obj/machinery/computer/security/telescreen{
 	desc = "Used for watching the RD's goons from the safety of his office.";
 	dir = 8;
@@ -83386,7 +83435,8 @@
 /area/service/library)
 "wMG" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /obj/machinery/power/apc{
 	areastring = "/area/command/heads_quarters/captain/private";
 	dir = 8;
@@ -83565,7 +83615,8 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/splurt_space_law_1,
+/obj/item/book/manual/splurt_space_law_2,
 /obj/item/camera/detective,
 /turf/open/floor/plasteel/grimy,
 /area/security/detectives_office)

@@ -33,7 +33,6 @@
 	var/lust_tolerance = 100
 	var/lastlusttime = 0
 	var/lust = 0
-	var/multiorgasms = 1
 	COOLDOWN_DECLARE(refractory_period)
 	COOLDOWN_DECLARE(last_interaction_time)
 	var/datum/interaction/lewd/last_lewd_datum	//Recording our last lewd datum allows us to do stuff like custom cum messages.
@@ -783,18 +782,16 @@
 							'modular_sand/sound/interactions/final_f2.ogg',
 							'modular_sand/sound/interactions/final_f3.ogg'), 70, 1, 0)
 	visible_message(message = span_userlove("<b>\The [src]</b> [message]"), ignored_mobs = get_unconsenting(ignored_mobs = obscure_to))
-	multiorgasms += 1
 
 	COOLDOWN_START(src, refractory_period, (rand(300, 900) - get_sexual_potency()))//sex cooldown
-	if(multiorgasms < get_sexual_potency())
-		if(ishuman(src))
-			var/mob/living/carbon/human/H = src
-			if(!partner)
-				H.mob_climax(TRUE, "masturbation", "none")
-			else if(istype(partner, /obj/item/reagent_containers))
-				H.mob_fill_container(last_genital, partner, 0)
-			else
-				H.mob_climax(TRUE, "sex", partner, !cumin, target_gen)
+	if(ishuman(src))
+		var/mob/living/carbon/human/H = src
+		if(!partner)
+			H.mob_climax(TRUE, "masturbation", "none")
+		else if(istype(partner, /obj/item/reagent_containers))
+			H.mob_fill_container(last_genital, partner, 0)
+		else
+			H.mob_climax(TRUE, "sex", partner, !cumin, target_gen)
 	set_lust(0)
 
 	SEND_SIGNAL(src, COMSIG_MOB_POST_CAME, target_orifice, partner, cumin, last_genital)

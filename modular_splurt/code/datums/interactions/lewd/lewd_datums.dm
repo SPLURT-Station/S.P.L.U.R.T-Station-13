@@ -102,7 +102,7 @@
 		var/stat_before = target.stat
 		target.adjustOxyLoss(3)
 		if(target.stat == UNCONSCIOUS && stat_before != UNCONSCIOUS)
-			target.visible_message(message = "<font color=red><b>\The [target]</b> passes out on <b>\The [src]</b>'s cock.</span>", ignored_mobs = user.get_unconsenting())
+			target.visible_message(message = "<font color=red><b>\The [target]</b> passes out on <b>\The [user]</b>'s cock.</span>", ignored_mobs = user.get_unconsenting())
 	if(!isclownjob(user))
 		return
 

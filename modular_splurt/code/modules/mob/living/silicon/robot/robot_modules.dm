@@ -175,7 +175,7 @@
 		"Assaultron" = image(icon = 'modular_splurt/icons/mob/robots_cargo.dmi', icon_state = "assaultron_cargo"),
 		"Meka" = image(icon = 'modular_splurt/icons/mob/robots_32x64.dmi', icon_state = "mekacargo"), // SPLURT Addon
 		)
-		var/list/L = list("Cargohound" = "cargohound", "Cargohound Dark" = "cargohounddark", "Vale" = "valecargo")
+		var/list/L = list("Cargohound" = "cargohound", "Cargohound Dark" = "cargohounddark", "Vale" = "valecargo", "Feline" = "vixcargo")
 		for(var/a in L)
 			var/image/wide = image(icon = 'modular_splurt/icons/mob/widerobots_cargo.dmi', icon_state = L[a])
 			wide.pixel_x = -16
@@ -224,6 +224,11 @@
 			cyborg_base_icon = "mekacargo"
 			cyborg_icon_override = 'modular_splurt/icons/mob/robots_32x64.dmi'
 			hat_offset = 3
+		if("Feline") // ChompS Port
+			cyborg_base_icon = "vixcargo"
+			cyborg_icon_override = 'modular_splurt/icons/mob/widerobots_cargo.dmi'
+			sleeper_overlay = "vixcargo-sleeper"
+			dogborg = TRUE
 		else
 			return FALSE
 	return ..()

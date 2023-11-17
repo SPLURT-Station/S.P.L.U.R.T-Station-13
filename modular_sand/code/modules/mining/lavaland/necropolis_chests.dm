@@ -41,7 +41,7 @@
 
 /obj/item/shield/riot/tower/swat/gladiator/AltClick(mob/user)
 	if(isliving(user))
-		if(do_after(user, 20, target = src))
+		if(do_after(user, 2 SECONDS, src))
 			new /obj/vehicle/ridden/lavaboat/dragon/gladiator(get_turf(user))
 			qdel(src)
 
@@ -61,7 +61,7 @@
 /obj/vehicle/ridden/lavaboat/dragon/gladiator/AltClick(mob/user)
 	..()
 	if(isliving(user))
-		if(do_after(user, 20, target = src))
+		if(do_after(user, 2 SECONDS, src))
 			new /obj/item/shield/riot/tower/swat/gladiator(get_turf(user))
 			qdel(src)
 
@@ -1022,7 +1022,7 @@
 //Apply a temp buff until the necklace is used
 /obj/item/clothing/neck/necklace/necklace_of_the_forsaken/proc/temp_buff(mob/living/carbon/human/user)
 	to_chat(user, span_warning("You feel as if you have a second chance at something, but you're not sure what."))
-	if(do_after(user, 40, target = user))
+	if(do_after(user, 4 SECONDS, user))
 		to_chat(user, span_notice("The ember warms you..."))
 		ADD_TRAIT(user, TRAIT_NOHARDCRIT, "necklace_of_the_forsaken")//less chance of being gibbed
 		active_owner = user

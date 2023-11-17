@@ -88,9 +88,9 @@
 				if(user.has_penis() || user.has_strapon())
 					var/genital_name = user.get_penetrating_genital_name()
 					if(user.is_fucking(partner, CUM_TARGET_THROAT))
-						message = "retracts [u_His] [genital_name] from \the <b>[partner]</b>'s throat"
+						message = "retracts [u_His] [genital_name] from \the <b>[partner]</b>'s throat."
 					else
-						message = "shoves [u_His] [genital_name] into \the <b>[partner]</b>'s mouth"
+						message = "shoves [u_His] [genital_name] into \the <b>[partner]</b>'s mouth."
 				else
 					improv = TRUE
 		if(improv)
@@ -150,7 +150,7 @@
 			genital = check
 		user.set_is_fucking(partner, CUM_TARGET_THROAT, genital)
 	else
-		message = "forces [u_His] [genital_name] deep down \the <b>[partner]</b>'s throat"
+		message = "forces [u_His] [genital_name] deep down \the <b>[partner]</b>'s throat."
 		var/check = user.getorganslot(ORGAN_SLOT_PENIS)
 		if(check)
 			genital = check

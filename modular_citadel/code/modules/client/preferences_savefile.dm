@@ -41,6 +41,12 @@
 	lust_tolerance = sanitize_integer(lust_tolerance, 75, 200, initial(lust_tolerance))
 	sexual_potency = sanitize_integer(sexual_potency, 10, 25, initial(sexual_potency))
 
+	S["silicon_lawset"] >> silicon_lawset
+
+	silicon_lawset = sanitize_inlist(silicon_lawset, CONFIG_GET(keyed_list/choosable_laws), "None")
+	if(silicon_lawset == "None")
+		silicon_lawset = null
+
 /datum/preferences/proc/cit_character_pref_save(savefile/S)
 	//ipcs
 	WRITE_FILE(S["feature_ipc_screen"], features["ipc_screen"])
@@ -76,3 +82,4 @@
 	WRITE_FILE(S["alt_titles_preferences"], alt_titles_preferences)
 	WRITE_FILE(S["lust_tolerance"], lust_tolerance)
 	WRITE_FILE(S["sexual_potency"], sexual_potency)
+	WRITE_FILE(S["silicon_lawset"], silicon_lawset)

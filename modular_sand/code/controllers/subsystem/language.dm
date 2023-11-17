@@ -1,30 +1,29 @@
-/datum/controller/subsystem/language/proc/AssignLanguage(mob/living/user, client/cli)
+/datum/controller/subsystem/language/proc/AssignLanguage(mob/living/user, client/client)
 	if(!CONFIG_GET(number/max_languages) == 0)	//Simply disables everything
-		var/list/languages = cli.prefs.language
-		var/list/valid_languages = list()
-		var/list/invalid_languages = list()
-		if(!languages.len)
+		var/list/languages = client.prefs.language.Copy()
+		var/list/valid_languages
+		var/list/invalid_languages
+		if(!length(languages))
 			return
-		for(var/I in GLOB.all_languages)
-			var/datum/language/L = I
-			var/datum/language/cool = new L
-			for(var/my_lang in languages)
-				if(my_lang == cool.name)
-					if(!cool.restricted || (cool.name in cli.prefs.pref_species.languagewhitelist))
-						user.grant_language(cool.type, TRUE, TRUE, LANGUAGE_ADDITIONAL)
-						valid_languages += my_lang
-					else
-						for(var/datum/quirk/Q in cli.prefs.all_quirks)
-							if(cool.name in Q.languagewhitelist)
-								user.grant_language(cool, TRUE, TRUE, LANGUAGE_ADDITIONAL)
-								valid_languages += my_lang
-								continue
-						invalid_languages += my_lang
+		for(var/language in languages)
+			var/datum/language/language_datum = LAZYACCESS(SSlanguage.languages_by_name, language)
+			if(language_datum)
+				if(!language_datum.restricted || (language_datum.name in client.prefs.pref_species.languagewhitelist))
+					user.grant_language(language_datum.type, TRUE, TRUE, LANGUAGE_ADDITIONAL)
+					LAZYADD(valid_languages, language)
 				else
-					continue
-		if(valid_languages.len)
-			var/list/sorted_valid = sortList(valid_languages)
-			to_chat(user, span_notice("You are able to speak in [sorted_valid.Join(", ")]. If you're actually good at [valid_languages.len > 1 ? "them" : "it"] or not, it's up to you."))
-		if(invalid_languages.len)
-			var/list/sorted_invalid = sortList(invalid_languages)
-			to_chat(user, span_warning("[sorted_invalid.Join(", ")] [invalid_languages.len > 1 ? "are" : "is a"] restricted language[invalid_languages.len > 1 ? "s" : ""], and ha[invalid_languages.len > 1 ? "ve" : "s"] not been assigned."))
+					for(var/datum/quirk/quirk in client.prefs.all_quirks)
+						if(language_datum.name in quirk.languagewhitelist)
+							user.grant_language(language_datum.type, TRUE, TRUE, LANGUAGE_ADDITIONAL)
+							LAZYADD(valid_languages, language)
+							continue
+					LAZYADD(invalid_languages, language)
+
+			else
+				continue
+		var/valid_languages_len = LAZYLEN(valid_languages)
+		if(valid_languages_len)
+			to_chat(client, span_notice("You are able to speak in [english_list(sortList(valid_languages))]. If you're actually good at [valid_languages_len > 1 ? "them" : "it"] or not, it's up to you."))
+		var/invalid_languages_len = LAZYLEN(invalid_languages)
+		if(invalid_languages_len)
+			to_chat(client, span_warning("[english_list(sortList(invalid_languages))] [invalid_languages_len > 1 ? "are" : "is a"] restricted language[invalid_languages_len > 1 ? "s" : ""], and ha[invalid_languages_len > 1 ? "ve" : "s"] not been assigned."))

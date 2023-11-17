@@ -36,7 +36,7 @@
 			to_chat(user,span_warning("[I] is too large to fit into your [src]"))
 			return
 		user.visible_message(span_warning("[hound.name] is ingesting [I] into their [src.name]."), span_notice("You start ingesting [target] into your [src.name]..."))
-		if(do_after(user, 15, target = target) && length(contents) < max_item_count)
+		if(do_after(user, 1.5 SECONDS, target) && length(contents) < max_item_count)
 			I.forceMove(src)
 			I.visible_message(span_warning("[hound.name]'s garbage processor groans lightly as [I] slips inside."), span_notice("Your garbage compactor groans lightly as [I] slips inside."))
 			playsound(hound, 'sound/machines/disposalflush.ogg', 50, 1)
@@ -60,7 +60,7 @@
 			to_chat(user,span_warning("[trashman] is buckled and can not be put into your [src]."))
 			return
 		user.visible_message(span_warning("[hound.name] is ingesting [trashman] into their [src]."), span_notice("You start ingesting [trashman] into your [src.name]..."))
-		if(do_after(user, 30, target = trashman) && !patient && !trashman.buckled && length(contents) < max_item_count)
+		if(do_after(user, 3 SECONDS, trashman) && !patient && !trashman.buckled && length(contents) < max_item_count)
 			trashman.forceMove(src)
 			trashman.reset_perspective(src)
 			update_gut(user)

@@ -74,6 +74,9 @@
 	var/obj/item/kitchen/knife/bayonet
 	var/mutable_appearance/knife_overlay
 	var/can_bayonet = FALSE
+	//SPLURT EDIT ADD
+	var/bayonet_diagonal = FALSE
+	//SPKURT EDIT ADD END
 	var/datum/action/item_action/toggle_gunlight/alight
 	var/mutable_appearance/flashlight_overlay
 
@@ -701,6 +704,11 @@
 		if(bayonet.icon_state in icon_states('icons/obj/guns/bayonets.dmi'))		//Snowflake state?
 			state = bayonet.icon_state
 		var/icon/bayonet_icons = 'icons/obj/guns/bayonets.dmi'
+		//SPLURT EDIT ADD
+		if(bayonet_diagonal == TRUE )
+			state = "bayonet_diagonal"
+			bayonet_icons = 'modular_splurt/icons/obj/guns/bayonets.dmi'
+		//SPLURT EDIT ADD END
 		knife_overlay = mutable_appearance(bayonet_icons, state)
 		knife_overlay.pixel_x = knife_x_offset
 		knife_overlay.pixel_y = knife_y_offset

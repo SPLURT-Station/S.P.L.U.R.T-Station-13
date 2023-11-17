@@ -88,8 +88,8 @@
 	lust = num
 	lastlusttime = world.time
 
-/mob/living/proc/toggle_anus_always_accessible()
-	anus_always_accessible = !anus_always_accessible
+/mob/living/proc/toggle_anus_always_accessible(accessibility)
+	anus_always_accessible = isnull(accessibility) ? !anus_always_accessible : accessibility
 
 /mob/living/proc/has_genital(slot, visibility = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
@@ -410,6 +410,8 @@
 
 /mob/living/proc/cum(mob/living/partner, target_orifice)
 	if(HAS_TRAIT(src, TRAIT_NEVERBONER))
+		return FALSE
+	if(SEND_SIGNAL(src, COMSIG_MOB_PRE_CAME, target_orifice, partner))
 		return FALSE
 	var/message
 	var/u_His = p_their()
@@ -768,7 +770,7 @@
 					did_anything = FALSE
 			if(did_anything)
 				LAZYADD(obscure_to, src)
-	else //todo: better self cum messages
+	if(!message) //todo: better self cum messages
 		message = "cums all over themselves!"
 	if(gender == MALE)
 		playlewdinteractionsound(loc, pick('modular_sand/sound/interactions/final_m1.ogg',
@@ -794,7 +796,8 @@
 			else
 				H.mob_climax(TRUE, "sex", partner, !cumin, target_gen)
 	set_lust(0)
-	SEND_SIGNAL(src, COMSIG_MOB_CAME, target_orifice, partner, cumin, last_genital)
+
+	SEND_SIGNAL(src, COMSIG_MOB_POST_CAME, target_orifice, partner, cumin, last_genital)
 
 	return TRUE
 
@@ -847,12 +850,11 @@
 	if(lust >= lust_tolerance)
 		if(prob(10))
 			to_chat(src, "<b>You struggle to not orgasm!</b>")
+			moan()
 			return FALSE
 		if(lust >= (lust_tolerance * 3))
-			cum(partner, orifice)
-			return TRUE
-	else
-		moan()
+			if(cum(partner, orifice))
+				return TRUE
 	return FALSE
 
 /mob/living/proc/get_unconsenting(extreme = FALSE, list/ignored_mobs)

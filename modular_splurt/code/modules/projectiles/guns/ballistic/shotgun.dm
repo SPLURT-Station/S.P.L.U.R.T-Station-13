@@ -49,6 +49,10 @@
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_HEAVY
 	sawn_desc = "A cheap hunting rifle that bubba got ahold of."
+	can_bayonet = TRUE
+	bayonet_diagonal = TRUE
+	knife_x_offset = 25
+	knife_y_offset = 26
 
 /obj/item/gun/ballistic/shotgun/huntingrifle/attackby(obj/item/A, mob/user, params)
 	..()

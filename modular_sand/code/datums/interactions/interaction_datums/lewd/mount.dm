@@ -12,7 +12,7 @@
 
 	if(partner.is_fucking(user, CUM_TARGET_VAGINA))
 		message = "[pick("rides \the <b>[partner]</b>'s [genital_name].",
-			"forces <b>[partner]</b>'s [genital_name] on [u_His] pussy")]"
+			"forces <b>[partner]</b>'s [genital_name] on [u_His] pussy.")]"
 	else
 		message = "slides [u_His] pussy onto \the <b>[partner]</b>'s [genital_name]."
 		partner.set_is_fucking(user, CUM_TARGET_VAGINA, partner.getorganslot(ORGAN_SLOT_PENIS))
@@ -38,7 +38,7 @@
 
 	if(partner.is_fucking(user, CUM_TARGET_ANUS))
 		message = "[pick("rides \the <b>[partner]</b>'s [genital_name].",
-			"forces <b>[partner]</b>'s [genital_name] on [u_His] ass")]"
+			"forces <b>[partner]</b>'s [genital_name] on [u_His] ass.")]"
 	else
 		message = "lowers [u_His] ass onto \the <b>[partner]</b>'s [genital_name]."
 		partner.set_is_fucking(user, CUM_TARGET_ANUS, partner.getorganslot(ORGAN_SLOT_PENIS))
@@ -68,7 +68,7 @@
 	else
 		message = "[pick(
 			"grabs the back of \the <b>[partner]</b>'s head and forces it into [u_His] asscheeks.",
-			"squats down and plants [u_His] ass right on \the <b>[partner]</b>'s face")]"
+			"squats down and plants [u_His] ass right on \the <b>[partner]</b>'s face.")]"
 		user.set_is_fucking(partner, GRINDING_FACE_WITH_ANUS, null)
 
 	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/squelch1.ogg',

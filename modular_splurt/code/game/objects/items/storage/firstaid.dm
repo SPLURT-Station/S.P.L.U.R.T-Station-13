@@ -93,4 +93,4 @@
 
 /obj/item/storage/pill_bottle/BEsmaller/PopulateContents()
 	for(var/i in 1 to 10)
-		new /obj/item/reagent_containers/pill/PEsmaller(src)
+		new /obj/item/reagent_containers/pill/BEsmaller(src)

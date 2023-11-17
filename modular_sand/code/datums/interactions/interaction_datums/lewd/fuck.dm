@@ -15,7 +15,7 @@
 	if(user.is_fucking(partner, CUM_TARGET_VAGINA))
 		message = "[pick(
 			"pounds \the <b>[partner]</b>'s pussy.",
-			"shoves [u_His] [genital_name] deep into \the <b>[partner]</b>'s pussy",
+			"shoves [u_His] [genital_name] deep into \the <b>[partner]</b>'s pussy.",
 			"thrusts in and out of \the <b>[partner]</b>'s cunt.",
 			"goes balls deep into \the <b>[partner]</b>'s pussy over and over again.")]"
 	else
@@ -23,7 +23,7 @@
 		user.set_is_fucking(partner, CUM_TARGET_VAGINA, user.getorganslot(ORGAN_SLOT_PENIS))
 
 	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/champ1.ogg',
-						'modular_sand/sound/interactions/champ2.ogg'), 50, 1, -1)
+						'modular_sand/sound/interactions/champ2.ogg'), 70, 1, -1)
 	user.visible_message(span_lewd("<b>\The [user]</b> [message]"), ignored_mobs = user.get_unconsenting())
 	if(user.can_penetrating_genital_cum())
 		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_VAGINA, partner, ORGAN_SLOT_PENIS) //SPLURT edit
@@ -74,7 +74,7 @@
 	var/genital_name = user.get_penetrating_genital_name()
 
 	if(user.is_fucking(partner, CUM_TARGET_BREASTS))
-		message = "[pick("fucks \the <b>[partner]</b>'s' breasts.",
+		message = "[pick("fucks \the <b>[partner]</b>'s breasts.",
 			"grinds [u_His] [genital_name] between \the <b>[partner]</b>'s boobs.",
 			"thrusts into \the <b>[partner]</b>'s tits.",
 			"grabs \the <b>[partner]</b>'s breasts together and presses [u_His] [genital_name] between them.")]"

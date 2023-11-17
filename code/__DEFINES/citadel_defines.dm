@@ -132,6 +132,7 @@
 #define CHASTITY			(1<<18)
 #define STIMULATION			(1<<19)
 #define EDGING				(1<<20)
+#define CUM_ONTO			(1<<21)
 //Note: reminder, if you're a coder adding more bitflags here in the event we add more horny things, the maximum is (1<<23).
 #define TOGGLES_CITADEL 0
 

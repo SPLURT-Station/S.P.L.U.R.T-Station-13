@@ -74,3 +74,5 @@
 	if(D.features["inert_eggs"])
 		AddComponent(/datum/component/ovipositor)
 
+	if(D.features["balls_accessible"])
+		toggle_accessibility(TRUE)

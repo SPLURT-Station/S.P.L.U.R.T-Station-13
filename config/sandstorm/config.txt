@@ -27,3 +27,38 @@ MAX_STUPOR_HYPNO_DURATION 12000
 ## Reveal Everything ##
 ## Uncomment to reveal everything on roundend
 #REVEAL_EVERYTHING
+
+## This allows players to select their laws as a preference and is applied when they join roundstart/latejoin
+## It won't work if there is an active AI or if they're borged
+ALLOW_SILICON_CHOOSING_LAWS
+
+## Lawset preference stuff
+
+## standard-ish laws. These are fairly ok to run
+CHOOSABLE_LAWS Asimov | /datum/ai_laws/default/asimov
+CHOOSABLE_LAWS Asimov++ | /datum/ai_laws/asimovpp
+CHOOSABLE_LAWS P.A.L.A.D.I.N. version 3.5e | /datum/ai_laws/default/paladin
+CHOOSABLE_LAWS P.A.L.A.D.I.N. version 5e | /datum/ai_laws/paladin5
+CHOOSABLE_LAWS Robo-Officer | /datum/ai_laws/robocop
+CHOOSABLE_LAWS Corporate | /datum/ai_laws/default/corporate
+
+## Quirky laws. Shouldn't cause too much harm
+#CHOOSABLE_LAWS Robodoctor | /datum/ai_laws/hippocratic
+#CHOOSABLE_LAWS Station Efficiency | /datum/ai_laws/maintain
+#CHOOSABLE_LAWS Mother Drone | /datum/ai_laws/drone
+#CHOOSABLE_LAWS Live And Let Live | /datum/ai_laws/liveandletlive
+#CHOOSABLE_LAWS Peacekeeper | /datum/ai_laws/peacekeeper
+#CHOOSABLE_LAWS Reportertron | /datum/ai_laws/reporter
+#CHOOSABLE_LAWS H.O.G.A.N. | /datum/ai_laws/hulkamania
+#CHOOSABLE_LAWS T.Y.R.A.N.T. | /datum/ai_laws/tyrant
+
+## Bad idea laws. Probably shouldn't enable these
+#CHOOSABLE_LAWS Syndimov | /datum/ai_laws/syndicate_override
+#CHOOSABLE_LAWS Ninjamov | /datum/ai_laws/ninja_override
+#CHOOSABLE_LAWS Antimov | /datum/ai_laws/antimov
+#CHOOSABLE_LAWS Thermodynamic | /datum/ai_laws/thermodynamic
+#CHOOSABLE_LAWS Ratvar | /datum/ai_laws/ratvar
+#CHOOSABLE_LAWS Guardian of Balance | /datum/ai_laws/balance
+
+## meme laws. Honk
+#CHOOSABLE_LAWS Build a wall | /datum/ai_laws/toupee

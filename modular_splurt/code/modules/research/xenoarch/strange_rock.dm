@@ -42,7 +42,7 @@
 		tryagain = TRUE
 		var/obj/item/xenoarch/clean/hammer/HM = W
 		playsound(loc, HM.usesound, 50, 1, -1)
-		if(!do_after(user,HM.cleanspeed,target = src))
+		if(!do_after(user, HM.cleanspeed, target = src))
 			to_chat(user,"You must stand still to clean.")
 			tryagain = FALSE
 			return
@@ -60,7 +60,7 @@
 		tryagain = TRUE
 		var/obj/item/xenoarch/clean/brush/HM = W
 		playsound(loc, HM.usesound, 50, 1, -1)
-		if(!do_after(user,HM.brushspeed,target = src))
+		if(!do_after(user, HM.brushspeed, target = src))
 			to_chat(user,"You must stand still to clean.")
 			tryagain = FALSE
 			return
@@ -83,7 +83,7 @@
 	if(istype(W,/obj/item/xenoarch/help/scanner))
 		var/obj/item/xenoarch/help/scanner/HM = W
 		playsound(loc, HM.usesound, 50, 1, -1)
-		if(!do_after(user,30,target = src))
+		if(!do_after(user, 30, target = src))
 			to_chat(user,"You must stand still to scan.")
 			return
 		playsound(loc, HM.usesound, 50, 1, -1)
@@ -92,7 +92,7 @@
 	if(istype(W,/obj/item/xenoarch/help/scanneradv))
 		var/obj/item/xenoarch/help/scanneradv/HM = W
 		playsound(loc, HM.usesound, 50, 1, -1)
-		if(!do_after(user,10,target = src))
+		if(!do_after(user, 10, target = src))
 			to_chat(user,"You must stand still to scan.")
 			return
 		playsound(loc, HM.usesound, 50, 1, -1)
@@ -102,7 +102,7 @@
 	if(istype(W,/obj/item/xenoarch/help/measuring))
 		var/obj/item/xenoarch/help/measuring/HM = W
 		playsound(loc, HM.usesound, 50, 1, -1)
-		if(!do_after(user,10,target = src))
+		if(!do_after(user, 10, target = src))
 			to_chat(user,"You must stand still to measure.")
 			return
 		if(!dugdepth)

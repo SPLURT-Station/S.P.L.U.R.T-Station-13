@@ -18,7 +18,7 @@ For example if you have the following channels in tgs4 set up
 
 and you make the call:
 
-send2chat("I sniff butts", CONFIG_GET(string/where_to_send_sniff_butts))
+send2chat(new /datum/tgs_message_content("I sniff butts"), CONFIG_GET(string/where_to_send_sniff_butts))
 
 and the config option is set like:
 
@@ -40,23 +40,22 @@ In TGS3 it will always be sent to all connected designated game chats.
  *
  * message - The message to send.
  * channel_tag - Required. If "", the message with be sent to all connected (Game-type for TGS3) channels. Otherwise, it will be sent to TGS4 channels with that tag (Delimited by ','s).
+ * admin_only - Determines if this communication can only be sent to admin only channels.
  */
-/proc/send2chat(message, channel_tag)
+/proc/send2chat(message, channel_tag, admin_only = FALSE)
 	if(channel_tag == null || !world.TgsAvailable())
 		return
 
 	var/datum/tgs_version/version = world.TgsVersion()
 	if(channel_tag == "" || version.suite == 3)
-		world.TgsTargetedChatBroadcast(message, FALSE)
+		world.TgsTargetedChatBroadcast(message, admin_only)
 		return
-
 	var/list/channels_to_use = list()
 	for(var/I in world.TgsChatChannelInfo())
 		var/datum/tgs_chat_channel/channel = I
 		var/list/applicable_tags = splittext(channel.custom_tag, ",")
-		if(channel_tag in applicable_tags)
+		if((!admin_only || channel.is_admin_channel) && (channel_tag in applicable_tags))
 			channels_to_use += channel
-
 	if(channels_to_use.len)
 		world.TgsChatBroadcast(message, channels_to_use)
 
@@ -69,6 +68,9 @@ In TGS3 it will always be sent to all connected designated game chats.
 /proc/send2adminchat(category, message, embed_links = FALSE)
 	category = replacetext(replacetext(category, "\proper", ""), "\improper", "")
 	message = replacetext(replacetext(message, "\proper", ""), "\improper", "")
-	// if(!embed_links)
-	// 	message = GLOB.has_discord_embeddable_links.Replace(replacetext(message, "`", ""), " ```$1``` ")
+	if(!embed_links)
+		message = GLOB.has_discord_embeddable_links.Replace(replacetext(message, "`", ""), " ```$1``` ")
 	world.TgsTargetedChatBroadcast("[category] | [message]", TRUE)
+
+/// Handles text formatting for item use hints in examine text
+#define EXAMINE_HINT(text) ("<b>" + text + "</b>")

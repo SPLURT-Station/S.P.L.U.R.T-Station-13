@@ -44,11 +44,13 @@
 
 /obj/machinery/hydroponics/constructable/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/simple_rotation, ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS, null, CALLBACK(src, .proc/can_be_rotated))
-	AddComponent(/datum/component/plumbing/simple_demand)
+	AddComponent(/datum/component/plumbing/hydroponics)
 
-/obj/machinery/hydroponics/constructable/proc/can_be_rotated(mob/user, rotation_type)
-	return !anchored
+/obj/machinery/hydroponics/constructable/on_construction()
+	. = ..()
+	if(!anchored)
+		var/datum/component/plumbing/plumbing_component = GetComponent(/datum/component/plumbing)
+		plumbing_component.disable()
 
 /obj/machinery/hydroponics/constructable/RefreshParts()
 	var/tmp_capacity = 0
@@ -673,9 +675,6 @@
 
 /obj/machinery/hydroponics/AltClick(mob/user)
 	. = ..()
-	if(!anchored)
-		update_icon()
-		return FALSE
 	var/warning = alert(user, "Are you sure you wish to empty the tray's nutrient beaker?","Empty Tray Nutrients?", "Yes", "No")
 	if(warning == "Yes" && user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		reagents.clear_reagents()

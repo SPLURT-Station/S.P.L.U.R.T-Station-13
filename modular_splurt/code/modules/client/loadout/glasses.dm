@@ -36,3 +36,23 @@
 /datum/gear/glasses/aviators
 	name = "Aviators"
 	path = /obj/item/clothing/glasses/aviators
+
+/datum/gear/glasses/blueshield/holo
+	name = "Holo Blueshield HUD Glasses"
+	path = /obj/item/clothing/glasses/hud/blueshield/holo
+	restricted_roles = list("Blueshield")
+
+/datum/gear/glasses/blueshield/holo/prescription
+	name = "Prescription Holo Blueshield HUD Glasses"
+	path = /obj/item/clothing/glasses/hud/blueshield/holo/prescription
+	restricted_roles = list("Blueshield")
+
+/datum/gear/glasses/security/sunglasses/holo
+	name = "Holo Secuirity HUD Glasses"
+	path = /obj/item/clothing/glasses/hud/security/sunglasses/holo
+	restricted_roles = list("Security Officer", "Warden", "Head of Security")
+
+/datum/gear/glasses/security/sunglasses/holo/prescription
+	name = "Prescription Holo Secuirity HUD Glasses"
+	path = /obj/item/clothing/glasses/hud/security/sunglasses/holo/prescription
+	restricted_roles = list("Security Officer", "Warden", "Head of Security")

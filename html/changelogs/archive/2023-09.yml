@@ -66,3 +66,40 @@
 2023-09-13:
   Vhariik:
   - bugfix: fixed syndie modsuit visor overlay
+2023-09-21:
+  SandPoot:
+  - bugfix: The autodoc can no longer be spammed to apply multiple implants at once.
+  - refactor: Refactored some autodoc code.
+  - balance: You need to get close to see any information about the machine.
+2023-09-23:
+  BongaTheProto:
+  - tweak: makes the autocryo subsystem delete ghosts that have been disconnected
+      for a certain amount of time
+  LeChatGuid2:
+  - tweak: Hunting rifle can now hold a bayonet
+  - imageadd: added new diagonal bayonet overlay
+  SandPoot:
+  - code_imp: Adds signals for sex to be used by coders in the future.
+  SpaceCheetah:
+  - rscdel: automated hydroponics tray remove_unfasten_wrench override (duplicate
+      behavior, extra messages)
+  - bugfix: prevent unanchored hydroponics trays from accepting plumbing reagents
+  - bugfix: removed a use-after-delete caused by calling create_reagents twice in
+      automated hydroponics trays, which broke plumbing
+  - tweak: allow hydroponics trays to accept plumbing reagents from all directions
+  - rscdel: remove tray rotations (sprite didn't update anyway, and was only necessary
+      for plumbing)
+  Yawet330:
+  - rscadd: Zombie Quirk
+  - rscdel: Zombie races
+  - rscdel: 'Stupid privacy concern #240240'
+  Zattarra:
+  - rscadd: Added stepping preference toggle, which allows or disables macro - micro
+      stomping interactions.
+2023-09-24:
+  remuluson2:
+  - rscadd: Added Messy trait, allowing you to cover stuff with cum while not meeting
+      size requirements.
+2023-09-28:
+  SandPoot:
+  - rscadd: Added importing/exporting characters, they will be saved on your computer.

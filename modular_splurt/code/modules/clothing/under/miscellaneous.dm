@@ -87,6 +87,17 @@
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 	body_parts_covered = CHEST
 
+/obj/item/clothing/under/blutigen_undergarment
+	name = "Blutigen Undergarments"
+	desc = "It'd barely cover your chest and groin."
+	icon = 'modular_splurt/icons/obj/clothing/uniforms.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/uniform.dmi'
+	icon_state = "blutigen_undergarment"
+	item_state = "blutigen_undergarment"
+	can_adjust = FALSE
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
+	body_parts_covered = CHEST
+
 /obj/item/clothing/under/bunnysuit/white
 	name = "white bunny outfit"
 	desc = "A simple white bunny outfit."

@@ -40,6 +40,10 @@
 	name = "Performers one piece"
 	path = /obj/item/clothing/under/performer
 
+/datum/gear/uniform/blutigen_undergarment
+	name = "Blutigen Undergarments"
+	path = /obj/item/clothing/under/blutigen_undergarment
+
 // Suggestion #151
 /datum/gear/uniform/waiter
 	name = "waiter's outfit"

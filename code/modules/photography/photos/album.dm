@@ -3,12 +3,14 @@
  */
 /obj/item/storage/photo_album
 	name = "photo album"
+	desc = "A big book used to store photos and mementos."
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "album"
-	item_state = "briefcase"
-	lefthand_file = 'icons/mob/inhands/equipment/briefcase_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/briefcase_righthand.dmi'
+	item_state = "album"
+	lefthand_file = 'icons/mob/inhands/misc/books_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/misc/books_righthand.dmi'
 	resistance_flags = FLAMMABLE
+	w_class = WEIGHT_CLASS_SMALL
 	var/persistence_id
 
 /obj/item/storage/photo_album/Initialize(mapload)
@@ -54,22 +56,29 @@
 				qdel(P)
 
 /obj/item/storage/photo_album/HoS
+	name = "photo album (Head of Security)"
 	persistence_id = "HoS"
 
 /obj/item/storage/photo_album/RD
+	name = "photo album (Research Director)"
 	persistence_id = "RD"
 
 /obj/item/storage/photo_album/HoP
+	name = "photo album (Head of Personnel)"
 	persistence_id = "HoP"
 
 /obj/item/storage/photo_album/Captain
+	name = "photo album (Captain)"
 	persistence_id = "Captain"
 
 /obj/item/storage/photo_album/CMO
+	name = "photo album (Chief Medical Officer)"
 	persistence_id = "CMO"
 
 /obj/item/storage/photo_album/QM
+	name = "photo album (Quartermaster)"
 	persistence_id = "QM"
 
 /obj/item/storage/photo_album/CE
+	name = "photo album (Chief Engineer)"
 	persistence_id = "CE"

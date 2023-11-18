@@ -34,6 +34,7 @@
 	var/list/extra_titles = list(
 		"Security Commander",
 		"Head of Slutcurity",
+		"Head of Studcurity",
 		"Commissar"
 	)
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
@@ -60,7 +61,8 @@
 	alt_titles = list(
 		"Medical Director",
 		"Medical Administrator",
-		"Chief Heal Slut"
+		"Chief Heal Slut",
+		"Chief Heal Stud"
 	) // Sandcode do not have alt titles for CMO at the moment.
 
 
@@ -232,7 +234,8 @@
 		"Alchemist",
 		"Apothecarist",
 		"Chemical Plumber",
-		"Chemi-Slut"
+		"Chemi-Slut",
+		"Chemi-Stud"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -243,7 +246,8 @@
 		"Medical Intern",
 		"Medical Resident",
 		"Medtech",
-		"Medi-Slut"
+		"Medi-Slut",
+		"Medi-Stud"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -259,6 +263,7 @@
 		"Rental Mommy",
 		"Rental Daddy",
 		"Psycholo-Slut",
+		"Psycholo-Stud",
 		"Sexual Advisor"
 	)
 	LAZYADD(alt_titles, extra_titles)
@@ -267,7 +272,8 @@
 /datum/job/geneticist/New()
 	var/list/extra_titles = list(
 		"Genetics Researcher",
-		"Gene-Slut"
+		"Gene-Slut",
+		"Gene-Stud"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -275,7 +281,8 @@
 /datum/job/paramedic/New()
 	var/list/extra_titles = list(
 		"Trauma Team",
-		"Para-Slut"
+		"Para-Slut",
+		"Para-Stud"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -284,7 +291,8 @@
 	var/list/extra_titles = list(
 		"Microbiologist",
 		"Biochemist",
-		"Viro-Slut"
+		"Viro-Slut",
+		"Viro-Stud"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -295,6 +303,7 @@
 	var/list/extra_titles = list(
 		"Gumshoe",
 		"Slutective",
+		"Studective",
 		"Van Dorn Agent",
 		"Forensic Investigator",
 		"Cinder Dick",
@@ -311,7 +320,8 @@
 		"Probation Officer",
 		"Guardsman",
 		"Police Officer",
-		"Slutcurity Officer"
+		"Slutcurity Officer",
+		"Studcurity Officer"
 	)
 	var/list/rem_titles = list(
 		"Peacekeeper"
@@ -370,7 +380,8 @@
 		"Maximum Security Prisoner",
 		"Supermax Prisoner",
 		"Protective Custody Prisoner",
-		"Prison Slut"
+		"Prison Slut",
+		"Prison Stud"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()

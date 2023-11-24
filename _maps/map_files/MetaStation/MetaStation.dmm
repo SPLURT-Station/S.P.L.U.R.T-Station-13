@@ -43275,11 +43275,11 @@
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
 "cSk" = (
-/obj/machinery/atmospherics/pipe/manifold/general/visible{
-	dir = 1
-	},
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 10
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
@@ -43686,20 +43686,7 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
-"cSX" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 4
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/white,
-/area/science/xenobiology)
 "cSZ" = (
-/obj/machinery/atmospherics/components/binary/pump{
-	dir = 8
-	},
 /obj/machinery/firealarm{
 	pixel_y = 26
 	},
@@ -43707,14 +43694,18 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 4;
+	name = "input port pump"
+	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "cTa" = (
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 4
-	},
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 6
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
@@ -43880,6 +43871,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
+/obj/machinery/atmospherics/pipe/simple/general/visible,
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
 "cTt" = (
@@ -44505,6 +44497,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/general/visible,
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "daE" = (
@@ -44913,6 +44906,9 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
 	},
+/obj/structure/sign/xenobio_guide{
+	pixel_y = 32
+	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "dcf" = (
@@ -45139,6 +45135,13 @@
 	icon_state = "1-2"
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/button/door{
+	id = "xenobio_e";
+	name = "Containment Blast Doors";
+	pixel_y = 4;
+	req_access_txt = "55"
+	},
+/obj/structure/table/glass,
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
 "dcx" = (
@@ -45591,6 +45594,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/simple/general/visible,
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "ddo" = (
@@ -45653,6 +45657,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/simple/general/visible,
 /turf/open/floor/plating,
 /area/science/xenobiology)
 "ddv" = (
@@ -48609,6 +48614,19 @@
 	},
 /turf/open/floor/plating,
 /area/cargo/storage)
+"dNg" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "xenobio_e";
+	name = "containment blast door"
+	},
+/turf/open/floor/plasteel/white,
+/area/science/xenobiology)
 "dNA" = (
 /obj/machinery/door/airlock/maintenance{
 	req_one_access_txt = "12;27;76"
@@ -54219,6 +54237,12 @@
 	},
 /turf/closed/wall/r_wall,
 /area/maintenance/disposal/incinerator)
+"gYr" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+	dir = 1
+	},
+/turf/open/floor/engine,
+/area/science/xenobiology)
 "gZf" = (
 /obj/structure/table,
 /obj/item/paper_bin{
@@ -85910,6 +85934,14 @@
 "xVW" = (
 /turf/closed/wall/r_wall,
 /area/ai_monitored/aisat/exterior)
+"xWc" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/preopen{
+	id = "xenobio_e";
+	name = "containment blast door"
+	},
+/turf/open/floor/plating,
+/area/science/xenobiology)
 "xWg" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable/yellow{
@@ -118603,7 +118635,7 @@ aaf
 aaf
 cRe
 cZa
-cRe
+cSt
 cRi
 dbX
 dcg
@@ -119123,7 +119155,7 @@ dbZ
 dci
 dcu
 cRi
-cRe
+xWc
 cRi
 cSg
 lbz
@@ -120146,7 +120178,7 @@ dvY
 aaa
 aaa
 aaf
-cRe
+xWc
 cRS
 dcm
 dcv
@@ -120178,7 +120210,7 @@ ddx
 ddz
 daR
 cZv
-cRe
+xWc
 aaa
 aaa
 aaa
@@ -120403,8 +120435,8 @@ dvY
 aaa
 aaa
 aaf
-cRe
-cRS
+xWc
+dNg
 dcn
 dcw
 cRk
@@ -120422,13 +120454,13 @@ nBJ
 uiZ
 cSV
 cSJ
-cSX
+cSJ
 ddm
 cTt
 daA
 cSn
 cSn
-cSn
+daH
 daL
 cRi
 daQ
@@ -120660,7 +120692,7 @@ dvY
 aaa
 aaa
 aaf
-cRe
+xWc
 cRS
 dco
 dcx
@@ -120684,15 +120716,15 @@ ddn
 cTs
 ddu
 daD
-cSn
-daH
+daB
+gYr
 daK
 cRi
 bIv
 ddz
 ddB
 cZv
-cRe
+xWc
 aaa
 aaf
 aaa
@@ -122203,9 +122235,9 @@ aac
 aaa
 aaa
 cRi
-cRe
-cRe
-cRe
+xWc
+xWc
+xWc
 cRi
 cRi
 cRi

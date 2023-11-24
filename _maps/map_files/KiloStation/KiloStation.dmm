@@ -2185,10 +2185,10 @@
 /turf/open/floor/engine,
 /area/ai_monitored/turret_protected/aisat/foyer)
 "adT" = (
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable{
-	icon_state = "4-8"
+	icon_state = "0-4"
 	},
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/science/xenobiology)
 "adU" = (
@@ -3546,9 +3546,6 @@
 	name = "xenobiology camera";
 	network = list("ss13","rd","xeno")
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /turf/open/floor/circuit/telecomms,
 /area/science/xenobiology)
 "agg" = (
@@ -3572,9 +3569,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
 	external_pressure_bound = 120;
 	name = "server vent"
-	},
-/obj/structure/cable{
-	icon_state = "4-8"
 	},
 /turf/open/floor/circuit/telecomms,
 /area/science/xenobiology)
@@ -73642,12 +73636,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
-"cqw" = (
-/obj/structure/sign/warning/deathsposal{
-	layer = 4
-	},
-/turf/closed/wall,
-/area/science/xenobiology)
 "cqx" = (
 /obj/structure/disposalpipe/trunk,
 /obj/machinery/disposal/bin{
@@ -84108,6 +84096,11 @@
 /obj/effect/spawner/bundle/costume/maid,
 /turf/open/floor/wood,
 /area/commons/vacant_room/office)
+"hDO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/departments/xenobio,
+/turf/closed/wall/r_wall,
+/area/maintenance/starboard/fore)
 "hNk" = (
 /turf/closed/wall/r_wall/rust,
 /area/security/prison)
@@ -84614,6 +84607,9 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
+"kwY" = (
+/turf/open/floor/circuit/telecomms,
+/area/science/xenobiology)
 "kzw" = (
 /obj/structure/chair/office/dark{
 	dir = 8
@@ -85181,6 +85177,17 @@
 /obj/item/hilbertshotel/ghostdojo,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit/departure_lounge)
+"qcu" = (
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "xeno5";
+	name = "Creature Cell 5"
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/science/xenobiology)
 "qdz" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -85546,6 +85553,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/starboard)
+"sVz" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/r_wall,
+/area/maintenance/starboard/fore)
 "tkP" = (
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple{
@@ -121879,8 +121890,8 @@ bfq
 iMq
 bbx
 alB
-arx
-arx
+sVz
+hDO
 alB
 alB
 alB
@@ -122136,8 +122147,8 @@ aWJ
 ayv
 aWJ
 alB
-bdp
-bhl
+kwY
+kwY
 alB
 bfq
 juX
@@ -122648,7 +122659,7 @@ alB
 alB
 bfM
 bfM
-bfM
+qcu
 aWR
 agh
 agQ
@@ -123170,7 +123181,7 @@ aWR
 acw
 bgn
 bgB
-cqw
+aWR
 bgM
 bgn
 bVA

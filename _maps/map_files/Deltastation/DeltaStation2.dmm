@@ -40982,6 +40982,9 @@
 "cTU" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/chem_master,
+/obj/structure/sign/xenobio_guide{
+	pixel_y = 32
+	},
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
 "cTV" = (
@@ -45288,7 +45291,7 @@
 	pixel_y = -22
 	},
 /obj/effect/turf_decal/delivery,
-/obj/machinery/atmospherics/components/binary/valve/digital{
+/obj/machinery/atmospherics/components/binary/pump{
 	dir = 8
 	},
 /turf/open/floor/plasteel,

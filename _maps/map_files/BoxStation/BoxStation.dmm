@@ -3232,6 +3232,9 @@
 	},
 /obj/structure/chair/comfy/black,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 8
+	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "alo" = (
@@ -3536,6 +3539,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 5
+	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "alW" = (
@@ -3547,6 +3553,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 8
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
@@ -27089,6 +27098,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/general/hidden,
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "bIu" = (
@@ -27260,6 +27270,9 @@
 /area/science/xenobiology)
 "bIO" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 8
+	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "bIP" = (
@@ -27634,6 +27647,7 @@
 	name = "test chamber blast door"
 	},
 /obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/simple/general/hidden,
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "bJJ" = (
@@ -28214,6 +28228,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
+/obj/machinery/atmospherics/pipe/simple/general/hidden,
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
 "bKY" = (
@@ -28669,6 +28684,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/general/hidden,
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "bMi" = (
@@ -29941,6 +29957,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/structure/sign/xenobio_guide{
+	pixel_y = -30
+	},
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
 "bPA" = (
@@ -29960,6 +29979,9 @@
 	dir = 9
 	},
 /obj/machinery/portable_atmospherics/canister/bz,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
 "bPF" = (
@@ -44682,6 +44704,15 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/circuit)
+"dNl" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 10
+	},
+/turf/open/floor/plasteel/white,
+/area/science/xenobiology)
 "dNn" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -54956,6 +54987,15 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/white,
 /area/science/circuit)
+"mNG" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 5
+	},
+/turf/open/floor/plasteel/white,
+/area/science/xenobiology)
 "mOh" = (
 /obj/structure/chair/office/dark{
 	dir = 8
@@ -63651,6 +63691,12 @@
 	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/service/kitchen)
+"uKk" = (
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white,
+/area/science/xenobiology)
 "uMb" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
@@ -66942,6 +66988,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
+"xBH" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos,
+/turf/open/floor/engine,
+/area/science/xenobiology)
 "xBN" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 4
@@ -110627,12 +110677,12 @@ bDb
 bEm
 bEm
 cBz
-bEm
+xBH
 bJI
 bKX
 bMh
 bIt
-bOx
+mNG
 bPz
 bJN
 bRU
@@ -111403,7 +111453,7 @@ bJM
 bLc
 bMi
 bNo
-bOx
+dNl
 alV
 bQM
 bMi
@@ -111918,7 +111968,7 @@ bJN
 bMm
 bNp
 bOx
-bMi
+uKk
 bQN
 bRZ
 bOx

@@ -533,7 +533,7 @@
 
 /datum/supply_pack/misc/goner_yellow
 	name = "Yellow Trencher Outfits"
-	desc = "Contains an import of five trench uniforms, coats, gas masks, jackboots, four helmets and one officer cap. Made by cursed Yellows."
+	desc = "Contains an import of five trench uniforms, coats, gas masks, jackboots, four helmets and one officer cap. Made by damn Yellows."
 	cost = 2000
 	contraband = TRUE
 	contains = list(

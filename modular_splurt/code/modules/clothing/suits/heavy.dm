@@ -137,6 +137,22 @@
 	air_contents.set_moles(GAS_PLASMA, (3*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
 	return
 
+/obj/item/tank/internals/doublenitrogen
+	name = "double nitrogen tank"
+	desc = "Two tanks of nitrogen stuck together. Double the nitrogen double the fun"
+	icon_state = "nitrogencbrn"
+	icon = 'modular_splurt/icons/obj/items_and_weapons.dmi'
+	lefthand_file = 'modular_splurt/icons/mob/inhands/items_lefthand.dmi'
+	righthand_file = 'modular_splurt/icons/mob/inhands/items_righthand.dmi'
+	distribute_pressure = TANK_DEFAULT_RELEASE_PRESSURE
+	force = 10
+	dog_fashion = null
+	volume = 140
+
+/obj/item/tank/internals/doublenitrogen/populate_gas()
+	air_contents.set_moles(GAS_N2, (3*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C))
+	return
+
 //research nods
 
 /datum/design/cbrn/cbrncivi
@@ -239,12 +255,22 @@
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_SERVICE | DEPARTMENTAL_FLAG_CARGO | DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_MEDICAL
 
+/datum/design/cbrn/nitrotank
+	name = "Double Nitrogen Tank"
+	desc = "A Double Nitrogen tank."
+	id = "cbrn_nitrogen"
+	build_type = PROTOLATHE
+	materials = list(/datum/material/iron = 200)
+	build_path = /obj/item/tank/internals/doublenitrogen
+	category = list("Equipment")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY | DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_SERVICE | DEPARTMENTAL_FLAG_CARGO | DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_MEDICAL
+
 /datum/techweb_node/cbrn
 	id = "cbrn"
 	display_name = "CBRN gear"
 	description = "Chemical, Biological, Radiological and Nuclear protective gear"
 	prereq_ids = list("engineering")
-	design_ids = list("cbrn_civi", "cbrn_sec", "cbrn_engi", "cbrn_serv", "cbrn_cargo", "cbrn_sci", "cbrn_med", "cbrn_mask", "cbrn_boots", "cbrn_gloves", "cbrn_glovesengi", "cbrn_hood", "cbrn_oxy", "cbrn_plasma")
+	design_ids = list("cbrn_civi", "cbrn_sec", "cbrn_engi", "cbrn_serv", "cbrn_cargo", "cbrn_sci", "cbrn_med", "cbrn_mask", "cbrn_boots", "cbrn_gloves", "cbrn_glovesengi", "cbrn_hood", "cbrn_oxy", "cbrn_plasma","cbrn_nitrogen")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 
 /datum/techweb_node/mopp

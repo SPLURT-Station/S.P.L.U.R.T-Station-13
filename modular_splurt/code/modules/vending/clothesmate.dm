@@ -32,7 +32,11 @@
 		/obj/item/clothing/under/suit/helltaker = 3,
 		/obj/item/clothing/under/suit/helltaker/skirt = 3,
 		/obj/item/clothing/suit/invisijacket = 3,
-		/obj/item/clothing/head/invisihat = 3
+		/obj/item/clothing/head/invisihat = 3,
+		/obj/item/clothing/wrists/armwarmer = 3,
+		/obj/item/clothing/wrists/armwarmer/long = 3,
+		/obj/item/clothing/wrists/armwarmer_striped = 3,
+		/obj/item/clothing/wrists/armwarmer_striped/long = 3
 	)
 	var/list/extra_contraband = list(
 		/obj/item/clothing/under/rank/civilian/lawyer/galaxy_red = 3,

@@ -54470,6 +54470,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/general/visible/layer1{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark,
 /area/science/xenobiology)
 "ivO" = (
@@ -56269,7 +56272,10 @@
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "lhA" = (
-/obj/machinery/atmospherics/pipe/manifold/general/visible,
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/general/visible/layer1,
 /turf/open/floor/plasteel/dark,
 /area/science/xenobiology)
 "liR" = (
@@ -56477,6 +56483,9 @@
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/general/visible/layer1{
+	dir = 5
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/xenobiology)
@@ -57776,6 +57785,9 @@
 /area/command/heads_quarters/hop)
 "nxT" = (
 /obj/machinery/smartfridge/extract/preloaded,
+/obj/structure/sign/xenobio_guide{
+	pixel_x = 32
+	},
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
 "nyB" = (
@@ -58790,6 +58802,9 @@
 	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/simple/general/visible/layer1{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark,
 /area/science/xenobiology)
 "oSP" = (
@@ -59505,6 +59520,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/general/visible/layer1{
+	dir = 8
+	},
 /turf/open/floor/plating,
 /area/science/xenobiology)
 "pWF" = (
@@ -59596,13 +59614,13 @@
 /turf/open/floor/plating,
 /area/commons/storage/emergency/starboard)
 "qcD" = (
-/obj/machinery/atmospherics/components/unary/portables_connector/visible,
 /obj/effect/turf_decal/tile/green{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/green{
 	dir = 4
 	},
+/obj/machinery/atmospherics/components/unary/portables_connector/visible/layer1,
 /turf/open/floor/plasteel/dark,
 /area/science/xenobiology)
 "qcH" = (
@@ -60725,6 +60743,9 @@
 "rMB" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on/layer1{
+	dir = 8
 	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
@@ -64632,7 +64653,9 @@
 /turf/open/floor/carpet,
 /area/service/chapel/main/monastery)
 "xxw" = (
-/obj/machinery/atmospherics/components/binary/pump,
+/obj/machinery/atmospherics/components/binary/pump/layer1{
+	dir = 1
+	},
 /turf/open/floor/plasteel/dark,
 /area/science/xenobiology)
 "xxK" = (

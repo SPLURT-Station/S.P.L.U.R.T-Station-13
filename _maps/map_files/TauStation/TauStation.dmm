@@ -18140,6 +18140,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/general/visible/layer1{
+	dir = 6
+	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "gll" = (
@@ -18573,6 +18576,9 @@
 "guN" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/general/visible/layer1{
+	dir = 8
 	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
@@ -28476,7 +28482,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/atmospherics/components/binary/pump{
+/obj/machinery/atmospherics/components/binary/pump/layer1{
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
@@ -29098,8 +29104,8 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/manifold/general/visible{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 6
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/xenobiology)
@@ -34133,6 +34139,9 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/general/visible/layer1{
+	dir = 8
+	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "lPz" = (
@@ -38015,6 +38024,9 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
 	},
+/obj/structure/sign/xenobio_guide{
+	pixel_x = -32
+	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "nck" = (
@@ -40391,9 +40403,6 @@
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet)
 "nUv" = (
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 6
-	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 4
 	},
@@ -54285,6 +54294,10 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on/layer1{
+	dir = 8;
+	pixel_y = 1
+	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "sRU" = (
@@ -57455,8 +57468,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/manifold/general/visible{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/general/visible/layer1,
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/xenobiology)
@@ -59677,7 +59691,7 @@
 /turf/open/floor/plasteel,
 /area/engineering/lobby)
 "uFf" = (
-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+/obj/machinery/atmospherics/components/unary/portables_connector/visible/layer1{
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark/side{
@@ -63656,9 +63670,6 @@
 /turf/open/floor/plating,
 /area/cargo/office)
 "vVX" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer{
-	dir = 1
-	},
 /turf/open/floor/plasteel/dark/corner{
 	dir = 4
 	},

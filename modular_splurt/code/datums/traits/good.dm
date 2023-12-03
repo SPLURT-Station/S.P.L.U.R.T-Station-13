@@ -1,22 +1,7 @@
-//Main code edits
-/datum/quirk/photographer
-	desc = "You carry your camera and personal photo album everywhere you go, and you're quicker at taking pictures."
-
-/datum/quirk/photographer/on_spawn()
-	. = ..()
-	var/mob/living/carbon/human/H = quirk_holder
-	var/obj/item/storage/photo_album/photo_album = new(get_turf(H))
-	H.put_in_hands(photo_album)
-	H.equip_to_slot(photo_album, ITEM_SLOT_BACKPACK)
-	photo_album.persistence_id = "personal_[H.mind.key]" // this is a persistent album, the ID is tied to the account's key to avoid tampering
-	photo_album.persistence_load()
-	photo_album.name = "[H.real_name]'s photo album"
-
-//Own stuff
 /datum/quirk/tough
 	name = "Tough"
 	desc = "Your body is abnormally enduring and can take 10% more damage."
-	value = 4
+	value = 2
 	medical_record_text = "Patient has an abnormally high capacity for injury."
 	gain_text = span_notice("You feel very sturdy.")
 	lose_text = span_notice("You feel less sturdy.")

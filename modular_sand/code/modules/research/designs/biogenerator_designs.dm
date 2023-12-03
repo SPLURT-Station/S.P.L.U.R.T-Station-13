@@ -7,7 +7,7 @@
 	category = list("initial","Botany Chemicals")
 
 /datum/design/ash_bottle
-	name = "Ash Bottle"
+	name = "10u Ash"
 	id = "ash_bottle"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 15)
@@ -15,7 +15,7 @@
 	category = list("initial","Botany Chemicals")
 
 /datum/design/diethylamine_bottle
-	name = "Diethylamine Bottle"
+	name = "10u Diethylamine"
 	id = "diethylamine_bottle"
 	build_type = BIOGENERATOR
 	materials = list(/datum/material/biomass = 100)

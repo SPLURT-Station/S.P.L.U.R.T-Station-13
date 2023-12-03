@@ -1,3 +1,4 @@
+/*
 /obj/item/shibola
 	name = "Shibari Bola"
 	desc = "A set of skillfully entwined bondage ropes, capable of being thrown at unsuspecting targets. Clothing items may be hidden inside of it, forcing the clothing to be worn on a successful hit. Additionally, bondage ropes may be added to bind the target on hit."
@@ -82,3 +83,4 @@
 		visible_message("<span class='danger'>\The [src] slips downwards, causing [C] to trip!</span>")
 		qdel(src)
 		return
+*/

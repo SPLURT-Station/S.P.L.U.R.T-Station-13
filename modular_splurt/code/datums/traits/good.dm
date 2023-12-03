@@ -177,6 +177,7 @@
 	var/mood_category ="cloth_eaten"
 	mob_trait = TRAIT_CLOTH_EATER
 
+/*
 /datum/quirk/ropebunny
 	name = "Rope Bunny"
 	desc = "You have mastered all forms of bondage! You can create bondage rope out of cloth, and bondage bolas out of bondage rope!"
@@ -195,6 +196,7 @@
 	var/datum/action/ropebunny/conversion/C = locate() in H.actions
 	C.Remove(H)
 	. = ..()
+*/
 
 /datum/quirk/hallowed
 	name = "Hallowed"

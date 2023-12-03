@@ -485,6 +485,7 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 
 // For the Shibari Bola
 
+/*
 /obj/item/restraints/bondage_rope/proc/bola(mob/living/carbon/C)
 	switch(rope_target)
 		if(ROPE_TARGET_HANDS_IN_FRONT, ROPE_TARGET_HANDS_BEHIND)
@@ -520,3 +521,4 @@ GLOBAL_LIST_INIT(bondage_rope_slowdowns, list(
 					rope.set_rope_slowdown(C)
 					reset_rope_state()
 					qdel(src)
+*/

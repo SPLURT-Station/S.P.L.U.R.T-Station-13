@@ -1608,6 +1608,7 @@
 	action_mob.remove_filter("rad_fiend_glow")
 	action_mob.add_filter("rad_fiend_glow", 1, list("type" = "outline", "color" = glow_color+"30", "size" = glow_range))
 
+/*
 /datum/action/ropebunny/conversion
 	name = "Convert Bondage"
 	desc = "Convert five cloth into bondage rope, or convert bondage ropes into bondage bolas."
@@ -1636,6 +1637,7 @@
 		return
 	else
 		to_chat(H, span_warning("You must either be holding cloth or a bondage rope to use this ability!"))
+*/
 
 /mob/living/proc/alterlimbs()
 	set name = "Alter Limbs"

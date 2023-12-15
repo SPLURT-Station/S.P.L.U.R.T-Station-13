@@ -1069,6 +1069,7 @@
 		"Haydee" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "haydeepk"), // SPLURT Addon
 		"Meka" = image(icon = 'modular_splurt/icons/mob/robots_32x64.dmi', icon_state = "mekapeace"), // SPLURT Addon
 		"Feline" = image(icon = 'modular_splurt/icons/mob/widerobot.dmi', icon_state = "vixpk-b"), // SPLURT Addon (ChompS Port)
+		"Raptor V-4" = image(icon = 'modular_splurt/icons/mob/robots_64x45.dmi', icon_state = "peaceraptor-b"), // SPLURT Addon (ChompS Port)
 		"Handy" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "handy_peace") // SPLURT Addon (Fallout 13)
 	))
 	var/peace_borg_icon = show_radial_menu(R, R , peace_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
@@ -1147,6 +1148,11 @@
 			cyborg_base_icon = "vixpk"
 			cyborg_icon_override = 'modular_splurt/icons/mob/widerobot.dmi'
 			sleeper_overlay = "vixpk-sleeper"
+			dogborg = TRUE
+		if("Raptor V-4") // SPLURT Addon (ChompS Port)
+			cyborg_base_icon = "peaceraptor"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots_64x45.dmi'
+			sleeper_overlay = "peaceraptor-sleeper"
 			dogborg = TRUE
 		else
 			return FALSE

@@ -1,15 +1,17 @@
 /datum/interaction/lewd/oral
 	description = "Go down on them."
-	required_from_user = INTERACTION_REQUIRE_MOUTH
-	required_from_target_exposed = INTERACTION_REQUIRE_VAGINA
+	require_user_mouth = TRUE
+	require_target_vagina = REQUIRE_EXPOSED
 	write_log_user = "gave head to"
 	write_log_target = "was given head by"
 	interaction_sound = null
+	max_distance = 1
 	var/fucktarget = "vagina"
 
 /datum/interaction/lewd/oral/blowjob
 	description = "Suck them off."
-	required_from_target_exposed = INTERACTION_REQUIRE_PENIS
+	require_target_vagina = null
+	require_target_penis = REQUIRE_EXPOSED
 	fucktarget = "penis"
 
 /datum/interaction/lewd/oral/display_interaction(mob/living/user, mob/living/partner)

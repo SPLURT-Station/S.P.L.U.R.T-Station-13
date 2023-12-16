@@ -436,13 +436,13 @@ GLOBAL_LIST_EMPTY(explosions)
 
 		if(dist < dev)
 			T.color = "red"
-			T.maptext = MAPTEXT("Dev")
+			T.maptext = "Dev"
 		else if (dist < heavy)
 			T.color = "yellow"
-			T.maptext = MAPTEXT("Heavy")
+			T.maptext = "Heavy"
 		else if (dist < light)
 			T.color = "blue"
-			T.maptext = MAPTEXT("Light")
+			T.maptext = "Light"
 		else
 			continue
 

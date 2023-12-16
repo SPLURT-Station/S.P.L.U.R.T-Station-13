@@ -108,10 +108,8 @@
 		mobility_flags |= MOBILITY_STAND
 		lying = 0
 
-	if(restrained || incapacitated())
-		mobility_flags &= ~MOBILITY_UI
-		if(should_be_lying)
-			mobility_flags &= ~MOBILITY_PULL
+	if(should_be_lying || restrained || incapacitated())
+		mobility_flags &= ~(MOBILITY_UI|MOBILITY_PULL)
 	else
 		mobility_flags |= MOBILITY_UI|MOBILITY_PULL
 

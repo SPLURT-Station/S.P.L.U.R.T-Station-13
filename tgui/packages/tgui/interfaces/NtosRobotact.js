@@ -213,16 +213,13 @@ export const NtosRobotactContent = (props, context) => {
               )}
               {tab_sub === 2 && (
                 <Section>
-                  {borgUpgrades.filter((upgrade, index, arr) =>
-                    arr.indexOf(upgrade) === index).map(upgrade => {
-                    const upgradeCount = borgUpgrades.filter(u =>
-                      u === upgrade).length;
-                    return (
-                      <Box mb={1} key={upgrade}>
-                        {upgrade} {upgradeCount > 1 ? `x${upgradeCount}` : ''}
-                      </Box>
-                    );
-                  })}
+                  {borgUpgrades.map(upgrade => (
+                    <Box
+                      mb={1}
+                      key={upgrade}>
+                      {upgrade}
+                    </Box>
+                  ))}
                 </Section>
               )}
               {tab_sub === 3 && (

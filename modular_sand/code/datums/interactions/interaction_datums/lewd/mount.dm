@@ -1,8 +1,9 @@
 /datum/interaction/lewd/mount
 	description = "Mount with your pussy."
 	interaction_sound = null
-	required_from_user_exposed = INTERACTION_REQUIRE_VAGINA
-	required_from_target_exposed = INTERACTION_REQUIRE_PENIS
+	require_user_vagina = REQUIRE_EXPOSED
+	require_target_penis = REQUIRE_EXPOSED
+	max_distance = 1
 
 /datum/interaction/lewd/mount/display_interaction(mob/living/user, mob/living/partner)
 	var/message
@@ -26,8 +27,9 @@
 /datum/interaction/lewd/mountass
 	description = "Mount with your ass."
 	interaction_sound = null
-	required_from_user_exposed = INTERACTION_REQUIRE_ANUS
-	required_from_target_exposed = INTERACTION_REQUIRE_PENIS
+	require_user_anus = REQUIRE_EXPOSED
+	require_target_penis = REQUIRE_EXPOSED
+	max_distance = 1
 
 /datum/interaction/lewd/mountass/display_interaction(mob/living/user, mob/living/partner)
 	var/message
@@ -51,8 +53,9 @@
 /datum/interaction/lewd/mountface
 	description = "Ass to face."
 	interaction_sound = null
-	required_from_user_exposed = INTERACTION_REQUIRE_ANUS
-	required_from_target = INTERACTION_REQUIRE_MOUTH
+	require_target_mouth = TRUE
+	require_user_anus = REQUIRE_EXPOSED
+	max_distance = 1
 
 /datum/interaction/lewd/mountface/display_interaction(mob/living/user, mob/living/partner)
 	var/message
@@ -75,9 +78,10 @@
 	user.handle_post_sex(LOW_LUST, null, partner)
 
 /datum/interaction/lewd/thighs
-	description = "Smother them using your penis."
-	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
-	required_from_target = INTERACTION_REQUIRE_MOUTH
+	description = "Smother them using your %COCK%."
+	max_distance = 1
+	require_user_penis = REQUIRE_EXPOSED
+	require_target_mouth = TRUE
 	interaction_sound = null
 	write_log_user = "thigh-trapped (penis)"
 	write_log_target = "was smothered (penis) by"
@@ -85,7 +89,8 @@
 
 /datum/interaction/lewd/thighs/vagina
 	description = "Smother them using your vagina."
-	required_from_user_exposed = INTERACTION_REQUIRE_VAGINA
+	require_user_penis = REQUIRE_NONE
+	require_user_vagina = REQUIRE_EXPOSED
 	write_log_user = "thigh-trapped (vagina)"
 	write_log_target = "was smothered (vagina) by"
 	fucktarget = "vagina"

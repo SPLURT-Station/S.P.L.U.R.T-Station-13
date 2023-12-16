@@ -57,24 +57,25 @@
 	. = ..()
 	if(max_mod_capacity)
 		. += "<b>[get_remaining_mod_capacity()]%</b> mod capacity remaining."
-		for(var/obj/item/borg/upgrade/modkit/M in modkits)
+		for(var/A in get_modkits())
+			var/obj/item/borg/upgrade/modkit/M = A
 			. += "<span class='notice'>There is \a [M] installed, using <b>[M.cost]%</b> capacity.</span>"
 
 /obj/item/gun/energy/kinetic_accelerator/crowbar_act(mob/living/user, obj/item/I)
 	. = TRUE
 	if(modkits.len)
-		to_chat(user, span_notice("You pry all the modifications out."))
+		to_chat(user, "<span class='notice'>You pry the modifications out.</span>")
 		I.play_tool_sound(src, 100)
 		for(var/obj/item/borg/upgrade/modkit/M in modkits)
-			M.forceMove(drop_location()) //uninstallation handled in Exited(), or /mob/living/silicon/robot/remove_from_upgrades() for borgs
+			M.uninstall(src)
 	else
-		to_chat(user, span_notice("There are no modifications currently installed."))
+		to_chat(user, "<span class='notice'>There are no modifications currently installed.</span>")
 
-/obj/item/gun/energy/kinetic_accelerator/Exited(atom/movable/gone)
-	if(gone in modkits)
-		var/obj/item/borg/upgrade/modkit/MK = gone
-		MK.uninstall(src)
-	return ..()
+/obj/item/gun/energy/kinetic_accelerator/Exited(atom/movable/AM)
+	. = ..()
+	if((AM in modkits) && istype(AM, /obj/item/borg/upgrade/modkit))
+		var/obj/item/borg/upgrade/modkit/M = AM
+		M.uninstall(src, FALSE)
 
 /obj/item/gun/energy/kinetic_accelerator/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/borg/upgrade/modkit))
@@ -85,13 +86,20 @@
 
 /obj/item/gun/energy/kinetic_accelerator/proc/get_remaining_mod_capacity()
 	var/current_capacity_used = 0
-	for(var/obj/item/borg/upgrade/modkit/M in modkits)
+	for(var/A in get_modkits())
+		var/obj/item/borg/upgrade/modkit/M = A
 		current_capacity_used += M.cost
 	return max_mod_capacity - current_capacity_used
 
+/obj/item/gun/energy/kinetic_accelerator/proc/get_modkits()
+	. = list()
+	for(var/A in modkits)
+		. += A
+
 /obj/item/gun/energy/kinetic_accelerator/proc/modify_projectile(obj/item/projectile/kinetic/K)
 	K.kinetic_gun = src //do something special on-hit, easy!
-	for(var/obj/item/borg/upgrade/modkit/M in modkits)
+	for(var/A in get_modkits())
+		var/obj/item/borg/upgrade/modkit/M = A
 		M.modify_projectile(K)
 
 /obj/item/gun/energy/kinetic_accelerator/cyborg
@@ -251,7 +259,7 @@
 	if(!target_turf)
 		target_turf = get_turf(src)
 	if(kinetic_gun) //hopefully whoever shot this was not very, very unfortunate.
-		var/list/mods = kinetic_gun.modkits
+		var/list/mods = kinetic_gun.get_modkits()
 		for(var/obj/item/borg/upgrade/modkit/M in mods)
 			M.projectile_strike_predamage(src, target_turf, target, kinetic_gun)
 		for(var/obj/item/borg/upgrade/modkit/M in mods)
@@ -270,7 +278,7 @@
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "modkit"
 	w_class = WEIGHT_CLASS_SMALL
-	require_module = TRUE
+	require_module = 1
 	module_type = list(/obj/item/robot_module/miner)
 	module_flags = BORG_MODULE_MINER
 	var/denied_type = null
@@ -290,24 +298,26 @@
 	else
 		..()
 
-/obj/item/borg/upgrade/modkit/action(mob/living/silicon/robot/R)
-	. = ..()
-	if (.)
-		for(var/obj/item/gun/energy/kinetic_accelerator/H in R.module.modules)
-			return install(H, usr, FALSE)
+/obj/item/borg/upgrade/modkit/afterInstall(mob/living/silicon/robot/R)
+	for(var/obj/item/gun/energy/kinetic_accelerator/H in R.module.modules)
+		if(install(H, R)) //It worked
+			return
+	to_chat(R, "<span class='alert'>Upgrade error - Aborting Kinetic Accelerator linking.</span>") //No applicable KA found, insufficient capacity, or some other problem.
 
-/obj/item/borg/upgrade/modkit/proc/install(obj/item/gun/energy/kinetic_accelerator/KA, mob/user, transfer_to_loc = TRUE)
+/obj/item/borg/upgrade/modkit/proc/install(obj/item/gun/energy/kinetic_accelerator/KA, mob/user)
 	. = TRUE
+	if(src in KA.modkits) // Sanity check to prevent installing the same modkit twice thanks to occasional click/lag delays.
+		return FALSE
 	if(minebot_upgrade)
 		if(minebot_exclusive && !istype(KA.loc, /mob/living/simple_animal/hostile/mining_drone))
-			to_chat(user, span_notice("The modkit you're trying to install is only rated for minebot use."))
+			to_chat(user, "<span class='notice'>The modkit you're trying to install is only rated for minebot use.</span>")
 			return FALSE
 	else if(istype(KA.loc, /mob/living/simple_animal/hostile/mining_drone))
-		to_chat(user, span_notice("The modkit you're trying to install is not rated for minebot use."))
+		to_chat(user, "<span class='notice'>The modkit you're trying to install is not rated for minebot use.</span>")
 		return FALSE
 	if(denied_type)
 		var/number_of_denied = 0
-		for(var/A in KA.modkits)
+		for(var/A in KA.get_modkits())
 			var/obj/item/borg/upgrade/modkit/M = A
 			if(istype(M, denied_type))
 				number_of_denied++
@@ -316,25 +326,21 @@
 				break
 	if(KA.get_remaining_mod_capacity() >= cost)
 		if(.)
-			if(transfer_to_loc && !user.transferItemToLoc(src, KA))
-				return
-			to_chat(user, span_notice("You install the modkit."))
-			playsound(loc, 'sound/items/screwdriver.ogg', 100, TRUE)
+			if(!user.transferItemToLoc(src, KA))
+				return FALSE
+			to_chat(user, "<span class='notice'>You install the modkit.</span>")
+			playsound(loc, 'sound/items/screwdriver.ogg', 100, 1)
 			KA.modkits += src
 		else
-			to_chat(user, span_notice("The modkit you're trying to install would conflict with an already installed modkit. Use a crowbar to remove existing modkits."))
+			to_chat(user, "<span class='notice'>The modkit you're trying to install would conflict with an already installed modkit. Use a crowbar to remove existing modkits.</span>")
 	else
-		to_chat(user, span_notice("You don't have room(<b>[KA.get_remaining_mod_capacity()]%</b> remaining, [cost]% needed) to install this modkit. Use a crowbar to remove existing modkits."))
+		to_chat(user, "<span class='notice'>You don't have room(<b>[KA.get_remaining_mod_capacity()]%</b> remaining, [cost]% needed) to install this modkit. Use a crowbar to remove existing modkits.</span>")
 		. = FALSE
 
-/obj/item/borg/upgrade/modkit/deactivate(mob/living/silicon/robot/R, user = usr)
-	. = ..()
-	if (.)
-		for(var/obj/item/gun/energy/kinetic_accelerator/KA in R.module.modules)
-			uninstall(KA)
-
-/obj/item/borg/upgrade/modkit/proc/uninstall(obj/item/gun/energy/kinetic_accelerator/KA)
+/obj/item/borg/upgrade/modkit/proc/uninstall(obj/item/gun/energy/kinetic_accelerator/KA, forcemove = TRUE)
 	KA.modkits -= src
+	if(forcemove)
+		forceMove(get_turf(KA))
 
 /obj/item/borg/upgrade/modkit/proc/modify_projectile(obj/item/projectile/kinetic/K)
 
@@ -461,7 +467,6 @@
 /obj/item/borg/upgrade/modkit/minebot_passthrough
 	name = "minebot passthrough"
 	desc = "Causes kinetic accelerator shots to pass through minebots."
-	denied_type = /obj/item/borg/upgrade/modkit/minebot_passthrough // If you have something cost zero, you can keep adding forever, why
 	cost = 0
 
 //Tendril-unique modules

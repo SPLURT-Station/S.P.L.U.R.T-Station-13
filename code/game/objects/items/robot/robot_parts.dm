@@ -312,7 +312,6 @@
 				qdel(O.mmi)
 			O.mmi = W //and give the real mmi to the borg.
 			O.updatename()
-			playsound(O.loc, 'sound/voice/liveagain.ogg', 75, TRUE)
 			SSblackbox.record_feedback("amount", "cyborg_birth", 1)
 			forceMove(O)
 			O.robot_suit = src

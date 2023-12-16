@@ -1,10 +1,11 @@
 /datum/interaction/lewd/kiss
 	description = "Kiss them deeply."
-	required_from_user = INTERACTION_REQUIRE_MOUTH
-	required_from_target = INTERACTION_REQUIRE_MOUTH
+	require_user_mouth = TRUE
+	require_target_mouth = TRUE
 	write_log_user = "kissed"
 	write_log_target = "was kissed by"
 	interaction_sound = null
+	max_distance = 1
 
 /datum/interaction/lewd/kiss/post_interaction(mob/living/user, mob/living/partner)
 	. = ..()

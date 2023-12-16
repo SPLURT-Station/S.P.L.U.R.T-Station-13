@@ -1,8 +1,9 @@
 /datum/interaction/lewd/finger
 	description = "Finger their pussy."
-	required_from_user = INTERACTION_REQUIRE_HANDS
-	required_from_target_exposed = INTERACTION_REQUIRE_VAGINA
+	require_user_hands = TRUE
+	require_target_vagina = REQUIRE_EXPOSED
 	interaction_sound = null
+	max_distance = 1
 
 	additional_details = list(
 		list(
@@ -40,8 +41,9 @@
 /datum/interaction/lewd/fingerass
 	description = "Finger their ass."
 	interaction_sound = null
-	required_from_user = INTERACTION_REQUIRE_HANDS
-	required_from_target_exposed = INTERACTION_REQUIRE_ANUS
+	require_user_hands = TRUE
+	require_target_anus = REQUIRE_EXPOSED
+	max_distance = 1
 
 /datum/interaction/lewd/fingerass/display_interaction(mob/living/user, mob/living/partner)
 	user.visible_message("<span class='lewd'><b>\The [user]</b> [pick("fingers \the <b>[partner]</b>.",

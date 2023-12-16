@@ -91,32 +91,42 @@
 /mob/living/proc/toggle_anus_always_accessible(accessibility)
 	anus_always_accessible = isnull(accessibility) ? !anus_always_accessible : accessibility
 
-/mob/living/proc/has_genital(slot)
+/mob/living/proc/has_genital(slot, visibility = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
 	if(istype(C))
 		var/obj/item/organ/genital/genital = C.getorganslot(slot)
 		if(genital)
-			if(genital.is_exposed() || genital.always_accessible)
-				return HAS_EXPOSED_GENITAL
-			else
-				return HAS_UNEXPOSED_GENITAL
+			switch(visibility)
+				if(REQUIRE_ANY)
+					return TRUE
+				if(REQUIRE_EXPOSED)
+					return genital.is_exposed() || genital.always_accessible
+				if(REQUIRE_UNEXPOSED)
+					return !genital.is_exposed()
+				else
+					return TRUE
 	return FALSE
 
-/mob/living/proc/has_penis()
+/mob/living/proc/has_penis(visibility = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
 	if(has_penis && !istype(C))
 		return TRUE
-	return has_genital(ORGAN_SLOT_PENIS)
+	return has_genital(ORGAN_SLOT_PENIS, visibility)
 
-/mob/living/proc/has_strapon()
+/mob/living/proc/has_strapon(visibility = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
 	if(istype(C))
 		var/obj/item/clothing/underwear/briefs/strapon/strapon = C.get_strapon()
 		if(strapon)
-			if(strapon.is_exposed())
-				return HAS_EXPOSED_GENITAL
-			else
-				return HAS_UNEXPOSED_GENITAL
+			switch(visibility)
+				if(REQUIRE_ANY)
+					return TRUE
+				if(REQUIRE_EXPOSED)
+					return strapon.is_exposed()
+				if(REQUIRE_UNEXPOSED)
+					return !strapon.is_exposed()
+				else
+					return TRUE
 	return FALSE
 
 /mob/living/proc/get_strapon()
@@ -130,116 +140,219 @@
 	return has_penis()
 
 /mob/living/proc/get_penetrating_genital_name(long = FALSE)
-	return has_penis() ? (long ? pick(GLOB.dick_nouns) : pick("cock", "dick")) : "strapon"
+	return has_penis() ? (long ? pick(GLOB.dick_nouns) : pick("cock", "dick")) : pick("strapon")
 
-/mob/living/proc/has_balls()
+/mob/living/proc/has_balls(visibility = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
 	if(has_balls && !istype(C))
 		return TRUE
-	return has_genital(ORGAN_SLOT_TESTICLES)
+	return has_genital(ORGAN_SLOT_TESTICLES, visibility)
 
-/mob/living/proc/has_vagina()
+/mob/living/proc/has_vagina(visibility = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
 	if(has_vagina && !istype(C))
 		return TRUE
-	return has_genital(ORGAN_SLOT_VAGINA)
+	return has_genital(ORGAN_SLOT_VAGINA, visibility)
 
-/mob/living/proc/has_breasts()
+/mob/living/proc/has_breasts(visibility = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
 	if(has_breasts && !istype(C))
 		return TRUE
-	return has_genital(ORGAN_SLOT_BREASTS)
+	return has_genital(ORGAN_SLOT_BREASTS, visibility)
 
-/mob/living/proc/has_butt()
-	var/mob/living/carbon/C = src
-	if(has_butt && !istype(C))
-		return TRUE
-	return has_genital(ORGAN_SLOT_BUTT)
-
-/mob/living/proc/has_anus()
+/mob/living/proc/has_anus(visibility = REQUIRE_ANY)
 	if(has_anus && !iscarbon(src))
 		return TRUE
-	if (has_anus && anus_always_accessible)
-		return HAS_EXPOSED_GENITAL
-	switch(anus_exposed)
-		if(-1)
-			return HAS_UNEXPOSED_GENITAL
-		if(1)
-			return HAS_EXPOSED_GENITAL
-		else
-			if(is_bottomless())
-				return HAS_EXPOSED_GENITAL
+	switch(visibility)
+		if(REQUIRE_ANY)
+			return TRUE
+		if(REQUIRE_EXPOSED)
+			if (has_anus && anus_always_accessible)
+				return TRUE
+			switch(anus_exposed)
+				if(-1)
+					return FALSE
+				if(1)
+					return TRUE
+				else
+					if(is_bottomless())
+						return TRUE
+					else
+						return FALSE
+		if(REQUIRE_UNEXPOSED)
+			if(anus_exposed == -1)
+				if(!anus_exposed)
+					if(!is_bottomless())
+						return TRUE
+					else
+						return FALSE
+				else
+					return FALSE
 			else
-				return HAS_UNEXPOSED_GENITAL
+				return TRUE
+		else
+			return TRUE
 
-/mob/living/proc/has_hand()
+/mob/living/proc/has_hand(visibility = REQUIRE_ANY)
 	if(iscarbon(src))
 		var/mob/living/carbon/C = src
 		var/handcount = 0
 		var/covered = 0
+		var/iscovered = FALSE
 		for(var/obj/item/bodypart/l_arm/L in C.bodyparts)
 			handcount++
 		for(var/obj/item/bodypart/r_arm/R in C.bodyparts)
 			handcount++
-		if(!handcount)
-			return FALSE
 		if(C.get_item_by_slot(ITEM_SLOT_HANDS))
 			var/obj/item/clothing/gloves/G = C.get_item_by_slot(ITEM_SLOT_HANDS)
 			covered = G.body_parts_covered
 		if(covered & HANDS)
-			return HAS_UNEXPOSED_GENITAL
-		else
-			return HAS_EXPOSED_GENITAL
+			iscovered = TRUE
+		switch(visibility)
+			if(REQUIRE_ANY)
+				return handcount
+			if(REQUIRE_EXPOSED)
+				if(iscovered)
+					return FALSE
+				else
+					return handcount
+			if(REQUIRE_UNEXPOSED)
+				if(!iscovered)
+					return FALSE
+				else
+					return handcount
+			else
+				return handcount
 	return FALSE
 
-/mob/living/proc/has_feet()
+/mob/living/proc/has_feet(visibility = REQUIRE_ANY)
 	if(iscarbon(src))
 		var/mob/living/carbon/C = src
 		var/feetcount = 0
 		var/covered = 0
+		var/iscovered = FALSE
 		for(var/obj/item/bodypart/l_leg/L in C.bodyparts)
 			feetcount++
 		for(var/obj/item/bodypart/r_leg/R in C.bodyparts)
 			feetcount++
-		if(!feetcount)
-			return FALSE
 		if(!C.is_barefoot())
 			covered = TRUE
 		if(covered)
-			return HAS_UNEXPOSED_GENITAL
-		else
-			return HAS_EXPOSED_GENITAL
+			iscovered = TRUE
+		switch(visibility)
+			if(REQUIRE_ANY)
+				return feetcount
+			if(REQUIRE_EXPOSED)
+				if(iscovered)
+					return FALSE
+				else
+					return feetcount
+			if(REQUIRE_UNEXPOSED)
+				if(!iscovered)
+					return FALSE
+				else
+					return feetcount
+			else
+				return feetcount
 	return FALSE
 
 /mob/living/proc/get_num_feet()
-	return 0
-
-/mob/living/carbon/get_num_feet()
-	. = ..()
-	for(var/obj/item/bodypart/l_leg/L in bodyparts)
-		.++
-	for(var/obj/item/bodypart/r_leg/R in bodyparts)
-		.++
+	return has_feet(REQUIRE_ANY)
 
 //weird procs go here
-//please check for existance separately
-/mob/living/proc/has_ears()
+/mob/living/proc/has_ears(visibility = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
 	if(istype(C))
-		if(C.get_item_by_slot(ITEM_SLOT_EARS_LEFT) || C.get_item_by_slot(ITEM_SLOT_EARS_RIGHT))
-			return HAS_UNEXPOSED_GENITAL
-		else
-			return HAS_EXPOSED_GENITAL
+		var/obj/item/organ/peepee = C.getorganslot(ORGAN_SLOT_EARS)
+		if(peepee)
+			switch(visibility)
+				if(REQUIRE_ANY)
+					return TRUE
+				if(REQUIRE_EXPOSED)
+					if(C.get_item_by_slot(ITEM_SLOT_EARS_LEFT) || C.get_item_by_slot(ITEM_SLOT_EARS_RIGHT))
+						return FALSE
+					else
+						return TRUE
+				if(REQUIRE_UNEXPOSED)
+					if(!C.get_item_by_slot(ITEM_SLOT_EARS_LEFT || C.get_item_by_slot(ITEM_SLOT_EARS_RIGHT)))
+						return FALSE
+					else
+						return TRUE
+				else
+					return TRUE
 	return FALSE
 
-/mob/living/proc/has_eyes()
+/mob/living/proc/has_earsockets(visibility = REQUIRE_ANY)
 	var/mob/living/carbon/C = src
 	if(istype(C))
-		if(C.get_item_by_slot(ITEM_SLOT_EYES))
-			return HAS_UNEXPOSED_GENITAL
-		else
-			return HAS_EXPOSED_GENITAL
+		var/obj/item/organ/peepee = C.getorganslot(ORGAN_SLOT_EARS)
+		if(!peepee)
+			switch(visibility)
+				if(REQUIRE_ANY)
+					return TRUE
+				if(REQUIRE_EXPOSED)
+					if(C.get_item_by_slot(ITEM_SLOT_EARS_LEFT) || C.get_item_by_slot(ITEM_SLOT_EARS_RIGHT))
+						return FALSE
+					else
+						return TRUE
+				if(REQUIRE_UNEXPOSED)
+					if(!C.get_item_by_slot(ITEM_SLOT_EARS_LEFT) || !C.get_item_by_slot(ITEM_SLOT_EARS_RIGHT))
+						return FALSE
+					else
+						return TRUE
+				else
+					return TRUE
 	return FALSE
+
+/mob/living/proc/has_eyes(visibility = REQUIRE_ANY)
+	var/mob/living/carbon/C = src
+	if(istype(C))
+		var/obj/item/organ/peepee = C.getorganslot(ORGAN_SLOT_EYES)
+		if(peepee)
+			switch(visibility)
+				if(REQUIRE_ANY)
+					return TRUE
+				if(REQUIRE_EXPOSED)
+					if(C.get_item_by_slot(ITEM_SLOT_EYES))
+						return FALSE
+					else
+						return TRUE
+				if(REQUIRE_UNEXPOSED)
+					if(!C.get_item_by_slot(ITEM_SLOT_EYES))
+						return FALSE
+					else
+						return TRUE
+				else
+					return TRUE
+	return FALSE
+
+/mob/living/proc/has_eyesockets(visibility = REQUIRE_ANY)
+	var/mob/living/carbon/C = src
+	if(istype(C))
+		var/obj/item/organ/peepee = C.getorganslot(ORGAN_SLOT_EYES)
+		if(!peepee)
+			switch(visibility)
+				if(REQUIRE_ANY)
+					return TRUE
+				if(REQUIRE_EXPOSED)
+					if(get_item_by_slot(ITEM_SLOT_EYES))
+						return FALSE
+					else
+						return TRUE
+				if(REQUIRE_UNEXPOSED)
+					if(!get_item_by_slot(ITEM_SLOT_EYES))
+						return FALSE
+					else
+						return TRUE
+				else
+					return TRUE
+	return FALSE
+
+/mob/living/proc/has_butt(visibility = REQUIRE_ANY)
+	var/mob/living/carbon/C = src
+	if(has_butt && !istype(C))
+		return TRUE
+	return has_genital(ORGAN_SLOT_BUTT, visibility)
 
 ///Are we wearing something that covers our chest?
 /mob/living/proc/is_topless()
@@ -338,8 +451,7 @@
 							else
 								message = "cums on \the <b>[partner]</b>'s face."
 						if(CUM_TARGET_VAGINA)
-							var/has_vagina = partner.has_vagina()
-							if(has_vagina == TRUE || has_vagina == HAS_EXPOSED_GENITAL)
+							if(partner.has_vagina(REQUIRE_EXPOSED))
 								if(partner_carbon_check)
 									target_gen = c_partner.getorganslot(ORGAN_SLOT_VAGINA)
 								message = "cums in \the <b>[partner]</b>'s pussy."
@@ -347,20 +459,18 @@
 							else
 								message = "cums on \the <b>[partner]</b>'s belly."
 						if(CUM_TARGET_ANUS)
-							var/has_anus = partner.has_anus()
-							if(has_anus == TRUE || has_anus == HAS_EXPOSED_GENITAL)
+							if(partner.has_anus(REQUIRE_EXPOSED))
 								message = "cums in \the <b>[partner]</b>'s asshole."
 								cumin = TRUE
 							else
 								message = "cums on \the <b>[partner]</b>'s backside."
 						if(CUM_TARGET_HAND)
-							if(partner.has_hand())
+							if(partner.has_hand(REQUIRE_ANY))
 								message = "cums in \the <b>[partner]</b>'s hand."
 							else
 								message = "cums on \the <b>[partner]</b>."
 						if(CUM_TARGET_BREASTS)
-							var/has_breasts = partner.has_breasts()
-							if(has_breasts == TRUE || has_breasts == HAS_EXPOSED_GENITAL)
+							if(partner.has_breasts(REQUIRE_EXPOSED))
 								message = "cums onto \the <b>[partner]</b>'s breasts."
 							else
 								message = "cums on \the <b>[partner]</b>'s chest and neck."
@@ -368,8 +478,7 @@
 							if(partner.has_mouth() && partner.mouth_is_free())
 								message = "vigorously ruts [u_His] nutsack into \the <b>[partner]</b>'s mouth before shooting [u_His] thick, sticky jizz all over [t_His] eyes and hair."
 						if(THIGH_SMOTHERING)
-							var/has_penis = has_penis()
-							if(has_penis == TRUE || has_penis == HAS_EXPOSED_GENITAL) //it already checks for the cock before, why the hell would you do this redundant shit
+							if(has_penis(REQUIRE_EXPOSED)) //it already checks for the cock before, why the hell would you do this redundant shit
 								message = "keeps \the <b>[partner]</b> locked in [u_His] thighs as [u_His] cock throbs, dumping its heavy load all over [t_His] face."
 							else
 								message = "reaches [u_His] peak, locking [u_His] legs around \the <b>[partner]</b>'s head extra hard as [u_He] cum[u_S] straight onto the head stuck between [u_His] thighs"
@@ -382,7 +491,7 @@
 									message = "cums on the floor!"
 							else
 								if(partner.has_feet())
-									message = "cums on \the <b>[partner]</b>'s [last_lewd_datum.require_target_num_feet == 1 ? pick("foot", "sole") : pick("feet", "soles")]."
+									message = "cums on \the <b>[partner]</b>'s [last_lewd_datum.require_target_feet == 1 ? pick("foot", "sole") : pick("feet", "soles")]."
 								else
 									message = "cums on the floor!"
 						//weird shit goes here
@@ -400,8 +509,7 @@
 							cumin = TRUE
 						//
 						if(CUM_TARGET_PENIS)
-							var/has_penis = partner.has_penis()
-							if(has_penis == TRUE || has_penis == HAS_EXPOSED_GENITAL)
+							if(partner.has_penis(REQUIRE_EXPOSED))
 								message = "cums on \the <b>[partner]</b>."
 							else
 								message = "cums on the floor!"
@@ -425,27 +533,24 @@
 							else
 								message = "squirts on \the <b>[partner]</b>'s face."
 						if(CUM_TARGET_VAGINA)
-							var/has_vagina = partner.has_vagina()
-							if(has_vagina == TRUE || has_vagina == HAS_EXPOSED_GENITAL)
+							if(partner.has_vagina(REQUIRE_EXPOSED))
 								message = "squirts on \the <b>[partner]</b>'s pussy."
 								cumin = TRUE
 							else
 								message = "squirts on \the <b>[partner]</b>'s belly."
 						if(CUM_TARGET_ANUS)
-							var/has_anus = partner.has_anus()
-							if(has_anus == TRUE || has_anus == HAS_EXPOSED_GENITAL)
+							if(partner.has_anus(REQUIRE_EXPOSED))
 								message = "squirts on \the <b>[partner]</b>'s asshole."
 								cumin = TRUE
 							else
 								message = "squirts on \the <b>[partner]</b>'s backside."
 						if(CUM_TARGET_HAND)
-							if(partner.has_hand())
+							if(partner.has_hand(REQUIRE_ANY))
 								message = "squirts on \the <b>[partner]</b>'s hand."
 							else
 								message = "squirts on \the <b>[partner]</b>."
 						if(CUM_TARGET_BREASTS)
-							var/has_breasts = partner.has_breasts()
-							if(has_breasts == TRUE || has_breasts == HAS_EXPOSED_GENITAL)
+							if(partner.has_breasts(REQUIRE_EXPOSED))
 								message = "squirts onto \the <b>[partner]</b>'s breasts."
 							else
 								message = "squirts on \the <b>[partner]</b>'s chest and neck."
@@ -463,7 +568,7 @@
 									message = "squirts on the floor!"
 							else
 								if(partner.has_feet())
-									message = "squirts on \the <b>[partner]</b>'s [last_lewd_datum.require_target_num_feet == 1 ? pick("foot", "sole") : pick("feet", "soles")]."
+									message = "squirts on \the <b>[partner]</b>'s [last_lewd_datum.require_target_feet == 1 ? pick("foot", "sole") : pick("feet", "soles")]."
 								else
 									message = "squirts on the floor!"
 						//weird shit goes here
@@ -481,8 +586,7 @@
 							cumin = TRUE
 						//
 						if(CUM_TARGET_PENIS)
-							var/has_penis = partner.has_penis()
-							if(has_penis == TRUE || has_penis == HAS_EXPOSED_GENITAL)
+							if(partner.has_penis(REQUIRE_EXPOSED))
 								message = "squirts on \the <b>[partner]</b>'s penis"
 							else
 								message = "squirts on the floor!"
@@ -511,8 +615,7 @@
 								else
 									message = "cums on \the <b>[partner]</b>'s face."
 							if(CUM_TARGET_VAGINA)
-								var/has_vagina = partner.has_vagina()
-								if(has_vagina == TRUE || has_vagina == HAS_EXPOSED_GENITAL)
+								if(partner.has_vagina(REQUIRE_EXPOSED))
 									if(partner_carbon_check)
 										target_gen = c_partner.getorganslot(ORGAN_SLOT_VAGINA)
 									message = "cums in \the <b>[partner]</b>'s pussy."
@@ -520,8 +623,7 @@
 								else
 									message = "cums on \the <b>[partner]</b>'s belly."
 							if(CUM_TARGET_ANUS)
-								var/has_anus = partner.has_anus()
-								if(has_anus == TRUE || has_anus == HAS_EXPOSED_GENITAL)
+								if(partner.has_anus(REQUIRE_EXPOSED))
 									message = "cums in \the <b>[partner]</b>'s asshole."
 									cumin = TRUE
 								else
@@ -553,7 +655,7 @@
 										message = "cums on the floor!"
 								else
 									if(partner.has_feet())
-										message = "cums on \the <b>[partner]</b>'s [last_lewd_datum.require_target_num_feet == 1 ? pick("foot", "sole") : pick("feet", "soles")]."
+										message = "cums on \the <b>[partner]</b>'s [last_lewd_datum.require_target_feet == 1 ? pick("foot", "sole") : pick("feet", "soles")]."
 									else
 										message = "cums on the floor!"
 							//weird shit goes here
@@ -571,8 +673,7 @@
 								cumin = TRUE
 							//
 							if(CUM_TARGET_PENIS)
-								var/has_penis = partner.has_penis()
-								if(has_penis == TRUE || has_penis == HAS_EXPOSED_GENITAL)
+								if(partner.has_penis(REQUIRE_EXPOSED))
 									message = "cums on \the <b>[partner]</b>."
 								else
 									message = "cums on the floor!"
@@ -596,15 +697,13 @@
 								else
 									message = "squirts on \the <b>[partner]</b>'s face."
 							if(CUM_TARGET_VAGINA)
-								var/has_vagina = partner.has_vagina()
-								if(has_vagina == TRUE || has_vagina == HAS_EXPOSED_GENITAL)
+								if(partner.has_vagina(REQUIRE_EXPOSED))
 									message = "squirts on \the <b>[partner]</b>'s pussy."
 									cumin = TRUE
 								else
 									message = "squirts on \the <b>[partner]</b>'s belly."
 							if(CUM_TARGET_ANUS)
-								var/has_anus = partner.has_anus()
-								if(has_anus == TRUE || has_anus == HAS_EXPOSED_GENITAL)
+								if(partner.has_anus(REQUIRE_EXPOSED))
 									message = "squirts on \the <b>[partner]</b>'s asshole."
 									cumin = TRUE
 								else
@@ -615,8 +714,7 @@
 								else
 									message = "squirts on \the <b>[partner]</b>."
 							if(CUM_TARGET_BREASTS)
-								var/has_breasts = partner.has_breasts()
-								if(has_breasts == TRUE || has_breasts == HAS_EXPOSED_GENITAL)
+								if(partner.has_breasts(REQUIRE_EXPOSED))
 									message = "squirts onto \the <b>[partner]</b>'s breasts."
 								else
 									message = "squirts on \the <b>[partner]</b>'s chest and neck."
@@ -635,7 +733,7 @@
 										message = "squirts on the floor!"
 								else
 									if(partner.has_feet())
-										message = "squirts on \the <b>[partner]</b>'s [last_lewd_datum.require_target_num_feet == 1 ? pick("foot", "sole") : pick("feet", "soles")]."
+										message = "squirts on \the <b>[partner]</b>'s [last_lewd_datum.require_target_feet == 1 ? pick("foot", "sole") : pick("feet", "soles")]."
 									else
 										message = "squirts on the floor!"
 							//weird shit goes here
@@ -653,8 +751,7 @@
 								cumin = TRUE
 							//
 							if(CUM_TARGET_PENIS)
-								var/has_penis = partner.has_penis()
-								if(has_penis == TRUE || has_penis == HAS_EXPOSED_GENITAL)
+								if(partner.has_penis(REQUIRE_EXPOSED))
 									message = "squirts on \the <b>[partner]</b>'s penis"
 								else
 									message = "squirts on the floor!"
@@ -760,7 +857,7 @@
 				return TRUE
 	return FALSE
 
-/mob/living/proc/get_unconsenting(interaction_flags, list/ignored_mobs)
+/mob/living/proc/get_unconsenting(extreme = FALSE, list/ignored_mobs)
 	var/list/nope = list()
 	nope += ignored_mobs
 	for(var/mob/M in range(7, src))
@@ -768,7 +865,7 @@
 			var/client/cli = M.client
 			if(!(cli.prefs.toggles & VERB_CONSENT)) //Note: This probably could do with a specific preference
 				nope += M
-			else if(interaction_flags & INTERACTION_FLAG_EXTREME_CONTENT && (cli.prefs.extremepref == "No"))
+			else if(extreme && (cli.prefs.extremepref == "No"))
 				nope += M
 		else
 			nope += M

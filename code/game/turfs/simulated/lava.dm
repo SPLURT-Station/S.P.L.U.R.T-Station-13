@@ -201,7 +201,6 @@
 			var/obj/structure/closet/burn_closet = burn_obj
 			for(var/burn_content in burn_closet.contents)
 				burn_stuff(burn_content)
-		return
 
 	var/mob/living/burn_living = burn_target
 	burn_living.update_fire()

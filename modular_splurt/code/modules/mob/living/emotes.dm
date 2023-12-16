@@ -1252,3 +1252,47 @@
 		else // Both
 			emote_sound = pick('modular_splurt/sound/voice/eekum-bokum.ogg', 'modular_splurt/sound/voice/eekum-bokum_f1.ogg', 'modular_splurt/sound/voice/eekum-bokum_f2.ogg')
 	. = ..()
+
+/datum/emote/living/audio/bazinga
+	key = "bazinga"
+	key_third_person = "bazingas"
+	message = "exclaims, \"<i>Bazinga!</i>\""
+	message_mime = "fools someone, silently."
+	emote_sound = 'modular_splurt/sound/voice/bazinga.ogg'
+	emote_cooldown = 0.65 SECONDS
+
+/datum/emote/living/audio/bazinga/run_emote(mob/user, params)
+	if(prob(1)) // If Empah had TTS #25
+		emote_sound = 'modular_splurt/sound/voice/bazinga_ebil.ogg'
+		emote_pitch_variance = FALSE
+		emote_cooldown = 1.92 SECONDS
+		emote_volume = 110
+	else
+		emote_sound = 'modular_splurt/sound/voice/bazinga.ogg'
+		emote_pitch_variance = TRUE
+		emote_cooldown = 0.65 SECONDS
+		emote_volume = 50
+	. = ..()
+
+/datum/emote/living/audio/yooo
+	key = "yooo"
+	key_third_person = "yooos"
+	message = "thinks they are part of Kabuki play."
+	emote_sound = 'modular_splurt/sound/voice/yooo.ogg'
+	emote_cooldown = 2.54 SECONDS
+
+/datum/emote/living/audio/buzzer_correct
+	key = "correct"
+	key_third_person = "corrects"
+	message = "thinks someone is correct."
+	message_param = "thinks %t is correct."
+	emote_sound = 'modular_splurt/sound/voice/buzzer_correct.ogg'
+	emote_cooldown = 0.84 SECONDS
+
+/datum/emote/living/audio/buzzer_incorrect
+	key = "incorrect"
+	key_third_person = "incorrects"
+	message = "thinks someone is incorrect."
+	message_param = "thinks %t is incorrect."
+	emote_sound = 'modular_splurt/sound/voice/buzzer_incorrect.ogg'
+	emote_cooldown = 1.21 SECONDS

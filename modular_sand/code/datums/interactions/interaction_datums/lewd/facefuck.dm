@@ -1,15 +1,13 @@
 /datum/interaction/lewd/facefuck
 	description = "Fuck their mouth using your %COCK%."
 	interaction_sound = null
-	require_target_mouth = TRUE
-	require_user_penis = REQUIRE_EXPOSED
-	max_distance = 1
+	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
+	required_from_target = INTERACTION_REQUIRE_MOUTH
 	var/fucktarget = "penis"
 
 /datum/interaction/lewd/facefuck/vag
-	description = "Fuck their mouth using your vagina."
-	require_user_penis = null
-	require_user_vagina = REQUIRE_EXPOSED
+	description = "Fuck their mouth using your vagina"
+	required_from_user_exposed = INTERACTION_REQUIRE_VAGINA
 	fucktarget = "vagina"
 
 /datum/interaction/lewd/facefuck/display_interaction(mob/living/user, mob/living/partner)
@@ -20,7 +18,7 @@
 	var/u_His = user.p_their()
 	var/t_Him = partner.p_them()
 	var/t_Hes = partner.p_theyre()
-	
+
 	if(user.is_fucking(partner, CUM_TARGET_MOUTH))
 		var/improv = FALSE
 		switch(fucktarget)
@@ -114,9 +112,8 @@
 /datum/interaction/lewd/throatfuck
 	description = "Fuck their throat. | Does oxy damage."
 	interaction_sound = null
-	require_user_penis = REQUIRE_EXPOSED
-	require_target_mouth = TRUE
-	max_distance = 1
+	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
+	required_from_target = INTERACTION_REQUIRE_MOUTH
 
 /datum/interaction/lewd/throatfuck/display_interaction(mob/living/user, mob/living/partner)
 	var/message

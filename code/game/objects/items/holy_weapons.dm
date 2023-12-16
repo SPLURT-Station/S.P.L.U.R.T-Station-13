@@ -73,14 +73,9 @@
 	return holy_item_list
 
 /obj/item/choice_beacon/holy/spawn_option(obj/choice,mob/living/M)
-	if(!GLOB.holy_armor_type)
-		..()
-		playsound(src, 'sound/effects/pray_chaplain.ogg', 40, 1)
-		SSblackbox.record_feedback("tally", "chaplain_armor", 1, "[choice]")
-		GLOB.holy_armor_type = choice
-	else
-		to_chat(M, "<span class='warning'>A selection has already been made. Self-Destructing...</span>")
-		return
+	..()
+	playsound(src, 'sound/effects/pray_chaplain.ogg', 40, 1)
+	SSblackbox.record_feedback("tally", "chaplain_armor", 1, "[choice]")
 
 /obj/item/storage/box/holy
 	name = "Templar Kit"
@@ -248,8 +243,6 @@
   * * M The mob choosing a nullrod reskin
   */
 /obj/item/nullrod/proc/reskin_holy_weapon(mob/living/L)
-	if(GLOB.holy_weapon_type)
-		return
 	var/obj/item/holy_weapon
 	var/list/holy_weapons_list = subtypesof(/obj/item/nullrod) + list(HOLY_WEAPONS)
 	var/list/display_names = list()
@@ -268,8 +261,6 @@
 
 	var/A = display_names[choice] // This needs to be on a separate var as list member access is not allowed for new
 	holy_weapon = new A
-
-	GLOB.holy_weapon_type = holy_weapon.type
 
 	SSblackbox.record_feedback("tally", "chaplain_weapon", 1, "[choice]")
 

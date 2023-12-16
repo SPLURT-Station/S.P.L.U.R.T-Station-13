@@ -267,7 +267,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda/MouseDrop(mob/over, src_location, over_location)
 	var/mob/M = usr
-	if((M == over) && usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+	if((M == over) && usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK, check_resting = FALSE))
 		return attack_self(M)
 	return ..()
 
@@ -765,7 +765,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	return
 
 /obj/item/pda/proc/remove_id(mob/user)
-	if(hasSiliconAccessInArea(user) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+	if(hasSiliconAccessInArea(user) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK, FALSE))
 		return
 	do_remove_id(user)
 
@@ -961,7 +961,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	remove_pen()
 
 /obj/item/pda/proc/toggle_light()
-	if(hasSiliconAccessInArea(usr) || !usr.canUseTopic(src, BE_CLOSE))
+	if(hasSiliconAccessInArea(usr) || !usr.canUseTopic(src, BE_CLOSE, check_resting = FALSE))
 		return
 	if(fon)
 		fon = FALSE
@@ -973,7 +973,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /obj/item/pda/proc/remove_pen()
 
-	if(hasSiliconAccessInArea(usr) || !usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+	if(hasSiliconAccessInArea(usr) || !usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK, FALSE))
 		return
 
 	if(inserted_item)

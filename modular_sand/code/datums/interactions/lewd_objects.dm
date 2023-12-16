@@ -13,12 +13,14 @@
 			if(BODY_ZONE_PRECISE_GROIN)
 				switch(hole)
 					if(CUM_TARGET_VAGINA)
-						if(M.has_vagina(REQUIRE_EXPOSED))
+						var/has_vagina = M.has_vagina()
+						if(has_vagina == TRUE || has_vagina == HAS_EXPOSED_GENITAL)
 							message = (user == M) ? pick("fucks [possessive_verb] own pussy with \the [src]","shoves \the [src] into [possessive_verb] pussy", "jams \the [src] into [possessive_verb] pussy") : pick("fucks [M] right in the pussy with \the [src]", "jams \the [src] right into [M]'s pussy")
 							lust_amt = NORMAL_LUST
 							organ = CUM_TARGET_VAGINA //SPLURT edit
 					if(CUM_TARGET_ANUS)
-						if(M.has_anus(REQUIRE_EXPOSED))
+						var/has_anus = M.has_anus()
+						if(has_anus == TRUE || has_anus == HAS_EXPOSED_GENITAL)
 							message = (user == M) ? pick("fucks [possessive_verb] own ass with \the [src]","shoves \the [src] into [possessive_verb] ass", "jams \the [src] into [possessive_verb] ass") : pick("fucks [M]'s asshole with \the [src]", "jams \the [src] into [M]'s ass")
 							lust_amt = NORMAL_LUST
 							organ = CUM_TARGET_ANUS //SPLURT edit

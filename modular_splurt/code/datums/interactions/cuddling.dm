@@ -2,7 +2,7 @@
 	description = "Cuddle with them."
 	simple_message = "USER cuddles TARGET."
 	simple_style = "lewd"
-	needs_physical_contact = TRUE
+	interaction_flags = INTERACTION_FLAG_ADJACENT
 
 /datum/interaction/cuddle/display_interaction(mob/living/user, mob/living/target)
 	var/static/list/possible_messages = list(

@@ -69,7 +69,7 @@
 	if(icon_state == "pocketwatch")
 		icon_state = "pocketwatch_closed"
 		item_state = "pocketwatch_closed"
-		desc = "An elaborate pocketwatch, with a captivating silver etching. It's closed however and you can't see it's face"
+		desc = "An elaborate pocketwatch, with a captivating silver etching. It's closed, however, and you can't see it's face..."
 		closed = TRUE
 		return
 

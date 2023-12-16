@@ -572,7 +572,7 @@
 
 		if(BODY_ZONE_PRECISE_EYES)
 			// Check if eyes exist and are exposed
-			if(!bite_target.has_eyes() == HAS_EXPOSED_GENITAL)
+			if(!bite_target.has_eyes(REQUIRE_EXPOSED))
 				// Warn user and return
 				to_chat(action_owner, span_warning("You can't find [bite_target]'s eyes to bite them!"))
 				return

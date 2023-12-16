@@ -27,7 +27,7 @@
 		to_chat(user, span_notice("You must remove the condom from the package first!"))
 		return FALSE
 
-	if(!G.owner.has_penis() == HAS_EXPOSED_GENITAL)
+	if(!G.owner.has_penis(REQUIRE_EXPOSED))
 		to_chat(user, span_notice("You can't find anywhere to put the condom!"))
 		return FALSE
 

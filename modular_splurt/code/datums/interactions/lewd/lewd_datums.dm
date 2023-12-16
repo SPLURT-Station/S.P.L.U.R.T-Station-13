@@ -387,11 +387,9 @@
 /datum/interaction/lewd/oral/selfsuck
 	description = "Suck yourself off."
 	interaction_sound = null
-	required_from_target_exposed = NONE
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
-	required_from_user_unexposed = NONE
-	interaction_flags = INTERACTION_FLAG_ADJACENT | INTERACTION_FLAG_OOC_CONSENT | INTERACTION_FLAG_USER_IS_TARGET
+	require_target_vagina = REQUIRE_NONE
+	require_user_penis = REQUIRE_EXPOSED
+	user_is_target = TRUE
 	max_distance = 0
 	write_log_user = "sucked off"
 	write_log_target = null
@@ -410,11 +408,8 @@
 /datum/interaction/lewd/oral/suckvagself
 	description = "Lick your own pussy."
 	interaction_sound = null
-	required_from_target_exposed = NONE
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_VAGINA
-	required_from_user_unexposed = NONE
-	interaction_flags = INTERACTION_FLAG_ADJACENT | INTERACTION_FLAG_OOC_CONSENT | INTERACTION_FLAG_USER_IS_TARGET
+	require_user_penis = REQUIRE_NONE
+	user_is_target = TRUE
 	max_distance = 0
 	write_log_user = "Сunni off"
 	write_log_target = null
@@ -425,11 +420,9 @@
 /datum/interaction/lewd/breastfuckself
 	description = "Fuck your breasts."
 	interaction_sound = null
-	required_from_target_exposed = NONE
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_PENIS | INTERACTION_REQUIRE_BREASTS
-	required_from_user_unexposed = NONE
-	interaction_flags = INTERACTION_FLAG_ADJACENT | INTERACTION_FLAG_OOC_CONSENT | INTERACTION_FLAG_USER_IS_TARGET
+	require_user_penis = REQUIRE_EXPOSED
+	require_user_breasts = REQUIRE_EXPOSED
+	user_is_target = TRUE
 	max_distance = 0
 	write_log_user = "Breastfucked"
 	write_log_target = null
@@ -446,10 +439,8 @@
 
 /datum/interaction/lewd/fuck/belly
 	description = "Fuck their belly."
-	required_from_target_exposed = INTERACTION_REQUIRE_BELLY
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
-	required_from_user_unexposed = NONE
+	require_target_vagina = REQUIRE_NONE
+	require_target_belly = REQUIRE_EXPOSED
 	write_log_user = "belly fucked"
 	write_log_target = "was belly fucked by"
 
@@ -466,13 +457,10 @@
 
 /datum/interaction/lewd/deflate_belly
 	description = "Deflate belly."
-	required_from_target_exposed = NONE
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_BELLY
-	required_from_user_unexposed = NONE
+	require_user_belly = REQUIRE_EXPOSED
 	interaction_sound = null
 	max_distance = 0
-	interaction_flags = INTERACTION_FLAG_ADJACENT | INTERACTION_FLAG_OOC_CONSENT | INTERACTION_FLAG_USER_IS_TARGET
+	user_is_target = TRUE
 	write_log_user = "deflated their belly"
 	write_log_target = null
 
@@ -483,13 +471,10 @@
 
 /datum/interaction/lewd/inflate_belly
 	description = "Inflate belly"
-	required_from_target_exposed = NONE
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_BELLY
-	required_from_user_unexposed = NONE
+	require_user_belly = REQUIRE_EXPOSED
 	interaction_sound = null
 	max_distance = 0
-	interaction_flags = INTERACTION_FLAG_ADJACENT | INTERACTION_FLAG_OOC_CONSENT | INTERACTION_FLAG_USER_IS_TARGET
+	user_is_target = TRUE
 	write_log_user = "inflated their belly"
 	write_log_target = null
 
@@ -500,10 +485,7 @@
 
 /datum/interaction/lewd/nuzzle_belly
 	description = "Nuzzle their belly."
-	required_from_target_exposed = INTERACTION_REQUIRE_BELLY
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = NONE
-	required_from_user_unexposed = NONE
+	require_target_belly = REQUIRE_EXPOSED
 	interaction_sound = null
 	max_distance = 1
 	write_log_target = "got their belly nuzzled by"
@@ -514,10 +496,7 @@
 
 /datum/interaction/lewd/do_breastsmother
 	description = "Smother them in your breasts."
-	required_from_target_exposed = NONE
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_BREASTS
-	required_from_user_unexposed = NONE
+	require_user_breasts = REQUIRE_EXPOSED
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got breast smothered by"
@@ -536,10 +515,7 @@
 
 /datum/interaction/lewd/lick_sweat
 	description = "Lick their sweat."
-	required_from_target_exposed = NONE
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_MOUTH
-	required_from_user_unexposed = NONE
+	require_user_mouth = TRUE
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got their sweat licked by"
@@ -560,10 +536,7 @@
 
 /datum/interaction/lewd/lick_armpit
 	description = "Lick their armpit."
-	required_from_target_exposed = NONE
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_MOUTH
-	required_from_user_unexposed = NONE
+	require_user_mouth = TRUE
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "Got dem armpit ate by"
@@ -574,10 +547,7 @@
 
 /datum/interaction/lewd/fuck_armpit
 	description = "Fuck their armpit."
-	required_from_target_exposed = NONE
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
-	required_from_user_unexposed = NONE
+	require_user_penis = REQUIRE_EXPOSED
 	interaction_sound = null
 	write_log_target = "got their armpit fucked by"
 	write_log_user = "fucked the armpit of"
@@ -596,10 +566,7 @@
 
 /datum/interaction/lewd/do_pitjob
 	description = "Jerk them off with your armpit."
-	required_from_target_exposed = INTERACTION_REQUIRE_PENIS
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = NONE
-	required_from_user_unexposed = NONE
+	require_target_penis = REQUIRE_EXPOSED
 	interaction_sound = null
 	write_log_target = "gave a pitjob to"
 	write_log_user = "got a pitjob from"
@@ -618,10 +585,8 @@
 
 /datum/interaction/lewd/do_boobjob
 	description = "Give them a boobjob."
-	required_from_target_exposed = INTERACTION_REQUIRE_PENIS
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_BREASTS
-	required_from_user_unexposed = NONE
+	require_user_breasts = REQUIRE_EXPOSED
+	require_target_penis = REQUIRE_EXPOSED
 	interaction_sound = null
 	max_distance = 1
 	write_log_target = "Got a boobjob from"
@@ -640,10 +605,8 @@
 
 /datum/interaction/lewd/lick_nuts
 	description = "Lick their balls."
-	required_from_target_exposed = INTERACTION_REQUIRE_BALLS
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_MOUTH
-	required_from_user_unexposed = NONE
+	require_user_mouth = TRUE
+	require_target_balls = REQUIRE_EXPOSED
 	interaction_sound = null
 	max_distance = 1
 	write_log_target = "Got their nuts sucked by"
@@ -655,10 +618,7 @@
 /datum/interaction/lewd/grope_ass
 	description = "Grope their ass."
 	simple_message = "USER gropes TARGET's ass!"
-	required_from_target_exposed = NONE
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_HANDS
-	required_from_user_unexposed = NONE
+	require_user_hands = TRUE
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "Got their ass groped by"
@@ -666,10 +626,8 @@
 
 /datum/interaction/lewd/fuck_cock
 	description = "Penetrate their %COCK%."
-	required_from_target_exposed = INTERACTION_REQUIRE_PENIS
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
-	required_from_user_unexposed = NONE
+	require_user_penis = REQUIRE_EXPOSED
+	require_target_penis = REQUIRE_EXPOSED
 	interaction_sound = null
 	max_distance = 1
 	write_log_target = "Got their cock fucked by"
@@ -685,11 +643,8 @@
 
 /datum/interaction/lewd/nipple_fuck
 	description = "Fuck their nipple."
-	required_from_target = INTERACTION_REQUIRE_TOPLESS
-	required_from_target_exposed = NONE
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
-	required_from_user_unexposed = NONE
+	require_target_topless = TRUE
+	require_user_penis = REQUIRE_EXPOSED
 	write_log_user = "fucked nipples"
 	write_log_target = "got their nipples fucked by"
 	interaction_sound = null
@@ -708,12 +663,9 @@
 
 /datum/interaction/lewd/fuck_thighs
 	description = "Fuck their thighs."
+	require_user_penis = REQUIRE_EXPOSED
 	require_target_legs = REQUIRE_ANY
 	require_target_num_legs = 2
-	required_from_target_exposed = NONE
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
-	required_from_user_unexposed = NONE
 	write_log_user = "fucked thighs"
 	write_log_target = "got their thighs fucked by"
 	interaction_sound = null
@@ -733,12 +685,9 @@
 
 /datum/interaction/lewd/do_thighjob
 	description = "Give them a thighjob."
+	require_target_penis = REQUIRE_EXPOSED
 	require_user_legs = REQUIRE_ANY
 	require_user_num_legs = 2
-	required_from_target_exposed = NONE
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
-	required_from_user_unexposed = NONE
 	write_log_user = "Gave a thighjob"
 	write_log_target = "Got a thighjob from"
 	interaction_sound = null
@@ -758,7 +707,7 @@
 
 /datum/interaction/lewd/clothesplosion
 	description = "Explode out of your clothes"
-	interaction_flags = INTERACTION_FLAG_ADJACENT | INTERACTION_FLAG_OOC_CONSENT | INTERACTION_FLAG_USER_IS_TARGET
+	user_is_target = TRUE
 	interaction_sound = null
 	max_distance = 0
 	write_log_user = "Exploded out of their clothes"
@@ -778,10 +727,7 @@
 
 /datum/interaction/lewd/unholy/do_facefart
 	description = "Fart on their face."
-	required_from_target_exposed = NONE
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_ANUS
-	required_from_user_unexposed = NONE
+	require_user_anus = REQUIRE_EXPOSED
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got facefarted by"
@@ -792,10 +738,7 @@
 
 /datum/interaction/lewd/unholy/do_crotchfart
 	description = "Fart on their crotch."
-	required_from_target_exposed = NONE
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_ANUS
-	required_from_user_unexposed = NONE
+	require_user_anus = REQUIRE_EXPOSED
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got crotchfarted by"
@@ -806,10 +749,8 @@
 
 /datum/interaction/lewd/unholy/do_fartfuck
 	description = "Fuck their ass + fart."
-	required_from_target_exposed = INTERACTION_REQUIRE_ANUS
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
-	required_from_user_unexposed = NONE
+	require_target_anus = REQUIRE_EXPOSED
+	require_user_penis = REQUIRE_EXPOSED
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got fartfucked by"
@@ -828,10 +769,8 @@
 
 /datum/interaction/lewd/unholy/suck_fart
 	description = "Suck the farts out of their asshole."
-	required_from_target_exposed = INTERACTION_REQUIRE_ANUS
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_MOUTH
-	required_from_user_unexposed = NONE
+	require_user_mouth = TRUE
+	require_target_anus = REQUIRE_EXPOSED
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got their farts sucked out by"
@@ -842,10 +781,7 @@
 
 /datum/interaction/lewd/unholy/do_faceshit
 	description = "Shit on their face."
-	required_from_target_exposed = NONE
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_ANUS
-	required_from_user_unexposed = NONE
+	require_user_anus = TRUE
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got shat in the face by"
@@ -856,10 +792,7 @@
 
 /datum/interaction/lewd/unholy/do_crotchshit/
 	description = "Shit on their crotch."
-	required_from_target_exposed = NONE
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_ANUS
-	required_from_user_unexposed = NONE
+	require_user_anus = REQUIRE_EXPOSED
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got shat on the croch by"
@@ -870,10 +803,8 @@
 
 /datum/interaction/lewd/unholy/do_shitfuck
 	description = "Fuck their ass + shit."
-	required_from_target_exposed = INTERACTION_REQUIRE_ANUS
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
-	required_from_user_unexposed = NONE
+	require_target_anus = REQUIRE_EXPOSED
+	require_user_penis = REQUIRE_EXPOSED
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got shitfucked by"
@@ -892,10 +823,8 @@
 
 /datum/interaction/lewd/unholy/suck_shit
 	description = "Suck the shit out of their asshole."
-	required_from_target_exposed = INTERACTION_REQUIRE_ANUS
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_MOUTH
-	required_from_user_unexposed = NONE
+	require_user_mouth = TRUE
+	require_target_anus = REQUIRE_EXPOSED
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got their shit sucked out by"
@@ -906,11 +835,7 @@
 
 /datum/interaction/lewd/unholy/piss_over
 	description = "Piss all over them."
-	required_from_user = INTERACTION_REQUIRE_BOTTOMLESS
-	required_from_target_exposed = NONE
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = NONE
-	required_from_user_unexposed = NONE
+	require_user_bottomless = TRUE
 	max_distance = 1
 	interaction_sound = null
 	write_log_target = "got pissed all over by"
@@ -923,16 +848,13 @@
 	description = "Piss inside their mouth."
 	max_distance = 1
 	interaction_sound = null
-	required_from_user = INTERACTION_REQUIRE_BOTTOMLESS
-	required_from_target_exposed = INTERACTION_REQUIRE_MOUTH
-	required_from_target_unexposed = NONE
-	required_from_user_exposed = NONE
-	required_from_user_unexposed = NONE
+	require_user_bottomless = TRUE
+	require_target_mouth = TRUE
 	write_log_user = "pissed in someone's mouth"
 	write_log_target = "got their mouth filled with piss by"
 
 /datum/interaction/lewd/unholy/piss_mouth/display_interaction(mob/living/carbon/user, mob/living/target)
 	if(!istype(user))
-		to_chat(user, span_warning("You're not a carbon entity."))
+		to_chat(user, span_warning("Erm, you may wanna be a carbon entity fo dat"))
 		return
 	user.piss_mouth(target)

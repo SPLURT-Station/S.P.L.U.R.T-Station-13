@@ -365,7 +365,7 @@
 									'modular_sand/sound/interactions/bj6.ogg',
 									'modular_sand/sound/interactions/bj7.ogg',
 									'modular_sand/sound/interactions/bj8.ogg',
-									'modular_sand/sound/interactions/bj9.ogg',
+									'modular_sand/sound/interactions/bj9.ogg', [t_His
 									'modular_sand/sound/interactions/bj10.ogg',
 									'modular_sand/sound/interactions/bj11.ogg'), 50, 1, -1)
 	visible_message(message = span_lewd("<b>\The [src]</b> [message]"), ignored_mobs = get_unconsenting())

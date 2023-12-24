@@ -57,7 +57,7 @@
 	SStgui.update_uis(src)
 
 /obj/item/modular_computer/tablet/proc/remove_pen()
-	if(hasSiliconAccessInArea(usr) || !usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+	if(hasSiliconAccessInArea(usr) || !usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK, check_resting = FALSE))
 		return
 
 	if(inserted_item)

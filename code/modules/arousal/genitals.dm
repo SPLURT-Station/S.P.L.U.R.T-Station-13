@@ -308,7 +308,7 @@
 		//
 		if(G.is_exposed()) //Checks appropriate clothing slot and if it's through_clothes
 			LAZYADD(gen_index[G.layer_index], G)
-	if(has_strapon(REQUIRE_EXPOSED))
+	if(has_strapon() == HAS_EXPOSED_GENITAL)
 		LAZYADD(gen_index[PENIS_LAYER_INDEX], get_strapon())
 	for(var/L in gen_index)
 		if(L) //skip nulls

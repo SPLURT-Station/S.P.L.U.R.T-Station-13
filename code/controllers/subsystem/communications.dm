@@ -62,7 +62,7 @@ SUBSYSTEM_DEF(communications)
 	COOLDOWN_START(src, emergency_meeting_cooldown, COMMUNICATION_COOLDOWN_MEETING)
 	message_admins("[ADMIN_LOOKUPFLW(user)] has called an emergency meeting.")
 
-/datum/controller/subsystem/communications/proc/send_message(datum/comm_message/sending,print = TRUE,unique = FALSE)
+/datum/controller/subsystem/communications/proc/send_message(datum/comm_message/sending, print = FALSE, unique = FALSE)
 	for(var/obj/machinery/computer/communications/C in GLOB.machines)
 		if(!(C.stat & (BROKEN|NOPOWER)) && is_station_level(C.z))
 			if(unique)

@@ -462,3 +462,33 @@
 	soundpath = 'modular_splurt/sound/voice/barks/poyo.ogg'
 	minspeed = 3
 	maxspeed = 10
+
+/datum/bark/ace_blip
+	name = "Ace Talk 1"
+	id = "acetalk1"
+	soundpath = 'modular_splurt/sound/voice/barks/ace_attorney/aa_blip.ogg'
+	allow_random = TRUE
+	minspeed = 4
+	minvariance = 0
+
+/datum/bark/ace_blip/alt1
+	name = "Ace Talk 2"
+	id = "acetalk2"
+	soundpath = 'modular_splurt/sound/voice/barks/ace_attorney/aa_dd_blip.ogg'
+
+/datum/bark/ace_blip/alt2
+	name = "Ace Talk 3"
+	id = "acetalk3"
+	soundpath = 'modular_splurt/sound/voice/barks/ace_attorney/aa_tgaa_blip.ogg'
+
+/datum/bark/ace_typewriter
+	name = "Ace Typewriter"
+	id = "acewrite"
+	soundpath = 'modular_splurt/sound/voice/barks/ace_attorney/aa_blip_typewriter.ogg'
+	minspeed = 4
+	minvariance = 0
+
+/datum/bark/nomi
+	name = "Nomi"
+	id = "nomi"
+	soundpath = 'modular_splurt/sound/voice/barks/nomi.ogg'

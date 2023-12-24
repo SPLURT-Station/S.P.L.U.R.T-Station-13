@@ -107,8 +107,8 @@
 /turf/open/space,
 /area/space/nearstation)
 "abd" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 6
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 1
 	},
 /turf/closed/wall,
 /area/security/execution/transfer)
@@ -3029,6 +3029,9 @@
 /area/security/office)
 "akP" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 1
+	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "akT" = (
@@ -3057,6 +3060,9 @@
 	name = "test chamber blast door"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 1
+	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "akW" = (
@@ -3066,6 +3072,9 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
 "akX" = (
@@ -3154,6 +3163,9 @@
 /area/security/courtroom)
 "alf" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 1
+	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "alg" = (
@@ -3223,6 +3235,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 1
+	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "aln" = (
@@ -3232,6 +3247,9 @@
 	},
 /obj/structure/chair/comfy/black,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 5
+	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "alo" = (
@@ -27260,6 +27278,9 @@
 /area/science/xenobiology)
 "bIO" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 8
+	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "bIP" = (
@@ -27276,6 +27297,9 @@
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 8
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
@@ -29941,6 +29965,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/structure/sign/xenobio_guide{
+	pixel_y = -30
+	},
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
 "bPA" = (
@@ -29960,6 +29987,9 @@
 	dir = 9
 	},
 /obj/machinery/portable_atmospherics/canister/bz,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible/layer3{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
 "bPF" = (
@@ -42342,6 +42372,12 @@
 /obj/machinery/atmospherics/pipe/simple/orange/visible,
 /turf/open/space,
 /area/space/nearstation)
+"cCK" = (
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 9
+	},
+/turf/open/floor/engine,
+/area/science/xenobiology)
 "cCO" = (
 /obj/structure/musician/piano,
 /obj/machinery/camera{
@@ -43672,6 +43708,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
+"cWY" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer3,
+/turf/open/floor/engine,
+/area/science/xenobiology)
 "cXU" = (
 /obj/effect/turf_decal/tile/red,
 /obj/machinery/light{
@@ -44682,6 +44722,15 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/circuit)
+"dNl" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white,
+/area/science/xenobiology)
 "dNn" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -51452,6 +51501,9 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
 /turf/open/floor/plasteel/dark,
 /area/security/execution/transfer)
 "jKj" = (
@@ -54956,6 +55008,13 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/white,
 /area/science/circuit)
+"mNG" = (
+/obj/effect/landmark/event_spawn,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 5
+	},
+/turf/open/floor/engine,
+/area/science/xenobiology)
 "mOh" = (
 /obj/structure/chair/office/dark{
 	dir = 8
@@ -60962,6 +61021,15 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/service/chapel/office)
+"srQ" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 10
+	},
+/turf/open/floor/plasteel/white,
+/area/science/xenobiology)
 "ssB" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 1
@@ -63651,6 +63719,12 @@
 	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/service/kitchen)
+"uKk" = (
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 5
+	},
+/turf/open/floor/plasteel/white,
+/area/science/xenobiology)
 "uMb" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
@@ -65694,6 +65768,15 @@
 	dir = 1
 	},
 /area/commons/fitness)
+"wmO" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 6
+	},
+/turf/open/floor/engine,
+/area/science/xenobiology)
 "wne" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -66942,6 +67025,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
+"xBH" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/atmos,
+/turf/open/floor/engine,
+/area/science/xenobiology)
 "xBN" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 4
@@ -110625,9 +110712,9 @@ bAy
 bBS
 bDb
 bEm
-bEm
-cBz
-bEm
+akK
+mNG
+xBH
 bJI
 bKX
 bMh
@@ -110882,8 +110969,8 @@ bAB
 bBV
 bDb
 bEn
-akK
-akP
+bEm
+wmO
 akP
 akV
 akW
@@ -111139,8 +111226,8 @@ bAA
 bBU
 bDb
 bEm
-bEm
-bEm
+cWY
+cCK
 bIy
 bJK
 bKZ
@@ -111403,7 +111490,7 @@ bJM
 bLc
 bMi
 bNo
-bOx
+dNl
 alV
 bQM
 bMi
@@ -111917,8 +112004,8 @@ bJN
 bJN
 bMm
 bNp
-bOx
-bMi
+srQ
+uKk
 bQN
 bRZ
 bOx

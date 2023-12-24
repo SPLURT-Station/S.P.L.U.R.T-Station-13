@@ -2,6 +2,7 @@
 	var/list/extra_products = list(
 		/obj/item/clothing/suit/assu_suit = 16,
 		/obj/item/clothing/head/assu_helmet = 16,
+		/obj/item/clothing/head/hoodcowl = 4,
 		/obj/item/clothing/glasses/aviators = 10,
 		/obj/item/clothing/glasses/sunglasses = 10,
 		/obj/item/clothing/suit/toggle/rp_jacket = 3,
@@ -32,7 +33,12 @@
 		/obj/item/clothing/under/suit/helltaker = 3,
 		/obj/item/clothing/under/suit/helltaker/skirt = 3,
 		/obj/item/clothing/suit/invisijacket = 3,
-		/obj/item/clothing/head/invisihat = 3
+		/obj/item/clothing/head/invisihat = 3,
+		/obj/item/clothing/under/pentatop = 3,
+		/obj/item/clothing/wrists/armwarmer = 3,
+		/obj/item/clothing/wrists/armwarmer/long = 3,
+		/obj/item/clothing/wrists/armwarmer_striped = 3,
+		/obj/item/clothing/wrists/armwarmer_striped/long = 3
 	)
 	var/list/extra_contraband = list(
 		/obj/item/clothing/under/rank/civilian/lawyer/galaxy_red = 3,

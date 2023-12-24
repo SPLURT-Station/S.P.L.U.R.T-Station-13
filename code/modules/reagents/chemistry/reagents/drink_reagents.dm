@@ -213,6 +213,7 @@
 	glass_desc = "White and nutritious goodness!"
 	pH = 6.5
 	value = REAGENT_VALUE_VERY_COMMON
+	var/decal_path = /obj/effect/decal/cleanable/milk
 
 	// Milk is good for humans, but bad for plants. The sugars cannot be used by plants, and the milk fat harms growth. Not shrooms though. I can't deal with this now...
 /datum/reagent/consumable/milk/on_hydroponics_apply(obj/item/seeds/myseed, datum/reagents/chems, obj/machinery/hydroponics/mytray, mob/user)

@@ -12,7 +12,6 @@
 
 	var/datum/dna/egg_dna
 	var/list/egg_features = list()
-	var/single_alleled
 
 	var/mother_name
 
@@ -59,11 +58,6 @@
 	determine_egg_features(_mother, _father)
 
 	mother_name = _mother.real_name
-
-	if(iscarbon(_father) && iscarbon(_mother))
-		single_alleled = FALSE
-	else
-		single_alleled = TRUE
 
 	pregnancy_inflation = carrier?.client?.prefs?.pregnancy_inflation
 
@@ -399,32 +393,17 @@
 
 //not how genetics work but okay
 /datum/component/pregnancy/proc/determine_baby_dna(mob/living/carbon/human/babby)
-	if(single_alleled)
-		egg_dna.transfer_identity_random(babby.dna, babby)
-	else
-		egg_dna.transfer_identity(babby)
+	egg_dna.transfer_identity(babby)
 
 /datum/component/pregnancy/proc/determine_baby_features(mob/living/carbon/human/babby)
 
 	var/list/final_features = list()
 
-	if(single_alleled)
-		if(prob(50))
-			babby.skin_tone = egg_features["skin_tone"]
-		if(prob(50))
-			babby.hair_color = egg_features["hair_color"]
-		if(prob(50))
-			babby.facial_hair_color = egg_features["facial_hair_color"]
-		if(prob(50))
-			babby.left_eye_color = egg_features["left_eye_color"]
-		if(prob(50))
-			babby.right_eye_color = egg_features["right_eye_color"]
-	else
-		babby.skin_tone = egg_features["skin_tone"]
-		babby.hair_color = egg_features["hair_color"]
-		babby.facial_hair_color = egg_features["facial_hair_color"]
-		babby.left_eye_color = egg_features["left_eye_color"]
-		babby.right_eye_color = egg_features["right_eye_color"]
+	babby.skin_tone = egg_features["skin_tone"]
+	babby.hair_color = egg_features["hair_color"]
+	babby.facial_hair_color = egg_features["facial_hair_color"]
+	babby.left_eye_color = egg_features["left_eye_color"]
+	babby.right_eye_color = egg_features["right_eye_color"]
 
 	babby.hair_style = pick("Bedhead", "Bedhead 2", "Bedhead 3")
 	babby.facial_hair_style = "Shaved"

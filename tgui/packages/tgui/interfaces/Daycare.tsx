@@ -18,7 +18,7 @@ export const Daycare = (props, context) => {
         <Stack>
           <Stack.Item grow>
             {
-              data.image ?
+              data ?
                 <img
                   src={`data:image/jpeg;base64,${data.image}`}
                   style={{

@@ -23,7 +23,7 @@
 		icon_state = "smoke1"
 
 /obj/machinery/incubator/attackby(obj/item/I, mob/user, params)
-	if(default_deconstruction_screwdriver(user, "mixer0_nopower", "mixer0", I))
+	if(default_deconstruction_screwdriver(user, "smoke0-o", "smoke0", I))
 		return
 
 	else if(default_deconstruction_crowbar(I))

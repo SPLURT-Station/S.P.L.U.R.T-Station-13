@@ -8,12 +8,10 @@
 
 	var/obj/item/organ/container
 	var/mob/living/carrier
+	var/obj/machinery/incubator/incubator_carrier
 
-	var/datum/dna/father_dna
-	var/datum/dna/mother_dna
-
-	var/list/mother_features
-	var/list/father_features
+	var/datum/dna/egg_dna
+	var/list/egg_features = list()
 
 	var/mother_name
 
@@ -56,35 +54,10 @@
 	if(nads.owner)
 		carrier = nads.owner
 
-	if(iscarbon(_father))
-		var/mob/living/carbon/cardad = _father
-		father_dna = new
-		cardad.dna.copy_dna(father_dna)
-
-	if(iscarbon(_mother))
-		var/mob/living/carbon/carmom = _mother
-		mother_dna = new
-		carmom.dna.copy_dna(mother_dna)
+	determine_egg_dna(_mother, _father)
+	determine_egg_features(_mother, _father)
 
 	mother_name = _mother.real_name
-
-	if(ishuman(_father))
-		var/mob/living/carbon/human/cardad = _father
-		LAZYINITLIST(father_features)
-		father_features["skin_tone"] = cardad.skin_tone
-		father_features["hair_color"] = cardad.hair_color
-		father_features["facial_hair_color"] = cardad.facial_hair_color
-		father_features["left_eye_color"] = cardad.left_eye_color
-		father_features["right_eye_color"] = cardad.right_eye_color
-
-	if(ishuman(_mother))
-		var/mob/living/carbon/human/carmom = _mother
-		LAZYINITLIST(mother_features)
-		mother_features["skin_tone"] = carmom.skin_tone
-		mother_features["hair_color"] = carmom.hair_color
-		mother_features["facial_hair_color"] = carmom.facial_hair_color
-		mother_features["left_eye_color"] = carmom.left_eye_color
-		mother_features["right_eye_color"] = carmom.right_eye_color
 
 	pregnancy_inflation = carrier?.client?.prefs?.pregnancy_inflation
 
@@ -120,6 +93,12 @@
 	if(oviposition)
 		RegisterSignal(carrier, COMSIG_MOB_CLIMAX, .proc/on_climax)
 
+/datum/component/pregnancy/proc/register_machine()
+	RegisterSignal(incubator_carrier, COMSIG_MACHINERY_INCUBATOR_PROCESS, .proc/handle_machine_incubator)
+
+/datum/component/pregnancy/proc/unregister_machine()
+	UnregisterSignal(incubator_carrier, COMSIG_MACHINERY_INCUBATOR_PROCESS, .proc/handle_machine_incubator)
+
 /datum/component/pregnancy/proc/unregister_carrier()
 	UnregisterSignal(carrier, COMSIG_MOB_DEATH)
 	UnregisterSignal(carrier, COMSIG_LIVING_BIOLOGICAL_LIFE)
@@ -131,6 +110,60 @@
 	if(carrier)
 		generic_pragency_end()
 	return ..()
+
+
+/datum/component/pregnancy/proc/determine_egg_dna(mob/living/_mother, mob/living/_father)
+	var/mob/living/carbon/father = _father
+	var/mob/living/carbon/mother = _mother
+	if(iscarbon(father) && iscarbon(_mother))
+		egg_dna = mother.dna.transfer_identity_random_dna_only(father.dna)
+	else if(iscarbon(father))
+		egg_dna = new
+		egg_dna.initialize_dna()
+		egg_dna = father.dna.transfer_identity_random_dna_only(egg_dna)
+	else if(iscarbon(mother))
+		egg_dna = new
+		egg_dna.initialize_dna()
+		egg_dna = mother.dna.transfer_identity_random_dna_only(egg_dna)
+
+/datum/component/pregnancy/proc/determine_egg_features(mob/living/_mother, mob/living/_father)
+	if(ishuman(_father) && ishuman(_mother))
+		var/mob/living/carbon/human/cardad = _father
+		var/mob/living/carbon/human/carmom = _mother
+		var/list/father_features = list()
+		var/list/mother_features = list()
+
+		father_features["skin_tone"] = cardad.skin_tone
+		father_features["hair_color"] = cardad.hair_color
+		father_features["facial_hair_color"] = cardad.facial_hair_color
+		father_features["left_eye_color"] = cardad.left_eye_color
+		father_features["right_eye_color"] = cardad.right_eye_color
+
+		mother_features["skin_tone"] = carmom.skin_tone
+		mother_features["hair_color"] = carmom.hair_color
+		mother_features["facial_hair_color"] = carmom.facial_hair_color
+		mother_features["left_eye_color"] = carmom.left_eye_color
+		mother_features["right_eye_color"] = carmom.right_eye_color
+
+		transfer_randomized_list(egg_features, mother_features, father_features)
+
+	else if(ishuman(_father))
+		var/mob/living/carbon/human/cardad = _father
+
+		egg_features["skin_tone"] = cardad.skin_tone
+		egg_features["hair_color"] = cardad.hair_color
+		egg_features["facial_hair_color"] = cardad.facial_hair_color
+		egg_features["left_eye_color"] = cardad.left_eye_color
+		egg_features["right_eye_color"] = cardad.right_eye_color
+
+	else if(ishuman(_mother))
+		var/mob/living/carbon/human/carmom = _mother
+
+		egg_features["skin_tone"] = carmom.skin_tone
+		egg_features["hair_color"] = carmom.hair_color
+		egg_features["facial_hair_color"] = carmom.facial_hair_color
+		egg_features["left_eye_color"] = carmom.left_eye_color
+		egg_features["right_eye_color"] = carmom.right_eye_color
 
 /datum/component/pregnancy/proc/name_egg(datum/source, name)
 	SIGNAL_HANDLER
@@ -172,11 +205,25 @@
 		pregnancy_breast_growth = carrier.client?.prefs?.pregnancy_breast_growth
 		register_carrier()
 		generic_pragency_start()
+	else if(istype(destination, /obj/machinery/incubator))
+		var/obj/machinery/incubator/inc = destination
+		incubator_carrier = inc
+		register_machine()
 	else if(carrier)
 		generic_pragency_end()
 		unregister_carrier()
+		unregister_machine()
 		carrier = null
 		container = null
+		incubator_carrier = null
+
+/datum/component/pregnancy/proc/handle_machine_incubator()
+	SIGNAL_HANDLER
+
+	if(COOLDOWN_FINISHED(src, stage_time))
+		stage += 1
+		stage = min(stage, max_stage)
+		COOLDOWN_START(src, stage_time, PREGNANCY_STAGE_DURATION)
 
 /datum/component/pregnancy/proc/handle_life(seconds)
 	SIGNAL_HANDLER
@@ -346,29 +393,17 @@
 
 //not how genetics work but okay
 /datum/component/pregnancy/proc/determine_baby_dna(mob/living/carbon/human/babby)
-	if(mother_dna && father_dna)
-		mother_dna.transfer_identity_random(father_dna, babby)
-	else if(mother_dna && !father_dna)
-		mother_dna.transfer_identity_random(babby.dna, babby)
-	else if(!mother_dna && father_dna)
-		father_dna.transfer_identity_random(babby.dna, babby)
+	egg_dna.transfer_identity(babby)
 
 /datum/component/pregnancy/proc/determine_baby_features(mob/living/carbon/human/babby)
 
 	var/list/final_features = list()
 
-	transfer_randomized_list(final_features, mother_features, father_features)
-
-	if(final_features["skin_tone"])
-		babby.skin_tone = final_features["skin_tone"]
-	if(final_features["hair_color"])
-		babby.hair_color = final_features["hair_color"]
-	if(final_features["facial_hair_color"])
-		babby.facial_hair_color = final_features["facial_hair_color"]
-	if(final_features["left_eye_color"])
-		babby.left_eye_color = final_features["left_eye_color"]
-	if(final_features["right_eye_color"])
-		babby.right_eye_color = final_features["right_eye_color"]
+	babby.skin_tone = egg_features["skin_tone"]
+	babby.hair_color = egg_features["hair_color"]
+	babby.facial_hair_color = egg_features["facial_hair_color"]
+	babby.left_eye_color = egg_features["left_eye_color"]
+	babby.right_eye_color = egg_features["right_eye_color"]
 
 	babby.hair_style = pick("Bedhead", "Bedhead 2", "Bedhead 3")
 	babby.facial_hair_style = "Shaved"

@@ -3,6 +3,7 @@
 #define COMSIG_ORGAN_REMOVED "organ_removed"
 #define COMSIG_MOB_CLIMAX "mob_coomed"
 #define COMSIG_OBJ_WRITTEN_ON "written_on"
+#define COMSIG_MACHINERY_INCUBATOR_PROCESS "incubator_proc"
 
 #define COMSIG_MOB_GENITAL_TRY_INSERTING "mob_genital_try_inserting" //Handles external restrictions to the inserting
 

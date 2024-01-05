@@ -44,3 +44,11 @@
 	prereq_ids = list("cyber_organs", "alien_surgery")
 	design_ids = list("ci-hypnoeyes")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
+
+/datum/techweb_node/cloning/New()
+	var/list/extra_designs = list(
+		"incubator",
+		"embryonator"
+	)
+	LAZYADD(design_ids, extra_designs)
+	. = ..()

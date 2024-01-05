@@ -94,10 +94,12 @@
 
 	if(prob(50))
 		destination.set_species(species.type, FALSE)
+		destination.dna.species = new species.type
 		destination.dna.species.say_mod = species.say_mod
 		destination.dna.custom_species = custom_species
 	else
 		destination.set_species(second_set.species.type, FALSE)
+		destination.dna.species = new second_set.species.type
 		destination.dna.species.say_mod = second_set.species.say_mod
 		destination.dna.custom_species = second_set.custom_species
 
@@ -112,5 +114,27 @@
 		H.update_genitals()
 
 	destination.updateappearance(icon_update=TRUE, mutcolor_update=TRUE, mutations_overlay_update=TRUE)
+
+/datum/dna/proc/transfer_identity_random_dna_only(datum/dna/second_set)
+	var/datum/dna/destination= new
+
+	TRANSFER_RANDOMIZED(destination.blood_type, blood_type, second_set.blood_type)
+	TRANSFER_RANDOMIZED(destination.skin_tone_override, skin_tone_override, second_set.skin_tone_override)
+	transfer_randomized_list(destination.features, features, second_set.features)
+	transfer_randomized_list(destination.temporary_mutations, temporary_mutations, second_set.temporary_mutations)
+
+	if(prob(50))
+		destination.species = new species.type
+		destination.species.say_mod = species.say_mod
+		destination.custom_species = custom_species
+	else
+		destination.species = new second_set.species.type
+		destination.species.say_mod = second_set.species.say_mod
+		destination.custom_species = second_set.custom_species
+
+	destination.update_dna_identity()
+	destination.generate_dna_blocks()
+
+	return destination
 
 #undef TRANSFER_RANDOMIZED

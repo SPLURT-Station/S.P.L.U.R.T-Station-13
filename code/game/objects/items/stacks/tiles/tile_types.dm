@@ -94,6 +94,48 @@
 	icon_state = "tile_grass"
 	turf_type = /turf/open/floor/grass
 	resistance_flags = FLAMMABLE
+//SPLURT EDIT START
+	tile_reskin_types = list(
+	/obj/item/stack/tile/grass,
+	/obj/item/stack/tile/grass/grass0,
+	/obj/item/stack/tile/grass/grass1,
+	/obj/item/stack/tile/grass/grass2,
+	)
+
+/obj/item/stack/tile/grass
+	name = "Grass Tile 1"
+	singular_name = "grass floor tile"
+	turf_type = /turf/open/floor/grass
+	icon_state = "tile_grass"
+
+/obj/item/stack/tile/grass/grass0
+	name = "Grass Tile 2"
+	singular_name = "grass floor tile"
+	turf_type = /turf/open/floor/grass/grass0
+	icon_state = "tile_grass"
+
+/obj/item/stack/tile/grass/grass1
+	name = "Grass Tile 3"
+	singular_name = "grass floor tile"
+	turf_type = /turf/open/floor/grass/grass1
+	icon_state = "tile_grass"
+
+/obj/item/stack/tile/grass/grass2
+	name = "Grass Tile 4"
+	singular_name = "grass floor tile"
+	turf_type = /turf/open/floor/grass/grass2
+	icon_state = "tile_grass"
+
+/turf/open/floor/grass/grass0
+	icon_state = "grass0"
+
+/turf/open/floor/grass/grass1
+	icon_state = "grass1"
+
+/turf/open/floor/grass/grass2
+	icon_state = "grass2"
+
+//SPLURT EDIT END
 
 //Fairygrass
 /obj/item/stack/tile/fairygrass

@@ -44,7 +44,8 @@
 		/obj/structure/window/reinforced/fulltile,
 		/obj/structure/window/reinforced/tinted/fulltile,
 		/obj/structure/window/plasma/fulltile,
-		/obj/structure/window/plasma/reinforced/fulltile
+		/obj/structure/window/plasma/reinforced/fulltile,
+		/turf/closed/indestructible/wall
 		)
 	smooth = SMOOTH_TRUE
 

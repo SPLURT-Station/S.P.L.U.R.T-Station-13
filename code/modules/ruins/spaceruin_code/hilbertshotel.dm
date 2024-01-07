@@ -7,6 +7,17 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 	icon_state = "hilbertshotel"
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	//SPLURT EDIT START
+	var/list/static/hotel_maps = list("Hotel Room", "Apartment","Apartment-1", "Apartment-2", "Apartment-3", "Apartment-Bar", "Apartment-Garden", "Apartment-Syndicate", "Apartment-Sauna")
+	var/datum/map_template/hilbertshotel/apartment/hilberts_hotel_rooms_apartment
+	var/datum/map_template/hilbertshotel/apartment/one/hilberts_hotel_rooms_apartment_one
+	var/datum/map_template/hilbertshotel/apartment/two/hilberts_hotel_rooms_apartment_two
+	var/datum/map_template/hilbertshotel/apartment/three/hilberts_hotel_rooms_apartment_three
+	var/datum/map_template/hilbertshotel/apartment/bar/hilberts_hotel_rooms_apartment_bar
+	var/datum/map_template/hilbertshotel/apartment/garden/hilberts_hotel_rooms_apartment_garden
+	var/datum/map_template/hilbertshotel/apartment/syndie/hilberts_hotel_rooms_apartment_syndie
+	var/datum/map_template/hilbertshotel/apartment/sauna/hilberts_hotel_rooms_apartment_sauna
+	//SPLURT EDIT END
 	var/datum/map_template/hilbertshotel/hotelRoomTemp
 	var/datum/map_template/hilbertshotel/empty/hotelRoomTempEmpty
 	var/datum/map_template/hilbertshotel/lore/hotelRoomTempLore
@@ -27,6 +38,16 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 	hotelRoomTemp = new()
 	hotelRoomTempEmpty = new()
 	hotelRoomTempLore = new()
+	//SPLURT EDIT START
+	hilberts_hotel_rooms_apartment = new()
+	hilberts_hotel_rooms_apartment_one = new()
+	hilberts_hotel_rooms_apartment_two = new()
+	hilberts_hotel_rooms_apartment_three = new()
+	hilberts_hotel_rooms_apartment_bar = new()
+	hilberts_hotel_rooms_apartment_garden = new()
+	hilberts_hotel_rooms_apartment_syndie = new()
+	hilberts_hotel_rooms_apartment_sauna = new()
+	//SPLURT EDIT END
 	var/area/currentArea = get_area(src)
 	if(currentArea.type == /area/ruin/space/has_grav/hilbertresearchfacility)
 		ruinSpawned = TRUE
@@ -38,13 +59,13 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 /obj/item/hilbertshotel/attack(mob/living/M, mob/living/user)
 	if(M.mind)
 		to_chat(user, "<span class='notice'>You invite [M] to the hotel.</span>")
-		promptAndCheckIn(M)
+		promptAndCheckIn(user, M)
 	else
 		to_chat(user, "<span class='warning'>[M] is not intelligent enough to understand how to use this device!</span>")
 
 /obj/item/hilbertshotel/attack_self(mob/user)
 	. = ..()
-	promptAndCheckIn(user)
+	promptAndCheckIn(user, user)
 
 /obj/item/hilbertshotel/proc/promptAndCheckIn(mob/user)
 	//SPLURT EDIT - max infinidorms rooms
@@ -72,6 +93,16 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 	if(!isturf(loc))
 		if((loc == user) || (loc.loc == user) || (loc.loc in user.contents) || (loc in user.GetAllContents(type)))		//short circuit, first three checks are cheaper and covers almost all cases (loc.loc covers hotel in box in backpack).
 			forceMove(get_turf(user))
+
+	//SPLURT EDIT START
+	var/chosen_room = "Nothing"
+	if(istype(src, /obj/item/hilbertshotel))
+		chosen_room = tgui_input_list(user, "Choose your desired room:", "∼♦️ Time to choose a room ♦️∼!", hotel_maps)
+	
+	if(!chosen_room)
+		return FALSE
+	//SPLURT EDIT END
+
 	if(!storageTurf) //Blame subsystems for not allowing this to be in Initialize
 		if(!GLOB.hhStorageTurf)
 			var/datum/map_template/hilbertshotelstorage/storageTemp = new()
@@ -83,9 +114,9 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 	checked_in_ckeys |= user.ckey		//if anything below runtimes, guess you're outta luck!
 	if(tryActiveRoom(chosenRoomNumber, user))
 		return
-	if(tryStoredRoom(chosenRoomNumber, user))
+	if(tryStoredRoom(chosenRoomNumber, user, chosen_room))
 		return
-	sendToNewRoom(chosenRoomNumber, user)
+	sendToNewRoom(chosenRoomNumber, user, chosen_room)
 
 /obj/item/hilbertshotel/proc/tryActiveRoom(var/roomNumber, var/mob/user)
 	if(activeRooms["[roomNumber]"])
@@ -118,22 +149,38 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 		return TRUE
 	else
 		return FALSE
-
-/// This is a BLOCKING OPERATION. Note the room load call, and the block reservation calls.
-/obj/item/hilbertshotel/proc/sendToNewRoom(var/roomNumber, var/mob/user)
+	
+//SPLURT EDIT START: HOTEL UPDATE. Was sendToNewRoom(chosenRoomNumber, target) | Added new selectable apartments
+/obj/item/hilbertshotel/proc/sendToNewRoom(roomNumber, mob/user, chosen_room)
 	var/datum/turf_reservation/roomReservation = SSmapping.RequestBlockReservation(hotelRoomTemp.width, hotelRoomTemp.height)
-	if(ruinSpawned)
-		mysteryRoom = GLOB.hhmysteryRoomNumber
-		if(roomNumber == mysteryRoom)
-			hotelRoomTempLore.load(locate(roomReservation.bottom_left_coords[1], roomReservation.bottom_left_coords[2], roomReservation.bottom_left_coords[3]))
-		else
-			hotelRoomTemp.load(locate(roomReservation.bottom_left_coords[1], roomReservation.bottom_left_coords[2], roomReservation.bottom_left_coords[3]))
+	mysteryRoom = GLOB.hhmysteryRoomNumber
+	if(ruinSpawned && roomNumber == mysteryRoom)
+		hotelRoomTempLore.load(locate(roomReservation.bottom_left_coords[1], roomReservation.bottom_left_coords[2], roomReservation.bottom_left_coords[3]))
 	else
-		hotelRoomTemp.load(locate(roomReservation.bottom_left_coords[1], roomReservation.bottom_left_coords[2], roomReservation.bottom_left_coords[3]))
+		switch(chosen_room)
+			if("Apartment")
+				hilberts_hotel_rooms_apartment.load(locate(roomReservation.bottom_left_coords[1], roomReservation.bottom_left_coords[2], roomReservation.bottom_left_coords[3]))
+			if("Apartment-1")
+				hilberts_hotel_rooms_apartment_one.load(locate(roomReservation.bottom_left_coords[1], roomReservation.bottom_left_coords[2], roomReservation.bottom_left_coords[3]))
+			if("Apartment-2")
+				hilberts_hotel_rooms_apartment_two.load(locate(roomReservation.bottom_left_coords[1], roomReservation.bottom_left_coords[2], roomReservation.bottom_left_coords[3]))
+			if("Apartment-3")
+				hilberts_hotel_rooms_apartment_three.load(locate(roomReservation.bottom_left_coords[1], roomReservation.bottom_left_coords[2], roomReservation.bottom_left_coords[3]))			
+			if("Apartment-Bar")
+				hilberts_hotel_rooms_apartment_bar.load(locate(roomReservation.bottom_left_coords[1], roomReservation.bottom_left_coords[2], roomReservation.bottom_left_coords[3]))
+			if("Apartment-Garden")
+				hilberts_hotel_rooms_apartment_garden.load(locate(roomReservation.bottom_left_coords[1], roomReservation.bottom_left_coords[2], roomReservation.bottom_left_coords[3]))
+			if("Apartment-Syndicate")
+				hilberts_hotel_rooms_apartment_syndie.load(locate(roomReservation.bottom_left_coords[1], roomReservation.bottom_left_coords[2], roomReservation.bottom_left_coords[3]))
+			if("Apartment-Sauna")
+				hilberts_hotel_rooms_apartment_sauna.load(locate(roomReservation.bottom_left_coords[1], roomReservation.bottom_left_coords[2], roomReservation.bottom_left_coords[3]))			
+			else
+				hotelRoomTemp.load(locate(roomReservation.bottom_left_coords[1], roomReservation.bottom_left_coords[2], roomReservation.bottom_left_coords[3]))
 	activeRooms["[roomNumber]"] = roomReservation
 	linkTurfs(roomReservation, roomNumber)
 	do_sparks(3, FALSE, get_turf(user))
-	user.forceMove(locate(roomReservation.bottom_left_coords[1] + hotelRoomTemp.landingZoneRelativeX, roomReservation.bottom_left_coords[2] + hotelRoomTemp.landingZoneRelativeY, roomReservation.bottom_left_coords[3]))
+	user.forceMove(locate(roomReservation.bottom_left_coords[1] + hotelRoomTemp.landingZoneRelativeX, roomReservation.bottom_left_coords[2] + hotelRoomTemp.landingZoneRelativeY, roomReservation.bottom_left_coords[3]))    
+//SPLURT EDIT END
 
 /obj/item/hilbertshotel/proc/linkTurfs(var/datum/turf_reservation/currentReservation, var/currentRoomnumber)
 	var/area/hilbertshotel/currentArea = get_area(locate(currentReservation.bottom_left_coords[1], currentReservation.bottom_left_coords[2], currentReservation.bottom_left_coords[3]))
@@ -194,10 +241,6 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 	name = "Infinite Dormitories"
 	anchored = TRUE
 	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND
-
-/obj/item/hilbertshotel/ghostdojo/interact(mob/user)
-	. = ..()
-	promptAndCheckIn(user)
 
 /obj/item/hilbertshotel/ghostdojo/linkTurfs(datum/turf_reservation/currentReservation, currentRoomnumber)
 	. = ..()

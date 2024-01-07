@@ -8,7 +8,7 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	//SPLURT EDIT START
-	var/list/static/hotel_maps = list("Hotel Room", "Apartment","Apartment-1", "Apartment-2", "Apartment-3", "Apartment-Bar", "Apartment-Garden", "Apartment-Syndicate", "Apartment-Sauna")
+	var/list/static/hotel_maps = list("Hotel Room", "Apartment","Apartment-1", "Apartment-2", "Apartment-3", "Apartment-Bar", "Apartment-Garden", "Apartment-Sauna")
 	var/datum/map_template/hilbertshotel/apartment/hilberts_hotel_rooms_apartment
 	var/datum/map_template/hilbertshotel/apartment/one/hilberts_hotel_rooms_apartment_one
 	var/datum/map_template/hilbertshotel/apartment/two/hilberts_hotel_rooms_apartment_two

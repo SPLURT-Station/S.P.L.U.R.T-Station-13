@@ -436,23 +436,22 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 				storeRoom()
 
 /area/hilbertshotel/proc/storeRoom() //SPLURT EDIT - STORE ROOM TYPE
-	// var/roomSize = (reservation.top_right_coords[1] - reservation.bottom_left_coords[1] + 1) * (reservation.top_right_coords[2] - reservation.bottom_left_coords[2] + 1)
+	var/roomSize = (reservation.top_right_coords[1] - reservation.bottom_left_coords[1] + 1) * (reservation.top_right_coords[2] - reservation.bottom_left_coords[2] + 1)
 	var/storage = list() 
 	var/turfNumber = 1
 	var/obj/item/abstracthotelstorage/storageObj = new(storageTurf)
 	storageObj.roomNumber = roomnumber
 	storageObj.parentSphere = parentSphere
 	storageObj.name = "Room [roomnumber] Storage"
-	for(var/i=0, i<parentSphere.hotelRoomTemp.width, i++)
-		for(var/j=0, j<parentSphere.hotelRoomTemp.height, j++)
-			var/list/turfContents = list()
-			for(var/atom/movable/A in locate(reservation.bottom_left_coords[1] + i, reservation.bottom_left_coords[2] + j, reservation.bottom_left_coords[3]))
-				if(ismob(A) && !isliving(A))
-					continue // Don't want to store ghosts
-				turfContents += A
-				A.forceMove(storageObj)
-			storage[turfNumber] = turfContents
-			turfNumber++
+	for(var/i=0, i<roomSize, i++)
+		var/list/turfContents = list()
+		for(var/atom/movable/A in locate(reservation.bottom_left_coords[1] + i, reservation.bottom_left_coords[2], reservation.bottom_left_coords[3]))
+			if(ismob(A) && !isliving(A))
+				continue // Don't want to store ghosts
+			turfContents += A
+			A.forceMove(storageObj)
+		storage[turfNumber] = turfContents
+		turfNumber++
 	var/roomType = parentSphere.get_room_type()
 	parentSphere.storedRooms["[roomnumber]"] = list("contents" = storage, "type" = roomType)
 	parentSphere.activeRooms -= "[roomnumber]"

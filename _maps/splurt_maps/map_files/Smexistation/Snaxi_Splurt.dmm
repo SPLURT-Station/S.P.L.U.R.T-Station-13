@@ -1253,6 +1253,8 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 10
 	},
+/obj/item/storage/backpack/duffelbag/med/surgery,
+/obj/structure/table/reinforced,
 /turf/open/floor/plasteel/freezer,
 /area/medical/surgery)
 "anK" = (
@@ -1304,6 +1306,8 @@
 /area/medical/medbay/central)
 "aok" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/item/storage/firstaid/regular,
+/obj/structure/table/reinforced,
 /turf/open/floor/plasteel/freezer,
 /area/medical/surgery)
 "aol" = (
@@ -3666,6 +3670,8 @@
 	dir = 4;
 	pixel_x = -22
 	},
+/obj/item/storage/firstaid/regular,
+/obj/structure/table/reinforced,
 /turf/open/floor/plasteel/freezer,
 /area/medical/surgery)
 "aPt" = (
@@ -11042,6 +11048,9 @@
 	pixel_x = 22
 	},
 /obj/machinery/computer/operating,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/plasteel/freezer,
 /area/medical/surgery)
 "dgi" = (
@@ -11142,9 +11151,6 @@
 /turf/open/floor/plasteel/dark,
 /area/security/checkpoint/auxiliary)
 "djL" = (
-/obj/item/radio/intercom{
-	pixel_y = 25
-	},
 /obj/structure/table/optable,
 /turf/open/floor/plasteel/freezer,
 /area/medical/surgery)
@@ -12345,6 +12351,9 @@
 /obj/structure/closet/secure_closet/medical2,
 /obj/item/tank/internals/anesthetic,
 /obj/item/tank/internals/anesthetic,
+/obj/item/radio/intercom{
+	pixel_y = 25
+	},
 /turf/open/floor/plasteel/freezer,
 /area/medical/surgery)
 "dMR" = (
@@ -13610,13 +13619,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/icemoon/surface/outdoors)
-"eut" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/structure/table/optable,
-/turf/open/floor/plasteel/freezer,
-/area/medical/surgery)
 "euz" = (
 /obj/structure/closet/wardrobe/mixed,
 /turf/open/floor/plating,
@@ -13946,6 +13948,9 @@
 /area/command/heads_quarters/captain)
 "eDm" = (
 /obj/machinery/computer/operating,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/plasteel/freezer,
 /area/medical/surgery)
 "eDr" = (
@@ -15323,6 +15328,9 @@
 /obj/machinery/light_switch{
 	pixel_y = -23
 	},
+/obj/machinery/limbgrower,
+/obj/item/reagent_containers/glass/beaker/synthflesh,
+/obj/item/reagent_containers/glass/beaker/synthflesh,
 /turf/open/floor/plasteel/freezer,
 /area/medical/surgery)
 "fgM" = (
@@ -28720,10 +28728,6 @@
 	},
 /turf/open/floor/plating,
 /area/commons/fitness)
-"kYE" = (
-/obj/machinery/limbgrower,
-/turf/open/floor/plasteel/freezer,
-/area/medical/surgery)
 "kYF" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "Secure Brig Control";
@@ -37173,11 +37177,6 @@
 /obj/structure/closet/secure_closet/freezer/kitchen,
 /turf/open/floor/plasteel/freezer,
 /area/service/kitchen/coldroom)
-"oKr" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/backpack/duffelbag/med/surgery,
-/turf/open/floor/plasteel/freezer,
-/area/medical/surgery)
 "oKD" = (
 /obj/machinery/airalarm{
 	dir = 1;
@@ -41261,6 +41260,8 @@
 	dir = 4;
 	pixel_x = -24
 	},
+/obj/item/storage/backpack/duffelbag/med/surgery,
+/obj/structure/table/reinforced,
 /turf/open/floor/plasteel/freezer,
 /area/medical/surgery)
 "qsD" = (
@@ -48963,7 +48964,6 @@
 /area/commons/fitness)
 "tOs" = (
 /obj/structure/closet/crate/freezer/surplus_limbs,
-/obj/item/reagent_containers/glass/beaker/synthflesh,
 /turf/open/floor/plasteel/freezer,
 /area/medical/surgery)
 "tOz" = (
@@ -74877,7 +74877,7 @@ sVL
 pZD
 djL
 xgq
-oKr
+xgq
 xgq
 tOs
 ash
@@ -75134,7 +75134,7 @@ vWt
 pZD
 dML
 hIe
-kYE
+xgq
 nOj
 fgp
 ash
@@ -75389,9 +75389,9 @@ adx
 lAS
 pfN
 pZD
-eut
+djL
 pED
-oKr
+xgq
 abZ
 xgq
 xHU

@@ -12,7 +12,8 @@
 	var/icon_neck
 	var/icon_suit
 	var/icon_uniform
-
+	var/min_age = AGE_MIN
+	var/max_age = AGE_MAX
 
 /datum/species/althelp(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(user == target && istype(user))

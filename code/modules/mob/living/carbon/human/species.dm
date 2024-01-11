@@ -1297,6 +1297,12 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 	return
 
 /datum/species/proc/can_equip(obj/item/I, slot, disable_warning, mob/living/carbon/human/H, bypass_equip_delay_self = FALSE, clothing_check = FALSE, list/return_warning)
+
+	if(H.uncovered)
+		if(return_warning)
+			return_warning[1] = "<span class='warning'>I've been wicked!</span>"
+		return FALSE
+
 	if(slot in no_equip)
 		if(!I.species_exception || !is_type_in_list(src, I.species_exception))
 			return FALSE

@@ -1,241 +1,164 @@
-// Honestly, Saliith was just sad when he made this. Leave this file in the game to let people hug him.
+/obj/item/choice_beacon/box/plushie/remove_bad_plushies(list/plushies)
+	var/list/returned_plushies = ..()
+	returned_plushies -= list(/obj/item/toy/plush/goatplushie,
+		/obj/item/toy/plush/goatplushie/angry,
+		/obj/item/toy/plush/goatplushie/angry/realgoat,
+		/obj/item/toy/plush/realgoat,
+		/obj/item/toy/plush/goatplushie/angry/kinggoat,
+		/obj/item/toy/plush/goatplushie/angry/kinggoat/ascendedkinggoat,
+		/obj/item/toy/plush/goatplushie/angry/guardgoat,
+		/obj/item/toy/plush/goatplushie/angry/guardgoat/masterguardgoat,
+		/obj/item/toy/plush/lizardplushie/saliith,
+		/obj/item/toy/plush/mammal/fox/vulp
+		)
+	return returned_plushies
 
-/obj/item/toy/plush/lizardplushie/saliith
-	name = "Saliith plushie"
-	desc = "He looks like he needs a friend."
+/obj/item/toy/plush
+	obj_flags = UNIQUE_RENAME
+	COOLDOWN_DECLARE(petting_heart_cooldown)
+
+/// cube guy thing. beware, very silly
+/obj/item/toy/plush/cube
+	name = "Cubical plushie"
+	desc = "That's one weird looking plushie."
 	icon = 'modular_sand/icons/obj/plushes.dmi'
-	icon_state = "saliith"
-	gender = MALE
-	can_random_spawn = FALSE
-	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF // Protected by a higher power
-	unstuffable = TRUE // Prevent grenades
+	icon_state = "cube"
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
+	squeak_override = list('sound/effects/footstep/rustystep1.ogg' = 1)
 
-/obj/item/toy/plush/lizardplushie/saliith/Initialize(mapload, set_snowflake_id)
-	// Check if plush already exists
-	if(GLOB.saliith_plushie && (GLOB.saliith_plushie != src))
-		return INITIALIZE_HINT_QDEL
+/obj/item/toy/plush/nukeplushie/susplushie
+	name = "Suspect Plushie"
+	desc = "A stuffed toy that resembles a red space station employee. The tag claims red employee to be purely fictitious."
+	icon = 'modular_sand/icons/obj/plushes.dmi'
+	icon_state = "plushie_sus"
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
+	attack_verb = list("shot", "eat", "killed")
 
-	// Appear on orbit menu
-	GLOB.poi_list += src
+/obj/item/toy/plush/nukeplushie/minisusplushie
+	name = "Mini Suspect Plushie"
+	desc = "A stuffed toy that resembles a red space station mini employee. The tag claims red employee to be purely fictitious."
+	icon = 'modular_sand/icons/obj/plushes.dmi'
+	icon_state = "plushie_minisus"
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
+	attack_verb = list("mini-shot", "mini-eat", "mini-killed")
 
-	// Return normally
+/obj/item/toy/plush/shark
+	name = "shark plushie"
+	desc = "A soft shark plushie for soft men. Mostly known as 'Blahaj', but some call it 'The IKEA shark'."
+	icon = 'modular_sand/icons/obj/plushes.dmi'
+	icon_state = "blahaj"
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
+	attack_verb = list("gnawed", "gnashed", "chewed")
+	squeak_override = list('modular_sand/sound/voice/rawr.ogg' = 1)
+
+/obj/item/toy/plush/rouny
+	name = "rouny plushie"
+	desc = "A plushie depicting a xenomorph runner, made to commemorate the centenary of the Battle of LV-426. Much cuddlier than the real thing."
+	icon = 'modular_sand/icons/obj/plushes.dmi'
+	icon_state = "rouny"
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
+	attack_verb = list("slashed", "bit", "charged")
+
+/obj/item/toy/plush/ada
+	name = "Ada Plushie"
+	desc = "Plush toy of a gray cat with bright, emerald-like eyes. The tongue is attached carelessly. Wings are not included."
+	icon = 'modular_sand/icons/obj/plushes.dmi'
+	icon_state = "ada"
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
+	squeak_override = list('modular_citadel/sound/voice/nya.ogg' = 1)
+
+/obj/item/toy/plush/mammal/fox/vulp
+	desc = "An adorable stuffed toy resembling a vulp."
+	icon = 'modular_sand/icons/obj/plushes.dmi'
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
+
+/obj/item/toy/plush/mammal/fox/vulp/emma
+	name = "Emma Plushie"
+	icon_state = "emma"
+
+/obj/item/toy/plush/mammal/fox/vulp/shiro
+	name = "shiro plushie"
+	icon_state = "shiro"
+
+/obj/item/toy/plush/mammal/fox/vulp/raita
+	name = "raita plushie"
+	icon_state = "raita"
+
+/obj/item/toy/plush/mammal/fox/vulp/aiko
+	name = "Aiko Plushie"
+	icon_state = "aiko"
+
+/obj/item/toy/plush/nukeplushie/who
+	name = "security officer plushie"
+	desc = "A stuffed toy that resembles a Nanotrasen operative. He smells like burnt cotton."
+	icon = 'modular_sand/icons/obj/plushes.dmi'
+	icon_state = "who"
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
+	squeak_override = list('modular_sand/sound/voice/plush_1.ogg' = 9, 'modular_sand/sound/voice/plush_2.ogg' = 1)
+
+/obj/item/toy/plush/deer/qm
+	name = "supply chief plushie"
+	desc = "A stuffed toy that resembles a Cargonia Chief. Looks like a fallen economy."
+	icon = 'modular_sand/icons/obj/plushes.dmi'
+	icon_state = "qm"
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
+
+/obj/item/toy/plush/sergal/judas
+	name = "yellow shark plushie"
+	desc = "An adorable stuffed plushie that resembles a yellow security shark."
+	icon = 'modular_sand/icons/obj/plushes.dmi'
+	icon_state = "judas"
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
+	squeak_override = list('modular_sand/sound/voice/voice_alphys.ogg' = 9)
+
+#define GREEN_NINJA_SKIN "green space ninja plushie"
+#define BLUE_NINJA_SKIN "blue space ninja plushie"
+#define RED_NINJA_SKIN "red space ninja plushie"
+
+// Little cute Ninja plushie
+/obj/item/toy/plush/ninja
+	name = GREEN_NINJA_SKIN
+	desc = "A protagonist of one of the most popular cartoon series on this side of galaxy. \"運命の忍者矢\""
+	icon = 'modular_sand/icons/obj/plushes.dmi'
+	icon_state = "ninja_plushie_green"
+	lefthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_lefthand.dmi'
+	righthand_file = 'modular_sand/icons/mob/inhands/misc/plushes_righthand.dmi'
+	attack_verb = list("shot", "nuked", "detonated")
+	squeak_override = list('sound/effects/hit_punch.ogg' = 1)
+	always_reskinnable = TRUE
+	unique_reskin = list(
+		GREEN_NINJA_SKIN = list("icon_state" = "ninja_plushie_green"),
+		BLUE_NINJA_SKIN = list("icon_state" = "ninja_plushie_blue"),
+		RED_NINJA_SKIN = list("icon_state" = "ninja_plushie_red")
+	)
+	COOLDOWN_DECLARE(change_ninja_cooldown)
+
+/obj/item/toy/plush/ninja/reskin_obj(mob/user)
 	. = ..()
+	name = current_skin
+	if(COOLDOWN_FINISHED(src, change_ninja_cooldown))
+		COOLDOWN_START(src, change_ninja_cooldown, 3 SECONDS)
+		switch(current_skin)
+			if(BLUE_NINJA_SKIN)
+				say("Your simple light won't stop me!")
+			if(RED_NINJA_SKIN)
+				say("You can run, but you can't hide!")
+			else
+				say("I am not afraid of the darkness! I am the darkness!")
+	if(ismob(loc))
+		var/mob/M = loc
+		M.update_inv_hands()
 
-/obj/item/toy/plush/lizardplushie/saliith/Destroy()
-	// Let's not keep the reference hanging around
-	GLOB.poi_list -= src
-	. = ..()
-
-/obj/item/toy/plush/lizardplushie/saliith/ComponentInitialize()
-	. = ..()
-
-	// Add respawn component
-	AddComponent(/datum/component/stationloving)
-
-	// Define pronouns
-	var/p_they = p_they()
-	var/p_s = p_s()
-
-	// Add custom description
-	normal_desc = "[p_they] look[p_s] like [p_they] need[p_s] a friend."
-
-/obj/item/toy/plush/lizardplushie/saliith/examine(mob/user)
-	. = ..()
-
-	// Define pronouns
-	var/p_them = p_them()
-	//var/p_they = p_they()
-	//var/p_are = p_are()
-
-	// Check for stuffing
-	if(!stuffed)
-		// Update examine text and return
-		. += span_deadsay("[p_they(TRUE)] [p_are()] dead.")
-		return
-
-	// Check if user is Saliith himself
-	if(user.ckey == "sandpoot")
-		// Update examine text and return
-		. += span_deadsay("You feel a sense of familiarity from [p_them].")
-		return
-
-	// Check for antag datums
-	if((length(user?.mind?.antag_datums) >= 1))
-		// Update examine text
-		. += span_warning("[src] gives you a menacing glare! Patting [p_them] would be a dangerous mistake.")
-
-/obj/item/toy/plush/lizardplushie/saliith/attack_self(mob/living/carbon/human/user)
-	// Check if user exists
-	if(!user)
-		// Return normally
-		return ..()
-
-	// Check if user has a mind
-	if(!user.mind)
-		// Return normally
-		return ..()
-
-	// Define pronouns
-	var/p_they = p_they()
-	//var/p_their = p_their()
-	var/p_s = p_s()
-
-	// Check if user is Saliith himself
-	if(user.ckey == "sandpoot")
-		// Alert him and return
-		to_chat(user, span_notice("[p_they] give[p_s] you a hesitant gaze, but accept[p_s] the gesture anyhow."))
-		return ..()
-
-	// Check if user is an antagonist role
-	if((length(user?.mind?.antag_datums) >= 1))
-		// Check if user is a xenobio changeling
-		if(user?.mind?.has_antag_datum(/datum/antagonist/changeling/xenobio))
-			// Alert the user
-			to_chat(user, span_notice("[src] senses what you really are, but decides to spare you."))
-
-		// Check if user is a brainwashed victim
-		else if(user?.mind?.has_antag_datum(/datum/antagonist/brainwashed))
-			// Alert the user
-			to_chat(user, span_notice("[src] senses that you're not in control of your actions, and offers [p_their()] sympathy."))
-
-		// User is not a whitelisted antagonist
-		else
-			// Drop the item
-			user.dropItemToGround(src)
-
-			// Warn user
-			user.visible_message(span_warning("[src] smites [user] with an otherworldly wrath!"), span_boldwarning("You've made a grave mistake."))
-
-			// Get lightning location
-			var/turf/turf_target = get_step(get_step(user, NORTH), NORTH)
-
-			// Perform lightning effect
-			turf_target.Beam(user, icon_state="lightning[rand(1,12)]", time = 5)
-			user.electrocution_animation(40)
-
-			// Play sound effect
-			playsound(get_turf(user), 'sound/magic/lightningbolt.ogg', 50, 1)
-
-			// Add fire damage
-			user.adjustFireLoss(120)
-
-			// Return
-			return
-
-	// User has no antagonist status
-
-	// Alert the user
-	to_chat(user, span_notice("[p_they] give[p_s] you a hesitant gaze, but accepts the gesture anyhow."))
-
-	// Return
-	return ..()
-
-/obj/item/toy/plush/lizardplushie/saliith/attackby(obj/item/item_used, mob/living/user, params)
-	// Check for sharp object
-	if(item_used.get_sharpness())
-		// Warn in local chat
-		visible_message(span_warning("[src] knocks \the [item_used] out of [user]'s hands!"), span_warning("[src] knocks \the [item_used] out of your hands!"))
-
-		// Drop the item
-		user.dropItemToGround(item_used)
-
-		// Throw the item away
-		item_used.throw_at(pick(oview(7,get_turf(src))),10,1)
-
-		// Return
-		return
-
-	// Check if user is Saliith himself
-	if(user.ckey == "sandpoot")
-		// Return with no effects
-		return ..()
-
-	// Check for grenade
-	if(istype(item_used, /obj/item/grenade))
-		// Warn in local chat
-		visible_message(span_warning("[src] forces \the [item_used] into [user]'s mouth!"), span_warning("[src] forces \the [item_used] into your mouth!"))
-
-		// Define the grenade item
-		var/obj/item/grenade/item_grenade = item_used
-
-		// Move grenade to the user
-		item_grenade.forceMove(user)
-
-		// Set the detonation time
-		item_grenade.preprime(volume = 10)
-
-		// Return
-		return
-
-	// Return normally
-	return ..()
-
-/obj/item/toy/plush/lizardplushie/saliith/ex_act(severity, target, origin)
-	return
-
-/obj/item/toy/plush/plushling/plushie_absorb(obj/item/toy/plush/victim)
-	// Check if target is the Saliith plushie
-	if(istype(victim, /obj/item/toy/plush/lizardplushie/saliith))
-		// Warn in local chat
-		visible_message(span_warning("[victim] violently parries the impostor! [src] is utterly annihilated!"))
-
-		// Create a gib effect
-		new /obj/effect/gibspawner(get_turf(src))
-
-		// Delete the plushling
-		qdel(src)
-
-		// Return
-		return
-
-	// Return normally
-	return ..()
-
-/obj/item/toy/plush/love(obj/item/toy/plush/Kisser, mob/living/user)
-	// Define saliith plush
-	var/plush_saliith = /obj/item/toy/plush/lizardplushie/saliith
-
-	// Check if interaction involves the Saliith plush
-	if(istype(src, plush_saliith) || istype(Kisser, plush_saliith))
-		// Check if user is Saliith himself
-		if(user.ckey == "sandpoot")
-			// Return normally
-			return ..()
-
-		// User is not Saliith
-		// Warn in local chat
-		user.visible_message(span_warning("[user] tried to force [Kisser] to kiss [src] against their will, and has been yeeted!"), span_warning("You try to force [Kisser] to kiss [src], but get yeeted instead!"))
-
-		// Display voice of god message
-		say("YEET", spans = list("colossus","yell"))
-
-		// Play sound
-		playsound(get_turf(src), 'sound/magic/clockwork/invoke_general.ogg', 200, TRUE, 5)
-
-		// Drop the plushies if held
-		if(src in user.held_items)
-			user.dropItemToGround(src)
-		if(Kisser in user.held_items)
-			user.dropItemToGround(Kisser)
-
-		// Launch user away
-		var/turf/yeet_target = get_edge_target_turf(user, pick(GLOB.alldirs))
-		user.throw_at(yeet_target, 10, 14)
-		log_combat(src, user, "plush yeeted")
-
-		// Return
-		return
-
-	// Interaction does not involve Saliith
-	// Return normally
-	return ..()
-
-// Pinpointer for plushie toy
-/obj/item/pinpointer/plushie_saliith
-	name = "Saliith plushie pinpointer"
-	desc = "A handheld tracking device that locates Saliith's plushie."
-	icon = 'modular_sand/icons/obj/device.dmi'
-	icon_state = "pinpointer_saliith"
-
-/obj/item/pinpointer/plushie_saliith/scan_for_target()
-	set_target(GLOB.saliith_plushie, src)
+#undef GREEN_NINJA_SKIN
+#undef BLUE_NINJA_SKIN
+#undef RED_NINJA_SKIN

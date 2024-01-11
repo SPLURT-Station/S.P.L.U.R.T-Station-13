@@ -225,7 +225,7 @@
 	name = "pink stripper outfit"
 	icon_state = "stripper_p"
 	item_state = "stripper_p"
-	body_parts_covered = CHEST|GROIN
+	body_parts_covered = CHEST
 	can_adjust = FALSE
 	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 

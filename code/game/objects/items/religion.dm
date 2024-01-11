@@ -244,7 +244,7 @@
 	if(staffcooldown + staffwait > world.time)
 		return
 	user.visible_message("[user] chants deeply and waves [user.p_their()] staff!")
-	if(do_after(user, 20,1,src))
+	if(do_after(user, 2 SECONDS, src))
 		target.add_atom_colour(conversion_color, WASHABLE_COLOUR_PRIORITY) //wololo
 	staffcooldown = world.time
 
@@ -294,19 +294,13 @@
 	name = "Crusader's Armour Set" //i can't into ck2 references
 	desc = "This armour is said to be based on the armor of kings on another world thousands of years ago, who tended to assassinate, conspire, and plot against everyone who tried to do the same to them.  Some things never change."
 
-/obj/item/storage/box/itemset/crusader/blue/New()
-	..()
-	contents = list()
-	sleep(1)
+/obj/item/storage/box/itemset/crusader/blue/PopulateContents()
 	new /obj/item/clothing/suit/armor/plate/crusader/blue(src)
 	new /obj/item/clothing/head/helmet/plate/crusader/blue(src)
 	new /obj/item/clothing/gloves/plate/blue(src)
 	new /obj/item/clothing/shoes/plate/blue(src)
 
-/obj/item/storage/box/itemset/crusader/red/New()
-	..()
-	contents = list()
-	sleep(1)
+/obj/item/storage/box/itemset/crusader/red/PopulateContents()
 	new /obj/item/clothing/suit/armor/plate/crusader/red(src)
 	new /obj/item/clothing/head/helmet/plate/crusader/red(src)
 	new /obj/item/clothing/gloves/plate/red(src)

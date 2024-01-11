@@ -40,7 +40,6 @@
 	var/list/slaves = list() //people enslaved
 
 /mob/living/carbon/wendigo/Initialize()
-	. = ..()
 	/*		//TODO: Uncomment when objectives + forest get finished
 	if(!connected_link)
 		if(!GLOB.wendigo_soul_storages.len)
@@ -77,7 +76,7 @@
 	ADD_TRAIT(src, TRAIT_NOCLONE, GENERIC)
 	add_verb(src, /mob/living/proc/mob_sleep)
 	add_verb(src, /mob/living/proc/lay_down)
-	update_body_parts()
+	. = ..()
 
 /mob/living/carbon/wendigo/Destroy()
 	QDEL_NULL(physiology)

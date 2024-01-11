@@ -351,12 +351,13 @@
 		..()
 
 
-/mob/living/simple_animal/bot/secbot/hitby(atom/movable/AM, skipcatch = FALSE, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum)
-	if(istype(AM, /obj/item))
-		var/obj/item/I = AM
-		if(I.throwforce < src.health && I.thrownby && ishuman(I.thrownby))
-			var/mob/living/carbon/human/H = I.thrownby
-			retaliate(H)
+/mob/living/simple_animal/bot/secbot/hitby(atom/movable/hitting_atom, skipcatch = FALSE, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum)
+	if(istype(hitting_atom, /obj/item))
+		var/obj/item/item_hitby = hitting_atom
+		var/mob/thrown_by = item_hitby.thrownby?.resolve()
+		if(item_hitby.throwforce < src.health && thrown_by && ishuman(thrown_by))
+			var/mob/living/carbon/human/human_throwee = thrown_by
+			retaliate(human_throwee)
 	..()
 
 
@@ -365,7 +366,7 @@
 	playsound(src, 'sound/weapons/cablecuff.ogg', 30, TRUE, -2)
 	C.visible_message("<span class='danger'>[process_emote("CAPTURE_ONE", C)]</span>",\
 						"<span class='userdanger'>[process_emote("CAPTURE_TWO", C)]</span>")
-	if(do_after(src, 60, FALSE, C))
+	if(do_after(src, 60, C))
 		attempt_handcuff(C)
 
 /mob/living/simple_animal/bot/secbot/proc/attempt_handcuff(mob/living/carbon/C)

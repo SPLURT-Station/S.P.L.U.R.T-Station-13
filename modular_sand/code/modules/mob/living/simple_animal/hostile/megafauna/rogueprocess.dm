@@ -32,7 +32,6 @@
 	var/special = FALSE
 	wander = FALSE
 	faction = list("mining", "boss")
-	weather_immunities = list("lava","ash")
 	blood_volume = 0
 	var/min_sparks = 1
 	var/max_sparks = 4

@@ -49,7 +49,7 @@
 	var/mob/living/carbon/P = parent
 	to_chat(P, "<span class='notice'>You can no longer tackle.</span>")
 	P.tackling = FALSE
-	..()
+	return ..()
 
 /datum/component/tackler/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_MOB_CLICKON, .proc/checkTackle)
@@ -66,7 +66,7 @@
 
 ///See if we can tackle or not. If we can, leap!
 /datum/component/tackler/proc/checkTackle(mob/living/carbon/user, atom/A, params)
-	if(!user.in_throw_mode || user.get_active_held_item() || user.pulling || user.buckling)
+	if(!user.throw_mode || user.get_active_held_item() || user.pulling || user.buckling)
 		return
 
 	if(HAS_TRAIT(user, TRAIT_HULK))

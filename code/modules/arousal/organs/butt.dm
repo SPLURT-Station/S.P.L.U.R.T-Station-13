@@ -16,7 +16,7 @@
 	var/prev_size //former size value, to allow update_size() to early return should be there no significant changes.
 	layer_index = BUTT_LAYER_INDEX
 
-/obj/item/organ/genital/butt/modify_size(modifier, min = -INFINITY, max = INFINITY)
+/obj/item/organ/genital/butt/modify_size(modifier, min = -INFINITY, max = BUTT_SIZE_MAX)
 	var/new_value = clamp(size_cached + modifier, max(min, min_size ? min_size : -INFINITY), min(max_size ? max_size : INFINITY, max))
 	if(new_value == size_cached)
 		return
@@ -96,3 +96,5 @@
 	toggle_visibility(D.features["butt_visibility"], FALSE)
 	if(D.features["butt_stuffing"])
 		toggle_visibility(GEN_ALLOW_EGG_STUFFING, FALSE)
+	if(D.features["butt_accessible"])
+		toggle_accessibility(TRUE)

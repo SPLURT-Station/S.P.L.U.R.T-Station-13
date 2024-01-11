@@ -1,0 +1,84 @@
+2023-08-02:
+  Yawet330:
+  - bugfix: sydnicate -> Syndicate
+2023-08-04:
+  SandPoot:
+  - rscdel: There is no longer a minimum vote amount for extending rounds.
+2023-08-05:
+  SandPoot:
+  - refactor: Glory killing has been componentized with (hopefully) better code.
+  - bugfix: Some megafauna will no longer die to lava/storms.
+  - tweak: Redundant code has been removed.
+  - code_imp: Turns out we had some extra tumor bosses that weren't on the pool, they
+      now have been added.
+  - bugfix: Watchers were meant to be glory killable, they are now.
+  miguelop1:
+  - bugfix: Ghost can't Speen anymore, fixed a small part of code that wasn't finished
+      (return FALSE). If it breaks blame Kepler xD
+2023-08-07:
+  BongaTheProto:
+  - bugfix: Bellies and butts won't suddenly disappear when expanding
+2023-08-09:
+  Anonymous:
+  - tweak: Cyborgs/Robots will now understand the Sign Language, but not speak it.
+  - bugfix: Sign Language now has it own icon instead of using EAL's.
+  NopemanMcHalt:
+  - rscadd: Xenoarchaeolgist alt title for scientists.
+2023-08-10:
+  NopemanMcHalt:
+  - spellcheck: Xenoarchaeolgist -> Xenoarchaeologist. Someone was drunk while adding
+      it.
+2023-08-12:
+  K4rlox:
+  - tweak: resonator now actually resonates
+  Yawet330:
+  - tweak: Radfiend has been adjusted to be more in-line with its original vision,
+      while still retaining what makes it different from full radiation immunity.
+      Report any and all unintended consequences.
+  - rscadd: Glowie Trait.
+2023-08-13:
+  Anonymous:
+  - rscadd: Finally, *scream2.
+2023-08-15:
+  Tsurupeta:
+  - code_imp: ported /tg/'s harddel unit test and fixed everything that it caused
+      it to fail
+  Yawet330:
+  - rscdel: Ability to link CKEYS & Characters as a non-admin
+  - rscdel: Ability to see genitals on all mobs regardless of clothes with a verb.
+2023-08-17:
+  Anonymous:
+  - rscadd: Sexual Advisor as an alt-title for Psychologist.
+  BongaTheProto:
+  - imageadd: New haydee sprites for other borg jobs and updates to the medical one
+  - imageadd: New Meka sprites for certain borg types
+2023-08-18:
+  Vhariik:
+  - bugfix: missing textures
+2023-08-22:
+  LeChatGuid2:
+  - rscadd: Added a pet_capsule item which look like a pokeball. interact with it
+      once to set the name of your pet and select one of three usually hostile but
+      now tamed mobs (giant spider, deathclaw or spess carp)
+  - rscadd: the tamed version of the hostile mobs concerned
+  PhazeJump:
+  - rscadd: added old versions of the maps listeningstation.dmm and syndielistenspace.dmm
+      as .old
+  - rscadd: Added a living room in the space comms base, made the bathroom bigger,
+      added a second sleeper for another ghost to spawn in, made bedrooms bigger,
+      expanded medbay a little bit to factor in having an operating table, tweaked
+      a few things to make it comfortable for two people to be in.
+  Vhariik:
+  - tweak: mapping fixes!
+  Yawet330:
+  - bugfix: config_wak_run -> config_walk_run
+2023-08-23:
+  BongaTheProto:
+  - rscadd: Chameleon suit is now a donator reward
+2023-08-25:
+  BongaTheProto:
+  - code_imp: adds modular ruins
+  - code_imp: updates rust-g to v3.0.0
+2023-08-27:
+  KeplerWasTaken:
+  - rscadd: Medikitty bot animations

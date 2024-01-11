@@ -1615,7 +1615,7 @@
 "ex" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/splurt/splurt_space_law,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
@@ -5057,6 +5057,10 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/ruin/space/has_grav/ancientstation)
+"TY" = (
+/obj/machinery/spaceship_navigation_beacon/invion,
+/turf/template_noop,
+/area/template_noop)
 "Un" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -7907,7 +7911,7 @@ cX
 bD
 aa
 aa
-aa
+TY
 bD
 fQ
 gI

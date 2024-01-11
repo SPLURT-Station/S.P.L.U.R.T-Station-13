@@ -3,7 +3,7 @@
 	help_text = "Lists everyone currently on the server"
 
 /datum/tgs_chat_command/who/Run(datum/tgs_chat_user/sender, params)
-	return tgswho()
+	return new /datum/tgs_message_content(tgswho())
 
 /datum/tgs_chat_command/awho
 	name = "awho"
@@ -11,7 +11,7 @@
 	admin_only = TRUE
 
 /datum/tgs_chat_command/awho/Run(datum/tgs_chat_user/sender, params)
-	return tgsadminwho()
+	return new /datum/tgs_message_content(tgsadminwho())
 
 /datum/tgs_chat_command/restart
 	name = "restart"
@@ -19,7 +19,7 @@
 	admin_only = TRUE
 
 /datum/tgs_chat_command/restart/Run(datum/tgs_chat_user/sender)
-	. = "Restarting."
+	. = new /datum/tgs_message_content("Restarting.")
 	to_chat(world, span_boldwarning("Server restart - Initialized by [sender.friendly_name] on Discord."))
 	send2adminchat("Server", "[sender.friendly_name] forced a restart.")
 	addtimer(CALLBACK(src, world.TgsEndProcess()), 1 SECONDS)

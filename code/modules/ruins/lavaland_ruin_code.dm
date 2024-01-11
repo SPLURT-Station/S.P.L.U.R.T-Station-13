@@ -164,7 +164,7 @@
 
 /obj/effect/mob_spawn/human/lavaland_syndicate/comms/space/Initialize(mapload)
 	. = ..()
-	if(prob(90)) //only has a 10% chance of existing, otherwise it'll just be a NPC syndie.
+	if(prob(0)) //only has a 10% chance of existing, otherwise it'll just be a NPC syndie. //splurt edit: has a 100% chance of spawning so it doeds not cause problems with the double syndi comms agent base; changed from 90 to 0
 		new /mob/living/simple_animal/hostile/syndicate/ranged(get_turf(src))
 		return INITIALIZE_HINT_QDEL
 

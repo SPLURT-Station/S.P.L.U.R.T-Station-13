@@ -2518,18 +2518,26 @@
 	nutriment_factor = 0.5 * REAGENTS_METABOLISM
 	var/decal_path = /obj/effect/decal/cleanable/semen
 
-/datum/reagent/consumable/semen/reaction_turf(turf/T, reac_volume)
+/datum/reagent/consumable/semen/reaction_turf(turf/location, reac_volume)
 	..()
-	if(!istype(T))
-		return
-	if(reac_volume < 10)
+	if(!istype(location))
 		return
 
-	var/obj/effect/decal/cleanable/semen/S = locate() in T
-	if(!S)
-		S = new decal_path(T)
-	if(data["blood_DNA"])
-		S.add_blood_DNA(list(data["blood_DNA"] = data["blood_type"]))
+	var/obj/effect/decal/cleanable/semen/S = locate(/obj/effect/decal/cleanable/semen) in location
+	if(S)
+		if(S.reagents.add_reagent(type, volume, data))
+			S.update_icon()
+			return
+
+	var/obj/effect/decal/cleanable/semendrip/drip = (locate(/obj/effect/decal/cleanable/semendrip) in location) || new(location)
+	if(drip.reagents.add_reagent(type, volume, data))
+		drip.update_icon()
+		if(drip.reagents.total_volume >= 10)
+			S = new(location)
+			drip.reagents.trans_to(S, drip.reagents.total_volume)
+			S.update_icon()
+			qdel(drip)
+		return
 
 /obj/effect/decal/cleanable/semen
 	name = "semen"
@@ -2540,16 +2548,27 @@
 	icon = 'icons/obj/genitals/effects.dmi'
 	icon_state = "semen1"
 	random_icon_states = list("semen1", "semen2", "semen3", "semen4")
+	var/datum/reagent/my_liquid_type = /datum/reagent/consumable/semen
 
 /obj/effect/decal/cleanable/semen/Initialize(mapload)
 	. = ..()
 	dir = GLOB.cardinals
-	add_blood_DNA(list("Non-human DNA" = "A+"))
+	if(mapload)
+		reagents.add_reagent(/datum/reagent/consumable/semen, 10)
+		add_blood_DNA(list("Non-human DNA" = "A+"))
+	update_icon()
 
 /obj/effect/decal/cleanable/semen/replace_decal(obj/effect/decal/cleanable/semen/S)
-	if(S.blood_DNA)
-		blood_DNA |= S.blood_DNA
+	if(reagents.total_volume > 0)
+		reagents.trans_to(S.reagents, reagents.total_volume)
+	if(blood_DNA)
+		S.blood_DNA |= blood_DNA
+		S.update_icon()
 	return ..()
+
+/obj/effect/decal/cleanable/semen/update_icon()
+	. = ..()
+	add_atom_colour(mix_color_from_reagents(reagents.reagent_list), FIXED_COLOUR_PRIORITY)
 
 /datum/reagent/consumable/semen/femcum
 	name = "Female Ejaculate"
@@ -2564,6 +2583,7 @@
 	random_icon_states = list("fem1", "fem2", "fem3", "fem4")
 	blood_state = null
 	bloodiness = null
+	my_liquid_type = /datum/reagent/consumable/semen/femcum
 
 /datum/reagent/determination
 	name = "Determination"

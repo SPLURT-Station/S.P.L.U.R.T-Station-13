@@ -163,7 +163,7 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, "<span class='boldnotice'>Welcome to [station_name()]!</span>")
-			send2chat("New round starting on [SSmapping.config.map_name]!", CONFIG_GET(string/chat_announce_new_game))
+			send2chat(new /datum/tgs_message_content("New round starting on [SSmapping.config.map_name]!"), CONFIG_GET(string/chat_announce_new_game))
 			current_state = GAME_STATE_PREGAME
 			//SPLURT EDIT - Bring back old panel
 			//Everyone who wants to be an observer is now spawned
@@ -278,7 +278,7 @@ SUBSYSTEM_DEF(ticker)
 		var/list/modes = new
 		for (var/datum/game_mode/M in runnable_modes)
 			modes += M.name
-		modes = sortList(modes)
+		modes = sort_list(modes)
 		to_chat(world, "<b>The gamemode is: secret!\nPossibilities:</B> [english_list(modes)]")
 	else
 		mode.announce()*/
@@ -348,7 +348,7 @@ SUBSYSTEM_DEF(ticker)
 	var/list/allmins = adm["present"]
 	send2adminchat("Server", "Round [GLOB.round_id ? "#[GLOB.round_id]:" : "of"] [hide_mode ? "secret":"[mode.name]"] has started[allmins.len ? ".":" with no active admins online!"]")
 	if(CONFIG_GET(string/new_round_ping))
-		send2chat("<@&[CONFIG_GET(string/new_round_ping)]> | A new round has started on [SSmapping.config.map_name]!", CONFIG_GET(string/chat_announce_new_game))
+		send2chat(new /datum/tgs_message_content("<@&[CONFIG_GET(string/new_round_ping)]> | A new round has started on [SSmapping.config.map_name]!"), CONFIG_GET(string/chat_announce_new_game))
 	setup_done = TRUE
 
 	for(var/i in GLOB.start_landmarks_list)
@@ -415,7 +415,7 @@ SUBSYSTEM_DEF(ticker)
 				SSjob.EquipRank(N, player.mind.assigned_role, 0)
 				if(CONFIG_GET(flag/roundstart_traits) && ishuman(N.new_character))
 					SSquirks.AssignQuirks(N.new_character, N.client, TRUE, TRUE, SSjob.GetJob(player.mind.assigned_role), FALSE, N)
-				//skyrat change
+				//sandstorm change
 				if(ishuman(N.new_character))
 					SSlanguage.AssignLanguage(N.new_character, N.client)
 				//

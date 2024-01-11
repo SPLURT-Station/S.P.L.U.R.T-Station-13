@@ -8,7 +8,7 @@
 	. = ..()
 
 	imp_in.visible_message(span_notice("[imp_in] begins fiddling with a subtle bump on their arm."), span_notice("You prepare to teleport."))
-	if(do_mob(imp_in, imp_in, 5 SECONDS, ignorehelditem = TRUE))
+	if(do_mob(imp_in, imp_in, 5 SECONDS, IGNORE_HELD_ITEM))
 		playsound(get_turf(imp_in.loc), 'sound/magic/blink.ogg', 50, 1)
 		imp_in.visible_message(span_notice("[imp_in] vanishes from sight!"), \
 					span_notice("You activate [src], sending you to the slaver mothership!"))

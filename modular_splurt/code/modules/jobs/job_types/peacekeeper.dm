@@ -6,7 +6,7 @@
 	faction = "Station"
 	total_positions = 3 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
 	spawn_positions = 3 //Handled in /datum/controller/occupations/proc/setup_officer_positions()
-	supervisors = "the head of security, warden, and security officers"
+	supervisors = "the head of security, and the head of personel"
 	selection_color = "#c02f2f"
 	minimal_player_age = 3
 	exp_requirements = 100
@@ -17,18 +17,17 @@
 		"Security Trainee",
 		"Security Assistant",
 		"Security Cadet",
-		"Security Trainee",
 		"Rookie",
 		"Hired Muscle",
 		"Bodyguard"
 		)
-	custom_spawn_text = "<font color='black' size='2'><b> Your job is to help Security and react to minor crimes. Conflict de-escalation through WORDS is your top priority. Only use your taser as a last resort.</b></font><font color='red' size='4'><b>You are NOT a Security Officer.</b></font>"
+	custom_spawn_text = "<font color='black' size='2'><b> Your job is to keep the peace. Conflict de-escalation through diplomacy is your top priority. Only use your baton as a last resort.</b></font><font color='red' size='4'><b>You are NOT a Security Officer.</b></font>"
 
 	outfit = /datum/outfit/job/peacekeeper
 	plasma_outfit = /datum/outfit/plasmaman/peacekeeper
 
-	access = list(ACCESS_BRIG, ACCESS_SEC_DOORS, ACCESS_COURT, ACCESS_MAINT_TUNNELS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
-	minimal_access = list(ACCESS_BRIG, ACCESS_SEC_DOORS, ACCESS_COURT, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP) // See /datum/job/officer/get_access()
+	access = list(ACCESS_BRIG, ACCESS_PEACEKEEPER, ACCESS_SEC_DOORS, ACCESS_COURT, ACCESS_MAINT_TUNNELS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
+	minimal_access = list(ACCESS_BRIG, ACCESS_PEACEKEEPER, ACCESS_SEC_DOORS, ACCESS_COURT, ACCESS_MAINT_TUNNELS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP) // See /datum/job/officer/get_access()
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_CIV
 
@@ -50,10 +49,9 @@
 	head = /obj/item/clothing/head/helmet/blueshirt
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper
 	shoes = /obj/item/clothing/shoes/jackboots
-	l_pocket = /obj/item/restraints/handcuffs
+	l_pocket = /obj/item/storage/bag/security
 	r_pocket = /obj/item/assembly/flash/handheld
-	suit_store = /obj/item/gun/energy/e_gun/advtaser
-	backpack_contents = list(/obj/item/reagent_containers/spray/pepper, /obj/item/clothing/accessory/badge/deputy, /obj/item/holosign_creator/security)
+	backpack_contents = list(/obj/item/reagent_containers/spray/pepper, /obj/item/clothing/accessory/badge/deputy, /obj/item/holosign_creator/security, /obj/item/choice_beacon/pkbaton)
 
 	backpack = /obj/item/storage/backpack/security/pk
 	satchel = /obj/item/storage/backpack/satchel/sec/pk
@@ -62,16 +60,17 @@
 
 	implants = list(/obj/item/implant/mindshield)
 
-/datum/outfit/plasmaman/peacekeeper // i dare not to touch whatever this is why does it have a fucking telescopic baton
+/datum/outfit/plasmaman/peacekeeper
 	name = "Peacekeeper Plasmaman"
 
+	belt = /obj/item/pda/security
+	ears = /obj/item/radio/headset/headset_sec/alt
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	head = /obj/item/clothing/head/helmet/space/plasmaman/security
 	uniform = /obj/item/clothing/under/plasmaman/security
-	ears = /obj/item/radio/headset/headset_sec/alt
-	r_hand = /obj/item/melee/classic_baton/telescopic
 	r_pocket = /obj/item/storage/bag/security
 	l_pocket = /obj/item/assembly/flash/handheld
-	backpack_contents = list(/obj/item/reagent_containers/spray/pepper, /obj/item/clothing/accessory/badge/deputy)
+	backpack_contents = list(/obj/item/reagent_containers/spray/pepper, /obj/item/clothing/accessory/badge/deputy, /obj/item/holosign_creator/security, /obj/item/choice_beacon/pkbaton)
 
 	box = /obj/item/storage/box/survival/security
 
@@ -123,13 +122,12 @@ Peacekeeper Hypospray
 
 /obj/item/reagent_containers/peacehypo/Initialize(mapload)
 	. = ..()
-
 	for(var/R in reagent_ids)
 		add_reagent(R)
-
 	START_PROCESSING(SSobj, src)
 
 /obj/item/reagent_containers/peacehypo/Destroy()
+	QDEL_LIST(reagent_list)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
@@ -222,3 +220,65 @@ Peacekeeper Hypospray
 	desc = "A large duffel bag for holding extra peacekeeper supplies."
 	icon_state = "duffel-pk"
 	item_state = "duffel-pk"
+
+// Baton Beacon
+
+/obj/item/choice_beacon/pkbaton
+	name = "personal weapon beacon"
+	desc = "Use this to summon your personal baton!"
+
+/obj/item/choice_beacon/pkbaton/generate_display_names()
+	var/static/list/pkbaton_list
+	if(!pkbaton_list)
+		pkbaton_list = list()
+		var/list/templist = subtypesof(/obj/item/storage/secure/briefcase/pkbaton/) //we have to convert type = name to name = type, how lovely!
+		for(var/V in templist)
+			var/atom/A = V
+			pkbaton_list[initial(A.name)] = A
+	return pkbaton_list
+
+/obj/item/storage/secure/briefcase/pkbaton/stunbaton
+	name = "\improper Stun Baton box"
+	desc = "A storage case for a high-tech Stun baton. Pick up that can."
+
+/obj/item/storage/secure/briefcase/pkbaton/stunbaton/PopulateContents()
+	new /obj/item/melee/baton/loaded(src)
+
+/obj/item/storage/secure/briefcase/pkbaton/detbaton
+	name = "\improper Nightstick box"
+	desc = "A storage case for a nightstick. A beat-cop classic."
+
+/obj/item/storage/secure/briefcase/pkbaton/detbaton/PopulateContents()
+	new /obj/item/melee/classic_baton(src)
+
+/obj/item/storage/secure/briefcase/pkbaton/prova
+	name = "\improper Prova box"
+	desc = "A storage case for a Prova. Teach them the way of John Prodman."
+
+/obj/item/storage/secure/briefcase/pkbaton/prova/PopulateContents()
+	new /obj/item/melee/baton/prova(src)
+	new /obj/item/stock_parts/cell/high/plus(src)
+
+// Peacekeeper Locker
+
+/obj/structure/closet/secure_closet/peacekeeper
+	name = "peacekeeper's locker"
+	req_access = list(ACCESS_PEACEKEEPER)
+	icon_state = "bs"
+	icon = 'modular_splurt/icons/obj/closet.dmi'
+
+/obj/structure/closet/secure_closet/peacekeeper/PopulateContents()
+	..()
+	new /obj/item/clothing/head/helmet/blueshirt(src)
+	new /obj/item/clothing/suit/armor/vest/peacekeeper(src)
+	new /obj/item/clothing/under/rank/security/officer/peacekeeper(src)
+	new /obj/item/radio/headset/headset_sec(src)
+	new /obj/item/flashlight/seclite(src)
+	new /obj/item/storage/box/zipties(src)
+	new /obj/item/radio/off(src)
+
+// Station things
+
+/area/security/pk
+	name = "Peacekeeper Office"
+	icon_state = "security"

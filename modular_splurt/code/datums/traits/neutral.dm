@@ -44,6 +44,21 @@
 	lose_text = span_notice("Having your head pet doesn't sound so bad right about now...")
 	medical_record_text = "Patient cares little with or dislikes being touched."
 
+/datum/quirk/headpat_hater/add()
+
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	var/datum/action/cooldown/toggle_distant/act_toggle = new
+	act_toggle.Grant(quirk_mob)
+
+/datum/quirk/headpat_hater/remove()
+
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	var/datum/action/cooldown/toggle_distant/act_toggle = locate() in quirk_mob.actions
+	if(act_toggle)
+		act_toggle.Remove(quirk_mob)
+
 /datum/quirk/headpat_slut
 	name = "Headpat Slut"
 	desc = "You love the feeling of others touching your head! Maybe a little too much, actually... Others patting your head will provide a bigger mood boost and cause aroused reactions."
@@ -132,6 +147,47 @@
 		if(initial(species.disliked_food) & ~MEAT)
 			species.disliked_food &= ~MEAT
 
+//Zombies + Cumplus Fix\\
+
+/*
+/datum/quirk/undead
+    name = "Undeath"
+    desc = "Your body, be it anomalous, or just outright refusing to die - has indeed become undead. Due to this you may be more susceptible to burn-based weaponry."
+    value = 0
+    mob_trait = TRAIT_UNDEAD
+    processing_quirk = TRUE
+    var/list/zperks = list(TRAIT_RESISTCOLD,TRAIT_STABLEHEART,TRAIT_EASYDISMEMBER,TRAIT_NOBREATH,TRAIT_VIRUSIMMUNE,TRAIT_RADIMMUNE,TRAIT_FAKEDEATH,TRAIT_NOSOFTCRIT, TRAIT_NOPULSE)
+
+/datum/quirk/undead/add()
+    . = ..()
+    var/mob/living/carbon/human/H = quirk_holder
+    if(H.mob_biotypes == MOB_ROBOTIC)
+        return FALSE //Lol, lmao, even
+    H.mob_biotypes += MOB_UNDEAD
+    for(var/A = 1, A <= zperks.len, A++)
+        ADD_TRAIT(H,zperks[A],ROUNDSTART_TRAIT)
+
+/datum/quirk/undead/remove()
+    . = ..()
+    var/mob/living/carbon/human/H = quirk_holder
+    H.mob_biotypes -= MOB_UNDEAD
+    for(var/A = 1, A <= zperks.len, A++)
+        REMOVE_TRAIT(H,zperks[A], null)
+
+/datum/quirk/undead/on_process()
+    . = ..()
+    var/mob/living/carbon/human/H = quirk_holder
+    H.adjust_nutrition(-0.05)//The Undead are Hungry.
+    H.set_screwyhud(SCREWYHUD_HEALTHY)
+    H.adjustOxyLoss(-3) //Stops a defibrilator bug. Note to future self: Fix defib bug.
+    H.adjustBruteLoss(-0.5) //The undead will only regenerate if not burnt beyond a specific threshold. A good value is 50 as that will strain them if they decide to spacewalk near fusion.
+    if(H.getBruteLoss() > 0 && H.getFireLoss() <= 50 || H.getFireLoss() > 0 && H.getFireLoss() <= 50)
+        H.adjustBruteLoss(-0.5, forced = TRUE)
+        H.adjustFireLoss(-0.15, forced = TRUE)
+    else if (H.getToxLoss() <= 90)
+        H.adjustToxLoss(-0.3, forced = TRUE)
+*/
+
 /datum/quirk/cum_plus
 	name = "Extra-Productive Genitals"
 	desc = "Your genitals produce and hold more than normal."
@@ -139,13 +195,14 @@
 	gain_text = span_notice("You feel pressure in your groin.")
 	lose_text = span_notice("You feel a weight lifted from your groin.")
 	medical_record_text = "Patient exhibits increased production of sexual fluids."
+	var/increasedcum
 
 /datum/quirk/cum_plus/add()
 	var/mob/living/carbon/M = quirk_holder
 	if(M.getorganslot("testicles"))
 		var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles")
-		T.fluid_mult = 1.5 //Base is 1
-		T.fluid_max_volume = 5
+		T.fluid_mult += 0.5 //Base is 1
+		T.fluid_max_volume *= 1.75 //Fixes this.
 
 /datum/quirk/cum_plus/remove()
 	var/mob/living/carbon/M = quirk_holder
@@ -153,16 +210,44 @@
 		return
 	if(quirk_holder.getorganslot("testicles"))
 		var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles")
-		T.fluid_mult = 1 //Base is 1
-		T.fluid_max_volume = 3 //Base is 3
+		T.fluid_mult -= 0.5 //Base is 1
+		T.fluid_max_volume *= 0.25 //Base is 50
 
 /datum/quirk/cum_plus/on_process()
 	var/mob/living/carbon/M = quirk_holder //If you get balls later, then this will still proc
 	if(M.getorganslot("testicles"))
 		var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles")
-		if(T.fluid_max_volume <= 5 || T.fluid_mult <= 0.2) //INVALID EXPRESSION?
+		if(!increasedcum)
 			T.fluid_mult = 1.5 //Base is 0.133
-			T.fluid_max_volume = 5
+			T.fluid_max_volume *= 1.75
+			increasedcum = TRUE
+
+//You are a CIA agent.
+/datum/quirk/cosglow
+	name = "Cosmetic Glow"
+	desc = "You glow! Be it an obscure radiation emission, or simple Bioluminescent properties.."
+	value = 0
+	mob_trait = TRAIT_COSGLOW
+	gain_text = span_notice("You feel empowered by a three-letter agency!")
+	lose_text = span_notice("You realize that working for the space CIA sucks!")
+
+/datum/quirk/cosglow/add()
+	// Define quirk holder mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+	// Add glow control action
+	var/datum/action/cosglow/update_glow/quirk_action = new
+	quirk_action.Grant(quirk_mob)
+
+/datum/quirk/cosglow/remove()
+	// Define quirk holder mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Remove glow control action
+	var/datum/action/cosglow/update_glow/quirk_action = locate() in quirk_mob.actions
+	quirk_action.Remove(quirk_mob)
+
+	// Remove glow effect
+	quirk_mob.remove_filter("rad_fiend_glow")
 
 //well-trained moved to neutral to stop the awkward situation of a dom snapping and the 30 trait powergamers fall to the floor.
 /datum/quirk/well_trained
@@ -818,7 +903,7 @@
 	. = ..()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/item/clothing/mask/gas/cosmetic/gasmask = new(get_turf(quirk_holder)) // Uses a custom gas mask
-	H.equip_to_slot(gasmask, ITEM_SLOT_MASK)
+	H.equip_to_slot_if_possible(gasmask, ITEM_SLOT_MASK) // If character have a loadout mask, the custom one will not overwrite it but instead will be dropped on floor
 	H.regenerate_icons()
 
 /datum/quirk/body_morpher
@@ -846,3 +931,25 @@
 	// Remove quirk ability action datum
 	alter_form_action.Remove(quirk_mob)
 	QDEL_NULL(alter_form_action)
+
+/datum/quirk/modular
+	name = "Modular Limbs"
+	desc = "Your limbs are able to be attached and detached easily... Unfortunately, everyone around you can alter your limbs too! Right click yourself to use this quirk."
+	value = 0
+
+/datum/quirk/modular/add()
+	var/mob/living/carbon/human/C = quirk_holder
+	add_verb(C,/mob/living/proc/alterlimbs)
+
+/datum/quirk/modular/remove()
+	var/mob/living/carbon/human/C = quirk_holder
+	remove_verb(C,/mob/living/proc/alterlimbs)
+
+/datum/quirk/messy
+	name = "Messy"
+	desc = "Due to your unique biology/construction/bluespace magic you always manage to make a mess when you cum, even if it's not possible in normal circumstances."
+	value = 0
+	mob_trait = TRAIT_MESSY
+	gain_text = span_lewd("You feel like covering something in layer of your fluids.")
+	lose_text = span_notice("You don't feel 'messy' anymore.")
+	medical_record_text = "Had to be sedated after covering entire hospital wing with cum."

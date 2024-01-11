@@ -58,13 +58,17 @@ Difficulty: Insanely Hard
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	var/stun_chance = 5 //chance per attack to Weaken target
-	glorymessageshand = list("grabs the goat by it's horns, then repeatedly knees it in the face until it's skull cracks open and it fucking dies!", "rips off one of the goat's horns bare-handed, then stabs through their skull with it, killing it!")
-	glorymessagescrusher = list("slashes both of the goat's horns with their crusher, then chops it's face in half with it!")
-	glorymessagespka = list("shoots at goat's maw, the goat seemingly gulping down the blast and exploding!", "kicks the goat into the air, then shoots it in the gut with their PKA's blast, showering everything in... goat guts!")
-	glorymessagespkabayonet = list("repeatedly stabs through the goat's eye and skull with their PKAA's bayonet, until it finally gives up and lets go of their life!")
-	gloryhealth = 50
-	glorythreshold = 50
 	crusher_loot = list(/obj/item/crusher_trophy/king_goat)
+
+/mob/living/simple_animal/hostile/megafauna/king/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/glory_kill, \
+		messages_unarmed = list("grabs the goat by it's horns, then repeatedly knees it in the face until it's skull cracks open and it fucking dies!", "rips off one of the goat's horns bare-handed, then stabs through their skull with it, killing it!"), \
+		messages_crusher = list("slashes both of the goat's horns with their crusher, then chops it's face in half with it!"), \
+		messages_pka = list("shoots at goat's maw, the goat seemingly gulping down the blast and exploding!", "kicks the goat into the air, then shoots it in the gut with their PKA's blast, showering everything in... goat guts!"), \
+		messages_pka_bayonet = list("repeatedly stabs through the goat's eye and skull with their PKAA's bayonet, until it finally gives up and lets go of their life!"), \
+		health_given = 50, \
+		threshold = 50)
 
 /mob/living/simple_animal/hostile/megafauna/king/ex_act(severity, target, origin)
 	switch (severity)

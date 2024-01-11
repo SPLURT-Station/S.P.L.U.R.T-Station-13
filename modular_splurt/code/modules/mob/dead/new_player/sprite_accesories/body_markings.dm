@@ -137,6 +137,42 @@
 	icon_state = "succubustattoo"
 	covered_limbs = list("Chest" = MATRIX_BLUE)
 
+/datum/sprite_accessory/mam_body_markings/foreheadmark
+	name = "Forehead Mark"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "foreheadmark"
+	covered_limbs = list("Head" = MATRIX_BLUE)
+
+/datum/sprite_accessory/mam_body_markings/colourednose
+	name = "Coloured Nose"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "colourednose"
+	covered_limbs = list("Head" = MATRIX_BLUE)
+
+/datum/sprite_accessory/mam_body_markings/colouredlips
+	name = "Coloured Lips"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "colouredlips"
+	covered_limbs = list("Head" = MATRIX_BLUE)
+
+/datum/sprite_accessory/mam_body_markings/blushnormal
+	name = "Blush - Normal"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "blushnormal"
+	covered_limbs = list("Head" = MATRIX_BLUE)
+
+/datum/sprite_accessory/mam_body_markings/blushsmall
+	name = "Blush - Small"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "blushsmall"
+	covered_limbs = list("Head" = MATRIX_BLUE)
+
+/datum/sprite_accessory/mam_body_markings/blushsmallALT
+	name = "Blush - Small (Alt)"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "blushsmallALT"
+	covered_limbs = list("Head" = MATRIX_BLUE)
+
 /******************************************
 ************* Insect Markings *************
 *******************************************/

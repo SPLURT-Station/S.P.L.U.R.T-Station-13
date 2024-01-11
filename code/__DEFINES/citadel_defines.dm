@@ -105,11 +105,6 @@
 
 #define CITADEL_MENTOR_OOC_COLOUR "#224724"
 
-//xenobio console upgrade stuff
-#define XENOBIO_UPGRADE_MONKEYS				1
-#define XENOBIO_UPGRADE_SLIMEBASIC			2
-#define XENOBIO_UPGRADE_SLIMEADV			4
-
 //Citadel toggles because bitflag memes
 #define MEDIHOUND_SLEEPER	(1<<0)
 #define EATING_NOISES		(1<<1)
@@ -132,6 +127,7 @@
 #define CHASTITY			(1<<18)
 #define STIMULATION			(1<<19)
 #define EDGING				(1<<20)
+#define CUM_ONTO			(1<<21)
 //Note: reminder, if you're a coder adding more bitflags here in the event we add more horny things, the maximum is (1<<23).
 #define TOGGLES_CITADEL 0
 

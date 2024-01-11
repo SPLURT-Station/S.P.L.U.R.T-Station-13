@@ -57,7 +57,7 @@
 /obj/effect/anomaly/Destroy()
 	GLOB.poi_list.Remove(src)
 	STOP_PROCESSING(SSobj, src)
-	qdel(countdown)
+	QDEL_NULL(countdown)
 	if(aSignal)
 		QDEL_NULL(aSignal)
 	return ..()
@@ -235,6 +235,8 @@
 			for (var/atom/movable/A in urange(12, FROM )) // iterate thru list of mobs in the area
 				if(istype(A, /obj/item/beacon))
 					continue // don't teleport beacons because that's just insanely stupid
+				if(iscameramob(A))
+					continue // Don't mess with AI eye, blob eye, xenobio or advanced cameras
 				if(A.anchored)
 					continue
 

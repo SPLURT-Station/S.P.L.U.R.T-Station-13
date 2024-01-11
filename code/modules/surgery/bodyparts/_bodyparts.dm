@@ -574,8 +574,8 @@
 	var/tbrute	= round( (brute_dam/max_damage)*3, 1 )
 	var/tburn	= round( (burn_dam/max_damage)*3, 1 )
 	if((tbrute != brutestate) || (tburn != burnstate))
-		brutestate = tbrute
-		burnstate = tburn
+		brutestate = min(tbrute, 3)
+		burnstate = min(tburn, 3) //So, WHY NOBODY THOUGHT ON THIS BEFORE??? //Comicao1
 		return TRUE
 	return FALSE
 
@@ -636,6 +636,7 @@
 /obj/item/bodypart/proc/update_limb(dropping_limb, mob/living/carbon/source)
 	body_markings_list = list()
 	var/mob/living/carbon/C
+	owner.create_weakref()
 	if(source)
 		C = source
 		if(!original_owner)
@@ -645,6 +646,9 @@
 	else
 		C = owner
 		no_update = FALSE
+
+	if(!C)
+		return
 
 	if(HAS_TRAIT(C, TRAIT_HUSK) && is_organic_limb())
 		species_id = "husk" //overrides species_id

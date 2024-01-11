@@ -19,7 +19,7 @@
 	return ..()
 
 /obj/item/retractor/advanced
-	name = "mechanical pinches"
+	name = "advanced retractor"
 	desc = "An agglomerate of rods and gears."
 	icon_state = "retractor_a"
 	toolspeed = 0.7
@@ -154,7 +154,7 @@
 	return ..()
 
 /obj/item/surgicaldrill/advanced
-	name = "searing tool"
+	name = "surgical laser drill"
 	desc = "It projects a high power laser used for medical application."
 	icon_state = "surgicaldrill_a"
 	hitsound = 'sound/items/welder.ogg'
@@ -348,6 +348,16 @@
 	icon_state = "surgical_drapes"
 	w_class = WEIGHT_CLASS_TINY
 	attack_verb = list("slapped")
+
+/obj/item/surgical_drapes/Initialize(mapload)
+	. = ..()
+	register_item_context()
+
+/obj/item/surgical_drapes/add_item_context(obj/item/source, list/context, atom/target, mob/living/user)
+	. = ..()
+	if(iscarbon(target))
+		LAZYSET(context[SCREENTIP_CONTEXT_LMB], INTENT_ANY, "Prepare Surgery")
+		return CONTEXTUAL_SCREENTIP_SET
 
 /obj/item/surgical_drapes/attack(mob/living/M, mob/user)
 	if(!attempt_initiate_surgery(src, M, user))

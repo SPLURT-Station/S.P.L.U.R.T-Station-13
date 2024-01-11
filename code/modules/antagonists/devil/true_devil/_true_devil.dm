@@ -29,7 +29,7 @@
 	create_bodyparts() //initialize bodyparts
 	create_internal_organs()
 	grant_all_languages()
-	..()
+	. = ..()
 
 /mob/living/carbon/true_devil/create_internal_organs()
 	internal_organs += new /obj/item/organ/brain
@@ -95,7 +95,7 @@
 		visible_message("<span class='warning'>[src] easily breaks out of [p_their()] handcuffs!</span>", \
 					"<span class='notice'>With just a thought your handcuffs fall off.</span>")
 
-/mob/living/carbon/true_devil/canUseTopic(atom/movable/M, be_close=FALSE, no_dextery=FALSE, no_tk=FALSE)
+/mob/living/carbon/true_devil/canUseTopic(atom/movable/M, be_close=FALSE, no_dextery=FALSE, no_tk=FALSE, check_resting=FALSE)
 	if(incapacitated())
 		to_chat(src, "<span class='warning'>You can't do that right now!</span>")
 		return FALSE

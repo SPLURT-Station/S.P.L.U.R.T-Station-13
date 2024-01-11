@@ -33,7 +33,7 @@
 
 		clients += list(client)
 
-	clients = sortList(clients, /proc/cmp_playtime)
+	clients = sort_list(clients, /proc/cmp_playtime)
 	data["clients"] = clients
 	return data
 

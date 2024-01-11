@@ -7,7 +7,7 @@
 /datum/sprite_accessory/ears/mam_ears/gret
 	name = "Gret"
 	icon_state = "gret"
-	color_src = SKINTONE
+	color_src = MUTCOLORS
 	icon = 'modular_splurt/icons/mob/mam_ears.dmi'
 
 /datum/sprite_accessory/ears/mam_ears/goathorns
@@ -119,6 +119,12 @@
 /datum/sprite_accessory/ears/mam_ears/pointy
 	name = "Pointy"
 	icon_state = "pointy"
+	color_src = MUTCOLORS
+	icon = 'modular_splurt/icons/mob/mam_ears.dmi'
+
+/datum/sprite_accessory/ears/mam_ears/folded
+	name = "Folded Back"
+	icon_state = "foldedback"
 	color_src = MUTCOLORS
 	icon = 'modular_splurt/icons/mob/mam_ears.dmi'
 

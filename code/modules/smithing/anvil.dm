@@ -71,7 +71,7 @@
 	RECIPE_STUNDIL = /obj/item/smithing/stundild)
 
 /obj/structure/anvil/Initialize(mapload)
-	..()
+	. = ..()
 	currentquality = anvilquality
 
 /obj/structure/anvil/attackby(obj/item/I, mob/user)

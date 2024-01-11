@@ -17,7 +17,7 @@
 		balloon_alert(user, "headgear in the way!")
 		return
 	user.visible_message(span_notice("[user] tries to change [H]'s hairstyle using [src]."), span_notice("You try to change [H]'s hairstyle using [src]."))
-	if(new_style && do_after(user, 60, target = H))
+	if(new_style && do_after(user, 6 SECONDS, H))
 		user.visible_message(span_notice("[user] successfully changes [H]'s hairstyle using [src]."), span_notice("You successfully change [H]'s hairstyle using [src]."))
 		H.balloon_alert(user, "changed hairstyle")
 		H.hair_style = new_style
@@ -39,7 +39,7 @@
 		balloon_alert(user, "mask in the way!")
 		return
 	user.visible_message(span_notice("[user] tries to change [H]'s facial hair style using [src]."), span_notice("You try to change [H]'s facial hair style using [src]."))
-	if(new_style && do_after(user, 60, target = H))
+	if(new_style && do_after(user, 6 SECONDS, H))
 		user.visible_message(span_notice("[user] successfully changes [H]'s facial hair style using [src]."), span_notice("You successfully change [H]'s facial hair style using [src]."))
 		H.balloon_alert(user, "changed facial hair style")
 		H.facial_hair_style = new_style

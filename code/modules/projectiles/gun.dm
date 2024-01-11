@@ -74,6 +74,9 @@
 	var/obj/item/kitchen/knife/bayonet
 	var/mutable_appearance/knife_overlay
 	var/can_bayonet = FALSE
+	//SPLURT EDIT ADD
+	var/bayonet_diagonal = FALSE
+	//SPKURT EDIT ADD END
 	var/datum/action/item_action/toggle_gunlight/alight
 	var/mutable_appearance/flashlight_overlay
 
@@ -137,7 +140,7 @@
 
 	burst_size = 1
 
-	sortList(fire_select_modes, /proc/cmp_numeric_asc)
+	sort_list(fire_select_modes, /proc/cmp_numeric_asc)
 
 	if(fire_select_modes.len > 1)
 		firemode_action = new(src)
@@ -150,7 +153,7 @@
 		AddComponent(/datum/component/automatic_fire, fire_delay)
 
 /obj/item/gun/Destroy()
-	if(pin)
+	if(isobj(pin))
 		QDEL_NULL(pin)
 	if(gun_light)
 		QDEL_NULL(gun_light)
@@ -162,6 +165,8 @@
 		QDEL_NULL(azoom)
 	if(firemode_action)
 		QDEL_NULL(firemode_action)
+	if(isatom(suppressed))
+		QDEL_NULL(suppressed)
 	return ..()
 
 /obj/item/gun/examine(mob/user)
@@ -699,6 +704,11 @@
 		if(bayonet.icon_state in icon_states('icons/obj/guns/bayonets.dmi'))		//Snowflake state?
 			state = bayonet.icon_state
 		var/icon/bayonet_icons = 'icons/obj/guns/bayonets.dmi'
+		//SPLURT EDIT ADD
+		if(bayonet_diagonal == TRUE )
+			state = "bayonet_diagonal"
+			bayonet_icons = 'modular_splurt/icons/obj/guns/bayonets.dmi'
+		//SPLURT EDIT ADD END
 		knife_overlay = mutable_appearance(bayonet_icons, state)
 		knife_overlay.pixel_x = knife_x_offset
 		knife_overlay.pixel_y = knife_y_offset
@@ -762,6 +772,18 @@
 	name = "Toggle Scope"
 	icon_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "sniper_zoom"
+
+/datum/action/item_action/toggle_scope_zoom/IsAvailable(silent = FALSE)
+	. = ..()
+	if(!. && owner)
+		var/obj/item/gun/G = target
+		G.zoom(owner, owner.dir, FALSE)
+
+/datum/action/item_action/toggle_scope_zoom/Trigger()
+	. = ..()
+	if(.)
+		var/obj/item/gun/G = target
+		G.zoom(owner, owner.dir)
 
 /datum/action/item_action/toggle_scope_zoom/Remove(mob/living/L)
 	var/obj/item/gun/G = target

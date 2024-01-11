@@ -572,7 +572,7 @@
 
 		if(BODY_ZONE_PRECISE_EYES)
 			// Check if eyes exist and are exposed
-			if(!bite_target.has_eyes(REQUIRE_EXPOSED))
+			if(!bite_target.has_eyes() == HAS_EXPOSED_GENITAL)
 				// Warn user and return
 				to_chat(action_owner, span_warning("You can't find [bite_target]'s eyes to bite them!"))
 				return
@@ -1288,7 +1288,7 @@
 			// Do nothing!
 
 		// Check if species is already a mammal sub-type
-		else if(owner_species in subtypesof(/datum/species/mammal))
+		else if(ispath(owner_species, /datum/species/mammal))
 			// Do nothing!
 
 		// Check if species is a jelly
@@ -1297,7 +1297,7 @@
 			custom_species_prefix = "Jelly "
 
 		// Check if species is a jelly subtype
-		else if(owner_species in subtypesof(/datum/species/jelly))
+		else if(ispath(owner_species, /datum/species/jelly))
 			// Set species prefix
 			custom_species_prefix = "Slime "
 
@@ -1320,7 +1320,7 @@
 		action_owner.dna.features["mam_snouts"] = "Sergal"
 		action_owner.dna.features["legs"] = "Digitigrade"
 		action_owner.dna.features["insect_fluff"] = "Hyena"
-		action_owner.update_size(get_size(action_owner) + 0.5)
+		action_owner.update_size(clamp(get_size(action_owner) + 0.5, RESIZE_MICRO, RESIZE_MACRO))
 		action_owner.set_bark("bark")
 		if(old_features["taur"] != "None")
 			action_owner.dna.features["taur"] = "Canine"
@@ -1374,7 +1374,7 @@
 			action_owner.dna.species.mutant_bodyparts["legs"] = old_features["legs"]
 		action_owner.update_body()
 		action_owner.update_body_parts()
-		action_owner.update_size(get_size(action_owner) - 0.5)
+		action_owner.update_size(clamp(get_size(action_owner) - 0.5, RESIZE_MICRO, RESIZE_MACRO))
 
 		// Revert citadel organs
 		if(organ_breasts)
@@ -1480,6 +1480,69 @@
 	else
 		to_chat(H, span_warning("You are already conserving your energy!"))
 
+//Quirk: Cosmetic Glow
+//Copy and pasted. Cry about it.
+/datum/action/cosglow
+	name = "Broken Glow Action"
+	desc = "Report this to a coder."
+	icon_icon = 'icons/effects/effects.dmi'
+	button_icon_state = "static"
+
+/datum/action/cosglow/update_glow
+	name = "Modify Glow"
+	desc = "Change your glow color."
+	button_icon_state = "blank"
+
+	// Glow color to use
+	var/glow_color
+
+	// Thickness of glow outline
+	var/glow_range
+
+
+/datum/action/cosglow/update_glow/Grant()
+	. = ..()
+
+	// Define user mob
+	var/mob/living/carbon/human/action_mob = owner
+
+	// Add outline effect
+	action_mob.add_filter("rad_fiend_glow", 1, list("type" = "outline", "color" = glow_color+"30", "size" = glow_range))
+
+/datum/action/cosglow/update_glow/Remove()
+	. = ..()
+
+	// Define user mob
+	var/mob/living/carbon/human/action_mob = owner
+
+	// Remove glow
+	action_mob.remove_filter("rad_fiend_glow")
+
+/datum/action/cosglow/update_glow/Trigger()
+	. = ..()
+
+	// Define user mob
+	var/mob/living/carbon/human/action_mob = owner
+
+	// Ask user for color input
+	var/input_color = input(action_mob, "Select a color to use for your glow outline.", "Select Glow Color", glow_color) as color|null
+
+	// Check if color input was given
+	// Reset to stored color when not given input
+	glow_color = (input_color ? input_color : glow_color)
+
+	// Ask user for range input
+	var/input_range = input(action_mob, "How much do you glow? Value may range between 1 to 2.", "Select Glow Range", glow_range) as num|null
+
+	// Check if range input was given
+	// Reset to stored color when not given input
+	// Input is clamped in the 1-4 range
+	glow_range = (input_range ? clamp(input_range, 0, 4) : glow_range) //More customisable, so you know when you're looking at someone with Radfiend (doom) or a normal player.
+
+	// Update outline effect
+	action_mob.remove_filter("rad_fiend_glow")
+	action_mob.add_filter("rad_fiend_glow", 1, list("type" = "outline", "color" = glow_color+"30", "size" = glow_range))
+
 //
 // Quirk: Rad Fiend
 //
@@ -1500,6 +1563,7 @@
 
 	// Thickness of glow outline
 	var/glow_range = 2
+
 
 /datum/action/rad_fiend/update_glow/Grant()
 	. = ..()
@@ -1537,12 +1601,115 @@
 
 	// Check if range input was given
 	// Reset to stored color when not given input
-	// Input is clamped in the 1-2 range
-	glow_range = (input_range ? clamp(input_range, 1, 2) : glow_range)
+	// Input is clamped in the 1-4 range
+	glow_range = (input_range ? clamp(input_range, 1, 4) : glow_range)
 
 	// Update outline effect
 	action_mob.remove_filter("rad_fiend_glow")
 	action_mob.add_filter("rad_fiend_glow", 1, list("type" = "outline", "color" = glow_color+"30", "size" = glow_range))
+
+/datum/action/ropebunny/conversion
+	name = "Convert Bondage"
+	desc = "Convert five cloth into bondage rope, or convert bondage ropes into bondage bolas."
+	icon_icon = 'modular_splurt/icons/obj/clothing/masks.dmi'
+	button_icon_state = "ballgag"
+
+/datum/action/ropebunny/conversion/Trigger()
+	.=..()
+	var/mob/living/carbon/human/H = owner
+	var/obj/item/I = H.get_active_held_item()
+
+	if(istype(I,/obj/item/stack/sheet/cloth))
+		var/obj/item/stack/sheet/cloth/C = I
+		if(C.amount < 5)
+			to_chat(H, span_warning("There is not enough cloth left to make more rope!"))
+			return
+		else
+			C.amount -= 5
+			new /obj/item/restraints/bondage_rope(H.loc)
+			to_chat(H, span_warning("You successfully create a set of bondage ropes."))
+			return
+	if(istype(I,/obj/item/restraints/bondage_rope))
+		new /obj/item/shibola(H.loc)
+		to_chat(H, span_warning("You successfully create a shibari bola."))
+		qdel(I)
+		return
+	else
+		to_chat(H, span_warning("You must either be holding cloth or a bondage rope to use this ability!"))
+
+/mob/living/proc/alterlimbs()
+	set name = "Alter Limbs"
+	set desc = "Remove or attach a limb!"
+	set category = "IC"
+	set src in view(usr.client)
+
+	var/mob/living/carbon/human/U = usr
+	var/mob/living/carbon/human/C = src
+
+	var/obj/item/I = U.get_active_held_item()
+	if(istype(I,/obj/item/bodypart))
+		var/obj/item/bodypart/L = I
+		if(!C.Adjacent(U))
+			to_chat(U, span_warning("You must be adjacent to [C] to do this!"))
+			return
+		if(C.get_bodypart(L.body_zone))
+			to_chat(U, span_warning("[C] already has a limb attached there!"))
+			return
+		C.visible_message(span_warning("[U] is attempting to attach [L] onto [C]!"), span_userdanger("[U] is attempting to re-attach one of your limbs!"))
+		if(do_after(U, 40, target = C) && C.Adjacent(U))
+			L.attach_limb(C)
+			C.visible_message(span_warning("[U] successfully attaches [L] onto [C]"), span_userdanger("[U] has successfully attached a [L.name] onto you; you can use that limb again!"))
+			return
+		else
+			to_chat(U, span_warning("You and [C] must both stand still for you to remove one of their limbs!"))
+			return
+	else
+		if(!C.Adjacent(U))
+			to_chat(U, span_warning("You must be adjacent to [C] to do this!"))
+			return
+		if(U.zone_selected == BODY_ZONE_CHEST || U.zone_selected == BODY_ZONE_HEAD)
+			to_chat(U, span_warning("You must target either an arm or a leg!"))
+			return
+		if(U.zone_selected == BODY_ZONE_PRECISE_GROIN || U.zone_selected == BODY_ZONE_PRECISE_EYES || U.zone_selected == BODY_ZONE_PRECISE_MOUTH)
+			to_chat(U, span_warning("There is no limb here; select an arm or a leg!"))
+			return
+		if(!C.get_bodypart(U.zone_selected))
+			to_chat(U, span_warning("They are already missing that limb!"))
+			return
+		C.visible_message(span_warning("[U] is attempting to remove one of [C]'s limbs!"), span_userdanger("[U] is attempting to disconnect one of your limbs!"))
+		var/obj/item/bodypart/B = C.get_bodypart(U.zone_selected)
+		if(C.Adjacent(U) && do_after(U, 40, target = C))
+			var/obj/item/bodypart/D = C.get_bodypart(U.zone_selected)
+			if(B != D)
+				to_chat(U, span_warning("You cannot target a different limb while already removing another!"))
+				return
+			D.drop_limb()
+			C.update_equipment_speed_mods()
+			C.visible_message(span_warning("[U] smoothly disconnects [C]'s [D.name]!"), span_userdanger("[U] has forcefully disconnected your [D.name]!"))
+			return
+		else
+			to_chat(U, span_warning("You and [C] must both stand still for you to remove one of their limbs!"))
+			return
+
+/datum/action/cooldown/toggle_distant
+	name = "Toggle Distant"
+	desc = "Allows you to let your headpat-guard down, or put it back up."
+	icon_icon = 'modular_splurt/icons/mob/actions/lewd_actions/lewd_icons.dmi'
+	button_icon_state = "pain_max"
+
+/datum/action/cooldown/toggle_distant/Trigger()
+	. = ..()
+	if(!.)
+		return
+
+	var/mob/living/carbon/human/action_owner = owner
+
+	if(HAS_TRAIT(action_owner, TRAIT_DISTANT))
+		REMOVE_TRAIT(action_owner, TRAIT_DISTANT, ROUNDSTART_TRAIT)
+		to_chat(action_owner, span_notice("You let your headpat-guard down!"))
+	else
+		ADD_TRAIT(action_owner, TRAIT_DISTANT, ROUNDSTART_TRAIT)
+		to_chat(action_owner, span_warning("You let your headpat-guard up!"))
 
 #undef HYPNOEYES_COOLDOWN_NORMAL
 #undef HYPNOEYES_COOLDOWN_BRAINWASH

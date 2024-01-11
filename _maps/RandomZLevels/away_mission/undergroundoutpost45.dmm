@@ -3613,7 +3613,6 @@
 	},
 /area/awaymission/undergroundoutpost45/gateway)
 "hB" = (
-/obj/machinery/rnd/destructive_analyzer,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -3623,15 +3622,6 @@
 /area/awaymission/undergroundoutpost45/research)
 "hC" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/turf/open/floor/plasteel{
-	heat_capacity = 1e+006
-	},
-/area/awaymission/undergroundoutpost45/research)
-"hD" = (
-/obj/machinery/rnd/production/protolathe,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -3923,22 +3913,7 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/undergroundoutpost45/gateway)
-"ig" = (
-/obj/machinery/computer/rdconsole/core{
-	dir = 4;
-	req_access = null
-	},
-/turf/open/floor/plasteel{
-	heat_capacity = 1e+006
-	},
-/area/awaymission/undergroundoutpost45/research)
 "ih" = (
-/turf/open/floor/plasteel{
-	heat_capacity = 1e+006
-	},
-/area/awaymission/undergroundoutpost45/research)
-"ii" = (
-/obj/machinery/rnd/production/circuit_imprinter,
 /turf/open/floor/plasteel{
 	heat_capacity = 1e+006
 	},
@@ -11295,7 +11270,7 @@
 /obj/machinery/computer/atmos_control{
 	dir = 4;
 	name = "Tank Monitor";
-	sensors = list("UO45_n2_sensor" = "Nitrogen", "UO45_o2_sensor" = "Oxygen", "UO45_mix_sensor" = "Gas Mix Tank")
+	sensors = list("UO45_n2_sensor" = "Nitrogen", "UO45_o2_sensor" = "Oxygen", "UO45_mix_sensor" = "Gas  Mix  Tank")
 	},
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -11482,7 +11457,7 @@
 	dir = 4;
 	level = 3;
 	name = "Distribution and Waste Monitor";
-	sensors = list("UO45_air_sensor" = "Mixed Air Supply Tank", "UO45_distro_meter" = "Distribution Loop", "UO45_waste_meter" = "Waste Loop")
+	sensors = list("UO45_air_sensor" = "Mixed  Air  Supply  Tank", "UO45_distro_meter" = "Distribution  Loop", "UO45_waste_meter" = "Waste  Loop")
 	},
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
@@ -13643,7 +13618,7 @@
 	dir = 1
 	},
 /obj/structure/table,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/splurt/splurt_space_law,
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
 	dir = 4
@@ -13655,7 +13630,7 @@
 "SS" = (
 /obj/structure/table,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/splurt/splurt_space_law,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
@@ -13669,7 +13644,7 @@
 /area/awaymission/undergroundoutpost45/central)
 "Wd" = (
 /obj/structure/table,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/splurt/splurt_space_law,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
@@ -38730,7 +38705,7 @@ ad
 gx
 gX
 hB
-ig
+ih
 iy
 iY
 jr
@@ -39243,8 +39218,8 @@ ad
 gx
 gy
 gZ
-hD
-ii
+hB
+ih
 iA
 ha
 gX

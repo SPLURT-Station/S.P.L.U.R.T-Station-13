@@ -16,6 +16,7 @@
 /mob/living/proc/update_resting(update_mobility = TRUE)
 	if(update_mobility)
 		update_mobility()
+	update_rest_hud_icon()
 
 //Force mob to rest, does NOT do stamina damage.
 //It's really not recommended to use this proc to give feedback, hence why silent is defaulting to true.
@@ -108,8 +109,10 @@
 		mobility_flags |= MOBILITY_STAND
 		lying = 0
 
-	if(should_be_lying || restrained || incapacitated())
-		mobility_flags &= ~(MOBILITY_UI|MOBILITY_PULL)
+	if(restrained || incapacitated())
+		mobility_flags &= ~MOBILITY_UI
+		if(should_be_lying)
+			mobility_flags &= ~MOBILITY_PULL
 	else
 		mobility_flags |= MOBILITY_UI|MOBILITY_PULL
 

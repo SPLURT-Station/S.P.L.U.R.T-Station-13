@@ -1378,7 +1378,7 @@
 		for (var/rule in subtypesof(/datum/dynamic_ruleset/roundstart))
 			var/datum/dynamic_ruleset/roundstart/newrule = new rule()
 			roundstart_rules[newrule.name] = newrule
-		var/added_rule = input(usr,"What ruleset do you want to force? This will bypass threat level and population restrictions.", "Rigging Roundstart", null) as null|anything in sortList(roundstart_rules)
+		var/added_rule = input(usr,"What ruleset do you want to force? This will bypass threat level and population restrictions.", "Rigging Roundstart", null) as null|anything in sort_list(roundstart_rules)
 		if (added_rule)
 			GLOB.dynamic_forced_roundstart_ruleset += roundstart_rules[added_rule]
 			log_admin("[key_name(usr)] set [added_rule] to be a forced roundstart ruleset.")
@@ -2726,6 +2726,31 @@
 					log_query_debug("[usr.key] | [response]")
 		else if(answer == "no")
 			log_query_debug("[usr.key] | Reported no server hang")
+	else if(href_list["del_tag"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/datum/datum_to_remove = locate(href_list["del_tag"])
+		if(!datum_to_remove)
+			return
+		return remove_tagged_datum(datum_to_remove)
+
+	else if(href_list["show_tags"])
+		if(!check_rights(R_ADMIN))
+			return
+		return display_tags()
+
+	else if(href_list["clear_tags"])
+		if(!check_rights(R_ADMIN))
+			return
+		return clear_tags()
+
+	else if(href_list["mark_datum"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/datum/datum_to_mark = locate(href_list["mark_datum"])
+		if(!datum_to_mark)
+			return
+		return usr.client?.mark_datum(datum_to_mark)
 
 /datum/admins/proc/HandleCMode()
 	if(!check_rights(R_ADMIN))

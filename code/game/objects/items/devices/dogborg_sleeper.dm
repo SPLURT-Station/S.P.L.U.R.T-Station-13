@@ -100,7 +100,7 @@
 		voracious = FALSE
 
 	user.visible_message("<span class='warning'>[hound.name] is carefully inserting [target.name] into their [src.name].</span>", "<span class='notice'>You start placing [target] into your [src.name]...</span>")
-	if(do_after (user, 100, target = target) && !target.buckled && !target.anchored && !patient)
+	if(do_after(user, 10 SECONDS, target) && !target.buckled && !target.anchored && !patient)
 		if(!in_range(src, target)) //Proximity is probably old news by now, do a new check.
 			return //If they moved away, you can't eat them.
 
@@ -147,7 +147,7 @@
 			"<span class='notice'>[voracious ? "You start struggling inside of [src.name]'s tight, flexible confines," : "You start pounding against the metallic walls of [src.name],"] managing to trigger a hidden emergency release... (this will take about [DisplayTimeText(breakout_time)].)</span>", \
 			"<span class='italics'>You hear a [voracious ? "couple of thumps" : "loud banging noise"] coming from within [hound].</span>")
 		escape_pending = TRUE
-		if(do_after(user, breakout_time, target = src))
+		if(do_after(user, breakout_time, src, IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM))
 			user.visible_message("<span class='warning'>[user] successfully broke out of [hound.name]!</span>", \
 				"<span class='notice'>You successfully break out of [hound.name]!</span>")
 			go_out(user, hound)
@@ -499,7 +499,7 @@
 		voracious = FALSE
 
 	user.visible_message("<span class='warning'>[hound.name] is ingesting [target] into their [src.name].</span>", "<span class='notice'>You start ingesting [target] into your [src.name]...</span>")
-	if(do_after(user, 30, target = target) && !patient && !target.buckled)
+	if(do_after(user, 3 SECONDS, target) && !patient && !target.buckled)
 
 		//if(patient)
 			//to_chat(user,"<span class='warning'>Your [src.name] is already occupied.</span>")

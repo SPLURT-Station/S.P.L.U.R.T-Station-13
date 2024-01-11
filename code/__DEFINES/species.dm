@@ -9,6 +9,7 @@
 #define SPECIES_ARACHNID			"arachnid"
 #define SPECIES_TESHARI				"teshari"
 #define SPECIES_VOX					"vox"
+#define SPECIES_DIONA				"diona"
 #define SPECIES_XENOCHIMERA			"xenochimera"
 #define SPECIES_INSECT				"insect"
 	#define SPECIES_UINSECT			"undead_insect"

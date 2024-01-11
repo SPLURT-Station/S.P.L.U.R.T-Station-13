@@ -1548,7 +1548,7 @@
 /area/hallway/primary/port)
 "aCK" = (
 /obj/structure/table,
-/obj/item/aiModule/supplied/quarantine,
+/obj/item/ai_module/supplied/quarantine,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "aCM" = (
@@ -10196,11 +10196,11 @@
 	name = "High-Risk Modules";
 	req_access_txt = "20"
 	},
-/obj/effect/spawner/lootdrop/aimodule_harmful,
-/obj/item/aiModule/supplied/oxygen,
-/obj/item/aiModule/supplied/protectStation,
-/obj/item/aiModule/zeroth/oneHuman,
-/obj/item/aiModule/reset/purge,
+/obj/effect/spawner/lootdrop/ai_module_harmful,
+/obj/item/ai_module/supplied/oxygen,
+/obj/item/ai_module/supplied/protectStation,
+/obj/item/ai_module/zeroth/oneHuman,
+/obj/item/ai_module/reset/purge,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "dBj" = (
@@ -15267,17 +15267,17 @@
 	dir = 4
 	},
 /obj/structure/table,
-/obj/effect/spawner/lootdrop/aimodule_neutral,
-/obj/effect/spawner/lootdrop/aimodule_harmless,
-/obj/effect/spawner/lootdrop/aimodule_lewd,
-/obj/item/aiModule/core/full/custom,
-/obj/item/aiModule/core/full/asimov,
-/obj/item/aiModule/core/freeformcore,
+/obj/effect/spawner/lootdrop/ai_module_neutral,
+/obj/effect/spawner/lootdrop/ai_module_harmless,
+/obj/effect/spawner/lootdrop/ai_module_lewd,
+/obj/item/ai_module/core/full/custom,
+/obj/item/ai_module/core/full/asimov,
+/obj/item/ai_module/core/freeformcore,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "fmi" = (
 /obj/structure/table,
-/obj/item/aiModule/supplied/freeform,
+/obj/item/ai_module/supplied/freeform,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai_upload)
 "fmr" = (
@@ -18140,6 +18140,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/general/visible/layer1{
+	dir = 6
+	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "gll" = (
@@ -18573,6 +18576,9 @@
 "guN" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/general/visible/layer1{
+	dir = 8
 	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
@@ -24519,7 +24525,7 @@
 /area/command/heads_quarters/captain/private)
 "itY" = (
 /obj/structure/table/wood,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/splurt/splurt_space_law,
 /obj/item/storage/secure/briefcase/permits,
 /obj/structure/window/reinforced,
 /turf/open/floor/carpet,
@@ -26091,7 +26097,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/landmark/event_spawn,
-/obj/item/book/manual/splurt_space_law,
+/obj/item/book/manual/wiki/splurt/splurt_space_law,
 /turf/open/floor/carpet,
 /area/command/heads_quarters/hos)
 "iVR" = (
@@ -28476,7 +28482,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/atmospherics/components/binary/pump{
+/obj/machinery/atmospherics/components/binary/pump/layer1{
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
@@ -29098,8 +29104,8 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/manifold/general/visible{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 6
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/xenobiology)
@@ -34133,6 +34139,9 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/general/visible/layer1{
+	dir = 8
+	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "lPz" = (
@@ -38015,6 +38024,9 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
 	},
+/obj/structure/sign/xenobio_guide{
+	pixel_x = -32
+	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "nck" = (
@@ -40391,9 +40403,6 @@
 /turf/open/floor/plasteel/freezer,
 /area/commons/toilet)
 "nUv" = (
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 6
-	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 4
 	},
@@ -46219,7 +46228,7 @@
 /area/hallway/primary/starboard)
 "pZz" = (
 /obj/structure/table,
-/obj/item/aiModule/reset,
+/obj/item/ai_module/reset,
 /obj/machinery/camera/motion{
 	c_tag = "AI Upload Chamber - Fore";
 	dir = 4;
@@ -54285,6 +54294,10 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on/layer1{
+	dir = 8;
+	pixel_y = 1
+	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "sRU" = (
@@ -57455,8 +57468,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/obj/machinery/atmospherics/pipe/manifold/general/visible{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/general/visible/layer1,
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 4
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/xenobiology)
@@ -59677,7 +59691,7 @@
 /turf/open/floor/plasteel,
 /area/engineering/lobby)
 "uFf" = (
-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+/obj/machinery/atmospherics/components/unary/portables_connector/visible/layer1{
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark/side{
@@ -63656,9 +63670,6 @@
 /turf/open/floor/plating,
 /area/cargo/office)
 "vVX" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer{
-	dir = 1
-	},
 /turf/open/floor/plasteel/dark/corner{
 	dir = 4
 	},
@@ -67621,7 +67632,7 @@
 "xkc" = (
 /obj/structure/table,
 /obj/item/aicard,
-/obj/item/aiModule/reset,
+/obj/item/ai_module/reset,
 /obj/machinery/airalarm{
 	dir = 8;
 	pixel_x = 23

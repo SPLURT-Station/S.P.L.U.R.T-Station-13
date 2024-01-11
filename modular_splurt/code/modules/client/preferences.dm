@@ -6,12 +6,14 @@
 /datum/preferences
 	max_save_slots = DEFAULT_SAVE_SLOTS
 	var/unholypref = "No" //Goin 2 hell fo dis one
+	var/stomppref = TRUE // Please step on me.
 	var/list/gfluid_blacklist = list() //Stuff you don't want people to cum into you
 	var/new_character_creator = TRUE // old/new character creator
 	var/show_in_directory = 1	//Show in Character Directory
 	var/directory_tag = "Unset" //Sorting tag to use in character directory
 	var/directory_erptag = "Unset"	//ditto, but for non-vore scenes
 	var/directory_ad = ""		//Advertisement stuff to show in character directory.
+	var/fuzzy = FALSE			//Fuzzy scaling
 
 /datum/preferences/New(client/C)
 	// Check if readable fluids list exists
@@ -32,6 +34,10 @@
 			extra_slots = 10
 		max_save_slots = max_save_slots + extra_slots
 
+	. = ..()
+
+/datum/preferences/copy_to(mob/living/carbon/human/character, icon_updates, roundstart_checks, initial_spawn)
+	character.fuzzy = fuzzy
 	. = ..()
 
 /datum/preferences/ShowChoices(mob/user)
@@ -214,7 +220,7 @@
 
 			dat += "<h2>Body</h2>"
 			dat += "<b>Gender:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=gender;task=input'>[gender == MALE ? "Male" : (gender == FEMALE ? "Female" : (gender == PLURAL ? "Non-binary" : "Object"))]</a><BR>"
-			if(gender != NEUTER && pref_species.sexes)
+			if(pref_species.sexes)
 				dat += "<b>Body Model:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=body_model'>[features["body_model"] == MALE ? "Masculine" : "Feminine"]</a><BR>"
 			dat += "<b>Limb Modification:</b><BR>"
 			dat += "<a href='?_src_=prefs;preference=modify_limbs;task=input'>Modify Limbs</a><BR>"
@@ -261,6 +267,7 @@
 				mutant_colors = TRUE
 
 				dat += "<b>Sprite Size:</b> <a href='?_src_=prefs;preference=body_size;task=input'>[features["body_size"]*100]%</a><br>"
+				dat += "<b>Scaled Appearance:</b> <a href='?_src_=prefs;preference=toggle_fuzzy;task=input'>[fuzzy ? "Fuzzy" : "Sharp"]</a><br>"
 
 			if(!(NOEYES in pref_species.species_traits))
 				dat += "<h3>Eye Type</h3>"
@@ -663,7 +670,7 @@
 			dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=tongue;task=input'>[custom_tongue]</a><BR>"
 			//SANDSTORM EDIT - additional language + runechat color
 			dat += "<b>Additional Language</b><br>"
-			var/list/languages_sorted = sortList(language)
+			var/list/languages_sorted = sort_list(language)
 			dat += "<a href='?_src_=prefs;preference=language;task=menu'>[language.len ? languages_sorted.Join(", ") : "None"]</a></center><br>"
 			dat += "<b>Custom runechat color:</b> <a href='?_src_=prefs;preference=enable_personal_chat_color'>[enable_personal_chat_color ? "Enabled" : "Disabled"]</a><br> [enable_personal_chat_color ? "<span style='border: 1px solid #161616; background-color: [personal_chat_color];'><font color='[color_hex2num(personal_chat_color) < 200 ? "FFFFFF" : "000000"]'>[personal_chat_color]</font></span> <a href='?_src_=prefs;preference=personal_chat_color;task=input'>Change</a>" : ""]<br>"
 			dat += "</td>"
@@ -1056,6 +1063,8 @@
 			//SPLURT EDIT
 			dat += "<span style='border-radius: 2px;border:1px dotted white;cursor:help;' title='Enables verbs involving farts, shit and piss.'>?</span> "
 			dat += "<b>Unholy ERP verbs :</b> <a href='?_src_=prefs;preference=unholypref'>[unholypref]</a><br>" //https://www.youtube.com/watch?v=OHKARc-GObU
+			dat += "<span style='border-radius: 2px;border:1px dotted white;cursor:help;' title='Enables macro / micro stepping and stomping interactions.'>?</span> "
+			dat += "<b>Stomping Interactions :</b> <a href='?_src_=prefs;preference=stomppref'>[stomppref ? "Yes" : "No"]</a><br>"
 			//END OF SPLURT EDIT
 			//SKYRAT EDIT
 			dat += "<span style='border-radius: 2px;border:1px dotted white;cursor:help;' title='Enables verbs involving ear/brain fucking.'>?</span> "

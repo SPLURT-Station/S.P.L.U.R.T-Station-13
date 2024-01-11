@@ -106,7 +106,7 @@
 	icon_state = "barrel"
 
 /obj/structure/fermenting_barrel/doom/Initialize(mapload)
-	..()
+	. = ..()
 	src.reagents.add_reagent(pick(subtypesof(/datum/reagent/toxin)), 300)
 
 /obj/structure/fermenting_barrel/doom/Destroy()

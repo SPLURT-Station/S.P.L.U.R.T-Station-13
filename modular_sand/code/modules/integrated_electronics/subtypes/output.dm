@@ -29,7 +29,7 @@
 /obj/item/integrated_circuit/output/text_to_radio/Destroy()
 	qdel(radio)
 	GLOB.ic_speakers -= src
-	..()
+	return ..()
 
 /obj/item/integrated_circuit/output/text_to_radio/on_data_written()
 	var/freq = get_pin_data(IC_INPUT, 2)

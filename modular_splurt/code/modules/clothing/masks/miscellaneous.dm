@@ -1,11 +1,15 @@
 //Main code edits
 /obj/item/clothing/mask/muzzle/attack_hand(mob/user, act_intent, attackchain_flags)
-	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		if(src == C.wear_mask)
-			to_chat(user, span_warning("You need help taking this off!"))
-			return
-	..()
+    if(iscarbon(user))
+        var/mob/living/carbon/C = user
+        if(src == C.wear_mask)
+            if(seamless)
+                to_chat(user, span_warning("You need help taking this off!"))
+                return
+            else
+                if(!do_after(C, 60, target = src))
+                    return
+    ..()
 
 //Own stuff
 
@@ -130,3 +134,11 @@
 	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/mask_muzzle.dmi'
 	icon_state = "ballgag"
 	item_state = "ballgag"
+
+/obj/item/clothing/mask/ninja_replica
+	name = "Replica Ninja Mask"
+	desc = "It's a ninja mask! But this one seems like it's breathable."
+	icon_state = "s-ninja"
+	item_state = "s-ninja_mask"
+	flags_inv = HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
+	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH

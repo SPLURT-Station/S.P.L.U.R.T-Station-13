@@ -1,3 +1,5 @@
+#define MOD_ACTIVATION_STEP_FLAGS IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_HELD_ITEM|IGNORE_INCAPACITATED
+
 /// Creates a radial menu from which the user chooses parts of the suit to deploy/retract. Repeats until all parts are extended or retracted.
 /obj/item/mod/control/proc/choose_deploy(mob/user)
 	if(!length(mod_parts))
@@ -15,7 +17,7 @@
 	var/obj/item/part = locate(part_reference) in mod_parts
 	if(!istype(part) || user.incapacitated())
 		return
-	if((active && part != helmet) || activating) // SKYRAT EDIT - Let the hair flow - ORIGINAL: if(active || activating)
+	if(active || activating)
 		balloon_alert(user, "deactivate the suit first!")
 		playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 		return
@@ -132,31 +134,31 @@
 		playsound(src, 'sound/machines/synth_no.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, frequency = 6000)
 		return TRUE
 
-	if(do_after(wearer, activation_step_time, target = wearer, required_mobility_flags = NONE))
+	if(do_after(wearer, activation_step_time, wearer, MOD_ACTIVATION_STEP_FLAGS, extra_checks = CALLBACK(src, PROC_REF(has_wearer))))
 		to_chat(wearer, span_notice("[boots] [active ? "relax their grip on your legs" : "seal around your feet"]."))
 		playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		seal_part(boots, seal = !active)
 	else
 		return toggle_activate_fail()
-	if(do_after(wearer, activation_step_time, target = wearer, required_mobility_flags = NONE))
+	if(do_after(wearer, activation_step_time, wearer, MOD_ACTIVATION_STEP_FLAGS, extra_checks = CALLBACK(src, PROC_REF(has_wearer))))
 		to_chat(wearer, span_notice("[gauntlets] [active ? "become loose around your fingers" : "tighten around your fingers and wrists"]."))
 		playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		seal_part(gauntlets, seal = !active)
 	else
 		return toggle_activate_fail()
-	if(do_after(wearer, activation_step_time, target = wearer, required_mobility_flags = NONE))
+	if(do_after(wearer, activation_step_time, wearer, MOD_ACTIVATION_STEP_FLAGS, extra_checks = CALLBACK(src, PROC_REF(has_wearer))))
 		to_chat(wearer, span_notice("[chestplate] [active ? "releases your chest" : "cinches tightly against your chest"]."))
 		playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		seal_part(chestplate,seal =  !active)
 	else
 		return toggle_activate_fail()
-	if(do_after(wearer, activation_step_time, target = wearer, required_mobility_flags = NONE))
+	if(do_after(wearer, activation_step_time, wearer, MOD_ACTIVATION_STEP_FLAGS, extra_checks = CALLBACK(src, PROC_REF(has_wearer))))
 		to_chat(wearer, span_notice("[helmet] hisses [active ? "open" : "closed"]."))
 		playsound(src, 'sound/mecha/mechmove03.ogg', 25, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		seal_part(helmet, seal = !active)
 	else
 		return toggle_activate_fail()
-	if(do_after(wearer, activation_step_time, target = wearer, required_mobility_flags = NONE))
+	if(do_after(wearer, activation_step_time, wearer, MOD_ACTIVATION_STEP_FLAGS, extra_checks = CALLBACK(src, PROC_REF(has_wearer))))
 		to_chat(wearer, span_notice("Systems [active ? "shut down. Parts unsealed. Goodbye" : "started up. Parts sealed. Welcome"], [wearer]."))
 		if(ai)
 			to_chat(ai, span_notice("<b>SYSTEMS [active ? "DEACTIVATED. GOODBYE" : "ACTIVATED. WELCOME"]: \"[ai]\"</b>"))
@@ -215,9 +217,8 @@
 
 /// Finishes the suit's activation, starts processing
 /obj/item/mod/control/proc/finish_activation(on)
-	icon_state = "[skin]-control[on ? "-sealed" : ""]"
-	slowdown = on ? slowdown_active : slowdown_inactive
-	if(on)
+	active = on
+	if(active)
 		for(var/obj/item/mod/module/module as anything in modules)
 			module.on_suit_activation()
 		START_PROCESSING(SSobj, src)
@@ -225,18 +226,25 @@
 		for(var/obj/item/mod/module/module as anything in modules)
 			module.on_suit_deactivation()
 		STOP_PROCESSING(SSobj, src)
-	wearer.update_equipment_speed_mods()
-	active = on
+	update_speed()
+	update_icon_state()
 	wearer.update_inv_back()
+
+/obj/item/mod/control/update_icon_state()
+	icon_state = "[skin]-control[active ? "-sealed" : ""]"
+	return ..()
 
 /// Quickly deploys all the suit parts and if successful, seals them and turns on the suit. Intended mostly for outfits.
 /obj/item/mod/control/proc/quick_activation()
 	var/seal = TRUE
-	for(var/obj/item/part in mod_parts)
+	for(var/obj/item/part as anything in mod_parts)
 		if(!deploy(null, part))
 			seal = FALSE
 	if(!seal)
 		return
-	for(var/obj/item/part in mod_parts)
+	for(var/obj/item/part as anything in mod_parts)
 		seal_part(part, seal = TRUE)
 	finish_activation(on = TRUE)
+
+/obj/item/mod/control/proc/has_wearer()
+	return wearer

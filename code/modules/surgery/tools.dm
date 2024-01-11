@@ -19,7 +19,7 @@
 	return ..()
 
 /obj/item/retractor/advanced
-	name = "mechanical pinches"
+	name = "advanced retractor"
 	desc = "An agglomerate of rods and gears."
 	icon_state = "retractor_a"
 	toolspeed = 0.7
@@ -154,7 +154,7 @@
 	return ..()
 
 /obj/item/surgicaldrill/advanced
-	name = "searing tool"
+	name = "surgical laser drill"
 	desc = "It projects a high power laser used for medical application."
 	icon_state = "surgicaldrill_a"
 	hitsound = 'sound/items/welder.ogg'

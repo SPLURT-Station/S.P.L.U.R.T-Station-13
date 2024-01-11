@@ -43,7 +43,7 @@ const canProduce = (
 };
 
 const MaterialCost = (props: {
-  materials: Design["materials"],
+  readonly materials: Design["materials"],
 }) => {
   return (
     <Stack>

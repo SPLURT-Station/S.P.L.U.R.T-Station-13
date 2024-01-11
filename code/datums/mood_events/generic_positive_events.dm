@@ -173,7 +173,7 @@
 /datum/mood_event/orgasm
 	description = "<span class='userlove'>I came!</span>\n" //funny meme haha
 	mood_change = 3
-	timeout = 100 SECONDS
+	timeout = 3 MINUTES
 
 /datum/mood_event/fedpred
 	description = "<span class='nicegreen'>I've devoured someone!</span>\n"

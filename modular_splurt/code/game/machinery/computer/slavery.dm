@@ -27,7 +27,7 @@
 /obj/machinery/computer/slavery/Destroy()
 	GLOB.tracked_slave_consoles -= src
 	QDEL_NULL(radio)
-	..()
+	return ..()
 
 /obj/machinery/computer/slavery/proc/get_slaver_gear()
 	var/list/filtered_modules = list()

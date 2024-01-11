@@ -3,9 +3,6 @@
 	desc = "Debug. Parent Clean"
 	icon = 'modular_splurt/code/modules/research/xenoarch/tools.dmi'
 
-/obj/item/xenoarch/Initialize()
-	..()
-
 /obj/item/xenoarch/clean/hammer
 	name = "Parent hammer"
 	desc = "Debug. Parent Hammer."
@@ -143,7 +140,7 @@
 	if(!istype(target,/obj/item))
 		return
 	var/datum/export_report/ex = new
-	if(!do_after(user,300,target=target))
+	if(!do_after(user, 300, target=target))
 		to_chat(user,"You need to stand still to export items.")
 		return
 	export_item_and_contents(target, export_categories , dry_run = FALSE, external_report = ex)

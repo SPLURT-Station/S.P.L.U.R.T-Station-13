@@ -96,3 +96,5 @@
 	toggle_visibility(D.features["butt_visibility"], FALSE)
 	if(D.features["butt_stuffing"])
 		toggle_visibility(GEN_ALLOW_EGG_STUFFING, FALSE)
+	if(D.features["butt_accessible"])
+		toggle_accessibility(TRUE)

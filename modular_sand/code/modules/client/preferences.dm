@@ -1,4 +1,4 @@
-//SKYRAT EDIT - extra language
+//SANDSTORM EDIT - extra language
 /datum/preferences/proc/SetLanguage(mob/user)
 	var/list/dat = list()
 	dat += "<center><b>Choose Additional Languages</b></center><br>"
@@ -11,11 +11,10 @@
 				var/datum/language/L = SSlanguage.languages_by_name[V]
 				if(!L)
 					return
-				var/language_name = initial(L.name)
+				var/language_name = L.name
 				var/restricted = FALSE
 				if(L.restricted)
 					restricted = TRUE
-				var/font_color = "#4682B4"
 				if(restricted && !(language_name in pref_species.languagewhitelist))
 					var/quirklanguagefound = FALSE
 					for(var/datum/quirk/Q in all_quirks)
@@ -24,11 +23,7 @@
 					if(!quirklanguagefound)
 						continue
 				else
-					var/picked = FALSE
-					dat += "<b><font color='[font_color]'>[language_name]:</font></b> [initial(L.desc)]"
-					if(language_name in language)
-						picked = TRUE
-					dat += "<a href='?_src_=prefs;preference=language;task=update;language=[language_name]'>[picked ? "Remove" : "Choose"]</a><br>"
+					dat += "<a [(language_name in language) ? "class='linkOn'" : ""] href='?_src_=prefs;preference=language;task=update;language=[language_name]'><b>[language_name]</a></b> [L.desc]<br><br>"
 		else
 			dat += "<center><b>The language subsystem hasn't fully loaded yet! Please wait a bit and try again.</b></center><br>"
 		dat += "<hr>"
@@ -48,13 +43,16 @@
 /datum/preferences/proc/toggle_language(lang)
 	if(lang in language)
 		language -= lang
+		return TRUE
 	else if(check_language_maxhit())
 		if(CONFIG_GET(number/max_languages) == 1)
-			to_chat(usr, span_danger("You can only have 1 additional language!"))
+			tgui_alert(usr, "You can only have 1 additional language!", timeout = 5 SECONDS)
 		else
-			to_chat(usr, span_danger("You can only have up to [CONFIG_GET(number/max_languages)] additional languages!"))
+			tgui_alert(usr, "You can only have up to [CONFIG_GET(number/max_languages)] additional languages!", timeout = 5 SECONDS)
+		return FALSE
 	else
 		language += lang
+		return TRUE
 
 /datum/preferences/proc/check_language_maxhit()
 	if(CONFIG_GET(number/max_languages) == -1) //infinite

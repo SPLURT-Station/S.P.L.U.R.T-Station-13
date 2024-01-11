@@ -65,7 +65,7 @@
 			icon = to_reskin.unique_reskin[reskin_option]["icon"] ? to_reskin.unique_reskin[reskin_option]["icon"] : to_reskin.icon,
 			icon_state = to_reskin.unique_reskin[reskin_option]["icon_state"] ? to_reskin.unique_reskin[reskin_option]["icon_state"] : to_reskin.icon_state)
 		items += list("[reskin_option]" = item_image)
-	sortList(items)
+	items = sort_list(items)
 
 	// Display to the user
 	var/pick = show_radial_menu(user, to_reskin, items, custom_check = CALLBACK(src, .proc/check_reskin_menu, user, to_reskin), radius = 38, require_near = TRUE)
@@ -110,10 +110,9 @@
 )
 	SIGNAL_HANDLER
 
-	if(isnull(held_item))
-		switch(source.reskin_binding)
-			if(COMSIG_CLICK_CTRL_SHIFT)
-				LAZYSET(context[SCREENTIP_CONTEXT_CTRL_SHIFT_LMB], INTENT_ANY, "Reskin PDA")
-			else
-				LAZYSET(context[SCREENTIP_CONTEXT_ALT_LMB], INTENT_ANY, "Reskin [source]")
-		return CONTEXTUAL_SCREENTIP_SET
+	switch(source.reskin_binding)
+		if(COMSIG_CLICK_CTRL_SHIFT)
+			LAZYSET(context[SCREENTIP_CONTEXT_CTRL_SHIFT_LMB], INTENT_ANY, "Reskin PDA")
+		else
+			LAZYSET(context[SCREENTIP_CONTEXT_ALT_LMB], INTENT_ANY, "Reskin [source]")
+	return CONTEXTUAL_SCREENTIP_SET

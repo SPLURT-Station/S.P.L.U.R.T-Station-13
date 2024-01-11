@@ -456,7 +456,7 @@
 /obj/item/ectoplasm/qareen/Destroy()
 	if(!QDELETED(qareen))
 		qdel(qareen)
-	..()
+	return ..()
 
 /mob/living/simple_animal/qareen/proc/qareenThrow(over, mob/user, obj/item/throwable)
 	var/mob/living/simple_animal/qareen/spooker = user

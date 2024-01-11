@@ -21,7 +21,5 @@
 			mixcolor = BlendRGB(mixcolor, color_temp, vol_temp/vol_counter)
 		else
 			mixcolor = BlendRGB(color_temp, mixcolor, vol_temp/vol_counter)
-
-		qdel(R) //help me
 	return mixcolor
 

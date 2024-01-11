@@ -105,10 +105,12 @@
 	toggle_visibility(D.features["belly_visibility"], FALSE)
 	if(D.features["belly_stuffing"])
 		toggle_visibility(GEN_ALLOW_EGG_STUFFING, FALSE)
+	if(D.features["belly_accessible"])
+		toggle_accessibility(TRUE)
 
 /obj/item/organ/genital/belly/climax_modify_size(mob/living/partner, obj/item/organ/genital/source_gen, cum_hole)
 	if(!(owner.client?.prefs.cit_toggles & BELLY_INFLATION))
-		if(owner.has_anus(REQUIRE_EXPOSED) && (cum_hole == CUM_TARGET_ANUS) && (owner.client?.prefs.cit_toggles & BUTT_ENLARGEMENT))
+		if(owner.has_anus() == HAS_EXPOSED_GENITAL && (cum_hole == CUM_TARGET_ANUS) && (owner.client?.prefs.cit_toggles & BUTT_ENLARGEMENT))
 			var/obj/item/organ/genital/butt/ass = owner.getorganslot(ORGAN_SLOT_BUTT)
 			if(!ass)
 				ass = new

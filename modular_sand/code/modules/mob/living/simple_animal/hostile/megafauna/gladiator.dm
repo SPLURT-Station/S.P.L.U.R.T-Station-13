@@ -239,27 +239,32 @@ They deal 35 brute (armor is considered).
 	speenturfs.len = temp.len
 	var/woop = FALSE
 	var/start = 0
-	for(var/i in 0 to speenrange)
-		speenturfs[1+i] = locate(x - i, y - speenrange, z)
-		start = i
-	for(var/i in 1 to (speenrange*2))
-		var/turf/T = speenturfs[start]
-		speenturfs[start+i] = locate(T.x, T.y + i, T.z)
-		if(i == (speenrange*2))
-			start = (start+i)
-	for(var/i in 1 to (speenrange*2))
-		var/turf/T = speenturfs[start]
-		speenturfs[start+i] = locate(T.x + i, T.y, T.z)
-		if(i == (speenrange*2))
-			start = (start+i)
-	for(var/i in 1 to (speenrange*2))
-		var/turf/T = speenturfs[start]
-		speenturfs[start+i] = locate(T.x, T.y - i, T.z)
-		if(i == (speenrange*2))
-			start = (start+i)
-	for(var/i in 1 to speenrange)
-		var/turf/T = speenturfs[start]
-		speenturfs[start+i] = locate(T.x - i, T.y, T.z)
+	if(speenturfs.len > (start+speenrange))
+		for(var/i in 0 to speenrange)
+			speenturfs[1+i] = locate(x - i, y - speenrange, z)
+			start = i
+	if(speenturfs.len > (start+(speenrange*2)))
+		for(var/i in 1 to (speenrange*2))
+			var/turf/T = speenturfs[start]
+			speenturfs[start+i] = locate(T.x, T.y + i, T.z)
+			if(i == (speenrange*2))
+				start = (start+i)
+	if(speenturfs.len > (start+(speenrange*2)))
+		for(var/i in 1 to (speenrange*2))
+			var/turf/T = speenturfs[start]
+			speenturfs[start+i] = locate(T.x + i, T.y, T.z)
+			if(i == (speenrange*2))
+				start = (start+i)
+	if(speenturfs.len > (start+(speenrange*2)))
+		for(var/i in 1 to (speenrange*2))
+			var/turf/T = speenturfs[start]
+			speenturfs[start+i] = locate(T.x, T.y - i, T.z)
+			if(i == (speenrange*2))
+				start = (start+i)
+	if(speenturfs.len > (start+speenrange))
+		for(var/i in 1 to speenrange)
+			var/turf/T = speenturfs[start]
+			speenturfs[start+i] = locate(T.x - i, T.y, T.z)
 	var/list/hit_things = list()
 	for(var/turf/T in speenturfs)
 		src.dir = get_dir(src, T)

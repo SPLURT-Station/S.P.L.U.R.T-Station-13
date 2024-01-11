@@ -49,6 +49,8 @@
 	toggle_visibility(D.features["anus_visibility"], FALSE)
 	if(D.features["anus_stuffing"])
 		toggle_visibility(GEN_ALLOW_EGG_STUFFING, FALSE)
+	if(D.features["anus_accessible"])
+		toggle_accessibility(TRUE)
 	. = ..()
 
 /obj/item/organ/genital/anus/toggle_visibility(visibility, update = TRUE)

@@ -572,7 +572,7 @@
 
 		if(BODY_ZONE_PRECISE_EYES)
 			// Check if eyes exist and are exposed
-			if(!bite_target.has_eyes(REQUIRE_EXPOSED))
+			if(!bite_target.has_eyes() == HAS_EXPOSED_GENITAL)
 				// Warn user and return
 				to_chat(action_owner, span_warning("You can't find [bite_target]'s eyes to bite them!"))
 				return
@@ -1288,7 +1288,7 @@
 			// Do nothing!
 
 		// Check if species is already a mammal sub-type
-		else if(owner_species in subtypesof(/datum/species/mammal))
+		else if(ispath(owner_species, /datum/species/mammal))
 			// Do nothing!
 
 		// Check if species is a jelly
@@ -1297,7 +1297,7 @@
 			custom_species_prefix = "Jelly "
 
 		// Check if species is a jelly subtype
-		else if(owner_species in subtypesof(/datum/species/jelly))
+		else if(ispath(owner_species, /datum/species/jelly))
 			// Set species prefix
 			custom_species_prefix = "Slime "
 
@@ -1320,7 +1320,7 @@
 		action_owner.dna.features["mam_snouts"] = "Sergal"
 		action_owner.dna.features["legs"] = "Digitigrade"
 		action_owner.dna.features["insect_fluff"] = "Hyena"
-		action_owner.update_size(get_size(action_owner) + 0.5)
+		action_owner.update_size(clamp(get_size(action_owner) + 0.5, RESIZE_MICRO, RESIZE_MACRO))
 		action_owner.set_bark("bark")
 		if(old_features["taur"] != "None")
 			action_owner.dna.features["taur"] = "Canine"
@@ -1374,7 +1374,7 @@
 			action_owner.dna.species.mutant_bodyparts["legs"] = old_features["legs"]
 		action_owner.update_body()
 		action_owner.update_body_parts()
-		action_owner.update_size(get_size(action_owner) - 0.5)
+		action_owner.update_size(clamp(get_size(action_owner) - 0.5, RESIZE_MICRO, RESIZE_MACRO))
 
 		// Revert citadel organs
 		if(organ_breasts)
@@ -1494,10 +1494,10 @@
 	button_icon_state = "blank"
 
 	// Glow color to use
-	var/glow_color = "#39ff14" // Neon green
+	var/glow_color
 
 	// Thickness of glow outline
-	var/glow_range = 1 //Less than radfiend
+	var/glow_range
 
 
 /datum/action/cosglow/update_glow/Grant()
@@ -1656,7 +1656,7 @@
 			to_chat(U, span_warning("[C] already has a limb attached there!"))
 			return
 		C.visible_message(span_warning("[U] is attempting to attach [L] onto [C]!"), span_userdanger("[U] is attempting to re-attach one of your limbs!"))
-		if(do_after(U,40,target = C) && C.Adjacent(U))
+		if(do_after(U, 40, target = C) && C.Adjacent(U))
 			L.attach_limb(C)
 			C.visible_message(span_warning("[U] successfully attaches [L] onto [C]"), span_userdanger("[U] has successfully attached a [L.name] onto you; you can use that limb again!"))
 			return
@@ -1678,7 +1678,7 @@
 			return
 		C.visible_message(span_warning("[U] is attempting to remove one of [C]'s limbs!"), span_userdanger("[U] is attempting to disconnect one of your limbs!"))
 		var/obj/item/bodypart/B = C.get_bodypart(U.zone_selected)
-		if(C.Adjacent(U) && do_after(U,40,target = C))
+		if(C.Adjacent(U) && do_after(U, 40, target = C))
 			var/obj/item/bodypart/D = C.get_bodypart(U.zone_selected)
 			if(B != D)
 				to_chat(U, span_warning("You cannot target a different limb while already removing another!"))
@@ -1690,6 +1690,26 @@
 		else
 			to_chat(U, span_warning("You and [C] must both stand still for you to remove one of their limbs!"))
 			return
+
+/datum/action/cooldown/toggle_distant
+	name = "Toggle Distant"
+	desc = "Allows you to let your headpat-guard down, or put it back up."
+	icon_icon = 'modular_splurt/icons/mob/actions/lewd_actions/lewd_icons.dmi'
+	button_icon_state = "pain_max"
+
+/datum/action/cooldown/toggle_distant/Trigger()
+	. = ..()
+	if(!.)
+		return
+
+	var/mob/living/carbon/human/action_owner = owner
+
+	if(HAS_TRAIT(action_owner, TRAIT_DISTANT))
+		REMOVE_TRAIT(action_owner, TRAIT_DISTANT, ROUNDSTART_TRAIT)
+		to_chat(action_owner, span_notice("You let your headpat-guard down!"))
+	else
+		ADD_TRAIT(action_owner, TRAIT_DISTANT, ROUNDSTART_TRAIT)
+		to_chat(action_owner, span_warning("You let your headpat-guard up!"))
 
 #undef HYPNOEYES_COOLDOWN_NORMAL
 #undef HYPNOEYES_COOLDOWN_BRAINWASH

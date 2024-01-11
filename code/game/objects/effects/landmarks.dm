@@ -43,12 +43,12 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 		qdel(src)
 
 /obj/effect/landmark/start/Initialize(mapload)
+	. = ..()
 	GLOB.start_landmarks_list += src
 	if(jobspawn_override)
 		if(!GLOB.jobspawn_overrides[name])
 			GLOB.jobspawn_overrides[name] = list()
 		GLOB.jobspawn_overrides[name] += src
-	..()
 	if(name != "start")
 		tag = "start*[name]"
 
@@ -205,7 +205,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 
 /obj/effect/landmark/start/ai/after_round_start()
 	if(latejoin_active && !used)
-		new /obj/structure/AIcore/latejoin_inactive(loc)
+		new /obj/structure/ai_core/latejoin_inactive(loc)
 	return ..()
 
 /obj/effect/landmark/start/ai/secondary

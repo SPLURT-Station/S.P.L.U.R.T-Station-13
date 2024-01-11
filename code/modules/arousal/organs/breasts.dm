@@ -67,7 +67,7 @@
 //this is far too lewd wah
 
 /obj/item/organ/genital/breasts/modify_size(modifier, min = -INFINITY, max = INFINITY)
-	var/new_value =  clamp(size + modifier, max(min, min_size ? min_size : -INFINITY), min(max_size ? max_size : INFINITY, max))
+	var/new_value =  clamp(size + modifier, max(min, min_size ? GLOB.breast_values[min_size] : -INFINITY), min(max_size ? GLOB.breast_values[max_size] : INFINITY, max))
 	if(new_value == size)
 		return
 	prev_size = size
@@ -128,6 +128,8 @@
 	toggle_visibility(D.features["breasts_visibility"], FALSE)
 	if(D.features["breasts_stuffing"])
 		toggle_visibility(GEN_ALLOW_EGG_STUFFING, FALSE)
+	if(D.features["breasts_accessible"])
+		toggle_accessibility(TRUE)
 
 #undef BREASTS_ICON_MIN_SIZE
 #undef BREASTS_ICON_MAX_SIZE

@@ -483,7 +483,7 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 			//TODO: add only the parts that the target actually has to the radial menu
 			//		add color to images and make them correspond with the type that the target user has
 			//		make it so that if a covered up part is chosen - it licks the outside (the clothes). (apply this to the mouth interaction)
-			var/static/list/possible_choices = sortList(list(
+			var/static/list/possible_choices = sort_list(list(
 				"Penis" = image(icon = 'icons/obj/genitals/penis.dmi', icon_state = "penis"),
 				"Testicles" = image(icon= 'icons/obj/genitals/testicles.dmi', icon_state = "testicles"),
 				"Vagina" = image(icon= 'icons/obj/genitals/vagina.dmi', icon_state = "vagina"),

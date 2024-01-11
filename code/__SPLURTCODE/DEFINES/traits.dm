@@ -42,6 +42,8 @@
 #define TRAIT_DUMB_CUM			"dumb_for_cum_base"
 #define TRAIT_DUMB_CUM_CRAVE	"dumb_for_cum_need"
 #define TRAIT_RAD_FIEND     	"RadFiend"
+#define TRAIT_UNDEAD			"Undead"
 #define TRAIT_COSGLOW			"cosmetic_glow"
 #define TRAIT_BODY_MORPHER		"body_morpher"
 #define TRAIT_HALLOWED			"hallowed"
+#define TRAIT_MESSY				"messy"

@@ -5,6 +5,7 @@
 	var/datum/reagent/original_fluid_id
 	var/datum/reagent/default_fluid_id
 	var/list/writtentext = ""
+	var/list/obj/item/equipment = list()
 
 /obj/item/organ/genital/modify_size(modifier, min, max)
 	. = ..()
@@ -31,6 +32,11 @@
 		return linked_organ.fluid_id
 	return
 
+/obj/item/organ/genital/proc/splash_cum(mob/living/carbon/human/orgasming, target_orifice, atom/partner, cumin, genital)
+	SIGNAL_HANDLER
+
+	return !(!owner || cumin || genital != src)
+
 /obj/item/organ/genital/proc/get_fluid_name()
 	var/milkies = get_fluid_id()
 	var/message
@@ -52,9 +58,6 @@
 		fluid_id = new_fluidtype
 	else if(linked_organ?.genital_flags & GENITAL_FUID_PRODUCTION)
 		linked_organ?.fluid_id = new_fluidtype
-
-/obj/item/organ/genital
-	var/list/obj/item/equipment = list()
 
 /mob/living/carbon/human/update_genitals()
 	. = ..()

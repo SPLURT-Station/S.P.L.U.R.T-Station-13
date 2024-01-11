@@ -6,6 +6,18 @@
 	var/taur_dimension_y = 32
 	var/taur_dimension_x = 32
 
+/*
+ * This is an example of a penis object in the code.
+ * The icon_state of the penis is structured as follows:
+ * "penis_human_4_1_FRONT"
+ * Where "human" is the type of the penis, "4" is the size stage of the penis, and "1" means it's the erect sprite, while "0" would be the soft one.
+ * If the sprite is like this: "penis_human_4_s_1_FRONT", the extra "_s" means it's used by the default skintones (the list of default skin tones that "Albino, Caucasian, etc.").
+ * Those "_s" sprites use a more pink-ish tone instead of white, to match the different default skin tones automatically,
+ * while the icon states without the "_s" are used by the custom skin tone.
+ * In the future, it would be best to solve this, as it creates useless duplicated icon states, and therefore heavier file sizes. 
+ * It would be best to just have 1 set of icon states that apply themselves normally to both custom skin tone users and match default skin tone users, 
+ * effectively removing the need of using the extra "_s". - Goku
+ */
 
 //DICKS,COCKS,PENISES,WHATEVER YOU WANT TO CALL THEM
 /datum/sprite_accessory/penis

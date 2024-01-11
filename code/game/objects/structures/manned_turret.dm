@@ -43,7 +43,7 @@
 	. = ..()
 	STOP_PROCESSING(SSfastprocess, src)
 
-/obj/machinery/manned_turret/user_buckle_mob(mob/living/M, mob/living/carbon/user)
+/obj/machinery/manned_turret/user_buckle_mob(mob/living/M, mob/living/carbon/user, check_loc)
 	if(user.incapacitated() || !istype(user))
 		return
 	M.forceMove(get_turf(src))
@@ -193,7 +193,7 @@
 
 /obj/item/gun_control/Destroy()
 	turret = null
-	..()
+	return ..()
 
 /obj/item/gun_control/CanItemAutoclick()
 	return TRUE

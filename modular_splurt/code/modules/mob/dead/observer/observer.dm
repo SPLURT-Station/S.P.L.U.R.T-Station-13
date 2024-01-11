@@ -1,3 +1,6 @@
+/mob/dead/observer
+	var/lastclienttime = 0
+
 /mob/dead/observer/view_manifest()
 	if(!client)
 		return

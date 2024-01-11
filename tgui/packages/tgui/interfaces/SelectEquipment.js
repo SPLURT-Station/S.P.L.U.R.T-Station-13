@@ -2,7 +2,8 @@ import { filter, map, sortBy, uniq } from 'common/collections';
 import { flow } from 'common/fp';
 import { createSearch } from 'common/string';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Icon, Input, Section, Stack, Tabs } from '../components';
+import { Box, Button, Dropdown, Icon, Input, Section, Stack, Tabs } from '../components';
+import { ButtonCheckbox } from '../components/Button';
 import { Window } from '../layouts';
 
 // here's an important mental define:
@@ -173,8 +174,16 @@ const OutfitDisplay = (props, context) => {
 
 const CurrentlySelectedDisplay = (props, context) => {
   const { act, data } = useBackend(context);
-  const { current_outfit } = data;
+  const { current_outfit, is_observer = true } = data;
   const { entry } = props;
+  const [delPockets, setPocketDel] = useLocalState(
+    context, 'delPockets', false);
+  const [deployMethod, setDeployMethod] = useLocalState(
+    context, 'deployMethod', "Instant");
+  const [giveReturn, setGiveReturn] = useLocalState(
+    context, 'giveReturn', false);
+  const [randomChar, setRandomChar] = useLocalState(
+    context, 'randomChar', false);
   return (
     <Stack align="center">
       {entry?.path && (
@@ -204,15 +213,57 @@ const CurrentlySelectedDisplay = (props, context) => {
         </Box>
       </Stack.Item>
       <Stack.Item>
-        <Button
-          mr={0.8}
-          lineHeight={2}
-          color="green"
-          onClick={() => act('applyoutfit', {
-            path: current_outfit,
-          })}>
-          Confirm
-        </Button>
+        <Stack>
+          <Stack.Item>
+            {is_observer ? (
+              <>
+                <Dropdown
+                  lineHeight={2}
+                  fluid
+                  options={["Instant", "Pod", "Teleport"]}
+                  selected={deployMethod}
+                  onSelected={(selected) => setDeployMethod(selected)} />
+                <ButtonCheckbox
+                  lineHeight={2}
+                  fluid
+                  checked={giveReturn}
+                  onClick={() => setGiveReturn(!giveReturn)}>
+                  <Icon name="arrow-up" />Return
+                </ButtonCheckbox>
+                <ButtonCheckbox
+                  lineHeight={2}
+                  fluid
+                  checked={randomChar}
+                  onClick={() => setRandomChar(!randomChar)}>
+                  <Icon name="dice-d20" />Random
+                </ButtonCheckbox>
+              </>
+            ) : (
+              <ButtonCheckbox
+                lineHeight={2}
+                fluid
+                checked={delPockets}
+                onClick={() => setPocketDel(!delPockets)}>
+                <Icon name="trash" />Pockets
+              </ButtonCheckbox>
+            )}
+          </Stack.Item>
+          <Stack.Item>
+            <Button
+              mr={0.8}
+              lineHeight={is_observer ? 6 : 2}
+              color="green"
+              onClick={() => act('applyoutfit', {
+                path: current_outfit,
+                delete_pocket: delPockets,
+                spawn_method: deployMethod,
+                random_char: randomChar,
+                give_return: giveReturn,
+              })}>
+              Confirm
+            </Button>
+          </Stack.Item>
+        </Stack>
       </Stack.Item>
     </Stack>
   );

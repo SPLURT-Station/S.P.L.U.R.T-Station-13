@@ -515,8 +515,9 @@ By design, d1 is the smallest direction and d2 is the highest
 	used_skills = list(/datum/skill/level/job/wiring)
 
 /obj/item/stack/cable_coil/cyborg
-	is_cyborg = 1
+	is_cyborg = TRUE
 	custom_materials = null
+	source = /datum/robot_energy_storage/wire
 	cost = 1
 
 /obj/item/stack/cable_coil/cyborg/attack_self(mob/user)
@@ -572,7 +573,7 @@ By design, d1 is the smallest direction and d2 is the highest
 		return ..()
 
 
-/obj/item/stack/cable_coil/update_icon()
+/obj/item/stack/cable_coil/update_icon_state()
 	icon_state = "[initial(item_state)][amount < 3 ? amount : ""]"
 	name = "cable [amount < 3 ? "piece" : "coil"]"
 
@@ -587,7 +588,7 @@ By design, d1 is the smallest direction and d2 is the highest
 		to_chat(user, "<span class='notice'>You don't have enough cable coil to make restraints out of them</span>")
 		return
 	to_chat(user, "<span class='notice'>You start making some cable restraints.</span>")
-	if(!do_after(user, 30, TRUE, user, TRUE) || !use(15))
+	if(!do_after(user, 3 SECONDS, user) || !use(15))
 		to_chat(user, "<span class='notice'>You fail to make cable restraints, you need to be standing still to do it</span>")
 		return
 	var/obj/item/restraints/handcuffs/cable/result = new(get_turf(user))

@@ -122,13 +122,12 @@ Peacekeeper Hypospray
 
 /obj/item/reagent_containers/peacehypo/Initialize(mapload)
 	. = ..()
-
 	for(var/R in reagent_ids)
 		add_reagent(R)
-
 	START_PROCESSING(SSobj, src)
 
 /obj/item/reagent_containers/peacehypo/Destroy()
+	QDEL_LIST(reagent_list)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
@@ -259,13 +258,6 @@ Peacekeeper Hypospray
 /obj/item/storage/secure/briefcase/pkbaton/prova/PopulateContents()
 	new /obj/item/melee/baton/prova(src)
 	new /obj/item/stock_parts/cell/high/plus(src)
-
-/obj/item/storage/secure/briefcase/pkbaton/tbaton
-	name = "\improper Telescopic Baton box"
-	desc = "Storage box containing a single telescopic baton, just like the big boy riot police get!"
-
-/obj/item/storage/secure/briefcase/pkbaton/tbaton/PopulateContents()
-	new /obj/item/melee/classic_baton/telescopic(src)
 
 // Peacekeeper Locker
 

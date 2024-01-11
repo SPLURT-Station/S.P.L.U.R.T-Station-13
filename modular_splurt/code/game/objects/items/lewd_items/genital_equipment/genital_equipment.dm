@@ -13,6 +13,10 @@
 	AddComponent(/datum/component/genital_equipment, genital_slot, procs_list)
 	equipment = GetComponent(/datum/component/genital_equipment)
 
+/obj/item/genital_equipment/Destroy()
+	equipment = null
+	return ..()
+
 /// Item-specific checks to run before inserting in a genital
 /obj/item/genital_equipment/proc/item_inserting(datum/source, obj/item/organ/genital/G, mob/user)
 	return TRUE

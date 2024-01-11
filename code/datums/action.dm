@@ -648,6 +648,7 @@
 /datum/action/spell_action/Destroy()
 	var/obj/effect/proc_holder/S = target
 	S.action = null
+	target = null
 	return ..()
 
 /datum/action/spell_action/Trigger()
@@ -730,7 +731,7 @@
 
 /datum/action/cooldown/proc/StartCooldown()
 	next_use_time = world.time + cooldown_time
-	button.maptext = "<b>[round(cooldown_time/10, 0.1)]</b>"
+	button.maptext = MAPTEXT_TINY_UNICODE("[round(cooldown_time/10, 0.1)]")
 	UpdateButtonIcon()
 	START_PROCESSING(SSfastprocess, src)
 
@@ -744,7 +745,7 @@
 		UpdateButtonIcon()
 		STOP_PROCESSING(SSfastprocess, src)
 	else
-		button.maptext = "<b>[round(timeleft/10, 0.1)]</b>"
+		button.maptext = MAPTEXT_TINY_UNICODE("[round(cooldown_time/10, 0.1)]")
 
 /datum/action/cooldown/Grant(mob/M)
 	..()

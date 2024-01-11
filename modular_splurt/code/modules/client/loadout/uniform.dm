@@ -40,6 +40,22 @@
 	name = "Performers one piece"
 	path = /obj/item/clothing/under/performer
 
+/datum/gear/uniform/lewdmaid
+	name = "Lewd maid uniform"
+	path = /obj/item/clothing/under/lewdmaid
+
+/datum/gear/uniform/blutigen_undergarment
+	name = "Blutigen Undergarments"
+	path = /obj/item/clothing/under/blutigen_undergarment
+
+/datum/gear/uniform/blackstripper
+	name = "Black stripper outfit"
+	path = /obj/item/clothing/under/misc/stripper/black
+
+/datum/gear/uniform/whitestripper
+	name = "White stripper outfit"
+	path = /obj/item/clothing/under/misc/stripper/white
+
 // Suggestion #151
 /datum/gear/uniform/waiter
 	name = "waiter's outfit"
@@ -238,3 +254,10 @@
 /datum/gear/uniform/suit/helltaker/skirt
 	name = "Red Shirt with White Skirt"
 	path = /obj/item/clothing/under/suit/helltaker/skirt
+
+/datum/gear/uniform/suit/clussy_outfit
+	name = "Clussy outfit"
+	path = /obj/item/clothing/under/rank/civilian/clown/clussy_outfit
+	subcategory = LOADOUT_SUBCATEGORY_UNIFORM_JOBS
+	restricted_roles = list("Clown")
+	restricted_desc = "Clown"

@@ -244,6 +244,12 @@
 	icon_state = "slooglips"
 	matrixed_sections = MATRIX_RED_GREEN
 
+/datum/sprite_accessory/snouts/mam_snouts/rodent_thick
+	name = "Rodent (Thick)"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	icon_state = "rodentthick"
+	matrixed_sections = MATRIX_RED_GREEN
+
 /datum/sprite_accessory/snouts/mam_snouts/tajaran
 	name = "Tajaran"
 	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
@@ -267,3 +273,11 @@
 	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
 	icon_state = "renamon"
 	matrixed_sections = MATRIX_RED_BLUE
+
+/datum/sprite_accessory/snouts/mam_snouts/haydee_medical
+	name = "Haydee"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	icon_state = "haydeemedical"
+	extra = TRUE
+	extra_color_src = MATRIXED
+	matrixed_sections = MATRIX_RED_GREEN

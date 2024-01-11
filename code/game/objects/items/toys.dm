@@ -548,9 +548,10 @@
 /obj/effect/decal/cleanable/ash/snappop_phoenix
 	var/respawn_time = 300
 
-/obj/effect/decal/cleanable/ash/snappop_phoenix/New()
+/obj/effect/decal/cleanable/ash/snappop_phoenix/Initialize(mapload)
 	. = ..()
-	addtimer(CALLBACK(src, .proc/respawn), respawn_time)
+	if(!QDELETED(src))
+		addtimer(CALLBACK(src, .proc/respawn), respawn_time)
 
 /obj/effect/decal/cleanable/ash/snappop_phoenix/proc/respawn()
 	new /obj/item/toy/snappop/phoenix(get_turf(src))
@@ -787,29 +788,15 @@
 	. = ..()
 	populate_deck()
 
+///Generates all the cards within the deck.
 /obj/item/toy/cards/deck/proc/populate_deck()
 	icon_state = "deck_[deckstyle]_full"
-	for(var/i in 2 to 10)
-		cards += "[i] of Hearts"
-		cards += "[i] of Spades"
-		cards += "[i] of Clubs"
-		cards += "[i] of Diamonds"
-	cards += "King of Hearts"
-	cards += "King of Spades"
-	cards += "King of Clubs"
-	cards += "King of Diamonds"
-	cards += "Queen of Hearts"
-	cards += "Queen of Spades"
-	cards += "Queen of Clubs"
-	cards += "Queen of Diamonds"
-	cards += "Jack of Hearts"
-	cards += "Jack of Spades"
-	cards += "Jack of Clubs"
-	cards += "Jack of Diamonds"
-	cards += "Ace of Hearts"
-	cards += "Ace of Spades"
-	cards += "Ace of Clubs"
-	cards += "Ace of Diamonds"
+	for(var/suit in list("Hearts", "Spades", "Clubs", "Diamonds"))
+		cards += "Ace of [suit]"
+		for(var/i in 2 to 10)
+			cards += "[i] of [suit]"
+		for(var/person in list("Jack", "Queen", "King"))
+			cards += "[person] of [suit]"
 
 //ATTACK HAND NOT CALLING PARENT
 /obj/item/toy/cards/deck/on_attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
@@ -1000,7 +987,7 @@
 
 /obj/item/toy/cards/singlecard
 	name = "card"
-	desc = "a card"
+	desc = "A card."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "singlecard_down_nanotrasen"
 	w_class = WEIGHT_CLASS_TINY

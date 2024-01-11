@@ -261,5 +261,5 @@
 /obj/item/melee/diamondaxe/priest
 
 /obj/item/melee/diamondaxe/priest/Initialize(mapload)
-	..()
+	. = ..()
 	QDEL_IN(src, 30)

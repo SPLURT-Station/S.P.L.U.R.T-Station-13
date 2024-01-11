@@ -1,8 +1,8 @@
-/obj/effect/spawner/lootdrop/aimodule_lewd //these should allow the AI to coom
+/obj/effect/spawner/lootdrop/ai_module_lewd //these should allow the AI to coom
 	name = "lewd AI module spawner"
 	loot = list(
-		/obj/item/aiModule/core/full/slut,
-		/obj/item/aiModule/core/full/shebang,
-		/obj/item/aiModule/core/full/milker,
-		/obj/item/aiModule/core/full/vore_pred
+		/obj/item/ai_module/core/full/slut,
+		/obj/item/ai_module/core/full/shebang,
+		/obj/item/ai_module/core/full/milker,
+		/obj/item/ai_module/core/full/vore_pred
 	)

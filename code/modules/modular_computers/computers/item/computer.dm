@@ -92,7 +92,7 @@
 	if(issilicon(user))
 		return
 
-	if(user.canUseTopic(src, BE_CLOSE))
+	if(user.canUseTopic(src, BE_CLOSE, check_resting = w_class <= WEIGHT_CLASS_SMALL))
 		var/obj/item/computer_hardware/card_slot/card_slot2 = all_components[MC_CARD2]
 		var/obj/item/computer_hardware/card_slot/card_slot = all_components[MC_CARD]
 		return (card_slot2?.try_eject(user) || card_slot?.try_eject(user)) //Try the secondary one first.
@@ -157,7 +157,7 @@
 
 /obj/item/modular_computer/MouseDrop(obj/over_object, src_location, over_location)
 	var/mob/M = usr
-	if((!istype(over_object, /atom/movable/screen)) && usr.canUseTopic(src, BE_CLOSE))
+	if((!istype(over_object, /atom/movable/screen)) && usr.canUseTopic(src, BE_CLOSE, w_class <= WEIGHT_CLASS_SMALL))
 		return attack_self(M)
 	return ..()
 

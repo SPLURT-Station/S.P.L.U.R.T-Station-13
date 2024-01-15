@@ -41,6 +41,8 @@
 
 /datum/component/interaction_menu_granter/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_MOB_CTRLSHIFTCLICKON)
+	if(target)
+		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
 	. = ..()
 
 /// The one interacting is clicker, the interacted is clicked.
@@ -51,9 +53,19 @@
 	// Don't cancel admin quick spawn
 	if(isobserver(clicked) && check_rights_for(clicker.client, R_SPAWN))
 		return FALSE
+	// Changing targets!!
+	if(target)
+		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
 	target = clicked
+	RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/on_target_deleted)
 	ui_interact(clicker)
 	return COMSIG_MOB_CANCEL_CLICKON
+
+/// Such a shame
+/datum/component/interaction_menu_granter/proc/on_target_deleted(datum/source, ...)
+	UnregisterSignal(target, COMSIG_PARENT_QDELETING)
+	target = null
+	SStgui.close_user_uis(parent, src)
 
 /datum/component/interaction_menu_granter/ui_state(mob/user)
 	// Funny admin, don't you dare be the extra funny now.
@@ -88,34 +100,246 @@
 	.["selfAttributes"] = self.list_interaction_attributes(self)
 	.["lust"] = self.get_lust()
 	.["maxLust"] = self.get_lust_tolerance() * 3
+
+	.["max_distance"] = 0
+	.["user_is_blacklisted"] = SSinteractions.is_blacklisted(self)
+	var/required_from_user = NONE
+	if(self.has_mouth())
+		required_from_user |= INTERACTION_REQUIRE_MOUTH
+	if(self.has_hands())
+		required_from_user |= INTERACTION_REQUIRE_HANDS
+	if(self.is_topless())
+		required_from_user |= INTERACTION_REQUIRE_TOPLESS
+	if(self.is_bottomless())
+		required_from_user |= INTERACTION_REQUIRE_BOTTOMLESS
+	.["required_from_user"] = required_from_user
+
+	var/required_from_user_exposed = NONE
+	var/required_from_user_unexposed = NONE
+
+	var/user_has_penis = self.has_penis()
+	switch(user_has_penis)
+		if(HAS_EXPOSED_GENITAL)
+			required_from_user_exposed |= INTERACTION_REQUIRE_PENIS
+		if(HAS_UNEXPOSED_GENITAL)
+			required_from_user_unexposed |= INTERACTION_REQUIRE_PENIS
+		if(TRUE)
+			required_from_user_exposed |= INTERACTION_REQUIRE_PENIS
+			required_from_user_unexposed |= INTERACTION_REQUIRE_PENIS
+
+	var/user_has_anus = self.has_anus()
+	switch(user_has_anus)
+		if(HAS_EXPOSED_GENITAL)
+			required_from_user_exposed |= INTERACTION_REQUIRE_ANUS
+		if(HAS_UNEXPOSED_GENITAL)
+			required_from_user_unexposed |= INTERACTION_REQUIRE_ANUS
+		if(TRUE)
+			required_from_user_exposed |= INTERACTION_REQUIRE_ANUS
+			required_from_user_unexposed |= INTERACTION_REQUIRE_ANUS
+
+	var/user_has_vagina = self.has_vagina()
+	switch(user_has_vagina)
+		if(HAS_EXPOSED_GENITAL)
+			required_from_user_exposed |= INTERACTION_REQUIRE_VAGINA
+		if(HAS_UNEXPOSED_GENITAL)
+			required_from_user_unexposed |= INTERACTION_REQUIRE_VAGINA
+		if(TRUE)
+			required_from_user_exposed |= INTERACTION_REQUIRE_VAGINA
+			required_from_user_unexposed |= INTERACTION_REQUIRE_VAGINA
+
+	var/user_has_breasts = self.has_breasts()
+	switch(user_has_breasts)
+		if(HAS_EXPOSED_GENITAL)
+			required_from_user_exposed |= INTERACTION_REQUIRE_BREASTS
+		if(HAS_UNEXPOSED_GENITAL)
+			required_from_user_unexposed |= INTERACTION_REQUIRE_BREASTS
+		if(TRUE)
+			required_from_user_exposed |= INTERACTION_REQUIRE_BREASTS
+			required_from_user_unexposed |= INTERACTION_REQUIRE_BREASTS
+
+	var/user_has_feet = self.has_feet()
+	switch(user_has_feet)
+		if(HAS_EXPOSED_GENITAL)
+			required_from_user_exposed |= INTERACTION_REQUIRE_FEET
+		if(HAS_UNEXPOSED_GENITAL)
+			required_from_user_unexposed |= INTERACTION_REQUIRE_FEET
+		if(TRUE)
+			required_from_user_exposed |= INTERACTION_REQUIRE_FEET
+			required_from_user_unexposed |= INTERACTION_REQUIRE_FEET
+
+	var/user_has_balls = self.has_balls()
+	switch(user_has_balls)
+		if(HAS_EXPOSED_GENITAL)
+			required_from_user_exposed |= INTERACTION_REQUIRE_BALLS
+		if(HAS_UNEXPOSED_GENITAL)
+			required_from_user_unexposed |= INTERACTION_REQUIRE_BALLS
+		if(TRUE)
+			required_from_user_exposed |= INTERACTION_REQUIRE_BALLS
+			required_from_user_unexposed |= INTERACTION_REQUIRE_BALLS
+
+	var/user_has_ears = self.has_ears()
+	if(self.getorganslot(ORGAN_SLOT_EARS))
+		switch(user_has_ears)
+			if(HAS_EXPOSED_GENITAL)
+				required_from_user_exposed |= INTERACTION_REQUIRE_EARS
+			if(HAS_UNEXPOSED_GENITAL)
+				required_from_user_unexposed |= INTERACTION_REQUIRE_EARS
+	else
+		switch(user_has_ears)
+			if(HAS_EXPOSED_GENITAL)
+				required_from_user_exposed |= INTERACTION_REQUIRE_EARSOCKETS
+			if(HAS_UNEXPOSED_GENITAL)
+				required_from_user_unexposed |= INTERACTION_REQUIRE_EARSOCKETS
+
+	var/user_has_eyes = self.has_eyes()
+	if(self.getorganslot(ORGAN_SLOT_EYES))
+		switch(user_has_eyes)
+			if(HAS_EXPOSED_GENITAL)
+				required_from_user_exposed |= INTERACTION_REQUIRE_EYES
+			if(HAS_UNEXPOSED_GENITAL)
+				required_from_user_unexposed |= INTERACTION_REQUIRE_EYES
+	else
+		switch(user_has_eyes)
+			if(HAS_EXPOSED_GENITAL)
+				required_from_user_exposed |= INTERACTION_REQUIRE_EYESOCKETS
+			if(HAS_UNEXPOSED_GENITAL)
+				required_from_user_unexposed |= INTERACTION_REQUIRE_EYESOCKETS
+
+	.["required_from_user_exposed"] = required_from_user_exposed
+	.["required_from_user_unexposed"] = required_from_user_unexposed
+	.["user_num_feet"] = self.get_num_feet()
+
+	// Let's clear it in case the user goes directly from interacting with someone to themself
+	.["theirAttributes"] = null
+	.["target_has_active_player"] = null
+	.["max_distance"] = null
+	.["target_is_blacklisted"] = null
+	.["required_from_target"] = null
+	.["required_from_target_exposed"] = null
+	.["required_from_target_unexposed"] = null
+	.["target_num_feet"] = null
+	.["theirPrefs"] = null
+	.["theirLust"] = null
+	.["theyAllowLewd"] = null
+	.["theyAllowExtreme"] = null
 	if(target != self)
 		.["theirAttributes"] = target.list_interaction_attributes(self)
+
+		// Always TRUE if has key, 2 if cliented, FALSE if nobody owns it
+		.["target_has_active_player"] = target.ckey ? (target.client ? 2 : TRUE) : FALSE
+		.["max_distance"] = get_dist(self, target)
+		.["target_is_blacklisted"] = SSinteractions.is_blacklisted(target)
+		var/required_from_target = NONE
+		if(target.has_mouth())
+			required_from_target |= INTERACTION_REQUIRE_MOUTH
+		if(target.has_hands())
+			required_from_target |= INTERACTION_REQUIRE_HANDS
+		if(target.is_topless())
+			required_from_target |= INTERACTION_REQUIRE_TOPLESS
+		if(target.is_bottomless())
+			required_from_target |= INTERACTION_REQUIRE_BOTTOMLESS
+		.["required_from_target"] = required_from_target
+
+		var/required_from_target_exposed = NONE
+		var/required_from_target_unexposed = NONE
+
+		var/target_has_penis = target.has_penis()
+		switch(target_has_penis)
+			if(HAS_EXPOSED_GENITAL)
+				required_from_target_exposed |= INTERACTION_REQUIRE_PENIS
+			if(HAS_UNEXPOSED_GENITAL)
+				required_from_target_unexposed |= INTERACTION_REQUIRE_PENIS
+			if(TRUE)
+				required_from_target_exposed |= INTERACTION_REQUIRE_PENIS
+				required_from_target_unexposed |= INTERACTION_REQUIRE_PENIS
+
+		var/target_has_anus = target.has_anus()
+		switch(target_has_anus)
+			if(HAS_EXPOSED_GENITAL)
+				required_from_target_exposed |= INTERACTION_REQUIRE_ANUS
+			if(HAS_UNEXPOSED_GENITAL)
+				required_from_target_unexposed |= INTERACTION_REQUIRE_ANUS
+			if(TRUE)
+				required_from_target_exposed |= INTERACTION_REQUIRE_ANUS
+				required_from_target_unexposed |= INTERACTION_REQUIRE_ANUS
+
+		var/target_has_vagina = target.has_vagina()
+		switch(target_has_vagina)
+			if(HAS_EXPOSED_GENITAL)
+				required_from_target_exposed |= INTERACTION_REQUIRE_VAGINA
+			if(HAS_UNEXPOSED_GENITAL)
+				required_from_target_unexposed |= INTERACTION_REQUIRE_VAGINA
+			if(TRUE)
+				required_from_target_exposed |= INTERACTION_REQUIRE_VAGINA
+				required_from_target_unexposed |= INTERACTION_REQUIRE_VAGINA
+
+		var/target_has_breasts = target.has_breasts()
+		switch(target_has_breasts)
+			if(HAS_EXPOSED_GENITAL)
+				required_from_target_exposed |= INTERACTION_REQUIRE_BREASTS
+			if(HAS_UNEXPOSED_GENITAL)
+				required_from_target_unexposed |= INTERACTION_REQUIRE_BREASTS
+			if(TRUE)
+				required_from_target_exposed |= INTERACTION_REQUIRE_BREASTS
+				required_from_target_unexposed |= INTERACTION_REQUIRE_BREASTS
+
+		var/target_has_feet = target.has_feet()
+		switch(target_has_feet)
+			if(HAS_EXPOSED_GENITAL)
+				required_from_target_exposed |= INTERACTION_REQUIRE_FEET
+			if(HAS_UNEXPOSED_GENITAL)
+				required_from_target_unexposed |= INTERACTION_REQUIRE_FEET
+			if(TRUE)
+				required_from_target_exposed |= INTERACTION_REQUIRE_FEET
+				required_from_target_unexposed |= INTERACTION_REQUIRE_FEET
+
+		var/target_has_balls = target.has_balls()
+		switch(target_has_balls)
+			if(HAS_EXPOSED_GENITAL)
+				required_from_target_exposed |= INTERACTION_REQUIRE_BALLS
+			if(HAS_UNEXPOSED_GENITAL)
+				required_from_target_unexposed |= INTERACTION_REQUIRE_BALLS
+			if(TRUE)
+				required_from_target_exposed |= INTERACTION_REQUIRE_BALLS
+				required_from_target_unexposed |= INTERACTION_REQUIRE_BALLS
+
+		var/target_has_ears = target.has_ears()
+		if(target.getorganslot(ORGAN_SLOT_EARS))
+			switch(target_has_ears)
+				if(HAS_EXPOSED_GENITAL)
+					required_from_target_exposed |= INTERACTION_REQUIRE_EARS
+				if(HAS_UNEXPOSED_GENITAL)
+					required_from_target_unexposed |= INTERACTION_REQUIRE_EARS
+		else
+			switch(target_has_ears)
+				if(HAS_EXPOSED_GENITAL)
+					required_from_target_exposed |= INTERACTION_REQUIRE_EARSOCKETS
+				if(HAS_UNEXPOSED_GENITAL)
+					required_from_target_unexposed |= INTERACTION_REQUIRE_EARSOCKETS
+
+		var/target_has_eyes = target.has_eyes()
+		if(target.getorganslot(ORGAN_SLOT_EYES))
+			switch(target_has_eyes)
+				if(HAS_EXPOSED_GENITAL)
+					required_from_target_exposed |= INTERACTION_REQUIRE_EYES
+				if(HAS_UNEXPOSED_GENITAL)
+					required_from_target_unexposed |= INTERACTION_REQUIRE_EYES
+		else
+			switch(target_has_eyes)
+				if(HAS_EXPOSED_GENITAL)
+					required_from_target_exposed |= INTERACTION_REQUIRE_EYESOCKETS
+				if(HAS_UNEXPOSED_GENITAL)
+					required_from_target_unexposed |= INTERACTION_REQUIRE_EYESOCKETS
+
+		.["required_from_target_exposed"] = required_from_target_exposed
+		.["required_from_target_unexposed"] = required_from_target_unexposed
+		.["target_num_feet"] = target.get_num_feet()
+		if(target?.client?.prefs)
+			.["theyAllowLewd"] = !!(target.client.prefs.toggles & VERB_CONSENT)
+			.["theyAllowExtreme"] = !!pref_to_num(target.client.prefs.extremepref)
 		if(HAS_TRAIT(user, TRAIT_ESTROUS_DETECT))
 			.["theirLust"] = target.get_lust()
 			.["theirMaxLust"] = target.get_lust_tolerance() * 3
-
-	//Getting interactions
-	var/list/sent_interactions = list()
-	for(var/interaction_key in SSinteractions.interactions)
-		var/datum/interaction/I = SSinteractions.interactions[interaction_key]
-		if(I.evaluate_user(self, action_check = FALSE) && I.evaluate_target(self, target))
-			if(I.user_is_target && target != self)
-				continue
-			var/list/interaction = list()
-			interaction["key"] = I.type
-			var/description = replacetext(I.description, "%COCK%", self.has_penis() ? "cock" : "strapon")
-			interaction["desc"] = description
-			if(istype(I, /datum/interaction/lewd))
-				var/datum/interaction/lewd/O = I
-				if(O.extreme)
-					interaction["type"] = INTERACTION_EXTREME
-				else
-					interaction["type"] = INTERACTION_LEWD
-			else
-				interaction["type"] = INTERACTION_NORMAL
-			interaction["additionalDetails"] = I.additional_details
-			sent_interactions += list(interaction)
-	.["interactions"] = sent_interactions
 
 	//Get their genitals
 	var/list/genitals = list()
@@ -200,6 +424,40 @@
 		.["stimulation_pref"] = 	!!CHECK_BITFIELD(prefs.cit_toggles, STIMULATION)
 		.["edging_pref"] =			!!CHECK_BITFIELD(prefs.cit_toggles, EDGING)
 		.["cum_onto_pref"] = 		!!CHECK_BITFIELD(prefs.cit_toggles, CUM_ONTO)
+
+/datum/component/interaction_menu_granter/ui_static_data(mob/user)
+	. = ..()
+	//Getting interactions
+	var/list/sent_interactions = list()
+	for(var/interaction_key in SSinteractions.interactions)
+		var/datum/interaction/I = SSinteractions.interactions[interaction_key]
+		var/list/interaction = list()
+		interaction["key"] = I.type
+		interaction["desc"] = I.description
+		if(istype(I, /datum/interaction/lewd))
+			var/datum/interaction/lewd/O = I
+			if(O.interaction_flags & INTERACTION_FLAG_EXTREME_CONTENT)
+				interaction["type"] = INTERACTION_EXTREME
+			else
+				interaction["type"] = INTERACTION_LEWD
+			interaction["require_user_num_feet"] = O.require_user_num_feet
+			interaction["require_target_num_feet"] = O.require_target_num_feet
+		else
+			interaction["type"] = INTERACTION_NORMAL
+		interaction["maxDistance"] = I.max_distance
+
+		interaction["interactionFlags"] = I.interaction_flags
+
+		interaction["required_from_user"] = I.required_from_user
+		interaction["required_from_user_exposed"] = I.required_from_user_exposed
+		interaction["required_from_user_unexposed"] = I.required_from_user_unexposed
+
+		interaction["required_from_target"] = I.required_from_target
+		interaction["required_from_target_exposed"] = I.required_from_target_exposed
+		interaction["required_from_target_unexposed"] = I.required_from_target_unexposed
+		interaction["additionalDetails"] = I.additional_details
+		sent_interactions += list(interaction)
+	.["interactions"] = sent_interactions
 
 /proc/num_to_pref(num)
 	switch(num)

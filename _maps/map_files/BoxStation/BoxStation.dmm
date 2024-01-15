@@ -3029,6 +3029,9 @@
 /area/security/office)
 "akP" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 1
+	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "akT" = (
@@ -3057,6 +3060,9 @@
 	name = "test chamber blast door"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 1
+	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "akW" = (
@@ -3066,6 +3072,9 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
 "akX" = (
@@ -3154,6 +3163,9 @@
 /area/security/courtroom)
 "alf" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 1
+	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "alg" = (
@@ -3223,6 +3235,9 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 1
+	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "aln" = (
@@ -3232,8 +3247,8 @@
 	},
 /obj/structure/chair/comfy/black,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/machinery/atmospherics/pipe/simple/general/hidden{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 5
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
@@ -3539,9 +3554,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/general/hidden{
-	dir = 5
-	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "alW" = (
@@ -3553,9 +3565,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/general/hidden{
-	dir = 8
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
@@ -27098,7 +27107,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/general/hidden,
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "bIu" = (
@@ -27270,7 +27278,7 @@
 /area/science/xenobiology)
 "bIO" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
-/obj/machinery/atmospherics/pipe/simple/general/hidden{
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
 	dir = 8
 	},
 /turf/open/floor/plasteel/white,
@@ -27289,6 +27297,9 @@
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 8
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
@@ -27647,7 +27658,6 @@
 	name = "test chamber blast door"
 	},
 /obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/simple/general/hidden,
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "bJJ" = (
@@ -28228,7 +28238,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/obj/machinery/atmospherics/pipe/simple/general/hidden,
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
 "bKY" = (
@@ -28684,7 +28693,6 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/general/hidden,
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
 "bMi" = (
@@ -29979,7 +29987,7 @@
 	dir = 9
 	},
 /obj/machinery/portable_atmospherics/canister/bz,
-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+/obj/machinery/atmospherics/components/unary/portables_connector/visible/layer3{
 	dir = 8
 	},
 /turf/open/floor/plasteel,
@@ -42364,6 +42372,12 @@
 /obj/machinery/atmospherics/pipe/simple/orange/visible,
 /turf/open/space,
 /area/space/nearstation)
+"cCK" = (
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 9
+	},
+/turf/open/floor/engine,
+/area/science/xenobiology)
 "cCO" = (
 /obj/structure/musician/piano,
 /obj/machinery/camera{
@@ -43694,6 +43708,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/security/armory)
+"cWY" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer3,
+/turf/open/floor/engine,
+/area/science/xenobiology)
 "cXU" = (
 /obj/effect/turf_decal/tile/red,
 /obj/machinery/light{
@@ -44708,8 +44726,8 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/general/hidden{
-	dir = 10
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 8
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
@@ -54988,13 +55006,11 @@
 /turf/open/floor/plasteel/white,
 /area/science/circuit)
 "mNG" = (
+/obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/general/hidden{
 	dir = 5
 	},
-/turf/open/floor/plasteel/white,
+/turf/open/floor/engine,
 /area/science/xenobiology)
 "mOh" = (
 /obj/structure/chair/office/dark{
@@ -61002,6 +61018,15 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/service/chapel/office)
+"srQ" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 10
+	},
+/turf/open/floor/plasteel/white,
+/area/science/xenobiology)
 "ssB" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 1
@@ -63692,8 +63717,8 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/service/kitchen)
 "uKk" = (
-/obj/machinery/atmospherics/components/binary/pump{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 5
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
@@ -65740,6 +65765,15 @@
 	dir = 1
 	},
 /area/commons/fitness)
+"wmO" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/purple/hidden/layer3{
+	dir = 6
+	},
+/turf/open/floor/engine,
+/area/science/xenobiology)
 "wne" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -110675,14 +110709,14 @@ bAy
 bBS
 bDb
 bEm
-bEm
-cBz
+akK
+mNG
 xBH
 bJI
 bKX
 bMh
 bIt
-mNG
+bOx
 bPz
 bJN
 bRU
@@ -110932,8 +110966,8 @@ bAB
 bBV
 bDb
 bEn
-akK
-akP
+bEm
+wmO
 akP
 akV
 akW
@@ -111189,8 +111223,8 @@ bAA
 bBU
 bDb
 bEm
-bEm
-bEm
+cWY
+cCK
 bIy
 bJK
 bKZ
@@ -111967,7 +112001,7 @@ bJN
 bJN
 bMm
 bNp
-bOx
+srQ
 uKk
 bQN
 bRZ

@@ -173,3 +173,10 @@
 
 /obj/item/vending_refill/wardrobe/syndie_wardrobe
 	machine_name = "SynDrobe"
+
+/obj/machinery/vending/wardrobe/chap_wardrobe/Initialize(mapload)
+	var/list/extra_premium = list(
+		/obj/item/choice_beacon/ouija = 1
+	)
+	LAZYADD(products, extra_premium)
+	. = ..()

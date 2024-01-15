@@ -164,7 +164,7 @@
 /obj/item/genital_equipment/chastity_cage/proc/equip(mob/user, mob/living/carbon/target, obj/item/organ/genital/penor)
 	. = TRUE
 
-	if(target.has_penis(REQUIRE_EXPOSED) && CHECK_BITFIELD(penor?.genital_flags, HAS_EQUIPMENT))
+	if(target.has_penis() == HAS_EXPOSED_GENITAL && CHECK_BITFIELD(penor?.genital_flags, HAS_EQUIPMENT))
 		if(locate(/obj/item/genital_equipment/chastity_cage) in penor.contents)
 			to_chat(user, "<span class='notice'>\The [target] already have a cage on them!</span>")
 			return FALSE

@@ -103,3 +103,23 @@
 		/datum/reagent/fermi/belly_inflator = 10,
 		/datum/reagent/growthchem = 10
 	)
+
+/obj/item/reagent_containers/hypospray/medipen/bimbo
+	name = "Bimbofication Injector"
+	desc = "A medipen that enhances femininity and lust, transforming the user into a bimbo. It contains a blend of overpowering aphrodisiacs and body-enlargening reagents."
+	icon = 'modular_splurt/icons/obj/syringe.dmi'
+	lefthand_file = 'modular_splurt/icons/mob/inhands/equipment/medical_lefthand.dmi'
+	righthand_file = 'modular_splurt/icons/mob/inhands/equipment/medical_righthand.dmi'
+	icon_state = "hcrocinpen"
+	item_state = "hcrocinpen"
+	reagent_flags = NO_REACT
+	volume = 190
+	amount_per_transfer_from_this = 190
+	list_reagents = list(
+		/datum/reagent/drug/aphrodisiacplus = 100,
+		/datum/reagent/fermi/breast_enlarger = 30,
+		/datum/reagent/fermi/butt_enlarger = 30,
+		/datum/reagent/drug/genital_stimulator/anal_allure = 10,
+		/datum/reagent/drug/genital_stimulator/breast_buzzer = 10,
+		/datum/reagent/drug/genital_stimulator/vaginal_vigour = 10
+	)

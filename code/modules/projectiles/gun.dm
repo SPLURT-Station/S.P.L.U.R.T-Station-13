@@ -140,7 +140,7 @@
 
 	burst_size = 1
 
-	sortList(fire_select_modes, /proc/cmp_numeric_asc)
+	sort_list(fire_select_modes, /proc/cmp_numeric_asc)
 
 	if(fire_select_modes.len > 1)
 		firemode_action = new(src)
@@ -772,6 +772,18 @@
 	name = "Toggle Scope"
 	icon_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "sniper_zoom"
+
+/datum/action/item_action/toggle_scope_zoom/IsAvailable(silent = FALSE)
+	. = ..()
+	if(!. && owner)
+		var/obj/item/gun/G = target
+		G.zoom(owner, owner.dir, FALSE)
+
+/datum/action/item_action/toggle_scope_zoom/Trigger()
+	. = ..()
+	if(.)
+		var/obj/item/gun/G = target
+		G.zoom(owner, owner.dir)
 
 /datum/action/item_action/toggle_scope_zoom/Remove(mob/living/L)
 	var/obj/item/gun/G = target

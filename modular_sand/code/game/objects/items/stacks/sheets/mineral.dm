@@ -1,7 +1,8 @@
 /obj/item/stack/sheet/mineral/plasma/cyborg
 	custom_materials = null
-	is_cyborg = 1
-	cost = 500
+	is_cyborg = TRUE
+	source = /datum/robot_energy_storage/plasma
+	cost = MINERAL_MATERIAL_AMOUNT * 0.25
 
 /obj/item/stack/sheet/mineral/plasma/cyborg/attackby(obj/item/W as obj, mob/user as mob, params)
 	if(W.get_temperature() > 9999)//If the temperature of the object is over 9999, then ignite

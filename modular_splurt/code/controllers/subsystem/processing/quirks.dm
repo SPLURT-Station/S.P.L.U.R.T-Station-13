@@ -13,4 +13,8 @@
 		// BLOCKED: Thematic, mechanic, game lore.
 		// Bloodsuckers cannot interact with Hallowed users.
 		list("Hallowed","Bloodsucker Fledgling"),
+
+		// BLOCKED: Mechanic
+		// Bloodsuckers have NO_THIRST trait.
+		list("Thirsty","Bloodsucker Fledgling"),
 		))

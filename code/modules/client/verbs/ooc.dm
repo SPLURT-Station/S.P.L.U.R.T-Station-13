@@ -237,7 +237,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 			choices["[C]"] = C //NONMODULARITY NOTE: Removes the ability to link CKEYs to Characters. Always reapply for privacy reasons.
 		else
 			choices[C] = C
-	choices = sortList(choices)
+	choices = sort_list(choices)
 	var/selection = input("Please, select a player!", "Ignore", null, null) as null|anything in choices
 	if(!selection || !(selection in choices))
 		return

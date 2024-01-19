@@ -35,10 +35,19 @@
 	var/negative_cash_offset = 0
 	var/list/minor_rewards = list(
 		//To add a new minor reward, add it here.
-		/obj/item/stack/circuit_stack/full,
 		/obj/item/pen/survival,
 		/obj/item/circuitboard/machine/sleeper/party,
 		/obj/item/toy/sprayoncan,
+		//SPLURT EDIT START
+		/obj/item/multitool/advanced,
+		/obj/item/crowbar/advanced,
+		/obj/item/wirecutters/advanced,
+		/obj/item/wrench/advanced,
+		/obj/item/screwdriver/advanced,
+		/obj/item/weldingtool/advanced,
+		/obj/effect/spawner/lootdrop/alien_glands/single,
+		/obj/effect/spawner/lootdrop/maintenance
+		//SPLURT EDIT END
 	)
 	var/static/list/item_list = list()
 

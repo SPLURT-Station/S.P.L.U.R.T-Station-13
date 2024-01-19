@@ -840,6 +840,7 @@ RLD
 	desc = "A device used to rapidly provide lighting sources to an area. Reload with metal, plasteel, glass or compressed matter cartridges."
 	matter = 100
 	max_matter = 100
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/rcd_upgrade
 	name = "RCD advanced design disk"

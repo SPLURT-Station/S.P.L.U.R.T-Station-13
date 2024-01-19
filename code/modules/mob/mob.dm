@@ -329,8 +329,7 @@
 		// shift-click catcher may issue examinate() calls for out-of-sight turfs
 		return
 
-	if(is_blind())
-		to_chat(src, "<span class='warning'>Something is there but you can't see it!</span>")
+	if(is_blind(src) && !blind_examine_check(A))
 		return
 
 	face_atom(A)
@@ -357,6 +356,59 @@
 
 	to_chat(src, examine_block("<span class='infoplain'>[result.Join()]</span>"))
 	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
+
+//BLINDNESS CHECK - TG PORT ADAPTED TO SPLURT
+
+/mob/proc/blind_examine_check(atom/examined_thing)
+	return TRUE
+
+/mob/living/blind_examine_check(atom/examined_thing)
+	//need to be next to something and awake
+	if(!Adjacent(examined_thing) || incapacitated())
+		to_chat(src, "<span class='warning'>Something is there, but you can't see it!</span>")
+		return FALSE
+
+	var/active_item = get_active_held_item()
+	if(active_item && active_item != examined_thing)
+		to_chat(src, "<span class='warning'>Your hands are too full to examine this!</span>")
+		return FALSE
+
+	//you can only initiate examines if you have a hand, it's not disabled, and only as many examines as you have hands
+	/// our active hand, to check if it's disabled/detatched
+	var/obj/item/bodypart/active_hand = has_active_hand()? get_active_hand() : null
+	if(!active_hand || active_hand.is_disabled() || LAZYLEN(do_afters) >= get_num_arms())
+		to_chat(src, "<span class='warning'>You don't have a free hand to examine this!</span>")
+		return FALSE
+
+	//you can only queue up one examine on something at a time
+	if(examined_thing in do_afters)
+		return FALSE
+
+	to_chat(src, "<span class='notice'>You start feeling around for something...</span>")
+	visible_message("<span class='notice'> [name] begins feeling around for \the [examined_thing.name]...</span>")
+
+	/// how long it takes for the blind person to find the thing they're examining
+	var/examine_delay_length = rand(1 SECONDS, 2 SECONDS)
+	if(isobj(examined_thing))
+		examine_delay_length *= 1.5
+	else if(ismob(examined_thing) && examined_thing != src)
+		examine_delay_length *= 2
+
+	if(examine_delay_length > 0 && !do_after(src, examine_delay_length, target = examined_thing))
+		to_chat(src, "<span class='notice'>You can't get a good feel for what is there.</span>")
+		return FALSE
+
+	//now we touch the thing we're examining (DISABLED)
+	/// our current intent, so we can go back to it after touching
+
+	// var/previous_intent = a_intent
+	// a_intent = INTENT_HELP
+	// examined_thing.attack_hand(src)
+	// a_intent = previous_intent
+
+	return TRUE
+
+// BLINDNESS CHECK END
 
 /mob/proc/clear_from_recent_examines(atom/A)
 	if(!client)
@@ -393,57 +445,6 @@
 		if(SEND_SIGNAL(examined_mob, COMSIG_MOB_EYECONTACT, src, FALSE) != COMSIG_BLOCK_EYECONTACT)
 			var/msg = "<span class='smallnotice'>[src] makes eye contact with you.</span>"
 			addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, examined_mob, msg), 3)
-
-/**
-  * Point at an atom
-  *
-  * mob verbs are faster than object verbs. See
-  * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
-  * for why this isn't atom/verb/pointed()
-  *
-  * note: ghosts can point, this is intended
-  *
-  * visible_message will handle invisibility properly
-  *
-  * overridden here and in /mob/dead/observer for different point span classes and sanity checks
-  */
-/mob/verb/pointed(atom/A as mob|obj|turf in fov_view(), params = "" as text)
-	set name = "Point To"
-	set category = "Object"
-
-	if(!src || !isturf(src.loc) || !(A in view(src.loc)))
-		return FALSE
-	if(istype(A, /obj/effect/temp_visual/point))
-		return FALSE
-
-	var/turf/tile = get_turf(A)
-	if (!tile)
-		return FALSE
-
-	var/turf/our_tile = get_turf(src)
-	var/obj/visual = new /obj/effect/temp_visual/point(our_tile, invisibility)
-
-	/// Set position
-	var/final_x = (tile.x - our_tile.x) * world.icon_size + A.pixel_x
-	var/final_y = (tile.y - our_tile.y) * world.icon_size + A.pixel_y
-	var/list/click_params = params2list(params)
-	if(length(click_params) && click_params["screen-loc"])
-		var/list/actual_view = getviewsize(client ? client.view : world.view)
-		var/list/split_coords = splittext(click_params["screen-loc"], ",")
-		final_x = (text2num(splittext(split_coords[1], ":")[1]) - actual_view[1] / 2) * world.icon_size + (text2num(splittext(split_coords[1], ":")[2]) - world.icon_size)
-		final_y = (text2num(splittext(split_coords[2], ":")[1]) - actual_view[2] / 2) * world.icon_size + (text2num(splittext(split_coords[2], ":")[2]) - world.icon_size)
-	//
-
-	/// Set rotation
-	var/matrix/rotated_matrix = new()
-	rotated_matrix.TurnTo(0, Get_Pixel_Angle(-final_y, -final_x))
-	visual.transform = rotated_matrix
-	//
-
-	animate(visual, pixel_x = final_x, pixel_y = final_y, time = 1.7, easing = EASE_OUT)
-	SEND_SIGNAL(src, COMSIG_MOB_POINTED, A)
-
-	return TRUE
 
 /mob/proc/can_resist()
 	return FALSE		//overridden in living.dm
@@ -833,7 +834,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	return IsAdminGhost(src) || Adjacent(A) || A.hasSiliconAccessInArea(src)
 
 //Can the mob use Topic to interact with machines
-/mob/proc/canUseTopic(atom/movable/M, be_close=FALSE, no_dextery=FALSE, no_tk=FALSE)
+/mob/proc/canUseTopic(atom/movable/M, be_close=FALSE, no_dextery=FALSE, no_tk=FALSE, check_resting=FALSE)
 	return
 
 /mob/proc/canUseStorage()
@@ -940,7 +941,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	// Consider using mouse override icon or snapping this section.
 	if(pull_cursor_icon && client.keys_held["Ctrl"])
 		client.mouse_pointer_icon = pull_cursor_icon
-	else if(throw_cursor_icon && in_throw_mode != 0)
+	else if(throw_cursor_icon && throw_mode != 0)
 		client.mouse_pointer_icon = throw_cursor_icon
 	else if(combat_cursor_icon && SEND_SIGNAL(usr, COMSIG_COMBAT_MODE_CHECK, COMBAT_MODE_ACTIVE))
 		if(!client.prefs || !client.prefs.disable_combat_cursor) // Don't show the combat cursor for people who have it disabled in prefs.

@@ -7,3 +7,8 @@
 	build_path = /obj/item/storage/wallet/bluespace
 	category = list("Bluespace Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+
+//EXTRA DEPARTMENTAL FLAGS
+/datum/design/miningsatchel_holding/New()
+	departmental_flags |= DEPARTMENTAL_FLAG_SCIENCE
+	. = ..()

@@ -23,7 +23,7 @@
 /datum/action/innate/ability/humanoid_customization/proc/change_form()
 	var/mob/living/carbon/human/H = owner
 
-	var/select_alteration = input(owner, "Select what part of your form to alter", "Form Alteration", "cancel") in list("Body Color", "Eye Color","Hair Style", "Genitals", "Tail", "Snout", "Wings", "Markings", "Ears", "Taur body", "Penis", "Vagina", "Penis Length", "Breast Size", "Breast Shape", "Butt Size", "Belly Size", "Body Size", "Genital Color", "Horns", "Hair Color", "Skin Tone (Non-Mutant)", "Cancel")
+	var/select_alteration = input(owner, "Select what part of your form to alter", "Form Alteration", "cancel") in list("Body Color", "Eye Color","Hair Style", "Genitals", "Tail", "Snout", "Wings", "Markings", "Ears", "Taur body", "Penis", "Vagina", "Penis Length", "Breast Size", "Breast Shape", "Butt Size", "Belly Size", "Body Size", "Genital Color", "Horns", "Hair Color", "Skin Tone (Non-Mutant)", "Gender & Lewd", "Legs", "Cancel")
 
 	if(select_alteration == "Body Color")
 		var/new_color = input(owner, "Choose your skin color:", "Race change","#"+H.dna.features["mcolor"]) as color|null
@@ -358,8 +358,40 @@
 						H.skin_tone = custom_tone
 			else
 				H.skin_tone = new_s_tone
+	
+	else if (select_alteration == "Gender & Lewd")
+		var/lewd_selection = input(owner, "Select what aspect of gender and lewd preferences to alter", "Gender & Lewd", "cancel") in list("Gender", "Body Model", "Cancel")
+		if(lewd_selection == "Gender")
+			var/new_gender = input(owner, "Select your gender:", "Gender Selection") as null|anything in list("Male", "Female", "Non-binary", "Object")
+			if(new_gender)
+				switch(new_gender)
+					if("Male")
+						H.gender = MALE
+					if("Female")
+						H.gender = FEMALE
+					if("Non-binary")
+						H.gender = PLURAL
+					if("Object")
+						H.gender = NEUTER
+		if(lewd_selection == "Body Model")
+			var/new_body_model = input(owner, "Select your body model:", "Body Model Selection") as null|anything in list("Masculine", "Feminine")
+			if(new_body_model)
+				H.dna.features["body_model"] = new_body_model == "Masculine" ? MALE : FEMALE
+				H.update_body()
 
-		H.update_body()		
+	else if (select_alteration == "Legs")
+		var/leg_choice = input(owner, "Choose your character's leg type:", "Leg Type Alteration") as null|anything in list("Plantigrade", "Digitigrade", "Cancel")
+		if(leg_choice)
+			switch(leg_choice)
+				if("Plantigrade")
+					H.dna.features["legs"] = "Plantigrade"
+					H.dna.species.mutant_bodyparts["legs"] = "Plantigrade"
+					H.Digitigrade_Leg_Swap(TRUE)
+				if("Digitigrade")
+					H.dna.features["legs"] = "Digitigrade"
+					H.dna.species.mutant_bodyparts["legs"] = "Digitigrade"
+					H.Digitigrade_Leg_Swap(FALSE)
+			H.update_body()
 
 /// SPLURT EDIT END
 	else

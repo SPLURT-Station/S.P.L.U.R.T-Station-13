@@ -547,9 +547,13 @@
 /turf/open/floor/mineral/titanium/purple,
 /area/space)
 "bP" = (
-/obj/machinery/mineral/ore_redemption,
-/turf/open/floor/mineral/titanium/purple,
-/area/space)
+/obj/effect/turf_decal/tile/green,
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/obj/machinery/vending/hydroseeds,
+/turf/open/floor/plasteel,
+/area/mine/xenoarch)
 "bQ" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -3672,11 +3676,11 @@
 /turf/open/floor/plasteel,
 /area/mine/xenoarch)
 "ii" = (
-/obj/machinery/seed_extractor,
 /obj/effect/turf_decal/tile/green,
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
 	},
+/obj/machinery/vending/hydronutrients,
 /turf/open/floor/plasteel,
 /area/mine/xenoarch)
 "ij" = (
@@ -3849,7 +3853,6 @@
 /turf/open/floor/plasteel,
 /area/mine/xenoarch)
 "iG" = (
-/obj/machinery/vending/hydronutrients,
 /obj/effect/turf_decal/tile/green,
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
@@ -3858,6 +3861,7 @@
 	layer = 4;
 	pixel_x = 32
 	},
+/obj/machinery/seed_extractor,
 /turf/open/floor/plasteel,
 /area/mine/xenoarch)
 "iH" = (
@@ -5842,7 +5846,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1
 	},
-/obj/effect/turf_decal/plaque,
 /turf/open/floor/plasteel,
 /area/mine/xenoarch_area_c)
 "ne" = (
@@ -6657,6 +6660,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/mine/xenoarch_area_c)
+"po" = (
+/obj/machinery/mineral/ore_redemption,
+/turf/closed/wall,
+/area/mine/xenoarch)
 "pp" = (
 /obj/machinery/vending/cola/random,
 /turf/open/floor/plasteel/dark,
@@ -9383,6 +9390,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/mine/xenoarch_area_c)
+"IT" = (
+/obj/machinery/mineral/equipment_vendor,
+/turf/closed/wall,
+/area/mine/xenoarch)
 "JB" = (
 /obj/structure/grille,
 /turf/open/floor/plating,
@@ -27238,7 +27249,7 @@ cp
 cw
 cp
 Bi
-Bi
+po
 Bi
 Bi
 Bi
@@ -28266,7 +28277,7 @@ cp
 cy
 cp
 Bi
-Bi
+IT
 dQ
 cY
 eA
@@ -28534,7 +28545,7 @@ gr
 cX
 Bi
 hS
-ii
+bP
 iG
 ii
 jt
@@ -68951,7 +68962,7 @@ bB
 bv
 bI
 bI
-bP
+bI
 bI
 bI
 bW

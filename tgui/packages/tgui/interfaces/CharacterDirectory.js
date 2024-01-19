@@ -6,7 +6,11 @@ import { Window } from '../layouts';
 const erpTagColor = {
   'Unset': 'label',
   'Top': 'red',
+  'Top-Pref': 'red',
+  'Submissive Top': 'teal',
   'Bottom': 'blue',
+  'Bottom-Pref': 'blue',
+  'Dominant Bottom': 'orange',
   'Switch': 'yellow',
   'No ERP': 'black',
 };

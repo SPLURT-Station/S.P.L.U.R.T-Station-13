@@ -1,11 +1,10 @@
 /datum/interaction/lewd/fuck
 	description = "Fuck their pussy."
-	require_user_penis = REQUIRE_EXPOSED
-	require_target_vagina = REQUIRE_EXPOSED
+	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
+	required_from_target_exposed = INTERACTION_REQUIRE_VAGINA
 	write_log_user = "fucked"
 	write_log_target = "was fucked by"
 	interaction_sound = null
-	max_distance = 1
 
 /datum/interaction/lewd/fuck/display_interaction(mob/living/user, mob/living/partner)
 	var/message
@@ -31,8 +30,7 @@
 
 /datum/interaction/lewd/fuck/anal
 	description = "Fuck their ass."
-	require_target_vagina = null
-	require_target_anus = REQUIRE_EXPOSED
+	required_from_target_exposed = INTERACTION_REQUIRE_ANUS
 
 /datum/interaction/lewd/fuck/anal/display_interaction(mob/living/user, mob/living/partner)
 	var/message
@@ -64,9 +62,8 @@
 /datum/interaction/lewd/breastfuck
 	description = "Fuck their breasts."
 	interaction_sound = null
-	require_user_penis = REQUIRE_EXPOSED
-	require_target_breasts = REQUIRE_EXPOSED
-	max_distance = 1
+	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
+	required_from_target_exposed = INTERACTION_REQUIRE_BREASTS
 
 /datum/interaction/lewd/breastfuck/display_interaction(mob/living/user, mob/living/partner)
 	var/message
@@ -91,12 +88,12 @@
 		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_BREASTS, partner, ORGAN_SLOT_PENIS) //SPLURT edit
 
 /datum/interaction/lewd/footfuck
-	description = "Rub your %COCK% on their foot."
+	description = "Rub your cock on their foot."
 	interaction_sound = null
+	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
+	required_from_target_exposed = INTERACTION_REQUIRE_FEET
+	required_from_target_unexposed = INTERACTION_REQUIRE_FEET
 	require_target_num_feet = 1
-	require_target_feet = REQUIRE_ANY
-	require_user_penis = REQUIRE_EXPOSED
-	max_distance = 1
 
 /datum/interaction/lewd/footfuck/display_interaction(mob/living/user, mob/living/partner)
 	var/message
@@ -124,7 +121,7 @@
 		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_FEET, partner, CUM_TARGET_PENIS) //SPLURT edit
 
 /datum/interaction/lewd/footfuck/double
-	description = "Rub your %COCK% between their feet."
+	description = "Rub your cock between their feet."
 	require_target_num_feet = 2
 
 /datum/interaction/lewd/footfuck/double/display_interaction(mob/living/user, mob/living/partner)
@@ -155,11 +152,8 @@
 /datum/interaction/lewd/footfuck/vag
 	description = "Rub your vagina on their foot."
 	interaction_sound = null
+	required_from_user_exposed = INTERACTION_REQUIRE_VAGINA
 	require_target_num_feet = 1
-	require_target_feet = REQUIRE_ANY
-	require_user_vagina = REQUIRE_EXPOSED
-	require_user_penis = REQUIRE_NONE
-	max_distance = 1
 
 /datum/interaction/lewd/footfuck/vag/display_interaction(mob/living/user, mob/living/partner)
 	var/message

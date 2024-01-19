@@ -688,7 +688,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 					dat += "<h2>Body</h2>"
 					dat += "<b>Gender:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=gender;task=input'>[gender == MALE ? "Male" : (gender == FEMALE ? "Female" : (gender == PLURAL ? "Non-binary" : "Object"))]</a><BR>"
-					if(gender != NEUTER && pref_species.sexes)
+					if(pref_species.sexes)
 						dat += "<b>Body Model:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=body_model'>[features["body_model"] == MALE ? "Masculine" : "Feminine"]</a><BR>"
 					dat += "<b>Limb Modification:</b><BR>"
 					dat += "<a href='?_src_=prefs;preference=modify_limbs;task=input'>Modify Limbs</a><BR>"
@@ -1286,6 +1286,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 												loadout_color_non_poly = loadout_item[LOADOUT_COLOR][1]
 											extra_loadout_data += "<BR><a href='?_src_=prefs;preference=gear;loadout_color=1;loadout_gear_name=[html_encode(gear.name)];'>Color</a>"
 											extra_loadout_data += "<span style='border: 1px solid #161616; background-color: [loadout_color_non_poly];'><font color='[color_hex2num(loadout_color_non_poly) < 200 ? "FFFFFF" : "000000"]'>[loadout_color_non_poly]</font></span>"
+											extra_loadout_data += "<BR><a href='?_src_=prefs;preference=gear;loadout_color_HSV=1;loadout_gear_name=[html_encode(gear.name)];'>HSV Color</a>" // SPLURT EDIT
 										if(gear.loadout_flags & LOADOUT_CAN_NAME)
 											extra_loadout_data += "<BR><a href='?_src_=prefs;preference=gear;loadout_rename=1;loadout_gear_name=[html_encode(gear.name)];'>Name</a> [loadout_item[LOADOUT_CUSTOM_NAME] ? loadout_item[LOADOUT_CUSTOM_NAME] : "N/A"]"
 										if(gear.loadout_flags & LOADOUT_CAN_DESCRIPTION)
@@ -1771,7 +1772,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
 		var/datum/job/lastJob
 
-		for(var/datum/job/job in sortList(SSjob.occupations, /proc/cmp_job_display_asc))
+		for(var/datum/job/job in sort_list(SSjob.occupations, /proc/cmp_job_display_asc))
 
 			index += 1
 			if((index >= limit) || (job.title in splitJobs))
@@ -2152,7 +2153,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					return
 				if(!toggle_language(lang))
 					return
-				language = sortList(language)
+				language = sort_list(language)
 			if("reset")
 				language = list()
 		SetLanguage(user)
@@ -2870,9 +2871,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(lust_tol)
 						lust_tolerance = clamp(lust_tol, 75, 200)
 				if("sexual_potency")
-					var/sexual_pot = input(user, "Set your sexual potency. \n(10 = minimum, 25 = maximum.)", "Character Preference", sexual_potency) as num|null
+					var/sexual_pot = input(user, "Set your sexual potency. \n(-1 = minimum, 25 = maximum.) This determines the number of times your character can orgasm before becoming impotent, use -1 for no impotency.", "Character Preference", sexual_potency) as num|null
 					if(sexual_pot)
-						sexual_potency = clamp(sexual_pot, 10, 25)
+						sexual_potency = clamp(sexual_pot, -1, 25)
 
 				if("cock_color")
 					var/new_cockcolor = input(user, "Penis color:", "Character Preference","#"+features["cock_color"]) as color|null
@@ -3234,8 +3235,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/pickedui = input(user, "Choose your UI style.", "Character Preference", UI_style)  as null|anything in GLOB.available_ui_styles
 					if(pickedui)
 						UI_style = pickedui
-						if (parent && parent.mob && parent.mob.hud_used)
-							parent.mob.hud_used.update_ui_style(ui_style2icon(UI_style))
+						if (pickedui && parent && parent.mob && parent.mob.hud_used)
+							QDEL_NULL(parent.mob.hud_used)
+							parent.mob.create_mob_hud()
+							parent.mob.hud_used.show_hud(1, parent.mob)
 				if("pda_style")
 					var/pickedPDAStyle = input(user, "Choose your PDA style.", "Character Preference", pda_style)  as null|anything in GLOB.pda_styles
 					if(pickedPDAStyle)
@@ -3715,7 +3718,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							if(!length(key_bindings[old_key]))
 								key_bindings -= old_key
 						key_bindings[full_key] += list(kb_name)
-						key_bindings[full_key] = sortList(key_bindings[full_key])
+						key_bindings[full_key] = sort_list(key_bindings[full_key])
 					if(href_list["special"])		// special keys need a full reset
 						user.client.ensure_keys_set(src)
 					user << browse(null, "window=capturekeypress")
@@ -3757,7 +3760,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					outline_enabled = !outline_enabled
 				if("outline_color")
 					var/pickedOutlineColor = input(user, "Choose your outline color.", "General Preference", outline_color) as color|null
-					if(pickedOutlineColor != pickedOutlineColor)
+					if(pickedOutlineColor != outline_color)
 						outline_color = pickedOutlineColor // nullable
 				if("screentip_pref")
 					var/choice = input(user, "Choose your screentip preference", "Screentipping?", screentip_pref) as null|anything in GLOB.screentip_pref_options
@@ -4100,7 +4103,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					sanitize_current_slot.Remove(list(entry))
 					break
 
-		if(href_list["loadout_color"] || href_list["loadout_color_polychromic"] || href_list["loadout_rename"] || href_list["loadout_redescribe"])
+		if(href_list["loadout_color"] || href_list["loadout_color_polychromic"] || href_list["loadout_color_HSV"] || href_list["loadout_rename"] || href_list["loadout_redescribe"])
 			//if the gear doesn't exist, or they don't have it, ignore the request
 			var/name = html_decode(href_list["loadout_gear_name"])
 			var/datum/gear/G = GLOB.loadout_items[gear_category][gear_subcategory][name]
@@ -4120,6 +4123,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				var/current_color = user_gear[LOADOUT_COLOR][1]
 				var/new_color = input(user, "Polychromic options", "Choose Color", current_color) as color|null
 				user_gear[LOADOUT_COLOR][1] = sanitize_hexcolor(new_color, 6, TRUE, current_color)
+
+			// HSV Coloring (SPLURT EDIT)
+			if(href_list["loadout_color_HSV"] && !(G.loadout_flags & LOADOUT_CAN_COLOR_POLYCHROMIC))
+				var/hue = input(user, "Enter Hue (0-360)", "HSV options") as num|null
+				var/saturation = input(user, "Enter Saturation (-10 to 10)", "HSV options") as num|null
+				var/value = input(user, "Enter Value (-10 to 10)", "HSV options") as num|null
+				if(hue && saturation && value)
+					saturation = clamp(saturation, -10, 10)
+					value = clamp(value, -10, 10)
+					var/color_to_use = color_matrix_hsv(hue, saturation, value)
+					user_gear[LOADOUT_COLOR][1] = color_to_use
 
 			//poly coloring can only be done by poly items
 			if(href_list["loadout_color_polychromic"] && (G.loadout_flags & LOADOUT_CAN_COLOR_POLYCHROMIC))

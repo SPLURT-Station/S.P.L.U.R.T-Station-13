@@ -502,6 +502,9 @@
 			// Beakers, bottles, buckets, etc.
 			if(reagent_source.is_drainable())
 				playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
+				var/image/splash_animation = image('modular_splurt/icons/effects/effects.dmi', src, "splash_hydroponics")
+				splash_animation.color = mix_color_from_reagents(reagent_source.reagents.reagent_list)
+				flick_overlay(splash_animation, GLOB.clients, 1.1 SECONDS)
 
 		if(visi_msg)
 			visible_message("<span class='notice'>[visi_msg].</span>")
@@ -625,7 +628,7 @@
 			for(var/muties in myseed.mutatelist)
 				var/obj/item/seeds/another_mut = new muties
 				fresh_mut_list[another_mut.plantname] =  muties
-			var/locked_mutation = (input(user, "Select a mutation to lock.", "Plant Mutation Locks") as null|anything in sortList(fresh_mut_list))
+			var/locked_mutation = (input(user, "Select a mutation to lock.", "Plant Mutation Locks") as null|anything in sort_list(fresh_mut_list))
 			if(!user.canUseTopic(src, BE_CLOSE) || !locked_mutation)
 				return
 			myseed.mutatelist = list(fresh_mut_list[locked_mutation])

@@ -10,6 +10,11 @@
 	var/list/speech_buffer = ""
 	var/mob/capsule_owner
 
+/mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/pet_femclaw/pet_mommyclaw
+	icon_state = "mommyclaw"
+	desc = "A machine that turns her victim's pelvis into pelvwas."
+	name = "Mommy Funclaw"
+
 /mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/pet_deathclaw
 	vision_range = 0
 	aggro_vision_range = 0
@@ -21,6 +26,12 @@
 	//Ordering mechanics
 	var/list/speech_buffer = ""
 	var/mob/capsule_owner
+
+/mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/pet_deathclaw/pet_alphaclaw
+	name = "Alpha Funclaw"
+	icon_state = "alphaclaw"
+	base_state = "alphaclaw"
+	cock_state = "alphaclaw_cocked"
 
 
 /mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/pet_femclaw/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, spans, message_mode, atom/movable/source)

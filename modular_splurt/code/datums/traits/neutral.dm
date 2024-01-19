@@ -148,6 +148,8 @@
 			species.disliked_food &= ~MEAT
 
 //Zombies + Cumplus Fix\\
+
+/*
 /datum/quirk/undead
     name = "Undeath"
     desc = "Your body, be it anomalous, or just outright refusing to die - has indeed become undead. Due to this you may be more susceptible to burn-based weaponry."
@@ -184,6 +186,7 @@
         H.adjustFireLoss(-0.15, forced = TRUE)
     else if (H.getToxLoss() <= 90)
         H.adjustToxLoss(-0.3, forced = TRUE)
+*/
 
 /datum/quirk/cum_plus
 	name = "Extra-Productive Genitals"

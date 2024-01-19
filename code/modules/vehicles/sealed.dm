@@ -88,10 +88,10 @@
 	inserted_key = null
 
 /obj/vehicle/sealed/Destroy()
-	DumpMobs()
+	dump_mobs()
 	return ..()
 
-/obj/vehicle/sealed/proc/DumpMobs(randomstep = TRUE)
+/obj/vehicle/sealed/proc/dump_mobs(randomstep = TRUE)
 	for(var/i in occupants)
 		mob_exit(i, null, randomstep)
 		if(iscarbon(i))

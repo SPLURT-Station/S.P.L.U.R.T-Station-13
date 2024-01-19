@@ -363,13 +363,13 @@
 		icon_state = "[base_icon_state][wielded]_cooldown"
 
 /obj/item/shockpaddles/dropped(mob/user)
-	if(!req_defib)
-		return ..()
+	. = ..()
 	if(user)
 		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
-		if(user != loc)
-			to_chat(user, "<span class='notice'>The paddles snap back into the main unit.</span>")
-			snap_back()
+	if(req_defib)
+		if(user)
+			to_chat(user, span_notice("The paddles snap back into the main unit."))
+		snap_back()
 
 /obj/item/shockpaddles/proc/snap_back()
 	if(!defib)
@@ -719,7 +719,6 @@
 	icon_state = "syndiepaddles0"
 	item_state = "syndiepaddles0"
 	base_icon_state = "syndiepaddles"
-	req_defib = FALSE
 
 ///////////////////////////////////////////
 /////////Defibrillator Disks//////////////

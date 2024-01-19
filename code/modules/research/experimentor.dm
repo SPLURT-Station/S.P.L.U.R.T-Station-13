@@ -143,6 +143,7 @@
 					output += str
 			output += boosted + res
 			dat += output
+		dat += "<b><a href='byond://?src=[REF(src)];function=recalibrate'>Recalibrate Algorithm</A></b>"
 	else
 		dat += "<b>Nothing loaded.</b>"
 	dat += "<a href='byond://?src=[REF(src)];function=refresh'>Refresh</A>"
@@ -169,6 +170,9 @@
 			linked_console = D
 	else if(scantype == "eject")
 		ejectItem()
+	else if(scantype == "recalibrate") //SPLURT EDIT - RECALIBRATE SCAN TYPES
+		SetTypeReactions()
+		to_chat(usr, "<span class='notice'>[src] has been recalibrated and new possible scan type algorithms have been selected.</span>")
 	else if(scantype == "refresh")
 		updateUsrDialog()
 	else

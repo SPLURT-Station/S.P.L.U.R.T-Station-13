@@ -134,6 +134,8 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 	ignore += typesof(/obj/machinery/rnd/production)
 	// This one sleeps too in it's AI code
 	ignore += typesof(/mob/living/simple_animal/hostile/swarmer)
+	// Some stack objects can't be initialized outside a borg module
+	ignore += typesof(/obj/item/stack)
 
 	var/list/cached_contents = spawn_at.contents.Copy()
 	var/original_turf_type = spawn_at.type

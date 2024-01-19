@@ -34,10 +34,17 @@
 	name = "matress"
 	desc = "This is used to lie in, sleep in or strap on."
 	icon_state = "mattress0"
+	buildstacktype = /obj/item/stack/sheet/cloth
 
 /obj/structure/bed/matress/New()
 	..()
 	icon_state = "mattress[rand(0,6)]"
+
+/obj/structure/bed/matress/clean
+	icon_state = "mattress2"
+
+/obj/structure/bed/matress/clean_pillowed
+	icon_state = "mattress0"
 
 /obj/structure/bed/secbed
 	name = "security pet bed"

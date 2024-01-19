@@ -23,7 +23,7 @@
 				continue
 		var/valid_languages_len = LAZYLEN(valid_languages)
 		if(valid_languages_len)
-			to_chat(client, span_notice("You are able to speak in [english_list(sortList(valid_languages))]. If you're actually good at [valid_languages_len > 1 ? "them" : "it"] or not, it's up to you."))
+			to_chat(client, span_notice("You are able to speak in [english_list(sort_list(valid_languages))]. If you're actually good at [valid_languages_len > 1 ? "them" : "it"] or not, it's up to you."))
 		var/invalid_languages_len = LAZYLEN(invalid_languages)
 		if(invalid_languages_len)
-			to_chat(client, span_warning("[english_list(sortList(invalid_languages))] [invalid_languages_len > 1 ? "are" : "is a"] restricted language[invalid_languages_len > 1 ? "s" : ""], and ha[invalid_languages_len > 1 ? "ve" : "s"] not been assigned."))
+			to_chat(client, span_warning("[english_list(sort_list(invalid_languages))] [invalid_languages_len > 1 ? "are" : "is a"] restricted language[invalid_languages_len > 1 ? "s" : ""], and ha[invalid_languages_len > 1 ? "ve" : "s"] not been assigned."))

@@ -300,7 +300,7 @@
 	..()
 
 /obj/item/computermath/cargo/consume_charges()
-	if(SSresearch.problem_computer_charges > 0)
+	if(SSshuttle.problem_computer_charges > 0) //SPLURT EDIT SSresearch > SSshuttle
 		SSshuttle.problem_computer_charges -= 1
 		return TRUE
 	..()

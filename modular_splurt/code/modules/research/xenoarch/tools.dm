@@ -556,7 +556,7 @@
 	materials = list(/datum/material/plastic = 2000)
 	build_path = /obj/item/storage/bag/strangerock
 	category = list("Tool Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
 
 /datum/design/xenorockbackadv
 	name = "Xenoarchaeology Bluespace Strange Rock Bag"
@@ -566,5 +566,5 @@
 	materials = list(/datum/material/plastic = 2000, /datum/material/bluespace = 1000)
 	build_path = /obj/item/storage/bag/strangerockadv
 	category = list("Tool Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
 

@@ -1,9 +1,8 @@
 /datum/interaction/lewd/handjob
 	description = "Jerk them off."
 	interaction_sound = null
-	require_user_hands = TRUE
-	require_target_penis = REQUIRE_EXPOSED
-	max_distance = 1
+	required_from_user = INTERACTION_REQUIRE_HANDS
+	required_from_target_exposed = INTERACTION_REQUIRE_PENIS
 
 	additional_details = list(
 		list(

@@ -521,7 +521,7 @@
 	if(!..())
 		return
 	if(A.properties["stage_rate"] >= 5)
-		power = 2
+		power += 1.15 //Slightly more effective, this adds up as its a per-limb basis.
 	if(A.properties["resistance"] >= 5)
 		absorption_amt = 6
 

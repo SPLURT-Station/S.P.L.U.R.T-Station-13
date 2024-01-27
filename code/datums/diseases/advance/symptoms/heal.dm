@@ -538,7 +538,7 @@
 
 
 /datum/symptom/heal/purity/Heal(mob/living/carbon/M, datum/disease/advance/A, actual_power)
-	var/heal_amt = 2 * actual_power //Equates to ~8 brute/burn/tox a second!
+	var/heal_amt = 2 * actual_power //Equates to ~4.6 brute/burn/tox a second! Keep in mind this is spread over each limb, so its slow at healing individual injuries, but fast at healing full-body damages
 	M.adjustToxLoss(-(2 * heal_amt))
 	var/list/parts = M.get_damaged_bodyparts(1,1)
 	if(!parts.len)

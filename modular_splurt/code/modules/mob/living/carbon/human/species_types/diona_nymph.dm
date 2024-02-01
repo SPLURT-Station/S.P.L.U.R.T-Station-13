@@ -9,30 +9,7 @@
 	var/max_grown = 325
 	verb_say = "chirrups"
 	initial_language_holder = /datum/language_holder/diona
-/*
 
-/mob/living/carbon/alien/diona/Initialize()
-	. = ..()
-	race = /datum/species/diona
-	add_language(LANGUAGE_ROOTGLOBAL)
-	add_language(LANGUAGE_GALCOM)
-	verbs += /mob/living/carbon/alien/diona/proc/merge
-
-/mob/living/carbon/alien/diona/get_available_emotes()
-	return global._nymph_default_emotes.Copy()
-
-
-/mob/living/carbon/alien/diona/put_in_hands(var/obj/item/W) // No hands.
-	W.loc = get_turf(src)
-	return 1
-
-/mob/living/carbon/alien/diona/proc/wear_hat(var/obj/item/new_hat)
-	if(hat)
-		return
-	hat = new_hat
-	new_hat.loc = src
-	update_icons()
-*/
 /mob/living/carbon/alien/diona/proc/handle_npc(var/mob/living/carbon/alien/diona/D)
 	if(D.stat != CONSCIOUS)
 		return

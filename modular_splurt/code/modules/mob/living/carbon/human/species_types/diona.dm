@@ -11,7 +11,7 @@
 	exotic_blood_color = "#004400"
 	//flesh_color = "#808D11"
 
-	min_age = 1
+	min_age = 18
 	max_age = 300
 	say_mod = "chirrups"
 	eye_type = "diona"
@@ -66,15 +66,15 @@
 	set category = "Abilities"
 
 	if(nutrition < 250)
-		to_chat(src, "<span class='warning'>You lack the biomass to begin regeneration!</span>")
+		to_chat(src, span_warning("You lack the biomass to begin regeneration!"))
 		return
 
 	if(active_regen)
-		to_chat(src, "<span class='warning'>You are already regenerating tissue!</span>")
+		to_chat(src, span_warning("You are already regenerating tissue!"))
 		return
 	else
 		active_regen = TRUE
-		src.visible_message("<span class='filter_notice'><B>[src]</B>'s flesh begins to mend...</span>")
+		src.visible_message(span_warning("<B>[src]</B>'s flesh begins to mend..."))
 
 	var/delay_length = round(active_regen_delay * 1)
 	if(do_after(src,delay_length))
@@ -89,7 +89,7 @@
 
 		active_regen = FALSE
 	else
-		to_chat(src, "<span class='critical'>Your regeneration is interrupted!</span>")
+		to_chat(src, span_userdanger("Your regeneration is interrupted!"))
 		adjust_nutrition(-75)
 		active_regen = FALSE
 
@@ -105,14 +105,10 @@
 	if(mind)
 		mind.transfer_to(S)
 
-	message_admins("\The [src] has split into nymphs; player now controls [key_name_admin(S)]")
-	log_admin("\The [src] has split into nymphs; player now controls [key_name(S)]")
-
-
 	for(var/obj/item/W in src)
 		dropItemToGround(W)
 
-	visible_message("<span class='warning'>\The [src] quivers slightly, then splits apart with a wet slithering noise.</span>")
+	visible_message(span_warning("\The [src] quivers slightly, then splits apart with a wet slithering noise."))
 	qdel(src)
 
 

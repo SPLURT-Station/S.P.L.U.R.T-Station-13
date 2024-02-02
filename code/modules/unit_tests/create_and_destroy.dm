@@ -8,8 +8,9 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 	//We'll spawn everything here
 	var/turf/spawn_at = run_loc_floor_bottom_left
 	var/list/ignore = list(
-		//Never meant to be created, errors out the ass for mobcode reasons
-		/mob/living/carbon,
+		//Never meant to be created, errors out the ass for mobcode reasons (Comment out to see errors.)
+		typesof(/mob/living/carbon),
+		typesof(/mob/living/simple_animal),
 		//Nother template type, doesn't like being created with no seed
 		// /obj/item/food/grown,
 		//And another

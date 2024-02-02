@@ -49,8 +49,8 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 		/mob/living/carbon/monkey/angry,
 	)
 	//Never meant to be created, errors out the ass for mobcode reasons
-	ignore += typesof(/mob/living/carbon),
-	ignore += typesof(/mob/living/simple_animal),
+	ignore += typesof(/mob/living/carbon)
+	ignore += typesof(/mob/living/simple_animal)
 	//Say it with me now, type template
 	ignore += typesof(/obj/effect/mapping_helpers)
 	//This turf existing is an error in and of itself

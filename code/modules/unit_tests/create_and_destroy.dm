@@ -8,9 +8,6 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 	//We'll spawn everything here
 	var/turf/spawn_at = run_loc_floor_bottom_left
 	var/list/ignore = list(
-		//Never meant to be created, errors out the ass for mobcode reasons (Comment out to see errors.)
-		typesof(/mob/living/carbon),
-		typesof(/mob/living/simple_animal),
 		//Nother template type, doesn't like being created with no seed
 		// /obj/item/food/grown,
 		//And another
@@ -51,6 +48,9 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 		// With 10% Spawns `while() ... sleep()` proc that causes her hat to harddel // TODO rewrite helmet code attack_self() and port modern /tg/ helmet code
 		/mob/living/carbon/monkey/angry,
 	)
+	//Never meant to be created, errors out the ass for mobcode reasons
+	ignore += typesof(/mob/living/carbon),
+	ignore += typesof(/mob/living/simple_animal),
 	//Say it with me now, type template
 	ignore += typesof(/obj/effect/mapping_helpers)
 	//This turf existing is an error in and of itself

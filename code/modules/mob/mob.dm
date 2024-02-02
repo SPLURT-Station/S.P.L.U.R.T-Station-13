@@ -52,7 +52,8 @@
 	// if(mock_client)
 	// 	mock_client.mob = null
 
-	return ..()
+	..()
+	return QDEL_HINT_HARDDEL
 
 /mob/GenerateTag()
 	tag = "mob_[next_mob_id++]"

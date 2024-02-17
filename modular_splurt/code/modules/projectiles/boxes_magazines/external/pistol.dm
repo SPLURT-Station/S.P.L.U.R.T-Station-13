@@ -28,37 +28,37 @@
 	ammo_type = /obj/item/ammo_casing/c45/lethal
 
 /obj/item/ammo_box/magazine/e45/hydra
-	name = "Enforcer magazine (.45 Hydra}"
+	name = "Enforcer magazine (.45 Hydra)"
 	desc = "A Mk. 58 magazine. Loaded with Hydra-shock."
 	ammo_type = /obj/item/ammo_casing/c45/hydra
 
 /obj/item/ammo_box/magazine/e45/taser
-	name = "Enforcer magazine (.45 Taser}"
+	name = "Enforcer magazine (.45 Taser)"
 	desc = "A Mk. 58 magazine. Loaded with taser rounds."
 	ammo_type = /obj/item/ammo_casing/c45/taser
 
 /obj/item/ammo_box/magazine/e45/trac
-	name = "Enforcer magazine (.45 Tracking}"
+	name = "Enforcer magazine (.45 Tracking)"
 	desc = "A Mk. 58 magazine. Loaded with trac rounds."
 	ammo_type = /obj/item/ammo_casing/c45/trac
 
 /obj/item/ammo_box/magazine/e45/hotshot
-	name = "Enforcer magazine (.45 Hotshot}"
+	name = "Enforcer magazine (.45 Hotshot)"
 	desc = "A Mk. 58 magazine. Loaded with Hotshot rounds."
 	ammo_type = /obj/item/ammo_casing/c45/hotshot
 
 /obj/item/ammo_box/magazine/e45/ion
-	name = "Enforcer magazine (.45 Ion}"
+	name = "Enforcer magazine (.45 Ion)"
 	desc = "A Mk. 58 magazine. Loaded with Ion rounds."
 	ammo_type = /obj/item/ammo_casing/c45/ion
 
 /obj/item/ammo_box/magazine/e45/laser
-	name = "Enforcer magazine (.45 Laser}"
+	name = "Enforcer magazine (.45 Laser)"
 	desc = "A Mk. 58 magazine. Loaded with Laser rounds."
 	ammo_type = /obj/item/ammo_casing/c45/laser
 
 /obj/item/ammo_box/magazine/e45/stun
-	name = "Enforcer magazine (.45 Stun}"
+	name = "Enforcer magazine (.45 Stun)"
 	desc = "A Mk. 58 magazine. Loaded with Stun rounds."
 	ammo_type = /obj/item/ammo_casing/c45/stun
 

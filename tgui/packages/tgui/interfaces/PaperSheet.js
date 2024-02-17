@@ -636,6 +636,11 @@ export const PaperSheet = (props, context) => {
       values.field_counter = processing.field_counter;
     }
   }
+
+  else {
+    values.text = sanitizeText(text);
+  }
+
   const stamp_list = !stamps
     ? []
     : stamps;

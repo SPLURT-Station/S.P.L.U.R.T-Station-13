@@ -158,6 +158,11 @@
 	message = "squints their eyes." // i dumb
 	emote_type = EMOTE_VISIBLE
 
+/datum/emote/living/ruffle
+	key = "ruffle"
+	key_third_person = "ruffles"
+	message = "ruffles their wings for a moment."
+
 /datum/emote/living/fart
 	key = "fart"
 	key_third_person = "farts"
@@ -282,6 +287,14 @@
 	message_mime = "caws silently!"
 	emote_sound = 'modular_splurt/sound/voice/caw.ogg'
 	emote_cooldown = 0.35 SECONDS
+
+/datum/emote/living/audio/mew
+	key = "mew"
+	key_third_person = "mews"
+	message = "mews hysterically!"
+	message_mime = "makes a cat face!"
+	emote_sound = 'modular_splurt/sound/voice/meow_meme.ogg'
+	emote_cooldown = 1 SECONDS
 
 /datum/emote/living/burp/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -935,6 +948,11 @@
 	key_third_person = "faceclaws"
 	metacarpus_type = "claw"
 
+/datum/emote/living/audio/facemetacarpus/wing
+	key = "facewing" // For avians, harpies or just anyone with wings
+	key_third_person = "facewings"
+	metacarpus_type = "wing"
+
 /datum/emote/living/audio/facemetacarpus/hoof
 	key = "facehoof" // For horse enthusiasts
 	key_third_person = "facehoofs"
@@ -959,7 +977,7 @@
 /datum/emote/living/audio/rizz
 	key = "rizz"
 	key_third_person = "rizzes"
-	message = "saw something <u>hot</u>."
+	message = "gives <b>\[<u><i>The Look</i></u>\]</b>."
 	message_param = "looks at %t with bedroom eyes."
 	message_mime = "makes bedroom eyes."
 	emote_sound = 'modular_splurt/sound/voice/rizz.ogg'
@@ -1047,6 +1065,15 @@
 	emote_sound = 'modular_splurt/sound/voice/moo.ogg'
 	emote_cooldown = 1.7 SECONDS
 
+/datum/emote/living/audio/coo
+	key = "coo"
+	key_third_person = "coos"
+	message = "coos."
+	message_mime = "acts like a cooing pidgeon."
+	emote_volume = 30
+	emote_sound = 'modular_splurt/sound/voice/coo.ogg'
+	emote_cooldown = 0.78 SECONDS
+
 /datum/emote/living/audio/untitledgoose
 	key = "goosehonk"
 	key_third_person = "honks"
@@ -1132,10 +1159,18 @@
 	emote_sound = 'modular_splurt/sound/voice/gachi/sorry.ogg'
 	emote_cooldown = 1.3 SECONDS
 
+/datum/emote/living/audio/pardonfor
+	key = "sorryfor"
+	key_third_person = "sorrysfor"
+	message = "asks, \"Sorry for what?\""
+	emote_sound = 'modular_splurt/sound/voice/gachi/sorryfor.ogg'
+	emote_cooldown = 0.9 SECONDS
+
 /datum/emote/living/audio/fock
 	key = "fuckyou"
 	key_third_person = "fuckyous"
 	message = "curses someone!"
+	message_param = "curses %t!"
 	message_mime = "silently curses someone!"
 	emote_sound = 'modular_splurt/sound/voice/gachi/fockyou1.ogg'
 	emote_cooldown = 1.18 SECONDS // Uses longest sound's time.
@@ -1159,6 +1194,23 @@
 	message_mime = "chuckles silently."
 	emote_sound = 'modular_splurt/sound/voice/gachi/chuckle.ogg'
 	emote_cooldown = 1.01 SECONDS
+
+/datum/emote/living/audio/fockslaves
+	key = "slaves"
+	key_third_person = "slaves"
+	message = "curses slaves!"
+	message_mime = "silently curses slaves!"
+	emote_sound = 'modular_splurt/sound/voice/gachi/fokensleves.ogg'
+	emote_cooldown = 1.2 SECONDS
+
+/datum/emote/living/audio/getbuttback
+	key = "assback"
+	key_third_person = "assbacks"
+	message = "demands someone's ass to get back here!"
+	message_param = "demands %t's ass to get back here!"
+	message_mime = "motions for someone's ass to get back here!"
+	emote_sound = 'modular_splurt/sound/voice/gachi/assback.ogg'
+	emote_cooldown = 1.9 SECONDS
 
 /datum/emote/living/audio/boss
 	key = "boss"
@@ -1296,3 +1348,92 @@
 	message_param = "thinks %t is incorrect."
 	emote_sound = 'modular_splurt/sound/voice/buzzer_incorrect.ogg'
 	emote_cooldown = 1.21 SECONDS
+
+/datum/emote/living/audio/ace/
+	key = "objection0"
+	key_third_person = "objects0"
+	message = "<b><i>\<\< OBJECTION!! \>\></i></b>"
+	message_param = "<b><i>\<\< %t \>\></i></b>" // Allows for custom objections, but alas only in lowercase.
+	message_mime = "points their finger with determination!"
+	emote_sound = 'modular_splurt/sound/voice/ace/ace_objection_generic.ogg'
+	emote_cooldown = 6.0 SECONDS // This is regardless of sound's length.
+	emote_volume = 30
+
+/datum/emote/living/audio/ace/objection
+	key = "objection"
+	key_third_person = "objects"
+	emote_sound = 'modular_splurt/sound/voice/ace/ace_objection_m1.ogg'
+	emote_pitch_variance = FALSE // IT BREAKS THESE SOMEHOW
+
+/datum/emote/living/audio/ace/objection/run_emote(mob/user, params)
+	switch(user.gender)
+		if(MALE)
+			emote_sound = pick('modular_splurt/sound/voice/ace/ace_objection_m1.ogg', 'modular_splurt/sound/voice/ace/ace_objection_m2.ogg', 'modular_splurt/sound/voice/ace/ace_objection_m3.ogg')
+		if(FEMALE)
+			emote_sound = pick('modular_splurt/sound/voice/ace/ace_objection_f1.ogg', 'modular_splurt/sound/voice/ace/ace_objection_f2.ogg')
+		else // Both because I am lazy.
+			emote_sound = pick('modular_splurt/sound/voice/ace/ace_objection_m1.ogg', 'modular_splurt/sound/voice/ace/ace_objection_m2.ogg', 'modular_splurt/sound/voice/ace/ace_objection_m3.ogg', 'modular_splurt/sound/voice/ace/ace_objection_f1.ogg', 'modular_splurt/sound/voice/ace/ace_objection_f2.ogg')
+	. = ..()
+
+/datum/emote/living/audio/ace/hold_it
+	key = "holdit"
+	key_third_person = "holdsit"
+	message = "<b><i>\<\< HOLD IT!! \>\></i></b>"
+	emote_sound = 'modular_splurt/sound/voice/ace/ace_holdit_m1.ogg'
+	emote_pitch_variance = FALSE // IT BREAKS THESE SOMEHOW
+
+/datum/emote/living/audio/ace/hold_it/run_emote(mob/user, params)
+	switch(user.gender)
+		if(MALE)
+			emote_sound = pick('modular_splurt/sound/voice/ace/ace_holdit_m1.ogg', 'modular_splurt/sound/voice/ace/ace_holdit_m2.ogg', 'modular_splurt/sound/voice/ace/ace_holdit_m3.ogg')
+		if(FEMALE)
+			emote_sound = pick('modular_splurt/sound/voice/ace/ace_holdit_f1.ogg', 'modular_splurt/sound/voice/ace/ace_holdit_f2.ogg')
+		else // Both because I am lazy.
+			emote_sound = pick('modular_splurt/sound/voice/ace/ace_holdit_m1.ogg', 'modular_splurt/sound/voice/ace/ace_holdit_m2.ogg', 'modular_splurt/sound/voice/ace/ace_holdit_m3.ogg', 'modular_splurt/sound/voice/ace/ace_holdit_f1.ogg', 'modular_splurt/sound/voice/ace/ace_holdit_f2.ogg')
+	. = ..()
+
+/datum/emote/living/audio/ace/take_that
+	key = "takethat"
+	key_third_person = "takesthat"
+	message = "<b><i>\<\< TAKE THAT!! \>\></i></b>"
+	emote_sound = 'modular_splurt/sound/voice/ace/ace_takethat_m1.ogg'
+	emote_pitch_variance = FALSE // IT BREAKS THESE SOMEHOW
+
+/datum/emote/living/audio/ace/take_that/run_emote(mob/user, params)
+	switch(user.gender)
+		if(MALE)
+			emote_sound = pick('modular_splurt/sound/voice/ace/ace_takethat_m1.ogg', 'modular_splurt/sound/voice/ace/ace_takethat_m2.ogg', 'modular_splurt/sound/voice/ace/ace_takethat_m3.ogg')
+		if(FEMALE)
+			emote_sound = pick('modular_splurt/sound/voice/ace/ace_takethat_f1.ogg', 'modular_splurt/sound/voice/ace/ace_takethat_f2.ogg')
+		else // Both because I am lazy.
+			emote_sound = pick('modular_splurt/sound/voice/ace/ace_takethat_m1.ogg', 'modular_splurt/sound/voice/ace/ace_takethat_m2.ogg', 'modular_splurt/sound/voice/ace/ace_takethat_m3.ogg', 'modular_splurt/sound/voice/ace/ace_takethat_f1.ogg', 'modular_splurt/sound/voice/ace/ace_takethat_f2.ogg')
+	. = ..()
+
+/datum/emote/living/audio/realize
+	key = "realize"
+	key_third_person = "realizes"
+	message = "realizes something."
+	emote_sound = 'modular_splurt/sound/voice/ace/ace_realize.ogg'
+	emote_cooldown = 1.19 SECONDS
+
+/datum/emote/living/audio/smirk2
+	key = "smirk2"
+	key_third_person = "smirks2"
+	message = "<i>smirks</i>."
+	emote_sound = 'modular_splurt/sound/voice/ace/ace_wubs.ogg'
+	emote_cooldown = 0.84 SECONDS
+
+/datum/emote/living/audio/nani
+	key = "nani"
+	key_third_person = "nanis"
+	message = "seems confused."
+	emote_sound = 'modular_splurt/sound/voice/nani.ogg'
+	emote_cooldown = 0.5 SECONDS
+
+/datum/emote/living/audio/canonevent
+	key = "2099"
+	key_third_person = "canons"
+	message = "thinks this is a canon event."
+	emote_sound = 'modular_splurt/sound/voice/canon_event.ogg'
+	emote_cooldown = 5.0 SECONDS
+	emote_volume = 27

@@ -1,3 +1,6 @@
+/// The damage healed per tick while sleeping without any modifiers
+#define HEALING_SLEEP_DEFAULT 0.005 
+
 //Largely negative status effects go here, even if they have small benificial effects
 //STUN EFFECTS
 /datum/status_effect/incapacitating
@@ -77,8 +80,22 @@
 	return ..()
 
 /datum/status_effect/incapacitating/sleeping/tick()
-	if(owner.getStaminaLoss())
-		owner.adjustStaminaLoss(-0.5) //reduce stamina loss by 0.5 per tick, 10 per 2 seconds
+	if(owner.maxHealth)
+		var/health_ratio = owner.health / owner.maxHealth
+		var/healing = HEALING_SLEEP_DEFAULT
+		if((locate(/obj/structure/bed) in owner.loc))
+			healing -= 0.005
+		else if((locate(/obj/structure/table) in owner.loc))
+			healing -= 0.0025
+		else if((locate(/obj/structure/chair) in owner.loc))
+			healing -= 0.0025
+		if(locate(/obj/item/bedsheet) in owner.loc)
+			healing -= 0.005	
+		if(health_ratio > 0.75) // Only heal when above 75% health
+			owner.adjustBruteLoss(healing)
+			owner.adjustFireLoss(healing)
+			owner.adjustToxLoss(healing * 0.5, forced = TRUE)
+		owner.adjustStaminaLoss(healing)
 	if(human_owner && human_owner.drunkenness)
 		human_owner.drunkenness *= 0.997 //reduce drunkenness by 0.3% per tick, 6% per 2 seconds
 	if(carbon_owner && !carbon_owner.dreaming && prob(2))
@@ -86,6 +103,11 @@
 	// 2% per second, tick interval is in deciseconds
 	if(prob((tick_interval+1) * 0.2) && owner.health > owner.crit_threshold)
 		owner.emote("snore")
+
+/atom/movable/screen/alert/status_effect/asleep
+	name = "Asleep"
+	desc = "You've fallen asleep. Wait a bit and you should wake up. Unless you don't, considering how helpless you are."
+	icon_state = "asleep"
 
 /datum/status_effect/staggered
 	id = "staggered"
@@ -121,11 +143,6 @@
 		owner.visible_message("<span class='warning'>[owner.name] regains their grip on \the [active_item]!</span>", "<span class='warning'>You regain your grip on \the [active_item]</span>", null, COMBAT_MESSAGE_RANGE)
 	owner.remove_movespeed_modifier(/datum/movespeed_modifier/status_effect/off_balance)
 	return ..()
-
-/atom/movable/screen/alert/status_effect/asleep
-	name = "Asleep"
-	desc = "You've fallen asleep. Wait a bit and you should wake up. Unless you don't, considering how helpless you are."
-	icon_state = "asleep"
 
 /datum/status_effect/grouped/stasis
 	id = "stasis"
@@ -1212,3 +1229,5 @@
 	if(ishostile(owner))
 		var/mob/living/simple_animal/hostile/simple_owner = owner
 		simple_owner.ranged_cooldown_time /= 2.5
+
+#undef HEALING_SLEEP_DEFAULT

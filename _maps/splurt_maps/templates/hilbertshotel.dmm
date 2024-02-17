@@ -6,23 +6,8 @@
 /obj/structure/window/reinforced/tinted,
 /turf/open/indestructible/hoteltile,
 /area/hilbertshotel)
-"br" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/hilbertshotel{
-	dir = 4
-	},
-/turf/open/floor/carpet,
-/area/hilbertshotel)
 "bx" = (
 /obj/structure/mineral_door/wood,
-/turf/open/indestructible/hotelwood,
-/area/hilbertshotel)
-"bP" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4;
-	piping_layer = 3;
-	pixel_x = 5;
-	pixel_y = 5
-	},
 /turf/open/indestructible/hotelwood,
 /area/hilbertshotel)
 "dl" = (
@@ -40,11 +25,6 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	piping_layer = 3;
-	pixel_x = 5;
-	pixel_y = 5
-	},
 /turf/open/indestructible/hoteltile,
 /area/hilbertshotel)
 "dN" = (
@@ -55,41 +35,6 @@
 	},
 /turf/open/indestructible/hoteltile,
 /area/hilbertshotel)
-"eN" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4;
-	piping_layer = 3;
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/turf/closed/indestructible/hotelwall,
-/area/hilbertshotel)
-"fv" = (
-/obj/structure/lattice,
-/obj/machinery/atmospherics/components/unary/outlet_injector/hilbertshotel/layer3,
-/turf/open/space/bluespace,
-/area/hilbertshotel)
-"fF" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 4;
-	piping_layer = 3;
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/turf/closed/indestructible/hotelwall,
-/area/hilbertshotel)
-"hk" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/hilbertshotel/layer3{
-	dir = 8
-	},
-/turf/open/floor/carpet,
-/area/hilbertshotel)
 "hn" = (
 /obj/item/toy/plush/beeplushie,
 /obj/structure/table/wood/fancy,
@@ -97,15 +42,6 @@
 /area/hilbertshotel)
 "hz" = (
 /obj/structure/mineral_door/paperframe,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4;
-	piping_layer = 3;
-	pixel_x = 5;
-	pixel_y = 5
-	},
 /turf/open/indestructible/hotelwood,
 /area/hilbertshotel)
 "hK" = (
@@ -116,17 +52,6 @@
 /obj/structure/table/reinforced,
 /obj/effect/spawner/lootdrop/three_course_meal,
 /turf/open/floor/plasteel/cafeteria,
-/area/hilbertshotel)
-"iH" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	piping_layer = 3;
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/turf/open/floor/carpet,
 /area/hilbertshotel)
 "jS" = (
 /obj/structure/mirror{
@@ -152,38 +77,6 @@
 "kX" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/plasteel/cafeteria,
-/area/hilbertshotel)
-"nD" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 5;
-	piping_layer = 3;
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/structure/lattice,
-/turf/closed/indestructible/hotelwall,
-/area/hilbertshotel)
-"nK" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/hilbertshotel{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4;
-	piping_layer = 3;
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/turf/open/indestructible/hotelwood,
-/area/hilbertshotel)
-"ot" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4;
-	piping_layer = 3;
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/structure/lattice,
-/turf/closed/indestructible/hotelwall,
 /area/hilbertshotel)
 "qH" = (
 /turf/open/floor/plasteel/stairs/left,
@@ -232,14 +125,6 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	piping_layer = 3;
-	pixel_x = 5;
-	pixel_y = 5
-	},
 /turf/open/indestructible/hoteltile,
 /area/hilbertshotel)
 "xG" = (
@@ -263,12 +148,6 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/hilbertshotel)
-"zr" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/hilbertshotel/layer3{
-	dir = 4
-	},
-/turf/open/indestructible/hotelwood,
-/area/hilbertshotel)
 "zD" = (
 /obj/machinery/jukebox{
 	req_one_access = null
@@ -280,18 +159,6 @@
 	dir = 1
 	},
 /turf/open/indestructible/hotelwood,
-/area/hilbertshotel)
-"Ba" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 8;
-	piping_layer = 3;
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/turf/open/floor/carpet,
 /area/hilbertshotel)
 "Bt" = (
 /obj/structure/window/reinforced/tinted{
@@ -314,13 +181,6 @@
 "CN" = (
 /turf/open/floor/plasteel/cafeteria,
 /area/hilbertshotel)
-"CO" = (
-/obj/structure/lattice,
-/obj/machinery/atmospherics/components/unary/tank/air{
-	dir = 8
-	},
-/turf/open/space/bluespace,
-/area/hilbertshotel)
 "FR" = (
 /obj/item/bikehorn/rubberducky,
 /obj/machinery/light/small{
@@ -329,14 +189,6 @@
 /turf/open/indestructible/hoteltile,
 /area/hilbertshotel)
 "GW" = (
-/turf/open/space/bluespace,
-/area/hilbertshotel)
-"HD" = (
-/obj/structure/lattice,
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 1
-	},
-/obj/machinery/meter,
 /turf/open/space/bluespace,
 /area/hilbertshotel)
 "Ii" = (
@@ -361,27 +213,11 @@
 /obj/structure/fireplace{
 	pixel_y = -6
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	piping_layer = 3;
-	pixel_x = 5;
-	pixel_y = 5
-	},
 /turf/open/indestructible/hotelwood,
 /area/hilbertshotel)
 "KD" = (
 /obj/machinery/light/small,
 /obj/effect/landmark/xmastree/hilbert,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	piping_layer = 3;
-	pixel_x = 5;
-	pixel_y = 5
-	},
 /turf/open/indestructible/hotelwood,
 /area/hilbertshotel)
 "Ld" = (
@@ -395,15 +231,6 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4;
-	piping_layer = 3;
-	pixel_x = 5;
-	pixel_y = 5
-	},
 /turf/open/indestructible/hotelwood,
 /area/hilbertshotel)
 "LX" = (
@@ -411,19 +238,6 @@
 	dir = 8
 	},
 /turf/open/indestructible/hoteltile,
-/area/hilbertshotel)
-"Ml" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 10;
-	piping_layer = 3;
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/structure/lattice,
-/turf/closed/indestructible/hotelwall,
 /area/hilbertshotel)
 "Mt" = (
 /obj/structure/table/reinforced,
@@ -458,24 +272,11 @@
 	},
 /turf/open/indestructible/hotelwood,
 /area/hilbertshotel)
-"RP" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/hilbertshotel/layer3{
-	dir = 1
-	},
-/turf/open/indestructible/hoteltile,
-/area/hilbertshotel)
 "Si" = (
 /turf/closed/indestructible/hotelwall,
 /area/hilbertshotel)
 "Tt" = (
 /turf/open/floor/plasteel/stairs/right,
-/area/hilbertshotel)
-"TB" = (
-/obj/structure/lattice,
-/obj/machinery/atmospherics/components/unary/tank/air{
-	dir = 4
-	},
-/turf/open/space/bluespace,
 /area/hilbertshotel)
 "Uc" = (
 /obj/item/kirbyplants/random,
@@ -505,17 +306,6 @@
 /area/hilbertshotel)
 "WM" = (
 /obj/structure/curtain,
-/turf/open/indestructible/hoteltile,
-/area/hilbertshotel)
-"Yl" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/hilbertshotel{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	piping_layer = 3;
-	pixel_x = 5;
-	pixel_y = 5
-	},
 /turf/open/indestructible/hoteltile,
 /area/hilbertshotel)
 "YD" = (
@@ -594,7 +384,7 @@ qH
 MZ
 YR
 AZ
-zr
+MZ
 hK
 kX
 CN
@@ -612,7 +402,7 @@ Ce
 MZ
 Um
 AZ
-bP
+MZ
 hK
 iq
 CN
@@ -630,7 +420,7 @@ Tt
 MZ
 MA
 AZ
-nK
+MZ
 hK
 re
 CN
@@ -666,7 +456,7 @@ Si
 bx
 Si
 Si
-eN
+Si
 Si
 Si
 Si
@@ -677,8 +467,8 @@ GW
 "}
 (9,1,1) = {"
 GW
-fv
-nD
+GW
+wC
 Uc
 yh
 MZ
@@ -695,14 +485,14 @@ GW
 "}
 (10,1,1) = {"
 GW
-TB
-ot
+GW
+wC
 BG
 Zx
-br
+Zx
 Zx
 MZ
-eN
+Si
 wf
 wf
 wf
@@ -713,29 +503,29 @@ GW
 "}
 (11,1,1) = {"
 GW
-HD
-Ml
+GW
+wC
 JK
-iH
-Ba
-iH
+Zx
+Zx
+Zx
 KD
-fF
+Si
 wT
-Yl
+wf
 dH
-RP
+wf
 YD
 Si
 GW
 "}
 (12,1,1) = {"
 GW
-CO
+GW
 wC
 BG
 Zx
-hk
+Zx
 Zx
 MZ
 Si

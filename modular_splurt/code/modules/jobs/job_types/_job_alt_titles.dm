@@ -105,8 +105,14 @@
 		"Bard",
 		"Snack",
 		"Stress Relief",
+		"Service Top",
+		"Service Bottom",
+		"Service Pred",
+		"Service Prey",
+		"Belly Massager",
 		"Freeloader",
-		"Station Pet"
+		"Station Pet",
+		"Pet"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -157,6 +163,7 @@
 	var/list/extra_titles = list(
 		"Chef de partie",
 		"Prey Prepper",
+		"Pred Prepper",
 		"Poissonier",
 		"Baker"
 	)
@@ -222,7 +229,8 @@
 /datum/job/roboticist/New()
 	var/list/extra_titles = list(
 		"Ripperdoc",
-		"MOD Mechanic"
+		"MOD Mechanic",
+		"Synth Technician"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()
@@ -355,7 +363,8 @@
 		"Mail Woman",
 		"Mailroom Technician",
 		"Logistics Technician",
-		"Cryptocurrency Technician"
+		"Cryptocurrency Technician",
+		"Package Handler"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()

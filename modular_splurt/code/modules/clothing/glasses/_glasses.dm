@@ -14,3 +14,11 @@
 
 /obj/item/clothing/glasses/sunglasses/blindfold
 	is_edible = 1
+
+/obj/item/clothing/glasses/contact
+	name = "contact lenses"
+	desc = "Prescription contact lenses, a miracle of science."
+	icon = 'modular_splurt/icons/obj/clothing/glasses.dmi'
+	icon_state = "contact_lenses"
+	item_state = "contact_lenses"
+	vision_correction = 1

@@ -79,7 +79,7 @@
 	spawned_grass = /obj/structure/flora/grass/red
 
 /obj/structure/flora/tree/pine/xmas/presents
-	gift_type = /obj/item/a_gift //this is a modular nerf to christmas trees to limit what they hand out
+	gift_type = /obj/item/a_gift/balanced //this is a modular nerf to christmas trees to limit what they hand out
 
 
 /obj/structure/flora/biolumi

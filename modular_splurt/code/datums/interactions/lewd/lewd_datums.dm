@@ -665,7 +665,7 @@
 	write_log_target = "ass-groped"
 
 /datum/interaction/lewd/fuck_cock
-	description = "Penetrate their %COCK%."
+	description = "Penetrate their cock."
 	required_from_target_exposed = INTERACTION_REQUIRE_PENIS
 	required_from_target_unexposed = NONE
 	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
@@ -774,7 +774,11 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /datum/interaction/lewd/unholy
-	unholy = TRUE
+	description = null
+
+/datum/interaction/lewd/unholy/New()
+	. = ..()
+	interaction_flags |= INTERACTION_FLAG_UNHOLY_CONTENT
 
 /datum/interaction/lewd/unholy/do_facefart
 	description = "Fart on their face."

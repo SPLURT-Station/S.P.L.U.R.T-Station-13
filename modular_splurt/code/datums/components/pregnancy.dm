@@ -414,8 +414,6 @@
 	carrier.Knockdown(200, TRUE, TRUE)
 	carrier.Stun(200, TRUE, TRUE)
 	carrier.adjustStaminaLoss(200)
-	carrier.visible_message(span_danger("[carrier] has a miscarriage!"), \
-						span_userdanger("Oh no! My baby is dead!"))
 	qdel(src)
 
 /datum/component/pregnancy/proc/on_scan(datum/source, mob/user)

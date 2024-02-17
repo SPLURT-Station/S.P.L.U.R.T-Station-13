@@ -1,8 +1,5 @@
 //help
 /datum/interaction/lewd
-
-	var/unholy = FALSE //Same as extreme but... we don't talk about this one...
-
 	var/require_user_legs
 	var/require_user_num_legs
 
@@ -54,7 +51,7 @@
 		return FALSE
 
 
-	if(unholy)
+	if(interaction_flags & INTERACTION_FLAG_UNHOLY_CONTENT)
 		var/client/cli = user.client
 		if(cli)
 			if(cli.prefs.unholypref == "No")
@@ -139,7 +136,7 @@
 			to_chat(user, span_warning("[target.p_they()] [target.p_do()]n't have enough legs."))
 		return FALSE
 
-	if(unholy)
+	if(interaction_flags & INTERACTION_FLAG_UNHOLY_CONTENT)
 		var/client/cli = target.client
 		if(cli)
 			if(target.client.prefs.unholypref == "No")

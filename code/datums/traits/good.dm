@@ -40,7 +40,7 @@
 /datum/quirk/empath
 	name = "Empath"
 	desc = "Whether it's a sixth sense or careful study of body language, it only takes you a quick glance at someone to understand how they feel."
-	value = 2
+	value = 1 // SPLURT EDIT
 	mob_trait = TRAIT_EMPATH
 	gain_text = "<span class='notice'>You feel in tune with those around you.</span>"
 	lose_text = "<span class='danger'>You feel isolated from others.</span>"
@@ -49,7 +49,7 @@
 /datum/quirk/freerunning
 	name = "Freerunning"
 	desc = "You're great at quick moves! You can climb tables more quickly."
-	value = 2
+	value = 1 // SPLURT EDIT
 	mob_trait = TRAIT_FREERUNNING
 	gain_text = "<span class='notice'>You feel lithe on your feet!</span>"
 	lose_text = "<span class='danger'>You feel clumsy again.</span>"
@@ -90,7 +90,7 @@
 /datum/quirk/quick_step
 	name = "Quick Step"
 	desc = "You walk with determined strides, and out-pace most people when walking."
-	value = 2
+	value = 1 // SPLURT EDIT
 	mob_trait = TRAIT_SPEEDY_STEP
 	gain_text = "<span class='notice'>You feel determined. No time to lose.</span>"
 	lose_text = "<span class='danger'>You feel less determined. What's the rush, man?</span>"
@@ -125,7 +125,7 @@
 /datum/quirk/skittish
 	name = "Skittish"
 	desc = "You can conceal yourself in danger. Ctrl-shift-click a closed locker to jump into it, as long as you have access."
-	value = 2
+	value = 1 // SPLURT EDIT
 	mob_trait = TRAIT_SKITTISH
 	medical_record_text = "Patient demonstrates a high aversion to danger and has described hiding in containers out of fear."
 
@@ -156,7 +156,7 @@
 
 /datum/quirk/voracious
 	name = "Voracious"
-	desc = "Nothing gets between you and your food. You eat twice as fast as everyone else!"
+	desc = "Nothing gets between you and your food. You eat twice as fast as everyone else, and won't get sad by being fat!"
 	value = 1
 	mob_trait = TRAIT_VORACIOUS
 	gain_text = "<span class='notice'>You feel HONGRY.</span>"

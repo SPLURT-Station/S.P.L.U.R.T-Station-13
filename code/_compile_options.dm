@@ -15,7 +15,7 @@
 //#define REFERENCE_TRACKING
 #ifdef REFERENCE_TRACKING
 
-///alternate to reftracking, extool variant
+///alternate to reftracking, extool variant (outdated, EoL, doesn't work, should be removed)
 //#define EXTOOLS_REFERENCE_TRACKING
 
 ///Should we be logging our findings or not

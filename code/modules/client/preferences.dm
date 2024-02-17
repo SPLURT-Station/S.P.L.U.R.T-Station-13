@@ -1772,7 +1772,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
 		var/datum/job/lastJob
 
-		for(var/datum/job/job in sortList(SSjob.occupations, /proc/cmp_job_display_asc))
+		for(var/datum/job/job in sort_list(SSjob.occupations, /proc/cmp_job_display_asc))
 
 			index += 1
 			if((index >= limit) || (job.title in splitJobs))
@@ -2153,7 +2153,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					return
 				if(!toggle_language(lang))
 					return
-				language = sortList(language)
+				language = sort_list(language)
 			if("reset")
 				language = list()
 		SetLanguage(user)
@@ -2871,9 +2871,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(lust_tol)
 						lust_tolerance = clamp(lust_tol, 75, 200)
 				if("sexual_potency")
-					var/sexual_pot = input(user, "Set your sexual potency. \n(10 = minimum, 25 = maximum.)", "Character Preference", sexual_potency) as num|null
+					var/sexual_pot = input(user, "Set your sexual potency. \n(-1 = minimum, 25 = maximum.) This determines the number of times your character can orgasm before becoming impotent, use -1 for no impotency.", "Character Preference", sexual_potency) as num|null
 					if(sexual_pot)
-						sexual_potency = clamp(sexual_pot, 10, 25)
+						sexual_potency = clamp(sexual_pot, -1, 25)
 
 				if("cock_color")
 					var/new_cockcolor = input(user, "Penis color:", "Character Preference","#"+features["cock_color"]) as color|null
@@ -3235,8 +3235,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/pickedui = input(user, "Choose your UI style.", "Character Preference", UI_style)  as null|anything in GLOB.available_ui_styles
 					if(pickedui)
 						UI_style = pickedui
-						if (parent && parent.mob && parent.mob.hud_used)
-							parent.mob.hud_used.update_ui_style(ui_style2icon(UI_style))
+						if (pickedui && parent && parent.mob && parent.mob.hud_used)
+							QDEL_NULL(parent.mob.hud_used)
+							parent.mob.create_mob_hud()
+							parent.mob.hud_used.show_hud(1, parent.mob)
 				if("pda_style")
 					var/pickedPDAStyle = input(user, "Choose your PDA style.", "Character Preference", pda_style)  as null|anything in GLOB.pda_styles
 					if(pickedPDAStyle)
@@ -3716,7 +3718,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							if(!length(key_bindings[old_key]))
 								key_bindings -= old_key
 						key_bindings[full_key] += list(kb_name)
-						key_bindings[full_key] = sortList(key_bindings[full_key])
+						key_bindings[full_key] = sort_list(key_bindings[full_key])
 					if(href_list["special"])		// special keys need a full reset
 						user.client.ensure_keys_set(src)
 					user << browse(null, "window=capturekeypress")
@@ -3758,7 +3760,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					outline_enabled = !outline_enabled
 				if("outline_color")
 					var/pickedOutlineColor = input(user, "Choose your outline color.", "General Preference", outline_color) as color|null
-					if(pickedOutlineColor != pickedOutlineColor)
+					if(pickedOutlineColor != outline_color)
 						outline_color = pickedOutlineColor // nullable
 				if("screentip_pref")
 					var/choice = input(user, "Choose your screentip preference", "Screentipping?", screentip_pref) as null|anything in GLOB.screentip_pref_options
@@ -4426,4 +4428,3 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 #undef DEFAULT_SLOT_AMT
 #undef HANDS_SLOT_AMT
 #undef BACKPACK_SLOT_AMT
-

@@ -1,6 +1,7 @@
 /obj/effect/turf_decal/siding
 	icon = 'modular_splurt/icons/turf/decals.dmi'
 	icon_state = "siding_line"
+	layer = 2.5
 
 /obj/effect/turf_decal/siding/white
 	color = "#BCBCBC"

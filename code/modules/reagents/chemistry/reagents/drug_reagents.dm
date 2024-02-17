@@ -629,7 +629,7 @@
 	if(M && M.client?.prefs.arousable && !(M.client?.prefs.cit_toggles & NO_APHRO) && prob(33))
 		if(prob(5) && ishuman(M) && M.has_dna() && (M.client?.prefs.cit_toggles & BIMBOFICATION))
 			if(!HAS_TRAIT(M,TRAIT_PERMABONER))
-				to_chat(M, span_userlove("Your libido is going haywire!"))
+				to_chat(M, span_userlove("Your libido is going haywire! You have either been turned into a bimbo or made perma-horny by hexacrocin!"))
 				M.log_message("Made perma-horny by hexacrocin.",LOG_EMOTE)
 				ADD_TRAIT(M,TRAIT_PERMABONER,APHRO_TRAIT)
 	..()

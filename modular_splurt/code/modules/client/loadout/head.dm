@@ -43,6 +43,10 @@
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
 	loadout_initial_colors = list("#F2F2F2")
 
+/datum/gear/head/goneroffcap/classic
+	name = "polychromic trencher officer cap (classic)"
+	path = /obj/item/clothing/head/helmet/goner/officer/fake/poly/classic
+
 //Adds bowler hats
 /datum/gear/head/bowler
 	name = "Bowler-hat"

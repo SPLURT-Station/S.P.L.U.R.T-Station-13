@@ -213,13 +213,13 @@
 	visible_message(message = span_userlove("<b>\The [src]</b> [message]"), ignored_mobs = get_unconsenting())
 	multiorgasms += 1
 
-	if(multiorgasms > (get_sexual_potency() * 0.34)) //AAAAA, WE DONT WANT NEGATIVES HERE, RE
-		refractory_period = world.time + rand(300, 900) - get_sexual_potency()//sex cooldown
+	if(get_sexual_potency() == -1 || multiorgasms > (get_sexual_potency() * 0.34)) //AAAAA, WE DONT WANT NEGATIVES HERE, RE
+		refractory_period = world.time + rand(300, 900) //sex cooldown
 		// set_drugginess(rand(20, 30))
 	else
 		refractory_period = world.time + rand(300, 900) - get_sexual_potency()
 		// set_drugginess(rand(5, 10))
-	if(multiorgasms < get_sexual_potency())
+	if(get_sexual_potency() == -1 || multiorgasms < get_sexual_potency()) // Climax limit | SPLURT EDIT: -1 sexual potency = no limit
 		if(ishuman(src))
 			var/mob/living/carbon/human/H = src
 			if(!partner)

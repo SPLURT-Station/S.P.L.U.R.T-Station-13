@@ -235,7 +235,6 @@
 	air_update_turf()
 
 /obj/machinery/cryptominer/proc/produce_points(number)
-	playsound(loc, 'sound/machines/ping.ogg', 50, TRUE, -1)
 	if(pay_me)
 		pay_me.adjust_money(FLOOR(miningpoints * number,1))
 

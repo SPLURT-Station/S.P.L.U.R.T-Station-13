@@ -9,7 +9,7 @@ export const CryopodConsole = (props, context) => {
   const welcomeTitle = `Hello, ${account_name || '[REDACTED]'}!`;
 
   return (
-    <Window title="Storage Console" width={400} height={480}>
+    <Window title="Cryopod Console" width={400} height={480}>
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item>
@@ -41,8 +41,8 @@ const CrewList = (props, context) => {
         fill
         scrollable>
         <LabeledList>
-          {frozen_crew.map((person) => (
-            <LabeledList.Item key={person} label={person.name}>
+          {frozen_crew.map((person, index) => (
+            <LabeledList.Item key={index} label={person.name}>
               {person.job}
             </LabeledList.Item>
           ))}

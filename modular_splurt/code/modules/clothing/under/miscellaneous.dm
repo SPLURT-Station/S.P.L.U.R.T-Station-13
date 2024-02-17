@@ -115,6 +115,7 @@
 	item_state = "lewdmaid_obj"
 	can_adjust = FALSE
 	body_parts_covered = CHEST
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_NO_ANTHRO_ICON
 
 /obj/item/clothing/under/rank/security/skirt/slut
 	name = "slutty security jumpskirt"

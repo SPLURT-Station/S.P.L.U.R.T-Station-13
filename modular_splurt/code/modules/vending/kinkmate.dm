@@ -59,6 +59,7 @@
 		/obj/item/storage/pill_bottle/BEsmaller = 3,
 		/obj/item/storage/pill_bottle/anal_allure = 3,
 		/obj/item/storage/pill_bottle/breast_buzzer = 3,
+		/obj/item/storage/pill_bottle/vaginal_vigour = 3,
 		/obj/item/storage/pill_bottle/peen_pop = 3,
 		/obj/item/chastity_hypno/magazine = 6,
 		/obj/item/chastity_hypno/watch = 2

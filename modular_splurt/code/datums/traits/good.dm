@@ -201,9 +201,9 @@
 	desc = "You have been blessed by a higher power or are otherwise imbued with holy energy in some way. Your divine presence drives away magic and the unholy! Holy water will restore your health."
 	value = 1 // Maybe up the cost if more is added later.
 	mob_trait = TRAIT_HALLOWED
+	medical_record_text = "Patient contains an unidentified hallowed material concentrated in their blood. Please consult a chaplain."
 	gain_text = span_notice("You feel holy energy starting to flow through your body.")
 	lose_text = span_notice("You feel your holy energy fading away...")
-	medical_record_text = "Patient has unidentified hallowed material concentrated in their blood. Please consult a chaplain."
 
 /datum/quirk/hallowed/add()
 	// Define quirk mob.
@@ -219,7 +219,7 @@
 	quirk_mob.mind.isholy = TRUE
 
 	// Add examine text.
-	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/quirk_examine_Hallowed)
+	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/on_examine_holder)
 
 /datum/quirk/hallowed/remove()
 	// Define quirk mob.
@@ -238,7 +238,7 @@
 	UnregisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE)
 
 // Quirk examine text.
-/datum/quirk/hallowed/proc/quirk_examine_Hallowed(atom/examine_target, mob/living/carbon/human/examiner, list/examine_list)
+/datum/quirk/hallowed/proc/on_examine_holder(atom/examine_target, mob/living/carbon/human/examiner, list/examine_list)
 	examine_list += "[quirk_holder.p_they(TRUE)] radiates divine power..."
 
 /datum/quirk/vacuum_resistance
@@ -260,3 +260,279 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	for(var/perk in perks)
 		REMOVE_TRAIT(H, perk, ROUNDSTART_TRAIT)
+
+/datum/quirk/restorative_metabolism
+	name = "Restorative Metabolism"
+	desc = "Your body possesses a differentiated reconstutitive ability, allowing you to slowly recover from injuries. Note, however, that critical injuries, wounds or genetic damage will still require medical attention."
+	value = 3
+	mob_trait = TRAIT_RESTORATIVE_METABOLISM
+	gain_text = span_notice("You feel a surge of reconstutitive vitality coursing through your body...")
+	lose_text = span_notice("You sense your enhanced reconstutitive ability fading away...")
+	processing_quirk = TRUE
+
+/datum/quirk/restorative_metabolism/on_process()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+
+	// The only_organic flag allows robotic biotypes to not be excluded.
+	H.adjustBruteLoss(-0.5, only_organic = FALSE) //The healing factor will only regenerate fully if not burnt beyond a specific threshold.
+	H.adjustFireLoss(-0.25,  only_organic = FALSE)
+	if(H.getBruteLoss() > 0 && H.getFireLoss() <= 50 || H.getFireLoss() > 0 && H.getFireLoss() <= 50)
+		H.adjustBruteLoss(-0.5, forced = TRUE, only_organic = FALSE)
+		H.adjustFireLoss(-0.25, forced = TRUE, only_organic = FALSE)
+	/* Doesn't heal robotic toxin damage (only_organic = FALSE not needed for tox),
+	another adjustToxLoss check with toxins_type = TOX_SYSCORRUPT,
+	(or just adding TOX_OMNI to the already existing one) could be added to heal robotic corruption, 
+	but would make robotic species unbalanced.
+	*/
+	else if (H.getToxLoss() <= 90)
+		H.adjustToxLoss(-0.3, forced = TRUE)
+
+/datum/quirk/bloodfledge
+	name = "Bloodsucker Fledgling"
+	desc = "You are a fledgling belonging to ancient Bloodsucker bloodline. While the blessing has yet to fully convert you, some things have changed. Only blood will sate your hungers, and holy energies will cause your flesh to char. <b>This is NOT an antagonist role!</b>"
+	value = 2
+	medical_record_text = "Patient exhibits onset symptoms of a sanguine curse."
+	mob_trait = TRAIT_BLOODFLEDGE
+	gain_text = span_notice("You feel a sanguine thirst.")
+	lose_text = span_notice("You feel the sanguine thirst fade away.")
+	processing_quirk = FALSE // Handled by crates.dm
+
+/datum/quirk/bloodfledge/add()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Add quirk traits
+	ADD_TRAIT(quirk_mob,TRAIT_NO_PROCESS_FOOD,ROUNDSTART_TRAIT)
+	ADD_TRAIT(quirk_mob,TRAIT_NOTHIRST,ROUNDSTART_TRAIT)
+
+	// Set skin tone, if possible
+	if(!quirk_mob.dna.skin_tone_override)
+		quirk_mob.skin_tone = "albino"
+
+	// Add quirk language
+	quirk_mob.grant_language(/datum/language/vampiric, TRUE, TRUE, LANGUAGE_BLOODSUCKER)
+
+	// Register examine text
+	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/quirk_examine_bloodfledge)
+
+/datum/quirk/bloodfledge/post_add()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Define and grant ability Bite
+	var/datum/action/cooldown/bloodfledge/bite/act_bite = new
+	act_bite.Grant(quirk_mob)
+
+	// Check for synthetic
+	// Robotic mobs have technical issues with adjusting damage
+	if(quirk_mob.mob_biotypes & MOB_ROBOTIC)
+		// Warn user
+		to_chat(quirk_mob, span_warning("As a synthetic lifeform, your components are only able to grant limited sanguine abilities! Regeneration and revival are not possible."))
+
+	// User is not synthetic
+	else
+		// Define and grant ability Revive
+		var/datum/action/cooldown/bloodfledge/revive/act_revive = new
+		act_revive.Grant(quirk_mob)
+
+/datum/quirk/bloodfledge/on_process()
+	// Processing is currently only used for coffin healing
+	// This is started and stopped by a proc in crates.dm
+
+	// Define potential coffin
+	var/quirk_coffin = quirk_holder.loc
+
+	// Check if the current area is a coffin
+	if(istype(quirk_coffin, /obj/structure/closet/crate/coffin))
+		// Define quirk mob
+		var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+		// Quirk mob must be injured
+		if(quirk_mob.health >= quirk_mob.maxHealth)
+			// Warn user
+			to_chat(quirk_mob, span_notice("[quirk_coffin] does nothing more to help you, as your body is fully mended."))
+
+			// Stop processing and return
+			STOP_PROCESSING(SSquirks, src)
+			return
+
+		// Nutrition (blood) level must be above STARVING
+		if(quirk_mob.nutrition <= NUTRITION_LEVEL_STARVING)
+			// Warn user
+			to_chat(quirk_mob, span_warning("[quirk_coffin] requires blood to operate, which you are currently lacking. Your connection to the other-world fades once again."))
+
+			// Stop processing and return
+			STOP_PROCESSING(SSquirks, src)
+			return
+
+		// Define initial health
+		var/health_start = quirk_mob.health
+
+		// Heal brute and burn
+		// Accounts for robotic limbs
+		quirk_mob.heal_overall_damage(2,2)
+		// Heal oxygen
+		quirk_mob.adjustOxyLoss(-2)
+		// Heal clone
+		quirk_mob.adjustCloneLoss(-2)
+
+		// Check for slime race
+		// NOT a slime
+		if(!isslimeperson(quirk_mob))
+			// Heal toxin
+			quirk_mob.adjustToxLoss(-2)
+		// IS a slime
+		else
+			// Grant toxin (heals slimes)
+			quirk_mob.adjustToxLoss(2)
+
+		// Update health
+		quirk_mob.updatehealth()
+
+		// Determine healed amount
+		var/health_restored = quirk_mob.health - health_start
+
+		// Remove nutrition (blood) as compensation for healing
+		// Amount is equal to 50% of healing done
+		quirk_mob.adjust_nutrition(health_restored*-1)
+
+	// User is not in a coffin
+	// This should not occur without teleportation
+	else
+		// Warn user
+		to_chat(quirk_holder, span_warning("Your connection to the other-world is broken upon leaving the [quirk_coffin]!"))
+
+		// Stop processing
+		STOP_PROCESSING(SSquirks, src)
+
+/datum/quirk/bloodfledge/remove()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Remove quirk traits
+	REMOVE_TRAIT(quirk_mob, TRAIT_NO_PROCESS_FOOD, ROUNDSTART_TRAIT)
+	REMOVE_TRAIT(quirk_mob, TRAIT_NOTHIRST, ROUNDSTART_TRAIT)
+
+	// Remove quirk ability action datums
+	var/datum/action/cooldown/bloodfledge/bite/act_bite = locate() in quirk_mob.actions
+	var/datum/action/cooldown/bloodfledge/revive/act_revive = locate() in quirk_mob.actions
+	act_bite.Remove(quirk_mob)
+	act_revive.Remove(quirk_mob)
+
+	// Remove quirk language
+	quirk_mob.remove_language(/datum/language/vampiric, TRUE, TRUE, LANGUAGE_BLOODSUCKER)
+
+	// Unregister examine text
+	UnregisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE)
+
+/datum/quirk/bloodfledge/on_spawn()
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Create vampire ID card
+	var/obj/item/card/id/vampire/id_vampire = new /obj/item/card/id/vampire(get_turf(quirk_holder))
+
+	// Update card information
+	id_vampire.registered_name = quirk_mob.real_name
+	id_vampire.update_label(addtext(id_vampire.registered_name, "'s Bloodfledge"))
+
+	// Determine banking ID information
+	for(var/bank_account in SSeconomy.bank_accounts)
+		// Define current iteration's account
+		var/datum/bank_account/account = bank_account
+
+		// Check for match
+		if(account.account_id == quirk_mob.account_id)
+			// Add to cards list
+			account.bank_cards += src
+
+			// Assign account
+			id_vampire.registered_account = account
+
+			// Stop searching
+			break
+
+	// Try to add ID to backpack
+	var/id_in_bag = quirk_mob.equip_to_slot_if_possible(id_vampire, ITEM_SLOT_BACKPACK) || FALSE
+
+	// Text for where the item was sent
+	var/id_location = (id_in_bag ? "in your backpack" : "at your feet" )
+
+	// Alert user in chat
+	// This should not post_add, because the ID is added by on_spawn
+	to_chat(quirk_holder, span_boldnotice("There is a bloodfledge's ID card [id_location], linked to your station account. It functions as a spare ID, but lacks job access."))
+
+/datum/quirk/bloodfledge/proc/quirk_examine_bloodfledge(atom/examine_target, mob/living/carbon/human/examiner, list/examine_list)
+	SIGNAL_HANDLER
+
+	// Check if human examiner exists
+	if(!istype(examiner))
+		return
+
+	// Check if examiner is dumb
+	if(HAS_TRAIT(examiner, TRAIT_DUMB))
+		// Return with no effects
+		return
+
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Define hunger texts
+	var/examine_hunger_public
+	var/examine_hunger_secret
+
+	// Check hunger levels
+	switch(quirk_mob.nutrition)
+		// Hungry
+		if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
+			examine_hunger_secret = "[quirk_holder.p_they(TRUE)] [quirk_holder.p_are()] blood starved!"
+			examine_hunger_public = "[quirk_holder.p_they(TRUE)] seem[quirk_holder.p_s()] on edge from something."
+
+		// Starving
+		if(0 to NUTRITION_LEVEL_STARVING)
+			examine_hunger_secret = "[quirk_holder.p_they(TRUE)] [quirk_holder.p_are()] in dire need of blood!"
+			examine_hunger_public = "[quirk_holder.p_they(TRUE)] [quirk_holder.p_are()] radiating an aura of frenzied hunger!"
+
+		// Invalid hunger
+		else
+			// Return with no message
+			return
+
+	// Check if examiner shares the quirk
+	if(isbloodfledge(examiner))
+		// Add detection text
+		examine_list += span_info("[quirk_holder.p_their(TRUE)] hunger makes it easy to identify [quirk_holder.p_them()] as a fellow Bloodsucker Fledgling!")
+
+		// Add hunger text
+		examine_list += span_warning(examine_hunger_secret)
+
+	// Check if public hunger text exists
+	else
+		// Add hunger text
+		examine_list += span_warning(examine_hunger_public)
+
+/datum/quirk/breathless
+	name = "Breathless"
+	desc = "Whether due to genetic engineering, technology, or bluespace magic, you no longer require air to function. This also means that administering life-saving manuevers such as CPR would be impossible."
+	value = 3
+	medical_record_text = "Patient's biology demonstrates no need for breathing."
+	gain_text = span_notice("You no longer need to breathe.")
+	lose_text = span_notice("You need to breathe again...")
+	processing_quirk = TRUE
+
+/datum/quirk/breathless/add()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	ADD_TRAIT(H,TRAIT_NOBREATH,ROUNDSTART_TRAIT)
+
+/datum/quirk/breathless/remove()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	REMOVE_TRAIT(H,TRAIT_NOBREATH, ROUNDSTART_TRAIT)
+
+/datum/quirk/breathless/on_process()
+	. = ..()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.adjustOxyLoss(-3) /* Bandaid-fix for a defibrillator "bug",
+	Which causes oxy damage to stack for mobs that don't breathe */

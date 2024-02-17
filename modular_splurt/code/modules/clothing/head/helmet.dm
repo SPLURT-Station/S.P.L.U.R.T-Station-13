@@ -18,7 +18,7 @@
 
 /obj/item/clothing/head/helmet/goner/fake/poly
 	name = "polychromic trencher helmet"
-	desc = "A plastic helmet with polychromic spot."
+	desc = "A plastic helmet with polychromic spot. Protects as best as cardboard box labeled 'Bomb Shelter'."
 	var/list/poly_colors = list("#D9D9D9")
 
 /obj/item/clothing/head/helmet/goner/fake/poly/ComponentInitialize()
@@ -61,6 +61,10 @@
 	name = "polychromic trencher officer cap"
 	desc = "A cheap officer cap with polychromic pin."
 	var/list/poly_colors = list("#F2F2F2")
+
+/obj/item/clothing/head/helmet/goner/officer/fake/poly/classic
+	name = "polychromic trencher old cap"
+	icon_state = "goner_offcap_old"
 
 /obj/item/clothing/head/helmet/goner/officer/fake/poly/ComponentInitialize()
 	. = ..()

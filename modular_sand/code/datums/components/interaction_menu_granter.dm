@@ -18,6 +18,7 @@
 #define INTERACTION_NORMAL 0
 #define INTERACTION_LEWD 1
 #define INTERACTION_EXTREME 2
+#define INTERACTION_UNHOLY 3 //SPLURT Edit
 
 /// The menu itself, only var is target which is the mob you are interacting with
 /datum/component/interaction_menu_granter
@@ -205,6 +206,18 @@
 			if(HAS_UNEXPOSED_GENITAL)
 				required_from_user_unexposed |= INTERACTION_REQUIRE_EYESOCKETS
 
+	//SPLURT EDIT
+	var/user_has_belly = self.has_belly()
+	switch(user_has_belly)
+		if(HAS_EXPOSED_GENITAL)
+			required_from_user_exposed |= INTERACTION_REQUIRE_BELLY
+		if(HAS_UNEXPOSED_GENITAL)
+			required_from_user_unexposed |= INTERACTION_REQUIRE_BELLY
+		if(TRUE)
+			required_from_user_exposed |= INTERACTION_REQUIRE_BELLY
+			required_from_user_unexposed |= INTERACTION_REQUIRE_BELLY
+	//SPLURT EDIT END
+
 	.["required_from_user_exposed"] = required_from_user_exposed
 	.["required_from_user_unexposed"] = required_from_user_unexposed
 	.["user_num_feet"] = self.get_num_feet()
@@ -222,6 +235,10 @@
 	.["theirLust"] = null
 	.["theyAllowLewd"] = null
 	.["theyAllowExtreme"] = null
+	//SPLURT EDIT
+	.["theyAllowUnholy"] = null
+	.["theyHaveBondage"] = null
+	//SPLURT EDIT END
 	if(target != self)
 		.["theirAttributes"] = target.list_interaction_attributes(self)
 
@@ -337,9 +354,17 @@
 		if(target?.client?.prefs)
 			.["theyAllowLewd"] = !!(target.client.prefs.toggles & VERB_CONSENT)
 			.["theyAllowExtreme"] = !!pref_to_num(target.client.prefs.extremepref)
+			.["theyAllowUnholy"] = !!pref_to_num(target.client.prefs.unholypref) //SPLURT EDIT
 		if(HAS_TRAIT(user, TRAIT_ESTROUS_DETECT))
 			.["theirLust"] = target.get_lust()
 			.["theirMaxLust"] = target.get_lust_tolerance() * 3
+		//SPLURT EDIT
+		.["theyHaveBondage"] = FALSE
+		if(iscarbon(target))
+			var/mob/living/carbon/C = target
+			if(istype(C.handcuffed, /obj/item/restraints/bondage_rope) || istype(C.legcuffed, /obj/item/restraints/bondage_rope))
+				.["theyHaveBondage"] = TRUE
+		//SPLURT EDIT END
 
 	//Get their genitals
 	var/list/genitals = list()
@@ -431,6 +456,9 @@
 	var/list/sent_interactions = list()
 	for(var/interaction_key in SSinteractions.interactions)
 		var/datum/interaction/I = SSinteractions.interactions[interaction_key]
+		// THIS IS A BASETYPE, DO NOT SEND
+		if(!I.description)
+			continue
 		var/list/interaction = list()
 		interaction["key"] = I.type
 		interaction["desc"] = I.description
@@ -438,6 +466,10 @@
 			var/datum/interaction/lewd/O = I
 			if(O.interaction_flags & INTERACTION_FLAG_EXTREME_CONTENT)
 				interaction["type"] = INTERACTION_EXTREME
+			//SPLURT EDIT
+			if(O.interaction_flags & INTERACTION_FLAG_UNHOLY_CONTENT)
+				interaction["type"] = INTERACTION_UNHOLY
+			//SPLURT EDIT END
 			else
 				interaction["type"] = INTERACTION_LEWD
 			interaction["require_user_num_feet"] = O.require_user_num_feet
@@ -623,3 +655,4 @@
 #undef INTERACTION_NORMAL
 #undef INTERACTION_LEWD
 #undef INTERACTION_EXTREME
+#undef INTERACTION_UNHOLY //SPLURT Edit

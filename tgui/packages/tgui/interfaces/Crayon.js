@@ -12,6 +12,7 @@ export const Crayon = (props, context) => {
     y,
     min_offset,
     max_offset,
+    can_change_light_color,
   } = data;
   return (
     <Window
@@ -28,6 +29,17 @@ export const Crayon = (props, context) => {
                   selected={data.is_capped}
                   onClick={() => act('toggle_cap')} />
               </LabeledList.Item>
+              {/* SPLURT EDIT START */}
+              {can_change_light_color ? (
+              <LabeledList.Item label="Change Light Color">
+                <Button
+                  icon={data.toggle_change_light_color ? 'power-off' : 'times'}
+                  content={data.toggle_change_light_color ? 'Enabled' : 'Disabled'}
+                  selected={data.toggle_change_light_color}
+                  onClick={() => act('toggle_change_light_color')} />
+              </LabeledList.Item>
+              ) : null}
+              {/* SPLURT EDIT END */}
             </LabeledList>
             <Button
               content="Select New Color"

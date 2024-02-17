@@ -1,0 +1,114 @@
+2024-01-02:
+  Anonymous:
+  - bugfix: Standard assaultron should be now selectable again.
+  AyyRobotics:
+  - code_imp: Adds 'hasrest' variable to allow non-dogborg cyborg sprites to have
+      resting sprites. Currently only used by 'Mekas'.
+  BongaTheProto:
+  - tweak: The space law books use our wiki's space law now
+  ariaworld:
+  - rscadd: Contact lenses.
+  - tweak: Blind people can examine things adjacent to them.
+  - rscadd: Rebalanced Christmas presents blacklist to include cool items again.
+2024-01-06:
+  Fabian272:
+  - spellcheck: Fixes naming of the Mechanical Pinches and Searing Tool in lathes.
+2024-01-09:
+  Anonymous:
+  - rscadd: Added box of hugs into loadout.
+  AyyRobotics:
+  - rscadd: Added Engineering 'Meka'
+2024-01-12:
+  ariaworld:
+  - tweak: 'Xenoarch MAP: add seed vendor to botany, ORM, mining equipment vendor,
+      remove weird plaque in the middle of hallway.'
+  - tweak: Keys can now fit in collars.
+  - rscadd: Headshot can be changed mid-round in "Manage flavor texts".
+  - bugfix: Dance machine now has same access requirement as jukebox (No more stuck
+      dance machines, hopefully).
+  - rscadd: Bluespace spray can that can change the light color of items (i.e flashlights)
+      (locked behind BEPIS light tech).
+  - rscadd: Rapid light device added to protolathe, (locked behind BEPIS light tech).
+  - rscadd: Beds recipe list, added pod beds (metal) and mattresses (require cloth)
+      to in-hand material crafting menu.
+  - rscadd: bepis can now spawn advanced tools (not alien) and alien (not xenomorph)
+      glands as rewards.
+  - rscadd: Recalibrate algorithm button to experimentor, to avoid rebuilding it over
+      and over in order to reset it's scan types.
+  - rscadd: Clown car now dumps all mobs if someone has over 30 units of irish car
+      bomb in their system (TG PORT)
+  - bugfix: Cargo's problem computer no longer checks science problems amount but
+      cargo ones.
+  - rscadd: Crafting recipe for igniters, and gym equipment (let's see Andrew Eubanks
+      hit a Splurt PR).
+  - tweak: Toy figures are now tiny so they can fit in boxes.
+  - tweak: Tailbag crafting recipe moved to modular file.
+  - tweak: A bit more space to write on people's genitals (100 -> 130 characters)
+  - rscadd: Bimbofication injector in medbay's contraband vendor.
+  - rscadd: A cute reagent splash animation for botany trays / dirt growing areas.
+  - rscadd: More scanners, syringes and basic mining tools for science (For xenoarch,
+      health scanners for Roboticists).
+  - rscadd: Beakers to Engineering Protolathe.
+  - rscadd: Emag to lootdrop list of the most rarest Xenoarch artifact type.
+  - tweak: Xenoarch artifacts are now worth a little bit more credits and give slightly
+      more science points to incentivize Xenoarcheology.
+  - rscadd: Xenoarcheology rock bags to mining protolathe.
+  - rscadd: Maintenance loot can now spawn rare alien glands (extremely low drop rate)
+      or an easter egg.
+  - rscadd: Electronic firing pin design for security protolathe.
+  - rscadd: Welding goggles to autolathe.
+  - rscadd: A cool unused item, the flash-dark,  (opposite of a flashlight), to light
+      technology tree (BEPIS tech)
+  - rscadd: Mindbreak and cannabis ciggies to contraband section of cigarettes vendor.
+  - rscadd: The psychologist's pill bottles for medbay's contraband section of medical
+      vendor.
+  - rscadd: Large water bottles to cola vendors
+  - bugfix: Vampires always splattering blood even if bite was successful.
+  - rscadd: Yoga pants and blutigen undergarments in ClothesMate.
+  - rscadd: Adds Chugging (right now just for drinks), drink 50 units at once by aiming
+      for mouth. (BEESTATION PORT)
+  - tweak: Permanent horny warning now mentions bimbofication (since you need the
+      preference turned on anyway)
+  - rscadd: More RNG drops to Bepis so it's actually more useful.
+  - rscadd: New genital stimulator reagent (vaginal vigour).
+  - rscadd: And most important added a good base to inspire new modular changes!
+2024-01-20:
+  Tree-Tetrarch:
+  - balance: Citadel Expansion Chem value reduced.
+2024-01-21:
+  Zattarra:
+  - bugfix: Fixes the invisifiber jacket icon.
+2024-01-22:
+  Anonymous:
+  - rscadd: Added *coo, *facewing and *ruffle (wings' ruffle).
+  - rscadd: Added Avian language. It's quite basic, though.
+  Vhariik:
+  - rscadd: Icebox!
+2024-01-24:
+  MysteryMan21333:
+  - tweak: Tweaks the land mines and places mining equipment near skeleton spawn.
+  - bugfix: Fixes skeletons freezing and suffocating to death.
+2024-01-27:
+  Vhariik:
+  - rscdel: Removed miscarriages
+  ariaworld:
+  - rscadd: Unicode characters compatibility for books. (Write in non-ASCII characters,
+      for example other languages).
+  - bugfix: Books now showing apostrophes and other characters correctly (They'd break
+      and show &apos, for example).
+  - rscadd: An important sanitization check for the DNA Console.
+  - tweak: Books now have 10 extra characters available for their Title.
+2024-01-29:
+  ariaworld:
+  - bugfix: Fixes chastity cages rendering above clothing, metal not jingling, runtiming
+      and erroring, and e-stim chastity cages being utterly broken. This is what happens
+      when people don't test their code. (Goku vs SPLURT | Ep. 1) Thanks to Fabian272
+      for bringing this up and motivation <3
+  - bugfix: Port over fixes for a number of hard-dels that could cause GC failures
+      and therefore even more lag. To see the list of fixed hard-dels, see `https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/pull/1048`.
+  - bugfix: When power fails, the apc update() proc is no longer called every timer
+      tick, which was unnecessary.
+  - bugfix: Fixes the Cryogenic Storage Console repeating a single cryo'd person in
+      the User Interface.
+  - bugfix: Port over a newer /mob/Destroy() proc from TG, also making all mobs no
+      longer hard-delete by default anymore.

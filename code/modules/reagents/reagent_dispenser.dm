@@ -29,6 +29,8 @@
 	. = ..()
 
 /obj/structure/reagent_dispensers/proc/boom()
+	if(QDELETED(src))
+		return // little bit of sanity sauce before we wreck ourselves somehow
 	visible_message("<span class='danger'>\The [src] ruptures!</span>")
 	chem_splash(loc, 5, list(reagents))
 	qdel(src)
@@ -163,16 +165,18 @@
 	if(ZAP_OBJ_DAMAGE & zap_flags)
 		explode()
 
-/obj/structure/reagent_dispensers/fueltank/bullet_act(obj/item/projectile/P)
-	. = ..()
-	if(QDELETED(src)) //wasn't deleted by the projectile's effects.
-		return
-	if(!P.nodamage && (P.damage_type == BURN) || (P.damage_type == BRUTE))
-		var/boom_message = "[ADMIN_LOOKUPFLW(P.firer)] triggered a fueltank explosion via projectile."
+/obj/structure/reagent_dispensers/fueltank/bullet_act(obj/item/projectile/hitting_projectile)
+	if(hitting_projectile.damage > 0 && ((hitting_projectile.damage_type == BURN) || (hitting_projectile.damage_type == BRUTE)))
+		var/boom_message = "[ADMIN_LOOKUPFLW(hitting_projectile.firer)] triggered a fueltank explosion via projectile."
 		GLOB.bombers += boom_message
 		message_admins(boom_message)
-		P.firer.log_message("triggered a fueltank explosion via projectile.", LOG_ATTACK)
+		hitting_projectile.firer.log_message("triggered a fueltank explosion via projectile.", LOG_ATTACK)
 		boom()
+		return hitting_projectile.on_hit(src, 0)
+
+	// we override parent like this because otherwise we won't actually properly log the fact that a projectile caused this welding tank to explode.
+	// if this sucks, feel free to change it, but make sure the damn thing will log. thanks.
+	return ..()
 
 /obj/structure/reagent_dispensers/fueltank/attackby(obj/item/I, mob/living/user, params)
 	if(I.tool_behaviour == TOOL_WELDER)

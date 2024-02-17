@@ -88,7 +88,7 @@
 		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_BREASTS, partner, ORGAN_SLOT_PENIS) //SPLURT edit
 
 /datum/interaction/lewd/footfuck
-	description = "Rub your %COCK% on their foot."
+	description = "Rub your cock on their foot."
 	interaction_sound = null
 	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
 	required_from_target_exposed = INTERACTION_REQUIRE_FEET
@@ -121,7 +121,7 @@
 		user.handle_post_sex(NORMAL_LUST, CUM_TARGET_FEET, partner, CUM_TARGET_PENIS) //SPLURT edit
 
 /datum/interaction/lewd/footfuck/double
-	description = "Rub your %COCK% between their feet."
+	description = "Rub your cock between their feet."
 	require_target_num_feet = 2
 
 /datum/interaction/lewd/footfuck/double/display_interaction(mob/living/user, mob/living/partner)

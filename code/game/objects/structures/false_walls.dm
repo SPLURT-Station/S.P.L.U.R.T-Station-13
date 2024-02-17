@@ -21,7 +21,8 @@
 	/obj/structure/falsewall/reinforced,
 	/turf/closed/wall/rust,
 	/turf/closed/wall/r_wall/rust,
-	/turf/closed/wall/clockwork)
+	/turf/closed/wall/clockwork,
+	/turf/closed/indestructible/wall)
 	smooth = SMOOTH_TRUE
 	can_be_unanchored = FALSE
 	CanAtmosPass = ATMOS_PASS_DENSITY
@@ -281,7 +282,7 @@
 	icon_state = "wood"
 	mineral = /obj/item/stack/sheet/mineral/wood
 	walltype = /turf/closed/wall/mineral/wood
-	canSmoothWith = list(/obj/structure/falsewall/wood, /turf/closed/wall/mineral/wood)
+	canSmoothWith = list(/obj/structure/falsewall/wood, /turf/closed/wall/mineral/wood, /turf/closed/indestructible/wood)
 
 /obj/structure/falsewall/iron
 	name = "rough metal wall"

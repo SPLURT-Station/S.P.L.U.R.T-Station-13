@@ -22,7 +22,7 @@
 
 /// The base of all interactions
 /datum/interaction
-	var/description = "Interact with them."
+	var/description
 	var/simple_message
 	var/simple_style = "notice"
 	var/write_log_user

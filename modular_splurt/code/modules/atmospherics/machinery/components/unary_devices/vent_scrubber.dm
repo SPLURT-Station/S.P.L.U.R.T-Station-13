@@ -1,3 +1,4 @@
+//Currently unused as their qdeletion in tryStoredRoom causes runtimes (along with normal pipes).
 /obj/machinery/atmospherics/components/unary/vent_scrubber/hilbertshotel
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber/hilbertshotel/Initialize()

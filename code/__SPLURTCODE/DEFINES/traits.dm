@@ -34,6 +34,7 @@
 #define TRAIT_WEREWOLF			"werewolf"
 #define TRAIT_PRIMITIVE			"primitive"
 #define TRAIT_STEEL_ASS			"steel_ass"
+#define TRAIT_JIGGLY_ASS        "jiggly_ass"
 #define TRAIT_CURSED_BLOOD		"cursed_blood"
 #define TRAIT_HEADPAT_SLUT		"headpat_slut"
 #define TRAIT_DISTANT			"headpat_hater"
@@ -47,3 +48,4 @@
 #define TRAIT_BODY_MORPHER		"body_morpher"
 #define TRAIT_HALLOWED			"hallowed"
 #define TRAIT_MESSY				"messy"
+#define TRAIT_RESTORATIVE_METABOLISM   "restorative_metabolism"

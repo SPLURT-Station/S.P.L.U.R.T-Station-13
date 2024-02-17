@@ -56,3 +56,9 @@
 	name = "Prescription Holo Secuirity HUD Glasses"
 	path = /obj/item/clothing/glasses/hud/security/sunglasses/holo/prescription
 	restricted_roles = list("Security Officer", "Warden", "Head of Security")
+
+//NON-RESTRICTED 
+
+/datum/gear/glasses/contact
+	name = "Contact Lenses"
+	path = /obj/item/clothing/glasses/contact

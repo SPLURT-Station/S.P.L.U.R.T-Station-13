@@ -134,10 +134,10 @@
 		if(!do_mob(user, H, break_time))
 			return FALSE
 	else
-		to_chat(user, "<span class='warning'>You can't take it off with \the [I.name]</span>")
+		to_chat(user, span_warning("You can't take \the [src] off with \the [I.name]!"))
 		return FALSE
 
-	to_chat(user, "<span class='warning'>You manage to break \the [src] with \the [I.name]!</span>")
+	to_chat(user, span_warning("You manage to break \the [src] with \the [I.name]!"))
 	qdel(src)
 	return FALSE
 

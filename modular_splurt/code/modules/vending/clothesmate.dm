@@ -38,7 +38,10 @@
 		/obj/item/clothing/wrists/armwarmer = 3,
 		/obj/item/clothing/wrists/armwarmer/long = 3,
 		/obj/item/clothing/wrists/armwarmer_striped = 3,
-		/obj/item/clothing/wrists/armwarmer_striped/long = 3
+		/obj/item/clothing/wrists/armwarmer_striped/long = 3,
+		/obj/item/clothing/under/pants/yoga = 3,
+		/obj/item/clothing/under/blutigen_undergarment = 3,
+		/obj/item/clothing/glasses/contact = 3
 	)
 	var/list/extra_contraband = list(
 		/obj/item/clothing/under/rank/civilian/lawyer/galaxy_red = 3,

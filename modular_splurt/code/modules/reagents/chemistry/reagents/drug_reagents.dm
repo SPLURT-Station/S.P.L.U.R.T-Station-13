@@ -213,6 +213,11 @@
 	color = COLOR_PINK
 	genital = ORGAN_SLOT_BREASTS
 
+/datum/reagent/drug/genital_stimulator/vaginal_vigour
+	name = "Vaginal Vigour"
+	color = COLOR_PURPLE
+	genital = ORGAN_SLOT_VAGINA
+
 /datum/reagent/drug/genital_stimulator/peen_pop
 	name = "Peen Pop"
 	color = COLOR_MOSTLY_PURE_ORANGE

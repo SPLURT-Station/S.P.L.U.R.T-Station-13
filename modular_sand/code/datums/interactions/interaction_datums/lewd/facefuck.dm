@@ -1,5 +1,5 @@
 /datum/interaction/lewd/facefuck
-	description = "Fuck their mouth using your %COCK%."
+	description = "Fuck their mouth using your cock."
 	interaction_sound = null
 	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
 	required_from_target = INTERACTION_REQUIRE_MOUTH

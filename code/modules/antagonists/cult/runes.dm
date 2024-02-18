@@ -369,20 +369,18 @@ structure_check() searches for nearby cultist structures required for the invoca
 	var/list/teleportnames = list()
 	for(var/R in GLOB.teleport_runes)
 		var/obj/effect/rune/teleport/T = R
-		if(T != src && !is_away_level(T.z))
+		if(T != src)//SPLURT EDIT: Removes the check for away levels on cult teleportation
 			potential_runes[avoid_assoc_duplicate_keys(T.listkey, teleportnames)] = T
 
 	if(!potential_runes.len)
 		to_chat(user, "<span class='warning'>There are no valid runes to teleport to!</span>")
 		log_game("Teleport rune failed - no other teleport runes")
-		fail_invoke()
 		return
 
 	var/turf/T = get_turf(src)
-	if(is_away_level(T.z))
-		to_chat(user, "<span class='cult italic'>You are not in the right dimension!</span>")
-		log_game("Teleport rune failed - user in away mission")
-		fail_invoke()
+	if(is_away_level(T.z)) //SPLURT EDIT: Removes the check for away levels on cult teleportation
+		to_chat(user, "<span class='cult italic'>You are not in the right dimension! Your scalp burns, your eyes water, and the brimstone becomes oh-so-more... intense.</span>")
+		log_game("Teleport rune injury - user in away mission")
 		return
 
 	var/input_rune_key = input(user, "Choose a rune to teleport to.", "Rune to Teleport to") as null|anything in potential_runes //we know what key they picked

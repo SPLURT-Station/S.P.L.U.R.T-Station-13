@@ -498,11 +498,9 @@
 		return
 
 	var/turf/T = get_turf(src)
-	if(is_away_level(T.z))
+	if(is_away_level(T.z)) //SPLURT EDIT: Removes the check for away levels on cult teleportation
 		to_chat(user, "<span class='cultitalic'>You are not in the right dimension!</span>")
-		log_game("Teleport spell failed - user in away mission")
-		return
-
+		log_game("Teleport spell delayed - user in away mission")
 	var/input_rune_key = input(user, "Choose a rune to teleport to.", "Rune to Teleport to") as null|anything in potential_runes //we know what key they picked
 	var/obj/effect/rune/teleport/actual_selected_rune = potential_runes[input_rune_key] //what rune does that key correspond to?
 	if(QDELETED(src) || !user || !user.is_holding(src) || user.incapacitated() || !actual_selected_rune || !proximity)

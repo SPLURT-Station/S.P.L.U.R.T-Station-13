@@ -175,13 +175,13 @@
 	var/list/teleportnames = list()
 
 	for(var/obj/structure/destructible/clockwork/powered/clockwork_obelisk/O in GLOB.all_clockwork_objects)
-		if(!O.Adjacent(invoker) && O != src && !is_away_level(O.z) && O.anchored) //don't list obelisks that we're next to
+		if(!O.Adjacent(invoker) && O != src && O.anchored) //don't list obelisks that we're next to //SPLURT EDIT: Removes the check for away levels on cult teleportation
 			var/area/A = get_area(O)
 			var/locname = initial(A.name)
 			possible_targets[avoid_assoc_duplicate_keys("[locname] [O.name]", teleportnames)] = O
 
 	for(var/mob/living/L in GLOB.alive_mob_list)
-		if(!L.stat && is_servant_of_ratvar(L) && !L.Adjacent(invoker) && !is_away_level(L.z)) //People right next to the invoker can't be portaled to, for obvious reasons
+		if(!L.stat && is_servant_of_ratvar(L) && !L.Adjacent(invoker)) //People right next to the invoker can't be portaled to, for obvious reasons //SPLURT EDIT: Removes the check for away levels on cult teleportation
 			possible_targets[avoid_assoc_duplicate_keys("[L.name] ([L.real_name])", teleportnames)] = L
 
 	if(!possible_targets.len)

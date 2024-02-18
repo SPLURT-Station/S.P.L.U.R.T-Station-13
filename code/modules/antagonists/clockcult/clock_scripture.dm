@@ -90,7 +90,7 @@ Judgement 80k power or nine converts
 /datum/clockwork_scripture/proc/has_requirements() //if we have the power and invokers to do it
 	var/checked_penalty = FALSE
 	if(!GLOB.ratvar_awakens && !slab.no_cost)
-		checked_penalty = check_offstation_penalty()
+		// checked_penalty = check_offstation_penalty() //SPLURT EDIT: Removes penalties from both cults.
 		if(!get_clockwork_power(power_cost))
 			to_chat(invoker, "<span class='warning'>There isn't enough power to recite this scripture! ([DisplayPower(get_clockwork_power())]/[DisplayPower(power_cost)])</span>")
 			return

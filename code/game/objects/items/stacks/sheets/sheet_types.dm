@@ -623,9 +623,9 @@ GLOBAL_LIST_INIT(runed_metal_recipes, list ( \
 		return
 	var/turf/T = get_turf(user) //we may have moved. adjust as needed...
 	var/area/A = get_area(user)
-	if((!is_station_level(T.z) && !is_mining_level(T.z)) || !(A?.area_flags & CULT_PERMITTED))
+	/*if((!is_station_level(T.z) && !is_mining_level(T.z)) || !(A?.area_flags & CULT_PERMITTED)) //SPLURT EDIT: Removes penalties from both cults.
 		to_chat(user, "<span class='warning'>The veil is not weak enough here.</span>")
-		return FALSE
+		return FALSE*/
 	return ..()
 
 /obj/item/stack/sheet/runed_metal/get_main_recipes()

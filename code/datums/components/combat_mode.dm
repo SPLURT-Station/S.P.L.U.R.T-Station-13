@@ -2,6 +2,7 @@
   * Combat mode component. It makes the user face whichever atom the mouse pointer is hovering,
   * amongst other things designed outside of this file, namely PvP and PvE stuff, hence the name.
   * Can be toggled on and off by clicking the screen hud object or by pressing the assigned hotkey (default 'C')
+  * SPLURT COMMENT: Removes line 130-142 (ALWAYS RE-DO). This is for MAJOR performance reasons.
   */
 /datum/component/combat_mode
 	var/mode_flags = COMBAT_MODE_INACTIVE
@@ -89,8 +90,8 @@
 		if(playsound)
 			playsound(source, 'sound/machines/chime.ogg', 10) 	//sandstorm stuff - combat mode indicator
 			flick_emote_popup_on_mob(source, "combat", 10)	//sandstorm stuff - combat mode indicator
-	RegisterSignal(source, COMSIG_MOB_CLIENT_MOUSEMOVE, .proc/onMouseMove)
-	RegisterSignal(source, COMSIG_MOVABLE_MOVED, .proc/on_move)
+	//RegisterSignal(source, COMSIG_MOB_CLIENT_MOUSEMOVE, .proc/onMouseMove) //SPLURT EDIT: Helps optimise combat mode.
+	//RegisterSignal(source, COMSIG_MOVABLE_MOVED, .proc/on_move) //SPLURT EDIT: Helps optimise combat mode.
 	if(hud_icon)
 		hud_icon.combat_on = TRUE
 		hud_icon.update_icon()
@@ -117,7 +118,7 @@
 			to_chat(source, self_message)
 		if(playsound)
 			source.playsound_local(source, 'sound/misc/ui_toggleoff.ogg', 50, FALSE, pressure_affected = FALSE) //Slightly modified version of the toggleon sound!
-	UnregisterSignal(source, list(COMSIG_MOB_CLIENT_MOUSEMOVE, COMSIG_MOVABLE_MOVED))
+	//UnregisterSignal(source, list(COMSIG_MOB_CLIENT_MOUSEMOVE, COMSIG_MOVABLE_MOVED))
 	if(hud_icon)
 		hud_icon.combat_on = FALSE
 		hud_icon.update_icon()
@@ -125,8 +126,8 @@
 	source.end_parry_sequence()
 
 	source.set_combat_indicator(FALSE) //sandstorm stuff - combat mode indicator
-
-///Changes the user direction to (try) keep match the pointer.
+/*
+///Changes the user direction to (try) keep match the pointer. SPLURT COMMENT: This is EXTREMELY expensive to calculate per mob in combat mode, and causes a ton of lag!!
 /datum/component/combat_mode/proc/on_move(atom/movable/source, dir, atom/oldloc, forced)
 	var/mob/living/L = source
 	if((mode_flags & COMBAT_MODE_ACTIVE) && L.client)
@@ -138,7 +139,7 @@
 		return
 	source.face_atom(object, TRUE)
 	lastmousedir = source.dir
-
+*/
 /// Toggles whether the user is intentionally in combat mode. THIS should be the proc you generally use! Has built in visual/to other player feedback, as well as an audible cue to ourselves.
 /datum/component/combat_mode/proc/user_toggle_intentional_combat_mode(mob/living/source)
 	if(mode_flags & COMBAT_MODE_TOGGLED)

@@ -58,7 +58,7 @@ Difficulty: Insanely Hard
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	var/stun_chance = 5 //chance per attack to Weaken target
-	crusher_loot = list(/obj/item/crusher_trophy/king_goat)
+	crusher_loot = list(/obj/item/kinetic_crusher/harm,/obj/item/toy/plush/goatplushie/angry/kinggoat/ascendedkinggoat) // SPLURT EDIT: I don't need to explain why this is hilarious.
 
 /mob/living/simple_animal/hostile/megafauna/king/ComponentInitialize()
 	. = ..()

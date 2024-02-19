@@ -474,21 +474,21 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;num=[i];' [i == default_slot ? "class='linkOn'" : ""]>[name]</a> "
 					dat += "</center>"
 
-			dat += "<HR>"
+			// dat += "<HR>"
 
-			dat += "<center>"
-			var/client_file = user.client.Import()
-			var/savefile_name
-			if(client_file)
-				var/savefile/cache_savefile = new(user.client.Import())
-				if(!cache_savefile["deleted"] || savefile_needs_update(cache_savefile) != -2)
-					cache_savefile["real_name"] >> savefile_name
-			dat += "Local storage: [savefile_name ? savefile_name : "Empty"]"
-			dat += "<br />"
-			dat += "<a href='?_src_=prefs;preference=export_slot'>Export current slot</a>"
-			dat += "<a [savefile_name ? "href='?_src_=prefs;preference=import_slot' style='white-space:normal;'" : "class='linkOff'"]>Import into current slot</a>"
-			dat += "<a href='?_src_=prefs;preference=delete_local_copy' style='white-space:normal;background:#eb2e2e;'>Delete locally saved character</a>"
-			dat += "</center>"
+			// dat += "<center>"
+			// var/client_file = user.client.Import()
+			// var/savefile_name
+			// if(client_file)
+			// 	var/savefile/cache_savefile = new(user.client.Import())
+			// 	if(!cache_savefile["deleted"] || savefile_needs_update(cache_savefile) != -2)
+			// 		cache_savefile["real_name"] >> savefile_name
+			// dat += "Local storage: [savefile_name ? savefile_name : "Empty"]"
+			// dat += "<br />"
+			// dat += "<a href='?_src_=prefs;preference=export_slot'>Export current slot</a>"
+			// dat += "<a [savefile_name ? "href='?_src_=prefs;preference=import_slot' style='white-space:normal;'" : "class='linkOff'"]>Import into current slot</a>"
+			// dat += "<a href='?_src_=prefs;preference=delete_local_copy' style='white-space:normal;background:#eb2e2e;'>Delete locally saved character</a>"
+			// dat += "</center>"
 
 			dat += "<HR>"
 

@@ -1112,6 +1112,30 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//gear loadout
 	if(S["loadout"])
 		loadout_data = safe_json_decode(S["loadout"])
+		var/list/sanitize_current_slot = loadout_data["SAVE_[loadout_slot]"]
+		if(LAZYLEN(sanitize_current_slot))
+			for(var/list/entry in sanitize_current_slot)
+				for(var/setting in entry)
+					switch(setting)
+						if(LOADOUT_ITEM)
+							if(!ispath(entry[setting]))
+								continue
+						if(LOADOUT_COLOR)
+							if(islist(entry[setting]))
+								for(var/polychromic in entry[setting])
+									if(!findtext(polychromic, GLOB.is_color))
+										polychromic = "#FFFFFF"
+							else
+								entry -= setting
+
+						if(LOADOUT_CUSTOM_NAME)
+							entry[setting] = trim(html_encode(entry[setting]), MAX_NAME_LEN)
+						if(LOADOUT_CUSTOM_DESCRIPTION)
+							entry[setting] = trim(html_encode(entry[setting]), 500)
+
+			loadout_data["SAVE_[loadout_slot]"] = sanitize_current_slot.Copy()
+		else
+			loadout_data["SAVE_[loadout_slot]"] = list()
 	else
 		loadout_data = list()
 

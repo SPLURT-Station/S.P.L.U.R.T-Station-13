@@ -80,15 +80,15 @@
 	value = -1
 	mob_trait = TRAIT_ILLITERATE
 	gain_text = span_notice("The knowledge of how to read seems to escape from you.")
-	lose_text = "<span class='notice'>Written words suddenly make sense again."
+	lose_text = span_notice("Written words suddenly make sense again.")
 
 /datum/quirk/flimsy
 	name = "Flimsy"
 	desc = "Your body is a little more fragile then most, decreasing total health by 20%."
 	value = -2
 	medical_record_text = "Patient has abnormally low capacity for injury."
-	gain_text = "<span class='notice'>You feel like you could break with a single hit."
-	lose_text = "<span class='notice'>You feel more durable."
+	gain_text = span_notice("You feel like you could break with a single hit.")
+	lose_text = span_notice("You feel more durable.")
 
 /datum/quirk/flimsy/add()
 	quirk_holder.maxHealth *= 0.8
@@ -166,7 +166,7 @@
 										"Urgh, you should really get some cum...",\
 										"Some jizz wouldn't be so bad right now!",\
 										"You're starting to long for some more cum..."
-									  )
+									)
 		// Alert user in chat
 		to_chat(quirk_holder, span_love("[pick(trigger_phrases)]"))
 
@@ -203,22 +203,39 @@
 // Small issue with this. If the quirk holder has NO_HUNGER or NO_THIRST, this trait can still be taken and they will still get the benefits of it.
 // It's unlikely that someone will be both, especially at round start, but vampirism makes me wary of having these separate.
 /datum/quirk/hungry
-	name = "Hungry And Thirsty"
-	desc = "You find yourself unusually hungry and thirsty. Gotta eat and drink twice as much as normal."
+	name = "Hungry"
+	desc = "You find yourself unusually hungry. Gotta eat twice as much as normal."
 	value = -1
-	gain_text = span_danger("You're starting to feel hungrier and thirstier a lot faster.")
-	lose_text = span_notice("Your craving for food and water begins dying down.")
+	gain_text = span_danger("You're starting to feel hungrier a lot faster.")
+	lose_text = span_notice("Your elevated craving for food begins dying down.")
 	medical_record_text = "Patient reports eating twice as many meals per day than usual for their species."
 
 /datum/quirk/hungry/add()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/datum/physiology/P = H.physiology
 	P.hunger_mod *= 2
-	P.thirst_mod *= 2
 
 /datum/quirk/hungry/remove()
 	var/mob/living/carbon/human/H = quirk_holder
 	if(H)
 		var/datum/physiology/P = H.physiology
 		P.hunger_mod /= 2
+
+/datum/quirk/thirsty
+	name = "Thirsty"
+	desc = "You find yourself unusually thirsty. Gotta drink twice as much as normal."
+	value = -1
+	gain_text = span_danger("You're starting to feel thirstier a lot faster.")
+	lose_text = span_notice("Your elevated craving for water begins dying down.")
+	medical_record_text = "Patient reports drinking twice as many liquids per day than usual for their species."
+
+/datum/quirk/thirsty/add()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/datum/physiology/P = H.physiology
+	P.thirst_mod *= 2
+
+/datum/quirk/thirsty/remove()
+	var/mob/living/carbon/human/H = quirk_holder
+	if(H)
+		var/datum/physiology/P = H.physiology
 		P.thirst_mod /= 2

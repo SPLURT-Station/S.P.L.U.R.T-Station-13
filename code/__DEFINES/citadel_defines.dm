@@ -105,11 +105,6 @@
 
 #define CITADEL_MENTOR_OOC_COLOUR "#224724"
 
-//xenobio console upgrade stuff
-#define XENOBIO_UPGRADE_MONKEYS				1
-#define XENOBIO_UPGRADE_SLIMEBASIC			2
-#define XENOBIO_UPGRADE_SLIMEADV			4
-
 //Citadel toggles because bitflag memes
 #define MEDIHOUND_SLEEPER	(1<<0)
 #define EATING_NOISES		(1<<1)

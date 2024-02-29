@@ -114,3 +114,22 @@
 	icon_state = "hat_transparent"
 	// Makes the invisible hat not screw up hair.
 	dynamic_hair_suffix = ""
+
+/obj/item/clothing/head/clussy_wig
+	name = "Clussy wig"
+	desc = "Wearing this will certainly make your pussy honk..."
+	icon = 'modular_splurt/icons/obj/clothing/head.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/head.dmi'
+	icon_state = "clussy_wig"
+	item_state = "clussy_wig"
+	flags_inv = HIDEHAIR
+
+/obj/item/clothing/head/hoodcowl
+	name = "Hood cowl"
+	desc = "A dirty, worn-down rag with crudely cut-out eyeholes that barely qualifies as clothing."
+	icon = 'modular_splurt/icons/obj/clothing/head.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/head.dmi'
+	icon_state = "hoodcowl"
+	item_state = "hoodcowl"
+	flags_inv = HIDEHAIR
+	dynamic_hair_suffix = ""

@@ -22,8 +22,8 @@
 
 // GWTB-inspired thing wooo
 /obj/item/clothing/mask/gas/goner
-	name = "trencher gas mask"
-	desc = "A No Man's Land-type gas mask. Equipment beloved by many mooks and romantically apocalyptic people. It has filter installed."
+	name = "operative trencher gas mask"
+	desc = "A protective, head-covering mask. This gas mask model is made by mooks and romantically apocalyptic people. It even have proper filter on!"
 	icon = 'modular_splurt/icons/obj/clothing/masks.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/mask.dmi'
 	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/mask_muzzle.dmi'
@@ -32,8 +32,8 @@
 	armor = list("melee" = 10, "bullet" = 5, "laser" = 10, "energy" = 10, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 40, "acid" = 100) // MOPP's
 
 /obj/item/clothing/mask/gas/goner/basic
-	name = "stripped trencher gas mask"
-	desc = "A stripped version of No Man's Land-type mask equipment. While you can connect it to air supply, it doesn't block gas flow."
+	name = "trencher gas mask"
+	desc = "A head-covering mask. This gas mask model is made by mooks and romantically apocalyptic people. Still isn't good for blocking gas flow."
 	armor = 0
 
 // Cosmetic gas mask for Bane Syndrome (masked_mook)

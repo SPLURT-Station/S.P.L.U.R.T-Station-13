@@ -174,3 +174,49 @@
 
 /datum/design/adv_r_arm
 	category = list("Prosthetics", "Medical Designs")
+
+//EXTRA DEPARTMENTAL FLAGS - MEDICAL TOOLS
+/datum/design/genescanner/New()
+	departmental_flags |= DEPARTMENTAL_FLAG_SCIENCE
+	. = ..()
+
+/datum/design/healthanalyzer/New()
+	departmental_flags |= DEPARTMENTAL_FLAG_SCIENCE
+	. = ..()
+
+/datum/design/healthanalyzer_advanced/New()
+	departmental_flags |= DEPARTMENTAL_FLAG_SCIENCE
+	. = ..()
+
+/datum/design/syringe/New()
+	departmental_flags |= DEPARTMENTAL_FLAG_SCIENCE
+	. = ..()
+
+/datum/design/noreactsyringe/New()
+	departmental_flags |= DEPARTMENTAL_FLAG_SCIENCE
+	. = ..()
+
+// EXTRA DEPARTMENTAL FLAGS - MEDICAL TOOLS -> STOCK PARTS
+/datum/design/beaker/New()
+	departmental_flags |= DEPARTMENTAL_FLAG_ENGINEERING
+	. = ..()
+
+/datum/design/large_beaker/New()
+	departmental_flags |= DEPARTMENTAL_FLAG_ENGINEERING
+	. = ..()
+
+/datum/design/xlarge_beaker/New()
+	departmental_flags |= DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING
+	. = ..()
+
+/datum/design/noreactbeaker/New()
+	departmental_flags |= DEPARTMENTAL_FLAG_SCIENCE
+	. = ..()
+
+/datum/design/meta_beaker/New()
+	departmental_flags |= DEPARTMENTAL_FLAG_SCIENCE
+	. = ..()
+
+/datum/design/bluespacebeaker/New()
+	departmental_flags |= DEPARTMENTAL_FLAG_ENGINEERING
+	. = ..()

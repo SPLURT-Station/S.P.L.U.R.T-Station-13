@@ -43,6 +43,10 @@
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION | LOADOUT_CAN_COLOR_POLYCHROMIC
 	loadout_initial_colors = list("#F2F2F2")
 
+/datum/gear/head/goneroffcap/classic
+	name = "polychromic trencher officer cap (classic)"
+	path = /obj/item/clothing/head/helmet/goner/officer/fake/poly/classic
+
 //Adds bowler hats
 /datum/gear/head/bowler
 	name = "Bowler-hat"
@@ -90,3 +94,14 @@
 	description = "A hat made of transparent fibers, often used with reinforcement kits."
 	path = /obj/item/clothing/head/invisihat
 	loadout_flags = LOADOUT_CAN_NAME | LOADOUT_CAN_DESCRIPTION
+
+/datum/gear/head/clussy_wig
+	name = "Clussy wig"
+	path = /obj/item/clothing/head/clussy_wig
+	subcategory = LOADOUT_SUBCATEGORY_HEAD_JOBS
+	restricted_roles = list("Clown")
+	restricted_desc = "Clown"
+
+/datum/gear/head/hoodcowl
+	name = "Hood cowl"
+	path= /obj/item/clothing/head/hoodcowl

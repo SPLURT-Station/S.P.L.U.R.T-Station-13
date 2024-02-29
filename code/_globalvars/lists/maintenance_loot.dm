@@ -116,6 +116,10 @@ GLOBAL_LIST_INIT(maintenance_loot, list(
 	/obj/item/storage/box/marshmallow = 2,
 	/obj/item/clothing/gloves/tackler/offbrand = 1,
 	/obj/item/stack/sticky_tape = 1,
+	//SPLURT EDIT START
+	/obj/effect/spawner/lootdrop/alien_glands/maintenance = 1,
+    /obj/item/reagent_containers/food/snacks/egg/loaded = 1,
+	//SPLURT EDIT END
 	"" = 3
 	))
 

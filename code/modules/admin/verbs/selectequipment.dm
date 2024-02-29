@@ -125,6 +125,7 @@
 	custom += make_custom_outfit_entries(GLOB.custom_outfits)
 	data["custom_outfits"] = custom
 	data["current_outfit"] = selected_identifier
+	data["is_observer"] = isobserver(target_mob)
 	return data
 
 
@@ -179,7 +180,7 @@
 				new_outfit = new new_outfit
 			if(!istype(new_outfit))
 				return
-			user.admin_apply_outfit(target_mob, new_outfit)
+			user.admin_apply_outfit(target_mob, new_outfit, params["delete_pocket"], params["spawn_method"], params["random_char"], params["give_return"])
 
 		if("customoutfit")
 			user.outfit_manager()
@@ -195,7 +196,7 @@
 				user.prefs.favorite_outfits += outfit_path
 			user.prefs.save_preferences()
 
-/client/proc/admin_apply_outfit(mob/target, dresscode)
+/client/proc/admin_apply_outfit(mob/target, dresscode, delete_pocket, spawn_method, random_char, give_return)
 	if(!ishuman(target) && !isobserver(target))
 		alert("Invalid mob")
 		return
@@ -203,15 +204,19 @@
 	if(!dresscode)
 		return
 
-	var/delete_pocket
+	var/was_observer = FALSE
+	var/turf/current_turf
 	var/mob/living/carbon/human/human_target
 	if(isobserver(target))
-		human_target = target.change_mob_type(/mob/living/carbon/human, delete_old_mob = TRUE)
+		was_observer = TRUE
+		current_turf = get_turf(target)
+		human_target = target.change_mob_type(/mob/living/carbon/human, null, delete_old_mob = TRUE)
+		if(random_char)
+			randomize_human(human_target)
+		if(give_return)
+			human_target.mind.AddSpell(new /obj/effect/proc_holder/spell/self/return_back, FALSE)
 	else
 		human_target = target
-		if(human_target.l_store || human_target.r_store || human_target.s_store) //saves a lot of time for admins and coders alike
-			if(alert("Drop Items in Pockets? No will delete them.", "Robust quick dress shop", "Yes", "No") == "No")
-				delete_pocket = TRUE
 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Select Equipment") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	for(var/obj/item/item in human_target.get_equipped_items(delete_pocket))
@@ -221,7 +226,28 @@
 
 	human_target.regenerate_icons()
 
-	log_admin("[key_name(usr)] changed the equipment of [key_name(human_target)] to [dresscode].")
-	message_admins("<span class='adminnotice'>[key_name_admin(usr)] changed the equipment of [ADMIN_LOOKUPFLW(human_target)] to [dresscode].</span>")
+	if(was_observer)
+		switch(spawn_method)
+			if("Teleport")
+				human_target.forceMove(current_turf)
+
+				var/datum/effect_system/spark_spread/quantum/sparks = new
+				sparks.set_up(10, 1, human_target)
+				sparks.attach(get_turf(human_target))
+				sparks.start()
+			if("Pod")
+				var/obj/structure/closet/supplypod/empty_pod = new()
+
+				empty_pod.style = STYLE_BLUESPACE
+				empty_pod.bluespace = TRUE
+				empty_pod.explosionSize = list(0,0,0,0)
+				empty_pod.desc = "A sleek, and slightly worn bluespace pod - its probably seen many deliveries..."
+
+				human_target.forceMove(empty_pod)
+
+				new /obj/effect/pod_landingzone(current_turf, empty_pod)
+
+	log_admin("[key_name(usr)] changed the equipment of [key_name(human_target)] to [dresscode][was_observer ? ", spawning them" : ""].")
+	message_admins(span_adminnotice("[key_name_admin(usr)] changed the equipment of [ADMIN_LOOKUPFLW(human_target)] to [dresscode][was_observer ? ", spawning them" : ""]."))
 
 	return dresscode

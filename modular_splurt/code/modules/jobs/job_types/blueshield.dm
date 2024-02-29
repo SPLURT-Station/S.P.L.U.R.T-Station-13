@@ -14,7 +14,7 @@
 	exp_type = EXP_TYPE_COMMAND
 	considered_combat_role = TRUE //Brigger then shit yes it is
 	exp_type_department = EXP_TYPE_COMMAND
-	alt_titles = list("Command Security", "Command Guard", "Command Bodyguard", "Blueguard", "Blueshit")
+	alt_titles = list("Command Security", "Command Guard", "Command Bodyguard", "Blueguard", "Blueshit", "Blueslut", "Bluestud")
 	//SPLURT CHANGES (Tells the blueshield they are command, and just a bodyguard, not security)
 	custom_spawn_text = "<font color='red'><b>You are a member of command, meant to act as a bodyguard for all Heads of Staff. However, you are not a member of security nor a Head of Staff yourself - avoid acting as either.</b></font>"
 	outfit = /datum/outfit/job/blueshield

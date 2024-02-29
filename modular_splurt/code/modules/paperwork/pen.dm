@@ -32,7 +32,7 @@
 					to_chat(user, span_notice("You begin to write on your [BP:name]."))
 
 				if(do_mob(user, T, 4 SECONDS))
-					if((length(BP:writtentext))+(length(writting)) < 100) //100 character limmit to stop spamming.
+					if((length(BP:writtentext))+(length(writting)) < 130) //130 character limit to stop spamming.
 						BP:writtentext += html_encode(writting) //you can add to text, not remove it.
 					else
 						to_chat(user, span_notice("There isnt enough space to write that on [T]'s [BP:name]."))

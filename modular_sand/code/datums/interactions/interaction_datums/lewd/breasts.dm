@@ -1,8 +1,7 @@
 /datum/interaction/lewd/do_breastfeed
-	description = "Breastfeed them."
-	require_user_breasts = REQUIRE_EXPOSED
-	require_target_mouth = TRUE
-	max_distance = 1
+	description = "Breastfeed them"
+	required_from_user_exposed = INTERACTION_REQUIRE_BREASTS
+	required_from_target = INTERACTION_REQUIRE_MOUTH
 	write_log_user = "breastfed"
 	write_log_target = "was breastfed by"
 	interaction_sound = null
@@ -25,9 +24,9 @@
 	var/milktext = milk.name
 
 	lines = list(
-		"pushes [u_His] breasts against \the <b>[target]</b>'s mouth, squirting [u_His] warm [lowertext(milktext)] into [t_His] mouth",
-		"fills \the <b>[target]</b>'s mouth with warm, sweet [lowertext(milktext)] as [u_He] squeezes [u_His] boobs, panting",
-		"lets a large stream of [u_His] own abundant [lowertext(milktext)] coat the back of \the <b>[target]</b>'s throat"
+		"pushes [u_His] breasts against \the <b>[target]</b>'s mouth, squirting [u_His] warm [lowertext(milktext)] into [t_His] mouth.",
+		"fills \the <b>[target]</b>'s mouth with warm, sweet [lowertext(milktext)] as [u_He] squeezes [u_His] boobs, panting.",
+		"lets a large stream of [u_His] own abundant [lowertext(milktext)] coat the back of \the <b>[target]</b>'s throat."
 	)
 
 	message = span_lewd("\The <b>[user]</b> [pick(lines)]")
@@ -49,12 +48,12 @@
 
 /datum/interaction/lewd/titgrope
 	description = "Grope their breasts."
-	require_user_hands = TRUE
-	require_target_breasts = REQUIRE_ANY
+	required_from_user = INTERACTION_REQUIRE_HANDS
+	required_from_target_exposed = INTERACTION_REQUIRE_BREASTS
+	required_from_target_unexposed = INTERACTION_REQUIRE_BREASTS
 	write_log_user = "groped"
 	write_log_target = "was groped by"
 	interaction_sound = null
-	max_distance = 1
 
 	additional_details = list(
 		list(

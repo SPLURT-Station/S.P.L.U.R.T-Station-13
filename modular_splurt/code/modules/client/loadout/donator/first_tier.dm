@@ -19,6 +19,12 @@
 	ckeywhitelist = list()
 	donator_group_id = DONATOR_GROUP_TIER_1
 
+/datum/gear/donator/uniform/victorian_purple
+	name = "Purple Victorian Suit"
+	path = /obj/item/clothing/under/rank/civilian/victorian_purple
+	ckeywhitelist = list()
+	donator_group_id = DONATOR_GROUP_TIER_1
+
 //Head
 /datum/gear/donator/head/crown/fancy
 	name = "magnificent crown"

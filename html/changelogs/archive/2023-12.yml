@@ -1,0 +1,112 @@
+2023-12-02:
+  LeChatGuid2:
+  - rscadd: Alpha pet capsule, allowing to spawn the alpha versions of the funclaws
+  ariaworld:
+  - rscadd: Arm Warmers (Sprites by Keila)
+2023-12-04:
+  Casper:
+  - rscadd: Added 'Rodent (Thick) snout' customisation.
+  - rscadd: Added 'Folded back' ears customisation.
+  - rscadd: Added skaven-like head rag clothing.
+  SandPoot & Dexxiol:
+  - rscadd: Added the hazard skin to the radiation voidsuit.
+  - imageadd: Sprites for the suit.
+2023-12-09:
+  ariaworld:
+  - rscadd: Tarot cards.
+  - rscadd: Spilled milk sprite decal.
+  - rscadd: Basic HSV coloring in Loadout menu.
+  - rscadd: Black and white stripper outfits, lewd maid uniform in loadout.
+  - rscadd: Throwing people from shoulders.
+  - rscadd: Spirit board in Chaplain's vendor. (Ghost communication)
+  - rscadd: Pentagram skirt crop-top to clothes vendor.
+  - rscadd: Hypnotic chastity watch, hypno magazine, vibrators, and strap-on to Loadout.
+  - rscadd: Old bunny suit icon sprite when Bunny Suit is adjusted.
+  - rscadd: Bunny suits to KinkMate.
+  - tweak: Chaplain now spawns with their own null-rod and armor beacon, independent
+      of the previous Chaplain's choices.
+  - tweak: Reduced time of Sugar Hypoglicemic shock.
+  - tweak: Tweaked New bunny suit sprite icon.
+  - tweak: Docking ERP verb no longer calls AI code (lmao), throat-lewd passing out
+      message is not immersion-breaking anymore.
+  - bugfix: Name of fluid being extracted from Milking Machine.
+  - bugfix: Gender neuter not being able to pick feminine body type.
+  - refactor: Small refactor of card code.
+  - balance: Decreased cost of clothing items in loadout menu, certain items like
+      modular computers and laptops, and some accessories.
+2023-12-10:
+  SandPoot:
+  - refactor: Optimizes interaction code.
+  - rscadd: Added a print button to the communication console's messages, disabled
+      auto-print as well.
+2023-12-11:
+  SandPoot:
+  - rscadd: Interaction subsystem reports initialized interactions during init.
+  - rscadd: Interaction subsystem shows some info at the MC tab.
+2023-12-13:
+  SandPoot:
+  - tweak: Changed some interaction requirements to make more sense.
+2023-12-14:
+  Anonymous:
+  - imageadd: 'Added new emojis for the PDA/OOC: clueless, dawgnotdoin, ratdoin, kisser,
+      painb (pain but larger), listening, ebin (:DD), fun, wew, eyebrow, terror, affliction,
+      payne, weh, wehh (larger), squeep, mosqueep, mosblep, malceiling.'
+  CEO of Mememotes:
+  - rscdel: my will to be productive and handle real problems
+  Yawet330:
+  - bugfix: 'EZfix: Sanitises prisoner names on old lockers.'
+2023-12-16:
+  Anonymous:
+  - rscadd: 'Added ERP Tags for Character Directory: "Top-Pref", "Bottom-Pref", "Submissive
+      Top", "Dominant Bottom".'
+  SandPoot:
+  - bugfix: Interactions that allow both exposed and unexposed can be done once again.
+  - code_imp: There are now unit tests for creating interactions incorrectly.
+2023-12-17:
+  SandPoot:
+  - bugfix: required_from_user & target variables should check your requirements and
+      the interaction's reqs more precisely.
+2023-12-19:
+  Anonymous:
+  - rscadd: Added action button to squeak the toy bone (like squeak-able balls have).
+  - soundadd: There's 1% chance of Tetris arcade machine being haunted by Swedish.
+  - tweak: Trencher uniform reskinned to be identical color of trencher coat.
+  - rscadd: New vocal barks for all that Attorney of the Ace talk.
+  Fabian272:
+  - tweak: Biogenerator no longer triggers my undiagnosed OCD.
+  - bugfix: Fixes a scrubber in Boxstation's security.
+2023-12-21:
+  BongaTheProto:
+  - rscadd: Braixen plushie
+  - rscadd: A new vocal bark ;3
+  - bugfix: fixes belly related interactions
+  - rscdel: removes the undead quirk for now
+  Fabian272:
+  - spellcheck: Fixed wrong brackets in enforcer mag names.
+2023-12-25:
+  Anonymous:
+  - tweak: Changes serviraptor sprites to have green service colors (using sciraptor
+      as basis for edits).
+  - rscadd: Added cargo raptorborgs (with bags! Thank ertyuk421).
+  - rscadd: Added peacekeeper raptorborgs (using old serviraptor sprites).
+  - rscdel: Removes debug ("watermark") sprite from raptorborgs and dogborgs.
+  - bugfix: Modularly-added dogborgs and raptorborgs now have maintenance panel open
+      sprites. Due their absence is why debug sprite was showing in first place, when
+      borgs had 'em open. Do mind it was added as-is and thus isn't really neat looking.
+  Yawet330:
+  - rscdel: Code that prevented specific mobs from being unable to be admin-assigned
+      languages w/o varedits (fuck you)
+  - rscadd: Flavortext by default to Xenomorphs, OOC notes to xenomorphs
+  ariaworld:
+  - rscadd: 'Body morpher quirk: Gender and body model change option.'
+2023-12-27:
+  SandPoot:
+  - tweak: Adds some shiny buttons to admin select equipment.
+  - rscdel: Removes old quick spawn.
+2023-12-28:
+  battlestar-gafraktika:
+  - rscadd: New Silver Love Co. Shock Collar Kit Box.
+  - rscadd: The above is also in the loadout screen.
+2023-12-30:
+  ariaworld:
+  - bugfix: Wrong icon state triggering annoying errors in pull requests.

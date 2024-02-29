@@ -7,6 +7,10 @@
 	if(!mob_dorms[user]?.Find(roomNumber))
 		LAZYADD(mob_dorms[user], roomNumber)
 
+/obj/item/hilbertshotel/attack_hand(mob/user, list/modifiers)
+	. = ..()
+	return promptAndCheckIn(user, user)
+
 // Better SPLURT version of hilbert's
 /datum/map_template/hilbertshotel
 	mappath = '_maps/splurt_maps/templates/hilbertshotel.dmm'
@@ -14,3 +18,32 @@
 // Empty room - different due to the dimensions of the updated map
 /datum/map_template/hilbertshotel/empty
 	mappath = '_maps/splurt_maps/templates/hilbertshotelempty.dmm'
+
+// SELECTABLE APARTMENTS UPDATE
+/datum/map_template/hilbertshotel/apartment/one
+	name = "Apartment_1"
+	mappath = '_maps/splurt_maps/templates/hilbertshotel_templates/apartment_1.dmm'
+
+/datum/map_template/hilbertshotel/apartment/two
+	name = "Apartment_2"
+	mappath = '_maps/splurt_maps/templates/hilbertshotel_templates/apartment_2.dmm'
+
+/datum/map_template/hilbertshotel/apartment/three
+	name = "Apartment_3"
+	mappath = '_maps/splurt_maps/templates/hilbertshotel_templates/apartment_3.dmm'
+
+/datum/map_template/hilbertshotel/apartment/four
+	name = "Apartment_4"
+	mappath = '_maps/splurt_maps/templates/hilbertshotel_templates/apartment_4.dmm'
+
+/datum/map_template/hilbertshotel/apartment/bar
+	name = "Apartment_bar"
+	mappath = '_maps/splurt_maps/templates/hilbertshotel_templates/apartment_bar.dmm'
+
+/datum/map_template/hilbertshotel/apartment/garden
+	name = "Apartment_garden"
+	mappath = '_maps/splurt_maps/templates/hilbertshotel_templates/apartment_garden.dmm'
+
+/datum/map_template/hilbertshotel/apartment/sauna
+	name = "Apartment_sauna"
+	mappath = '_maps/splurt_maps/templates/hilbertshotel_templates/apartment_sauna.dmm'

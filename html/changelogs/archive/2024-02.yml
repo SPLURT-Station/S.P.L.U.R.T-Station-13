@@ -1,0 +1,63 @@
+2024-02-02:
+  Chlorotrifluoride:
+  - imageadd: added two new eyes, "wide" and "big"
+  miguelop1:
+  - rscadd: Added new epic emote (*mew)
+2024-02-05:
+  CEO of Mememotes:
+  - rscadd: 'Added attorney-flavored emotes for when you REALLY need to throw an objection:
+      *objection, *holdit, *takethat (incl. *objection0 which is without voice. You
+      can set custom catchphrase by writing text after the objection emotes or similar,
+      but it will be always lower-case). Plus *realize, *nani, *smirk2, *sl@ves, *assback,
+      *sorryfor (gachis) and *2099 (if - god forbid - a canon event happens).'
+2024-02-15:
+  ariaworld:
+  - rscdel: Old lavaland_old.dmm file (unused, bad practice), rename lavaland_novaya.dmm
+      to Lavaland.dmm, as it includes Xenoarcheology on it's 2nd Z-Level.
+  - refactor: Welder tank explosion code, to stop infinitely-looping null explosions
+      and therefore spam-log for admins.
+2024-02-16:
+  ariaworld:
+  - tweak: Stop Cryptocurrency miners from beeping every second.
+  - rscadd: Ports Sleep healing from TG (doesn't replace medicine, slow, works when
+      character is above 75% health and amplified by conditions such as having a bed
+      and a bedsheet / chairs and tables work, albeit give a lesser bonus).
+  - rscadd: Restorative Metabolism quirk (also works for robotic biotypes, except
+      for healing corruption, for balance purposes).
+  - rscadd: Breathless quirk (took away from undead).
+  - rscadd: 'Buns of Thunder quirk: makes your butt extremely satisfying to smack,
+      as well as dealing some stamina damage (which has a cooldown). Ported from CB
+      and made even better with SPLURT love.'
+  - rscadd: Reset Layer Priority button in IC tab.
+  - tweak: You can now layershift from -26 to +26, and easily reset the layer back
+      to 0. This is very useful for ERP, especially with people who are laying down
+      (their layer is set to -21).
+  - balance: Undead quirk is available again, no longer has cold resistance, OP regeneration
+      and no-breath.
+  - balance: Movement and niche quirks such as Freerunner, Quick Step, Empath, and
+      Skittish's cost have been reduced, because of their value-to-cost ratio.
+  - tweak: 'Body Morpher quirk: tweak placement of update_body() calls.'
+  - tweak: Voracious quirk description now tells you that you won't be sad because
+      of fat. Incubus and Succubus users don't suffer the drawbacks of being fat,
+      but can still appear so on examine (360 units of cum per orgasm instantly made
+      them obese).
+  - tweak: Bloodsucker Fledgeling can now revive outside of coffins, and the quirk
+      has been moved to good.dm , the revival ability was quite useless, and is actually
+      balanced as it dangerously sets the user's nutrition back to 0, and contains
+      many checks for it's use.
+  - bugfix: Alot text warnings and mood events and refactor some quirk on-examine
+      process names.
+  - tweak: Custom material tiles now show the "Material" prefix before their crafting
+      recipe, to avoid confusion.
+  rin1l1:
+  - rscadd: Fermi expansion chems (breast/penis/butt) to universal genital fluid whitelist
+  - rscadd: Fermi reduction chems to universal genital fluid whitelist
+  - rscadd: AphrodisiacPlus (Hexacrocin) to universal genital fluid whitelist
+2024-02-28:
+  CSDSP:
+  - tweak: Allow custom shuttles to move after round end
+  - tweak: Allow navigation consoles to see gigabeacons in CentCom after round end
+  ariaworld:
+  - tweak: Updates headshot input box to inform on how to make Discord links work.
+  - rscdel: Removed unused and abandoned Extools from ref-tracking to allow Coders
+      to go through reference tracking with less hurdles.

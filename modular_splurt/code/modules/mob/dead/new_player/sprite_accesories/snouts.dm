@@ -244,6 +244,12 @@
 	icon_state = "slooglips"
 	matrixed_sections = MATRIX_RED_GREEN
 
+/datum/sprite_accessory/snouts/mam_snouts/rodent_thick
+	name = "Rodent (Thick)"
+	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'
+	icon_state = "rodentthick"
+	matrixed_sections = MATRIX_RED_GREEN
+
 /datum/sprite_accessory/snouts/mam_snouts/tajaran
 	name = "Tajaran"
 	icon = 'modular_splurt/icons/mob/mam_snouts.dmi'

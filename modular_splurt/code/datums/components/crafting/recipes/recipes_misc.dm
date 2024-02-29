@@ -269,3 +269,15 @@
 	subcategory = CAT_MISCELLANEOUS
 	category = CAT_MISCELLANEOUS
 	result = /obj/item/cushion/silk
+
+// TOOLS
+/datum/crafting_recipe/igniter
+	name = "Igniter"
+	result = /obj/item/assembly/igniter
+	reqs = list(/obj/item/stack/sheet/metal = 1,
+				/obj/item/stack/rods = 1
+				)
+	tools = list(TOOL_SCREWDRIVER)
+	time = 30
+	subcategory = CAT_TOOL
+	category = CAT_MISCELLANEOUS

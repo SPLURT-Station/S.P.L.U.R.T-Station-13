@@ -17,6 +17,7 @@ GLOBAL_LIST_INIT(modular_ui_styles, list(
 	'icons/mob/screen_slimecore.dmi' = 'modular_sand/icons/mob/screen_slimecore.dmi',
 	'icons/mob/screen_operative.dmi' = 'modular_sand/icons/mob/screen_operative.dmi',
 	'icons/mob/screen_clockwork.dmi' = 'modular_sand/icons/mob/screen_clockwork.dmi',
+	'icons/mob/screen_trasenknox.dmi' = 'modular_sand/icons/mob/screen_trasenknox.dmi',
 	'modular_sand/icons/mob/screen_liteweb.dmi' = 'modular_sand/icons/mob/screen_liteweb.dmi'
 ))
 

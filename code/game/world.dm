@@ -14,9 +14,6 @@ GLOBAL_LIST(topic_status_cache)
 		call(debug_server, "auxtools_init")()
 		enable_debugging()
 	AUXTOOLS_CHECK(AUXMOS)
-#ifdef EXTOOLS_REFERENCE_TRACKING
-	enable_reference_tracking()
-#endif
 	world.Profile(PROFILE_START)
 	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
 

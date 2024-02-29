@@ -30,22 +30,12 @@
 	hidden = TRUE
 	experimental = TRUE
 
-/datum/techweb_node/rolling_table
-	id = "rolling_table"
-	display_name = "Advanced Wheel Applications"
-	description = "Adding wheels to things can lead to extremely beneficial outcomes."
+/datum/techweb_node/bepis_miscellaneous
+	id = "bepis_miscellaneous"
+	display_name = "Miscellaneous B.E.P.I.S. Technology"
+	description = "A bunch of abandoned technology that might have never seen the light of day."
 	prereq_ids = list("base")
-	design_ids = list("rolling_table")
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-	hidden = TRUE
-	experimental = TRUE
-
-/datum/techweb_node/Mauna_Mug
-	id = "mauna_mug"
-	display_name = "Mauna Mug"
-	description = "A bored scientist was thinking to himself for very long...and then realized his coffee got cold! He made this invention to solve this extreme problem."
-	prereq_ids = list("base")
-	design_ids = list("mauna_mug")
+	design_ids = list("rolling_table","mauna_mug")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	hidden = TRUE
 	experimental = TRUE

@@ -46,6 +46,15 @@
 /turf/closed/indestructible/singularity_act()
 	return
 
+/turf/closed/indestructible/wall
+	name = "wall"
+	desc = "A wall with metal plating. Tough."
+	icon = 'icons/turf/walls/wall.dmi'
+	icon_state = "wall"
+	baseturfs = /turf/closed/indestructible/wall
+	smooth = SMOOTH_TRUE
+	canSmoothWith = list(/obj/structure/falsewall, /turf/closed/wall, /turf/closed/indestructible/wall)
+
 /turf/closed/indestructible/oldshuttle
 	name = "strange shuttle wall"
 	icon = 'icons/turf/shuttleold.dmi'

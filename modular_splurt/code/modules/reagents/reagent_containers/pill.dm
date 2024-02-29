@@ -38,6 +38,12 @@
 	list_reagents = list(/datum/reagent/drug/genital_stimulator/breast_buzzer = 5)
 	icon_state = "pill15"
 
+/obj/item/reagent_containers/pill/vaginal_vigour
+	name = "vaginal vigour pill"
+	desc = "Significantly increases arousal gain from stimulation to the user's vagina."
+	list_reagents = list(/datum/reagent/drug/genital_stimulator/vaginal_vigour = 5)
+	icon_state = "pill15"
+
 /obj/item/reagent_containers/pill/peen_pop
 	name = "peen pop pill"
 	desc = "Significantly increases arousal gain from stimulation to the user's penis."

@@ -338,6 +338,7 @@
 		return
 	var/mob/living/silicon/S = usr
 	S.toggle_sensors()
+
 /atom/movable/screen/robot/modPC
 	name = "Modular Interface"
 	icon_state = "template"

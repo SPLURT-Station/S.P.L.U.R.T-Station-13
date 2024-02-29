@@ -240,6 +240,8 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 	/// List of family heirlooms this species can get with the family heirloom quirk. List of types.
 	var/list/family_heirlooms
 
+	COOLDOWN_DECLARE(ass) // SPLURT ADDITION: ASS-SMACK COOLDOWN
+
 ///////////
 // PROCS //
 ///////////
@@ -1591,7 +1593,7 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 	//The fucking TRAIT_FAT mutation is the dumbest shit ever. It makes the code so difficult to work with
 	if(HAS_TRAIT(H, TRAIT_FAT))//I share your pain, past coder.
 		if(H.overeatduration < 100)
-			to_chat(H, "<span class='notice'>You feel fit again!</span>")
+			to_chat(H, span_notice("You feel fit again!"))
 			REMOVE_TRAIT(H, TRAIT_FAT, OBESITY)
 			H.remove_movespeed_modifier(/datum/movespeed_modifier/obesity)
 			H.update_inv_w_uniform()
@@ -1602,8 +1604,10 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 			//
 			H.update_inv_wear_suit()
 	else
+		if(HAS_TRAIT(H, TRAIT_INCUBUS || TRAIT_SUCCUBUS))
+			return //SPLURT EDIT: Incubi and succubi don't get fat drawbacks (but can still be seen on examine)
 		if(H.overeatduration >= 100)
-			to_chat(H, "<span class='danger'>You suddenly feel blubbery!</span>")
+			to_chat(H, span_danger("You suddenly feel blubbery!"))
 			ADD_TRAIT(H, TRAIT_FAT, OBESITY)
 			H.add_movespeed_modifier(/datum/movespeed_modifier/obesity)
 			H.update_inv_w_uniform()
@@ -1890,11 +1894,11 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 	var/target_aiming_for_groin = target.zone_selected == "groin"
 
 	if(target.check_martial_melee_block()) //END EDIT
-		target.visible_message("<span class='warning'>[target] blocks [user]'s disarm attempt!</span>", target = user, \
-			target_message = "<span class='warning'>[target] blocks your disarm attempt!</span>")
+		target.visible_message(span_warning("[target] blocks [user]'s disarm attempt!"), target = user, \
+			target_message = span_warning("[target] blocks your disarm attempt!"))
 		return FALSE
 	if(IS_STAMCRIT(user))
-		to_chat(user, "<span class='warning'>You're too exhausted!</span>")
+		to_chat(user, span_warning("You're too exhausted!"))
 		return FALSE
 
 	else if(aim_for_mouth && ( target_on_help || target_restrained || target_aiming_for_mouth))
@@ -1903,9 +1907,9 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 		playsound(target.loc, 'sound/weapons/slap.ogg', 50, 1, -1)
 
 		target.visible_message(\
-			"<span class='danger'>\The [user] slaps [user == target ? "[user.p_them()]self" : "\the [target]"] in the face!</span>",\
-			"<span class='notice'>[user] slaps you in the face! </span>",\
-			"You hear a slap.", target = user, target_message = "<span class='notice'>You slap [user == target ? "yourself" : "\the [target]"] in the face! </span>")
+			span_danger("\The [user] slaps [user == target ? "[user.p_them()]self" : "\the [target]"] in the face!"),\
+			span_notice("[user] slaps you in the face!"),\
+			"You hear a slap.", target = user, target_message = span_notice("You slap [user == target ? "yourself" : "\the [target]"] in the face!"))
 		user.do_attack_animation(target, ATTACK_EFFECT_FACE_SLAP)
 		if (!HAS_TRAIT(target, TRAIT_PERMABONER))
 			stop_wagging_tail(target)
@@ -1922,8 +1926,8 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 		if(HAS_TRAIT(target, TRAIT_STEEL_ASS))
 			user.adjustStaminaLoss(50)
 			user.visible_message(\
-				"<span class='danger'>\The [user] slaps \the [target]'s ass, but their hand bounces off like they hit metal!</span>",\
-				"<span class='danger'>You slap [user == target ? "your" : "\the [target]'s"] ass, but feel an intense amount of pain as you realise their buns are harder than steel!</span>",\
+				span_danger("\The [user] slaps \the [target]'s ass, but their hand bounces off like they hit metal!"),\
+				span_danger("You slap [user == target ? "your" : "\the [target]'s"] ass, but feel an intense amount of pain as you realise their buns are harder than steel!"),\
 				"You hear a slap."
 			)
 			var/list/ouchies = list(
@@ -1933,7 +1937,34 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 			playsound(target.loc, pick(ouchies), 50, 1, -1)
 			user.emote("scream")
 			return FALSE
-
+		//SPLURT ADDITION START
+		if(HAS_TRAIT(target, TRAIT_JIGGLY_ASS))
+			if(!COOLDOWN_FINISHED(src, ass))
+				if(user == target)
+					to_chat(user, span_alert("Your butt is still [pick("rippling","jiggling","sloshing","clapping","wobbling")] about way too much to get a good smack!"))
+				else
+					to_chat(user, span_alert("[target]'s big butt is still [pick("rippling","jiggling","sloshing","clapping","wobbling")] about way too much to get a good smack!"))
+			else
+				COOLDOWN_START(src, ass, 5 SECONDS)
+				if(user == target)
+					playsound(target.loc, 'sound/weapons/slap.ogg', 50, FALSE, -1) // deep bassy butt
+					user.adjustStaminaLoss(25)
+					user.visible_message(
+						span_notice("[user] gives [user.p_their()] butt a smack!"),
+						span_lewd("You give your big fat butt a smack! It [pick("ripples","jiggles","sloshes","claps","wobbles")] about and throws you off balance!"),
+					)
+					return
+				else
+					SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "ass", /datum/mood_event/butt_slap)
+					SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "ass", /datum/mood_event/butt_slapped)
+					playsound(target.loc, 'sound/weapons/slap.ogg', 50, FALSE, -1) // deep bassy butt
+					target.adjustStaminaLoss(25)
+					user.visible_message(
+						span_notice("\The [user] slaps [target]'s butt!"),
+						target = target, 
+						target_message = span_lewd("[user] smacks your big fat butt and sends it [pick("rippling","jiggling","sloshing","clapping","wobbling")]! It [pick("ripples","jiggles","sloshes","claps","wobbles")] about and throws you off balance!"))
+				return FALSE
+		//SPLURT ADDITION END
 		target.adjust_arousal(20,"masochism", maso = TRUE)
 		if (ishuman(target) && HAS_TRAIT(target, TRAIT_MASO) && target.has_dna() && prob(10))
 			target.mob_climax(forced_climax=TRUE, cause = "masochism")
@@ -1941,9 +1972,9 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 			stop_wagging_tail(target)
 		playsound(target.loc, 'sound/weapons/slap.ogg', 50, 1, -1)
 		target.visible_message(\
-			"<span class='danger'>\The [user] slaps [user == target ? "[user.p_their()] own" : "\the [target]'s"] ass!</span>",\
-			"<span class='notice'>[user] slaps your ass! </span>",\
-			"You hear a slap.", target = user, target_message = "<span class='notice'>You slap [user == target ? "your own" : "\the [target]'s"] ass! </span>")
+			span_danger("\The [user] slaps [user == target ? "[user.p_their()] own" : "\the [target]'s"] ass!"),\
+			span_notice("[user] slaps your ass!"),\
+			"You hear a slap.", target = user, target_message = span_notice("You slap [user == target ? "your own" : "\the [target]'s"] ass!"))
 
 		return FALSE
 

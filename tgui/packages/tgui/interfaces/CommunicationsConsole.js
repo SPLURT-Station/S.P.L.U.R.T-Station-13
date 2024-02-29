@@ -678,6 +678,7 @@ const PageMain = (props, context) => {
 const PageMessages = (props, context) => {
   const { act, data } = useBackend(context);
   const messages = data.messages || [];
+  const { printerCooldown } = data;
 
   const children = [];
 
@@ -704,10 +705,15 @@ const PageMessages = (props, context) => {
               content={answer}
               color={message.answered === answerIndex + 1 ? "good" : undefined}
               key={answerIndex}
-              onClick={message.answered ? undefined : () => act("answerMessage", {
-                message: parseInt(messageIndex, 10) + 1,
-                answer: answerIndex + 1,
-              })}
+              onClick={
+                message.answered
+                  ? undefined
+                  : () =>
+                    act("answerMessage", {
+                      message: parseInt(messageIndex, 10) + 1,
+                      answer: answerIndex + 1,
+                    })
+              }
             />
           ))}
         </Box>
@@ -723,14 +729,24 @@ const PageMessages = (props, context) => {
         title={message.title}
         key={messageIndex}
         buttons={(
-          <Button.Confirm
-            icon="trash"
-            content="Delete"
-            color="red"
-            onClick={() => act("deleteMessage", {
-              message: messageIndex + 1,
-            })}
-          />
+          <>
+            <Button
+              icon="print"
+              content="Print"
+              disabled={printerCooldown}
+              onClick={() => act("printMessage", {
+                message: parseInt(messageIndex, 10) + 1,
+              })}
+            />
+            <Button.Confirm
+              icon="trash"
+              content="Delete"
+              color="red"
+              onClick={() => act("deleteMessage", {
+                message: parseInt(messageIndex, 10) + 1,
+              })}
+            />
+          </>
         )}>
         <Box
           dangerouslySetInnerHTML={textHtml} />
@@ -761,7 +777,7 @@ export const CommunicationsConsole = (props, context) => {
 
   return (
     <Window
-      width={400}
+      width={450}
       height={650}
       theme={emagged ? "syndicate" : undefined}>
       <Window.Content overflow="auto">

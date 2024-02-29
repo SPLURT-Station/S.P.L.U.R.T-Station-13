@@ -657,7 +657,6 @@
 					makeNewConstruct(/mob/living/simple_animal/hostile/construct/builder, candidate, user, 0, T)
 			SEND_SOUND(user, sound('sound/effects/magic.ogg',0,1,25))
 			uses--
-			candidate.mmi = null
 			qdel(candidate)
 		else
 			candidate.color = prev_color

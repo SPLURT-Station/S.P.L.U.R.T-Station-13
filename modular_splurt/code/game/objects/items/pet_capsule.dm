@@ -5,39 +5,73 @@
 	icon = 'modular_splurt/icons/obj/pet_capsule.dmi'
 	icon_state = "pet_capsule_closed"
 	w_class = WEIGHT_CLASS_TINY
+	var/open_state = "pet_capsule_opened"
+	var/closed_state = "pet_capsule_closed"
 	var/mob/living/simple_animal/selected_pet
 	var/mob/living/simple_animal/stored_pet
 	var/new_name = "pet"
 	var/pet_picked = FALSE
 	var/open = FALSE
 	var/mob/owner
+	var/alphaVariants = FALSE
+	var/list/pet_icons
+
+/obj/item/pet_capsule/alpha_capsule
+	name = "alpha pet capsule"
+	desc = "A bluespace capsule used to store pets of the more... dangerous variety. This one seems to have a tighter lock than usual!"
+	icon = 'modular_splurt/icons/obj/pet_capsule.dmi'
+	icon_state = "alpha_pet_capsule_closed"
+	open_state = "alpha_pet_capsule_opened"
+	closed_state = "alpha_pet_capsule_closed"
+	alphaVariants = TRUE
+
+/obj/item/pet_capsule/proc/InitializeSelection()
+	pet_icons = list(
+		"Femclaw" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "femclaw"),
+		"Deathclaw" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "newclaw"),
+		"Carp" = image(icon = 'icons/mob/animal.dmi', icon_state = "carp"),
+		"Spider" = image(icon = 'icons/mob/animal.dmi', icon_state = "guard"))
+
+/obj/item/pet_capsule/alpha_capsule/InitializeSelection()
+	pet_icons = list(
+		"Femclaw" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "femclaw"),
+		"Deathclaw" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "newclaw"),
+		"Carp" = image(icon = 'icons/mob/animal.dmi', icon_state = "carp"),
+		"Spider" = image(icon = 'icons/mob/animal.dmi', icon_state = "guard"),
+		"Mommyclaw" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "mommyclaw"),
+		"Alphaclaw" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "alphaclaw"))
+
+/obj/item/pet_capsule/Initialize(mapload)
+	. = ..()
+	InitializeSelection()
 
 /obj/item/pet_capsule/proc/pet_capsule_triggered(atom/location_atom, is_in_hand = FALSE, mob/user = null)
 	//If pet has not been chosen yet
 	if (!pet_picked && is_in_hand && user != null)
-		pet_picked = TRUE;
+
 
 		new_name = input(user, "New name :", "Rename your pet(Once per shift!)")
 
-		//radial menu appears to select one of the avaliable pets & store it in a template
-		var/static/list/pet_icons
-		if(!pet_icons)
-			pet_icons = list(
-			"Femclaw" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "femclaw"),
-			"Deathclaw" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "newclaw"),
-			"Carp" = image(icon = 'icons/mob/animal.dmi', icon_state = "carp"),
-			"Spider" = image(icon = 'icons/mob/animal.dmi', icon_state = "guard")
-		)
 		var/selected_icon = show_radial_menu(loc, loc , pet_icons,  radius = 42, require_near = TRUE)
 		switch(selected_icon)
 			if("Femclaw")
 				selected_pet = /mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/pet_femclaw
+				pet_picked = TRUE;
 			if("Deathclaw")
 				selected_pet = /mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/pet_deathclaw
+				pet_picked = TRUE;
 			if("Carp")
 				selected_pet = /mob/living/simple_animal/hostile/carp/pet_carp
+				pet_picked = TRUE;
 			if("Spider")
 				selected_pet = /mob/living/simple_animal/hostile/poison/giant_spider/pet_spider
+				pet_picked = TRUE;
+			if("Mommyclaw")
+				selected_pet = /mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/pet_femclaw/pet_mommyclaw
+				pet_picked = TRUE;
+			if("Alphaclaw")
+				selected_pet = /mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/pet_deathclaw/pet_alphaclaw
+				pet_picked = TRUE;
 			else
 				pet_picked = FALSE;
 				return FALSE
@@ -53,7 +87,7 @@
 	//Make pet appear if thrown on the floor
 	else if (!open && !is_in_hand && pet_picked)
 		open = TRUE
-		icon_state = "pet_capsule_opened"
+		icon_state = open_state
 		var/turf/targetloc = location_atom
 		stored_pet = new selected_pet(targetloc) //stores reference to the pet to be able to do the recall
 		stored_pet.name = new_name //Apply the customized name
@@ -76,7 +110,7 @@
 	//recall pet
 	else if (open && stored_pet != null)
 		open = FALSE
-		icon_state = "pet_capsule_closed"
+		icon_state = closed_state
 		loc.visible_message("<span class='warning'>\The [src] closes, [stored_pet.name] being recalled inside of it!</span>")
 		del(stored_pet)
 

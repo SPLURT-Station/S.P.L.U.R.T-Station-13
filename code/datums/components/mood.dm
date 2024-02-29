@@ -329,7 +329,9 @@
 		return FALSE //no mood events for nutrition
 	switch(L.nutrition)
 		if(NUTRITION_LEVEL_FULL to INFINITY)
-			add_event(null, "nutrition", /datum/mood_event/fat)
+			if(!(HAS_TRAIT(L, TRAIT_INCUBUS) || HAS_TRAIT(L, TRAIT_SUCCUBUS)))
+			//No bad fat mood for incubi/succubi, voracious gets a positive mood in needs_events.dm
+				add_event(null, "nutrition", /datum/mood_event/fat)
 		if(NUTRITION_LEVEL_WELL_FED to NUTRITION_LEVEL_FULL)
 			add_event(null, "nutrition", /datum/mood_event/wellfed)
 		if(NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)

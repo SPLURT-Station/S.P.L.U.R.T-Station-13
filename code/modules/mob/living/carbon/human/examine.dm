@@ -210,8 +210,9 @@
 		
 	//SPLURT edit
 	for(var/obj/item/organ/genital/G in internal_organs)
-		if(CHECK_BITFIELD(G.genital_flags, GENITAL_CHASTENED))
-			. += "[t_He] [t_has] \a chastity cage covering [t_his] [G.name]"
+		if(istype(G) && G.is_exposed())
+			if(CHECK_BITFIELD(G.genital_flags, GENITAL_CHASTENED))
+				. += "[t_He] [t_has] \a chastity cage covering [t_his] [G.name]."
 	//
 	var/list/missing = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 	var/list/disabled = list()

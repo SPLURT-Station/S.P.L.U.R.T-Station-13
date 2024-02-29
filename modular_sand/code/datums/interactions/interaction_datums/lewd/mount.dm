@@ -1,9 +1,8 @@
 /datum/interaction/lewd/mount
 	description = "Mount with your pussy."
 	interaction_sound = null
-	require_user_vagina = REQUIRE_EXPOSED
-	require_target_penis = REQUIRE_EXPOSED
-	max_distance = 1
+	required_from_user_exposed = INTERACTION_REQUIRE_VAGINA
+	required_from_target_exposed = INTERACTION_REQUIRE_PENIS
 
 /datum/interaction/lewd/mount/display_interaction(mob/living/user, mob/living/partner)
 	var/message
@@ -12,7 +11,7 @@
 
 	if(partner.is_fucking(user, CUM_TARGET_VAGINA))
 		message = "[pick("rides \the <b>[partner]</b>'s [genital_name].",
-			"forces <b>[partner]</b>'s [genital_name] on [u_His] pussy")]"
+			"forces <b>[partner]</b>'s [genital_name] on [u_His] pussy.")]"
 	else
 		message = "slides [u_His] pussy onto \the <b>[partner]</b>'s [genital_name]."
 		partner.set_is_fucking(user, CUM_TARGET_VAGINA, partner.getorganslot(ORGAN_SLOT_PENIS))
@@ -27,9 +26,8 @@
 /datum/interaction/lewd/mountass
 	description = "Mount with your ass."
 	interaction_sound = null
-	require_user_anus = REQUIRE_EXPOSED
-	require_target_penis = REQUIRE_EXPOSED
-	max_distance = 1
+	required_from_user_exposed = INTERACTION_REQUIRE_ANUS
+	required_from_target_exposed = INTERACTION_REQUIRE_PENIS
 
 /datum/interaction/lewd/mountass/display_interaction(mob/living/user, mob/living/partner)
 	var/message
@@ -38,7 +36,7 @@
 
 	if(partner.is_fucking(user, CUM_TARGET_ANUS))
 		message = "[pick("rides \the <b>[partner]</b>'s [genital_name].",
-			"forces <b>[partner]</b>'s [genital_name] on [u_His] ass")]"
+			"forces <b>[partner]</b>'s [genital_name] on [u_His] ass.")]"
 	else
 		message = "lowers [u_His] ass onto \the <b>[partner]</b>'s [genital_name]."
 		partner.set_is_fucking(user, CUM_TARGET_ANUS, partner.getorganslot(ORGAN_SLOT_PENIS))
@@ -53,9 +51,8 @@
 /datum/interaction/lewd/mountface
 	description = "Ass to face."
 	interaction_sound = null
-	require_target_mouth = TRUE
-	require_user_anus = REQUIRE_EXPOSED
-	max_distance = 1
+	required_from_user_exposed = INTERACTION_REQUIRE_ANUS
+	required_from_target = INTERACTION_REQUIRE_MOUTH
 
 /datum/interaction/lewd/mountface/display_interaction(mob/living/user, mob/living/partner)
 	var/message
@@ -68,7 +65,7 @@
 	else
 		message = "[pick(
 			"grabs the back of \the <b>[partner]</b>'s head and forces it into [u_His] asscheeks.",
-			"squats down and plants [u_His] ass right on \the <b>[partner]</b>'s face")]"
+			"squats down and plants [u_His] ass right on \the <b>[partner]</b>'s face.")]"
 		user.set_is_fucking(partner, GRINDING_FACE_WITH_ANUS, null)
 
 	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/squelch1.ogg',
@@ -78,10 +75,9 @@
 	user.handle_post_sex(LOW_LUST, null, partner)
 
 /datum/interaction/lewd/thighs
-	description = "Smother them using your %COCK%."
-	max_distance = 1
-	require_user_penis = REQUIRE_EXPOSED
-	require_target_mouth = TRUE
+	description = "Smother them using your penis."
+	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
+	required_from_target = INTERACTION_REQUIRE_MOUTH
 	interaction_sound = null
 	write_log_user = "thigh-trapped (penis)"
 	write_log_target = "was smothered (penis) by"
@@ -89,8 +85,7 @@
 
 /datum/interaction/lewd/thighs/vagina
 	description = "Smother them using your vagina."
-	require_user_penis = REQUIRE_NONE
-	require_user_vagina = REQUIRE_EXPOSED
+	required_from_user_exposed = INTERACTION_REQUIRE_VAGINA
 	write_log_user = "thigh-trapped (vagina)"
 	write_log_target = "was smothered (vagina) by"
 	fucktarget = "vagina"

@@ -1,15 +1,13 @@
 /datum/interaction/lewd/facefuck
-	description = "Fuck their mouth using your %COCK%."
+	description = "Fuck their mouth using your cock."
 	interaction_sound = null
-	require_target_mouth = TRUE
-	require_user_penis = REQUIRE_EXPOSED
-	max_distance = 1
+	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
+	required_from_target = INTERACTION_REQUIRE_MOUTH
 	var/fucktarget = "penis"
 
 /datum/interaction/lewd/facefuck/vag
-	description = "Fuck their mouth using your vagina."
-	require_user_penis = null
-	require_user_vagina = REQUIRE_EXPOSED
+	description = "Fuck their mouth using your vagina"
+	required_from_user_exposed = INTERACTION_REQUIRE_VAGINA
 	fucktarget = "vagina"
 
 /datum/interaction/lewd/facefuck/display_interaction(mob/living/user, mob/living/partner)
@@ -20,7 +18,7 @@
 	var/u_His = user.p_their()
 	var/t_Him = partner.p_them()
 	var/t_Hes = partner.p_theyre()
-	
+
 	if(user.is_fucking(partner, CUM_TARGET_MOUTH))
 		var/improv = FALSE
 		switch(fucktarget)
@@ -88,9 +86,9 @@
 				if(user.has_penis() || user.has_strapon())
 					var/genital_name = user.get_penetrating_genital_name()
 					if(user.is_fucking(partner, CUM_TARGET_THROAT))
-						message = "retracts [u_His] [genital_name] from \the <b>[partner]</b>'s throat"
+						message = "retracts [u_His] [genital_name] from \the <b>[partner]</b>'s throat."
 					else
-						message = "shoves [u_His] [genital_name] into \the <b>[partner]</b>'s mouth"
+						message = "shoves [u_His] [genital_name] into \the <b>[partner]</b>'s mouth."
 				else
 					improv = TRUE
 		if(improv)
@@ -114,9 +112,8 @@
 /datum/interaction/lewd/throatfuck
 	description = "Fuck their throat. | Does oxy damage."
 	interaction_sound = null
-	require_user_penis = REQUIRE_EXPOSED
-	require_target_mouth = TRUE
-	max_distance = 1
+	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
+	required_from_target = INTERACTION_REQUIRE_MOUTH
 
 /datum/interaction/lewd/throatfuck/display_interaction(mob/living/user, mob/living/partner)
 	var/message
@@ -150,7 +147,7 @@
 			genital = check
 		user.set_is_fucking(partner, CUM_TARGET_THROAT, genital)
 	else
-		message = "forces [u_His] [genital_name] deep down \the <b>[partner]</b>'s throat"
+		message = "forces [u_His] [genital_name] deep down \the <b>[partner]</b>'s throat."
 		var/check = user.getorganslot(ORGAN_SLOT_PENIS)
 		if(check)
 			genital = check

@@ -26,15 +26,26 @@ SUBSYSTEM_DEF(interactions)
 /datum/controller/subsystem/interactions/Initialize(timeofday)
 	prepare_interactions()
 	prepare_blacklisted_mobs()
+	. = ..()
+	var/extra_info = "<font style='transform: translate(0%, -25%);'>↳</font> Loaded [LAZYLEN(interactions)] interactions!"
+	to_chat(world, span_boldannounce(extra_info))
+	log_subsystem(src, extra_info)
+
+/datum/controller/subsystem/interactions/stat_entry(msg)
+	msg += "|🖐:[LAZYLEN(interactions)]|"
+	msg += "🚫👨:[LAZYLEN(blacklisted_mobs)]"
 	return ..()
 
 /// Makes the interactions, they're also a global list because having it as a list and just hanging around there is stupid
 /datum/controller/subsystem/interactions/proc/prepare_interactions()
 	QDEL_NULL_LIST(interactions)
 	interactions = list()
-	for(var/itype in subtypesof(/datum/interaction))
-		var/datum/interaction/I = new itype()
-		interactions["[itype]"] = I
+	for(var/datum/interaction/interaction as anything in subtypesof(/datum/interaction))
+		// Basetype, do not create
+		if(!initial(interaction.description))
+			continue
+		interaction = new interaction()
+		interactions["[interaction.type]"] = interaction
 
 /// Blacklisting!
 /datum/controller/subsystem/interactions/proc/prepare_blacklisted_mobs()

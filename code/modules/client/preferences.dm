@@ -402,6 +402,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/egg_shell = "chicken"
 	//SPLURT END
 
+	var/loadout_errors = 0
+
 	var/silicon_lawset
 
 /datum/preferences/New(client/C)
@@ -518,12 +520,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				gear_points = CONFIG_GET(number/initial_gear_points)
 				var/list/chosen_gear = loadout_data["SAVE_[loadout_slot]"]
 				if(chosen_gear)
+					loadout_errors = 0
 					for(var/loadout_item in chosen_gear)
 						var/loadout_item_path = loadout_item[LOADOUT_ITEM]
-						if(loadout_item_path)
-							var/datum/gear/loadout_gear = text2path(loadout_item_path)
-							if(loadout_gear)
-								gear_points -= initial(loadout_gear.cost)
+						if(!loadout_item_path)
+							loadout_errors++
+							continue
+						var/datum/gear/loadout_gear = text2path(loadout_item_path)
+						if(!loadout_gear)
+							loadout_errors++
+							continue
+						gear_points -= initial(loadout_gear.cost)
 				else
 					chosen_gear = list()
 
@@ -681,7 +688,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 					dat += "<h2>Body</h2>"
 					dat += "<b>Gender:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=gender;task=input'>[gender == MALE ? "Male" : (gender == FEMALE ? "Female" : (gender == PLURAL ? "Non-binary" : "Object"))]</a><BR>"
-					if(gender != NEUTER && pref_species.sexes)
+					if(pref_species.sexes)
 						dat += "<b>Body Model:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=body_model'>[features["body_model"] == MALE ? "Masculine" : "Feminine"]</a><BR>"
 					dat += "<b>Limb Modification:</b><BR>"
 					dat += "<a href='?_src_=prefs;preference=modify_limbs;task=input'>Modify Limbs</a><BR>"
@@ -1217,9 +1224,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							else
 								dat += " |"
 							if(category == gear_category)
-								dat += " <span class='linkOn'>[category]</span> "
+								dat += " <span class='linkOn'>[(category == LOADOUT_CATEGORY_ERROR && loadout_errors) ? "[category] (<font color=\"red\">!</font>)" : category]</span> "
 							else
-								dat += " <a href='?_src_=prefs;preference=gear;select_category=[html_encode(category)]'>[category]</a> "
+								dat += " <a href='?_src_=prefs;preference=gear;select_category=[html_encode(category)]'>[(category == LOADOUT_CATEGORY_ERROR && loadout_errors) ? "[category] (<font color=\"red\">!</font>)" : category]</a> "
 
 						dat += "</b></center></td></tr>"
 						dat += "<tr><td colspan=4><hr></td></tr>"
@@ -1245,74 +1252,98 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 									dat += " <a href='?_src_=prefs;preference=gear;select_subcategory=[html_encode(subcategory)]'>[subcategory]</a> "
 							dat += "</b></center></td></tr>"
 
-							dat += "<table align='center'; width='100%'; height='100%'; style='background-color:#13171C'>"
-							dat += "<center>"
-							dat += "<tr width=10% style='vertical-align:top;'><td width=15%><b>Name</b></td>"
-							dat += "<td style='vertical-align:top'><b>Cost</b></td>"
-							dat += "<td width=10%><font size=2><b>Restrictions</b></font></td>"
-							dat += "<td width=80%><font size=2><b>Description</b></font></td></tr>"
-							dat += "</center>"
-
 							var/even = FALSE
-							for(var/name in GLOB.loadout_items[gear_category][gear_subcategory])
-								var/datum/gear/gear = GLOB.loadout_items[gear_category][gear_subcategory][name]
-								var/donoritem = gear.donoritem
-								if(donoritem && !gear.donator_ckey_check(user.ckey))
-									continue
-								var/background_cl = "#23273C"
-								if(even)
-									background_cl = "#17191C"
-								even = !even
-								var/class_link = ""
-								var/list/loadout_item = has_loadout_gear(loadout_slot, "[gear.type]")
-								var/extra_loadout_data = ""
-								if(loadout_item)
-									class_link = "style='white-space:normal;' class='linkOn' href='?_src_=prefs;preference=gear;toggle_gear_path=[html_encode(name)];toggle_gear=0'"
-									if(gear.loadout_flags & LOADOUT_CAN_COLOR_POLYCHROMIC)
-										extra_loadout_data += "<BR><a href='?_src_=prefs;preference=gear;loadout_color_polychromic=1;loadout_gear_name=[html_encode(gear.name)];'>Color</a>"
-										for(var/loadout_color in loadout_item[LOADOUT_COLOR])
-											extra_loadout_data += "<span style='border: 1px solid #161616; background-color: [loadout_color];'><font color='[color_hex2num(loadout_color) < 200 ? "FFFFFF" : "000000"]'>[loadout_color]</font></span>"
-									else
-										var/loadout_color_non_poly = "#FFFFFF"
-										if(length(loadout_item[LOADOUT_COLOR]))
-											loadout_color_non_poly = loadout_item[LOADOUT_COLOR][1]
-										extra_loadout_data += "<BR><a href='?_src_=prefs;preference=gear;loadout_color=1;loadout_gear_name=[html_encode(gear.name)];'>Color</a>"
-										extra_loadout_data += "<span style='border: 1px solid #161616; background-color: [loadout_color_non_poly];'><font color='[color_hex2num(loadout_color_non_poly) < 200 ? "FFFFFF" : "000000"]'>[loadout_color_non_poly]</font></span>"
-									if(gear.loadout_flags & LOADOUT_CAN_NAME)
-										extra_loadout_data += "<BR><a href='?_src_=prefs;preference=gear;loadout_rename=1;loadout_gear_name=[html_encode(gear.name)];'>Name</a> [loadout_item[LOADOUT_CUSTOM_NAME] ? loadout_item[LOADOUT_CUSTOM_NAME] : "N/A"]"
-									if(gear.loadout_flags & LOADOUT_CAN_DESCRIPTION)
-										extra_loadout_data += "<BR><a href='?_src_=prefs;preference=gear;loadout_redescribe=1;loadout_gear_name=[html_encode(gear.name)];'>Description</a>"
-								else if((gear_points - gear.cost) < 0)
-									class_link = "style='white-space:normal;' class='linkOff'"
-								else if(donoritem)
-									class_link = "style='white-space:normal;background:#ebc42e;' href='?_src_=prefs;preference=gear;toggle_gear_path=[html_encode(name)];toggle_gear=1'"
-								else if(!istype(gear, /datum/gear/unlockable) || can_use_unlockable(gear))
-									class_link = "style='white-space:normal;' href='?_src_=prefs;preference=gear;toggle_gear_path=[html_encode(name)];toggle_gear=1'"
-								else
-									class_link = "style='white-space:normal;background:#eb2e2e;' class='linkOff'"
-								dat += "<tr style='vertical-align:top; background-color: [background_cl];'><td width=15%><a [class_link]>[name]</a>[extra_loadout_data]</td>"
-								dat += "<td width = 5% style='vertical-align:top'>[gear.cost]</td><td>"
-								if(islist(gear.restricted_roles))
-									if(gear.restricted_roles.len)
-										if(gear.restricted_desc)
-											dat += "<font size=2>"
-											dat += gear.restricted_desc
-											dat += "</font>"
+							if(gear_category != LOADOUT_CATEGORY_ERROR)
+								dat += "<table align='center'; width='100%'; height='100%'; style='background-color:#13171C'>"
+								dat += "<center>"
+								dat += "<tr width=10% style='vertical-align:top;'><td width=15%><b>Name</b></td>"
+								dat += "<td style='vertical-align:top'><b>Cost</b></td>"
+								dat += "<td width=10%><font size=2><b>Restrictions</b></font></td>"
+								dat += "<td width=80%><font size=2><b>Description</b></font></td></tr>"
+								dat += "</center>"
+
+								for(var/name in GLOB.loadout_items[gear_category][gear_subcategory])
+									var/datum/gear/gear = GLOB.loadout_items[gear_category][gear_subcategory][name]
+									var/donoritem = gear.donoritem
+									if(donoritem && !gear.donator_ckey_check(user.ckey))
+										continue
+									var/background_cl = "#23273C"
+									if(even)
+										background_cl = "#17191C"
+									even = !even
+									var/class_link = ""
+									var/list/loadout_item = has_loadout_gear(loadout_slot, "[gear.type]")
+									var/extra_loadout_data = ""
+									if(loadout_item)
+										class_link = "style='white-space:normal;' class='linkOn' href='?_src_=prefs;preference=gear;toggle_gear_path=[html_encode(name)];toggle_gear=0'"
+										if(gear.loadout_flags & LOADOUT_CAN_COLOR_POLYCHROMIC)
+											extra_loadout_data += "<BR><a href='?_src_=prefs;preference=gear;loadout_color_polychromic=1;loadout_gear_name=[html_encode(gear.name)];'>Color</a>"
+											for(var/loadout_color in loadout_item[LOADOUT_COLOR])
+												extra_loadout_data += "<span style='border: 1px solid #161616; background-color: [loadout_color];'><font color='[color_hex2num(loadout_color) < 200 ? "FFFFFF" : "000000"]'>[loadout_color]</font></span>"
 										else
-											dat += "<font size=2>"
-											dat += gear.restricted_roles.Join(";")
-											dat += "</font>"
-								if(!istype(gear, /datum/gear/unlockable))
-									// the below line essentially means "if the loadout item is picked by the user and has a custom description, give it the custom description, otherwise give it the default description"
-									dat += "</td><td><font size=2><i>[loadout_item ? (loadout_item[LOADOUT_CUSTOM_DESCRIPTION] ? loadout_item[LOADOUT_CUSTOM_DESCRIPTION] : gear.description) : gear.description]</i></font></td></tr>"
-								else
-									//we add the user's progress to the description assuming they have progress
-									var/datum/gear/unlockable/unlockable = gear
-									var/progress_made = unlockable_loadout_data[unlockable.progress_key]
-									if(!progress_made)
-										progress_made = 0
-									dat += "</td><td><font size=2><i>[loadout_item ? (loadout_item[LOADOUT_CUSTOM_DESCRIPTION] ? loadout_item[LOADOUT_CUSTOM_DESCRIPTION] : gear.description) : gear.description] Progress: [min(progress_made, unlockable.progress_required)]/[unlockable.progress_required]</i></font></td></tr>"
-							dat += "</table>"
+											var/loadout_color_non_poly = "#FFFFFF"
+											if(length(loadout_item[LOADOUT_COLOR]))
+												loadout_color_non_poly = loadout_item[LOADOUT_COLOR][1]
+											extra_loadout_data += "<BR><a href='?_src_=prefs;preference=gear;loadout_color=1;loadout_gear_name=[html_encode(gear.name)];'>Color</a>"
+											extra_loadout_data += "<span style='border: 1px solid #161616; background-color: [loadout_color_non_poly];'><font color='[color_hex2num(loadout_color_non_poly) < 200 ? "FFFFFF" : "000000"]'>[loadout_color_non_poly]</font></span>"
+											extra_loadout_data += "<BR><a href='?_src_=prefs;preference=gear;loadout_color_HSV=1;loadout_gear_name=[html_encode(gear.name)];'>HSV Color</a>" // SPLURT EDIT
+										if(gear.loadout_flags & LOADOUT_CAN_NAME)
+											extra_loadout_data += "<BR><a href='?_src_=prefs;preference=gear;loadout_rename=1;loadout_gear_name=[html_encode(gear.name)];'>Name</a> [loadout_item[LOADOUT_CUSTOM_NAME] ? loadout_item[LOADOUT_CUSTOM_NAME] : "N/A"]"
+										if(gear.loadout_flags & LOADOUT_CAN_DESCRIPTION)
+											extra_loadout_data += "<BR><a href='?_src_=prefs;preference=gear;loadout_redescribe=1;loadout_gear_name=[html_encode(gear.name)];'>Description</a>"
+									else if((gear_points - gear.cost) < 0)
+										class_link = "style='white-space:normal;' class='linkOff'"
+									else if(donoritem)
+										class_link = "style='white-space:normal;background:#ebc42e;' href='?_src_=prefs;preference=gear;toggle_gear_path=[html_encode(name)];toggle_gear=1'"
+									else if(!istype(gear, /datum/gear/unlockable) || can_use_unlockable(gear))
+										class_link = "style='white-space:normal;' href='?_src_=prefs;preference=gear;toggle_gear_path=[html_encode(name)];toggle_gear=1'"
+									else
+										class_link = "style='white-space:normal;background:#eb2e2e;' class='linkOff'"
+									dat += "<tr style='vertical-align:top; background-color: [background_cl];'><td width=15%><a [class_link]>[name]</a>[extra_loadout_data]</td>"
+									dat += "<td width = 5% style='vertical-align:top'>[gear.cost]</td><td>"
+									if(islist(gear.restricted_roles))
+										if(gear.restricted_roles.len)
+											if(gear.restricted_desc)
+												dat += "<font size=2>"
+												dat += gear.restricted_desc
+												dat += "</font>"
+											else
+												dat += "<font size=2>"
+												dat += gear.restricted_roles.Join(";")
+												dat += "</font>"
+									if(!istype(gear, /datum/gear/unlockable))
+										// the below line essentially means "if the loadout item is picked by the user and has a custom description, give it the custom description, otherwise give it the default description"
+										dat += "</td><td><font size=2><i>[loadout_item ? (loadout_item[LOADOUT_CUSTOM_DESCRIPTION] ? loadout_item[LOADOUT_CUSTOM_DESCRIPTION] : gear.description) : gear.description]</i></font></td></tr>"
+									else
+										//we add the user's progress to the description assuming they have progress
+										var/datum/gear/unlockable/unlockable = gear
+										var/progress_made = unlockable_loadout_data[unlockable.progress_key]
+										if(!progress_made)
+											progress_made = 0
+										dat += "</td><td><font size=2><i>[loadout_item ? (loadout_item[LOADOUT_CUSTOM_DESCRIPTION] ? loadout_item[LOADOUT_CUSTOM_DESCRIPTION] : gear.description) : gear.description] Progress: [min(progress_made, unlockable.progress_required)]/[unlockable.progress_required]</i></font></td></tr>"
+								dat += "</table>"
+							else
+								dat += "<table align='center'; width='100%'; height='100%'; style='background-color:#13171C'>"
+								dat += "<center>"
+								dat += "<tr width=10% style='vertical-align:top;'><td width=15%><b>Item type</b></td>"
+								dat += "<td><font size=2><b>Data contained</b></font></td></tr>"
+								dat += "</center>"
+								var/list/sanitize_current_slot = loadout_data["SAVE_[loadout_slot]"]
+								for(var/list/entry in sanitize_current_slot)
+									var/test_item = entry["loadout_item"]
+									if(text2path(test_item))
+										continue
+									var/background_cl = "#23273C"
+									if(even)
+										background_cl = "#17191C"
+									even = !even
+									dat += "<tr style='vertical-align:top; background-color: [background_cl];'><td width=15%><a \
+										\"style='white-space:normal;' href='?_src_=prefs;preference=gear;clear_invalid_gear=[html_encode(test_item)];'\" \
+											>[test_item ? test_item : "no path!!?! Report to an admin!"]</a></td>"
+									dat += "<td style='vertical-align:top'>"
+									var/list/other_data = entry["loadout_item"] ? entry - "loadout_item" : entry
+									dat += json_encode(other_data)
+									dat += "</td></tr>"
 					dat += "</table>"
 		if(PREFERENCES_TAB) // Game Preferences
 			dat += "<center>"
@@ -1741,7 +1772,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
 		var/datum/job/lastJob
 
-		for(var/datum/job/job in sortList(SSjob.occupations, /proc/cmp_job_display_asc))
+		for(var/datum/job/job in sort_list(SSjob.occupations, /proc/cmp_job_display_asc))
 
 			index += 1
 			if((index >= limit) || (job.title in splitJobs))
@@ -2122,7 +2153,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					return
 				if(!toggle_language(lang))
 					return
-				language = sortList(language)
+				language = sort_list(language)
 			if("reset")
 				language = list()
 		SetLanguage(user)
@@ -2840,9 +2871,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(lust_tol)
 						lust_tolerance = clamp(lust_tol, 75, 200)
 				if("sexual_potency")
-					var/sexual_pot = input(user, "Set your sexual potency. \n(10 = minimum, 25 = maximum.)", "Character Preference", sexual_potency) as num|null
+					var/sexual_pot = input(user, "Set your sexual potency. \n(-1 = minimum, 25 = maximum.) This determines the number of times your character can orgasm before becoming impotent, use -1 for no impotency.", "Character Preference", sexual_potency) as num|null
 					if(sexual_pot)
-						sexual_potency = clamp(sexual_pot, 10, 25)
+						sexual_potency = clamp(sexual_pot, -1, 25)
 
 				if("cock_color")
 					var/new_cockcolor = input(user, "Penis color:", "Character Preference","#"+features["cock_color"]) as color|null
@@ -3204,8 +3235,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/pickedui = input(user, "Choose your UI style.", "Character Preference", UI_style)  as null|anything in GLOB.available_ui_styles
 					if(pickedui)
 						UI_style = pickedui
-						if (parent && parent.mob && parent.mob.hud_used)
-							parent.mob.hud_used.update_ui_style(ui_style2icon(UI_style))
+						if (pickedui && parent && parent.mob && parent.mob.hud_used)
+							QDEL_NULL(parent.mob.hud_used)
+							parent.mob.create_mob_hud()
+							parent.mob.hud_used.show_hud(1, parent.mob)
 				if("pda_style")
 					var/pickedPDAStyle = input(user, "Choose your PDA style.", "Character Preference", pda_style)  as null|anything in GLOB.pda_styles
 					if(pickedPDAStyle)
@@ -3685,7 +3718,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							if(!length(key_bindings[old_key]))
 								key_bindings -= old_key
 						key_bindings[full_key] += list(kb_name)
-						key_bindings[full_key] = sortList(key_bindings[full_key])
+						key_bindings[full_key] = sort_list(key_bindings[full_key])
 					if(href_list["special"])		// special keys need a full reset
 						user.client.ensure_keys_set(src)
 					user << browse(null, "window=capturekeypress")
@@ -3727,7 +3760,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					outline_enabled = !outline_enabled
 				if("outline_color")
 					var/pickedOutlineColor = input(user, "Choose your outline color.", "General Preference", outline_color) as color|null
-					if(pickedOutlineColor != pickedOutlineColor)
+					if(pickedOutlineColor != outline_color)
 						outline_color = pickedOutlineColor // nullable
 				if("screentip_pref")
 					var/choice = input(user, "Choose your screentip preference", "Screentipping?", screentip_pref) as null|anything in GLOB.screentip_pref_options
@@ -3956,7 +3989,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						current_tab = text2num(href_list["tab"])
 				//SPLURT edit
 				if("headshot")
-					var/usr_input = input(user, "Input the image link:", "Headshot Image", features["headshot_link"]) as text|null
+					var/usr_input = input(user, "Input the image link: (For Discord links, try putting the file's type at the end of the link, after the '&'. for example '&.jpg/.png/.jpeg')", "Headshot Image", features["headshot_link"]) as text|null
 					if(isnull(usr_input))
 						return
 					if(!usr_input)
@@ -4060,8 +4093,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						loadout_data["SAVE_[loadout_slot]"] += list(new_loadout_data) //double packed because it does the union of the CONTENTS of the lists
 					else
 						loadout_data["SAVE_[loadout_slot]"] = list(new_loadout_data) //double packed because you somehow had no save slot in your loadout?
+		if(href_list["clear_invalid_gear"])
+			var/thing_to_remove = html_decode(href_list["clear_invalid_gear"])
+			if(!thing_to_remove)
+				return
+			var/list/sanitize_current_slot = loadout_data["SAVE_[loadout_slot]"]
+			for(var/list/entry in sanitize_current_slot)
+				if(entry["loadout_item"] == thing_to_remove)
+					sanitize_current_slot.Remove(list(entry))
+					break
 
-		if(href_list["loadout_color"] || href_list["loadout_color_polychromic"] || href_list["loadout_rename"] || href_list["loadout_redescribe"])
+		if(href_list["loadout_color"] || href_list["loadout_color_polychromic"] || href_list["loadout_color_HSV"] || href_list["loadout_rename"] || href_list["loadout_redescribe"])
 			//if the gear doesn't exist, or they don't have it, ignore the request
 			var/name = html_decode(href_list["loadout_gear_name"])
 			var/datum/gear/G = GLOB.loadout_items[gear_category][gear_subcategory][name]
@@ -4081,6 +4123,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				var/current_color = user_gear[LOADOUT_COLOR][1]
 				var/new_color = input(user, "Polychromic options", "Choose Color", current_color) as color|null
 				user_gear[LOADOUT_COLOR][1] = sanitize_hexcolor(new_color, 6, TRUE, current_color)
+
+			// HSV Coloring (SPLURT EDIT)
+			if(href_list["loadout_color_HSV"] && !(G.loadout_flags & LOADOUT_CAN_COLOR_POLYCHROMIC))
+				var/hue = input(user, "Enter Hue (0-360)", "HSV options") as num|null
+				var/saturation = input(user, "Enter Saturation (-10 to 10)", "HSV options") as num|null
+				var/value = input(user, "Enter Value (-10 to 10)", "HSV options") as num|null
+				if(hue && saturation && value)
+					saturation = clamp(saturation, -10, 10)
+					value = clamp(value, -10, 10)
+					var/color_to_use = color_matrix_hsv(hue, saturation, value)
+					user_gear[LOADOUT_COLOR][1] = color_to_use
 
 			//poly coloring can only be done by poly items
 			if(href_list["loadout_color_polychromic"] && (G.loadout_flags & LOADOUT_CAN_COLOR_POLYCHROMIC))
@@ -4375,4 +4428,3 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 #undef DEFAULT_SLOT_AMT
 #undef HANDS_SLOT_AMT
 #undef BACKPACK_SLOT_AMT
-

@@ -1,6 +1,7 @@
 
 /obj/item/chastity_hypno/magazine
 	name = "Hypnotic Chastity Magazine"
+	desc = "A fascinating magazine filled with mesmerizing patterns and articles on the art of hypnotic chastity..."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "pamphlet"
 	color = COLOR_STRONG_MAGENTA

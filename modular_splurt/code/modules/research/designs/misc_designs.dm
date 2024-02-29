@@ -6,7 +6,15 @@
 	departmental_flags |= DEPARTMENTAL_FLAG_SERVICE
 	. = ..()
 
+/datum/design/diskplantgene/New()
+	departmental_flags |= DEPARTMENTAL_FLAG_SCIENCE
+	. = ..()
 
+/datum/design/plant_analyzer/New()
+	departmental_flags |= DEPARTMENTAL_FLAG_SCIENCE
+	. = ..()
+
+// MODULAR SPLURT NEW DESIGNS
 /datum/design/ultimatespray
 	name = "Ultimate Spray"
 	desc = "The ultimate sprayer, no mess shall go unclean today."
@@ -17,3 +25,4 @@
 	reagents_list = list(/datum/reagent/liquid_dark_matter = 10)
 	category = list("Misc", "Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_SERVICE
+

@@ -39,6 +39,7 @@
 
 	remove_from_all_data_huds()
 	GLOB.mob_living_list -= src
+	GLOB.ssd_mob_list -= src
 	QDEL_LIST(diseases)
 	return ..()
 
@@ -1093,7 +1094,7 @@
 /mob/living/proc/harvest(mob/living/user) //used for extra objects etc. in butchering
 	return
 
-/mob/living/canUseTopic(atom/movable/M, be_close=FALSE, no_dextery=FALSE, no_tk=FALSE)
+/mob/living/canUseTopic(atom/movable/M, be_close=FALSE, no_dextery=FALSE, no_tk=FALSE, check_resting=FALSE)
 	if(incapacitated())
 		to_chat(src, "<span class='warning'>You can't do that right now!</span>")
 		return FALSE

@@ -62,6 +62,13 @@
 	// If the user can toggle the colour, a la vanilla spraycan
 	var/can_change_colour = FALSE
 
+	//SPLURT EDIT START
+
+	var/can_change_light_color = FALSE // If item can change light color of target item
+	var/toggle_change_light_color = FALSE // Toggled by user on item that CAN change light color
+
+	//SPLURT EDIT END
+
 	var/has_cap = FALSE
 	var/is_capped = FALSE
 
@@ -237,6 +244,9 @@
 	.["min_offset"] = -world.icon_size/2
 	.["max_offset"] = world.icon_size/2
 
+	.["can_change_light_color"] = can_change_light_color //SPLURT EDIT
+	.["toggle_change_light_color"] = toggle_change_light_color //SPLURT EDIT
+
 /obj/item/toy/crayon/ui_act(action, list/params)
 	if(..())
 		return
@@ -258,6 +268,11 @@
 				paint_mode = PAINT_NORMAL
 		if("select_colour")
 			. = can_change_colour && select_colour(usr)
+		//SPLURT EDIT START
+		if("toggle_change_light_color")
+			toggle_change_light_color = !toggle_change_light_color
+			. = TRUE
+		//SPLURT EDIT END
 		if("enter_text")
 			var/txt = stripped_input(usr,"Choose what to write.",
 				"Scribbles",default = text_buffer)
@@ -293,6 +308,24 @@
 	. = ..()
 	if(!proximity || !check_allowed_items(target))
 		return
+	// SPLURT EDIT START
+	// Check if we should only change the light color
+	if(toggle_change_light_color && can_change_light_color && !istype(target, /turf))
+		// First, check if the crayon is empty or doesn't have enough charges
+		if(check_empty(user, 2)) // We're checking for 2 charges here
+			return // Skip the light color change because it's out of charges
+
+		// If we have enough charges, change the light color
+		target.set_light_color(paint_color)
+		target.update_light()
+		to_chat(user, span_notice("You have successfully changed the innate light color of [target]."))
+
+		// Decrease the charges by 2
+		use_charges(user, 2)
+		return // Skip the normal drawing behavior
+
+	//Continue with normal drawing behavior if toggle_change_light_color is not true
+	//SPLURT EDIT END
 	draw_on(target, user, proximity, params)
 
 /obj/item/toy/crayon/proc/draw_on(atom/target, mob/user, proximity, params)

@@ -9,3 +9,5 @@
 
 #undef PIXEL_SHIFT_MAXIMUM
 #define PIXEL_SHIFT_MAXIMUM 32
+
+#define BREATH_NITROGEN	/datum/breathing_class/nitrogen

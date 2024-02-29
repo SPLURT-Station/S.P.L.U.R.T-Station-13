@@ -1,11 +1,10 @@
 /datum/interaction/lewd/nipsuck
 	description = "Suck their nipples."
-	require_target_breasts = REQUIRE_EXPOSED
-	require_user_mouth = TRUE
+	required_from_user = INTERACTION_REQUIRE_MOUTH
+	required_from_target_exposed = INTERACTION_REQUIRE_BREASTS
 	write_log_user = "sucked nipples"
 	write_log_target = "had their nipples sucked by"
 	interaction_sound = null
-	max_distance = 1
 
 /datum/interaction/lewd/nipsuck/display_interaction(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if((user.a_intent == INTENT_HELP) || (user.a_intent == INTENT_DISARM))
@@ -13,7 +12,8 @@
 				pick(span_lewd("\The <b>[user]</b> gently sucks on \the <b>[target]</b>'s [pick("nipple", "nipples")]."),
 					span_lewd("\The <b>[user]</b> gently nibs \the <b>[target]</b>'s [pick("nipple", "nipples")]."),
 					span_lewd("\The <b>[user]</b> licks \the <b>[target]</b>'s [pick("nipple", "nipples")].")))
-		if(target.has_breasts(REQUIRE_EXPOSED))
+		var/has_breasts = target.has_breasts()
+		if(has_breasts == TRUE || has_breasts == HAS_EXPOSED_GENITAL)
 			var/modifier = 1
 			var/obj/item/organ/genital/breasts/B = target.getorganslot(ORGAN_SLOT_BREASTS)
 			switch(B.size)
@@ -33,7 +33,8 @@
 		user.visible_message(
 				pick(span_lewd("\The <b>[user]</b> bites \the <b>[target]</b>'s [pick("nipple", "nipples")]."),
 					span_lewd("\The <b>[user]</b> aggressively sucks \the <b>[target]</b>'s [pick("nipple", "nipples")].")))
-		if(target.has_breasts(REQUIRE_EXPOSED))
+		var/has_breasts = target.has_breasts()
+		if(has_breasts == TRUE || has_breasts == HAS_EXPOSED_GENITAL)
 			var/modifier = 1
 			var/obj/item/organ/genital/breasts/B = target.getorganslot(ORGAN_SLOT_BREASTS)
 			switch(B.size)
@@ -54,7 +55,8 @@
 				pick(span_lewd("\The <b>[user]</b> sucks \the <b>[target]</b>'s [pick("nipple", "nipples")] intently."),
 					span_lewd("\The <b>[user]</b> feasts \the <b>[target]</b>'s [pick("nipple", "nipples")]."),
 					span_lewd("\The <b>[user]</b> glomps \the <b>[target]</b>'s [pick("nipple", "nipples")].")))
-		if(target.has_breasts(REQUIRE_EXPOSED))
+		var/has_breasts = target.has_breasts()
+		if(has_breasts == TRUE || has_breasts == HAS_EXPOSED_GENITAL)
 			var/modifier = 1
 			var/obj/item/organ/genital/breasts/B = target.getorganslot(ORGAN_SLOT_BREASTS)
 			switch(B.size)

@@ -28,7 +28,7 @@ export type Material = {
 };
 
 interface MaterialIconProps extends BoxProps {
-  material: keyof typeof MATERIAL_KEYS;
+  readonly material: keyof typeof MATERIAL_KEYS;
 }
 
 export const MaterialIcon = (props: MaterialIconProps) => {
@@ -43,8 +43,8 @@ export const MaterialIcon = (props: MaterialIconProps) => {
 };
 
 const EjectMaterial = (props: {
-  material: Material,
-  onEject: (amount: number) => void,
+  readonly material: Material,
+  readonly onEject: (amount: number) => void,
 }, context) => {
   const {
     name,
@@ -82,8 +82,8 @@ const EjectMaterial = (props: {
 };
 
 export const Materials = (props: {
-  materials: Material[],
-  onEject: (ref: string, amount: number) => void,
+  readonly materials: Material[],
+  readonly onEject: (ref: string, amount: number) => void,
 }) => {
   return (
     <Flex wrap>
@@ -111,11 +111,11 @@ export enum MaterialFormatting {
 }
 
 export const MaterialAmount = (props: {
-  name: keyof typeof MATERIAL_KEYS,
-  amount: number,
-  formatting?: MaterialFormatting,
-  color?: string,
-  style?: Record<string, string>,
+  readonly name: keyof typeof MATERIAL_KEYS,
+  readonly amount: number,
+  readonly formatting?: MaterialFormatting,
+  readonly color?: string,
+  readonly style?: Record<string, string>,
 }) => {
   const {
     name,

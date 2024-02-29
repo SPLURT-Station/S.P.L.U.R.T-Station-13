@@ -220,7 +220,7 @@
 
 			dat += "<h2>Body</h2>"
 			dat += "<b>Gender:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=gender;task=input'>[gender == MALE ? "Male" : (gender == FEMALE ? "Female" : (gender == PLURAL ? "Non-binary" : "Object"))]</a><BR>"
-			if(gender != NEUTER && pref_species.sexes)
+			if(pref_species.sexes)
 				dat += "<b>Body Model:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=body_model'>[features["body_model"] == MALE ? "Masculine" : "Feminine"]</a><BR>"
 			dat += "<b>Limb Modification:</b><BR>"
 			dat += "<a href='?_src_=prefs;preference=modify_limbs;task=input'>Modify Limbs</a><BR>"
@@ -670,7 +670,7 @@
 			dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=tongue;task=input'>[custom_tongue]</a><BR>"
 			//SANDSTORM EDIT - additional language + runechat color
 			dat += "<b>Additional Language</b><br>"
-			var/list/languages_sorted = sortList(language)
+			var/list/languages_sorted = sort_list(language)
 			dat += "<a href='?_src_=prefs;preference=language;task=menu'>[language.len ? languages_sorted.Join(", ") : "None"]</a></center><br>"
 			dat += "<b>Custom runechat color:</b> <a href='?_src_=prefs;preference=enable_personal_chat_color'>[enable_personal_chat_color ? "Enabled" : "Disabled"]</a><br> [enable_personal_chat_color ? "<span style='border: 1px solid #161616; background-color: [personal_chat_color];'><font color='[color_hex2num(personal_chat_color) < 200 ? "FFFFFF" : "000000"]'>[personal_chat_color]</font></span> <a href='?_src_=prefs;preference=personal_chat_color;task=input'>Change</a>" : ""]<br>"
 			dat += "</td>"
@@ -1679,7 +1679,19 @@
 		// Causes arousal
 		// Allowed for ERP reasons
 		/datum/reagent/drug/aphrodisiac,
+		/datum/reagent/drug/aphrodisiacplus,
 
+		// Allowed for expansion reasons
+		/datum/reagent/fermi/breast_enlarger,
+		/datum/reagent/fermi/penis_enlarger,
+		/datum/reagent/fermi/butt_enlarger,
+
+		// Allowed for reduction reasons
+		/datum/reagent/fermi/BEsmaller,
+		/datum/reagent/fermi/PEsmaller,
+		/datum/reagent/fermi/AEsmaller_hypo,
+		// Code comment here, whoever named the AEsmaller_hypo needs to understand the chem shouldn't be named after the fact it's found in a hypo
+		
 		// Causes positive mood bonus
 		// On overdose: Causes negative mood penalty and disgust
 		/datum/reagent/drug/copium/gfluid,

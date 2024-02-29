@@ -9,6 +9,12 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	plane = ABOVE_HUD_PLANE
 	var/datum/radial_menu/parent
 
+/atom/movable/screen/radial/Destroy()
+	if(parent)
+		parent.elements -= src
+		UnregisterSignal(parent, COMSIG_PARENT_QDELETING)
+	. = ..()
+
 /atom/movable/screen/radial/proc/set_parent(new_value)
 	if(parent)
 		UnregisterSignal(parent, COMSIG_PARENT_QDELETING)
@@ -59,6 +65,11 @@ GLOBAL_LIST_EMPTY(radial_menus)
 /atom/movable/screen/radial/center/Click(location, control, params)
 	if(usr.client == parent.current_user)
 		parent.finished = TRUE
+
+/atom/movable/screen/radial/center/Destroy()
+	if(parent)
+		parent.close_button = null
+	return ..()
 
 /datum/radial_menu
 	var/list/choices = list() //List of choice id's
@@ -272,7 +283,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	//Blank
 	menu_holder = image(icon='icons/effects/effects.dmi',loc=anchor,icon_state="nothing",layer = ABOVE_HUD_LAYER)
 	menu_holder.plane = ABOVE_HUD_PLANE
-	menu_holder.appearance_flags |= KEEP_APART|NO_CLIENT_COLOR|RESET_ALPHA|RESET_COLOR|RESET_TRANSFORM
+	menu_holder.appearance_flags |= APPEARANCE_UI_IGNORE_ALPHA | KEEP_APART
 	menu_holder.vis_contents += elements + close_button
 	current_user.images += menu_holder
 
@@ -292,6 +303,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 		stoplag(1)
 
 /datum/radial_menu/Destroy()
+	QDEL_LIST(elements)
 	Reset()
 	hide()
 

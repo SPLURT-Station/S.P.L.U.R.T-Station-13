@@ -8,3 +8,4 @@
 		/obj/item/bodypart/r_arm/robot = 1,
 		/obj/item/clothing/head/kitty = 1
 	)
+	category = CAT_ROBOT

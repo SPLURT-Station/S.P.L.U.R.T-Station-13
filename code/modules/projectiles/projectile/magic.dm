@@ -135,8 +135,7 @@
 
 	if(iscyborg(M))
 		var/mob/living/silicon/robot/Robot = M
-		if(Robot.mmi)
-			qdel(Robot.mmi)
+		QDEL_NULL(Robot.mmi)
 		Robot.notify_ai(NEW_BORG)
 	else
 		for(var/obj/item/W in contents)

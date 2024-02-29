@@ -1,6 +1,7 @@
 /datum/interaction/lewd/bondage_rope_remove
 	description = "Remove bondage rope."
 	interaction_sound = 'modular_splurt/sound/lewd/rope.ogg'
+	interaction_flags =  INTERACTION_FLAG_ADJACENT | INTERACTION_FLAG_OOC_CONSENT | INTERACTION_FLAG_REQUIRE_BONDAGE
 
 /datum/interaction/lewd/bondage_rope_remove/evaluate_target(mob/living/user, mob/living/target, silent = TRUE)
 	if(!istype(target, /mob/living/carbon))

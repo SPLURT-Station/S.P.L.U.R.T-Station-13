@@ -20,9 +20,12 @@
 			"BootyF" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootystandard"),
 			"BootyM" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootystandardM"),
 			"BootyS" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootystandardS"),
-			"Assaultron" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "assaultron_standard")
-		)
-		stand_icons = sortList(stand_icons)
+			"Assaultron" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "assaultron_standard"),
+			"Handy" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "handy"),
+			"Robo-Brain" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "robobrain"),
+			"Cyclone" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "cyclone")
+			)
+		stand_icons = sort_list(stand_icons)
 	var/stand_borg_icon = show_radial_menu(R, R , stand_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
 	if(!stand_borg_icon)
 		return
@@ -75,6 +78,18 @@
 			cyborg_base_icon = "assaultron_standard"
 			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
 			hat_offset = 3
+		if("Handy")
+			cyborg_base_icon = "handy"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+			hat_offset = 3
+		if("Robo-Brain")
+			cyborg_base_icon = "robobrain"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+			hat_offset = 3
+		if("Cyclone")
+			cyborg_base_icon = "cyclone"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots.dmi'
+			hat_offset = 3
 	return ..()
 
 /obj/item/robot_module/clown/be_transformed_to(obj/item/robot_module/old_module)
@@ -92,7 +107,7 @@
 			"BootyM" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootystandardM"),
 			"BootyS" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootystandardS")
 		)
-		clown_icons = sortList(clown_icons)
+		clown_icons = sort_list(clown_icons)
 	var/clown_borg_icon = show_radial_menu(R, R , clown_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
 	if(!clown_borg_icon)
 		return
@@ -174,8 +189,9 @@
 		"Drake" = image(icon = 'modular_splurt/icons/mob/widerobots_cargo.dmi', icon_state = "drakecargo"),
 		"Assaultron" = image(icon = 'modular_splurt/icons/mob/robots_cargo.dmi', icon_state = "assaultron_cargo"),
 		"Meka" = image(icon = 'modular_splurt/icons/mob/robots_32x64.dmi', icon_state = "mekacargo"), // SPLURT Addon
+		"Raptor V-4" = image(icon = 'modular_splurt/icons/mob/robots_64x45.dmi', icon_state = "caraptor-b") // ChompS Port (base); Additional spriting by @ertyuk421
 		)
-		var/list/L = list("Cargohound" = "cargohound", "Cargohound Dark" = "cargohounddark", "Vale" = "valecargo")
+		var/list/L = list("Cargohound" = "cargohound", "Cargohound Dark" = "cargohounddark", "Vale" = "valecargo", "Feline" = "vixcargo")
 		for(var/a in L)
 			var/image/wide = image(icon = 'modular_splurt/icons/mob/widerobots_cargo.dmi', icon_state = L[a])
 			wide.pixel_x = -16
@@ -224,6 +240,17 @@
 			cyborg_base_icon = "mekacargo"
 			cyborg_icon_override = 'modular_splurt/icons/mob/robots_32x64.dmi'
 			hat_offset = 3
+			hasrest = TRUE
+		if("Feline") // ChompS Port
+			cyborg_base_icon = "vixcargo"
+			cyborg_icon_override = 'modular_splurt/icons/mob/widerobots_cargo.dmi'
+			sleeper_overlay = "vixcargo-sleeper"
+			dogborg = TRUE
+		if("Raptor V-4") // ChompS Port (base); Additional spriting by @ertyuk421
+			cyborg_base_icon = "caraptor"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots_64x45.dmi'
+			sleeper_overlay = "caraptor-sleeper"
+			dogborg = TRUE
 		else
 			return FALSE
 	return ..()

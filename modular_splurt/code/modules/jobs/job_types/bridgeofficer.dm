@@ -22,7 +22,7 @@
 	minimal_access = list(ACCESS_HEADS, ACCESS_MAINT_TUNNELS, ACCESS_BRIDGE_OFFICER, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH)
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_CIV
-	alt_titles = list("Command Secretary", "Command Officer", "Bridge Secretary", "Ensign", "Bridge Bitch", "Bridge Advisor", "Bridge Intern")
+	alt_titles = list("Command Secretary", "Command Officer", "Bridge Secretary", "Ensign", "Bridge Bitch", "Bridge Stud", "Bridge Pet", "Bridge Advisor", "Bridge Intern")
 	display_order = JOB_DISPLAY_ORDER_BO
 	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/brainproblems, /datum/quirk/prosopagnosia, /datum/quirk/insanity)
 	threat = 1

@@ -1157,6 +1157,7 @@
 				malfvacate()
 		if("reboot")
 			failure_timer = 0
+			force_update = FALSE
 			update_appearance()
 			update()
 		if("emergency_lighting")
@@ -1364,8 +1365,6 @@
 	if(!area || !area.requires_power)
 		return
 	if(failure_timer)
-		update()
-		queue_icon_update()
 		failure_timer--
 		force_update = TRUE
 		return
@@ -1498,7 +1497,7 @@
 	// update icon & area power if anything changed
 
 	if(last_lt != lighting || last_eq != equipment || last_en != environ || force_update)
-		force_update = 0
+		force_update = FALSE
 		queue_icon_update()
 		update()
 	else if (last_ch != charging)
@@ -1639,6 +1638,8 @@
 			return
 
 	failure_timer = max(failure_timer, round(duration))
+	update()
+	queue_icon_update()
 
 /obj/machinery/power/apc/proc/set_nightshift(on)
 	set waitfor = FALSE

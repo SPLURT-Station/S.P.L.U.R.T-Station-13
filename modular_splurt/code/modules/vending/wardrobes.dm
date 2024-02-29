@@ -149,3 +149,10 @@
 
 /obj/item/vending_refill/wardrobe/hos_wardrobe
 	machine_name = "HOSDrobe"
+
+/obj/machinery/vending/wardrobe/chap_wardrobe/Initialize(mapload)
+	var/list/extra_premium = list(
+		/obj/item/choice_beacon/ouija = 1
+	)
+	LAZYADD(products, extra_premium)
+	. = ..()

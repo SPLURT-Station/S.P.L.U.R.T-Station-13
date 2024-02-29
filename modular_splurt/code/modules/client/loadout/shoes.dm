@@ -40,3 +40,9 @@
 /datum/gear/shoes/highheel_sandals
 	name = "High-heel Sandals"
 	path = /obj/item/clothing/shoes/highheel_sandals
+
+/datum/gear/shoes/clussy_heels
+	name = "Clussy heels"
+	path = /obj/item/clothing/shoes/clown_shoes/clussy_heels
+	restricted_roles = list("Clown")
+	restricted_desc = "Clown"

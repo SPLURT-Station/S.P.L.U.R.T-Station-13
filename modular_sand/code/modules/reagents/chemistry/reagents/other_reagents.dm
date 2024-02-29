@@ -16,17 +16,6 @@
 	if(method==PATCH || method==INGEST || method==INJECT || (method == VAPOR && prob(min(reac_volume,100)*(1 - touch_protection))))
 		L.ForceContractDisease(new /datum/disease/transformation/dragon(), FALSE, TRUE)
 
-/datum/reagent/consumable/semen
-	// Prevents dripping from drinking a glass or other weird cases
-	var/amount_to_drip = 0
-
-/datum/reagent/consumable/semen/on_mob_life(mob/living/carbon/M)
-	. = ..()
-	if(amount_to_drip && M.is_groin_exposed())
-		amount_to_drip = max(0, amount_to_drip - metabolization_rate)
-		var/obj/effect/decal/cleanable/semendrip/drip = new(get_turf(M))
-		drip.add_blood_DNA(data)
-
 /*/datum/reagent/dragon_blood/admin
 	name = "Special dragon blood"
 	description = "It looks weird"

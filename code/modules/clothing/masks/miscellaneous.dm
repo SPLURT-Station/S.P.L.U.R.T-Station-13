@@ -7,15 +7,31 @@
 	w_class = WEIGHT_CLASS_SMALL
 	gas_transfer_coefficient = 0.9
 	equip_delay_other = 20
+	equip_delay_self = 20
 	mutantrace_variation = STYLE_MUZZLE
+	var/seamless = FALSE
 
-/obj/item/clothing/mask/muzzle/attack_paw(mob/user)
-	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		if(src == C.wear_mask)
-			to_chat(user, "<span class='warning'>You need help taking this off!</span>")
-			return
-	..()
+/obj/item/clothing/mask/muzzle/attack_paw(mob/user, act_intent, attackchain_flags)
+    if(iscarbon(user))
+        var/mob/living/carbon/C = user
+        if(src == C.wear_mask)
+            if(seamless)
+                to_chat(user, span_warning("You need help taking this off!"))
+                return
+            else
+                if(!do_after(C, 60, target = src))
+                    return
+    ..()
+
+/obj/item/clothing/mask/muzzle/attackby(obj/item/K, mob/user, params)
+    if(istype(K, /obj/item/key/latex))
+        if(seamless != FALSE)
+            to_chat(user, span_notice("The latches suddenly loosen!"))
+            seamless = FALSE
+        else
+            to_chat(user, span_warning("The latches suddenly tighten!"))
+            seamless = TRUE
+    return
 
 /obj/item/clothing/mask/surgical
 	name = "sterile mask"

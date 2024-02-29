@@ -380,6 +380,11 @@
 	update()
 
 /obj/machinery/light/process()
+	/*SPLURT EDIT START - Stop processing if there's no turf, which implies it's stored,
+	this stops the null.lightswitch runtime when lights are saved in Hilbert's Hotel storeRoom() proc.*/
+	if(!isturf(loc))
+		return PROCESS_KILL
+	// SPLURT EDIT END
 	if (!cell)
 		return PROCESS_KILL
 	if(has_power())

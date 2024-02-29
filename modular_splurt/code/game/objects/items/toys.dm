@@ -1,3 +1,6 @@
+/obj/item/toy/figure // SPLURT EDIT: MAKES TOY FIGURES TINY
+	w_class = WEIGHT_CLASS_TINY
+
 /obj/item/toy/prize/savannahivanov
 	name = "toy Savannah-Ivanov"
 	icon = 'modular_splurt/icons/obj/toy.dmi'

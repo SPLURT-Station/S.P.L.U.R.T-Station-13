@@ -749,7 +749,7 @@ const EventScreen = (props, context) => {
 
 
 type AdventureScreenProps = {
-  hide_status?: boolean
+  readonly hide_status?: boolean
 }
 
 export const AdventureScreen = (props: AdventureScreenProps, context) => {

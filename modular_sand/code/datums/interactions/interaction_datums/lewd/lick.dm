@@ -1,9 +1,8 @@
 /datum/interaction/lewd/rimjob
 	description = "Lick their ass."
 	interaction_sound = null
-	require_user_mouth = TRUE
-	require_target_anus = REQUIRE_EXPOSED
-	max_distance = 1
+	required_from_user = INTERACTION_REQUIRE_MOUTH
+	required_from_target_exposed = INTERACTION_REQUIRE_ANUS
 
 /datum/interaction/lewd/rimjob/display_interaction(mob/living/user, mob/living/partner)
 	user.visible_message(span_lewd("<b>\The [user]</b> licks \the <b>[partner]</b>'s asshole."), ignored_mobs = user.get_unconsenting())
@@ -13,10 +12,10 @@
 /datum/interaction/lewd/lickfeet
 	description = "Lick their feet."
 	interaction_sound = null
-	require_user_mouth = TRUE
-	require_target_feet = REQUIRE_ANY
+	required_from_user = INTERACTION_REQUIRE_MOUTH
+	required_from_target_exposed = INTERACTION_REQUIRE_FEET
+	required_from_target_unexposed = INTERACTION_REQUIRE_FEET
 	require_target_num_feet = 1
-	max_distance = 1
 
 /datum/interaction/lewd/lickfeet/display_interaction(mob/living/user, mob/living/partner)
 	var/message

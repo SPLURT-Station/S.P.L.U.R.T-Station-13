@@ -165,6 +165,7 @@
 #define AIRLESS_ATMOS				"TEMP=2.7" //space
 #define FROZEN_ATMOS				"o2=21.78;n2=82.36;TEMP=180" //-93.15degC snow and ice turfs
 #define BURNMIX_ATMOS				"o2=2500;plasma=5000;TEMP=370" //used in the holodeck burn test program
+#define OCEAN_ATMOS					"water=50;TEMP=40"
 
 //ATMOSPHERICS DEPARTMENT GAS TANK TURFS
 #define ATMOS_TANK_N2O				"n2o=6000;TEMP=293.15"

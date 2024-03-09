@@ -50,11 +50,11 @@
 	id = ICEMOON_DEFAULT_ATMOS
 
 	base_gases = list(
-		GAS_O2=10,
+		GAS_METHANE=5,
 		GAS_N2=10,
 	)
 	normal_gases = list(
-		GAS_O2=10,
+		GAS_METHANE=5,
 		GAS_N2=10
 	)
 	restricted_gases = list(
@@ -66,17 +66,17 @@
 	minimum_pressure = HAZARD_LOW_PRESSURE + 10
 	maximum_pressure = LAVALAND_EQUIPMENT_EFFECT_PRESSURE - 1
 
-	minimum_temp = 150
-	maximum_temp = 150
+	minimum_temp = 180
+	maximum_temp = 180
 
 /datum/atmosphere/icemoon/generate_gas_string()
 	if(prob(restricted_chance))
 		base_gases = list(
-			GAS_O2=10,
+			GAS_O2=5,
 			GAS_N2=10,
 		)
 		normal_gases = list(
-			GAS_O2=10,
+			GAS_O2=5,
 			GAS_N2=10,
 		)
 		restricted_gases = list(
@@ -84,3 +84,25 @@
 			GAS_METHYL_BROMIDE = 0.1,
 		)
 	return ..()
+
+/datum/atmosphere/ocean
+	id = OCEAN_ATMOS
+
+	base_gases = list(
+		GAS_WATER=50
+
+	)
+	normal_gases = list(
+		GAS_WATER=50
+
+	)
+	restricted_gases = list(
+		GAS_H2O=0.1
+
+	)
+
+	minimum_pressure = HAZARD_LOW_PRESSURE + 10
+	maximum_pressure = LAVALAND_EQUIPMENT_EFFECT_PRESSURE - 1
+
+	minimum_temp = 40
+	maximum_temp = 320

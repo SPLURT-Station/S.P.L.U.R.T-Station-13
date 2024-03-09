@@ -123,7 +123,11 @@
 	name = "air floor"
 	initial_gas_mix = ATMOS_TANK_AIRMIX
 
-
+/turf/open/floor/watersand
+	name = "sand"
+	icon = 'icons/misc/beach.dmi'
+	icon_state = "sand"
+	initial_gas_mix = OCEAN_ATMOS
 
 /turf/open/floor/engine/cult
 	name = "engraved floor"

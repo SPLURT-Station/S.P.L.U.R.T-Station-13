@@ -107,7 +107,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "beacon"
 	template_id = "reactor"
-	
+
 //Pod objects
 
 //Window
@@ -313,6 +313,11 @@
 	name = "air flow blocker"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	invisibility = INVISIBILITY_ABSTRACT
+
+/obj/structure/fans/tiny/shield
+	icon_state = "fan_tiny_shield"
+	name = "Atmospheric Forcefield"
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 //Signs
 /obj/structure/sign/mining

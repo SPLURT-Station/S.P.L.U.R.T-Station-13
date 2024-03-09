@@ -26,3 +26,27 @@
 	name = "Captain\'s hovercar"
 	icon_state = "zoomscoot_CAPT"
 	boost_power = 20 //gosh capt how come CC lets you have more boost power?
+
+/obj/vehicle/sealed/vectorcraft/minisub
+	name = "Minisub"
+	icon_state = "minisub"
+
+/obj/vehicle/sealed/vectorcraft/secsub
+	name = "Security Minisub"
+	icon_state = "secsub"
+
+/obj/vehicle/sealed/vectorcraft/syndsub
+	name = "Syndicate Minisub"
+	icon_state = "syndsub"
+
+/obj/vehicle/sealed/vectorcraft/engsub
+	name = "Engineering Minisub"
+	icon_state = "engsub"
+
+/obj/vehicle/sealed/vectorcraft/whitesub
+	name = "Civillian Minisub"
+	icon_state = "whitesub"
+
+/obj/vehicle/sealed/vectorcraft/miningsub
+	name = "Mining Minisub"
+	icon_state = "miningsub"

@@ -55,7 +55,7 @@
 	icon_state = "sad_closed"
 	if(!occupant)
 		return FALSE
-	if(!ishuman(occupant) || !check_for_normalizer(occupant)) // BLUEMOON EDIT - добавлена проверка на нормалайзер
+	if(!ishuman(occupant) || !check_for_normalizer(occupant)) // BLUEMOON EDIT - normalizer check added
 		occupant.forceMove(drop_location())
 		set_occupant(null)
 		return FALSE

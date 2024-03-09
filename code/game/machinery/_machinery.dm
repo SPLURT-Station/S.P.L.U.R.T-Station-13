@@ -139,7 +139,7 @@ Class Procs:
 	var/market_verb = "Customer"
 	var/payment_department = ACCOUNT_ENG
 
-		var/allow_oversized_characters = FALSE // BLUEMOON ADD - To allow large characters to fit inside machinery
+	var/allow_oversized_characters = FALSE // BLUEMOON ADD - To allow large characters to fit inside machinery
 
 /obj/machinery/Initialize(mapload)
 	if(!armor)

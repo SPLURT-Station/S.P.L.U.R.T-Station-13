@@ -40,6 +40,7 @@
 	"Before using the Self-Actualization Device, remove any and all metal devices, or you might make the term 'ironman' a bit too literal!" , \
 	"Have more questions about the Self-Actualization Device? Call your nearest Veymed Representative to requisition more information about the Self-Actualization Device!" \
 	)
+	allow_oversized_characters = TRUE
 
 /obj/machinery/self_actualization_device/update_appearance(updates)
 	. = ..()
@@ -54,6 +55,12 @@
 	icon_state = "sad_closed"
 	if(!occupant)
 		return FALSE
+	if(!ishuman(occupant) || !check_for_normalizer(occupant)) // BLUEMOON EDIT - добавлена проверка на нормалайзер
+		occupant.forceMove(drop_location())
+		set_occupant(null)
+		return FALSE
+	to_chat(occupant, span_notice("You enter [src]."))
+	update_appearance()
 
 
 /obj/machinery/self_actualization_device/examine(mob/user)

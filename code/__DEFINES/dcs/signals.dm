@@ -712,3 +712,6 @@
 
 ///from base of [/datum/component/multiple_lives/proc/respawn]: (mob/respawned_mob, gibbed, lives_left)
 #define COMSIG_ON_MULTIPLE_LIVES_RESPAWN "on_multiple_lives_respawn"
+
+///from /obj/machinery/set_occupant(atom/movable/O): (new_occupant)
+#define COMSIG_MACHINERY_SET_OCCUPANT "machinery_set_occupant"

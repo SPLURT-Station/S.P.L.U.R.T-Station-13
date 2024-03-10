@@ -18,7 +18,7 @@
 		#include "map_files\SyndicateStation\SyndicateBoxStation.dmm"
 		#include "splurt_maps\map_files\Smexistation\Snaxi_Splurt.dmm"
 		#include "map_files\BoxedInStation\BoxedInStation.dmm"
-		#include "map_files\OshanLabotaroy\oshanlaboratory.dmm"
+		#include "map_files\OshanLaboratory\oshanlaboratory.dmm"
 
 		#ifdef CIBUILDING
 			#include "templates.dm"

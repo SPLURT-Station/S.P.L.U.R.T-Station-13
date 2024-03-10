@@ -52,14 +52,13 @@
 /mob/living/carbon/human/Life()
 	. = ..()
 	if(is_being_groped)
+		var/datum/interaction/I
 		if(prob(50))
-			var/datum/interaction/lewd/titgrope_self/TG = new
-			TG.do_action(is_being_groped, src, TRUE)
-			qdel(TG)
+			I = SSinteractions.interactions["/datum/interaction/lewd/titgrope_self"]
+			I.do_action(is_being_groped, src, TRUE)
 		else
-			var/datum/interaction/lewd/fingerass_self/FI = new
-			FI.do_action(is_being_groped, src, TRUE)
-			qdel(FI)
+			I = SSinteractions.interactions["/datum/interaction/lewd/fingerass_self"]
+			I.do_action(is_being_groped, src, TRUE)
 
 
 /datum/quirk/sex_magician

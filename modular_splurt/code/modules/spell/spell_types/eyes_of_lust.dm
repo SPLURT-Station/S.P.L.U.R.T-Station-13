@@ -14,10 +14,6 @@
 
 /mob/living/carbon/human/Life()
 	. = ..()
-	if(has_quirk(/datum/quirk/sex_magician))
-		var/datum/atom_hud/data/human/arousal/hud = GLOB.huds[DATA_HUD_AROUSAL]
-		for(var/mob/living/carbon/human/H in view(7, src))
-			hud.add_to_hud(H)
 	arousal_hud_update()
 
 /mob/living/carbon/human/proc/arousal_hud_update()

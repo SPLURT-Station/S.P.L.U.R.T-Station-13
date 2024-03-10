@@ -19,6 +19,11 @@
 	on_use_sound = 'sound/magic/disintegrate.ogg'
 	icon_state = "disintegrate"
 	item_state = "disintegrate"
+	var/mob/living/carbon/user_saved = null
+
+/mob/living/carbon/human/proc/remove_uncovered() //would be problematic adding it to the touch attack since it is deleted right after the hit.
+	if(uncovered)
+		uncovered = 0
 
 /obj/item/melee/touch_attack/uncover/afterattack(atom/target, mob/living/carbon/user, proximity)
 	if(!proximity || target == user || !ismob(target) || !iscarbon(user) || user.lying || user.handcuffed) //exploding after touching yourself would be bad
@@ -37,8 +42,7 @@
 				H.uncovered = 1
 			else
 				H.uncovered = 0
-			spawn(10 MINUTES)
-				H.uncovered = 0
+			addtimer(CALLBACK(H, /mob/living/carbon/human/proc/remove_uncovered), 10 MINUTES)
 	return ..()
 
 

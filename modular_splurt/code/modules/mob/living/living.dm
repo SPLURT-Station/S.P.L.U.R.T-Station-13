@@ -36,7 +36,7 @@
 		if("Toggle Penis")
 			has_penis = !has_penis
 		if("Toggle Pussy")
-			has_vagina = !has_vagina 
+			has_vagina = !has_vagina
 		if("Toggle Balls")
 			has_balls = !has_balls
 
@@ -89,3 +89,9 @@
 	set desc = "Switch sharp/fuzzy scaling for current mob."
 	appearance_flags ^= PIXEL_SCALE
 	fuzzy = !fuzzy
+
+/mob/living/Initialize(mapload)
+	. = ..()
+	for(var/datum/atom_hud/data/human/arousal/arousal_hud in GLOB.huds)
+		arousal_hud.add_to_hud(src)
+

@@ -78,8 +78,7 @@
 		else
 			var/obj/item/organ/genital/penis/P = H.getorganslot(ORGAN_SLOT_PENIS)
 			P.modify_size(10)
-			spawn(15 MINUTES)
-				P.modify_size(-10)
+			addtimer(CALLBACK(P, /obj/item/organ/genital/proc/modify_size, -10), 10 MINUTES)
 	return ..()
 
 

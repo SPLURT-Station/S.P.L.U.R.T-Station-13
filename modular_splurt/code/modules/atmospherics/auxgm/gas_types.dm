@@ -5,7 +5,7 @@
 	breath_reagent = /datum/reagent/drug/copium
 
 /datum/gas/water
-	id = LIQUID_H2O
+	id = GAS_LIQUID_H2O
 	specific_heat = 75
 	name = "Water"
 	gas_overlay = "water"

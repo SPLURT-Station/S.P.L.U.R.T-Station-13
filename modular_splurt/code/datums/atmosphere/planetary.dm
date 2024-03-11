@@ -8,7 +8,7 @@
 
 	)
 	normal_gases = list(
-		GAS_LIQUID_H2O=50
+		GAS_LIQUID_H2O=50,
 		GAS_O2=1,
 		GAS_N2=1,
 		GAS_CO2=0.5

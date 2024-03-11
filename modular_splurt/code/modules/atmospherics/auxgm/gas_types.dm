@@ -18,4 +18,3 @@
 	breath_reagent = /datum/reagent/water
 	enthalpy = -285830 // J/mol, negative enthalpy of formation
 	price = 0 // Water is abundant, no price
-	density = 997  // kg/m^3, density of liquid water

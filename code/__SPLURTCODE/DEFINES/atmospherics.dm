@@ -2,5 +2,5 @@
 #define GAS_COPIUM "copium"
 #define LIQUID_H2O "water"
 
-// Atmos defines
-#define OCEAN_ATMOS		"water=50;TEMP=40"
+//OPEN TURF ATMOS DEFINES
+#define OCEAN_ATMOS		"water=50;TEMP=40" //Used in Oshan map

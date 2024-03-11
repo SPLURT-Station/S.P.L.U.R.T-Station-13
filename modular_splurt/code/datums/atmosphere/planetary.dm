@@ -1,3 +1,5 @@
+// Ocean atmosphere (Oshan map)
+
 /datum/atmosphere/ocean
 	id = OCEAN_ATMOS
 

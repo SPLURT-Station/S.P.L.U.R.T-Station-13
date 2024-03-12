@@ -180,6 +180,8 @@
 #define LIGHT_COLOR_TUNGSTEN   "#FAE1AF"
 /// Barely visible cyan-ish hue, as the doctor prescribed. rgb(240, 250, 250)
 #define LIGHT_COLOR_HALOGEN    "#F0FAFA"
+/// (ADDED BY SPLURT): Deep blue color, reminiscent of the deep ocean. rgb(0, 75, 160)
+#define LIGHT_COLOR_OCEAN "#004BA0"
 
 //The GAGS greyscale_colors for each department's computer/machine circuits
 #define CIRCUIT_COLOR_GENERIC "#1A7A13"

@@ -26,3 +26,4 @@
 	name = "Captain\'s hovercar"
 	icon_state = "zoomscoot_CAPT"
 	boost_power = 20 //gosh capt how come CC lets you have more boost power?
+

@@ -106,6 +106,10 @@
 	floor_variance = 15
 	digResult = /obj/item/stack/ore/glass/basalt
 
+//SPLURT EDIT: Make lavaland volcanic floor unbreakable
+/turf/open/floor/plating/asteroid/basalt/break_tile()
+	return
+
 // /turf/open/floor/plating/asteroid/basalt/setup_broken_states()
 // 	return list("basalt_dug")
 
@@ -182,6 +186,19 @@
 	baseturfs = /turf/open/openspace/icemoon
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS
 	slowdown = 0
+
+// SPLURT EDIT: Make icemoon snow unbreakable
+
+/turf/open/floor/plating/asteroid/snow/icemoon/break_tile()
+	return
+
+/turf/open/floor/plating/asteroid/snow/icemoon/burn_tile()
+	return
+
+/turf/open/floor/plating/asteroid/snow/icemoon/acid_act(acidpwr, acid_volume)
+	return
+
+// SPLURT EDIT END
 
 /turf/open/lava/plasma/ice_moon
 	initial_gas_mix = ICEMOON_DEFAULT_ATMOS

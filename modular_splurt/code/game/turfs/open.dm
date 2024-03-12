@@ -86,4 +86,4 @@
 
 /turf/open/floor/watersand/Initialize(mapload)
 	. = ..()
-	set_light(0.6, 0.4, LIGHT_COLOR_OCEAN)
+	set_light(0.2, 0.2, LIGHT_COLOR_OCEAN)

@@ -1,5 +1,6 @@
 /area/oshan/ocean
 	name = "Ocean"
+	icon_state = "bluenew"
 	has_gravity = STANDARD_GRAVITY
 	area_flags = VALID_TERRITORY | UNIQUE_AREA | CULT_PERMITTED
 	requires_power = TRUE

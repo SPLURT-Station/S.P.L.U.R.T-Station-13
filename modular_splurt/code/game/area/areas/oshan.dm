@@ -1,24 +1,3 @@
-/*
-==================================================================================================
-IMPORTANT NOTE: Gravity Handling for Oshan
-==================================================================================================
-When adding new areas to the station, make sure to manually set the 'has_gravity' variable to
-TRUE in the corresponding map file (e.g., oshanlaboratory.dmm) to ensure proper gravity in those areas.
-(The ocean already has standard gravity by default)
-
-This approach is necessary to avoid re-creating all the existing station areas under the /oshan
-path just to add the 'has_gravity' flag to them. By manually setting the gravity in the map file,
-we can maintain the existing area definitions while still ensuring proper gravity.
-
-Example:
-/area/service/bar
-	name = "Bar"
-	icon_state = "bar"
-	has_gravity = TRUE  // Set this to TRUE in the map file / strongDMM editor
-
-==================================================================================================
-*/
-
 /area/oshan/ocean
 	name = "Ocean"
 	icon_state = "bluenew"

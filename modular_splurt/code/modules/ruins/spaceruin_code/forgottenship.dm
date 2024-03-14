@@ -110,7 +110,7 @@ GLOBAL_VAR_INIT(fscpassword, generate_password())
 /obj/item/clothing/neck/cloak/cybersun
 	name = "cybersun cloak"
 	desc = "Worn by High-Ranking Cybersun Personnel, the cybersun shall rise!"
-	icon_state = "cybersuncloak"
+	icon_state = "cybersun_cloak"
 	icon = 'modular_splurt/icons/obj/clothing/neck.dmi'
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/neck.dmi'
 	armor = list(MELEE = 35, BULLET = 40, LASER = 25, ENERGY = 10, BOMB = 25, BIO = 20, RAD = 20, FIRE = 60, ACID = 60)
@@ -375,8 +375,8 @@ GLOBAL_VAR_INIT(fscpassword, generate_password())
 	name = "Cybersun hardsuit"
 	desc = "Prototype hardsuit with experimental armor plates, protecting from laser-based weapons very well, while giving limited protection against anything else. Requires the user to activate the inner mechanism in order to unequip it, making it really difficult to take it off from somebody else."
 	icon = 'modular_splurt/icons/obj/clothing/suits.dmi'
-	icon_state = "cybersun"
-	item_state = "cybersun"
+	icon_state = "cybersun_hardsuit"
+	item_state = "cybersun_hardsuit"
 	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/suit.dmi'
 	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/suit_digi.dmi'
 	taur_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/hardsuits_taur.dmi'

@@ -331,7 +331,7 @@
 	if(obj_integrity <= 0)
 		mob_exit(driver)
 		var/turf/T = get_turf(src)
-		explosion(T, devastation_range = 0, heavy_impact_range = 1, light_impact_range = 2, flame_range = 3)
+		explosion(T, devastation_range = 0, heavy_impact_range = 1, light_impact_range = 2, flash_range = 2, flame_range = 3)
 		visible_message("The [src] explodes from taking too much damage!")
 		qdel(src)
 	if(obj_integrity > max_integrity)

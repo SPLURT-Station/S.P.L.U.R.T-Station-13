@@ -233,7 +233,7 @@
 		/turf/open/floor/plating/ashplanet,
 		/turf/open/floor/plating/asteroid,
 		/turf/open/floor/plating/lavaland_baseturf,
-		/turf/open/floor/watersand, //SPLURT EDIT
+		/turf/open/floor/plating/watersand, //SPLURT EDIT
 		)
 	jumpto_ports = list("whiteship_home" = 1)
 	view_range = 12

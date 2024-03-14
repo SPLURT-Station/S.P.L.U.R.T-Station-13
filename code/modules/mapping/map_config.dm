@@ -3,6 +3,13 @@
 //defaults to box
 //  -Cyberboss
 
+/* If you're having trouble with the map's .json file not applying settings/traits correctly:
+Make sure the structure of the .json is good, and even more importantly: the .json is updated when a map is changed.
+Example: You change a map's json file, you load the game, the map has the old .json settings/traits:
+Changing map to the same and rebooting world will load the correct .json settings
+- Goku
+*/
+
 /datum/map_config
 	// Metadata
 	var/config_filename = "_maps/boxstation.json"

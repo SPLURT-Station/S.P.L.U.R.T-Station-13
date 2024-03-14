@@ -14,6 +14,9 @@
 /obj/effect/holodeck_effect/mobspawner/bigmommyclaw
 	mobtype = /mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/mommyclaw
 
+/obj/effect/holodeck_effect/mobspawner/rouny_claw
+	mobtype = /mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/rouny
+
 // Holodeck mob: Friendly Bee
 /obj/effect/holodeck_effect/mobspawner/bumbles
 	mobtype = /mob/living/simple_animal/pet/bumbles

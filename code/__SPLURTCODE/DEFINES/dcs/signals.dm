@@ -11,3 +11,6 @@
  * Used by signals for determining when genitals have been updated
 */
 #define COMSIG_MOB_UPDATE_GENITALS "mob_genitals_updated"
+
+///called on [/obj/item] AFTER unequip from base of [mob/proc/doUnEquip]: (force, atom/newloc, no_move, invdrop, silent)
+#define COMSIG_ITEM_POST_UNEQUIP "item_post_unequip"

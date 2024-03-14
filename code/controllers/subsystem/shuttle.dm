@@ -5,7 +5,7 @@ SUBSYSTEM_DEF(shuttle)
 	wait = 10
 	init_order = INIT_ORDER_SHUTTLE
 	flags = SS_KEEP_TIMING|SS_NO_TICK_CHECK
-	runlevels = RUNLEVEL_SETUP | RUNLEVEL_GAME
+	runlevels = RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME // Splurt edit: Add RUNLEVEL_POSTGAME to let shuttles move after round is over.
 
 	var/list/mobile = list()
 	var/list/stationary = list()
@@ -79,6 +79,9 @@ SUBSYSTEM_DEF(shuttle)
 	var/problem_computer_charge_time = 90 SECONDS
 	var/problem_computer_next_charge_time = 0
 	//END SKYRAT CHANGE
+	//SPLURT CHANGE
+	var/list/navigation_locked_traits = list(ZTRAIT_RESERVED, ZTRAIT_CENTCOM, ZTRAIT_AWAY, ZTRAIT_REEBE) //traits forbided for custom docking
+	//END SPLURT CHANGE
 
 /datum/controller/subsystem/shuttle/Initialize(timeofday)
 	ordernum = rand(1, 9000)

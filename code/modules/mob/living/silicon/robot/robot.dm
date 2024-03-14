@@ -98,42 +98,25 @@
 	modularInterface.layer = ABOVE_HUD_PLANE
 	modularInterface.plane = ABOVE_HUD_PLANE
 
-//If there's an MMI in the robot, have it ejected when the mob goes away. --NEO
 /mob/living/silicon/robot/Destroy()
-	var/atom/T = drop_location()//To hopefully prevent run time errors.
-	if(mmi && mind)//Safety for when a cyborg gets dust()ed. Or there is no MMI inside.
-		if(T)
-			mmi.forceMove(T)
-		if(mmi.brainmob)
-			if(mmi.brainmob.stat == DEAD)
-				mmi.brainmob.stat = CONSCIOUS
-				mmi.brainmob.remove_from_dead_mob_list()
-				mmi.brainmob.add_to_alive_mob_list()
-			mind.transfer_to(mmi.brainmob)
-			mmi.update_icon()
-		else
-			to_chat(src, "<span class='boldannounce'>Oops! Something went very wrong, your MMI was unable to receive your mind. You have been ghosted. Please make a bug report so we can fix this bug.</span>")
-			ghostize()
-			stack_trace("Borg MMI lacked a brainmob")
-		mmi = null
-	if(modularInterface)
-		QDEL_NULL(modularInterface)
 	if(connected_ai)
 		set_connected_ai(null)
-	if(shell) //??? why would you give an ai radio keys?
-		revert_shell()
-	else
-		if(T && istype(radio) && istype(radio.keyslot))
-			radio.keyslot.forceMove(T)
-			radio.keyslot = null
-	QDEL_LIST(upgrades)
+	if(shell)
+		GLOB.available_ai_shells -= src
+	QDEL_NULL(modularInterface)
 	QDEL_NULL(wires)
 	QDEL_NULL(module)
 	QDEL_NULL(eye_lights)
 	QDEL_NULL(inv1)
 	QDEL_NULL(inv2)
 	QDEL_NULL(inv3)
+	QDEL_NULL(hands)
+	QDEL_NULL(spark_system)
 	QDEL_NULL(aiPDA)
+	QDEL_LIST(upgrades)
+	QDEL_NULL(cell)
+	QDEL_NULL(robot_suit)
+	QDEL_NULL(thruster_button)
 	cell = null
 	return ..()
 
@@ -662,49 +645,57 @@
 	lampButton?.update_icon()
 	update_icons()
 
-/mob/living/silicon/robot/proc/deconstruct()
+/mob/living/silicon/robot/proc/cyborg_deconstruct()
 	// SEND_SIGNAL(src, COMSIG_BORG_SAFE_DECONSTRUCT)
-	var/turf/T = get_turf(src)
-	if (robot_suit)
-		robot_suit.forceMove(T)
-		robot_suit.l_leg.forceMove(T)
-		robot_suit.l_leg = null
-		robot_suit.r_leg.forceMove(T)
-		robot_suit.r_leg = null
-		new /obj/item/stack/cable_coil(T, robot_suit.chest.wired)
-		robot_suit.chest.forceMove(T)
-		robot_suit.chest.wired = FALSE
-		robot_suit.chest = null
-		robot_suit.l_arm.forceMove(T)
-		robot_suit.l_arm = null
-		robot_suit.r_arm.forceMove(T)
-		robot_suit.r_arm = null
-		robot_suit.head.forceMove(T)
-		robot_suit.head.flash1.forceMove(T)
-		robot_suit.head.flash1.burn_out()
-		robot_suit.head.flash1 = null
-		robot_suit.head.flash2.forceMove(T)
-		robot_suit.head.flash2.burn_out()
-		robot_suit.head.flash2 = null
-		robot_suit.head = null
-		robot_suit.update_icon()
+	var/turf/drop_to = drop_location(src)
+	if(robot_suit)
+		robot_suit.drop_all_parts(drop_to)
 	else
-		new /obj/item/robot_suit(T)
-		new /obj/item/bodypart/l_leg/robot(T)
-		new /obj/item/bodypart/r_leg/robot(T)
-		new /obj/item/stack/cable_coil(T, 1)
-		new /obj/item/bodypart/chest/robot(T)
-		new /obj/item/bodypart/l_arm/robot(T)
-		new /obj/item/bodypart/r_arm/robot(T)
-		new /obj/item/bodypart/head/robot(T)
-		var/b
-		for(b=0, b!=2, b++)
-			var/obj/item/assembly/flash/handheld/F = new /obj/item/assembly/flash/handheld(T)
-			F.burn_out()
-	if (cell) //Sanity check.
-		cell.forceMove(T)
-		cell = null
+		new /obj/item/robot_suit(drop_to)
+		new /obj/item/bodypart/l_leg/robot(drop_to)
+		new /obj/item/bodypart/r_leg/robot(drop_to)
+		new /obj/item/stack/cable_coil(drop_to, 1)
+		new /obj/item/bodypart/chest/robot(drop_to)
+		new /obj/item/bodypart/l_arm/robot(drop_to)
+		new /obj/item/bodypart/r_arm/robot(drop_to)
+		new /obj/item/bodypart/head/robot(drop_to)
+		for(var/i in 1 to 2)
+			var/obj/item/assembly/flash/handheld/borgeye = new(drop_to)
+			borgeye.burn_out()
+
+	cell?.forceMove(drop_to) // Cell can be null, if removed beforehand
+	radio?.keyslot?.forceMove(drop_to)
+	radio?.keyslot = null
+
+	dump_into_mmi(drop_to)
+
 	qdel(src)
+
+/// Dumps the current occupant of the cyborg into an MMI at the passed location
+/// Returns the borg's MMI on success
+/mob/living/silicon/robot/proc/dump_into_mmi(atom/at_location = drop_location())
+	if(isnull(mmi))
+		return
+
+	var/obj/item/mmi/removing = mmi
+	mmi.forceMove(at_location) // Nulls it out via exited
+
+	if(isnull(mind)) // no one to transfer, just leave the MMI.
+		return mmi
+
+	if(removing.brainmob)
+		if(removing.brainmob.stat == DEAD)
+			removing.brainmob.set_stat(CONSCIOUS)
+		mind.transfer_to(removing.brainmob)
+		removing.update_appearance()
+
+	else
+		to_chat(src, span_boldannounce("Oops! Something went very wrong, your MMI was unable to receive your mind. \
+			You have been ghosted. Please make a bug report so we can fix this bug."))
+		ghostize()
+		stack_trace("Borg MMI lacked a brainmob")
+
+	return mmi
 
 ///This is the subtype that gets created by robot suits. It's needed so that those kind of borgs don't have a useless cell in them
 /mob/living/silicon/robot/nocell

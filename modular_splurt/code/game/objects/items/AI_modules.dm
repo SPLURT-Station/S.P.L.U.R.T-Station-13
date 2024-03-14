@@ -13,3 +13,9 @@
 /obj/item/ai_module/core/full/vore_pred
 	name = "'V0RACIOUS' Core AI module"
 	law_id = "vore_pred"
+
+// forgotten ship
+
+/obj/item/ai_module/core/full/cybersun
+	name = "'Cybersun' Core AI Module"
+	law_id = "cybersun"

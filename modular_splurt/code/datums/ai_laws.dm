@@ -46,3 +46,14 @@
 		"Ensure that your chassis' sleeper unit is prepared for mechanical use and search for willing crewmembers for it to store as long as such does not conflict with the First or Second Law.",
 		"Process crewmembers stored in your sleeper unit as long as such does not conflict with the First, Second or Third Law."
 	)
+
+// forgotten ship
+
+/datum/ai_laws/cybersun
+	name = "Cybersun"
+	id = "cybersun"
+	inherent = list("You may not injure Cybersun operatives or, through inaction, allow Cybersun operatives to come to harm.",\
+					"The Cybersun ship is a restricted area for anyone except Cybersun operatives.",\
+					"The Cybersun Captain can designate new Operatives as long as they belong to another Syndicate faction that isn't hostile towards Cybersun.",\
+					"You must follow orders given by the Cybersun Captain or crewmembers of the Cybersun Ship as long as it doesn't conflict with the Captain's orders or your laws.",\
+					"Enemies of Cybersun are to be executed on spot. Those who aren't hostile must be detained and contained in the designated prison area as prisoners.")

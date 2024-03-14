@@ -2,7 +2,7 @@
 	name = "Ocean"
 	icon_state = "bluenew"
 	has_gravity = STANDARD_GRAVITY
-	area_flags = VALID_TERRITORY | UNIQUE_AREA | CULT_PERMITTED
+	area_flags = VALID_TERRITORY | UNIQUE_AREA | CULT_PERMITTED | NO_ALERTS | FLORA_ALLOWED | MOB_SPAWN_ALLOWED
 	requires_power = TRUE
 	outdoors = TRUE
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED

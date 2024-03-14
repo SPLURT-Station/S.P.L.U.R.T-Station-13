@@ -107,7 +107,6 @@
 
 /obj/item/gun/energy/laser/scatter/shotty
 	name = "energy shotgun"
-	icon = 'icons/obj/guns/projectile.dmi'
 	icon_state = "cshotgun"
 	item_state = "shotgun"
 	desc = "A combat shotgun gutted and refitted with an internal laser system. Can switch between taser and scattered disabler shots."

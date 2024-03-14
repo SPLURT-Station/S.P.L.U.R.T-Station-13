@@ -1,7 +1,6 @@
 /obj/item/gun/grenadelauncher
 	name = "grenade launcher"
 	desc = "A terrible, terrible thing. It's really awful!"
-	icon = 'icons/obj/guns/projectile.dmi'
 	icon_state = "riotgun"
 	item_state = "riotgun"
 	w_class = WEIGHT_CLASS_BULKY

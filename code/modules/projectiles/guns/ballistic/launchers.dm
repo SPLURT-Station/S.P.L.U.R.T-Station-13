@@ -4,8 +4,9 @@
 /obj/item/gun/ballistic/launcher
 	desc = "A unknown grenade launcher, you feel like you shouldnt have this."
 	name = "grenade launcher"
-	icon_state = "dshotgun-sawn"
-	item_state = "dshotgun-sawn"
+	icon = 'icons/obj/guns/projectile.dmi'
+	icon_state = "dshotgun_sawn"
+	item_state = "dshotgun_sawn"
 	w_class = WEIGHT_CLASS_BULKY
 	inaccuracy_modifier = 0.5
 	fire_delay = 2
@@ -22,8 +23,8 @@
 /obj/item/gun/ballistic/launcher/grenade_launcher//this is only used for underbarrel grenade launchers at the moment, but admins can still spawn it if they feel like being assholes
 	desc = "A break-operated grenade launcher."
 	name = "grenade launcher"
-	icon_state = "dshotgun-sawn"
-	item_state = "dshotgun-sawn"
+	icon_state = "dshotgun_sawn"
+	item_state = "dshotgun_sawn"
 	inaccuracy_modifier = 0.5
 	mag_type = /obj/item/ammo_box/magazine/internal/grenadelauncher
 	fire_sound = 'sound/weapons/gun/general/grenade_launch.ogg'
@@ -96,8 +97,8 @@
 /obj/item/gun/ballistic/launcher/rocket_launcher
 	name = "\improper PML-9"
 	desc = "A reusable rocket propelled grenade launcher. The words \"NT this way\" and an arrow have been written near the barrel."
-	icon_state = "rocketlauncher"
-	item_state = "rocketlauncher"
+	icon_state = "rocket_launcher"
+	item_state = "rocket_launcher"
 	mag_type = /obj/item/ammo_box/magazine/internal/rocketlauncher
 	fire_sound = 'sound/weapons/gun/general/rocket_launch.ogg'
 	w_class = WEIGHT_CLASS_BULKY

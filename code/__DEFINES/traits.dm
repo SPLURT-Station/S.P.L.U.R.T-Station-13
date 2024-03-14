@@ -1,4 +1,5 @@
 #define SIGNAL_TRAIT(trait_ref) "trait [trait_ref]"
+#define SIGNAL_REMOVETRAIT(trait_ref) "removetrait [trait_ref]"
 
 // trait accessor defines
 #define ADD_TRAIT(target, trait, source) \
@@ -59,6 +60,30 @@
 				};\
 		}\
 	} while (0)
+
+#define REMOVE_TRAITS_IN(target, sources) \
+	do { \
+		var/list/_L = target.status_traits; \
+		var/list/_S = sources; \
+		if (sources && !islist(sources)) { \
+			_S = list(sources); \
+		} else { \
+			_S = sources\
+		}; \
+		if (_L) { \
+			for (var/_T in _L) { \
+				_L[_T] -= _S;\
+				if (!length(_L[_T])) { \
+					_L -= _T; \
+					SEND_SIGNAL(target, SIGNAL_REMOVETRAIT(_T)); \
+					}; \
+				};\
+			if (!length(_L)) { \
+				target.status_traits = null\
+			};\
+		}\
+	} while (0)
+
 #define HAS_TRAIT(target, trait) (target.status_traits ? (target.status_traits[trait] ? TRUE : FALSE) : FALSE)
 #define HAS_TRAIT_FROM(target, trait, source) (target.status_traits ? (target.status_traits[trait] ? (source in target.status_traits[trait]) : FALSE) : FALSE)
 #define HAS_TRAIT_FROM_ONLY(target, trait, source) (\
@@ -236,6 +261,12 @@
 #define TRAIT_NO_STAMINA_REGENERATION					"block_stamina_regen" /// Prevents stamina regeneration
 #define TRAIT_ARMOR_BROKEN		"armor_broken" //acts as if you are wearing no clothing when taking damage, does not affect non-clothing sources of protection
 #define TRAIT_IWASBATONED "iwasbatoned" //some dastardly fellow has struck you with a baton and thought to use another to strike you again, the rogue
+//Given by social anxiety quirk
+#define TRAIT_ANXIOUS		"anxious"
+/// Trait granted by lipstick
+#define LIPSTICK_TRAIT		"lipstick_trait"
+/// Blowing kisses that actually do damage to the victim
+#define TRAIT_KISS_OF_DEATH		"kiss_of_death"
 /// forces update_density to make us not dense
 #define TRAIT_LIVING_NO_DENSITY			"living_no_density"
 /// forces us to not render our overlays

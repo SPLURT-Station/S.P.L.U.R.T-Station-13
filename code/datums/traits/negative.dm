@@ -43,11 +43,11 @@
 
 GLOBAL_LIST_EMPTY(family_heirlooms)
 
-/datum/quirk/family_heirloom/on_spawn()	
+/datum/quirk/family_heirloom/on_spawn()
 	// Define holder and type
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	var/obj/item/heirloom_type
-	
+
 	// The quirk holder's species - we have a 50% chance, if we have a species with a set heirloom, to choose a species heirloom.
 	var/datum/species/holder_species = human_holder.dna?.species
 	if(holder_species && LAZYLEN(holder_species.family_heirlooms) && prob(50))
@@ -61,13 +61,13 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 	// If we didn't find an heirloom somehow, throw them a generic one
 	if(!heirloom_type)
 		heirloom_type = pick(/obj/item/toy/cards/deck, /obj/item/lighter, /obj/item/dice/d20)
-	
+
 	// Create the heirloom item
 	heirloom = new heirloom_type(get_turf(quirk_holder))
-	
+
 	// Add to global list
 	GLOB.family_heirlooms += heirloom
-	
+
 	// Determine and assign item location
 	var/list/slots = list(
 		"in your left pocket" = ITEM_SLOT_LPOCKET,
@@ -330,6 +330,7 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 	gain_text = "<span class='danger'>You start worrying about what you're saying.</span>"
 	lose_text = "<span class='notice'>You feel easier about talking again.</span>" //if only it were that easy!
 	medical_record_text = "Patient is usually anxious in social encounters and prefers to avoid them."
+	mob_trait = TRAIT_ANXIOUS
 	var/dumb_thing = TRUE
 	processing_quirk = TRUE
 

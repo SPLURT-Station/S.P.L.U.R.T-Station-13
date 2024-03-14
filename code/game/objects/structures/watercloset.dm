@@ -546,8 +546,7 @@
 	if(washing_face)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
-			H.lip_style = null //Washes off lipstick
-			H.lip_color = initial(H.lip_color)
+			H.clean_lips() //Washes off lipstick
 			H.wash_cream()
 			H.wash_cum() //sandstorm edit
 			H.regenerate_icons()

@@ -3989,18 +3989,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						current_tab = text2num(href_list["tab"])
 				//SPLURT edit
 				if("headshot")
-					var/usr_input = input(user, "Input the image link:", "Headshot Image", features["headshot_link"]) as text|null
+					var/usr_input = input(user, "Input the image link: (For Discord links, try putting the file's type at the end of the link, after the '&'. for example '&.jpg/.png/.jpeg')", "Headshot Image", features["headshot_link"]) as text|null
 					if(isnull(usr_input))
 						return
 					if(!usr_input)
 						features["headshot_link"] = null
 						return
 
-					var/static/link_regex = regex("https://i.gyazo.com|https://media.discordapp.net|https://cdn.discordapp.com|https://media.discordapp.net$") //Do not touch the damn duplicates.
+					var/static/link_regex = regex("https://i.gyazo.com|https://media.discordapp.net|https://cdn.discordapp.com|https://media.discordapp.net$|https://static1.e621.net") //Do not touch the damn duplicates.
 					var/static/end_regex = regex(".jpg|.jpg|.png|.jpeg|.jpeg") //Regex is terrible, don't touch the duplicate extensions
 
 					if(!findtext(usr_input, link_regex, 1, 29))
-						to_chat(usr, span_warning("The link needs to be an unshortened Gyazo or Discordapp link!"))
+						to_chat(usr, span_warning("The link needs to be an unshortened Gyazo, E621, or Discordapp link!"))
 						return
 					if(!findtext(usr_input, end_regex, -8))
 						to_chat(usr, span_warning("You need either \".png\", \".jpg\", or \".jpeg\" in the link!"))

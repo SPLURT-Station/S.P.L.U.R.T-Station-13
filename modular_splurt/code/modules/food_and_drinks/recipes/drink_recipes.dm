@@ -347,3 +347,80 @@
 		/datum/reagent/consumable/sugar = 1,
 		/datum/reagent/consumable/sodawater = 15
 	)
+
+//Gnome Cocktails
+/datum/chemical_reaction/fruitblast
+	name = "Fruit Blast"
+	id = /datum/reagent/consumable/fruitblast
+	results = list(/datum/reagent/consumable/fruitblast = 3)
+	required_reagents = list(
+		/datum/reagent/consumable/pineapplejuice = 1,
+		/datum/reagent/consumable/lemonjuice = 1,
+		/datum/reagent/consumable/orangejuice = 1
+	)
+
+/datum/chemical_reaction/pinepunch
+	name = "Pineapple Punch"
+	id = /datum/reagent/consumable/pinepunch
+	results = list(/datum/reagent/consumable/pinepunch = 1)
+	required_reagents = list(
+		/datum/reagent/consumable/fruitblast = 1,
+		/datum/reagent/consumable/pineapplejuice = 1,
+		/datum/reagent/consumable/limejuice = 1
+	)
+
+/datum/chemical_reaction/wizbliz
+	name = "Wizard Blizzard"
+	id = /datum/reagent/consumable/ethanol/wizbliz
+	results = list(/datum/reagent/consumable/ethanol/wizbliz = 2)
+	required_reagents = list(
+		/datum/reagent/consumable/ethanol/vodka = 2,
+		/datum/reagent/consumable/ethanol/gin = 1,
+		/datum/reagent/consumable/triple_citrus =1
+	)
+
+/datum/chemical_reaction/sgg
+	name = "Short Green Guy"
+	id = /datum/reagent/consumable/ethanol/sgg
+	results = list(/datum/reagent/consumable/ethanol/sgg = 5)
+	required_reagents = list(
+		/datum/reagent/consumable/ethanol/vodka = 1,
+		/datum/reagent/consumable/ethanol/creme_de_menthe = 1,
+		/datum/reagent/consumable/limejuice = 3
+	)
+
+/datum/chemical_reaction/drunkdrag
+	name = "Drunken Dragon"
+	id = /datum/reagent/consumable/ethanol/drunkdrag
+	results = list(/datum/reagent/consumable/ethanol/drunkdrag = 5)
+	required_reagents = list(
+		/datum/reagent/consumable/ethanol/vodka = 1,
+		/datum/reagent/consumable/ethanol/gin = 1,
+		/datum/reagent/consumable/berryjuice = 1,
+		/datum/reagent/consumable/cream = 1
+	)
+	required_temp = 315 //Gotta get it nice and warm
+
+/datum/chemical_reaction/chocsat
+	name = "Chocolate Saturday"
+	id = /datum/reagent/consumable/ethanol/chocsat
+	results = list(/datum/reagent/consumable/ethanol/chocsat = 5)
+	required_reagents = list(
+		/datum/reagent/consumable/ethanol/whiskey = 1,
+		/datum/reagent/consumable/ethanol/creme_de_cacao = 1,
+		/datum/reagent/consumable/ethanol/creme_de_menthe = 1,
+		/datum/reagent/consumable/milk = 1
+	)
+	required_temp = 315 //Gotta get it nice and warm
+
+/datum/chemical_reaction/blurbspec
+	name = "Blurberry Special"
+	id = /datum/reagent/consumable/ethanol/blurbspec
+	results = list(/datum/reagent/consumable/ethanol/blurbspec = 10)
+	required_reagents = list(
+		/datum/reagent/consumable/ethanol/gin = 1,
+		/datum/reagent/consumable/ethanol/cognac = 1,
+		/datum/reagent/consumable/ethanol/vodka = 1,
+		/datum/reagent/consumable/ethanol/creme_de_menthe = 1,
+		/datum/reagent/consumable/triple_citrus = 1
+	)

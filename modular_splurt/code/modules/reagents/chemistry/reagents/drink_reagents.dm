@@ -165,3 +165,24 @@
 	glass_icon_state = "melonshake"
 	glass_name = "glass of Watermelon Milkshake"
 	glass_desc = "A Watermelon milkshake, it's like summer all over again!"
+
+//Gnome Mocktails
+/datum/reagent/consumable/fruitblast
+	name = "Fruit Blast"
+	description = "A non-alcoholic tropical cocktail"
+	color = "#f7ba38"
+	taste_description = "citrus and tropical breeze"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "fruitblast"
+	glass_name = "glass of Fruit Blast"
+	glass_desc = "A Fruit Blast cocktail"
+
+/datum/reagent/consumable/pinepunch
+	name = "Pineapple Punch"
+	description = "A non-alcoholic pineapple cocktail"
+	color = "#d6e73e"
+	taste_description = "pineapples and citrus"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "pinepunch"
+	glass_name = "glass of Pineapple Punch"
+	glass_desc = "A Pineapple Punch cocktail"

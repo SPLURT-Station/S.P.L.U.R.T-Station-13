@@ -490,3 +490,54 @@
 /obj/item/reagent_containers/food/drinks/drinkingglass/filled/midnight_tears
 	name = "Midnight Tears"
 	list_reagents = list(/datum/reagent/consumable/ethanol/midnight_tears = 50)
+
+// Gnome Cocktails
+/datum/reagent/consumable/ethanol/wizbliz
+	name = "Wizard Blizzard"
+	description = "Wizard Blizzard, it's magical!"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "wizbliz"
+	glass_name = "glass of Wizard Blizzard"
+	taste_description = "fizzy magic"
+	color = "#63e7a9"
+	glass_desc = "A glass of fizzy, magical cocktail"
+
+/datum/reagent/consumable/ethanol/sgg
+	name = "Short Green Guy"
+	description = "It smells like lime, and a gnomeball field"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "sgg"
+	glass_name = "glass of Short Green Guy"
+	taste_description = "a lot of limes"
+	color = "#1dee16"
+	glass_desc = "A bright green drink that smells of lime"
+
+/datum/reagent/consumable/ethanol/drunkdrag
+	name = "Drunken Dragon"
+	description = "A Drunken Dragon cocktail, does not contain actual dragons"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "drunkdragon"
+	glass_name = "glass of Drunken Ddragon"
+	taste_description = "a belly full of fire"
+	color = "#77baf1"
+	glass_desc = "A warm, blue cocktail that smells of dragon"
+
+/datum/reagent/consumable/ethanol/chocsat
+	name = "Chocolate Saturday"
+	description = "Whiskey and Mint Chocolate Milk, served warm"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "chocsat"
+	glass_name = "glass of Chocolate Saturday"
+	taste_description = "warm mint chocolate milk"
+	color = "#724b18"
+	glass_desc = "A warm, chocolatey cocktail that smells faintly of whiskey"
+
+/datum/reagent/consumable/ethanol/blurbspec
+	name = "Blurberry Special"
+	description = "You don't know who Blurberry is, but he makes a great cocktail"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "blurbspec"
+	glass_name = "glass of Blurberry Special"
+	taste_description = "booze and citrus, with a hint of mint"
+	color = "#e7a412"
+	glass_desc = "A bright orange cocktail made only by the best mixologist"

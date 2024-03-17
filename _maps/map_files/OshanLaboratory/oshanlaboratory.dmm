@@ -5451,6 +5451,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/medical/genetics)
+"ctH" = (
+/obj/vehicle/sealed/vectorcraft/submarine/miningsub,
+/turf/open/floor/engine,
+/area/cargo/miningoffice)
 "ctJ" = (
 /obj/structure/closet/emcloset,
 /obj/effect/spawner/lootdrop/maintenance{
@@ -8597,6 +8601,7 @@
 /area/maintenance/starboard/fore)
 "dGQ" = (
 /obj/effect/turf_decal/stripes/line,
+/obj/vehicle/sealed/vectorcraft/submarine/minisub,
 /turf/open/floor/engine,
 /area/oshan_hangars/sci)
 "dHg" = (
@@ -14393,6 +14398,10 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1,
 /turf/open/floor/plasteel,
 /area/commons/dorms)
+"gfU" = (
+/obj/vehicle/sealed/vectorcraft/submarine/engsub,
+/turf/open/floor/engine,
+/area/oshan_hangars/main)
 "gga" = (
 /obj/machinery/light{
 	dir = 4;
@@ -17818,6 +17827,18 @@
 /obj/item/modular_computer/laptop/preset/civilian,
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
+"hDv" = (
+/obj/docking_port/stationary{
+	dir = 8;
+	dwidth = 3;
+	height = 15;
+	id = "arrivals_stationary";
+	name = "arrivals";
+	roundstart_template = /datum/map_template/shuttle/modular_splurt/arrival/oshan;
+	width = 7
+	},
+/turf/open/floor/plating/watersand,
+/area/oshan/ocean)
 "hDE" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
@@ -22925,6 +22946,12 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/aft)
+"jUq" = (
+/obj/docking_port/stationary{
+	dir = 2
+	},
+/turf/open/floor/plating/watersand,
+/area/oshan/ocean)
 "jUP" = (
 /turf/closed/wall/r_wall,
 /area/maintenance/disposal/incinerator)
@@ -23554,6 +23581,10 @@
 /obj/effect/turf_decal/vg_decals/atmos/air,
 /turf/open/floor/engine/air,
 /area/engineering/atmos)
+"kgH" = (
+/obj/vehicle/sealed/vectorcraft/submarine/secsub,
+/turf/open/floor/engine,
+/area/oshan_hangars/sec)
 "kgJ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 10
@@ -25149,6 +25180,10 @@
 /obj/item/beacon,
 /turf/open/floor/plasteel/showroomfloor,
 /area/medical/morgue)
+"kOl" = (
+/obj/vehicle/sealed/vectorcraft/submarine/whitesub,
+/turf/open/floor/engine,
+/area/oshan_hangars/service)
 "kOp" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel,
@@ -29033,6 +29068,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
+/obj/vehicle/sealed/vectorcraft/submarine/minisub,
 /turf/open/floor/engine,
 /area/oshan_hangars/sci/outpost)
 "myH" = (
@@ -55653,6 +55689,14 @@
 	},
 /turf/closed/wall/r_wall,
 /area/maintenance/central)
+"xGf" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/vehicle/sealed/vectorcraft/submarine/engsub,
+/turf/open/floor/engine,
+/area/oshan_hangars/engineering)
 "xGi" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -83627,7 +83671,7 @@ fBG
 tEh
 whD
 joe
-joe
+kOl
 sQr
 wRy
 gTR
@@ -84231,7 +84275,7 @@ fBG
 tEh
 joe
 joe
-joe
+kOl
 sQr
 wRy
 sjH
@@ -95437,8 +95481,8 @@ ore
 oyH
 tdU
 hfB
-hfB
-hfB
+ctH
+ctH
 hfB
 oWh
 qMm
@@ -104835,7 +104879,7 @@ pcB
 kIB
 mMQ
 krM
-wcA
+kgH
 wcA
 tMf
 fBG
@@ -105439,7 +105483,7 @@ pcB
 ppB
 mMQ
 krM
-wcA
+kgH
 wcA
 tMf
 fBG
@@ -111739,9 +111783,9 @@ pUP
 eVV
 vRZ
 qzg
+gfU
 uLp
-uLp
-uLp
+gfU
 ikx
 ouR
 clt
@@ -112645,9 +112689,9 @@ fuq
 eVV
 aZj
 qzg
+gfU
 uLp
-uLp
-uLp
+gfU
 ikx
 xCd
 rbQ
@@ -113585,8 +113629,8 @@ dCX
 dCX
 dCX
 dsu
+dsu
 qGi
-fBG
 fBG
 fBG
 fBG
@@ -114793,8 +114837,8 @@ dCX
 dCX
 dCX
 dsu
+dsu
 qGi
-fBG
 fBG
 fBG
 fBG
@@ -116911,7 +116955,7 @@ fBG
 fBG
 fBG
 fBG
-fBG
+hDv
 fBG
 fBG
 fBG
@@ -118971,7 +119015,7 @@ kkV
 hve
 udW
 wfb
-skB
+xGf
 etF
 lVq
 skB
@@ -122022,7 +122066,7 @@ tKu
 kdd
 iAh
 fgU
-fBG
+jUq
 fBG
 fBG
 fBG

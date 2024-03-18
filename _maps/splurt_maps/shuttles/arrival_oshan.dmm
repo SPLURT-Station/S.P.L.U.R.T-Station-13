@@ -78,6 +78,12 @@
 	},
 /turf/open/floor/mineral/titanium,
 /area/shuttle/arrival)
+"v" = (
+/obj/docking_port/mobile/arrivals{
+	dir = 4
+	},
+/turf/template_noop,
+/area/template_noop)
 "w" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
@@ -154,11 +160,6 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/arrival)
-"X" = (
-/obj/effect/spawner/structure/window/shuttle,
-/obj/docking_port/mobile/arrivals,
-/turf/open/floor/plating,
-/area/shuttle/arrival)
 "Y" = (
 /obj/structure/chair/comfy/shuttle,
 /turf/open/floor/mineral/titanium,
@@ -167,7 +168,7 @@
 (1,1,1) = {"
 q
 z
-z
+v
 z
 f
 "}
@@ -293,7 +294,7 @@ p
 (19,1,1) = {"
 p
 m
-X
+m
 m
 p
 "}

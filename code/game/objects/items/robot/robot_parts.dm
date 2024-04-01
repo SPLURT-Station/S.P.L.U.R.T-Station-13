@@ -98,6 +98,25 @@
 		to_chat(user, "<span class='notice'>There is nothing to remove from the endoskeleton.</span>")
 	update_icon()
 
+/// Drops all included parts to the passed location
+/// This will also dissassemble the parts being dropped into components as well
+/obj/item/robot_suit/proc/drop_all_parts(atom/drop_to = drop_location())
+	l_leg?.forceMove(drop_to)
+	r_leg?.forceMove(drop_to)
+	l_arm?.forceMove(drop_to)
+	r_arm?.forceMove(drop_to)
+
+	if(chest)
+		chest.forceMove(drop_to)
+		new /obj/item/stack/cable_coil(drop_to, 1)
+		chest.wired = FALSE
+		chest.cell?.forceMove(drop_to)
+
+	if(head)
+		head.flash1?.forceMove(drop_to)
+		head.flash2?.forceMove(drop_to)
+		head.forceMove(drop_to)
+
 /obj/item/robot_suit/proc/put_in_hand_or_drop(mob/living/user, obj/item/I) //normal put_in_hands() drops the item ontop of the player, this drops it at the suit's loc
 	if(!user.put_in_hands(I))
 		I.forceMove(drop_location())
@@ -306,8 +325,7 @@
 			chest.cell.forceMove(O)
 			chest.cell = null
 			W.forceMove(O)//Should fix cybros run time erroring when blown up. It got deleted before, along with the frame.
-			if(O.mmi) //we delete the mmi created by robot/New()
-				qdel(O.mmi)
+			QDEL_NULL(O.mmi)  //we delete the mmi created by robot/New()
 			O.mmi = W //and give the real mmi to the borg.
 			O.updatename()
 			playsound(O.loc, 'sound/voice/liveagain.ogg', 75, TRUE)

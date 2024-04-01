@@ -1494,7 +1494,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				to_chat(usr, "<span class='warning'>[C] is dead!")
 				return
 			else
-				C.pregoodbye(C) //sandstorm punish and ends here.
+				C.goodbye(C) //sandstorm punish and ends here.
 		if(ADMIN_PUNISHMENT_TABLETIDESTATIONWIDE) //SPLURT punishments start here
 			priority_announce(html_decode("[target] has brought the wrath of the gods upon themselves and is now being tableslammed across the station. Please stand by."), null, 'sound/misc/announce.ogg', "CentCom")
 			var/list/areas = list()

@@ -369,7 +369,7 @@
 	return get_all_jobs()
 
 /proc/get_all_centcom_jobs()
-	return list("VIP Guest","Custodian","Thunderdome Overseer","CentCom Official","Medical Officer","Death Commando","Research Officer","Special Ops Officer","Admiral","CentCom Commander","Emergency Response Team Commander","Security Response Officer","Engineer Response Officer", "Medical Response Officer","CentCom Bartender","Nuclear Waste Expert") //No idea how to modularly edit a global proc
+	return list("VIP Guest","Custodian","Thunderdome Overseer","CentCom Official","Medical Officer","Death Commando","Research Officer","Special Ops Officer","Admiral","CentCom Commander","Emergency Response Team Commander","Security Response Officer","Engineer Response Officer", "Medical Response Officer","CentCom Bartender","Nuclear Waste Expert","Giant Bun Liaison") //No idea how to modularly edit a global proc
 
 /// Gets the job title, if the job name is an alt title, locates the original title using a prebuilt cache
 /proc/GetJobName(jobName)

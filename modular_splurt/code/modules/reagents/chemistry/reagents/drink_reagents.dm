@@ -28,7 +28,39 @@
 	glass_desc = "A Summer time drink that can be frozen and eaten or Drinked from a glass!"
 	glass_name = "Orange Creamsicle"
 
+// Donator drink
 
+/datum/reagent/consumable/honeystones_love
+	name = "Honeystone's Love"
+	description = "A dash of a mother's desire in every silken-drop!~"
+	color = "#7b60c4" // rgb(123, 96, 196)
+	quality = DRINK_FANTASTIC
+	taste_description = "vivid memories, love, and lucid dirty dreams!~"
+	glass_icon = 'modular_splurt/icons/obj/drinks.dmi'
+	glass_icon_state = "honeystones_love"
+	glass_name = "Honeystone's Love"
+	glass_desc = "A dash of a mother's desire in every silken-drop!~"
+
+/datum/reagent/consumable/honeystones_love/on_mob_life(mob/living/carbon/M)
+	if((prob(min(current_cycle/2,5))))
+		M.emote(pick("giggle","grin"))
+	M.apply_status_effect(/datum/status_effect/throat_soothed)
+	// healing
+	M.adjustBruteLoss(-1.2, 0)
+	M.adjustFireLoss(-1.2, 0)
+	M.adjustToxLoss(-1.2, 0, TRUE)
+	M.adjustOxyLoss(-1.2, 0)
+	//checks for mindbreaker
+	if(holder.has_reagent(/datum/reagent/toxin/mindbreaker))
+		holder.remove_reagent(/datum/reagent/toxin/mindbreaker, 5)
+	//applies horny effect
+	var/mob/living/carbon/human/H = M
+	var/list/genits = H.adjust_arousal(35, "hexacrocin", aphro = TRUE)//check for aphrosidiacs preferences
+	for(var/g in genits)
+		var/obj/item/organ/genital/G = g
+		to_chat(M, span_userlove("[G.arousal_verb]!"))
+
+	..()
 // ~( Ported from TG )~
 /datum/reagent/consumable/toechtauese_juice
 	name = "Töchtaüse Juice"

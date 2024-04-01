@@ -100,6 +100,8 @@ GLOBAL_LIST_INIT(bitflags, list(
 #define NO_ALERTS (1<<12)
 /// If blood cultists can draw runes or build structures on this AREA.
 #define CULT_PERMITTED (1<<13)
+/// If cultists can use abilities in this area but the area is not on station.
+#define CULTMAGIC_BYPASS (1<<14)
 
 /*
 	These defines are used specifically with the atom/pass_flags bitmask

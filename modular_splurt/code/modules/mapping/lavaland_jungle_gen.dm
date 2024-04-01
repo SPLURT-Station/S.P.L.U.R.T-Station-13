@@ -27,7 +27,7 @@
 			continue
 		W.connected = 1
 		var/turf/cur_turf = get_turf(W)
-		cur_turf.ChangeTurf(turf_type, new_baseturfs, CHANGETURF_IGNORE_AIR)
+		cur_turf.ChangeTurf(turf_type, new_baseturfs, CHANGETURF_SKIP) // HEY! Don't use CHANGETURF_SKIP unless you're SURE it can only ever run prior to turf init!
 		var/turf/target_turf = get_turf(pick(river_nodes - W))
 		if(!target_turf)
 			break
@@ -56,7 +56,7 @@
 				cur_turf = get_step(cur_turf, cur_dir)
 				continue
 			else
-				var/turf/river_turf = cur_turf.ChangeTurf(turf_type, new_baseturfs, CHANGETURF_IGNORE_AIR)
+				var/turf/river_turf = cur_turf.ChangeTurf(turf_type, new_baseturfs, CHANGETURF_SKIP) // HEY! Don't use CHANGETURF_SKIP unless you're SURE it can only ever run prior to turf init!
 				river_turf.Spread(30, 11, whitelist_area)
 
 	for(var/WP in river_nodes)
@@ -111,7 +111,7 @@
 					if(Trange <= radius + 0.5)
 						var/circ_area = get_area(T)
 						if(istype(circ_area, whitelist_area))
-							T.ChangeTurf(turf_type, new_baseturfs, CHANGETURF_IGNORE_AIR)
+							T.ChangeTurf(turf_type, new_baseturfs, CHANGETURF_SKIP) // HEY! Don't use CHANGETURF_SKIP unless you're SURE it can only ever run prior to turf init!
 							affected |= T
 							if(Trange > radius - 1)
 								T.Spread(21, 11, whitelist_area)
@@ -126,21 +126,21 @@
 						dir_turf = get_step(dir_turf, dir)
 						var/dir_area = get_area(dir_turf)
 						if(istype(dir_area, whitelist_area))
-							dir_turf = dir_turf.ChangeTurf(turf_type, new_baseturfs, CHANGETURF_IGNORE_AIR)
+							dir_turf = dir_turf.ChangeTurf(turf_type, new_baseturfs, CHANGETURF_SKIP) // HEY! Don't use CHANGETURF_SKIP unless you're SURE it can only ever run prior to turf init!
 							affected |= dir_turf
 							if(i == radius)
 								dir_turf.Spread(21, 11, whitelist_area)
 						//Fixes to diagional checker board
-						if(dir in GLOB.diagonals)
+						if(dir & (dir-1))
 							var/turf/diag_turf = locate(dir_turf.x,(dir_turf.y-1),target_z)
 							var/diag_area = get_area(diag_turf)
 							if(istype(diag_area, whitelist_area))
-								diag_turf = diag_turf.ChangeTurf(turf_type, new_baseturfs, CHANGETURF_IGNORE_AIR)
+								diag_turf = diag_turf.ChangeTurf(turf_type, new_baseturfs, CHANGETURF_SKIP) // HEY! Don't use CHANGETURF_SKIP unless you're SURE it can only ever run prior to turf init!
 								affected |= diag_turf
 
 			var/area/new_area = get_area(cur_turf)
 			if(istype(new_area, whitelist_area))
-				cur_turf.ChangeTurf(turf_type, new_baseturfs, CHANGETURF_IGNORE_AIR)
+				cur_turf.ChangeTurf(turf_type, new_baseturfs, CHANGETURF_SKIP) // HEY! Don't use CHANGETURF_SKIP unless you're SURE it can only ever run prior to turf init!
 				affected |= cur_turf
 			else
 				detouring = 0

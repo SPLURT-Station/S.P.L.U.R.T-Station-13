@@ -113,10 +113,9 @@
 	UnregisterSignal(parent, COMSIG_PARENT_EXAMINE)
 
 /datum/component/pregnancy/proc/register_carrier()
-	RegisterSignal(carrier, COMSIG_MOB_DEATH, .proc/fetus_mortus)
+	RegisterSignal(carrier, COMSIG_MOB_DEATH, .proc/clear_eggs)
 	RegisterSignal(carrier, COMSIG_LIVING_BIOLOGICAL_LIFE, .proc/handle_life)
 	RegisterSignal(carrier, COMSIG_HEALTH_SCAN, .proc/on_scan)
-	RegisterSignal(carrier, COMSIG_MOB_APPLY_DAMAGE, .proc/handle_damage)
 	if(oviposition)
 		RegisterSignal(carrier, COMSIG_MOB_CLIMAX, .proc/on_climax)
 
@@ -124,7 +123,6 @@
 	UnregisterSignal(carrier, COMSIG_MOB_DEATH)
 	UnregisterSignal(carrier, COMSIG_LIVING_BIOLOGICAL_LIFE)
 	UnregisterSignal(carrier, COMSIG_HEALTH_SCAN)
-	UnregisterSignal(carrier, COMSIG_MOB_APPLY_DAMAGE)
 	UnregisterSignal(carrier, COMSIG_MOB_CLIMAX)
 
 /datum/component/pregnancy/Destroy()
@@ -403,26 +401,11 @@
 /datum/component/pregnancy/proc/human_pragency_end(mob/living/carbon/human/gregnant)
 	SEND_SIGNAL(gregnant, COMSIG_CLEAR_MOOD_EVENT, "pregnancy")
 
-/datum/component/pregnancy/proc/fetus_mortus()
+/datum/component/pregnancy/proc/clear_eggs()
 	SIGNAL_HANDLER
 
-	if(!QDELETED(carrier) && get_turf(carrier) && (stage >= 2))
-		if(!oviposition)
-			new /obj/effect/gibspawner/generic(get_turf(carrier))
-		else
-			new /obj/effect/decal/cleanable/egg_smudge(get_turf(carrier))
-	carrier.Knockdown(200, TRUE, TRUE)
-	carrier.Stun(200, TRUE, TRUE)
-	carrier.adjustStaminaLoss(200)
 	qdel(src)
 
 /datum/component/pregnancy/proc/on_scan(datum/source, mob/user)
 	SIGNAL_HANDLER
 	to_chat(user, span_notice("<b>Pregnancy detected!</b>"))
-
-//drop kicked
-/datum/component/pregnancy/proc/handle_damage(datum/source, damage, damagetype, def_zone)
-	SIGNAL_HANDLER
-
-	if(def_zone == BODY_ZONE_CHEST && damage > 20 && prob(40))
-		fetus_mortus()

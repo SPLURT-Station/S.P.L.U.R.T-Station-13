@@ -132,7 +132,7 @@ Judgement 80k power or nine converts
 
 /datum/clockwork_scripture/proc/check_offstation_penalty()//don't cast spells away from the station
 	var/turf/T = get_turf(invoker)
-	if(!T || (!is_centcom_level(T.z) && !is_station_level(T.z) && !is_mining_level(T.z) && !is_reebe(T.z)))
+	if(!T || (!is_centcom_level(T.z) && !is_station_level(T.z) && !is_mining_level(T.z) && !is_reebe(T.z) && !is_away_level(T.z))) //Added is_away_level to help spells work properly on AGRComplex, or any future gateways that use cultists.))
 		channel_time *= 3
 		power_cost *= 3
 		return TRUE

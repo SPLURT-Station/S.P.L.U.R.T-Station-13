@@ -12,6 +12,14 @@
 	desc = "A massive, wolf like creature with powerful muscles, razor-sharp claws, and aggression to match. This one has the bedroom eyes.."
 	werewolf_mode = "gentle"
 
+/mob/living/simple_animal/hostile/ice_wolf/funwolf/gentle/pet_ice_wolf //Donator request
+	vision_range = 0
+	aggro_vision_range = 0
+	wander = 1
+	melee_damage_lower = 0
+	melee_damage_upper = 0
+	stop_automated_movement_when_pulled = 1
+
 /mob/living/simple_animal/hostile/werewolf/funwolf/abomination
 	name = "Exiled Werewolf"
 	desc = "A massive, wolf like creature with powerful muscles, razor-sharp claws, and aggression to match. This one has a strange smell for some reason.."

@@ -15,9 +15,6 @@
 //#define REFERENCE_TRACKING
 #ifdef REFERENCE_TRACKING
 
-///alternate to reftracking, extool variant (outdated, EoL, doesn't work, should be removed)
-//#define EXTOOLS_REFERENCE_TRACKING
-
 ///Should we be logging our findings or not
 #define REFERENCE_TRACKING_LOG
 
@@ -106,3 +103,8 @@
 #warn In order to build, run BUILD.bat in the root directory.
 #warn Consider switching to VSCode editor instead, where you can press Ctrl+Shift+B to build.
 #endif
+
+// Uncomment this to enable profiling via Tracy.
+// You will need to compile your own copy of prof.dll in order to use it.
+// Find the source code and build instructions here: https://github.com/mafemergency/byond-tracy/
+// #define TRACY_PROFILING

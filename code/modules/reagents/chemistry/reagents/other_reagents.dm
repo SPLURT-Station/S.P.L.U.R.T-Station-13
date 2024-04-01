@@ -2707,7 +2707,7 @@
 /datum/reagent/red_ichor
 	name = "Red Ichor"
 	can_synth = FALSE
-	description = "A unknown red liquid, linked to healing of most moral wounds."
+	description = "An unknown red liquid, linked to healing of most moral wounds."
 	color = "#c10000"
 	metabolization_rate = REAGENTS_METABOLISM * 2.5
 	chemical_flags = REAGENT_ALL_PROCESS
@@ -2725,7 +2725,7 @@
 /datum/reagent/green_ichor
 	name = "Green Ichor"
 	can_synth = FALSE
-	description = "A unknown green liquid, linked to healing of most internal wounds."
+	description = "An unknown green liquid, linked to healing of most internal wounds."
 	color = "#158c00"
 	metabolization_rate = REAGENTS_METABOLISM * 2.5
 	chemical_flags = REAGENT_ALL_PROCESS
@@ -2743,7 +2743,7 @@
 /datum/reagent/blue_ichor
 	name = "Blue Ichor"
 	can_synth = FALSE
-	description = "A unknown blue liquid, linked to healing the mind."
+	description = "An unknown blue liquid, linked to healing the mind."
 	color = "#0914e0"
 	metabolization_rate = REAGENTS_METABOLISM * 2.5
 	chemical_flags = REAGENT_ALL_PROCESS

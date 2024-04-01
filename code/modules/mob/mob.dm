@@ -21,15 +21,16 @@
 	hook_vr("mob_new",list(src))
 
 /mob/Destroy()//This makes sure that mobs with clients/keys are not just deleted from the game.
-	if(client)
-		stack_trace("Mob with client has been deleted.")
-	else if(ckey)
-		stack_trace("Mob without client but with associated ckey, [ckey], has been deleted.")
+	// if(client)
+	// 	stack_trace("Mob with client has been deleted.")
+	// else if(ckey)
+	// 	stack_trace("Mob without client but with associated ckey, [ckey], has been deleted.")
 	unset_machine()
 	remove_from_mob_list()
 	remove_from_dead_mob_list()
 	remove_from_alive_mob_list()
 	QDEL_LIST(mob_spell_list)
+	QDEL_LIST(actions)
 	GLOB.all_clockwork_mobs -= src
 	// remove_from_mob_suicide_list()
 	focus = null
@@ -1096,6 +1097,13 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	for(var/obj/item/I in held_items)
 		if(I.item_flags & SLOWS_WHILE_IN_HAND)
 			. += I.slowdown
+
+/mob/proc/set_stat(new_stat)
+	if(new_stat == stat)
+		return
+	. = stat
+	stat = new_stat
+	SEND_SIGNAL(src, COMSIG_MOB_STATCHANGE, new_stat, .)
 
 /**
   * Mostly called by doUnEquip()

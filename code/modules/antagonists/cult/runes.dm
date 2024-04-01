@@ -317,7 +317,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 		if(iscyborg(sacrificial))
 			var/mob/living/silicon/robot/bot = sacrificial
 			playsound(sacrificial, 'sound/magic/disable_tech.ogg', 100, TRUE)
-			bot.deconstruct()
+			bot.cyborg_deconstruct()
 
 		else if(ishuman(sacrificial))
 			playsound(sacrificial, 'sound/magic/disintegrate.ogg', 100, TRUE)

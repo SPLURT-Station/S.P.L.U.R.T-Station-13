@@ -91,7 +91,7 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 	if(!isturf(loc))
 		if((loc == user) || (loc.loc == user) || (loc.loc in user.contents) || (loc in user.GetAllContents(type)))		//short circuit, first three checks are cheaper and covers almost all cases (loc.loc covers hotel in box in backpack).
 			forceMove(get_turf(user))
-	
+
 	//SPLURT EDIT START
 	// Check if the room is already active, stored, or the secret room. If so, skip room type selection
 	var/chosen_room = "Nothing"
@@ -155,7 +155,7 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 	if(activeRooms["[roomNumber]"])
 		var/datum/turf_reservation/roomReservation = activeRooms["[roomNumber]"]
 		var/area/hilbertshotel/currentArea = get_area(locate(roomReservation.bottom_left_coords[1], roomReservation.bottom_left_coords[2], roomReservation.bottom_left_coords[3]))
-		
+
 		// Determine additional Y offset for teleportation
 		var/additionalY = currentArea.roomType == "Apartment-Sauna" ? 1 : 0
 
@@ -204,7 +204,7 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
 		for(var/obj/item/abstracthotelstorage/S in storageTurf)
 			if((S.roomNumber == roomNumber) && (S.parentSphere == src))
 				qdel(S)
-		
+
 		// Re-Set the room type
 		var/area/hilbertshotel/currentArea = get_area(locate(roomReservation.bottom_left_coords[1], roomReservation.bottom_left_coords[2], roomReservation.bottom_left_coords[3]))
 		if(storageObj)

@@ -6,7 +6,7 @@
 /datum/gear/hands/tailbag
 	name = "Tailbag"
 	description = "A bag for holding small personal items, which fastens around the base of the tail."
-	path = /obj/item/storage/tailbag
+	path = /obj/item/storage/wallet/tailbag
 
 /datum/gear/hands/tarotdeck
 	name = "Tarot Deck"

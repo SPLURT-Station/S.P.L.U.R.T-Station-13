@@ -214,7 +214,6 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 
 /obj/effect/proc_holder/spell/Destroy()
 	STOP_PROCESSING(SSfastprocess, src)
-	qdel(action)
 	return ..()
 
 /obj/effect/proc_holder/spell/Trigger(mob/user, skip_can_cast = TRUE)

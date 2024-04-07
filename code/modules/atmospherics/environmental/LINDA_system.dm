@@ -39,12 +39,67 @@
 /atom/movable/proc/BlockThermalConductivity() // Objects that don't let heat through.
 	return FALSE
 
+/// This proc is a more deeply optimized version of immediate_calculate_adjacent_turfs
+/// It contains dumbshit, and also stuff I just can't do at runtime
+/// If you're not editing behavior, just read that proc. It's less bad
+/turf/proc/init_immediate_calculate_adjacent_turfs()
+	//Basic optimization, if we can't share why bother asking other people ya feel?
+	// You know it's gonna be stupid when they include a unit test in the atmos code
+	// Yes, inlining the string concat does save 0.1 seconds
+	#ifdef UNIT_TESTS
+	ASSERT(UP == 16)
+	ASSERT(DOWN == 32)
+	#endif
+	LAZYINITLIST(src.atmos_adjacent_turfs)
+	var/list/atmos_adjacent_turfs = src.atmos_adjacent_turfs
+	var/blocks_air = src.blocks_air
+	var/canpass = CANATMOSPASS(src, src)
+	var/canvpass = CANVERTICALATMOSPASS(src, src)
+	// I am essentially inlineing two get_dir_multizs here, because they're way too slow on their own. I'm sorry brother
+	var/list/z_traits = SSmapping.multiz_levels[z]
+	for(var/direction in GLOB.cardinals_multiz)
+		// Yes this is a reimplementation of get_step_multiz. It's faster tho. fuck you
+		var/turf/current_turf = (direction & (UP|DOWN)) ? \
+			(direction & UP) ? \
+				(z_traits["16"]) ? \
+					(get_step(locate(x, y, z + z_traits["16"]), NONE)) : \
+				(null) : \
+				(z_traits["32"]) ? \
+					(get_step(locate(x, y, z + z_traits["32"]), NONE)) : \
+				(null) : \
+			(get_step(src, direction))
+
+		if(!isopenturf(current_turf)) // not interested in you brother
+			continue
+
+		//Can you and me form a deeper relationship, or is this just a passing wind
+		// (direction & (UP | DOWN)) is just "is this vertical" by the by
+		if((direction & (UP|DOWN) ? (canvpass && CANVERTICALATMOSPASS(current_turf, src)) : (canpass && CANATMOSPASS(current_turf, src))) && !(blocks_air || current_turf.blocks_air))
+			LAZYINITLIST(current_turf.atmos_adjacent_turfs)
+			atmos_adjacent_turfs[current_turf] = TRUE
+			current_turf.atmos_adjacent_turfs[src] = TRUE
+		else
+			atmos_adjacent_turfs -= current_turf
+			if (current_turf.atmos_adjacent_turfs)
+				current_turf.atmos_adjacent_turfs -= src
+			UNSETEMPTY(current_turf.atmos_adjacent_turfs)
+			current_turf.set_sleeping(current_turf.blocks_air)
+		// This was originally (isspaceturf(T.get_z_base_turf()), -1), but we don't have space, so
+		// we just pass FALSE to save time.
+		current_turf?.__update_auxtools_turf_adjacency_info(FALSE, -1)
+
+	UNSETEMPTY(atmos_adjacent_turfs)
+	src.atmos_adjacent_turfs = atmos_adjacent_turfs
+	set_sleeping(blocks_air)
+	__update_auxtools_turf_adjacency_info(FALSE)
+
 /turf/proc/ImmediateCalculateAdjacentTurfs()
+	var/list/atmos_adjacent_turfs = src.atmos_adjacent_turfs // save ourselves a bunch of datum var accesses
 	var/canpass = CANATMOSPASS(src, src)
 	var/canvpass = CANVERTICALATMOSPASS(src, src)
 	for(var/direction in GLOB.cardinals_multiz)
 		var/turf/T = get_step_multiz(src, direction)
-		if(!istype(T))
+		if(!T)
 			continue
 		if(isopenturf(T) && !(blocks_air || T.blocks_air) && ((direction & (UP|DOWN))? (canvpass && CANVERTICALATMOSPASS(T, src)) : (canpass && CANATMOSPASS(T, src))) )
 			LAZYINITLIST(atmos_adjacent_turfs)

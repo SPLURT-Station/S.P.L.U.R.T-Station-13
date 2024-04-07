@@ -223,7 +223,10 @@
 	air.copy_from_turf(src)
 	update_air_ref(planetary_atmos ? 1 : 2)
 
-	ImmediateCalculateAdjacentTurfs()
+	if(times_fired)
+		init_immediate_calculate_adjacent_turfs()
+	else
+		ImmediateCalculateAdjacentTurfs()
 
 /turf/open/proc/GetHeatCapacity()
 	. = air.heat_capacity()

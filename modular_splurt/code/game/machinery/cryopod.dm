@@ -18,3 +18,33 @@ GLOBAL_VAR_INIT(cryo_next_admin_warning, 0) // The last time we told admins abou
 		log_admin("\The [pod] in [get_area(pod)] could not find control computer!")
 		message_admins("\The [pod] in [get_area(pod)] could not find control computer!")
 		GLOB.cryo_next_admin_warning = world.time + 5 MINUTES
+
+/obj/machinery/cryopod/ghostrole
+	var/spawner
+
+/obj/machinery/cryopod/ghostrole/Destroy()
+	if(!create_spawner)
+		return..()
+	var/obj/effect/mob_spawn/human/cryocapable/S = new spawner(drop_location())
+	S.setDir(dir)
+	return ..()
+
+/obj/machinery/cryopod/ghostrole/hotel
+	respawn_ghostrole = "Hotel Staff"
+	spawner = /obj/effect/mob_spawn/human/cryocapable/hotel
+
+/obj/machinery/cryopod/ghostrole/hotel/security
+	respawn_ghostrole = "Hotel Staff"
+	spawner = /obj/effect/mob_spawn/human/cryocapable/hotel/security
+
+/obj/machinery/cryopod/ghostrole/hotel/manager
+	respawn_ghostrole = "Hotel Manager"
+	spawner = /obj/effect/mob_spawn/human/cryocapable/hotel/manager
+
+/obj/machinery/cryopod/ghostrole/lavaland_syndicate
+	respawn_ghostrole = "Lavaland Syndicate"
+	spawner = /obj/effect/mob_spawn/human/cryocapable/lavaland_syndicate
+
+/obj/machinery/cryopod/ghostrole/lavaland_syndicate/comms
+	respawn_ghostrole = "Space Syndicate"
+	spawner = /obj/effect/mob_spawn/human/cryocapable/lavaland_syndicate/comms

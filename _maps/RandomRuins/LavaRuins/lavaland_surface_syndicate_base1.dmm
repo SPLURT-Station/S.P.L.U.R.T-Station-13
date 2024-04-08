@@ -319,14 +319,6 @@
 /obj/effect/turf_decal/tile/green,
 /turf/open/floor/plasteel,
 /area/ruin/lavaland/unpowered/syndicate_lava_base)
-"bS" = (
-/obj/structure/closet/secure_closet/personal/patient,
-/obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/skeleton,
-/turf/open/floor/plasteel/white/side{
-	dir = 9
-	},
-/area/ruin/lavaland/unpowered/syndicate_lava_base/virology)
 "cA" = (
 /obj/structure/table/reinforced,
 /obj/item/book/manual/wiki/chemistry,
@@ -2835,9 +2827,8 @@
 /turf/open/floor/plasteel,
 /area/ruin/lavaland/unpowered/syndicate_lava_base/main)
 "ib" = (
-/obj/effect/mob_spawn/human/lavaland_syndicate{
-	dir = 4;
-	faction = list("Syndicate")
+/obj/effect/mob_spawn/human/cryocapable/lavaland_syndicate{
+	dir = 4
 	},
 /turf/open/floor/plasteel/grimy,
 /area/ruin/lavaland/unpowered/syndicate_lava_base/dormitories)
@@ -2875,9 +2866,8 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/lavaland/unpowered/syndicate_lava_base/dormitories)
 "ie" = (
-/obj/effect/mob_spawn/human/lavaland_syndicate/comms{
-	dir = 8;
-	faction = list("Syndicate")
+/obj/effect/mob_spawn/human/cryocapable/lavaland_syndicate/comms{
+	dir = 8
 	},
 /turf/open/floor/plasteel/grimy,
 /area/ruin/lavaland/unpowered/syndicate_lava_base/dormitories)
@@ -3305,6 +3295,12 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/machinery/computer/cryopod{
+	dir = 1;
+	pixel_y = -26;
+	req_access_txt = "150";
+	req_one_access = null
+	},
 /turf/open/floor/plasteel{
 	heat_capacity = 1e+006
 	},
@@ -3538,12 +3534,11 @@
 /turf/open/floor/plasteel,
 /area/ruin/lavaland/unpowered/syndicate_lava_base/main)
 "jn" = (
-/obj/effect/mob_spawn/human/lavaland_syndicate{
-	dir = 4;
-	faction = list("Syndicate")
-	},
 /obj/machinery/airalarm/syndicate{
 	pixel_y = 24
+	},
+/obj/effect/mob_spawn/human/cryocapable/lavaland_syndicate{
+	dir = 4
 	},
 /turf/open/floor/plasteel/grimy,
 /area/ruin/lavaland/unpowered/syndicate_lava_base/dormitories)
@@ -3564,12 +3559,11 @@
 /turf/open/floor/plating,
 /area/ruin/lavaland/unpowered/syndicate_lava_base/main)
 "jq" = (
-/obj/effect/mob_spawn/human/lavaland_syndicate{
-	dir = 8;
-	faction = list("Syndicate")
-	},
 /obj/machinery/airalarm/syndicate{
 	pixel_y = 24
+	},
+/obj/effect/mob_spawn/human/cryocapable/lavaland_syndicate{
+	dir = 8
 	},
 /turf/open/floor/plasteel/grimy,
 /area/ruin/lavaland/unpowered/syndicate_lava_base/dormitories)
@@ -7366,7 +7360,7 @@ ab
 ab
 ac
 eh
-bS
+eG
 fh
 eI
 gr

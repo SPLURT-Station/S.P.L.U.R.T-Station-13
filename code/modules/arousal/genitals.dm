@@ -283,7 +283,7 @@
 	return
 
 /mob/living/carbon/human/proc/update_genitals()
-	if(QDELETED(src))
+	if(QDELETED(src) || IsFeral()) // SPLURT EDIT - FERALS
 		return
 	var/static/list/relevant_layers = list("[GENITALS_BEHIND_LAYER]" = "BEHIND", "[GENITALS_FRONT_LAYER]" = "FRONT")
 	var/static/list/layers_num

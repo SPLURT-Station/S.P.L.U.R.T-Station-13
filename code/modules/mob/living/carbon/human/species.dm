@@ -285,6 +285,10 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 /datum/species/proc/check_roundstart_eligible()
 	if(id in (CONFIG_GET(keyed_list/roundstart_races)))
 		return TRUE
+	// SPLURT EDIT BEGIN
+	if(roundstart == TRUE)
+		return TRUE
+	// SPLURT EDIT END
 	return FALSE
 
 /**
@@ -825,9 +829,29 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 
 	var/list/standing = list()
 
+	// SPLURT EDIT - FERALS
+	if(H.IsFeral())
+		H.rotate_on_lying = rotate_on_lying
+		var/i_state
+		if(H.stat == DEAD)
+			i_state = "[id][icon_dead_suffix]"
+		else if(H.stat != DEAD && !CHECK_MOBILITY(H, MOBILITY_STAND))//Not dead but can't stand up or resting
+			i_state = "[id][icon_rest_suffix]"
+		else
+			i_state = id
+		var/mutable_appearance/F = mutable_appearance(simple_icon, i_state, BODYPARTS_LAYER)
+		if(isnull(simple_icon_width))//Their icon_width isn't set so get it now!
+			var/icon/I = icon(simple_icon)
+			simple_icon_width = I.Width()
+		if(simple_icon_width != 32)//We need to recenter!
+			F.pixel_x += -((simple_icon_width-32)/2)
+		standing += F
+	// SPLURT EDIT END
+
 	var/obj/item/bodypart/head/HD = H.get_bodypart(BODY_ZONE_HEAD)
 
-	if(HD && !(HAS_TRAIT(H, TRAIT_HUSK)))
+	//if(HD && !(HAS_TRAIT(H, TRAIT_HUSK)))
+	if(HD && !(HAS_TRAIT(H, TRAIT_HUSK)) && !H.IsFeral()) // SPLURT EDIT - FERALS
 		// lipstick
 		if(H.lip_style && (LIPS in species_traits))
 			var/mutable_appearance/lip_overlay = mutable_appearance('icons/mob/lips.dmi', "lips_[H.lip_style]", -BODY_LAYER)

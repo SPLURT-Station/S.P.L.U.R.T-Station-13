@@ -1,51 +1,4 @@
-/datum/species/feral
-	name = "Feral (THIS SHOULD NOT BE SEEN)"
-	id = SPECIES_FERAL
-
-	//The id is the living and standing icon state of the creature.
-	//The dead icon state must be "id_d" in the .dmi file
-	//The resting icon state must be "id_rest" in the .dmi file
-	simple_icon = 'modular_splurt/icons/mob/pokemon64.dmi'
-	mutant_bodyparts = list()
-	icon_dead_suffix = "_dead"
-	icon_rest_suffix = "_rest"
-	/// The width of the icon_limbs file. Used to auto-center your sprite.
-	simple_icon_width = 64
-
-	species_traits = list(
-		FERAL,
-		NOZOMBIE,
-		NO_UNDERWEAR,
-		LIPS,
-		NOEYES,
-		CAN_SCAR,
-		HAS_FLESH,
-		HAS_BONE
-		)
-	inherent_biotypes = MOB_ORGANIC|MOB_BEAST
-	allowed_limb_ids = null
-
-	meat = /obj/item/reagent_containers/food/snacks/meat/slab
-	gib_types = list(/obj/effect/gibspawner/human/bodypartless)
-
-	attack_verb = "claw"
-	attack_sound = 'sound/weapons/slash.ogg'
-	miss_sound = 'sound/weapons/slashmiss.ogg'
-	rotate_on_lying = FALSE
-
-	damage_overlay_type = null
-	attack_verb = "slash"
-	attack_sound = 'sound/weapons/slash.ogg'
-	miss_sound = 'sound/weapons/slashmiss.ogg'
-
-	tail_type = "mam_tail"
-	wagging_type = "mam_waggingtail"
-	species_category = SPECIES_CATEGORY_FURRY
-	//footstep_type = FOOTSTEP_MOB_CLAW
-
-//
-// start of pokemon
-//
+// All the pokemon species go here
 
 /datum/species/feral/pokemon
 	roundstart = FALSE
@@ -57,7 +10,7 @@
 
 /datum/species/feral/pokemon/aerodactyl
 	name = "Feral Aerodactyl"
-	id = "Aerodactyl"//randomly has a capital letter i guess
+	id = "Aerodactyl"
 	roundstart = TRUE
 	//footstep_type = FOOTSTEP_MOB_CRAWL
 /mob/living/carbon/human/species/aerodactyl
@@ -489,15 +442,7 @@
 	//footstep_type = FOOTSTEP_MOB_CRAWL
 /mob/living/carbon/human/species/alolanraichu
 	race = /datum/species/feral/pokemon/alolanraichu
-/*
-/datum/species/feral/pokemon/ralts
-	name = "Feral Ralts"
-	id = "ralts"
-	roundstart = TRUE
-	footstep_type = FOOTSTEP_MOB_CRAWL
-/mob/living/carbon/human/species/ralts
-	race = /datum/species/feral/pokemon/ralts
-*/
+
 /datum/species/feral/pokemon/raticate
 	name = "Feral Raticate"
 	id = "raticate"
@@ -642,81 +587,3 @@
 	//footstep_type = FOOTSTEP_MOB_CRAWL
 /mob/living/carbon/human/species/zubat
 	race = /datum/species/feral/pokemon/zubat
-
-//
-// start of everything else
-//
-
-/datum/species/feral/nightstalker
-	name = "Feral Nightstalker"
-	id = "nightstalker"
-	simple_icon = 'modular_splurt/icons/mob/nightstalker.dmi'
-	simple_icon_width = 64
-	icon_dead_suffix = "-dead"
-	icon_rest_suffix = "_rest"
-	roundstart = TRUE
-	liked_food = MEAT | RAW
-/mob/living/carbon/human/species/nightstalker
-	race = /datum/species/feral/nightstalker
-
-/datum/species/feral/cat
-	name = "Feral Cat"
-	id = "cat2"
-	simple_icon = 'icons/mob/pets.dmi'
-	simple_icon_width = 32
-	icon_dead_suffix = "_dead"
-	icon_rest_suffix = "_rest"
-	roundstart = TRUE
-	liked_food = MEAT | RAW
-/mob/living/carbon/human/species/cat
-	race = /datum/species/feral/cat
-
-/datum/species/feral/black_cat
-	name = "Feral Black Cat"
-	id = "cat"
-	simple_icon = 'icons/mob/pets.dmi'
-	simple_icon_width = 32
-	icon_dead_suffix = "_dead"
-	icon_rest_suffix = "_rest"
-	roundstart = TRUE
-	liked_food = MEAT | RAW
-/mob/living/carbon/human/species/black_cat
-	race = /datum/species/feral/black_cat
-
-/datum/species/feral/space_cat
-	name = "Feral Space Cat"
-	id = "spacecat"
-	simple_icon = 'icons/mob/pets.dmi'
-	simple_icon_width = 32
-	icon_dead_suffix = "_dead"
-	icon_rest_suffix = "_rest"
-	roundstart = TRUE
-	liked_food = MEAT | RAW
-/mob/living/carbon/human/species/space_cat
-	race = /datum/species/feral/space_cat
-
-/datum/species/feral/wolf
-	name = "Feral Wolf"
-	id = "wolf"
-	simple_icon = 'modular_splurt/icons/mob/dogs.dmi'
-	simple_icon_width = 32
-	icon_dead_suffix = "_dead"
-	icon_rest_suffix = "_rest"
-	rotate_on_lying = TRUE
-	roundstart = TRUE
-	liked_food = MEAT | RAW
-/mob/living/carbon/human/species/wolf
-	race = /datum/species/feral/wolf
-
-/datum/species/feral/dog
-	name = "Feral Dog"
-	id = "dog_feral"
-	simple_icon = 'modular_splurt/icons/mob/dogs.dmi'
-	simple_icon_width = 32
-	icon_dead_suffix = "_dead"
-	icon_rest_suffix = "_rest"
-	rotate_on_lying = TRUE
-	roundstart = TRUE
-	liked_food = MEAT | RAW
-/mob/living/carbon/human/species/dog
-	race = /datum/species/feral/dog

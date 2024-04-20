@@ -13,9 +13,6 @@
 	var/icon_suit
 	var/icon_uniform
 
-	/// If set to true, will force it into the roundstart races list regardless of what the config says (config file bloat prevention)
-	var/roundstart = FALSE
-
 	var/rotate_on_lying = TRUE
 	/// The icon file to use if your species has a non-humanoid body. (FERAL species trait)
 	var/simple_icon

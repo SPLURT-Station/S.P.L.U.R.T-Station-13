@@ -285,10 +285,6 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 /datum/species/proc/check_roundstart_eligible()
 	if(id in (CONFIG_GET(keyed_list/roundstart_races)))
 		return TRUE
-	// SPLURT EDIT BEGIN
-	if(roundstart == TRUE)
-		return TRUE
-	// SPLURT EDIT END
 	return FALSE
 
 /**

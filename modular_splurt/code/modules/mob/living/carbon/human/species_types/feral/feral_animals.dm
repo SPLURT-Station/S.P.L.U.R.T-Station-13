@@ -7,7 +7,6 @@
 	simple_icon_width = 32
 	icon_dead_suffix = "_dead"
 	icon_rest_suffix = "_rest"
-	roundstart = TRUE
 	liked_food = MEAT | RAW
 /mob/living/carbon/human/species/cat
 	race = /datum/species/feral/cat
@@ -19,7 +18,6 @@
 	simple_icon_width = 32
 	icon_dead_suffix = "_dead"
 	icon_rest_suffix = "_rest"
-	roundstart = TRUE
 	liked_food = MEAT | RAW
 /mob/living/carbon/human/species/black_cat
 	race = /datum/species/feral/black_cat
@@ -31,7 +29,6 @@
 	simple_icon_width = 32
 	icon_dead_suffix = "_dead"
 	icon_rest_suffix = "_rest"
-	roundstart = TRUE
 	liked_food = MEAT | RAW
 /mob/living/carbon/human/species/space_cat
 	race = /datum/species/feral/space_cat
@@ -44,7 +41,6 @@
 	icon_dead_suffix = "_dead"
 	icon_rest_suffix = "_rest"
 	rotate_on_lying = TRUE
-	roundstart = TRUE
 	liked_food = MEAT | RAW
 /mob/living/carbon/human/species/wolf
 	race = /datum/species/feral/wolf
@@ -57,7 +53,6 @@
 	icon_dead_suffix = "_dead"
 	icon_rest_suffix = "_rest"
 	rotate_on_lying = TRUE
-	roundstart = TRUE
 	liked_food = MEAT | RAW
 /mob/living/carbon/human/species/dog
 	race = /datum/species/feral/dog

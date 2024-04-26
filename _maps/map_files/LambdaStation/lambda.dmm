@@ -1272,7 +1272,8 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/research{
 	name = "Nanite Laboratory";
-	req_one_access_txt = "7;47;29"
+	req_one_access_txt = "7;47;29";
+	req_access_txt = "7"
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -4881,7 +4882,8 @@
 	},
 /obj/machinery/door/airlock/research{
 	name = "Nanite Laboratory";
-	req_one_access_txt = "7;47;29"
+	req_one_access_txt = "7;47;29";
+	req_access_txt = "7"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
@@ -14373,7 +14375,9 @@
 /turf/open/floor/plasteel/white,
 /area/science/research)
 "azT" = (
-/obj/machinery/door/airlock/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	req_access_txt = "7"
+	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -16484,7 +16488,8 @@
 /obj/machinery/door/airlock/research{
 	id_tag = "ResearchExt";
 	name = "Research Division";
-	req_one_access_txt = "47"
+	req_one_access_txt = "47";
+	req_access_txt = "7"
 	},
 /turf/open/floor/plasteel,
 /area/science/lab)
@@ -18088,14 +18093,15 @@
 /area/science/explab)
 "aGE" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/research{
-	id_tag = "ResearchExt";
-	name = "Research Division";
-	req_one_access_txt = "47"
-	},
 /obj/effect/turf_decal/delivery,
 /obj/structure/disposalpipe/segment,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/research{
+	id_tag = "ResearchInt";
+	name = "Research Division";
+	req_one_access_txt = "47";
+	req_access_txt = "7"
+	},
 /turf/open/floor/plasteel,
 /area/science/research)
 "aGF" = (
@@ -18103,15 +18109,16 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/research{
-	id_tag = "ResearchExt";
-	name = "Research Division";
-	req_one_access_txt = "47"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /obj/effect/turf_decal/delivery,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/research{
+	id_tag = "ResearchInt";
+	name = "Research Division";
+	req_one_access_txt = "47";
+	req_access_txt = "7"
+	},
 /turf/open/floor/plasteel,
 /area/science/research)
 "aGG" = (
@@ -19431,15 +19438,16 @@
 /area/cargo/miningoffice)
 "aIN" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/research{
-	id_tag = "ResearchInt";
-	name = "Research Division";
-	req_one_access_txt = "47"
-	},
 /obj/effect/turf_decal/delivery,
 /obj/structure/disposalpipe/segment,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
+	},
+/obj/machinery/door/airlock/research{
+	id_tag = "ResearchInt";
+	name = "Research Division";
+	req_one_access_txt = "47";
+	req_access_txt = "7"
 	},
 /turf/open/floor/plasteel,
 /area/science/research)
@@ -19451,7 +19459,8 @@
 /obj/machinery/door/airlock/research{
 	id_tag = "ResearchInt";
 	name = "Research Division";
-	req_one_access_txt = "47"
+	req_one_access_txt = "47";
+	req_access_txt = "7"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,

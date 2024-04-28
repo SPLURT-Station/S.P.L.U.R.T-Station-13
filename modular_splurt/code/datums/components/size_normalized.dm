@@ -22,7 +22,7 @@
 		wearer.flash_lighting_fx(3, 3, LIGHT_COLOR_PURPLE)
 		wearer.visible_message(span_warning("A flash of purple light engulfs \the [wearer], before [wearer.p_they()] jump[wearer.p_s()] to a more average size!"),span_notice("You feel warm for a moment, before everything scales to your size..."))
 		wearer.update_size(normal_resize)
-	RegisterSignal(wearer, COMSIG_MOB_RESIZED, .proc/normalize_size)
+	RegisterSignal(wearer, COMSIG_MOB_RESIZED, PROC_REF(normalize_size))
 
 //Denormalize the mob when the component is destroyed (if needed)
 /datum/component/size_normalized/UnregisterFromParent()

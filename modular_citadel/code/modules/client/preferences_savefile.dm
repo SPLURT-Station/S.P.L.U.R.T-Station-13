@@ -23,7 +23,7 @@
 	S["alt_titles_preferences"]			>> alt_titles_preferences
 	alt_titles_preferences = SANITIZE_LIST(alt_titles_preferences)
 	if(SSjob)
-		for(var/datum/job/job in sort_list(SSjob.occupations, /proc/cmp_job_display_asc))
+		for(var/datum/job/job in sort_list(SSjob.occupations, GLOBAL_PROC_REF(cmp_job_display_asc)))
 			if(alt_titles_preferences[job.title])
 				if(!(alt_titles_preferences[job.title] in job.alt_titles))
 					alt_titles_preferences.Remove(job.title)

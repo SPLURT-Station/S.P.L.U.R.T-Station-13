@@ -69,8 +69,8 @@
 
 /datum/component/bodycamera_holder/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/on_attackby)
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE_MORE, .proc/on_examine_more)
+	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(on_attackby))
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE_MORE, PROC_REF(on_examine_more))
 
 /datum/component/bodycamera_holder/UnregisterFromParent()
 	UnregisterSignal(parent, COMSIG_PARENT_ATTACKBY)

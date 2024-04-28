@@ -90,7 +90,7 @@
 	*/
 
 	handle_biolumi()
-	addtimer(CALLBACK(src, .proc/regrow), rand(regrowth_time_low, regrowth_time_high))
+	addtimer(CALLBACK(src, PROC_REF(regrow)), rand(regrowth_time_low, regrowth_time_high))
 
 /obj/structure/flora/botany/proc/drop_produce(user)
 	var/obj/item/reagent_containers/food/snacks/grown/G = myseed.spawn_product(get_turf(src))

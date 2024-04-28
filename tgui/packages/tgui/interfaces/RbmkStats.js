@@ -1,11 +1,7 @@
-import { map, sortBy } from 'common/collections';
-import { flow } from 'common/fp';
-import { toFixed } from 'common/math';
-import { pureComponentHooks } from 'common/react';
-import { Component, Fragment } from 'inferno';
-import { Box, Button, Chart, ColorBox, Flex, Icon, LabeledList, ProgressBar, Section, Table } from '../components';
+
+import { useBackend } from '../backend';
+import { Chart, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
-import { useBackend, useLocalState } from '../backend';
 
 export const RbmkStats = (props, context) => {
   const { act, data } = useBackend(context);

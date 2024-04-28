@@ -41,10 +41,10 @@
 
 /datum/component/glory_kill/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_CLICK_ALT, .proc/glory_kill)
-	RegisterSignal(parent, COMSIG_MOB_APPLY_DAMAGE, .proc/health_modified)
-	RegisterSignal(parent, COMSIG_MOB_DEATH, .proc/on_death)
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/examined)
+	RegisterSignal(parent, COMSIG_CLICK_ALT, PROC_REF(glory_kill))
+	RegisterSignal(parent, COMSIG_MOB_APPLY_DAMAGE, PROC_REF(health_modified))
+	RegisterSignal(parent, COMSIG_MOB_DEATH, PROC_REF(on_death))
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(examined))
 
 /datum/component/glory_kill/UnregisterFromParent()
 	UnregisterSignal(parent, list(COMSIG_CLICK_ALT, COMSIG_MOB_APPLY_DAMAGE, COMSIG_MOB_DEATH, COMSIG_MOB_EXAMINATE))

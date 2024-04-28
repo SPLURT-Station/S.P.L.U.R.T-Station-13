@@ -36,13 +36,13 @@ Removes slaughterlings (because they are bullshit), instead replacing them with 
 	blood_warp()
 	bloodsmacks()
 	if(prob(25))
-		INVOKE_ASYNC(src, .proc/blood_spray)
-		INVOKE_ASYNC(src, .proc/bloodsmacks)
+		INVOKE_ASYNC(src, PROC_REF(blood_spray))
+		INVOKE_ASYNC(src, PROC_REF(bloodsmacks))
 	else
 		if(health > maxHealth/2 && !client)
-			INVOKE_ASYNC(src, .proc/charge)
+			INVOKE_ASYNC(src, PROC_REF(charge))
 		else
-			INVOKE_ASYNC(src, .proc/triple_charge)
+			INVOKE_ASYNC(src, PROC_REF(triple_charge))
 
 /mob/living/simple_animal/hostile/megafauna/bubblegum/charge()
 	bloodsmacks()
@@ -71,7 +71,7 @@ Removes slaughterlings (because they are bullshit), instead replacing them with 
 				mobcount++
 		if(mobcount)
 			var/hand = rand(0,1)
-			INVOKE_ASYNC(src, .proc/bloodsmack, T, hand)
+			INVOKE_ASYNC(src, PROC_REF(bloodsmack), T, hand)
 
 /mob/living/simple_animal/hostile/megafauna/bubblegum/proc/bloodsmack(turf/T, handedness)
 	if(handedness)

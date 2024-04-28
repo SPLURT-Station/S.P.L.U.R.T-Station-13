@@ -1,8 +1,9 @@
-import {
-  Stack,
-  Icon,
-} from '../../components';
 import { Component, createRef } from 'inferno';
+
+import {
+  Icon,
+  Stack,
+} from '../../components';
 import { DisplayName } from "./DisplayName";
 
 

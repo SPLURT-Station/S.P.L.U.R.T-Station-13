@@ -1,12 +1,11 @@
 import { useLocalState } from '../../backend';
 import {
   Box,
-  Stack,
-  Icon,
-  Section,
   Button,
-  Input,
   Dropdown,
+  Input,
+  Section,
+  Stack,
 } from '../../components';
 
 export const VariableMenu = (props, context) => {

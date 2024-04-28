@@ -53,6 +53,12 @@
   - rscadd: Fermi expansion chems (breast/penis/butt) to universal genital fluid whitelist
   - rscadd: Fermi reduction chems to universal genital fluid whitelist
   - rscadd: AphrodisiacPlus (Hexacrocin) to universal genital fluid whitelist
+2024-02-25:
+  SandPoot:
+  - bugfix: Sanitizes loadout items.
+  - bugfix: Players get positive quirks removed until balanced when joining the game.
+  - bugfix: Ring accessories have gotten their paths fixed, allowing them to appear
+      once again in the accessory section of the loadout.
 2024-02-28:
   CSDSP:
   - tweak: Allow custom shuttles to move after round end
@@ -61,3 +67,7 @@
   - tweak: Updates headshot input box to inform on how to make Discord links work.
   - rscdel: Removed unused and abandoned Extools from ref-tracking to allow Coders
       to go through reference tracking with less hurdles.
+  SandPoot:
+  - bugfix: Fixed text effects for runechat messages (the stuff enclosed in +, | and
+      _ characters).
+  - spellcheck: Improved the tip for say/text effects.

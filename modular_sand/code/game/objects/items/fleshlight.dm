@@ -666,7 +666,7 @@
 			playsound(src, 'sound/machines/ping.ogg', 50, FALSE)
 			to_chat(user, "<span class='notice'>[P] has been linked up successfully.</span>")
 			update_portal()
-			RegisterSignal(user, COMSIG_PARENT_QDELETING, .proc/drop_out)
+			RegisterSignal(user, COMSIG_PARENT_QDELETING, PROC_REF(drop_out))
 		else
 			to_chat(user, "<span class='notice'>One of these pieces has already been paired.</span>")
 	else
@@ -710,7 +710,7 @@
 				to_chat(user, span_notice("The panties are not linked to a portal fleshlight."))
 			else
 				update_portal()
-				RegisterSignal(user, COMSIG_PARENT_QDELETING, .proc/drop_out)
+				RegisterSignal(user, COMSIG_PARENT_QDELETING, PROC_REF(drop_out))
 		else
 			update_portal()
 			UnregisterSignal(user, COMSIG_PARENT_QDELETING)
@@ -753,6 +753,7 @@
 	desc = "A small silver box with Silver Love Co embossed."
 	icon_state = "box"
 	custom_price = 15
+	illustration = null
 
 // portal fleshlight box
 /obj/item/storage/box/portallight/PopulateContents()

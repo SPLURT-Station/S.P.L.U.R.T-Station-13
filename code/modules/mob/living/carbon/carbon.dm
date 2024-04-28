@@ -227,7 +227,7 @@
 	. = (handcuffed || (!ignore_grab && pulledby && pulledby.grab_state >= GRAB_AGGRESSIVE))
 
 /mob/living/carbon/proc/canBeHandcuffed()
-	return 0
+	return FALSE
 
 /mob/living/carbon/Topic(href, href_list)
 	..()
@@ -266,7 +266,7 @@
 		MarkResistTime()
 		visible_message("<span class='warning'>[src] attempts to unbuckle [p_them()]self!</span>", \
 					"<span class='notice'>You attempt to unbuckle yourself... (This will take around [round(buckle_cd/600,1)] minute\s, and you need to stay still.)</span>")
-		if(do_after(src, buckle_cd, src, timed_action_flags = IGNORE_HELD_ITEM | IGNORE_INCAPACITATED, extra_checks = CALLBACK(src, .proc/cuff_resist_check)))
+		if(do_after(src, buckle_cd, src, timed_action_flags = IGNORE_HELD_ITEM | IGNORE_INCAPACITATED, extra_checks = CALLBACK(src, PROC_REF(cuff_resist_check))))
 			if(!buckled)
 				return
 			buckled.user_unbuckle_mob(src, src)
@@ -450,7 +450,7 @@
 
 /mob/living/carbon/attack_ui(slot)
 	if(!has_hand_for_held_index(active_hand_index))
-		return 0
+		return FALSE
 	return ..()
 
 /mob/living/carbon/proc/vomit(lost_nutrition = 10, blood = FALSE, stun = TRUE, distance = 1, message = TRUE, vomit_type = VOMIT_TOXIC, harm = TRUE, force = FALSE, purge_ratio = 0.1)
@@ -808,16 +808,16 @@
 			death()
 			return
 		if(IsUnconscious() || IsSleeping() || getOxyLoss() > 50 || (HAS_TRAIT(src, TRAIT_DEATHCOMA)) || (health <= HEALTH_THRESHOLD_FULLCRIT && !HAS_TRAIT(src, TRAIT_NOHARDCRIT)))
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 			SEND_SIGNAL(src, COMSIG_DISABLE_COMBAT_MODE)
 			if(!eye_blind)
 				blind_eyes(1)
 		else
 			if(health <= crit_threshold && !HAS_TRAIT(src, TRAIT_NOSOFTCRIT))
-				stat = SOFT_CRIT
+				set_stat(SOFT_CRIT)
 				SEND_SIGNAL(src, COMSIG_DISABLE_COMBAT_MODE)
 			else
-				stat = CONSCIOUS
+				set_stat(CONSCIOUS)
 			if(eye_blind <= 1)
 				adjust_blindness(-1)
 		update_mobility()
@@ -892,7 +892,7 @@
 /mob/living/carbon/can_be_revived()
 	. = ..()
 	if(!getorgan(/obj/item/organ/brain) && (!mind || !mind.has_antag_datum(/datum/antagonist/changeling)))
-		return 0
+		return FALSE
 
 /mob/living/carbon/harvest(mob/living/user)
 	if(QDELETED(src))

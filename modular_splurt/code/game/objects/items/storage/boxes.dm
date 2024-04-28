@@ -21,6 +21,7 @@
 	desc = "Comes with an implanter and an implant case for quick application!"
 	icon = 'modular_sand/icons/obj/fleshlight.dmi'
 	icon_state = "box"
+	illustration = null
 
 /obj/item/storage/box/implant_disrobe/ComponentInitialize()
 	. = ..()
@@ -37,6 +38,7 @@
 	desc = "Comes with a spray bottle quick application!"
 	icon = 'modular_sand/icons/obj/fleshlight.dmi'
 	icon_state = "box"
+	illustration = null
 
 /obj/item/storage/box/shipment_plushmium/ComponentInitialize()
 	. = ..()
@@ -59,6 +61,7 @@
 	icon = 'modular_sand/icons/obj/fleshlight.dmi'
 	icon_state = "box"
 	custom_price = PRICE_BELOW_NORMAL // 20% discount from buying individually
+	illustration = null
 
 /obj/item/storage/box/bulk_condoms/ComponentInitialize()
 	. = ..()

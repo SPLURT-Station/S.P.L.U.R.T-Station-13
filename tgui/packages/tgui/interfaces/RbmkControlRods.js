@@ -1,6 +1,5 @@
-import { Fragment } from 'inferno';
-import { useBackend, useLocalState } from '../backend';
-import { Section, ProgressBar, Slider } from '../components';
+import { useBackend } from '../backend';
+import { ProgressBar, Section, Slider } from '../components';
 import { Window } from '../layouts';
 
 export const RbmkControlRods = (props, context) => {

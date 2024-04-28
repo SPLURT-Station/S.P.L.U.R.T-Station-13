@@ -108,9 +108,9 @@
 	if(prob(explodioprobemp))
 		playsound(src.loc, 'sound/effects/fuse.ogg', 60, 1, 10)
 		visible_message("<span class ='warning'>The power module on the [src] begins to smoke, glowing with an alarming warmth! Get away from it, now!")
-		addtimer(CALLBACK(src, .proc/detonate),50)
+		addtimer(CALLBACK(src, PROC_REF(detonate)),50)
 	else
-		addtimer(CALLBACK(src, .proc/revivemessage), rebootdelay)
+		addtimer(CALLBACK(src, PROC_REF(revivemessage)), rebootdelay)
 		return
 
 /obj/item/clothing/suit/space/hardsuit/powerarmor/proc/revivemessage() //we use this proc to add a timer, so we can have it take a while to boot

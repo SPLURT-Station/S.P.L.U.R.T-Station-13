@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 import { Fragment } from 'inferno';
+
 import { useBackend, useLocalState } from "../backend";
-import { Box, Button, Flex, Collapsible, Icon, LabeledList, NoticeBox, Section, Tabs } from "../components";
+import { Box, Button, Collapsible, Flex, Icon, LabeledList, NoticeBox, Section, Tabs } from "../components";
 import { Window } from "../layouts";
 
 const stats = [

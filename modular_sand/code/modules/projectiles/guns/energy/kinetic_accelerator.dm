@@ -208,6 +208,7 @@
 	overheat_time = 27
 	ammo_type = list(/obj/item/ammo_casing/energy/kinetic/premium/byoka)
 	max_mod_capacity = 300
+	has_empty_icon = FALSE
 
 /obj/item/ammo_casing/energy/kinetic/premium/byoka
 	projectile_type = /obj/item/projectile/kinetic/premium/byoka

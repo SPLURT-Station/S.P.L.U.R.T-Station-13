@@ -31,8 +31,9 @@
 	if(move_to_lair)
 		send_to_lair()
 	var/mob/living/carbon/human/H = owner.current
-	H.canloadappearance = TRUE
-	H.checkloadappearance()
+	var/load_character = alert(H.client, "Load currently selected slot?", "Play as your character!", "Yes", "No")
+	if(load_character == "Yes")
+		H.load_client_appearance(H.client)
 	. = ..()
 	if(allow_rename)
 		rename_wizard()
@@ -143,7 +144,7 @@
 
 /datum/antagonist/wizard/get_admin_commands()
 	. = ..()
-	.["Send to Lair"] = CALLBACK(src,.proc/admin_send_to_lair)
+	.["Send to Lair"] = CALLBACK(src,PROC_REF(admin_send_to_lair))
 
 /datum/antagonist/wizard/proc/admin_send_to_lair(mob/admin)
 	owner.current.forceMove(pick(GLOB.wizardstart))

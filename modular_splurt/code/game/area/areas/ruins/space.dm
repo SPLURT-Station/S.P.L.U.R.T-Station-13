@@ -57,7 +57,7 @@
 	short_desc = "You are a syndicate comms agent, employed to listen in on Nanotrasen Comms Chatter."
 	flavour_text = "Use the communication equipment to provide support to any field agents, and sow disinformation to throw Nanotrasen off your trail. Do not let the base fall into enemy hands!"
 	important_info = "DO NOT abandon the base."
-	canloadappearance = TRUE
+	can_load_appearance = TRUE
 
 /datum/outfit/syndicate_comms_space
 	name = "Space Syndicate Comms Agent"

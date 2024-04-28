@@ -281,7 +281,7 @@
 					editBalance(-SG.cost)
 					radioAnnounce("Supplies inbound: [SG.name]")
 
-					addtimer(CALLBACK(src, .proc/dropSupplies, SG.build_path), rand(3,6) * 10)
+					addtimer(CALLBACK(src, PROC_REF(dropSupplies), SG.build_path), rand(3,6) * 10)
 
 					return TRUE
 

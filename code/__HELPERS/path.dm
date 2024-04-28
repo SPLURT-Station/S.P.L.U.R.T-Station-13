@@ -132,6 +132,11 @@
 	src.simulated_only = simulated_only
 	src.avoid = avoid
 
+/datum/pathfind/Destroy(force, ...)
+	caller = null
+	id = null
+	return ..()
+
 /**
  * search() is the proc you call to kick off and handle the actual pathfinding, and kills the pathfind datum instance when it's done.
  *

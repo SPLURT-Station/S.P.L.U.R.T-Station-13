@@ -126,7 +126,8 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/admin_away,
 	// /client/proc/spawn_floor_cluwne,
 	/client/proc/cmd_admin_toggle_fov,		//CIT CHANGE - FOV
-	/client/proc/roll_dices					//CIT CHANGE - Adds dice verb
+	/client/proc/roll_dices,					//CIT CHANGE - Adds dice verb
+	/client/proc/override_sm_delam //SPLURT change - Adds SM toggle
 	))
 GLOBAL_PROTECT(admin_verbs_fun)
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom, /datum/admins/proc/podspawn_atom, /datum/admins/proc/spawn_cargo, /datum/admins/proc/spawn_objasmob, /client/proc/respawn_character))
@@ -758,7 +759,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	if(!istype(T))
 		to_chat(src, "<span class='notice'>You can only give a disease to a mob of type /mob/living.</span>", confidential = TRUE)
 		return
-	var/datum/disease/D = input("Choose the disease to give to that guy", "ACHOO") as null|anything in sort_list(SSdisease.diseases, /proc/cmp_typepaths_asc)
+	var/datum/disease/D = input("Choose the disease to give to that guy", "ACHOO") as null|anything in sort_list(SSdisease.diseases, GLOBAL_PROC_REF(cmp_typepaths_asc))
 	if(!D)
 		return
 	T.ForceContractDisease(new D, FALSE, TRUE)

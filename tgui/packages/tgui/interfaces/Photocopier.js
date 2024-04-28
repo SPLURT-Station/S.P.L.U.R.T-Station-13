@@ -1,5 +1,5 @@
-import { ProgressBar, NumberInput, Button, Section, Box, Flex } from '../components';
 import { useBackend } from '../backend';
+import { Box, Button, Flex, NumberInput, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
 
 export const Photocopier = (props, context) => {

@@ -62,12 +62,12 @@
 	// At this point in client Click() code we have passed the 1/10 sec check and little else
 	// We don't even know if it's a middle click
 	if(usr.incapacitated())
-		return 1
+		return TRUE
 
 	if(ismob(usr))
 		var/mob/M = usr
 		M.swap_hand()
-	return 1
+	return TRUE
 
 // /atom/movable/screen/skills
 // 	name = "skills"
@@ -143,12 +143,12 @@
 
 /atom/movable/screen/inventory/MouseEntered(location, control, params)
 	. = ..()
-//	add_overlays()
+	add_overlays()
 
 /atom/movable/screen/inventory/MouseExited()
 	..()
-//	cut_overlay(object_overlay)
-//	QDEL_NULL(object_overlay)
+	cut_overlay(object_overlay)
+	QDEL_NULL(object_overlay)
 
 /atom/movable/screen/inventory/update_icon_state()
 	if(!icon_empty)
@@ -452,7 +452,7 @@
 	var/icon_y = text2num(LAZYACCESS(modifiers, "icon-y"))
 	var/choice = get_zone_at(icon_x, icon_y)
 	if (!choice)
-		return 1
+		return TRUE
 
 	return set_selected_zone(choice, usr)
 
@@ -735,7 +735,7 @@
 		deltimer(timerid)
 	if (!streak)
 		return
-	timerid = addtimer(CALLBACK(src, .proc/clear_streak), 20, TIMER_UNIQUE | TIMER_STOPPABLE)
+	timerid = addtimer(CALLBACK(src, PROC_REF(clear_streak)), 20, TIMER_UNIQUE | TIMER_STOPPABLE)
 	icon_state = "combo"
 	for (var/i = 1; i <= length(streak); ++i)
 		var/intent_text = copytext(streak, i, i + 1)

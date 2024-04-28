@@ -88,7 +88,7 @@
 		button_icon_state = "backpack"
 
 	// Update icon state
-	UpdateButtonIcon()
+	UpdateButtons()
 
 	// Display fake sparks to match flavor text
 	do_fake_sparks(2,FALSE,action_owner)

@@ -13,8 +13,8 @@
 
 /obj/item/rtl/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
-	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)
+	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, PROC_REF(on_wield))
+	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, PROC_REF(on_unwield))
 	update_icon()
 
 /obj/item/rtl/ComponentInitialize()
@@ -97,7 +97,7 @@
 		return
 	if(listeningTo)
 		UnregisterSignal(listeningTo, COMSIG_MOVABLE_MOVED)
-	RegisterSignal(to_hook, COMSIG_MOVABLE_MOVED, .proc/trigger)
+	RegisterSignal(to_hook, COMSIG_MOVABLE_MOVED, PROC_REF(trigger))
 	listeningTo = to_hook
 
 /obj/item/rtl/proc/trigger(mob/user)

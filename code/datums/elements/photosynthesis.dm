@@ -39,7 +39,7 @@
 	attached_atoms[target]++
 
 /datum/element/photosynthesis/Detach(datum/target)
-	if(attached_atoms)
+	if(attached_atoms && LAZYLEN(attached_atoms))
 		attached_atoms[target]--
 		if(!attached_atoms[target])
 			attached_atoms -= target

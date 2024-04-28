@@ -1,5 +1,6 @@
 import { toArray } from 'common/collections';
 import { Fragment } from 'inferno';
+
 import { useBackend, useSharedState } from '../backend';
 import { AnimatedNumber, Box, Button, Flex, LabeledList, Section, Table, Tabs } from '../components';
 import { formatMoney } from '../format';

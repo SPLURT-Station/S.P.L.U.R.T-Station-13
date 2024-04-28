@@ -69,7 +69,7 @@
 			return
 		visible_message(ignition_message)
 		log_game("Cannon fired by [key_name(user)] in [AREACOORD(src)]")
-		addtimer(CALLBACK(src, .proc/fire), fire_delay)
+		addtimer(CALLBACK(src, PROC_REF(fire)), fire_delay)
 		charge_ignited = TRUE
 		return
 

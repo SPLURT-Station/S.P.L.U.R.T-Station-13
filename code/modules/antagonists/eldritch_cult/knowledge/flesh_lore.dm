@@ -2,7 +2,7 @@
 	name = "Principle of Hunger"
 	desc = "Inducts you into the Path of Flesh. Allows you to transmute a pool of blood with a spear into a Blade of Flesh."
 	gain_text = "Hundreds of us starved, but not me... I found strength in my greed."
-	banned_knowledge = list(/datum/eldritch_knowledge/base_ash,/datum/eldritch_knowledge/base_rust,/datum/eldritch_knowledge/final/ash_final,/datum/eldritch_knowledge/final/rust_final,/datum/eldritch_knowledge/final/void_final,/datum/eldritch_knowledge/base_void)
+	banned_knowledge = list(/datum/eldritch_knowledge/base_ash,/datum/eldritch_knowledge/base_rust,/datum/eldritch_knowledge/final_eldritch/ash_final,/datum/eldritch_knowledge/final_eldritch/rust_final,/datum/eldritch_knowledge/final_eldritch/void_final,/datum/eldritch_knowledge/base_void)
 	next_knowledge = list(/datum/eldritch_knowledge/flesh_grasp)
 	required_atoms = list(/obj/item/spear,/obj/effect/decal/cleanable/blood)
 	result_atoms = list(/obj/item/melee/sickly_blade/flesh)
@@ -55,7 +55,7 @@
 	var/datum/antagonist/heretic/master = user.mind.has_antag_datum(/datum/antagonist/heretic)
 	heretic_monster.set_owner(master)
 	atoms -= humie
-	RegisterSignal(humie,COMSIG_MOB_DEATH,.proc/remove_ghoul)
+	RegisterSignal(humie,COMSIG_MOB_DEATH, PROC_REF(remove_ghoul))
 	ghouls += humie
 
 /datum/eldritch_knowledge/flesh_ghoul/proc/remove_ghoul(datum/source)
@@ -114,7 +114,7 @@
 	log_game("[key_name_admin(human_target)] has become a ghoul, their master is [user.real_name]")
 	//we change it to true only after we know they passed all the checks
 	. = TRUE
-	RegisterSignal(human_target,COMSIG_MOB_DEATH,.proc/remove_ghoul)
+	RegisterSignal(human_target,COMSIG_MOB_DEATH, PROC_REF(remove_ghoul))
 	human_target.revive(full_heal = TRUE, admin_revive = TRUE)
 	human_target.setMaxHealth(40)
 	human_target.health = 40
@@ -211,7 +211,7 @@
 	spell_to_add = /obj/effect/proc_holder/spell/pointed/blood_siphon
 	next_knowledge = list(/datum/eldritch_knowledge/summon/stalker,/datum/eldritch_knowledge/spell/voidpull)
 
-/datum/eldritch_knowledge/final/flesh_final
+/datum/eldritch_knowledge/final_eldritch/flesh_final
 	name = "Priest's Final Hymn"
 	gain_text = "Men of this world. Hear me, for the time of the Lord of Arms has come! The Emperor of Flesh guides my army!"
 	desc = "Bring 3 bodies onto a transmutation rune to shed your human form and ascend to untold power."
@@ -220,7 +220,7 @@
 	sacs_needed = 8
 	route = PATH_FLESH
 
-/datum/eldritch_knowledge/final/flesh_final/on_finished_recipe(mob/living/user, list/atoms, loc)
+/datum/eldritch_knowledge/final_eldritch/flesh_final/on_finished_recipe(mob/living/user, list/atoms, loc)
 	. = ..()
 	priority_announce("$^@&#*$^@(#&$(@&#^$&#^@# Ever coiling vortex. Reality unfolded. THE LORD OF ARMS, [user.real_name] has ascended! Fear the ever twisting hand! $^@&#*$^@(#&$(@&#^$&#^@#","#$^@&#*$^@(#&$(@&#^$&#^@#", 'sound/announcer/classic/spanomalies.ogg')
 	user.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/shed_human_form)
@@ -260,7 +260,7 @@
 	cost = 2
 	sacs_needed = 3
 	spell_to_add = /obj/effect/proc_holder/spell/targeted/touch/mad_touch
-	next_knowledge = list(/datum/eldritch_knowledge/final/flesh_final)
+	next_knowledge = list(/datum/eldritch_knowledge/final_eldritch/flesh_final)
 	route = PATH_FLESH
 
 /datum/eldritch_knowledge/spell/touch_of_madness/on_gain(mob/user)

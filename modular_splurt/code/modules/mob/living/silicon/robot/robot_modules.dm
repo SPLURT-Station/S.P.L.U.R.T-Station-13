@@ -26,7 +26,7 @@
 			"Cyclone" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "cyclone")
 			)
 		stand_icons = sort_list(stand_icons)
-	var/stand_borg_icon = show_radial_menu(R, R , stand_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/stand_borg_icon = show_radial_menu(R, R , stand_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 	if(!stand_borg_icon)
 		return
 	switch(stand_borg_icon)
@@ -108,7 +108,7 @@
 			"BootyS" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "bootystandardS")
 		)
 		clown_icons = sort_list(clown_icons)
-	var/clown_borg_icon = show_radial_menu(R, R , clown_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/clown_borg_icon = show_radial_menu(R, R , clown_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 	if(!clown_borg_icon)
 		return
 	switch(clown_borg_icon)
@@ -160,7 +160,7 @@
 		/obj/item/stack/wrapping_paper/xmas/cyborg,
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/hand_labeler/cyborg,
-		/obj/item/destTagger,
+		/obj/item/dest_tagger,
 		/obj/item/crowbar/cyborg,
 		/obj/item/extinguisher,
 		/obj/item/export_scanner,
@@ -196,7 +196,7 @@
 			var/image/wide = image(icon = 'modular_splurt/icons/mob/widerobots_cargo.dmi', icon_state = L[a])
 			wide.pixel_x = -16
 			cargo_icons[a] = wide
-	var/cargo_borg_icon = show_radial_menu(R, R , cargo_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/cargo_borg_icon = show_radial_menu(R, R , cargo_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 	switch(cargo_borg_icon)
 		if("Default")
 			cyborg_base_icon = "cargoborg"

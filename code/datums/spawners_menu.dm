@@ -33,6 +33,7 @@
 					this["short_desc"] = MS.short_desc
 					this["flavor_text"] = MS.flavour_text
 					this["important_info"] = MS.important_info
+					this["can_load_appearance"] = MS.can_load_appearance
 				else
 					var/obj/O = spawner_obj
 					this["desc"] = O.desc

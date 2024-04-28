@@ -534,7 +534,7 @@
 
 /datum/dna/proc/check_block_string(mutation)
 	if((LAZYLEN(mutation_index) > DNA_MUTATION_BLOCKS) || !(mutation in mutation_index))
-		return 0
+		return FALSE
 	return is_gene_active(mutation)
 
 /datum/dna/proc/is_gene_active(mutation)
@@ -581,7 +581,7 @@
 
 /proc/setblock(istring, blocknumber, replacement, blocksize=DNA_BLOCK_SIZE)
 	if(!istring || !blocknumber || !replacement || !blocksize)
-		return 0
+		return FALSE
 	return getleftblocks(istring, blocknumber, blocksize) + replacement + getrightblocks(istring, blocknumber, blocksize)
 
 /datum/dna/proc/mutation_in_sequence(mutation)
@@ -645,7 +645,7 @@
 
 /proc/scramble_dna(mob/living/carbon/M, ui=FALSE, se=FALSE, probability)
 	if(!M.has_dna())
-		return 0
+		return FALSE
 	if(se)
 		for(var/i=1, i<=DNA_MUTATION_BLOCKS, i++)
 			if(prob(probability))
@@ -656,7 +656,7 @@
 			if(prob(probability))
 				M.dna.uni_identity = setblock(M.dna.uni_identity, i, random_string(DNA_BLOCK_SIZE, GLOB.hex_characters))
 		M.updateappearance(mutations_overlay_update=1)
-	return 1
+	return TRUE
 
 //value in range 1 to values. values must be greater than 0
 //all arguments assumed to be positive integers

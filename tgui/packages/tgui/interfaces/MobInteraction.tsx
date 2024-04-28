@@ -1,10 +1,11 @@
-import { filter, map, sortBy } from 'common/collections';
+import { filter, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { clamp } from 'common/math';
 import { createSearch } from 'common/string';
+
 import { useBackend, useLocalState } from '../backend';
-import { BlockQuote, Button, Flex, LabeledList, Icon, Input, Section, Table, Tabs, Stack, ProgressBar, Divider } from '../components';
-import { TableCell, TableRow } from '../components/Table';
+import { BlockQuote, Button, Flex, Icon, Input, LabeledList, ProgressBar, Section, Stack, Table, Tabs } from '../components';
+import { TableCell } from '../components/Table';
 import { Window } from '../layouts';
 
 type HeaderInfo = {

@@ -2,7 +2,7 @@
 	name = "Glimmer of Winter"
 	desc = "Opens up the path of void to you. Allows you to transmute a spear in a sub-zero temperature into a void blade."
 	gain_text = "I feel a shimmer in the air, atmosphere around me gets colder. I feel my body realizing the emptiness of existance. Something's watching me"
-	banned_knowledge = list(/datum/eldritch_knowledge/base_ash,/datum/eldritch_knowledge/base_flesh,/datum/eldritch_knowledge/final/ash_final,/datum/eldritch_knowledge/final/flesh_final,/datum/eldritch_knowledge/base_rust,/datum/eldritch_knowledge/final/rust_final)
+	banned_knowledge = list(/datum/eldritch_knowledge/base_ash,/datum/eldritch_knowledge/base_flesh,/datum/eldritch_knowledge/final_eldritch/ash_final,/datum/eldritch_knowledge/final_eldritch/flesh_final,/datum/eldritch_knowledge/base_rust,/datum/eldritch_knowledge/final_eldritch/rust_final)
 	next_knowledge = list(/datum/eldritch_knowledge/void_grasp)
 	required_atoms = list(/obj/item/spear)
 	result_atoms = list(/obj/item/melee/sickly_blade/void)
@@ -162,14 +162,14 @@
 	cost = 2
 	sacs_needed = 3
 	spell_to_add = /obj/effect/proc_holder/spell/aoe_turf/domain_expansion
-	next_knowledge = list(/datum/eldritch_knowledge/final/void_final)
+	next_knowledge = list(/datum/eldritch_knowledge/final_eldritch/void_final)
 	route = PATH_VOID
 
 /datum/eldritch_knowledge/spell/domain_expansion/on_gain(mob/user)
 	. = ..()
 	priority_announce("Echos of the lost in space are heard... An ominous presence is being detected! ", sound = 'sound/misc/notice1.ogg')
 
-/datum/eldritch_knowledge/final/void_final
+/datum/eldritch_knowledge/final_eldritch/void_final
 	name = "Waltz at the End of Time"
 	desc = "Bring 3 corpses onto the transmutation rune. After you finish the ritual you will automatically silence people around you and will summon a snow storm around you."
 	gain_text = "The world falls into darkness. I stand in an empty plane, small flakes of ice fall from the sky. The Aristocrat stands before me, he motions to me. We will play a waltz to the whispers of dying reality, as the world is destroyed before our eyes."
@@ -182,7 +182,7 @@
 	///Reference to the ongoing voidstorm that surrounds the heretic
 	var/datum/weather/void_storm/storm
 
-/datum/eldritch_knowledge/final/void_final/on_finished_recipe(mob/living/user, list/atoms, loc)
+/datum/eldritch_knowledge/final_eldritch/void_final/on_finished_recipe(mob/living/user, list/atoms, loc)
 	var/mob/living/carbon/human/waltzing = user
 	waltzing.mind.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/repulse/eldritch)
 	waltzing.physiology.brute_mod *= 0.5
@@ -193,14 +193,14 @@
 	sound_loop = new(user, TRUE, TRUE)
 	return ..()
 
-/datum/eldritch_knowledge/final/void_final/on_death()
+/datum/eldritch_knowledge/final_eldritch/void_final/on_death()
 	if(sound_loop)
 		sound_loop.stop()
 	if(storm)
 		storm.end()
 		QDEL_NULL(storm)
 
-/datum/eldritch_knowledge/final/void_final/on_life(mob/user)
+/datum/eldritch_knowledge/final_eldritch/void_final/on_life(mob/user)
 	. = ..()
 	if(!finished)
 		return

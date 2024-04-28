@@ -31,7 +31,7 @@
 	if(CONFIG_GET(flag/disable_stambuffer))
 		enable_intentional_sprint_mode()
 
-	RegisterSignal(src, COMSIG_COMPONENT_CLEAN_ACT, /atom.proc/clean_blood)
+	RegisterSignal(src, COMSIG_COMPONENT_CLEAN_ACT, TYPE_PROC_REF(/atom, clean_blood))
 	GLOB.human_list += src
 
 /mob/living/carbon/human/proc/setup_human_dna()
@@ -48,8 +48,8 @@
 	AddElement(/datum/element/flavor_text/carbon, _name = "Flavor Text", _save_key = "flavor_text")
 	AddElement(/datum/element/flavor_text/carbon, _name = "Naked Flavor Text", _save_key = "naked_flavor_text", _show_on_naked = TRUE) //SPLURT edit
 	AddElement(/datum/element/flavor_text/carbon/temporary, "", "Set Pose (Temporary Flavor Text)", "This should be used only for things pertaining to the current round!", _save_key = null)
-	AddElement(/datum/element/flavor_text, _name = "OOC Notes", _addendum = "Put information on ERP/vore/lewd-related preferences here. THIS SHOULD NOT CONTAIN REGULAR FLAVORTEXT!!", _save_key = "ooc_notes", _examine_no_preview = TRUE)
-	AddElement(/datum/element/strippable, GLOB.strippable_human_items, /mob/living/carbon/human/.proc/should_strip)
+	AddElement(/datum/element/flavor_text, _name = "OOC Notes", _addendum = "Put information on ERP/vore/lewd-related preferences here. THIS SHOULD NOT CONTAIN REGULAR FLAVORTEXT!!", _always_show = TRUE, _save_key = "ooc_notes", _examine_no_preview = TRUE)
+	AddElement(/datum/element/strippable, GLOB.strippable_human_items, TYPE_PROC_REF(/mob/living/carbon/human, should_strip))
 
 /mob/living/carbon/human/Destroy()
 	QDEL_NULL(physiology)
@@ -505,17 +505,17 @@
 		return
 	if(is_mouth_covered())
 		to_chat(src, "<span class='warning'>Remove your mask first!</span>")
-		return 0
+		return FALSE
 	if(C.is_mouth_covered())
 		to_chat(src, "<span class='warning'>Remove [p_their()] mask first!</span>")
-		return 0
+		return FALSE
 
 	if(C.cpr_time < world.time + 30)
 		visible_message("<span class='notice'>[src] is trying to perform CPR on [C.name]!</span>", \
 						"<span class='notice'>You try to perform CPR on [C.name]... Hold still!</span>")
 		if(!do_mob(src, C))
 			to_chat(src, "<span class='warning'>You fail to perform CPR on [C]!</span>")
-			return 0
+			return FALSE
 
 		var/they_breathe = !HAS_TRAIT(C, TRAIT_NOBREATH)
 		var/they_lung = C.getorganslot(ORGAN_SLOT_LUNGS)
@@ -602,7 +602,7 @@
 			electrocution_skeleton_anim = mutable_appearance(icon, "electrocuted_base")
 			electrocution_skeleton_anim.appearance_flags |= RESET_COLOR|KEEP_APART
 		add_overlay(electrocution_skeleton_anim)
-		addtimer(CALLBACK(src, .proc/end_electrocution_animation, electrocution_skeleton_anim), anim_duration)
+		addtimer(CALLBACK(src, PROC_REF(end_electrocution_animation), electrocution_skeleton_anim), anim_duration)
 
 	else //or just do a generic animation
 		flick_overlay_view(image(icon,src,"electrocuted_generic",ABOVE_MOB_LAYER), src, anim_duration)
@@ -726,7 +726,7 @@
 							"<span class='userdanger'>You try to throw up, but there's nothing in your stomach!</span>")
 		if(stun)
 			DefaultCombatKnockdown(200)
-		return 1
+		return TRUE
 	..()
 
 /mob/living/carbon/human/vv_get_dropdown()

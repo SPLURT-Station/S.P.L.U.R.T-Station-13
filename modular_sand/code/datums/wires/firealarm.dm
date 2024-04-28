@@ -37,7 +37,7 @@
 			A.detecting = !A.detecting
 		if(WIRE_FIRE_TRIGGER)
 			A.alarm()
-			addtimer(CALLBACK(A, /obj/machinery/firealarm.proc/reset, wire), 1000)				
+			addtimer(CALLBACK(A, TYPE_PROC_REF(/obj/machinery/firealarm, reset), wire), 1000)				
 
 /datum/wires/firealarm/on_cut(index, mend)
 	var/obj/machinery/firealarm/A = holder

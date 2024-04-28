@@ -32,7 +32,7 @@
 		inflate_organ(size - old_size)
 
 /datum/component/organ_inflation/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_ATOM_ENTERING, .proc/on_entering)
+	RegisterSignal(parent, COMSIG_ATOM_ENTERING, PROC_REF(on_entering))
 	if(container)
 		register_container()
 
@@ -42,8 +42,8 @@
 		unregister_container()
 
 /datum/component/organ_inflation/proc/register_container()
-	RegisterSignal(container, COMSIG_ORGAN_INSERTED, .proc/on_inserted)
-	RegisterSignal(container, COMSIG_ORGAN_REMOVED, .proc/on_removed)
+	RegisterSignal(container, COMSIG_ORGAN_INSERTED, PROC_REF(on_inserted))
+	RegisterSignal(container, COMSIG_ORGAN_REMOVED, PROC_REF(on_removed))
 
 /datum/component/organ_inflation/proc/unregister_container()
 	UnregisterSignal(container, COMSIG_ORGAN_REMOVED)

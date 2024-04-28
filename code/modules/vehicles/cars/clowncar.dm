@@ -38,7 +38,7 @@
 		var/mob/living/carbon/human/H = M
 		if(H.mind && HAS_TRAIT(H.mind, TRAIT_CLOWN_MENTALITY)) //Ensures only clowns can drive the car. (Including more at once)
 			add_control_flags(H, VEHICLE_CONTROL_DRIVE)
-			RegisterSignal(H, COMSIG_MOB_CLICKON, .proc/fire_cannon_at)
+			RegisterSignal(H, COMSIG_MOB_CLICKON, PROC_REF(fire_cannon_at))
 			M.log_message("has entered [src] as a possible driver", LOG_ATTACK)
 			return
 	add_control_flags(M, VEHICLE_CONTROL_KIDNAPPED)
@@ -55,7 +55,7 @@
 				message_admins("[ADMIN_LOOKUPFLW(forced_mob)] was taken into a clown car with [reagent_amount] unit(s) of Irish Car Bomb, causing an ejection.")
 				forced_mob.log_message("was taken into a clown car with [reagent_amount] unit(s) of Irish Car Bomb, causing an ejection.", LOG_GAME)
 				audible_message(span_userdanger("You hear a rattling sound coming from the engine. That can't be good..."), null, 1)
-				addtimer(CALLBACK(src, .proc/irish_car_bomb), 5 SECONDS)
+				addtimer(CALLBACK(src, PROC_REF(irish_car_bomb)), 5 SECONDS)
 
 /obj/vehicle/sealed/car/clowncar/proc/irish_car_bomb()
 	dump_mobs()
@@ -159,7 +159,7 @@
 			visible_message(span_danger("[user] presses one of the colorful buttons on [src], and the clown car turns on its singularity disguise system."))
 			icon = 'icons/obj/singularity.dmi'
 			icon_state = "singularity_s1"
-			addtimer(CALLBACK(src, .proc/reset_icon), 10 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(reset_icon)), 10 SECONDS)
 		if(4)
 			visible_message(span_danger("[user] presses one of the colorful buttons on [src], and the clown car spews out a cloud of laughing gas."))
 			var/datum/reagents/funnychems = new/datum/reagents(300)
@@ -171,8 +171,8 @@
 			smoke.start()
 		if(5)
 			visible_message(span_danger("[user] presses one of the colorful buttons on [src], and the clown car starts dropping an oil trail."))
-			RegisterSignal(src, COMSIG_MOVABLE_MOVED, .proc/cover_in_oil)
-			addtimer(CALLBACK(src, .proc/stop_dropping_oil), 3 SECONDS)
+			RegisterSignal(src, COMSIG_MOVABLE_MOVED, PROC_REF(cover_in_oil))
+			addtimer(CALLBACK(src, PROC_REF(stop_dropping_oil)), 3 SECONDS)
 		if(6)
 			visible_message(span_danger("[user] presses one of the colorful buttons on [src], and the clown car lets out a comedic toot."))
 			playsound(src, 'sound/vehicles/clowncar_fart.ogg', 100)
@@ -203,7 +203,7 @@
 	if(cannonmode) //canon active, deactivate
 		flick("clowncar_fromfire", src)
 		icon_state = "clowncar"
-		addtimer(CALLBACK(src, .proc/deactivate_cannon), 2 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(deactivate_cannon)), 2 SECONDS)
 		playsound(src, 'sound/vehicles/clowncar_cannonmode2.ogg', 75)
 		visible_message(span_danger("The [src] starts going back into mobile mode."))
 	else
@@ -211,7 +211,7 @@
 		flick("clowncar_tofire", src)
 		icon_state = "clowncar_fire"
 		visible_message(span_danger("The [src] opens up and reveals a large cannon."))
-		addtimer(CALLBACK(src, .proc/activate_cannon), 2 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(activate_cannon)), 2 SECONDS)
 		playsound(src, 'sound/vehicles/clowncar_cannonmode1.ogg', 75)
 	cannonmode = CLOWN_CANNON_BUSY
 

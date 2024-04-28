@@ -22,7 +22,7 @@
 			update_name()
 			return
 
-	stat = DEAD
+	set_stat(DEAD)
 	cut_overlays()
 
 	update_mobility()

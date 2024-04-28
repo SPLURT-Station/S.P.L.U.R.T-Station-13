@@ -20,11 +20,11 @@
 	. = ..()
 	danceaction = 0 //you did your move
 	lastaction = world.time+actiontime //next action time
-	addtimer(CALLBACK(src, .proc/move_part_2, newloc, direct), 1)
+	addtimer(CALLBACK(src, PROC_REF(move_part_2), newloc, direct), 1)
 
 /mob/living/dancercaptain/proc/move_part_2(atom/newloc, direct)
 	animate(src, pixel_x, pixel_y = pixel_y - 10, time = 0.7, 0)
-	addtimer(CALLBACK(src, .proc/move_part_3, newloc, direct))
+	addtimer(CALLBACK(src, PROC_REF(move_part_3), newloc, direct))
 
 /mob/living/dancercaptain/proc/move_part_3(atom/newloc, direct)
 	LAZYINITLIST(dancefloor_turfs)

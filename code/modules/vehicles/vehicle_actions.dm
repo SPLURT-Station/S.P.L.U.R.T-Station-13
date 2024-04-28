@@ -147,7 +147,6 @@
 	vehicle_entered_target.visible_message(span_danger("[vehicle_entered_target] starts dumping the people inside of it."))
 	vehicle_entered_target.dump_specific_mobs(VEHICLE_CONTROL_KIDNAPPED)
 
-
 /datum/action/vehicle/sealed/roll_the_dice
 	name = "Press Colorful Button"
 	desc = "Press one of those colorful buttons on your display panel!"
@@ -228,5 +227,5 @@
 				L.client.give_award(/datum/award/achievement/misc/tram_surfer, L)
 			V.grinding = TRUE
 			V.icon_state = "[V.board_icon]-grind"
-			addtimer(CALLBACK(V, /obj/vehicle/ridden/scooter/skateboard/.proc/grind), 2)
+			addtimer(CALLBACK(V, TYPE_PROC_REF(/obj/vehicle/ridden/scooter/skateboard, grind)), 2)
 		next_ollie = world.time + 5

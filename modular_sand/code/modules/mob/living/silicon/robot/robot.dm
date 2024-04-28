@@ -17,7 +17,7 @@
 		QDEL_NULL(builtInCamera)
 
 /mob/living/silicon/robot/modules/roleplay/binarycheck()
-	return 0 //Roleplay borgs aren't truly borgs
+	return FALSE //Roleplay borgs aren't truly borgs
 
 /// Allows "cyborg" players to change gender at will
 /mob/living/silicon/robot/verb/toggle_gender()

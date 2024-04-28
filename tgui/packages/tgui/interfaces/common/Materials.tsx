@@ -1,9 +1,10 @@
 import { BooleanLike } from 'common/react';
-import { Box, Button, NumberInput, Flex } from '../../components';
 import { classes } from 'common/react';
-import { formatMoney, formatSiUnit } from '../../format';
+
 import { useSharedState } from '../../backend';
+import { Box, Button, Flex, NumberInput } from '../../components';
 import { BoxProps } from '../../components/Box';
+import { formatMoney, formatSiUnit } from '../../format';
 
 export const MATERIAL_KEYS = {
   "iron": "sheet-metal_3",

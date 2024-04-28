@@ -114,7 +114,7 @@
 /mob/living/simple_animal/hostile/asteroid/elite/drakeling/proc/lava_around()
 	ranged_cooldown = world.time + 50
 	for(var/d in GLOB.cardinals)
-		INVOKE_ASYNC(src, .proc/lava_wall, d, 5)
+		INVOKE_ASYNC(src, PROC_REF(lava_wall), d, 5)
 
 /mob/living/simple_animal/hostile/asteroid/elite/drakeling/proc/fire_spew()
 	ranged_cooldown = world.time + 25
@@ -129,7 +129,7 @@
 	visible_message(span_boldwarning("[src] violently puffs smoke!They're going to make a fire moat!"))
 	sleep(5)
 	for(var/d in GLOB.alldirs)
-		INVOKE_ASYNC(src, .proc/fire_wall, d, 10)
+		INVOKE_ASYNC(src, PROC_REF(fire_wall), d, 10)
 
 // Drakeling helpers
 

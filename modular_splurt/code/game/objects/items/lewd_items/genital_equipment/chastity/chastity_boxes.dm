@@ -4,6 +4,7 @@
 	desc = "Contains a key and a dick cage"
 	icon = 'modular_sand/icons/obj/fleshlight.dmi'
 	icon_state = "box"
+	illustration = null
 	var/size = 2
 
 /obj/item/storage/box/chastity_cage/ComponentInitialize()

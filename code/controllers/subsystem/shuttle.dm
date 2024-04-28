@@ -186,7 +186,7 @@ SUBSYSTEM_DEF(shuttle)
 
 /datum/controller/subsystem/shuttle/proc/block_recall(lockout_timer)
 	emergencyNoRecall = TRUE
-	addtimer(CALLBACK(src, .proc/unblock_recall), lockout_timer)
+	addtimer(CALLBACK(src, PROC_REF(unblock_recall)), lockout_timer)
 
 /datum/controller/subsystem/shuttle/proc/unblock_recall()
 	emergencyNoRecall = FALSE
@@ -311,7 +311,7 @@ SUBSYSTEM_DEF(shuttle)
 		log_shuttle("[key_name(user)] has recalled the shuttle.")
 		message_admins("[ADMIN_LOOKUPFLW(user)] has recalled the shuttle.")
 		deadchat_broadcast(" has recalled the shuttle from [span_name("[get_area_name(user, TRUE)]")].", span_name("[user.real_name]"), user, message_type=DEADCHAT_ANNOUNCEMENT)
-		return 1
+		return TRUE
 
 /datum/controller/subsystem/shuttle/proc/canRecall()
 	if(!emergency || emergency.mode != SHUTTLE_CALL || emergencyNoRecall || SSticker.mode.name == "meteor")
@@ -417,7 +417,7 @@ SUBSYSTEM_DEF(shuttle)
 /datum/controller/subsystem/shuttle/proc/toggleShuttle(shuttleId, dockHome, dockAway, timed)
 	var/obj/docking_port/mobile/M = getShuttle(shuttleId)
 	if(!M)
-		return 1
+		return TRUE
 	var/obj/docking_port/stationary/dockedAt = M.get_docked()
 	var/destination = dockHome
 	if(dockedAt && dockedAt.id == dockHome)
@@ -428,7 +428,7 @@ SUBSYSTEM_DEF(shuttle)
 	else
 		if(M.initiate_docking(getDock(destination)) != DOCKING_SUCCESS)
 			return 2
-	return 0 //dock successful
+	return FALSE //dock successful
 
 
 /datum/controller/subsystem/shuttle/proc/moveShuttle(shuttleId, dockId, timed)
@@ -436,14 +436,14 @@ SUBSYSTEM_DEF(shuttle)
 	var/obj/docking_port/stationary/D = getDock(dockId)
 
 	if(!M)
-		return 1
+		return TRUE
 	if(timed)
 		if(M.request(D))
 			return 2
 	else
 		if(M.initiate_docking(D) != DOCKING_SUCCESS)
 			return 2
-	return 0	//dock successful
+	return FALSE	//dock successful
 
 /datum/controller/subsystem/shuttle/proc/request_transit_dock(obj/docking_port/mobile/M)
 	if(!istype(M))

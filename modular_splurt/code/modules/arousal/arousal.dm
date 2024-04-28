@@ -142,7 +142,7 @@
 	. = ..()
 	if(!istype(owner))
 		return INITIALIZE_HINT_QDEL
-	RegisterSignal(owner, COMSIG_MOB_LUST_UPDATED, .proc/update_lust)
+	RegisterSignal(owner, COMSIG_MOB_LUST_UPDATED, PROC_REF(update_lust))
 
 /atom/movable/screen/arousal/Click()
 	if(!ishuman(usr))

@@ -1,7 +1,8 @@
+import { Fragment } from 'inferno';
+
 import { useBackend } from '../backend';
 import { Box, Button, LabeledList, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
-import { Fragment } from 'inferno';
 
 const skillgreen = {
   color: 'lightgreen',

@@ -202,7 +202,7 @@ GLOBAL_LIST_INIT(pp_limbs, list(
 
 			message_admins("<span class='adminnotice'>[key_name_admin(usr)] took control of [targetMob].</span>")
 			log_admin("[key_name(usr)] took control of [targetMob].")
-			addtimer(CALLBACK(targetMob.mob_panel, /datum.proc/ui_interact, targetMob), 0.1 SECONDS)
+			addtimer(CALLBACK(targetMob.mob_panel, TYPE_PROC_REF(/datum, ui_interact), targetMob), 0.1 SECONDS)
 
 		if ("smite")
 			admin.smite(targetMob)

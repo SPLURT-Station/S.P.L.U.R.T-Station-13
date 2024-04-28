@@ -22,4 +22,7 @@
 	. = new /datum/tgs_message_content("Restarting.")
 	to_chat(world, span_boldwarning("Server restart - Initialized by [sender.friendly_name] on Discord."))
 	send2adminchat("Server", "[sender.friendly_name] forced a restart.")
-	addtimer(CALLBACK(src, world.TgsEndProcess()), 1 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(DoEndProcess)), 1 SECONDS)
+
+/datum/tgs_chat_command/proc/DoEndProcess()
+	world.TgsEndProcess()

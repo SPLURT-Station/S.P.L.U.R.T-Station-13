@@ -1,4 +1,5 @@
 import { Component, createRef } from 'inferno';
+
 import { useBackend } from '../backend';
 import { Box, Button } from '../components';
 import { Window } from '../layouts';

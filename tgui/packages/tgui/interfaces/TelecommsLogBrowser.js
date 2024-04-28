@@ -4,9 +4,10 @@
  * @license MIT
  */
 import { Fragment } from 'inferno';
-import { Window } from '../layouts';
+
 import { useBackend, useSharedState } from '../backend';
-import { Button, LabeledList, NoticeBox, Section, Tabs, Input } from '../components';
+import { Button, Input, LabeledList, NoticeBox, Section, Tabs } from '../components';
+import { Window } from '../layouts';
 
 export const TelecommsLogBrowser = (props, context) => {
   const { act, data } = useBackend(context);

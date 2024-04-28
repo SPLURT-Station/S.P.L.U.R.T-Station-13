@@ -487,7 +487,7 @@
 	user.last_lewd_datum = src
 	if(user.cleartimer)
 		deltimer(user.cleartimer)
-	user.cleartimer = addtimer(CALLBACK(user, /mob/living/proc/clear_lewd_datum), 300, TIMER_STOPPABLE)
+	user.cleartimer = addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living, clear_lewd_datum)), 300, TIMER_STOPPABLE)
 	return ..()
 
 /mob/living/list_interaction_attributes(mob/living/LM)

@@ -413,7 +413,7 @@
 	else
 		the_mmi.forceMove(get_turf(src))
 	if(the_mmi.brainmob.stat == DEAD && !suiciding)
-		the_mmi.brainmob.stat = CONSCIOUS
+		the_mmi.brainmob.set_stat(CONSCIOUS)
 	if(mind)
 		mind.transfer_to(the_mmi.brainmob)
 	the_mmi.update_appearance()
@@ -634,7 +634,7 @@
 		queueAlarm(text("--- [] alarm detected in []! (No Camera)", class, home.name), class)
 	if (viewalerts)
 		ai_alerts()
-	return 1
+	return TRUE
 
 /mob/living/silicon/ai/freeCamera(area/home, obj/machinery/camera/cam)
 	for(var/class in alarms)
@@ -922,7 +922,7 @@
 		to_chat(user, "<span class='boldnotice'>Transfer successful</span>: [name] ([rand(1000,9999)].exe) removed from host terminal and stored within local memory.")
 
 /mob/living/silicon/ai/can_buckle()
-	return 0
+	return FALSE
 
 /mob/living/silicon/ai/incapacitated(ignore_restraints, ignore_grab)
 	if(aiRestorePowerRoutine)

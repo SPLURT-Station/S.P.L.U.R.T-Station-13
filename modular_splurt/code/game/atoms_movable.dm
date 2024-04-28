@@ -1,6 +1,6 @@
 /atom/movable/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_MOVABLE_BARK, .proc/handle_special_bark) //There must be a better way to do this
+	RegisterSignal(src, COMSIG_MOVABLE_BARK, PROC_REF(handle_special_bark)) //There must be a better way to do this
 
 /atom/movable/Destroy()
 	UnregisterSignal(src, COMSIG_MOVABLE_BARK)

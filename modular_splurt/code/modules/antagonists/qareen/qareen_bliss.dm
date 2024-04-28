@@ -66,7 +66,7 @@
 				affected_mob.visible_message(span_warning("[affected_mob] looks utterly depraved."), span_revennotice("You suddenly feel like your skin is <i>tingling</i>..."))
 				affected_mob.add_atom_colour("#ffdaf3", TEMPORARY_COLOUR_PRIORITY)
 				new /obj/effect/temp_visual/revenant(affected_mob.loc)
-				// addtimer(CALLBACK(src, .proc/blessings), 150)
+				// addtimer(CALLBACK(src, PROC_REF(blessings)), 150)
 		if(7)
 			stage = 6
 			if (ishuman(affected_mob))

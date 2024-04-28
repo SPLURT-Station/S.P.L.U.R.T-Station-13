@@ -83,7 +83,7 @@
 
 	var/datum/action/innate/ability/regrowth = H.ability_actions[INNATE_ABILITY_LIMB_REGROWTH]
 	if(regrowth)
-		regrowth.UpdateButtonIcon()
+		regrowth.UpdateButtons()
 
 	return FALSE // to let living/handle_blood know that the species is handling blood instead
 
@@ -184,8 +184,8 @@
 	if(..())
 		var/mob/living/carbon/human/H = owner
 		if(H.blood_volume >= BLOOD_VOLUME_SLIME_SPLIT)
-			return 1
-		return 0
+			return TRUE
+		return FALSE
 
 /datum/action/innate/split_body/Activate()
 	var/mob/living/carbon/human/H = owner
@@ -481,9 +481,9 @@
 
 /datum/species/jelly/luminescent/proc/update_slime_actions()
 	integrate_extract.update_name()
-	integrate_extract.UpdateButtonIcon()
-	extract_minor.UpdateButtonIcon()
-	extract_major.UpdateButtonIcon()
+	integrate_extract.UpdateButtons()
+	extract_minor.UpdateButtons()
+	extract_major.UpdateButtons()
 
 /datum/species/jelly/luminescent/proc/update_glow(mob/living/carbon/C, intensity)
 	if(intensity)
@@ -523,7 +523,7 @@
 		name = "Eject Extract"
 		desc = "Eject your current slime extract."
 
-/datum/action/innate/integrate_extract/UpdateButtonIcon(status_only, force)
+/datum/action/innate/integrate_extract/UpdateButton(atom/movable/screen/movable/action_button/button, status_only, force)
 	if(!species || !species.current_extract)
 		button_icon_state = "slimeconsume"
 	else
@@ -659,8 +659,8 @@
 	linked_mobs.Add(M)
 	if(!selflink)
 		to_chat(M, "<span class='notice'>You are now connected to [slimelink_owner.real_name]'s Slime Link.</span>")
-		RegisterSignal(M, COMSIG_MOB_DEATH , .proc/unlink_mob)
-		RegisterSignal(M, COMSIG_PARENT_QDELETING, .proc/unlink_mob)
+		RegisterSignal(M, COMSIG_MOB_DEATH , PROC_REF(unlink_mob))
+		RegisterSignal(M, COMSIG_PARENT_QDELETING, PROC_REF(unlink_mob))
 	var/datum/action/innate/linked_speech/action = new(src)
 	linked_actions.Add(action)
 	action.Grant(M)
@@ -766,9 +766,9 @@
 	background_icon_state = "bg_alien"
 	var/datum/species/jelly/stargazer/species
 
-/datum/action/innate/link_minds/New(_species)
+/datum/action/innate/link_minds/New(species)
 	..()
-	species = _species
+	src.species = species
 
 /datum/action/innate/link_minds/Destroy()
 	species = null
@@ -796,3 +796,7 @@
 		else
 			to_chat(H, "<span class='warning'>You can't seem to link [target]'s mind...</span>")
 			to_chat(target, "<span class='warning'>The foreign presence leaves your mind.</span>")
+
+/datum/action/innate/link_minds/Destroy()
+	species = null
+	return ..()

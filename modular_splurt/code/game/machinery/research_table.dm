@@ -109,7 +109,7 @@
 	return TRUE
 
 /obj/machinery/research_table/buckle_mob(mob/living/buckled_mob, force, check_loc)
-	RegisterSignal(buckled_mob, COMSIG_MOB_POST_CAME, .proc/on_cum)
+	RegisterSignal(buckled_mob, COMSIG_MOB_POST_CAME, PROC_REF(on_cum))
 	say("New user detected, tracking data.")
 	. = ..()
 

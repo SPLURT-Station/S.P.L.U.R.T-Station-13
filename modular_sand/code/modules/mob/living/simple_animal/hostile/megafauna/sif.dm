@@ -229,7 +229,7 @@ Difficulty: Medium
 	if(passed == 1)
 		visible_message(span_danger("[src] dodged the projectile!"), span_userdanger("You dodge the projectile!"))
 		playsound(src, pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 300, 1)
-		return 0
+		return FALSE
 
 	return ..()
 
@@ -303,8 +303,8 @@ Difficulty: Medium
 		..()
 
 //Immune to explosions when spinning or charging
-/mob/living/simple_animal/hostile/megafauna/sif/ex_act(severity, target)
-	return 0
+/mob/living/simple_animal/hostile/megafauna/sif/ex_act(severity, target, origin)
+	return FALSE
 
 //stop spinning if you lose the target
 /mob/living/simple_animal/hostile/megafauna/sif/LoseTarget()

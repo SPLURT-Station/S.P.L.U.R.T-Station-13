@@ -1,10 +1,11 @@
 import { sortBy } from "common/collections";
 import { capitalize } from "common/string";
+
 import { useBackend, useLocalState } from "../backend";
-import { Blink, Box, Button, Dimmer, Flex, Icon, Input, Modal, Section, TextArea, LabeledList } from "../components";
+import { Blink, Box, Button, Dimmer, Flex, Icon, Input, LabeledList, Modal, Section, TextArea } from "../components";
+import { formatMoney } from '../format';
 import { Window } from "../layouts";
 import { sanitizeText } from "../sanitize";
-import { formatMoney } from '../format';
 
 const STATE_BUYING_SHUTTLE = "buying_shuttle";
 const STATE_CHANGING_STATUS = "changing_status";

@@ -319,7 +319,7 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 	if(R && !R.pounce_cooldown)
 		R.pounce_cooldown = !R.pounce_cooldown
 		to_chat(R, "<span class ='warning'>Your targeting systems lock on to [A]...</span>")
-		addtimer(CALLBACK(R, /mob/living/silicon/robot.proc/leap_at, A), R.pounce_spoolup)
+		addtimer(CALLBACK(R, TYPE_PROC_REF(/mob/living/silicon/robot, leap_at), A), R.pounce_spoolup)
 		spawn(R.pounce_cooldown_time)
 			R.pounce_cooldown = !R.pounce_cooldown
 	else if(R && R.pounce_cooldown)

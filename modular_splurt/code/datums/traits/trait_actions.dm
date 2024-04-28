@@ -131,13 +131,7 @@
 	// Log interaction
 	log_admin("[key_name(owner)] [log_message_type] hypnotic brainwashing powers.")
 
-/datum/action/cooldown/hypnotize/Trigger()
-	. = ..()
-
-	// Check parent return
-	if(!.)
-		return
-
+/datum/action/cooldown/hypnotize/Activate()
 	// Define action owner
 	var/mob/living/carbon/human/action_owner = owner
 
@@ -147,7 +141,7 @@
 	// Check for target
 	if(!grab_target)
 		// Warn the user, then return
-		to_chat(action_owner, span_warning("You you need to grab someone first!"))
+		to_chat(action_owner, span_warning("You need to grab someone first!"))
 		return
 
 	// Check for cyborg
@@ -189,7 +183,7 @@
 	// Check if target has a mind
 	if(!action_target.mind)
 		// Warn the user, then return
-		to_chat(action_owner, span_warning("[grab_target] doesn\'t have a compatible mind!"))
+		to_chat(action_owner, span_warning("[grab_target] doesn't have a compatible mind!"))
 		return
 
 	/* Unused: Replaced by get_eye_protection
@@ -442,13 +436,7 @@
 	// Create reagent holder
 	blood_bank = new(BLOODFLEDGE_BANK_CAPACITY)
 
-/datum/action/cooldown/bloodfledge/bite/Trigger()
-	. = ..()
-
-	// Check parent return
-	if(!.)
-		return
-
+/datum/action/cooldown/bloodfledge/bite/Activate()
 	// Define action owner
 	var/mob/living/carbon/action_owner = owner
 
@@ -1037,13 +1025,7 @@
 	button_icon_state = "power_strength"
 	cooldown_time = BLOODFLEDGE_COOLDOWN_REVIVE
 
-/datum/action/cooldown/bloodfledge/revive/Trigger()
-	. = ..()
-
-	// Check parent return
-	if(!.)
-		return
-
+/datum/action/cooldown/bloodfledge/revive/Activate()
 	// Define mob
 	var/mob/living/carbon/human/action_owner = owner
 
@@ -1244,15 +1226,7 @@
 		if(NEUTER)
 			werewolf_gender = "Þing"
 
-/datum/action/cooldown/werewolf/transform/Trigger()
-	. = ..()
-
-	// Check if unavailable
-	// Checks the parent function's return value
-	if(!.)
-		// Messages will not display here
-		return FALSE
-
+/datum/action/cooldown/werewolf/transform/Activate()
 	// Define action owner
 	var/mob/living/carbon/human/action_owner = owner
 
@@ -1701,11 +1675,7 @@
 	icon_icon = 'modular_splurt/icons/mob/actions/lewd_actions/lewd_icons.dmi'
 	button_icon_state = "pain_max"
 
-/datum/action/cooldown/toggle_distant/Trigger()
-	. = ..()
-	if(!.)
-		return
-
+/datum/action/cooldown/toggle_distant/Activate()
 	var/mob/living/carbon/human/action_owner = owner
 
 	if(HAS_TRAIT(action_owner, TRAIT_DISTANT))

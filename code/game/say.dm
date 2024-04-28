@@ -46,7 +46,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		M.playsound_local(T, vol = volume, vary = TRUE, frequency = pitch, max_distance = distance, falloff_distance = 0, falloff_exponent = BARK_SOUND_FALLOFF_EXPONENT(distance), S = vocal_bark, distance_multiplier = 1)
 
 /atom/movable/proc/can_speak()
-	return 1
+	return TRUE
 
 /atom/movable/proc/send_speech(message, range = 7, atom/movable/source = src, bubble_type, list/spans, datum/language/message_language = null, message_mode)
 	var/rendered = compose_message(src, message_language, message, , spans, message_mode, source)
@@ -66,7 +66,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		for(var/i in 1 to barks)
 			if(total_delay > BARK_MAX_TIME)
 				break
-			addtimer(CALLBACK(src, .proc/bark, hearers, range, vocal_volume, BARK_DO_VARY(vocal_pitch, vocal_pitch_range), vocal_current_bark), total_delay)
+			addtimer(CALLBACK(src, PROC_REF(bark), hearers, range, vocal_volume, BARK_DO_VARY(vocal_pitch, vocal_pitch_range), vocal_current_bark), total_delay)
 			total_delay += rand(DS2TICKS(vocal_speed / BARK_SPEED_BASELINE), DS2TICKS(vocal_speed / BARK_SPEED_BASELINE) + DS2TICKS(vocal_speed / BARK_SPEED_BASELINE)) TICKS
 
 /atom/movable/proc/compose_message(atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, message_mode, face_name = FALSE, atom/movable/source)
@@ -125,15 +125,21 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	return "[say_mod(input, message_mode)][spanned ? ", \"[spanned]\"" : ""]"
 	// Citadel edit [spanned ? ", \"[spanned]\"" : ""]"
 
-/// Converts specific characters, like +, |, and _ to formatted output.
+/// Transforms the speech emphasis mods from [/atom/movable/proc/say_emphasis] into the appropriate HTML tags. Includes escaping.
+#define ENCODE_HTML_EMPHASIS(input, char, html, varname) \
+	var/static/regex/##varname = regex("(?<!\\\\)[char](.+?)(?<!\\\\)[char]", "g");\
+	input = varname.Replace_char(input, "<[html]>$1</[html]>&#8203;") //zero-widht space to force maptext to respect closing tags.
+
+/// Scans the input sentence for speech emphasis modifiers, notably |italics|, +bold+, and _underline_ -mothblocks
 /atom/movable/proc/say_emphasis(input)
-	var/static/regex/italics = regex(@"\|((?=\S)[\w\W]*?(?<=\S))\|", "g")
-	input = italics.Replace_char(input, "<i>$1</i>")
-	var/static/regex/bold = regex(@"\+((?=\S)[\w\W]*?(?<=\S))\+", "g")
-	input = bold.Replace_char(input, "<b>$1</b>")
-	var/static/regex/underline = regex(@"_((?=\S)[\w\W]*?(?<=\S))_", "g")
-	input = underline.Replace_char(input, "<u>$1</u>")
+	ENCODE_HTML_EMPHASIS(input, "\\|", "i", italics)
+	ENCODE_HTML_EMPHASIS(input, "\\+", "b", bold)
+	ENCODE_HTML_EMPHASIS(input, "_", "u", underline)
+	var/static/regex/remove_escape_backlashes = regex("\\\\(_|\\+|\\|)", "g") // Removes backslashes used to escape text modification.
+	input = remove_escape_backlashes.Replace_char(input, "$1")
 	return input
+
+#undef ENCODE_HTML_EMPHASIS
 
 /// Quirky citadel proc for our custom sayverbs to strip the verb out. Snowflakey as hell, say rewrite 3.0 when?
 /atom/movable/proc/quoteless_say_quote(input, list/spans = list(speech_span), message_mode)
@@ -203,7 +209,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	return "[src]"	//Returns the atom's name, prepended with 'The' if it's not a proper noun
 
 /atom/movable/proc/IsVocal()
-	return 1
+	return TRUE
 
 /atom/movable/proc/get_alt_name()
 

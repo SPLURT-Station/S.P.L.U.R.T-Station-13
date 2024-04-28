@@ -29,6 +29,11 @@
 	. = ..()
 	setup_visuals()
 
+/mob/living/simple_animal/hostile/zombie/Destroy()
+	if(!QDELETED(corpse))
+		QDEL_NULL(corpse)
+	. = ..()
+
 /mob/living/simple_animal/hostile/zombie/proc/setup_visuals()
 	set waitfor = FALSE
 	var/datum/preferences/dummy_prefs = new
@@ -58,6 +63,7 @@
 	. = ..()
 	corpse.forceMove(drop_location())
 	corpse.create()
+	corpse = null
 
 /mob/living/simple_animal/hostile/unemployedclone
 	name = "Failed clone"

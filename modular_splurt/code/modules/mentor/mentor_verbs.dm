@@ -9,4 +9,5 @@ GLOBAL_PROTECT(splurt_mentor_verbs)
 		add_verb(src, GLOB.splurt_mentor_verbs)
 
 /client/remove_mentor_verbs()
+	. = ..()
 	remove_verb(src, GLOB.splurt_mentor_verbs)

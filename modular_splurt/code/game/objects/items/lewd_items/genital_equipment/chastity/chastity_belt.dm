@@ -109,7 +109,7 @@
 		ENABLE_BITFIELD(G.genital_flags, GENITAL_CHASTENED)
 
 	H.update_genitals()
-	RegisterSignal(src, COMSIG_MOB_ITEM_DROPPING, .proc/mob_can_unequip)
+	RegisterSignal(src, COMSIG_MOB_ITEM_DROPPING, PROC_REF(mob_can_unequip))
 
 /obj/item/clothing/underwear/chastity_belt/proc/mob_can_unequip(obj/item/source, force, newloc, no_move, invdrop, silent)
 	if(force)

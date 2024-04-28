@@ -139,7 +139,7 @@
 /turf/open/floor/is_shielded()
 	for(var/obj/structure/A in contents)
 		if(A.level == 3)
-			return 1
+			return TRUE
 
 /turf/open/floor/blob_act(obj/structure/blob/B)
 	return
@@ -190,12 +190,12 @@
 
 /turf/open/floor/attackby(obj/item/C, mob/user, params)
 	if(!C || !user)
-		return 1
+		return TRUE
 	if(..())
-		return 1
+		return TRUE
 	if(intact && istype(C, /obj/item/stack/tile))
 		try_replace_tile(C, user, params)
-	return 0
+	return FALSE
 
 /turf/open/floor/crowbar_act(mob/living/user, obj/item/I)
 	return intact ? FORCE_BOOLEAN(pry_tile(I, user)) : FALSE

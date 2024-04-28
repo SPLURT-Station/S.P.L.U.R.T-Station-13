@@ -517,6 +517,15 @@
 /obj/machinery/power/tracker,
 /turf/open/floor/plating/airless,
 /area/solars/starboard/fore)
+"bj" = (
+/obj/effect/landmark/navigate_destination/incinerator,
+/turf/closed/mineral{
+	baseturfs = /turf/open/floor/plating/asteroid;
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	name = "asteroid";
+	turf_type = /turf/open/floor/plating/asteroid
+	},
+/area/asteroid/nearstation)
 "bk" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -1306,6 +1315,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/event_spawn,
+/obj/effect/landmark/navigate_destination/kitchen,
 /turf/open/floor/plasteel/cafeteria,
 /area/service/kitchen)
 "dg" = (
@@ -3275,6 +3285,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
+"iD" = (
+/obj/effect/landmark/navigate_destination,
+/turf/open/floor/wood/wood_tiled,
+/area/commons/toilet)
 "iE" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/effect/turf_decal/trimline/blue/filled/line,
@@ -7634,6 +7648,7 @@
 /obj/structure/disposalpipe/sorting/mail{
 	sortType = 17
 	},
+/obj/effect/landmark/navigate_destination/dorms,
 /turf/open/floor/plasteel,
 /area/commons/fitness/recreation)
 "tn" = (
@@ -8638,6 +8653,7 @@
 	icon_state = "L14";
 	layer = 2.04
 	},
+/obj/effect/landmark/navigate_destination/gateway,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "vO" = (
@@ -9783,6 +9799,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/obj/effect/landmark/navigate_destination/hydro,
 /turf/open/floor/plasteel,
 /area/service/hydroponics)
 "yR" = (
@@ -9810,6 +9827,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/service/janitor)
+"yU" = (
+/obj/effect/landmark/navigate_destination/chapel,
+/turf/open/floor/carpet,
+/area/service/chapel/main)
 "yV" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -10415,6 +10436,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/commons/locker)
+"Aq" = (
+/obj/effect/landmark/navigate_destination,
+/turf/open/floor/plasteel/white,
+/area/medical/medbay/zone2)
 "Ar" = (
 /obj/structure/chair{
 	dir = 1
@@ -11229,6 +11254,7 @@
 /area/service/hydroponics)
 "CC" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/navigate_destination/janitor,
 /turf/open/floor/plating,
 /area/service/janitor)
 "CD" = (
@@ -14021,9 +14047,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/carpet/blue,
 /area/commons/vacant_room/office)
-"Ji" = (
-/turf/open/floor/plating/asteroid,
-/area/awaymission/complex/gravgen)
 "Jj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
@@ -14120,6 +14143,14 @@
 /obj/machinery/vending/wardrobe/chef_wardrobe,
 /turf/open/floor/plasteel/cafeteria,
 /area/service/kitchen)
+"Ju" = (
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/turf_decal/tile/bar{
+	dir = 1
+	},
+/obj/effect/landmark/navigate_destination/bar,
+/turf/open/floor/plasteel,
+/area/service/bar)
 "Jv" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
@@ -17263,7 +17294,16 @@
 "Ro" = (
 /obj/structure/lattice,
 /turf/open/floor/plating/asteroid,
-/area/awaymission/complex/gravgen)
+/area/asteroid/nearstation)
+"Rp" = (
+/obj/effect/landmark/navigate_destination/incinerator,
+/turf/closed/mineral/random/low_chance{
+	baseturfs = /turf/open/floor/plating/asteroid;
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
+	name = "asteroid";
+	turf_type = /turf/open/floor/plating/asteroid
+	},
+/area/asteroid/nearstation)
 "Rq" = (
 /obj/structure/table,
 /obj/item/toy/cards/deck,
@@ -18320,6 +18360,7 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
+/obj/effect/landmark/navigate_destination,
 /turf/open/floor/plasteel,
 /area/service/hydroponics/garden/monastery)
 "Ue" = (
@@ -32690,11 +32731,11 @@ qo
 FN
 qo
 qo
-Ji
+hi
 Ro
-Ji
+hi
 Ro
-Ji
+hi
 FN
 qo
 qo
@@ -32946,13 +32987,13 @@ qo
 qo
 FN
 qo
-Ji
-Ji
+hi
+hi
 Xp
 dd
 Xp
-Ji
-Ji
+hi
+hi
 qo
 qo
 qo
@@ -33203,13 +33244,13 @@ qo
 qo
 qo
 qo
-Ji
+hi
 Xp
 Xp
 de
 Xp
 Xp
-Ji
+hi
 qo
 qo
 qo
@@ -33717,13 +33758,13 @@ qo
 qo
 qo
 FN
-Ji
+hi
 Xp
 mH
 TQ
 zX
 Xp
-Ji
+hi
 qo
 FN
 FN
@@ -33973,15 +34014,15 @@ qo
 qo
 FN
 qo
-Ji
-Ji
+hi
+hi
 Xp
 Xp
 bP
 Xp
 Xp
-Ji
-Ji
+hi
+hi
 qo
 FN
 FN
@@ -34226,11 +34267,11 @@ qo
 FN
 qo
 qo
-Ji
-Ji
-Ji
-Ji
-Ji
+hi
+hi
+hi
+hi
+hi
 Xp
 Xp
 As
@@ -34238,7 +34279,7 @@ TQ
 TQ
 Xp
 Xp
-Ji
+hi
 qo
 qo
 qo
@@ -34740,7 +34781,7 @@ qo
 qo
 qo
 qo
-Ji
+hi
 Xp
 Xo
 bZ
@@ -34997,7 +35038,7 @@ FN
 qo
 FN
 qo
-Ji
+hi
 Xp
 Jr
 TQ
@@ -35254,7 +35295,7 @@ qo
 qo
 qo
 qo
-Ji
+hi
 Xp
 Wn
 bZ
@@ -35768,11 +35809,11 @@ qo
 qo
 qo
 qo
-Ji
-Ji
-Ji
-Ji
-Ji
+hi
+hi
+hi
+hi
+hi
 Xp
 Xp
 TQ
@@ -35780,7 +35821,7 @@ TQ
 TQ
 Xp
 Xp
-Ji
+hi
 qo
 FN
 FN
@@ -36029,15 +36070,15 @@ qo
 qo
 qo
 qo
-Ji
-Ji
+hi
+hi
 Xp
 Xp
 bP
 Xp
 Xp
-Ji
-Ji
+hi
+hi
 qo
 FN
 qo
@@ -36285,8 +36326,8 @@ qo
 qo
 qo
 FN
-Ji
-Ji
+hi
+hi
 Xp
 Xp
 TQ
@@ -36294,8 +36335,8 @@ TQ
 TQ
 Xp
 Xp
-Ji
-Ji
+hi
+hi
 qo
 FN
 qo
@@ -36799,7 +36840,7 @@ qo
 FN
 qo
 qo
-Ji
+hi
 dd
 zS
 TQ
@@ -36809,7 +36850,7 @@ TQ
 TQ
 ps
 dd
-Ji
+hi
 FN
 qo
 qo
@@ -37313,8 +37354,8 @@ FN
 qo
 qo
 qo
-Ji
-Ji
+hi
+hi
 Xp
 Xp
 Xp
@@ -37322,8 +37363,8 @@ Xp
 Xp
 Xp
 Xp
-Ji
-Ji
+hi
+hi
 qo
 qo
 qo
@@ -37571,15 +37612,15 @@ qo
 qo
 qo
 qo
-Ji
+hi
 Ro
-Ji
-Ji
+hi
+hi
 Ro
-Ji
-Ji
+hi
+hi
 Ro
-Ji
+hi
 qo
 qo
 qo
@@ -57943,7 +57984,7 @@ Mc
 aL
 Hs
 cG
-cG
+Aq
 cG
 bf
 pK
@@ -60074,7 +60115,7 @@ YM
 YR
 jt
 jb
-Dl
+yU
 YR
 jt
 YM
@@ -60502,7 +60543,7 @@ Fd
 PS
 nc
 SG
-SG
+Ju
 SG
 KQ
 WJ
@@ -65713,7 +65754,7 @@ wy
 Oi
 Bf
 Ku
-Ku
+iD
 dL
 pn
 Kz
@@ -72109,7 +72150,7 @@ qo
 qo
 qo
 qo
-qo
+bj
 qo
 FN
 FN
@@ -72626,7 +72667,7 @@ qo
 qo
 qo
 qo
-FN
+Rp
 FN
 FN
 FN

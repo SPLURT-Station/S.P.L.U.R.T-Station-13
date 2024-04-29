@@ -36385,7 +36385,11 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
 "bwL" = (
-/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/table/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 1
+	},
 /turf/open/floor/plating,
 /area/service/library)
 "bwM" = (
@@ -54732,7 +54736,8 @@
 	areastring = "/area/construction";
 	dir = 1;
 	name = "Construction Area APC";
-	pixel_y = 23
+	pixel_y = -27;
+	pixel_x = -1
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -56244,7 +56249,9 @@
 /area/space/nearstation)
 "cBi" = (
 /obj/machinery/door/firedoor,
-/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/fore)
 "cBj" = (
@@ -58829,6 +58836,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/fore)
@@ -64260,7 +64270,7 @@
 "fse" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/stripes/line{
-	dir = 1
+	dir = 9
 	},
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/fore)
@@ -70110,6 +70120,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
+"pxM" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/structure/bookcase/random/adult,
+/turf/open/floor/wood,
+/area/service/library)
 "pyI" = (
 /obj/structure/disposalpipe/segment,
 /turf/closed/wall/r_wall,
@@ -74085,6 +74102,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
+"xKb" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/brigdoor/eastright{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/service/library)
 "xMt" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -125158,7 +125182,7 @@ bBW
 bEG
 bsg
 bEW
-bwL
+xKb
 bxB
 bsE
 bsE
@@ -125666,9 +125690,9 @@ bHi
 bzT
 brA
 bsc
-bBY
-bBY
-bBY
+bsH
+bsH
+bsH
 bsE
 rZU
 bEW
@@ -126180,9 +126204,9 @@ bHi
 tkv
 brB
 bsE
-bsH
-btq
-btW
+bBY
+pxM
+bBY
 buO
 bsg
 cNP
@@ -126437,9 +126461,9 @@ bFn
 tkv
 brB
 bsE
-bsH
+bsE
 btq
-btW
+bsE
 buO
 bsg
 bvW

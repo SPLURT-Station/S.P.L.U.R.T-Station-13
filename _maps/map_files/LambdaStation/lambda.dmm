@@ -43466,12 +43466,13 @@
 /turf/open/floor/plasteel,
 /area/security/brig)
 "bQS" = (
-/obj/machinery/atmospherics/pipe/simple/yellow/visible{
-	dir = 10
-	},
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/manifold/cyan/visible{
+	dir = 1
+	},
+/obj/machinery/meter,
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "bQT" = (
@@ -49467,6 +49468,9 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 10
+	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "cit" = (
@@ -49743,11 +49747,8 @@
 /area/engineering/atmos)
 "cjk" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/machinery/atmospherics/pipe/simple/cyan/visible{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/yellow/visible/layer1{
-	dir = 10
+/obj/machinery/atmospherics/pipe/manifold/cyan/visible{
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
@@ -49772,21 +49773,15 @@
 /area/maintenance/disposal)
 "cjm" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/machinery/atmospherics/components/binary/pump{
-	dir = 1;
-	name = "Air to Pure"
-	},
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "cjp" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/machinery/atmospherics/components/trinary/mixer/airmix{
-	dir = 4
+/obj/machinery/atmospherics/pipe/manifold/cyan/visible{
+	dir = 1
 	},
-/obj/machinery/atmospherics/components/binary/pump{
-	dir = 1;
-	name = "O2 to Pure"
-	},
+/obj/machinery/meter,
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "cjr" = (
@@ -50030,9 +50025,6 @@
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 1
 	},
-/obj/machinery/atmospherics/components/binary/pump/layer1{
-	dir = 1
-	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "cka" = (
@@ -50087,7 +50079,9 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/yellow/visible,
+/obj/machinery/atmospherics/components/binary/pump/on{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "ckd" = (
@@ -50101,9 +50095,6 @@
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/cyan/visible/layer3{
-	dir = 9
 	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
@@ -50522,6 +50513,7 @@
 /obj/machinery/light/small{
 	pixel_y = 5
 	},
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "clu" = (
@@ -50800,11 +50792,6 @@
 /area/engineering/atmos)
 "cmu" = (
 /obj/structure/window/reinforced/spawner/north,
-/turf/open/floor/plating/airless,
-/area/engineering/atmos)
-"cmv" = (
-/obj/structure/window/reinforced/spawner/north,
-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /turf/open/floor/plating/airless,
 /area/engineering/atmos)
 "cmz" = (
@@ -63087,8 +63074,8 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/cyan/visible/layer3{
-	dir = 6
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 5
 	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
@@ -63400,6 +63387,13 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /turf/open/floor/plating,
 /area/construction)
+"eff" = (
+/obj/structure/window/reinforced/spawner/north,
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/engineering/atmos)
 "efS" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable{
@@ -64048,8 +64042,9 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
+/obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
-	dir = 4
+	dir = 10
 	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
@@ -64293,6 +64288,16 @@
 /obj/effect/landmark/navigate_destination/incinerator,
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
+"fsN" = (
+/obj/effect/turf_decal/trimline/neutral/filled/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 8;
+	name = "Air to Pure"
+	},
+/turf/open/floor/plasteel,
+/area/engineering/atmos)
 "fty" = (
 /obj/docking_port/stationary{
 	dir = 4;
@@ -65888,13 +65893,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
-"hDp" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/machinery/atmospherics/pipe/simple/cyan/visible{
-	dir = 4
-	},
-/turf/open/floor/plasteel,
-/area/engineering/atmos)
 "hDs" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating,
@@ -66105,8 +66103,7 @@
 /obj/effect/turf_decal/tile{
 	dir = 1
 	},
-/obj/machinery/portable_atmospherics/canister/air,
-/obj/machinery/atmospherics/pipe/layer_manifold,
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "ifC" = (
@@ -67619,8 +67616,9 @@
 /area/engineering/break_room)
 "kYv" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/machinery/atmospherics/pipe/layer_manifold{
-	dir = 4
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 8;
+	name = "Air to Pure"
 	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
@@ -69318,12 +69316,6 @@
 /obj/item/chair/stool,
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
-"nTv" = (
-/obj/machinery/atmospherics/pipe/layer_manifold{
-	dir = 4
-	},
-/turf/open/floor/plasteel,
-/area/engineering/atmos)
 "nUG" = (
 /obj/machinery/computer/arcade{
 	dir = 8
@@ -69602,6 +69594,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/entry)
+"oBx" = (
+/obj/structure/window/reinforced/spawner/north,
+/obj/machinery/atmospherics/pipe/simple/green/visible,
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/engineering/atmos)
 "oCd" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 5
@@ -71107,6 +71107,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
+"rxc" = (
+/obj/structure/window/reinforced/spawner/north,
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 5
+	},
+/turf/open/floor/plating/airless,
+/area/engineering/atmos)
 "rxJ" = (
 /obj/structure/window/reinforced/spawner,
 /obj/machinery/atmospherics/pipe/simple/green/visible{
@@ -71119,6 +71126,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "rxN" = (
@@ -72073,10 +72081,10 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/trinary/mixer/airmix{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
 "txt" = (
@@ -73286,6 +73294,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/medical/virology)
+"vIT" = (
+/obj/structure/window/reinforced/spawner/north,
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/engineering/atmos)
 "vJb" = (
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 5
@@ -73571,6 +73587,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/engineering/transit_tube)
+"wnU" = (
+/obj/structure/window/reinforced/spawner/north,
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 9
+	},
+/turf/open/floor/plating/airless,
+/area/engineering/atmos)
 "woU" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -73723,9 +73746,8 @@
 /obj/effect/turf_decal/tile{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/yellow/visible,
-/obj/machinery/atmospherics/pipe/simple/cyan/visible/layer3{
-	dir = 6
+/obj/machinery/atmospherics/components/binary/pump/on{
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/engineering/atmos)
@@ -125907,7 +125929,7 @@ chB
 foT
 eVS
 clt
-cmu
+rxc
 cTH
 cTH
 cTH
@@ -126161,10 +126183,10 @@ cfc
 chb
 cqn
 chB
-cjh
-hDp
+gsB
+qDy
 ckb
-cmt
+oBx
 clz
 cNp
 csx
@@ -126419,9 +126441,9 @@ chb
 gAO
 chB
 cjh
-hDp
+kYv
 cka
-cmu
+eff
 cRm
 cnY
 qci
@@ -126675,10 +126697,10 @@ cfe
 chb
 cgF
 chB
-gsB
+foT
 cjp
 ckc
-ckK
+vIT
 cUj
 iXq
 eQt
@@ -126935,7 +126957,7 @@ chB
 bdg
 twF
 rxJ
-cmu
+wnU
 cTH
 cTH
 cTH
@@ -127192,7 +127214,7 @@ fJH
 cji
 kev
 iej
-cmv
+ckK
 cNn
 mQT
 vLH
@@ -127446,7 +127468,7 @@ wsS
 scp
 xtx
 chB
-cji
+fsN
 cTB
 clu
 cmu
@@ -128218,7 +128240,7 @@ cKU
 cgH
 chB
 cHq
-nTv
+cjr
 cke
 olR
 rpQ

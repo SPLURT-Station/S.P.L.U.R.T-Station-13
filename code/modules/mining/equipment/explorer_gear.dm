@@ -2,8 +2,8 @@
 /obj/item/clothing/suit/hooded/explorer
 	name = "explorer suit"
 	desc = "An armoured suit for exploring harsh environments."
-	icon_state = "explorer-normal"
-	item_state = "explorer-normal"
+	icon_state = "explorer"
+	item_state = "explorer"
 	var/suit_type = "normal"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	cold_protection = CHEST|GROIN|LEGS|ARMS
@@ -13,7 +13,7 @@
 	flags_inv = HIDEJUMPSUIT|HIDETAUR
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals, /obj/item/resonator, /obj/item/mining_scanner, /obj/item/t_scanner/adv_mining_scanner, /obj/item/gun/energy/kinetic_accelerator, /obj/item/pickaxe)
 	resistance_flags = FIRE_PROOF
-	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_SNEK_TAURIC|STYLE_PAW_TAURIC
+	mutantrace_variation = STYLE_DIGITIGRADE|STYLE_ALL_TAURIC
 	no_t = TRUE
 
 /obj/item/clothing/head/hooded/explorer

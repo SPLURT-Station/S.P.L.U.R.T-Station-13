@@ -59,9 +59,9 @@
 	return TRUE
 
 /obj/item/assembly/signaler/update_icon()
+	. = ..()
 	if(holder)
 		holder.update_icon()
-	return
 
 /obj/item/assembly/signaler/ui_status(mob/user)
 	if(is_secured(user))

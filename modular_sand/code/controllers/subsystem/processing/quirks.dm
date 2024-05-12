@@ -4,6 +4,7 @@
 	var/list/cut_because_balance = check_and_cut_balance(my_quirks)
 	if(LAZYLEN(cut_because_balance))
 		to_chat(to_chat_target || user, span_boldwarning("Some quirks have been cut from your character due to invalid balance: [english_list(cut_because_balance)]"))
+		log_admin("Quirks cut from [key_name(user)] due to balance: [english_list(cut_because_balance)]")
 
 /// Code to automatically reduce positive quirks until balance is even.
 /datum/controller/subsystem/processing/quirks/proc/check_and_cut_balance(list/our_quirks)

@@ -279,6 +279,7 @@
 	internal_ext.afterattack(target, user, null)
 
 /mob/living/simple_animal/bot/firebot/update_icon()
+	. = ..()
 	if(!on)
 		icon_state = "firebot0"
 		return

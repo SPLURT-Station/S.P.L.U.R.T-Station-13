@@ -397,6 +397,7 @@
 	action_background_icon_state = "bg_alien"
 
 /obj/effect/proc_holder/wrap/update_icon()
+	. = ..()
 	action.button_icon_state = "wrap_[active]"
 	action.UpdateButtons()
 

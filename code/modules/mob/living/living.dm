@@ -261,12 +261,18 @@
 		dir_to_target = dir
 
 	var/push_anchored = FALSE
-	if((AM.move_resist * MOVE_FORCE_CRUSH_RATIO) <= force)
-		if(move_crush(AM, move_force, dir_to_target))
-			push_anchored = TRUE
-	if((AM.move_resist * MOVE_FORCE_FORCEPUSH_RATIO) <= force) //trigger move_crush and/or force_push regardless of if we can push it normally
-		if(force_push(AM, move_force, dir_to_target, push_anchored))
-			push_anchored = TRUE
+
+	// Sandstorm change - stop breaking structures for no raisin!!
+	var/mob/living/simple_animal/hostile/angry_fella = src
+	if(client || (istype(angry_fella) && angry_fella.target))
+		if((AM.move_resist * MOVE_FORCE_CRUSH_RATIO) <= force)
+			if(move_crush(AM, move_force, dir_to_target))
+				push_anchored = TRUE
+		if((AM.move_resist * MOVE_FORCE_FORCEPUSH_RATIO) <= force) //trigger move_crush and/or force_push regardless of if we can push it normally
+			if(force_push(AM, move_force, dir_to_target, push_anchored))
+				push_anchored = TRUE
+	//
+
 	if(ismob(AM))
 		var/mob/mob_to_push = AM
 		var/atom/movable/mob_buckle = mob_to_push.buckled

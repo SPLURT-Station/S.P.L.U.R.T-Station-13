@@ -36,6 +36,8 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 	var/list/cut
 	if(job?.blacklisted_quirks)
 		cut = filter_quirks(my_quirks, job.blacklisted_quirks)
+		if(LAZYLEN(cut))
+			log_admin("Quirks cut from [key_name(user)] due to job blacklist: [english_list(cut)]")
 	for(var/V in my_quirks)
 		if(V in quirks)
 			var/datum/quirk/Q = quirks[V]
@@ -54,6 +56,8 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		var/datum/species/S = H.dna.species
 		if(S.remove_blacklisted_quirks(H))
 			to_chat(to_chat_target || user, "<span class='boldwarning'>Some quirks have been cut from your character due to them conflicting with your species: [english_list(S.removed_quirks)]</span>")
+			if(LAZYLEN(S.removed_quirks))
+				log_admin("Quirks cut from [key_name(user)] due to species blacklist: [english_list(S.removed_quirks)]")
 
 /datum/controller/subsystem/processing/quirks/proc/quirk_path_by_name(name)
 	return quirks[name]

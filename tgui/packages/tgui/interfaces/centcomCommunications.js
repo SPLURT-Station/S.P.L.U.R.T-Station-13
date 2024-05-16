@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Fragment, Button, Section, Box, LabeledList, ColorBox } from '../components';
+import { Box, Button, ColorBox, Fragment, LabeledList, Section } from '../components';
 import { Window } from '../layouts';
 
 export const centcomCommunications = (props, context) => {

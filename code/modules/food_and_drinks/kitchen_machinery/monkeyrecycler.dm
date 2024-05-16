@@ -19,6 +19,7 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 	. = ..()
 	if (mapload)
 		GLOB.monkey_recyclers += src
+	locate_camera_console()
 
 /obj/machinery/monkey_recycler/Destroy()
 	GLOB.monkey_recyclers -= src
@@ -27,6 +28,15 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 		console.connected_recycler = null
 	connected.Cut()
 	return ..()
+
+/obj/machinery/monkey_recycler/proc/locate_camera_console()
+	if(length(connected))
+		return // we're already connected!
+	for(var/obj/machinery/computer/camera_advanced/xenobio/xeno_camera in GLOB.machines)
+		if(get_area(xeno_camera) == get_area(loc))
+			xeno_camera.connected_recycler = src
+			connected |= xeno_camera
+			break
 
 /obj/machinery/monkey_recycler/RefreshParts()	//Ranges from 0.2 to 0.8 per monkey recycled
 	cube_production = 0
@@ -75,6 +85,7 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 		to_chat(user, "<span class='warning'>The monkey is attached to something.</span>")
 		return
 	qdel(target)
+	target = null //we sleep in this proc, clear reference NOW
 	to_chat(user, "<span class='notice'>You stuff the monkey into the machine.</span>")
 	playsound(src.loc, 'sound/machines/juicer.ogg', 50, 1)
 	var/offset = prob(50) ? -2 : 2
@@ -82,7 +93,7 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 	use_power(500)
 	stored_matter += cube_production
 	addtimer(VARSET_CALLBACK(src, pixel_x, initial(pixel_x)))
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/to_chat, user, "<span class='notice'>The machine now has [stored_matter] monkey\s worth of material stored.</span>"))
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), user, "<span class='notice'>The machine now has [stored_matter] monkey\s worth of material stored.</span>"))
 
 /obj/machinery/monkey_recycler/interact(mob/user)
 	if(stored_matter >= 1)

@@ -18,14 +18,14 @@
 	carrier = genital.owner
 
 /datum/component/ovipositor/RegisterWithParent()
-	RegisterSignal(parent, COMSIG_ORGAN_INSERTED, .proc/on_inserted)
-	RegisterSignal(parent, COMSIG_ORGAN_REMOVED, .proc/on_removed)
+	RegisterSignal(parent, COMSIG_ORGAN_INSERTED, PROC_REF(on_inserted))
+	RegisterSignal(parent, COMSIG_ORGAN_REMOVED, PROC_REF(on_removed))
 	if(carrier)
 		register_carrier()
 
 /datum/component/ovipositor/proc/register_carrier()
-	RegisterSignal(carrier, COMSIG_LIVING_BIOLOGICAL_LIFE, .proc/handle_life)
-	RegisterSignal(carrier, COMSIG_MOB_CLIMAX, .proc/on_climax)
+	RegisterSignal(carrier, COMSIG_LIVING_BIOLOGICAL_LIFE, PROC_REF(handle_life))
+	RegisterSignal(carrier, COMSIG_MOB_CLIMAX, PROC_REF(on_climax))
 
 /datum/component/ovipositor/proc/unregister_carrier()
 	UnregisterSignal(carrier, COMSIG_LIVING_BIOLOGICAL_LIFE)

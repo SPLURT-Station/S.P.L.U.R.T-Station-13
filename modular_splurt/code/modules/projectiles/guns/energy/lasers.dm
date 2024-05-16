@@ -63,6 +63,8 @@
 	weapon_weight = WEAPON_LIGHT
 	slot_flags = ITEM_SLOT_BACK
 	can_flashlight = 0
+	modifystate = FALSE
+	automatic_charge_overlays = FALSE
 
 /obj/item/gun/energy/aegisaltlaser
 	name = "Aegis DMR"
@@ -82,3 +84,6 @@
 	flight_x_offset = 0
 	flight_y_offset = -700
 	selfcharge = TRUE
+
+/obj/item/gun/energy/pulse/nerf
+	pin = /obj/item/firing_pin/kaiju

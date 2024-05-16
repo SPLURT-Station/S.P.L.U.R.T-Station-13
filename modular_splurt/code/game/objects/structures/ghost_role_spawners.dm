@@ -41,7 +41,7 @@
 	short_desc = "You are a hermit abandoned by fate."
 	flavour_text = "You've survived weeks in this hellish place. Maybe you want to live here with ash tribe or return to civilisation. \
 	Only you know how you got to this planetoid, whether this place in which you woke up was one of your shelters, or you just stumbled upon it."
-	canloadappearance = TRUE
+	can_load_appearance = TRUE
 
 /obj/effect/mob_spawn/human/wandering_hermit/Destroy()
 	var/obj/structure/fluff/empty_sleeper/S = new(drop_location())
@@ -69,7 +69,7 @@
 	death = FALSE
 	roundstart = FALSE
 	random = TRUE
-	canloadappearance = TRUE
+	can_load_appearance = TRUE
 	id_job = "Hotel Staff"
 	id = /obj/item/card/id/away/hotel/splurt
 	uniform = /obj/item/clothing/under/suit/red
@@ -101,7 +101,7 @@
 	name = "hotel manager sleeper"
 	mob_name = "hotel manager"
 	job_description = "Hotel Manager"
-	short_desc = "You are the manager of a space hotel"
+	short_desc = "You are the manager of a space hotel."
 	flavour_text = "You manage one site of a successful chain of space hotels. Your parent company has recently been bought out by Nanotrasen and tasked with servicing some of their stations; you have recieved a selection of fancy tech as a result! Protect the interests of your parent company, ensure your staff are performing to standard and make sure to keep your guests happy!"
 	important_info = "Don't abandon the hotel! Brief excursions to pick up guests or set up transit links are permitted, but remember where you work!"
 	objectives = "Don't abandon your assigned hotel. Cater to visiting guests. Maintain good corporate relations and remember: The customer is always right!"
@@ -111,3 +111,53 @@
 	head = /obj/item/clothing/head/beret/black
 	id = /obj/item/card/id/away/hotel/splurt/manager
 	ears = /obj/item/radio/headset/headset_srv/hotel/manager
+
+// Ghost Cafe Spawner (VR Version)
+
+/obj/effect/mob_spawn/human/ghostcafeVR
+	name = "Ghost Cafe VR Sleeper"
+	uses = -1
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper"
+	mob_name = "a ghost cafe VR visitor"
+	roundstart = FALSE
+	anchored = TRUE
+	density = FALSE
+	death = FALSE
+	assignedrole = "Ghost Cafe VR Visitor"
+	short_desc = "You are a Ghost Cafe VR Visitor!"
+	flavour_text = "You know one thing for sure. You arent actually alive. Are you in a simulation?"
+	skip_reentry_check = TRUE
+	banType = ROLE_GHOSTCAFE
+	can_load_appearance = 2 //(Forces player to load character appearance)
+
+/obj/effect/mob_spawn/human/ghostcafeVR/special(mob/living/carbon/human/new_spawn)
+	if(new_spawn.client)
+		new_spawn.client.prefs.copy_to(new_spawn)
+		var/datum/outfit/O = new /datum/outfit/ghostcafeVR()
+		O.equip(new_spawn, FALSE, new_spawn.client)
+		SSjob.equip_loadout(null, new_spawn)
+		SSjob.post_equip_loadout(null, new_spawn)
+		SSquirks.AssignQuirks(new_spawn, new_spawn.client, TRUE, TRUE, null, FALSE, new_spawn)
+		ADD_TRAIT(new_spawn, TRAIT_SIXTHSENSE, GHOSTROLE_TRAIT)
+		ADD_TRAIT(new_spawn, TRAIT_EXEMPT_HEALTH_EVENTS, GHOSTROLE_TRAIT)
+		ADD_TRAIT(new_spawn, TRAIT_NO_MIDROUND_ANTAG, GHOSTROLE_TRAIT) //The mob can't be made into a random antag, they are still eligible for ghost roles popups.
+
+/datum/outfit/ghostcafeVR
+	name = "ID, jumpsuit and shoes"
+	uniform = /obj/item/clothing/under/color/random
+	shoes = /obj/item/clothing/shoes/sneakers/black
+
+/datum/outfit/ghostcafeVR/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE, client/preference_source)
+	..()
+	if(isplasmaman(H))
+		head = /obj/item/clothing/head/helmet/space/plasmaman
+		uniform = /obj/item/clothing/under/plasmaman
+		l_hand= /obj/item/tank/internals/plasmaman/belt/full
+		mask = /obj/item/clothing/mask/breath
+		return
+
+/datum/outfit/ghostcafeVR/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE, client/preference_source)
+	H.internal = H.get_item_for_held_index(1)
+	H.update_internals_hud_icon(1)
+

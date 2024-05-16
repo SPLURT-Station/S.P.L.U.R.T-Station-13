@@ -1,6 +1,10 @@
 /mob/living/simple_animal/slime/death(gibbed)
 	if(stat == DEAD)
 		return
+
+	if(buckled)
+		Feedstop(silent = TRUE) //releases ourselves from the mob we fed on.
+
 	if(!gibbed)
 		if(is_adult)
 			var/mob/living/simple_animal/slime/M = new(loc, colour)
@@ -18,10 +22,7 @@
 			update_name()
 			return
 
-	if(buckled)
-		Feedstop(silent = TRUE) //releases ourselves from the mob we fed on.
-
-	stat = DEAD
+	set_stat(DEAD)
 	cut_overlays()
 
 	update_mobility()

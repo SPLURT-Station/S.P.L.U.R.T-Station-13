@@ -20,18 +20,14 @@
 	var/emulate_door_bumps = TRUE	//when bumping a door try to make occupants bump them to open them.
 	var/default_driver_move = TRUE	//handle driver movement instead of letting something else do it like riding datums.
 	var/enclosed = FALSE	// is the rider protected from bullets? assume no
-	var/list/autogrant_actions_passenger	//plain list of typepaths
-	var/list/autogrant_actions_controller	//assoc list "[bitflag]" = list(typepaths)
-	var/list/mob/occupant_actions			//assoc list mob = list(type = action datum assigned to mob)
+	var/list/autogrant_actions_passenger = list()	//plain list of typepaths
+	var/list/autogrant_actions_controller = list()	//assoc list "[bitflag]" = list(typepaths)
+	var/list/mob/occupant_actions = list()			//assoc list mob = list(type = action datum assigned to mob)
 	var/obj/vehicle/trailer
 	var/mouse_pointer //do we have a special mouse
 
 /obj/vehicle/Initialize(mapload)
 	. = ..()
-	occupants = list()
-	autogrant_actions_passenger = list()
-	autogrant_actions_controller = list()
-	occupant_actions = list()
 	generate_actions()
 
 /obj/vehicle/examine(mob/user)
@@ -54,7 +50,7 @@
 	return occupants
 
 /obj/vehicle/proc/occupant_amount()
-	return length(occupants)
+	return LAZYLEN(occupants)
 
 /obj/vehicle/proc/return_amount_of_controllers_with_flag(flag)
 	. = 0
@@ -79,12 +75,13 @@
 	return is_occupant(M) && occupants[M] & VEHICLE_CONTROL_DRIVE
 
 /obj/vehicle/proc/is_occupant(mob/M)
-	return !isnull(occupants[M])
+	return !isnull(occupants?[M])
 
 /obj/vehicle/proc/add_occupant(mob/M, control_flags)
-	if(!istype(M) || occupants[M])
+	if(!istype(M) || is_occupant(M))
 		return FALSE
-	occupants[M] = NONE
+
+	LAZYSET(occupants, M, NONE)
 	add_control_flags(M, control_flags)
 	after_add_occupant(M)
 	grant_passenger_actions(M)
@@ -102,7 +99,7 @@
 		return FALSE
 	remove_control_flags(M, ALL)
 	remove_passenger_actions(M)
-	occupants -= M
+	LAZYREMOVE(occupants, M)
 	cleanup_actions_for_mob(M)
 	after_remove_occupant(M)
 	return TRUE
@@ -140,7 +137,7 @@
 	return
 
 /obj/vehicle/proc/add_control_flags(mob/controller, flags)
-	if(!istype(controller) || !flags)
+	if(!is_occupant(controller) || !flags)
 		return FALSE
 	occupants[controller] |= flags
 	for(var/i in GLOB.bitflags)
@@ -149,7 +146,7 @@
 	return TRUE
 
 /obj/vehicle/proc/remove_control_flags(mob/controller, flags)
-	if(!istype(controller) || !flags)
+	if(!is_occupant(controller) || !flags)
 		return FALSE
 	occupants[controller] &= ~flags
 	for(var/i in GLOB.bitflags)

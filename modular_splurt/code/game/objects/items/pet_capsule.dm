@@ -30,7 +30,9 @@
 		"Femclaw" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "femclaw"),
 		"Deathclaw" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "newclaw"),
 		"Carp" = image(icon = 'icons/mob/animal.dmi', icon_state = "carp"),
-		"Spider" = image(icon = 'icons/mob/animal.dmi', icon_state = "guard"))
+		"Spider" = image(icon = 'icons/mob/animal.dmi', icon_state = "guard"),
+		"Ice Wolf" = image(icon = 'modular_splurt/icons/mobs/werewolf.dmi', icon_state = "ice_wolf"),
+		"Rouny" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "rouny"))
 
 /obj/item/pet_capsule/alpha_capsule/InitializeSelection()
 	pet_icons = list(
@@ -39,7 +41,9 @@
 		"Carp" = image(icon = 'icons/mob/animal.dmi', icon_state = "carp"),
 		"Spider" = image(icon = 'icons/mob/animal.dmi', icon_state = "guard"),
 		"Mommyclaw" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "mommyclaw"),
-		"Alphaclaw" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "alphaclaw"))
+		"Alphaclaw" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "alphaclaw"),
+		"Ice Wolf" = image(icon = 'modular_splurt/icons/mobs/werewolf.dmi', icon_state = "Ice_Wolf_idle"),
+		"Rouny" = image(icon = 'modular_splurt/icons/mob/femclaw/newclaws.dmi', icon_state = "rouny"))
 
 /obj/item/pet_capsule/Initialize(mapload)
 	. = ..()
@@ -48,42 +52,45 @@
 /obj/item/pet_capsule/proc/pet_capsule_triggered(atom/location_atom, is_in_hand = FALSE, mob/user = null)
 	//If pet has not been chosen yet
 	if (!pet_picked && is_in_hand && user != null)
-
-
 		new_name = input(user, "New name :", "Rename your pet(Once per shift!)")
 
 		var/selected_icon = show_radial_menu(loc, loc , pet_icons,  radius = 42, require_near = TRUE)
 		switch(selected_icon)
 			if("Femclaw")
 				selected_pet = /mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/pet_femclaw
-				pet_picked = TRUE;
+				pet_picked = TRUE
 			if("Deathclaw")
 				selected_pet = /mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/pet_deathclaw
-				pet_picked = TRUE;
+				pet_picked = TRUE
+			if("Rouny")
+				selected_pet = /mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/pet_femclaw/rouny
+				pet_picked = TRUE
+			if("Ice Wolf")
+				selected_pet = /mob/living/simple_animal/hostile/ice_wolf/funwolf/gentle/pet_ice_wolf
+				pet_picked = TRUE
 			if("Carp")
 				selected_pet = /mob/living/simple_animal/hostile/carp/pet_carp
-				pet_picked = TRUE;
+				pet_picked = TRUE
 			if("Spider")
 				selected_pet = /mob/living/simple_animal/hostile/poison/giant_spider/pet_spider
-				pet_picked = TRUE;
+				pet_picked = TRUE
 			if("Mommyclaw")
 				selected_pet = /mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/pet_femclaw/pet_mommyclaw
-				pet_picked = TRUE;
+				pet_picked = TRUE
 			if("Alphaclaw")
 				selected_pet = /mob/living/simple_animal/hostile/deathclaw/funclaw/gentle/newclaw/pet_deathclaw/pet_alphaclaw
-				pet_picked = TRUE;
+				pet_picked = TRUE
 			else
-				pet_picked = FALSE;
+				pet_picked = FALSE
 				return FALSE
 		owner = user
 		return
 
 
 	else if (!open && pet_picked && is_in_hand && user != null)
-	{
 		owner = user
 		to_chat(user, "<span class='notice'>You set yourself as the owner!</span>")
-	}
+
 	//Make pet appear if thrown on the floor
 	else if (!open && !is_in_hand && pet_picked)
 		open = TRUE

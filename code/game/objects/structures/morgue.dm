@@ -222,6 +222,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
 	id = "[idnum][id]"
 
 /obj/structure/bodycontainer/crematorium/update_icon()
+	. = ..()
 	if(!connected || connected.loc != src)
 		icon_state = "crema0"
 	else
@@ -381,9 +382,9 @@ GLOBAL_LIST_EMPTY(crematoriums)
 	if(.)
 		return
 	if(locate(/obj/structure/table) in get_turf(mover))
-		return 1
+		return TRUE
 	else
-		return 0
+		return FALSE
 
 /obj/structure/tray/m_tray/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
 	. = !density

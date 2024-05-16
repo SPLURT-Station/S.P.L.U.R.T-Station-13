@@ -8,7 +8,9 @@
 /datum/config_entry/number/base_save_slots
 	default = DEFAULT_SAVE_SLOTS
 
-/datum/config_entry/flag/sm_delamination
+/datum/config_entry/number/sm_delamination_cooldown
+	default = 0
+	min_val = -1
 
 /datum/config_entry/flag/protolock_all_access
 

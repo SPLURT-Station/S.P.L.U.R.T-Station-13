@@ -2,8 +2,9 @@
 import { filter } from 'common/collections';
 import { flow } from 'common/fp';
 import { createSearch } from 'common/string';
+
 import { useBackend, useLocalState } from '../backend';
-import { BlockQuote, Button, LabeledList, Icon, NumberInput, Input, Section, Table, Tabs, Stack, ProgressBar, Divider } from '../components';
+import { Button, Input, NumberInput, ProgressBar, Section, Stack, Table, Tabs } from '../components';
 import { Window } from '../layouts';
 
 

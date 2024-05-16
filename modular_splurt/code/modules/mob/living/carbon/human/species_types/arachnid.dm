@@ -52,7 +52,7 @@
 		to_chat(H, span_warning("You pull out a strand from your spinneret, ready to wrap a target. (Press ALT+CLICK on the target to start wrapping.)"))
 		H.adjust_nutrition(spinner_rate * -0.5)
 		addtimer(VARSET_CALLBACK(src, web_ready, TRUE), web_cooldown)
-		RegisterSignal(H, list(COMSIG_MOB_ALTCLICKON), .proc/cocoonAtom)
+		RegisterSignal(H, list(COMSIG_MOB_ALTCLICKON), PROC_REF(cocoonAtom))
 		return
 	else
 		to_chat(H, span_warning("You're too hungry to spin web right now, eat something first!"))

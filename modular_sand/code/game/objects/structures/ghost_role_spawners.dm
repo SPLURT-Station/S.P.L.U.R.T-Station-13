@@ -24,6 +24,7 @@
 	skip_reentry_check = TRUE
 	banType = ROLE_GHOSTCAFE
 	mob_type = /mob/living/silicon/robot/modules/roleplay
+	can_load_appearance = 2
 
 /obj/effect/mob_spawn/robot/ghostcafe/special(mob/living/silicon/robot/new_spawn)
 	if(new_spawn.client)

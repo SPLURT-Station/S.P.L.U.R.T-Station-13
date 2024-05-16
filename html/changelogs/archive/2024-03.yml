@@ -1,0 +1,84 @@
+2024-03-02:
+  xhianil:
+  - rscadd: Use of E621 for headshots, because literally why not?
+2024-03-03:
+  Just-Sim:
+  - rscdel: Removed old *meow.
+  - sounddel: Removed old *meow.ogg
+  - rscadd: Added new *meow
+  - soundadd: Re-added old meow soundfile as it's needed by vocal barks.
+  - rscadd: Added new scream for Felinid subrace.
+  - rscdel: Deleted new felinid screams as emote_pitch_variance cannot be changed
+      without completely porting the *scream emote to the splurt_module emote.dm
+  - tweak: Turned down emote delay from 1 second to 0.5 so players can spam *meow
+      obnoxiously.
+  ariaworld:
+  - rscadd: Added chugging to any type of liquid container, not just drinking glasses.
+  - tweak: Removed old citadelcode from reagent container drinking, for more clean
+      and readable code.
+  - bugfix: Fixes a few bugs related to chugging.
+2024-03-07:
+  BongaTheProto:
+  - rscadd: Added a shark plushie for our donator
+  - rscadd: added the chameleon hat and mask to the donator tier 2 loadout
+  - rscadd: Adds a thicc rouny which behaves like deathclaws
+  - tweak: Ice wolf is now available in the pet capsule
+2024-03-11:
+  ariaworld:
+  - bugfix: Refactor, clean and optimize tailbag code to not be a copy/paste of wallets
+      but a subtype of it.
+  - bugfix: Proper lazylist support for vehicle occupants. NPC mecha pilots can board
+      mechas again. (And won't runtime when they try.) Mechs won't try to put themselves
+      into themselves as an occupant when boarded by simple animal mecha pilots.
+  - tweak: Removed 2 ugly pixels from the human penis size 4 erect size sprite.
+  - rscadd: "You can now blow kisses by using the *kiss emote (old emote is still\
+      \ usable with *kiss2). This puts a kiss object in your hand, which can be shot/thrown\
+      \ at other people to give them a mood boost. If you hit someone with the social\
+      \ anxiety quirk a few special things might happen\u223C!"
+  - rscadd: 'For coders: Also added a very easy way for coders to add new lipstick
+      which special traits, with this update the kiss of death was added (admin spawn
+      only), which deals damage when thrown. Have fun adding lipsticks that apply
+      crocin / increase arousal when you kiss someone / throw a kiss, or straight
+      up shooting lasers out of your mouth :P'
+2024-03-14:
+  NevilleTheGreat:
+  - rscadd: Added Thomas Plushie
+2024-03-20:
+  Just-Sim:
+  - code_imp: Made some chages following PR 1108
+2024-03-24:
+  ariaworld:
+  - rscadd: Added the Kiss Slut trait, which increases arousal when kissing others
+      or being kissed!
+  - bugfix: Fixed oral sex, in specific the "Go down on them verb". <3
+  miguelop1:
+  - rscadd: Added a new drink (donator was commie so he shares)
+2024-03-28:
+  Just-Sim:
+  - rscadd: Syndicate Job Titles
+  - rscadd: Syndicate Job SecHUD Icon
+  - rscadd: Syndicate Job ID Icon
+  Omnisalad:
+  - imageadd: 8 new hairstyles, wow!
+  Vhariik:
+  - tweak: Slapped some smes'es wires
+  ariaworld:
+  - bugfix: Fixes monophobia quirk/trauma increasing stress levels even when grabbed
+      by a macro character.
+  - rscdel: Actually got rid of egg miscarriage code, forever.
+  miguelop1:
+  - rscadd: Added Semen and Femcum to the limb grower
+  - bugfix: fixed limbgrower not displaying shadekin, teshari and vox bodies as able
+      to be printed
+2024-03-29:
+  KathrinBailey:
+  - tweak: New meowing sounds bumped to their own emote instead of overwriting the
+      original meow.
+  - soundadd: Original meow returned to its place.
+2024-03-31:
+  AyyRobotics:
+  - rscadd: Added the A.G.R Complex, two gateway missions with cult-themed gameplay
+      and rewards.
+  - rscadd: Added the Cultist Survivor ghostrole, taking place on the AGRComplex gateway
+      mission.
+  - config: Adds AGRComplex file to config.

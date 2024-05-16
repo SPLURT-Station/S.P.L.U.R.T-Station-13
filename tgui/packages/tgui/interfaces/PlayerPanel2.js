@@ -1,6 +1,7 @@
 import { Fragment } from "inferno";
+
 import { useBackend, useLocalState } from '../backend';
-import { Input, Button, Flex, Section, Tabs, Box, NoticeBox, NumberInput, Collapsible, LabeledList, Dropdown, Slider, Tooltip } from '../components';
+import { Box, Button, Collapsible, Dropdown, Flex, Input, LabeledList, NoticeBox, NumberInput, Section, Slider, Tabs } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = [
@@ -459,7 +460,7 @@ const GeneralActions = (props, context) => {
             color="orange"
             content="Smite"
             confirmColor="average"
-            disabled={!mob_type.includes("/mob/living")}
+            disabled={!mob_type.includes("/mob/living/carbon/human")}
             onClick={() => act("smite")}
           />
         </Flex>

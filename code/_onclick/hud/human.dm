@@ -63,7 +63,7 @@
 
 /atom/movable/screen/human/equip/Click()
 	if(ismecha(usr.loc)) // stops inventory actions in a mech
-		return 1
+		return TRUE
 	var/mob/living/carbon/human/H = usr
 	H.quick_equip()
 
@@ -265,18 +265,20 @@
 	static_inventory += using
 
 	inv_box = new /atom/movable/screen/inventory()
-	inv_box.name = "i_clothing"
+	inv_box.name = "uniform"
 	inv_box.icon = ui_style
 	inv_box.slot_id = ITEM_SLOT_ICLOTHING
 	inv_box.icon_state = "uniform"
+	inv_box.icon_full = "template"
 	inv_box.screen_loc = ui_iclothing
 	toggleable_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
-	inv_box.name = "o_clothing"
+	inv_box.name = "suit"
 	inv_box.icon = ui_style
 	inv_box.slot_id = ITEM_SLOT_OCLOTHING
 	inv_box.icon_state = "suit"
+	inv_box.icon_full = "template"
 	inv_box.screen_loc = ui_oclothing
 	toggleable_inventory += inv_box
 
@@ -300,6 +302,7 @@
 	inv_box.name = "id"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "id"
+	inv_box.icon_full = "template_small"
 	inv_box.screen_loc = ui_id
 	inv_box.slot_id = ITEM_SLOT_ID
 	static_inventory += inv_box
@@ -308,6 +311,7 @@
 	inv_box.name = "mask"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "mask"
+	inv_box.icon_full = "template"
 	inv_box.screen_loc = ui_mask
 	inv_box.slot_id = ITEM_SLOT_MASK
 	toggleable_inventory += inv_box
@@ -316,6 +320,7 @@
 	inv_box.name = "neck"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "neck"
+	inv_box.icon_full = "template"
 	inv_box.screen_loc = ui_neck
 	inv_box.slot_id = ITEM_SLOT_NECK
 	toggleable_inventory += inv_box
@@ -324,22 +329,25 @@
 	inv_box.name = "back"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "back"
+	inv_box.icon_full = "template"
 	inv_box.screen_loc = ui_back
 	inv_box.slot_id = ITEM_SLOT_BACK
 	static_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
-	inv_box.name = "storage1"
+	inv_box.name = "left pocket"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "pocket"
+	inv_box.icon_full = "template"
 	inv_box.screen_loc = ui_storage1
 	inv_box.slot_id = ITEM_SLOT_LPOCKET
 	static_inventory += inv_box
 
 	inv_box = new /atom/movable/screen/inventory()
-	inv_box.name = "storage2"
+	inv_box.name = "right pocket"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "pocket"
+	inv_box.icon_full = "template"
 	inv_box.screen_loc = ui_storage2
 	inv_box.slot_id = ITEM_SLOT_RPOCKET
 	static_inventory += inv_box
@@ -348,6 +356,7 @@
 	inv_box.name = "suit storage"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "suit_storage"
+	inv_box.icon_full = "template"
 	inv_box.screen_loc = ui_sstore1
 	inv_box.slot_id = ITEM_SLOT_SUITSTORE
 	static_inventory += inv_box
@@ -381,6 +390,7 @@
 	inv_box.name = "gloves"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "gloves"
+	inv_box.icon_full = "template"
 	inv_box.screen_loc = ui_gloves
 	inv_box.slot_id = ITEM_SLOT_GLOVES
 	toggleable_inventory += inv_box
@@ -389,6 +399,7 @@
 	inv_box.name = "eyes"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "glasses"
+	inv_box.icon_full = "template"
 	inv_box.screen_loc = ui_glasses
 	inv_box.slot_id = ITEM_SLOT_EYES
 	toggleable_inventory += inv_box
@@ -397,6 +408,7 @@
 	inv_box.name = "left ear" // Sandstorm edit
 	inv_box.icon = ui_style
 	inv_box.icon_state = "ears"
+	inv_box.icon_full = "template"
 	inv_box.screen_loc = ui_ears
 	inv_box.slot_id = ITEM_SLOT_EARS_LEFT // Sandstorm Edit
 	toggleable_inventory += inv_box
@@ -405,6 +417,7 @@
 	inv_box.name = "head"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "head"
+	inv_box.icon_full = "template"
 	inv_box.screen_loc = ui_head
 	inv_box.slot_id = ITEM_SLOT_HEAD
 	toggleable_inventory += inv_box
@@ -413,6 +426,7 @@
 	inv_box.name = "shoes"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "shoes"
+	inv_box.icon_full = "template"
 	inv_box.screen_loc = ui_shoes
 	inv_box.slot_id = ITEM_SLOT_FEET
 	toggleable_inventory += inv_box
@@ -428,6 +442,7 @@
 	inv_box.name = "underwear"
 	inv_box.icon = ui_style_modular(ui_style)
 	inv_box.icon_state = "underwear"
+	inv_box.icon_full = "template"
 	inv_box.screen_loc = ui_boxers
 	inv_box.slot_id = ITEM_SLOT_UNDERWEAR // Sandstorm edit
 	extra_inventory += inv_box
@@ -436,6 +451,7 @@
 	inv_box.name = "socks"
 	inv_box.icon = ui_style_modular(ui_style)
 	inv_box.icon_state = "socks"
+	inv_box.icon_full = "template"
 	inv_box.screen_loc = ui_socks
 	inv_box.slot_id = ITEM_SLOT_SOCKS // Sandstorm edit
 	extra_inventory += inv_box
@@ -444,6 +460,7 @@
 	inv_box.name = "shirt"
 	inv_box.icon = ui_style_modular(ui_style)
 	inv_box.icon_state = "shirt"
+	inv_box.icon_full = "template"
 	inv_box.screen_loc = ui_shirt
 	inv_box.slot_id = ITEM_SLOT_SHIRT // Sandstorm edit
 	extra_inventory += inv_box
@@ -452,6 +469,7 @@
 	inv_box.name = "right ear"
 	inv_box.icon = ui_style_modular(ui_style)
 	inv_box.icon_state = "ears_extra"
+	inv_box.icon_full = "template"
 	inv_box.screen_loc = ui_ears_extra
 	inv_box.slot_id = ITEM_SLOT_EARS_RIGHT // Sandstorm edit
 	extra_inventory += inv_box
@@ -460,6 +478,7 @@
 	inv_box.name = "wrists"
 	inv_box.icon = ui_style_modular(ui_style)
 	inv_box.icon_state = "wrists"
+	inv_box.icon_full = "template"
 	inv_box.screen_loc = ui_wrists
 	inv_box.slot_id = ITEM_SLOT_WRISTS
 	extra_inventory += inv_box
@@ -469,7 +488,7 @@
 	inv_box.name = "belt"
 	inv_box.icon = ui_style
 	inv_box.icon_state = "belt"
-//	inv_box.icon_full = "template_small"
+	inv_box.icon_full = "template_small"
 	inv_box.screen_loc = ui_belt
 	inv_box.slot_id = ITEM_SLOT_BELT
 	static_inventory += inv_box
@@ -657,15 +676,24 @@
 			H.head.screen_loc = ui_head
 			screenmob.client.screen += H.head
 	else
-		if(H.shoes)		screenmob.client.screen -= H.shoes
-		if(H.gloves)	screenmob.client.screen -= H.gloves
-		if(H.ears)		screenmob.client.screen -= H.ears
-		if(H.glasses)	screenmob.client.screen -= H.glasses
-		if(H.w_uniform)	screenmob.client.screen -= H.w_uniform
-		if(H.wear_suit)	screenmob.client.screen -= H.wear_suit
-		if(H.wear_mask)	screenmob.client.screen -= H.wear_mask
-		if(H.wear_neck)	screenmob.client.screen -= H.wear_neck
-		if(H.head)		screenmob.client.screen -= H.head
+		if(H.shoes)
+			screenmob.client.screen -= H.shoes
+		if(H.gloves)
+			screenmob.client.screen -= H.gloves
+		if(H.ears)
+			screenmob.client.screen -= H.ears
+		if(H.glasses)
+			screenmob.client.screen -= H.glasses
+		if(H.w_uniform)
+			screenmob.client.screen -= H.w_uniform
+		if(H.wear_suit)
+			screenmob.client.screen -= H.wear_suit
+		if(H.wear_mask)
+			screenmob.client.screen -= H.wear_mask
+		if(H.wear_neck)
+			screenmob.client.screen -= H.wear_neck
+		if(H.head)
+			screenmob.client.screen -= H.head
 
 
 // Sandstorm edit

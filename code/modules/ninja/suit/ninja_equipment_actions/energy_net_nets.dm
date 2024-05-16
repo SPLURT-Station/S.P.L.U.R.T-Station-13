@@ -37,7 +37,7 @@
 	return ..()
 
 /obj/structure/energy_net/attack_paw(mob/user)
-	return attack_hand()
+	return attack_hand(user)
 
 /obj/structure/energy_net/user_buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
 	return//We only want our target to be buckled

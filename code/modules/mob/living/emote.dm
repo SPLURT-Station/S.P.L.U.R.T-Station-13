@@ -129,7 +129,7 @@
 				H.CloseWings()
 			else
 				H.OpenWings()
-			addtimer(CALLBACK(H, open ? /mob/living/carbon/human.proc/OpenWings : /mob/living/carbon/human.proc/CloseWings), wing_time)
+			addtimer(CALLBACK(H, open ? TYPE_PROC_REF(/mob/living/carbon/human, OpenWings) : TYPE_PROC_REF(/mob/living/carbon/human, CloseWings)), wing_time)
 
 /datum/emote/living/flap/aflap
 	key = "aflap"
@@ -194,6 +194,26 @@
 
 /datum/emote/living/kiss
 	key = "kiss"
+	key_third_person = "kisses"
+
+/datum/emote/living/kiss/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return
+	var/kiss_type = /obj/item/hand_item/kisser
+
+	if(HAS_TRAIT(user, TRAIT_KISS_OF_DEATH))
+		kiss_type = /obj/item/hand_item/kisser/death
+
+	var/obj/item/kiss_blower = new kiss_type(user)
+	if(user.put_in_hands(kiss_blower))
+		to_chat(user, span_notice("You ready your kiss-blowing hand."))
+	else
+		qdel(kiss_blower)
+		to_chat(user, span_warning("You're incapable of blowing a kiss in your current state."))
+
+/datum/emote/living/kiss2
+	key = "kiss2"
 	key_third_person = "kisses"
 	message = "blows a kiss."
 	message_param = "blows a kiss to %t."
@@ -528,7 +548,7 @@
 	. = ..()
 	if(!.)
 		return
-	var/obj/item/circlegame/N = new(user)
+	var/obj/item/hand_item/circlegame/N = new(user)
 	if(user.put_in_hands(N))
 		to_chat(user, "<span class='notice'>You make a circle with your hand.</span>")
 	else
@@ -544,7 +564,7 @@
 	. = ..()
 	if(!.)
 		return
-	var/obj/item/slapper/N = new(user)
+	var/obj/item/hand_item/slapper/N = new(user)
 	if(user.put_in_hands(N))
 		to_chat(user, "<span class='notice'>You ready your slapping hand.</span>")
 	else

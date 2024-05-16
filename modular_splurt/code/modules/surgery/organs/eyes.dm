@@ -44,7 +44,7 @@
 	to_chat(eye_user, span_nicegreen("Your [src] begin to glimmer with an entrancing power!"))
 
 	// Add examine text
-	RegisterSignal(eye_user, COMSIG_PARENT_EXAMINE, .proc/examine_user)
+	RegisterSignal(eye_user, COMSIG_PARENT_EXAMINE, PROC_REF(examine_user))
 
 // On remove organ
 /obj/item/organ/eyes/robotic/hypno/Remove(mob/living/carbon/eye_user, special, drop_if_replaced)

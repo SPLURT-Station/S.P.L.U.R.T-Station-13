@@ -5,7 +5,7 @@
 //	You do not need to raise this if you are adding new values that have sane defaults.
 //	Only raise this value when changing the meaning/format/name/layout of an existing value
 //	where you would want the updater procs below to run
-#define SAVEFILE_VERSION_MAX	58.01
+#define SAVEFILE_VERSION_MAX	59
 
 /*
 SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Carn
@@ -47,7 +47,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		outline_color = COLOR_THEME_MIDNIGHT
 	if(current_version < 46)	//If you remove this, remove force_reset_keybindings() too.
 		force_reset_keybindings_direct(TRUE)
-		addtimer(CALLBACK(src, .proc/force_reset_keybindings), 30)	//No mob available when this is run, timer allows user choice.
+		addtimer(CALLBACK(src, PROC_REF(force_reset_keybindings)), 30)	//No mob available when this is run, timer allows user choice.
 	if(current_version < 55) //Bitflag toggles don't set their defaults when they're added, always defaulting to off instead.
 		toggles |= SOUND_BARK
 	if(current_version < 56)
@@ -62,6 +62,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		else
 			// Let's give it a little chance okay, change if you don't like still.
 			screentip_pref = SCREENTIP_PREFERENCE_CONTEXT_ONLY
+	// Input had a bad reception anyways, this way people won't even have to look into it.
+	if(current_version < 59)
+		hotkeys = TRUE
 
 /datum/preferences/proc/update_character(current_version, savefile/S)
 	if(current_version < 19)
@@ -401,7 +404,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			if(istype(parent))
 				to_chat(parent, "<span class='warning'>You're attempting to load your preferences a little too fast. Wait half a second, then try again.</span>")
 			return FALSE
-		loadprefcooldown = world.time + PREF_SAVELOAD_COOLDOWN
+		COOLDOWN_START(src, loadprefcooldown, PREF_LOAD_COOLDOWN)
 	if(!fexists(path))
 		return FALSE
 
@@ -438,7 +441,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["tgui_input_mode"]		>> tgui_input_mode
 	S["tgui_large_buttons"]		>> tgui_large_buttons
 	S["tgui_swapped_buttons"]	>> tgui_swapped_buttons
-	S["buttons_locked"] >> buttons_locked
 	S["windowflash"] >> windowflashing
 	S["be_special"] 		>> be_special
 
@@ -530,7 +532,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	tgui_input_mode	= sanitize_integer(tgui_input_mode, 0, 1, initial(tgui_input_mode))
 	tgui_large_buttons	= sanitize_integer(tgui_large_buttons, 0, 1, initial(tgui_large_buttons))
 	tgui_swapped_buttons	= sanitize_integer(tgui_swapped_buttons, 0, 1, initial(tgui_swapped_buttons))
-	buttons_locked = sanitize_integer(buttons_locked, 0, 1, initial(buttons_locked))
 	windowflashing = sanitize_integer(windowflashing, 0, 1, initial(windowflashing))
 	default_slot = sanitize_integer(default_slot, 1, max_save_slots, initial(default_slot))
 	toggles = sanitize_integer(toggles, 0, 16777215, initial(toggles))
@@ -620,18 +621,20 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		if(!GLOB.keybindings_by_name[bindname])
 			modless_key_bindings -= key
 
-/datum/preferences/proc/save_preferences(bypass_cooldown = FALSE)
+/datum/preferences/proc/save_preferences(bypass_cooldown = FALSE, silent = FALSE)
 	if(!path)
-		return 0
+		return FALSE
 	if(!bypass_cooldown)
 		if(world.time < saveprefcooldown)
 			if(istype(parent))
-				to_chat(parent, "<span class='warning'>You're attempting to save your preferences a little too fast. Wait half a second, then try again.</span>")
-			return 0
-		saveprefcooldown = world.time + PREF_SAVELOAD_COOLDOWN
+				queue_save_pref(PREF_SAVE_COOLDOWN, silent)
+			return FALSE
+		COOLDOWN_START(src, saveprefcooldown, PREF_SAVE_COOLDOWN)
+	if(pref_queue)
+		deltimer(pref_queue)
 	var/savefile/S = new /savefile(path)
 	if(!S)
-		return 0
+		return FALSE
 	S.cd = "/"
 
 	WRITE_FILE(S["version"] , SAVEFILE_VERSION_MAX)		//updates (or failing that the sanity checks) will ensure data is not invalid at load. Assume up-to-date
@@ -654,7 +657,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["tgui_input_mode"], tgui_input_mode)
 	WRITE_FILE(S["tgui_large_buttons"], tgui_large_buttons)
 	WRITE_FILE(S["tgui_swapped_buttons"], tgui_swapped_buttons)
-	WRITE_FILE(S["buttons_locked"], buttons_locked)
 	WRITE_FILE(S["windowflash"], windowflashing)
 	WRITE_FILE(S["be_special"], be_special)
 	WRITE_FILE(S["default_slot"], default_slot)
@@ -721,7 +723,17 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	else
 		WRITE_FILE(S["unlockable_loadout"], safe_json_encode(list()))
 
-	return 1
+	if(parent && !silent)
+		to_chat(parent, span_notice("Saved preferences!"))
+
+	return TRUE
+
+/datum/preferences/proc/queue_save_pref(save_in, silent)
+	if(parent && !silent)
+		to_chat(parent, span_notice("Saving preferences in [save_in * 0.1] second\s."))
+	if(pref_queue)
+		deltimer(pref_queue)
+	pref_queue = addtimer(CALLBACK(src, PROC_REF(save_preferences), TRUE, silent), save_in, TIMER_STOPPABLE)
 
 /datum/preferences/proc/load_character(slot, bypass_cooldown = FALSE, savefile/provided)
 	if(!provided)
@@ -732,7 +744,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			if(istype(parent))
 				to_chat(parent, "<span class='warning'>You're attempting to load your character a little too fast. Wait half a second, then try again.</span>")
 			return "SLOW THE FUCK DOWN" //the reason this isn't null is to make sure that people don't have their character slots overridden by random chars if they accidentally double-click a slot
-		loadcharcooldown = world.time + PREF_SAVELOAD_COOLDOWN
+		COOLDOWN_START(src, loadcharcooldown, PREF_LOAD_COOLDOWN)
 	if(!fexists(path))
 		return FALSE
 	var/savefile/S
@@ -1112,6 +1124,30 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//gear loadout
 	if(S["loadout"])
 		loadout_data = safe_json_decode(S["loadout"])
+		var/list/sanitize_current_slot = loadout_data["SAVE_[loadout_slot]"]
+		if(LAZYLEN(sanitize_current_slot))
+			for(var/list/entry in sanitize_current_slot)
+				for(var/setting in entry)
+					switch(setting)
+						if(LOADOUT_ITEM)
+							if(!ispath(entry[setting]))
+								continue
+						if(LOADOUT_COLOR)
+							if(islist(entry[setting]))
+								for(var/polychromic in entry[setting])
+									if(!findtext(polychromic, GLOB.is_color))
+										polychromic = "#FFFFFF"
+							else
+								entry -= setting
+
+						if(LOADOUT_CUSTOM_NAME)
+							entry[setting] = trim(html_encode(entry[setting]), MAX_NAME_LEN)
+						if(LOADOUT_CUSTOM_DESCRIPTION)
+							entry[setting] = trim(html_encode(entry[setting]), 500)
+
+			loadout_data["SAVE_[loadout_slot]"] = sanitize_current_slot.Copy()
+		else
+			loadout_data["SAVE_[loadout_slot]"] = list()
 	else
 		loadout_data = list()
 
@@ -1353,20 +1389,22 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	splurt_character_pref_load(S)
 
-	return 1
+	return TRUE
 
-/datum/preferences/proc/save_character(bypass_cooldown = FALSE, export = FALSE)
+/datum/preferences/proc/save_character(bypass_cooldown = FALSE, silent = FALSE, export = FALSE)
 	if(!path)
-		return 0
+		return FALSE
 	if(!bypass_cooldown)
 		if(world.time < savecharcooldown)
 			if(istype(parent))
-				to_chat(parent, "<span class='warning'>You're attempting to save your character a little too fast. Wait half a second, then try again.</span>")
-			return 0
-		savecharcooldown = world.time + PREF_SAVELOAD_COOLDOWN
+				queue_save_char(PREF_SAVE_COOLDOWN, silent)
+			return FALSE
+		COOLDOWN_START(src, savecharcooldown, PREF_SAVE_COOLDOWN)
+	if(char_queue)
+		deltimer(char_queue)
 	var/savefile/S = new /savefile(export ? null : path)
 	if(!S)
-		return 0
+		return FALSE
 	if(!export)
 		S.cd = "/character[default_slot]"
 
@@ -1609,8 +1647,17 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	splurt_character_pref_save(S)
 
+	if(parent && !silent)
+		to_chat(parent, span_notice("Saved character slot!"))
+
 	return S
 
+/datum/preferences/proc/queue_save_char(save_in, silent)
+	if(parent && !silent)
+		to_chat(parent, span_notice("Saving character in [save_in * 0.1] second\s."))
+	if(char_queue)
+		deltimer(char_queue)
+	char_queue = addtimer(CALLBACK(src, PROC_REF(save_character), TRUE, silent), save_in, TIMER_STOPPABLE)
 
 #undef SAVEFILE_VERSION_MAX
 #undef SAVEFILE_VERSION_MIN

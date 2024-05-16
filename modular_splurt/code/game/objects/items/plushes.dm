@@ -43,3 +43,19 @@
 	icon = 'modular_splurt/icons/obj/plushes.dmi'
 	icon_state = "braixen"
 	item_state = "braixen"
+
+/obj/item/toy/plush/ethanol_shark
+	name = "Ethanol shark plushie"
+	desc = "Like a fine drink, when the good times are there, he was there to make them better."
+	icon = 'modular_splurt/icons/obj/plushes.dmi'
+	icon_state = "leo_oxto"
+	item_state = "leo_oxto"
+	squeak_override = list('modular_splurt/sound/voice/raptor_purr.ogg' = 1)
+
+/obj/item/toy/plush/thomas_plush
+	name = "Thomas The Tank Engine Plushie"
+	desc = "A plushie resembling Thomas, an anthropomorphised steam Locomotive."
+	icon = 'modular_splurt/icons/obj/plushes.dmi'
+	icon_state = "thomas_plush"
+	item_state	= "thomas_plush"
+	squeak_override	= list('modular_splurt/sound/misc/thomas_whistle_movie.ogg' = 1)

@@ -9,8 +9,8 @@
 
 /obj/structure/micro_brick/Initialize()
 	. = ..()
-	RegisterSignal(src, COMSIG_PARENT_ATTACKBY, .proc/on_attackby)
-	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, .proc/handatacc)
+	RegisterSignal(src, COMSIG_PARENT_ATTACKBY, PROC_REF(on_attackby))
+	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, PROC_REF(handatacc))
 
 /obj/structure/micro_brick/proc/on_attackby(datum/source, obj/item/item, mob/user, params)
 	if(try_crush_microbricks(user))

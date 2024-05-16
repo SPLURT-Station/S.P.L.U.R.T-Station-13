@@ -708,8 +708,6 @@
 			//SKYRAT CHANGES END
 			dat += "<b>Shift view when pixelshifting:</b> <a href='?_src_=prefs;preference=view_pixelshift'>[view_pixelshift ? "Enabled" : "Disabled"]</a><br>" //SPLURT Edit
 			dat += "<br>"
-			dat += "<b>Action Buttons:</b> <a href='?_src_=prefs;preference=action_buttons'>[(buttons_locked) ? "Locked In Place" : "Unlocked"]</a><br>"
-			dat += "<br>"
 			dat += "<b>PDA Color:</b> <span style='border:1px solid #161616; background-color: [pda_color];'><font color='[color_hex2num(pda_color) < 200 ? "FFFFFF" : "000000"]'>[pda_color]</font></span> <a href='?_src_=prefs;preference=pda_color;task=input'>Change</a><BR>"
 			dat += "<b>PDA Style:</b> <a href='?_src_=prefs;task=input;preference=pda_style'>[pda_style]</a><br>"
 			dat += "<b>PDA Reskin:</b> <a href='?_src_=prefs;task=input;preference=pda_skin'>[pda_skin]</a><br>"
@@ -1691,7 +1689,7 @@
 		/datum/reagent/fermi/PEsmaller,
 		/datum/reagent/fermi/AEsmaller_hypo,
 		// Code comment here, whoever named the AEsmaller_hypo needs to understand the chem shouldn't be named after the fact it's found in a hypo
-		
+
 		// Causes positive mood bonus
 		// On overdose: Causes negative mood penalty and disgust
 		/datum/reagent/drug/copium/gfluid,

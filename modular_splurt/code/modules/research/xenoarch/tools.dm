@@ -184,7 +184,7 @@
 		return
 	if(listeningTo)
 		UnregisterSignal(listeningTo, COMSIG_MOVABLE_MOVED)
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/Pickup_rocks)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(Pickup_rocks))
 	listeningTo = user
 
 /obj/item/storage/bag/strangerock/dropped(mob/user)
@@ -245,7 +245,7 @@
 		return
 	if(listeningTo)
 		UnregisterSignal(listeningTo, COMSIG_MOVABLE_MOVED)
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/Pickup_rocks)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(Pickup_rocks))
 	listeningTo = user
 
 /obj/item/storage/bag/strangerockadv/dropped(mob/user)

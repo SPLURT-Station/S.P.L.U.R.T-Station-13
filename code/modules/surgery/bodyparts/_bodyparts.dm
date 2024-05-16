@@ -636,7 +636,6 @@
 /obj/item/bodypart/proc/update_limb(dropping_limb, mob/living/carbon/source)
 	body_markings_list = list()
 	var/mob/living/carbon/C
-	owner.create_weakref()
 	if(source)
 		C = source
 		if(!original_owner)

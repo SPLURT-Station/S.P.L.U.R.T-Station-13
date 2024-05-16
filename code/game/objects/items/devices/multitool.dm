@@ -25,12 +25,12 @@
 	throwforce = 0
 	throw_range = 7
 	throw_speed = 3
-	drop_sound = 'sound/items/handling/multitool_drop.ogg'
-	pickup_sound = 'sound/items/handling/multitool_pickup.ogg'
 	custom_materials = list(/datum/material/iron=50, /datum/material/glass=20)
 	buffer = null // simple machine buffer for device linkage
 	toolspeed = 1
 	usesound = 'sound/weapons/empty.ogg'
+	drop_sound = 'sound/items/handling/multitool_drop.ogg'
+	pickup_sound = 'sound/items/handling/multitool_pickup.ogg'
 	var/mode = 0
 
 /obj/item/multitool/chaplain
@@ -238,11 +238,11 @@
 
 /datum/action/item_action/toggle_multitool/Trigger()
 	if(!..())
-		return 0
+		return FALSE
 	if(target)
 		var/obj/item/multitool/ai_detect/M = target
 		M.toggle_hud(owner)
-	return 1
+	return TRUE
 
 /obj/item/multitool/cyborg
 	name = "multitool"

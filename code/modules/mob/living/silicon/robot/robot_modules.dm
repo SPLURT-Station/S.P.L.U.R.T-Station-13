@@ -225,7 +225,7 @@
 	R.module = RM
 	R.update_module_innate()
 	RM.rebuild_modules()
-	INVOKE_ASYNC(RM, .proc/do_transform_animation)
+	INVOKE_ASYNC(RM, PROC_REF(do_transform_animation))
 	if(RM.dogborg || R.dogborg)
 		RM.dogborg_equip()
 		R.typing_indicator_state = /obj/effect/overlay/typing_indicator/machine/dogborg
@@ -395,7 +395,7 @@
 			bad_snowflake.pixel_x = -16
 			med_icons["Alina"] = bad_snowflake
 		med_icons = sort_list(med_icons)
-	var/med_borg_icon = show_radial_menu(R, R , med_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/med_borg_icon = show_radial_menu(R, R , med_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 	switch(med_borg_icon)
 		if("Default")
 			cyborg_base_icon = "medical"
@@ -630,7 +630,7 @@
 			bad_snowflake.pixel_x = -16
 			engi_icons["Alina"] = bad_snowflake
 		engi_icons = sort_list(engi_icons)
-	var/engi_borg_icon = show_radial_menu(R, R , engi_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/engi_borg_icon = show_radial_menu(R, R , engi_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 	switch(engi_borg_icon)
 		if("Default")
 			cyborg_base_icon = "engineer"
@@ -842,7 +842,7 @@
 			bad_snowflake.pixel_x = -16
 			sec_icons["Alina"] = bad_snowflake
 		sec_icons = sort_list(sec_icons)
-	var/sec_borg_icon = show_radial_menu(R, R , sec_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/sec_borg_icon = show_radial_menu(R, R , sec_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 	switch(sec_borg_icon)
 		if("Default")
 			cyborg_base_icon = "sec"
@@ -1046,7 +1046,7 @@
 		"Raptor V-4" = image(icon = 'modular_splurt/icons/mob/robots_64x45.dmi', icon_state = "peaceraptor-b"), // SPLURT Addon (ChompS Port)
 		"Handy" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "handy_peace") // SPLURT Addon (Fallout 13)
 	))
-	var/peace_borg_icon = show_radial_menu(R, R , peace_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/peace_borg_icon = show_radial_menu(R, R , peace_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 	switch(peace_borg_icon)
 		if("Default")
 			cyborg_base_icon = "peace"
@@ -1323,7 +1323,7 @@
 			bad_snowflake.pixel_x = -16
 			service_icons["Alina"] = bad_snowflake
 		service_icons = sort_list(service_icons)
-	var/service_robot_icon = show_radial_menu(R, R , service_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/service_robot_icon = show_radial_menu(R, R , service_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 	switch(service_robot_icon)
 		if("(Service) Waitress")
 			cyborg_base_icon = "service_f"
@@ -1585,7 +1585,7 @@
 		/obj/item/gripper/mining,
 		/obj/item/cyborg_clamp,
 		/obj/item/stack/marker_beacon/cyborg,
-		/obj/item/destTagger,
+		/obj/item/dest_tagger,
 		/obj/item/stack/packageWrap/cyborg,
 		/obj/item/card/id/miningborg)
 	emag_modules = list(/obj/item/borg/stun)
@@ -1635,7 +1635,7 @@
 			wide.pixel_x = -16
 			mining_icons[a] = wide
 		mining_icons = sort_list(mining_icons)
-	var/mining_borg_icon = show_radial_menu(R, R , mining_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+	var/mining_borg_icon = show_radial_menu(R, R , mining_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 	switch(mining_borg_icon)
 		if("Lavaland")
 			cyborg_base_icon = "miner"
@@ -1847,7 +1847,7 @@
 		/obj/item/stack/sheet/rglass/cyborg,
 		/obj/item/stack/rods/cyborg,
 		/obj/item/stack/tile/plasteel/cyborg,
-		/obj/item/destTagger/borg,
+		/obj/item/dest_tagger/borg,
 		/obj/item/stack/cable_coil/cyborg,
 		/obj/item/pinpointer/syndicate_cyborg,
 		/obj/item/borg_chameleon)
@@ -1878,10 +1878,10 @@
 	if (energy >= amount)
 		energy -= amount
 		if (energy == 0)
-			return 1
+			return TRUE
 		return 2
 	else
-		return 0
+		return FALSE
 
 /datum/robot_energy_storage/proc/add_charge(amount)
 	energy = min(energy + amount, max_energy)
@@ -1975,7 +1975,7 @@
 		/obj/item/stack/sheet/rglass/cyborg,
 		/obj/item/stack/rods/cyborg,
 		/obj/item/stack/tile/plasteel/cyborg,
-		/obj/item/destTagger/borg,
+		/obj/item/dest_tagger/borg,
 		/obj/item/stack/cable_coil/cyborg,
 		/obj/item/borg_chameleon,
 		/obj/item/pinpointer/spider_cyborg)

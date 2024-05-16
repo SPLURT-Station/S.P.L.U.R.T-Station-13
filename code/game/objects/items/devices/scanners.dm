@@ -705,7 +705,7 @@ GENETICS SCANNER
 			else
 				to_chat(user, "<span class='warning'>[src]'s barometer function says a storm will land in approximately [butchertime(fixed)].</span>")
 		cooldown = TRUE
-		addtimer(CALLBACK(src,/obj/item/analyzer/proc/ping), cooldown_time)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/analyzer, ping)), cooldown_time)
 
 /obj/item/analyzer/proc/ping()
 	if(isliving(loc))
@@ -861,8 +861,7 @@ GENETICS SCANNER
 	if (!isslime(M))
 		to_chat(user, "<span class='warning'>This device can only scan slimes!</span>")
 		return
-	var/mob/living/simple_animal/slime/T = M
-	slime_scan(T, user)
+	slime_scan(M, user)
 
 /proc/slime_scan(mob/living/simple_animal/slime/T, mob/living/user)
 	var/output = "<b>Slime scan results:</b>"
@@ -1013,7 +1012,7 @@ GENETICS SCANNER
 
 		ready = FALSE
 		icon_state = "[icon_state]_recharging"
-		addtimer(CALLBACK(src, .proc/recharge), cooldown, TIMER_UNIQUE)
+		addtimer(CALLBACK(src, PROC_REF(recharge)), cooldown, TIMER_UNIQUE)
 
 /obj/item/sequence_scanner/proc/recharge()
 	icon_state = initial(icon_state)

@@ -7,7 +7,7 @@
 	if(!(isliving(target) || (force && istype(target, /atom/movable))))
 		return ELEMENT_INCOMPATIBLE
 
-	RegisterSignal(target, COMSIG_MOB_SAY, .proc/handle_speech)
+	RegisterSignal(target, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
 /datum/element/smalltalk/Detach(datum/source, force)
 	. = ..()

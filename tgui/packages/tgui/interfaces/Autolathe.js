@@ -1,7 +1,8 @@
-import { useBackend, useLocalState } from '../backend';
-import { Button, LabeledList, Section, ProgressBar, Flex, Box, Table, Collapsible, Input, Dimmer, Icon } from '../components';
-import { Window } from '../layouts';
 import { capitalize } from "common/string";
+
+import { useBackend, useLocalState } from '../backend';
+import { Box, Button, Collapsible, Dimmer, Flex, Icon, Input, LabeledList, ProgressBar, Section, Table } from '../components';
+import { Window } from '../layouts';
 
 export const Autolathe = (props, context) => {
   const { act, data } = useBackend(context);

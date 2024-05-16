@@ -9,13 +9,11 @@ related to the antag that could be a datum
 	antagpanel_category = "Wendigo"
 
 /datum/antagonist/wendigo/on_gain()
-	if(istype(owner.current, /mob/living/carbon/human))
+	var/mob/living/carbon/human/old_body = owner.current
+	if(ishuman(old_body))
 		var/mob/living/carbon/wendigo/new_owner = new/mob/living/carbon/wendigo(get_turf(owner.current))
-		var/mob/current_body = owner.current
-		current_body.transfer_ckey(new_owner)
-		current_body.Destroy()
-		owner = new_owner.mind
-		owner.current = new_owner
+		qdel(old_body)
+		owner.transfer_to(new_owner)
 	..()
 
 //HUD

@@ -111,15 +111,15 @@ Difficulty: Medium
 
 	if(prob(15 + anger_modifier) && !client)
 		if(health < maxHealth/2)
-			INVOKE_ASYNC(src, .proc/swoop_attack, TRUE, null, 50)
+			INVOKE_ASYNC(src, PROC_REF(swoop_attack), TRUE, null, 50)
 		else
 			fire_rain()
 
 	else if(prob(10+anger_modifier) && !client)
 		if(health > maxHealth/2)
-			INVOKE_ASYNC(src, .proc/swoop_attack)
+			INVOKE_ASYNC(src, PROC_REF(swoop_attack))
 		else
-			INVOKE_ASYNC(src, .proc/triple_swoop)
+			INVOKE_ASYNC(src, PROC_REF(triple_swoop))
 	else
 		fire_walls()
 
@@ -135,7 +135,7 @@ Difficulty: Medium
 	playsound(get_turf(src),'sound/magic/fireball.ogg', 200, 1)
 
 	for(var/d in GLOB.cardinals)
-		INVOKE_ASYNC(src, .proc/fire_wall, d)
+		INVOKE_ASYNC(src, PROC_REF(fire_wall), d)
 
 /mob/living/simple_animal/hostile/megafauna/dragon/proc/fire_wall(dir)
 	var/list/hit_things = list(src)
@@ -309,7 +309,7 @@ Difficulty: Medium
 
 /obj/effect/temp_visual/target/Initialize(mapload, list/flame_hit)
 	. = ..()
-	INVOKE_ASYNC(src, .proc/fall, flame_hit)
+	INVOKE_ASYNC(src, PROC_REF(fall), flame_hit)
 
 
 /obj/effect/temp_visual/dragon_swoop
@@ -333,7 +333,7 @@ Difficulty: Medium
 
 /obj/effect/temp_visual/dragon_flight/Initialize(mapload, negative)
 	. = ..()
-	INVOKE_ASYNC(src, .proc/flight, negative)
+	INVOKE_ASYNC(src, PROC_REF(flight), negative)
 
 /obj/effect/temp_visual/dragon_flight/proc/flight(negative)
 	if(negative)

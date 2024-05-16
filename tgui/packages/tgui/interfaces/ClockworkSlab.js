@@ -6,11 +6,12 @@
  * @license MIT
  */
 
-import { useBackend, useLocalState, useSharedState } from '../backend';
-import { createSearch } from 'common/string';
 import { map } from 'common/collections';
-import { Section, Tabs, Table, Button, Box, NoticeBox, Divider, Input } from '../components';
+import { createSearch } from 'common/string';
 import { Fragment } from 'inferno';
+
+import { useBackend, useLocalState, useSharedState } from '../backend';
+import { Box, Button, Divider, Input, NoticeBox, Section, Table, Tabs } from '../components';
 import { Window } from '../layouts';
 
 const MAX_SEARCH_RESULTS = 25;

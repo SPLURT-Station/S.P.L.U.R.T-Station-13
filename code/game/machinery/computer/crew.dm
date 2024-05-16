@@ -200,7 +200,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 				else
 					results_undamaged[++results_undamaged.len] = total_list
 
-	var/list/returning = sortTim(results_damaged,/proc/damage_compare) + sortTim(results_undamaged,/proc/ijob_compare)
+	var/list/returning = sortTim(results_damaged,GLOBAL_PROC_REF(damage_compare)) + sortTim(results_undamaged,GLOBAL_PROC_REF(ijob_compare))
 
 	data_by_z["[z]"] = returning
 	last_update["[z]"] = world.time

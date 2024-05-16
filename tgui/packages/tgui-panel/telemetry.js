@@ -4,8 +4,8 @@
  * @license MIT
  */
 
-import { sendMessage } from 'tgui/backend';
 import { storage } from 'common/storage';
+import { sendMessage } from 'tgui/backend';
 import { createLogger } from 'tgui/logging';
 
 const logger = createLogger('telemetry');

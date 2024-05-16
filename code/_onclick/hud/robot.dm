@@ -7,7 +7,7 @@
 
 /atom/movable/screen/robot/Click()
 	if(isobserver(usr))
-		return 1
+		return TRUE
 
 /atom/movable/screen/robot/module/Click()
 	if(..())
@@ -15,7 +15,7 @@
 	var/mob/living/silicon/robot/R = usr
 	if(R.module.type != /obj/item/robot_module)
 		R.hud_used.toggle_show_robot_modules()
-		return 1
+		return TRUE
 	R.pick_module()
 
 /atom/movable/screen/robot/module1
@@ -296,6 +296,7 @@
 	update_icon()
 
 /atom/movable/screen/robot/lamp/update_icon()
+	. = ..()
 	if(robot?.lamp_enabled)
 		icon_state = "lamp_on"
 	else

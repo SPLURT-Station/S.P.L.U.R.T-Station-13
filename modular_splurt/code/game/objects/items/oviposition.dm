@@ -47,8 +47,8 @@ GLOBAL_LIST_INIT(egg_skins, list( \
 /obj/item/oviposition_egg/ComponentInitialize()
 	. = ..()
 	var/list/procs_list = list(
-		"before_inserting" = CALLBACK(src, .proc/item_inserting),
-		"after_inserting" = CALLBACK(src, .proc/item_inserted),
+		"before_inserting" = CALLBACK(src, PROC_REF(item_inserting)),
+		"after_inserting" = CALLBACK(src, PROC_REF(item_inserted)),
 	)
 	AddComponent(/datum/component/organ_inflation, 0)
 	AddComponent(/datum/component/genital_equipment, list(ORGAN_SLOT_PENIS, ORGAN_SLOT_WOMB, ORGAN_SLOT_VAGINA, ORGAN_SLOT_TESTICLES, ORGAN_SLOT_BREASTS, ORGAN_SLOT_BELLY, ORGAN_SLOT_BELLY, ORGAN_SLOT_ANUS), procs_list)

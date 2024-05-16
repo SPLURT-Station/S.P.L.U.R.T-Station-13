@@ -78,15 +78,15 @@ Difficulty: Hard
 	blood_warp()
 
 	if(prob(25))
-		INVOKE_ASYNC(src, .proc/blood_spray)
+		INVOKE_ASYNC(src, PROC_REF(blood_spray))
 
 	else if(prob(5+anger_modifier/2))
 		slaughterlings()
 	else
 		if(health > maxHealth/2 && !client)
-			INVOKE_ASYNC(src, .proc/charge)
+			INVOKE_ASYNC(src, PROC_REF(charge))
 		else
-			INVOKE_ASYNC(src, .proc/triple_charge)
+			INVOKE_ASYNC(src, PROC_REF(triple_charge))
 
 
 /mob/living/simple_animal/hostile/megafauna/bubblegum/Initialize()

@@ -49,7 +49,7 @@
 /obj/item/implantcase/aphrodisiac_pump/attack_self(mob/user)
 	if(!imp || !istype(imp, /obj/item/implant/aphrodisiac_pump))
 		return
-	
+
 	var/obj/item/implant/aphrodisiac_pump/pump = imp
 	if(pump.amount >= pump.max_amount)
 		pump.amount = pump.base_amount
@@ -90,6 +90,7 @@
 	desc = "Comes with an implanter and an implant case for quick application!"
 	icon = 'modular_sand/icons/obj/fleshlight.dmi'
 	icon_state = "box"
+	illustration = null
 
 /obj/item/storage/box/aphrodisiac_pump/examine(mob/user)
 	. = ..()

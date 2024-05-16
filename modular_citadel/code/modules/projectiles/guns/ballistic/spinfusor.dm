@@ -44,6 +44,7 @@
 	select = 0
 	actions_types = list()
 	casing_ejector = 0
+	automatic_burst_overlay = FALSE
 
 /obj/item/gun/ballistic/automatic/spinfusor/attackby(obj/item/A, mob/user, params)
 	var/num_loaded = magazine.attackby(A, user, params, 1)

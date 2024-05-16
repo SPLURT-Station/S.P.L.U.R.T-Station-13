@@ -86,7 +86,7 @@ Difficulty: Medium
 	var/range = 20
 	var/list/turfs = list()
 	turfs = line_target(0, range, at)
-	INVOKE_ASYNC(src, .proc/fire_line, turfs)
+	INVOKE_ASYNC(src, PROC_REF(fire_line), turfs)
 
 /mob/living/simple_animal/hostile/megafauna/dragon/glaurung/OpenFire()
 	if(swooping)

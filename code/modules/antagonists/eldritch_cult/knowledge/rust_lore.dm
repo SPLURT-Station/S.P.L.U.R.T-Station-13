@@ -2,7 +2,7 @@
 	name = "Blacksmith's Tale"
 	desc = "Inducts you into the Path of Rust. Allows you to transmute a spear with any trash item into a Blade of Rust."
 	gain_text = "'Let me tell you a story', said the Blacksmith, as he gazed deep into his rusty blade."
-	banned_knowledge = list(/datum/eldritch_knowledge/base_ash,/datum/eldritch_knowledge/base_flesh,/datum/eldritch_knowledge/final/ash_final,/datum/eldritch_knowledge/final/flesh_final,/datum/eldritch_knowledge/final/void_final,/datum/eldritch_knowledge/base_void)
+	banned_knowledge = list(/datum/eldritch_knowledge/base_ash,/datum/eldritch_knowledge/base_flesh,/datum/eldritch_knowledge/final_eldritch/ash_final,/datum/eldritch_knowledge/final_eldritch/flesh_final,/datum/eldritch_knowledge/final_eldritch/void_final,/datum/eldritch_knowledge/base_void)
 	next_knowledge = list(/datum/eldritch_knowledge/rust_fist)
 	required_atoms = list(/obj/item/spear,/obj/item/trash)
 	result_atoms = list(/obj/item/melee/sickly_blade/rust)
@@ -161,14 +161,14 @@
 	cost = 2
 	sacs_needed = 3
 	spell_to_add = /obj/effect/proc_holder/spell/targeted/touch/grasp_of_decay
-	next_knowledge = list(/datum/eldritch_knowledge/final/rust_final)
+	next_knowledge = list(/datum/eldritch_knowledge/final_eldritch/rust_final)
 	route = PATH_RUST
 
 /datum/eldritch_knowledge/spell/grasp_of_decay/on_gain(mob/user)
 	. = ..()
 	priority_announce("A foul wind is blowing... The floor creaks with rust as something sinister approaches!", sound = 'sound/misc/notice1.ogg')
 
-/datum/eldritch_knowledge/final/rust_final
+/datum/eldritch_knowledge/final_eldritch/rust_final
 	name = "Rustbringer's Oath"
 	desc = "Bring three corpses onto a transmutation rune. After you finish the ritual, rust will now automatically spread from the rune. Your healing on rust is also tripled, while you become more resilient overall."
 	gain_text = "Champion of rust. Corruptor of steel. Fear the dark for the Rustbringer has come! Rusted Hills, CALL MY NAME!"
@@ -177,7 +177,7 @@
 	required_atoms = list(/mob/living/carbon/human)
 	route = PATH_RUST
 
-/datum/eldritch_knowledge/final/rust_final/on_finished_recipe(mob/living/user, list/atoms, loc)
+/datum/eldritch_knowledge/final_eldritch/rust_final/on_finished_recipe(mob/living/user, list/atoms, loc)
 	var/mob/living/carbon/human/H = user
 	H.physiology.brute_mod *= 0.5
 	H.physiology.burn_mod *= 0.5
@@ -188,7 +188,7 @@
 	ascension.ascended = TRUE
 	return ..()
 
-/datum/eldritch_knowledge/final/rust_final/on_life(mob/user)
+/datum/eldritch_knowledge/final_eldritch/rust_final/on_life(mob/user)
 	. = ..()
 	if(!finished)
 		return

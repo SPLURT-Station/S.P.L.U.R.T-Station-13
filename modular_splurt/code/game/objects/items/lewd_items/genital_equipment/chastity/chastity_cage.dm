@@ -99,8 +99,8 @@
 	is_overlay_on = TRUE
 
 	H.update_genitals()
-	RegisterSignal(H, COMSIG_MOB_ITEM_EQUIPPED, .proc/mob_equipped_item)
-	RegisterSignal(H, COMSIG_MOB_ITEM_DROPPED, .proc/mob_dropped_item)
+	RegisterSignal(H, COMSIG_MOB_ITEM_EQUIPPED, PROC_REF(mob_equipped_item))
+	RegisterSignal(H, COMSIG_MOB_ITEM_DROPPED, PROC_REF(mob_dropped_item))
 
 /obj/item/genital_equipment/chastity_cage/item_removing(datum/source, obj/item/organ/genital/G, mob/user)
 	. = TRUE

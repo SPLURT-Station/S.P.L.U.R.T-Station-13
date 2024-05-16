@@ -26,6 +26,19 @@ SUBSYSTEM_DEF(job)
 	set_overflow_role(CONFIG_GET(string/overflow_job))
 	return ..()
 
+/// Returns a list of jobs that we are allowed to fuck with during random events
+/datum/controller/subsystem/job/proc/get_valid_overflow_jobs()
+	var/static/list/overflow_jobs
+	if (!isnull(overflow_jobs))
+		return overflow_jobs
+
+	overflow_jobs = list()
+	for (var/datum/job/check_job in occupations) // TODO: Port joinable_occupations from upstream TG PR #60578.
+		if (!check_job.allow_bureaucratic_error)
+			continue
+		overflow_jobs += check_job
+	return overflow_jobs
+
 /datum/controller/subsystem/job/proc/set_overflow_role(new_overflow_role)
 	var/datum/job/new_overflow = GetJob(new_overflow_role)
 	var/cap = CONFIG_GET(number/overflow_cap)
@@ -47,7 +60,7 @@ SUBSYSTEM_DEF(job)
 	var/list/all_jobs = subtypesof(/datum/job)
 	if(!all_jobs.len)
 		to_chat(world, "<span class='boldannounce'>Error setting up jobs, no job datums found</span>")
-		return 0
+		return FALSE
 
 	for(var/J in all_jobs)
 		var/datum/job/job = new J()
@@ -65,7 +78,7 @@ SUBSYSTEM_DEF(job)
 		name_occupations[job.title] = job
 		type_occupations[J] = job
 
-	return 1
+	return TRUE
 
 
 /datum/controller/subsystem/job/proc/GetJob(rank)
@@ -199,8 +212,8 @@ SUBSYSTEM_DEF(job)
 				continue
 			var/mob/dead/new_player/candidate = pick(candidates)
 			if(AssignRole(candidate, command_position))
-				return 1
-	return 0
+				return TRUE
+	return FALSE
 
 
 //This proc is called at the start of the level loop of DivideOccupations() and will cause head jobs to be checked before any other jobs of the same level
@@ -222,7 +235,7 @@ SUBSYSTEM_DEF(job)
 	var/ai_selected = 0
 	var/datum/job/job = GetJob("AI")
 	if(!job)
-		return 0
+		return FALSE
 	for(var/i = job.total_positions, i > 0, i--)
 		for(var/level in level_order)
 			var/list/candidates = list()
@@ -233,8 +246,8 @@ SUBSYSTEM_DEF(job)
 					ai_selected++
 					break
 	if(ai_selected)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 
 /** Proc DivideOccupations
@@ -560,7 +573,8 @@ SUBSYSTEM_DEF(job)
 	var/jobstext = file2text("[global.config.directory]/jobs.txt")
 	for(var/datum/job/J in occupations)
 		var/regex/jobs = new("[J.title]=(-1|\\d+),(-1|\\d+)")
-		jobs.Find(jobstext)
+		if(!jobs.Find(jobstext))
+			continue
 		J.total_positions = text2num(jobs.group[1])
 		J.spawn_positions = text2num(jobs.group[2])
 
@@ -606,8 +620,8 @@ SUBSYSTEM_DEF(job)
 	if(hpc || epc)
 		var/relevent_cap = max(hpc, epc)
 		if((initial_players_to_assign - unassigned.len) >= relevent_cap)
-			return 1
-	return 0
+			return TRUE
+	return FALSE
 
 /datum/controller/subsystem/job/proc/RejectPlayer(mob/dead/new_player/player)
 	if(player.mind && player.mind.special_role)
@@ -625,7 +639,7 @@ SUBSYSTEM_DEF(job)
 	var/oldjobs = SSjob.occupations
 	sleep(20)
 	for (var/datum/job/J in oldjobs)
-		INVOKE_ASYNC(src, .proc/RecoverJob, J)
+		INVOKE_ASYNC(src, PROC_REF(RecoverJob), J)
 
 /datum/controller/subsystem/job/proc/RecoverJob(datum/job/J)
 	var/datum/job/newjob = GetJob(J.title)

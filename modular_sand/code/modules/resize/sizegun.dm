@@ -33,7 +33,7 @@
 			if((0 - INFINITY) to RESIZE_NORMAL)
 				new_size = RESIZE_MICRO
 		living.update_size(new_size)
-	return 1
+	return TRUE
 
 /obj/item/projectile/sizelaser/growthray/on_hit(atom/target, blocked = 0 )
 	if(isliving(target))
@@ -55,7 +55,7 @@
 			if((0 - INFINITY) to RESIZE_MICRO)
 				new_size = RESIZE_MICRO
 		living.update_size(new_size)
-	return 1
+	return TRUE
 
 /obj/item/ammo_casing/energy/laser/growthray
 	projectile_type = /obj/item/projectile/sizelaser/growthray

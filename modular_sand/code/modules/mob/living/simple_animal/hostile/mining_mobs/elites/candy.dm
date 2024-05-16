@@ -116,7 +116,7 @@
 		new /obj/effect/temp_visual/dir_setting/bloodsplatter/candy(T, get_dir(T, target))
 		T = get_step(T, dir_to_target)
 		sleep(1)
-	addtimer(CALLBACK(src, .proc/blood_charge_2, dir_to_target, 0), 5)
+	addtimer(CALLBACK(src, PROC_REF(blood_charge_2), dir_to_target, 0), 5)
 
 /mob/living/simple_animal/hostile/asteroid/elite/candy/proc/bloodytrap(mob/target)
 	playsound(src,'sound/magic/Blind.ogg', 200, 1)
@@ -229,7 +229,7 @@
 		//L.Paralyze(20)
 		L.Stun(20) //substituting this for the Paralyze from the line above, because we don't have tg paralysis stuff
 		L.adjustBruteLoss(50)
-	addtimer(CALLBACK(src, .proc/blood_charge_2, move_dir, (times_ran + 1)), 2)
+	addtimer(CALLBACK(src, PROC_REF(blood_charge_2), move_dir, (times_ran + 1)), 2)
 
 /obj/effect/temp_visual/dir_setting/bloodsplatter/candy
 	duration = 10

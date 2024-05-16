@@ -46,7 +46,7 @@
 
 /datum/station_trait/hangover/New()
 	. = ..()
-	RegisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_LATEJOIN_SPAWN, .proc/on_job_after_spawn)
+	RegisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_LATEJOIN_SPAWN, PROC_REF(on_job_after_spawn))
 
 /datum/station_trait/hangover/revert()
 	for (var/obj/effect/landmark/start/hangover/hangover_spot in GLOB.start_landmarks_list)
@@ -112,16 +112,16 @@
 
 /datum/station_trait/overflow_job_bureaucracy/New()
 	. = ..()
-	RegisterSignal(SSjob, COMSIG_SUBSYSTEM_POST_INITIALIZE, .proc/set_overflow_job_override)
+	RegisterSignal(SSjob, COMSIG_SUBSYSTEM_POST_INITIALIZE, PROC_REF(set_overflow_job_override))
 
 /datum/station_trait/overflow_job_bureaucracy/get_report()
 	return "[name] - It seems for some reason we put out the wrong job-listing for the overflow role this shift...I hope you like [chosen_job_name]s."
 
 /datum/station_trait/overflow_job_bureaucracy/proc/set_overflow_job_override(datum/source)
 	SIGNAL_HANDLER
-	var/datum/job/picked_job = pick(get_all_jobs())
-	chosen_job_name = lowertext(picked_job.title) // like Chief Engineers vs like chief engineers
-	SSjob.set_overflow_role(picked_job.type)
+	var/picked_job_title = SSjob.get_valid_overflow_jobs()
+	chosen_job_name = lowertext(picked_job_title) // like Chief Engineers vs like chief engineers
+	SSjob.set_overflow_role(SSjob.GetJobType(picked_job_title)) // TODO: port a blacklist for this from upstream TG PR
 
 /datum/station_trait/slow_shuttle
 	name = "Slow Shuttle"
@@ -180,7 +180,7 @@
 			/obj/item/gun/ballistic/automatic/pistol = 1,
 		)
 
-	RegisterSignal(SSatoms, COMSIG_SUBSYSTEM_POST_INITIALIZE, .proc/arm_monke)
+	RegisterSignal(SSatoms, COMSIG_SUBSYSTEM_POST_INITIALIZE, PROC_REF(arm_monke))
 
 /datum/station_trait/revenge_of_pun_pun/proc/arm_monke()
 	SIGNAL_HANDLER

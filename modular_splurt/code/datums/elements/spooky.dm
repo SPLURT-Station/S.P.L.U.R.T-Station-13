@@ -27,7 +27,7 @@
 				if(L.client && !L.client.played)
 					SEND_SOUND(L, sound(sound, repeat = 0, wait = 0, volume = 35, channel = CHANNEL_AMBIENCE))
 					L.client.played = TRUE
-					addtimer(CALLBACK(L.client, /client/proc/ResetAmbiencePlayed), 600)
+					addtimer(CALLBACK(L.client, TYPE_PROC_REF(/client, ResetAmbiencePlayed)), 600)
 		if(65 to 70) //Lights flicker.
 			var/obj/machinery/light/L = locate(/obj/machinery/light) in view(4, C)
 			if(L)

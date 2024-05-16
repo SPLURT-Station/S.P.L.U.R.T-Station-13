@@ -41,10 +41,34 @@
 	..()
 	return INITIALIZE_HINT_QDEL
 
-/obj/effect/turf_decal/ComponentInitialize()
-	. = ..()
+// This is with the intent of optimizing mapload
+// See spawners for more details since we use the same pattern
+// Basically rather then creating and deleting ourselves, why not just do the bare minimum?
+/obj/effect/turf_decal/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)
+	if(flags_1 & INITIALIZED_1)
+		stack_trace("Warning: [src]([type]) initialized multiple times!")
+	flags_1 |= INITIALIZED_1
+
 	var/turf/T = loc
 	if(!istype(T)) //you know this will happen somehow
 		CRASH("Turf decal initialized in an object/nullspace")
 	var/turn_dir = 180 - dir2angle(T.dir) //Turning a dir by 0 results in a roulette of random dirs.
 	T.AddElement(/datum/element/decal, icon, icon_state, turn_dir ? turn(dir, turn_dir) : dir, CLEAN_GOD, color, null, null, alpha)
+	return INITIALIZE_HINT_QDEL
+
+/obj/effect/turf_decal/Destroy(force)
+	SHOULD_CALL_PARENT(FALSE)
+	#ifdef UNIT_TESTS
+	// If we don't do this, turf decals will end up stacking up on a tile, and break the overlay limit
+	// I hate it too bestie
+	if(GLOB.running_create_and_destroy)
+		var/turf/T = loc
+		var/turn_dir = 180 - dir2angle(T.dir) //Turning a dir by 0 results in a roulette of random dirs.
+		T.RemoveElement(/datum/element/decal, icon, icon_state, turn_dir ? turn(dir, turn_dir) : dir, CLEAN_GOD, color, null, null, alpha)
+	#endif
+	// Intentionally used over moveToNullspace(), which calls doMove(), which fires
+	// off an enormous amount of procs, signals, etc, that this temporary effect object
+	// never needs or affects.
+	loc = null
+	return QDEL_HINT_QUEUE

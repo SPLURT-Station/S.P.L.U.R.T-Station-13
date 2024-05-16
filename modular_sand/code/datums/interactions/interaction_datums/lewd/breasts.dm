@@ -13,7 +13,6 @@
 	var/t_His = target.p_their()
 	var/obj/item/organ/genital/breasts/milkers = user.getorganslot(ORGAN_SLOT_BREASTS)
 	var/milktype = milkers?.fluid_id
-	var/modifier
 	var/list/lines
 
 	if(!milkers || !milktype)
@@ -34,17 +33,7 @@
 	playlewdinteractionsound(get_turf(user), pick('modular_sand/sound/interactions/oral1.ogg',
 						'modular_sand/sound/interactions/oral2.ogg'), 70, 1, -1)
 
-	switch(milkers.size)
-		if("c", "d", "e")
-			modifier = 2
-		if("f", "g", "h")
-			modifier = 3
-		else
-			if(milkers.size in GLOB.breast_values)
-				modifier = clamp(GLOB.breast_values[milkers.size] - 5, 0, INFINITY)
-			else
-				modifier = 1
-	target.reagents.add_reagent(milktype, rand(1,3 * modifier))
+	target.reagents.add_reagent(milktype, rand(1,3 * milkers.get_lactation_amount_modifier()))
 
 /datum/interaction/lewd/titgrope
 	description = "Grope their breasts."
@@ -79,18 +68,7 @@
 		var/milktype = milkers?.fluid_id
 
 		if(milkers && milktype)
-			var/modifier
-			switch(milkers.size)
-				if("c", "d", "e")
-					modifier = 2
-				if("f", "g", "h")
-					modifier = 3
-				else
-					if(milkers.size in GLOB.breast_values) //SPLURT edit - global breast values
-						modifier = clamp(GLOB.breast_values[milkers.size] - 5, 0, INFINITY)
-					else
-						modifier = 1
-			liquid_container.reagents.add_reagent(milktype, rand(1,3 * modifier))
+			liquid_container.reagents.add_reagent(milktype, rand(1,3 * milkers.get_lactation_amount_modifier()))
 
 			user.visible_message(span_lewd("<b>\The [user]</b> milks <b>[target]</b>'s breasts into \the [liquid_container]."), ignored_mobs = user.get_unconsenting())
 			playlewdinteractionsound(get_turf(user), 'modular_sand/sound/interactions/squelch1.ogg', 50, 1, -1)

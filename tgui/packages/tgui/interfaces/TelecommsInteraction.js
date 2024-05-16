@@ -3,11 +3,12 @@
  * @copyright 2020 LetterN (https://github.com/LetterN)
  * @license MIT
  */
-import { Window } from '../layouts';
-import { useBackend } from '../backend';
 import { toFixed } from 'common/math';
+
+import { useBackend } from '../backend';
+import { Button, Input, LabeledList, NoticeBox, NumberInput, Section } from '../components';
 import { RADIO_CHANNELS } from '../constants';
-import { Button, LabeledList, NumberInput, NoticeBox, Section, Input } from '../components';
+import { Window } from '../layouts';
 
 export const TelecommsInteraction = (props, context) => {
   const { act, data } = useBackend(context);

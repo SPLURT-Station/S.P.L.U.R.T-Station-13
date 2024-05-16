@@ -136,7 +136,7 @@
 		"Clown" = image(icon = 'icons/mob/robots.dmi', icon_state = "clown"),
 		"Syndicate" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_sec")
 		))
-		var/module_selection = show_radial_menu(R, R , module_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+		var/module_selection = show_radial_menu(R, R , module_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 		if(!module_selection)
 			return FALSE
 
@@ -145,7 +145,7 @@
 				var/static/list/standard_icons = sort_list(list(
 					"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "robot")
 				))
-				var/borg_icon = show_radial_menu(R, R , standard_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+				var/borg_icon = show_radial_menu(R, R , standard_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 				if(!borg_icon)
 					return FALSE
 				switch(borg_icon)
@@ -171,7 +171,7 @@
 					wide.pixel_x = -16
 					med_icons[a] = wide
 				med_icons = sort_list(med_icons)
-				var/borg_icon = show_radial_menu(R, R , med_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+				var/borg_icon = show_radial_menu(R, R , med_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 				if(!borg_icon)
 					return FALSE
 				switch(borg_icon)
@@ -235,7 +235,7 @@
 					wide.pixel_x = -16
 					engi_icons[a] = wide
 				engi_icons = sort_list(engi_icons)
-				var/borg_icon = show_radial_menu(R, R , engi_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+				var/borg_icon = show_radial_menu(R, R , engi_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 				if(!borg_icon)
 					return FALSE
 				switch(borg_icon)
@@ -305,7 +305,7 @@
 					wide.pixel_x = -16
 					sec_icons[a] = wide
 				sec_icons = sort_list(sec_icons)
-				var/borg_icon = show_radial_menu(R, R , sec_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+				var/borg_icon = show_radial_menu(R, R , sec_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 				if(!borg_icon)
 					return FALSE
 				switch(borg_icon)
@@ -380,7 +380,7 @@
 					wide.pixel_x = -16
 					service_icons[a] = wide
 				service_icons = sort_list(service_icons)
-				var/borg_icon = show_radial_menu(R, R , service_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+				var/borg_icon = show_radial_menu(R, R , service_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 				if(!borg_icon)
 					return FALSE
 				switch(borg_icon)
@@ -464,7 +464,7 @@
 					wide.pixel_x = -16
 					mining_icons[a] = wide
 				mining_icons = sort_list(mining_icons)
-				var/borg_icon = show_radial_menu(R, R , mining_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+				var/borg_icon = show_radial_menu(R, R , mining_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 				if(!borg_icon)
 					return FALSE
 				switch(borg_icon)
@@ -516,7 +516,7 @@
 					"Spider" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "whitespider"),
 					"Drake" = image(icon = 'modular_sand/icons/mob/cyborg/drakemech.dmi', icon_state = "drakepeacebox")
 				))
-				var/borg_icon = show_radial_menu(R, R , peace_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+				var/borg_icon = show_radial_menu(R, R , peace_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 				if(!borg_icon)
 					return FALSE
 				switch(borg_icon)
@@ -540,7 +540,7 @@
 				var/static/list/clown_icons = sort_list(list(
 					"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "clown")
 				))
-				var/borg_icon = show_radial_menu(R, R , clown_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+				var/borg_icon = show_radial_menu(R, R , clown_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 				if(!borg_icon)
 					return FALSE
 				switch(borg_icon)
@@ -555,7 +555,7 @@
 					"Medical" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_medical"),
 					"Assault" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_sec")
 				))
-				var/borg_icon = show_radial_menu(R, R , syndicatejack_icons, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE)
+				var/borg_icon = show_radial_menu(R, R , syndicatejack_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 				if(!borg_icon)
 					return FALSE
 				switch(borg_icon)
@@ -632,7 +632,7 @@
 		return
 	if(listeningTo)
 		UnregisterSignal(listeningTo, signalCache)
-	RegisterSignal(user, signalCache, .proc/disrupt)
+	RegisterSignal(user, signalCache, PROC_REF(disrupt))
 	listeningTo = user
 
 /obj/item/borg_shapeshifter/proc/deactivate(mob/living/silicon/robot/user)

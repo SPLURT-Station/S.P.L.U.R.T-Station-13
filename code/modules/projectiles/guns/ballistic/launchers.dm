@@ -61,6 +61,7 @@
 	fire_delay = 0
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	casing_ejector = FALSE
+	automatic_burst_overlay = FALSE
 
 /obj/item/gun/ballistic/launcher/gyropistol/update_icon_state()
 	icon_state = "[initial(icon_state)][magazine ? "loaded" : ""]"

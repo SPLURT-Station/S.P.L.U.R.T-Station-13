@@ -43,7 +43,7 @@
 			if(toppaper_ref)
 				var/obj/item/paper/toppaper = toppaper_ref?.resolve()
 				UnregisterSignal(toppaper, COMSIG_ATOM_UPDATED_ICON)
-			RegisterSignal(new_paper, COMSIG_ATOM_UPDATED_ICON, .proc/on_top_paper_change)
+			RegisterSignal(new_paper, COMSIG_ATOM_UPDATED_ICON, PROC_REF(on_top_paper_change))
 			toppaper_ref = WEAKREF(new_paper)
 			update_appearance()
 			to_chat(user, span_notice("[src]'s integrated printer whirs to life, spitting out a fresh piece of paper and clipping it into place."))

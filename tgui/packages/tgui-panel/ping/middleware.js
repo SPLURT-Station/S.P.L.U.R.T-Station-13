@@ -5,6 +5,7 @@
  */
 
 import { sendMessage } from 'tgui/backend';
+
 import { pingFail, pingSuccess } from './actions';
 import { PING_INTERVAL, PING_QUEUE_SIZE, PING_TIMEOUT } from './constants';
 

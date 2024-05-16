@@ -2,7 +2,7 @@
 	. = ..()
 	if(!.)
 		return
-	RegisterSignal(owner, COMSIG_MOB_POST_CAME, .proc/splash_cum)
+	RegisterSignal(owner, COMSIG_MOB_POST_CAME, PROC_REF(splash_cum))
 
 /obj/item/organ/genital/vagina/Remove(special)
 	. = ..()

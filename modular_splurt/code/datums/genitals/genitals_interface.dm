@@ -1,5 +1,5 @@
 /// Attempts to open the tgui menu
-/mob/living/verb/genital_menu()
+/mob/living/carbon/verb/genital_menu()
 	set name = "Genitals Menu"
 	set desc = "Manage your genital, or someone else's."
 	set category = "IC"

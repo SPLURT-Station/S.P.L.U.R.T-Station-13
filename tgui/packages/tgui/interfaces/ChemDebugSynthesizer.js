@@ -1,4 +1,5 @@
 import { Fragment } from 'inferno';
+
 import { useBackend } from '../backend';
 import { AnimatedNumber, Box, Button, LabeledList, NumberInput, Section } from '../components';
 import { Window } from '../layouts';

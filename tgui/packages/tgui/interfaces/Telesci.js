@@ -1,6 +1,5 @@
-import { map } from 'common/collections';
 import { useBackend } from '../backend';
-import { Box, Blink, Button, Section, Slider } from '../components';
+import { Blink, Box, Button, Section, Slider } from '../components';
 import { Window } from '../layouts';
 
 export const Telesci = (props, context) => {

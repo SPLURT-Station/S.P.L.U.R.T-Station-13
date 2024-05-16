@@ -1,10 +1,11 @@
+import { Component } from 'inferno';
+
+import { shallowDiffers } from '../../../common/react';
 import { useBackend } from '../../backend';
 import {
   Box,
-  Stack, Button, Dropdown,
-} from '../../components';
-import { Component } from 'inferno';
-import { shallowDiffers } from '../../../common/react';
+Button,
+  Stack } from '../../components';
 import { ABSOLUTE_Y_OFFSET } from './constants';
 import { Port } from "./Port";
 

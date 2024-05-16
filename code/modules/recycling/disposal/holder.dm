@@ -22,7 +22,8 @@
 
 // initialize a holder from the contents of a disposal unit
 /obj/structure/disposalholder/proc/init(obj/machinery/disposal/D)
-	gas = D.air_contents// transfer gas resv. into holder object
+	if(istype(D)) // This is sometimes called on non-machinery disposals system types.
+		gas = D.air_contents// transfer gas resv. into holder object
 
 	//Check for any living mobs trigger hasmob.
 	//hasmob effects whether the package goes to cargo or its tagged destination.
@@ -41,21 +42,15 @@
 	// now everything inside the disposal gets put into the holder
 	// note AM since can contain mobs or objs
 	for(var/A in D)
-		var/atom/movable/AM = A
-		if(AM == src)
+		var/atom/movable/atom_in_transit = A
+		if(atom_in_transit == src)
 			continue
-		SEND_SIGNAL(AM, COMSIG_MOVABLE_DISPOSING, src, D)
-		AM.forceMove(src)
-		if(istype(AM, /obj/structure/bigDelivery) && !hasmob)
-			var/obj/structure/bigDelivery/T = AM
-			src.destinationTag = T.sortTag
-		if(istype(AM, /obj/item/smallDelivery) && !hasmob)
-			var/obj/item/smallDelivery/T = AM
-			src.destinationTag = T.sortTag
-		else if(istype(AM, /mob/living/silicon/robot))
-			var/obj/item/destTagger/borg/tagger = locate() in AM
-			if (tagger)
-				src.destinationTag = tagger.currTag
+		SEND_SIGNAL(atom_in_transit, COMSIG_MOVABLE_DISPOSING, src, D, hasmob)
+		atom_in_transit.forceMove(src)
+		if(iscyborg(atom_in_transit))
+			var/obj/item/dest_tagger/borg/tagger = locate() in atom_in_transit
+			if(tagger)
+				destinationTag = tagger.currTag
 
 
 // start the movement process

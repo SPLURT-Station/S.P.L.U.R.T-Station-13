@@ -12,13 +12,13 @@
 /*
 	switch(nutrition)
 		if(NUTRITION_LEVEL_FULL to INFINITY)
-			throw_alert("nutrition", /obj/screen/alert/fat)
+			throw_alert("nutrition", /atom/movable/screen/alert/fat)
 		if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FULL)
 			clear_alert("nutrition")
 		if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_STARVING)
-			throw_alert("nutrition", /obj/screen/alert/hungry)
+			throw_alert("nutrition", /atom/movable/screen/alert/hungry)
 		if(0 to NUTRITION_LEVEL_STARVING)
-			throw_alert("nutrition", /obj/screen/alert/starving)
+			throw_alert("nutrition", /atom/movable/screen/alert/starving)
 */
 
 /mob/living/carbon/wendigo/reagent_check(datum/reagent/R)

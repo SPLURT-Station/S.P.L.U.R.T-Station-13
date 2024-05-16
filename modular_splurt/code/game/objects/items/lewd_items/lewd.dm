@@ -8,6 +8,7 @@
 	name = "Shock Collar & Signaler"
 	icon = 'modular_sand/icons/obj/fleshlight.dmi'
 	desc = "Silver Love Co. is not responsible for users getting the collar stuck on themselves."
+	illustration = null
 
 // portal fleshlight box
 /obj/item/storage/box/shockcollar/PopulateContents()

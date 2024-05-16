@@ -16,16 +16,16 @@
 		var/mob/living/simple_animal/slime/S = owner
 		if(needs_growth == GROWTH_NEEDED)
 			if(S.amount_grown >= SLIME_EVOLUTION_THRESHOLD)
-				return 1
-			return 0
-		return 1
+				return TRUE
+			return FALSE
+		return TRUE
 
 /mob/living/simple_animal/slime/verb/Feed()
 	set category = "Slime"
 	set desc = "This will let you feed on any valid creature in the surrounding area. This should also be used to halt the feeding process."
 
 	if(stat)
-		return 0
+		return FALSE
 
 	var/list/choices = list()
 	for(var/mob/living/C in fov_view(1,src))
@@ -34,10 +34,10 @@
 
 	var/mob/living/M = input(src,"Who do you wish to feed on?") in null|choices
 	if(!M)
-		return 0
+		return FALSE
 	if(CanFeedon(M))
 		Feedon(M)
-		return 1
+		return TRUE
 
 /datum/action/innate/slime/feed
 	name = "Feed"
@@ -170,6 +170,9 @@
 				to_chat(src, "<i>I must be conscious to do this...</i>")
 				return
 
+			if(istype(loc, /obj/machinery/computer/camera_advanced/xenobio))
+				return //no you cannot split while you're in the matrix (this prevents GC issues and slimes disappearing)
+
 			var/list/babies = list()
 			var/new_nutrition = round(nutrition * 0.9)
 			var/new_powerlevel = round(powerlevel / 4)
@@ -187,7 +190,7 @@
 					M.set_nutrition(new_nutrition) //Player slimes are more robust at spliting. Once an oversight of poor copypasta, now a feature!
 				M.powerlevel = new_powerlevel
 				if(i != 1)
-					step_away(M,src)
+					step_away(M, get_turf(src))
 				M.Friends = Friends.Copy()
 				babies += M
 				M.mutation_chance = clamp(mutation_chance+(rand(5,-5)),0,100)

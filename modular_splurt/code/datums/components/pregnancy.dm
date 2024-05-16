@@ -97,11 +97,11 @@
 /datum/component/pregnancy/RegisterWithParent()
 	if(carrier)
 		register_carrier()
-	RegisterSignal(parent, COMSIG_ATOM_ENTERING, .proc/on_entering)
-	RegisterSignal(parent, COMSIG_OBJ_BREAK, .proc/on_obj_break)
-	RegisterSignal(parent, COMSIG_OBJ_WRITTEN_ON, .proc/name_egg)
-	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/handle_hatch)
-	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/eg_status)
+	RegisterSignal(parent, COMSIG_ATOM_ENTERING, PROC_REF(on_entering))
+	RegisterSignal(parent, COMSIG_OBJ_BREAK, PROC_REF(on_obj_break))
+	RegisterSignal(parent, COMSIG_OBJ_WRITTEN_ON, PROC_REF(name_egg))
+	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(handle_hatch))
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, PROC_REF(eg_status))
 
 /datum/component/pregnancy/UnregisterFromParent()
 	if(carrier)
@@ -113,18 +113,16 @@
 	UnregisterSignal(parent, COMSIG_PARENT_EXAMINE)
 
 /datum/component/pregnancy/proc/register_carrier()
-	RegisterSignal(carrier, COMSIG_MOB_DEATH, .proc/fetus_mortus)
-	RegisterSignal(carrier, COMSIG_LIVING_BIOLOGICAL_LIFE, .proc/handle_life)
-	RegisterSignal(carrier, COMSIG_HEALTH_SCAN, .proc/on_scan)
-	RegisterSignal(carrier, COMSIG_MOB_APPLY_DAMAGE, .proc/handle_damage)
+	RegisterSignal(carrier, COMSIG_MOB_DEATH, PROC_REF(clear_eggs))
+	RegisterSignal(carrier, COMSIG_LIVING_BIOLOGICAL_LIFE, PROC_REF(handle_life))
+	RegisterSignal(carrier, COMSIG_HEALTH_SCAN, PROC_REF(on_scan))
 	if(oviposition)
-		RegisterSignal(carrier, COMSIG_MOB_CLIMAX, .proc/on_climax)
+		RegisterSignal(carrier, COMSIG_MOB_CLIMAX, PROC_REF(on_climax))
 
 /datum/component/pregnancy/proc/unregister_carrier()
 	UnregisterSignal(carrier, COMSIG_MOB_DEATH)
 	UnregisterSignal(carrier, COMSIG_LIVING_BIOLOGICAL_LIFE)
 	UnregisterSignal(carrier, COMSIG_HEALTH_SCAN)
-	UnregisterSignal(carrier, COMSIG_MOB_APPLY_DAMAGE)
 	UnregisterSignal(carrier, COMSIG_MOB_CLIMAX)
 
 /datum/component/pregnancy/Destroy()
@@ -227,7 +225,7 @@
 	if(stage < max_stage)
 		return
 
-	INVOKE_ASYNC(src, .proc/hatch, source, I, user, params)
+	INVOKE_ASYNC(src, PROC_REF(hatch), source, I, user, params)
 
 /datum/component/pregnancy/proc/hatch(datum/source, obj/item/I, mob/user, params)
 	if(!COOLDOWN_FINISHED(src, hatch_request_cooldown))
@@ -403,26 +401,11 @@
 /datum/component/pregnancy/proc/human_pragency_end(mob/living/carbon/human/gregnant)
 	SEND_SIGNAL(gregnant, COMSIG_CLEAR_MOOD_EVENT, "pregnancy")
 
-/datum/component/pregnancy/proc/fetus_mortus()
+/datum/component/pregnancy/proc/clear_eggs()
 	SIGNAL_HANDLER
 
-	if(!QDELETED(carrier) && get_turf(carrier) && (stage >= 2))
-		if(!oviposition)
-			new /obj/effect/gibspawner/generic(get_turf(carrier))
-		else
-			new /obj/effect/decal/cleanable/egg_smudge(get_turf(carrier))
-	carrier.Knockdown(200, TRUE, TRUE)
-	carrier.Stun(200, TRUE, TRUE)
-	carrier.adjustStaminaLoss(200)
 	qdel(src)
 
 /datum/component/pregnancy/proc/on_scan(datum/source, mob/user)
 	SIGNAL_HANDLER
 	to_chat(user, span_notice("<b>Pregnancy detected!</b>"))
-
-//drop kicked
-/datum/component/pregnancy/proc/handle_damage(datum/source, damage, damagetype, def_zone)
-	SIGNAL_HANDLER
-
-	if(def_zone == BODY_ZONE_CHEST && damage > 20 && prob(40))
-		fetus_mortus()

@@ -11,3 +11,17 @@
 	list_reagents = list(/datum/reagent/fermi/plushmium = 5)
 	possible_transfer_amounts = list(5)
 	volume = 5
+
+/obj/item/reagent_containers/glass/bottle/semen
+	name = "Synthetized Semen"
+	desc = "A dose of synthetic semen. This could prove useful to Succubus demons in dire situations."
+	icon_state = "bottle20"
+	list_reagents = list(/datum/reagent/consumable/semen = 30)
+	possible_transfer_amounts = list(5)
+
+/obj/item/reagent_containers/glass/bottle/female_ejaculate
+	name = "bottle of female ejaculate"
+	desc = "A dose of synthetic reproductive fluid. Historically used for artificial inseminations."
+	icon_state = "bottle20"
+	list_reagents = list(/datum/reagent/consumable/semen/femcum = 30)
+	possible_transfer_amounts = list(5)

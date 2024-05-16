@@ -1,11 +1,12 @@
 import { map, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
 import { vecLength, vecSubtract } from 'common/vector';
+
 import { useBackend, useSharedState } from '../backend';
-import { Box, Button, Icon, LabeledList, Section, Tabs, Flex, NoticeBox, Fragment } from '../components';
+import { Box, Button, Flex, Fragment, Icon, LabeledList, NoticeBox, Section, Tabs } from '../components';
+import { formatMoney } from '../format';
 import { Window } from '../layouts';
 import { GenericUplink } from './Uplink';
-import { formatMoney } from '../format';
 
 const coordsToVec = coords => map(parseFloat)(coords.split(', '));
 

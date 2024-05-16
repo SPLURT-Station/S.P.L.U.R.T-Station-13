@@ -68,8 +68,8 @@
 
 /datum/quirk/dominant_aura/add()
 	. = ..()
-	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/on_examine_holder)
-	RegisterSignal(quirk_holder, COMSIG_MOB_EMOTE, .proc/handle_snap)
+	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine_holder))
+	RegisterSignal(quirk_holder, COMSIG_MOB_EMOTE, PROC_REF(handle_snap))
 
 /datum/quirk/dominant_aura/remove()
 	. = ..()
@@ -219,7 +219,7 @@
 	quirk_mob.mind.isholy = TRUE
 
 	// Add examine text.
-	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/on_examine_holder)
+	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine_holder))
 
 /datum/quirk/hallowed/remove()
 	// Define quirk mob.
@@ -314,7 +314,7 @@
 	quirk_mob.grant_language(/datum/language/vampiric, TRUE, TRUE, LANGUAGE_BLOODSUCKER)
 
 	// Register examine text
-	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/quirk_examine_bloodfledge)
+	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, PROC_REF(quirk_examine_bloodfledge))
 
 /datum/quirk/bloodfledge/post_add()
 	// Define quirk mob

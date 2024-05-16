@@ -5,10 +5,10 @@
 /obj/item/genital_equipment/ComponentInitialize()
 	. = ..()
 	var/list/procs_list = list(
-		"before_inserting" = CALLBACK(src, .proc/item_inserting),
-		"after_inserting" = CALLBACK(src, .proc/item_inserted),
-		"before_removing" = CALLBACK(src, .proc/item_removing),
-		"after_removing" = CALLBACK(src, .proc/item_removed)
+		"before_inserting" = CALLBACK(src, PROC_REF(item_inserting)),
+		"after_inserting" = CALLBACK(src, PROC_REF(item_inserted)),
+		"before_removing" = CALLBACK(src, PROC_REF(item_removing)),
+		"after_removing" = CALLBACK(src, PROC_REF(item_removed))
 	)
 	AddComponent(/datum/component/genital_equipment, genital_slot, procs_list)
 	equipment = GetComponent(/datum/component/genital_equipment)

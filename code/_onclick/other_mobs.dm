@@ -18,7 +18,7 @@
 
 	. = attackchain_flags
 	// Special glove functions:
-	// If the gloves do anything, have them return 1 to stop
+	// If the gloves do anything, have them return TRUE to stop
 	// normal attack_hand() here.
 	var/obj/item/clothing/gloves/G = gloves // not typecast specifically enough in defines
 	if(proximity && istype(G))
@@ -35,7 +35,7 @@
 	SEND_SIGNAL(src, COMSIG_HUMAN_MELEE_UNARMED_ATTACK, A)
 	return . | A.attack_hand(src, intent, .)
 
-/atom/proc/attack_hand(mob/user, act_intent = user.a_intent, attackchain_flags)
+/atom/proc/attack_hand(mob/user, act_intent = user?.a_intent, attackchain_flags)
 	//SHOULD_NOT_SLEEP(TRUE)
 	if(!(interaction_flags_atom & INTERACT_ATOM_NO_FINGERPRINT_ATTACK_HAND))
 		add_fingerprint(user)
@@ -47,14 +47,14 @@
 			return
 	if(interaction_flags_atom & INTERACT_ATOM_ATTACK_HAND)
 		. = _try_interact(user)
-	INVOKE_ASYNC(src, .proc/on_attack_hand, user, act_intent, .)
+	INVOKE_ASYNC(src, PROC_REF(on_attack_hand), user, act_intent, .)
 	if(!(. & ATTACK_IGNORE_ACTION))
 		if(attack_hand_unwieldlyness)
 			user.DelayNextAction(attack_hand_unwieldlyness, considered_action = attack_hand_is_action)
 		else if(attack_hand_is_action)
 			user.DelayNextAction()
 
-/atom/proc/on_attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
+/atom/proc/on_attack_hand(mob/user, act_intent = user?.a_intent, unarmed_attack_flags)
 
 //Return a non FALSE value to cancel whatever called this from propagating, if it respects it.
 /atom/proc/_try_interact(mob/user)
@@ -99,7 +99,7 @@
 */
 
 /mob/living/carbon/RestrainedClickOn(atom/A)
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/RangedAttack(atom/A, mouseparams)
 	. = ..()

@@ -91,12 +91,12 @@
 	if(bombassembly)
 		bombassembly.on_found(finder)
 
-/obj/item/onetankbomb/on_attack_hand() //also for mousetraps
+/obj/item/onetankbomb/on_attack_hand(mob/user) //also for mousetraps
 	. = ..()
 	if(.)
 		return
 	if(bombassembly)
-		bombassembly.attack_hand()
+		bombassembly.attack_hand(user)
 
 /obj/item/onetankbomb/Move()
 	. = ..()

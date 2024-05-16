@@ -29,7 +29,7 @@
 
 	src.color = "#[fire_color]"
 	lit(color)
-	RegisterSignal(parent, COMSIG_MOB_DEATH, .proc/unlit)
+	RegisterSignal(parent, COMSIG_MOB_DEATH, PROC_REF(unlit))
 	// RegisterSignal(parent, COMSIG_MOB_LIFE)
 
 /datum/component/neckfire/proc/lit(fire_color)
@@ -91,8 +91,8 @@
 
 /datum/component/dullahan/Initialize()
 	. = ..()
-	RegisterSignal(dullahan_head, COMSIG_MOUSEDROPPED_ONTO, .proc/on_mouse_dropped)
-	RegisterSignal(dullahan_head, COMSIG_MOUSEDROP_ONTO, .proc/on_mouse_drop)
+	RegisterSignal(dullahan_head, COMSIG_MOUSEDROPPED_ONTO, PROC_REF(on_mouse_dropped))
+	RegisterSignal(dullahan_head, COMSIG_MOUSEDROP_ONTO, PROC_REF(on_mouse_drop))
 
 /datum/component/dullahan/proc/add_head_accessory(obj/item/clothing/I, item_path)
 	head_accessory_MA = mutable_appearance(I.mob_overlay_icon || HEAD_ACCESSORIES_PATHS[item_path])

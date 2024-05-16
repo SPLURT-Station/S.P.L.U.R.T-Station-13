@@ -12,6 +12,14 @@
 	desc = "A massive, wolf like creature with powerful muscles, razor-sharp claws, and aggression to match. This one has the bedroom eyes.."
 	werewolf_mode = "gentle"
 
+/mob/living/simple_animal/hostile/ice_wolf/funwolf/gentle/pet_ice_wolf //Donator request
+	vision_range = 0
+	aggro_vision_range = 0
+	wander = 1
+	melee_damage_lower = 0
+	melee_damage_upper = 0
+	stop_automated_movement_when_pulled = 1
+
 /mob/living/simple_animal/hostile/werewolf/funwolf/abomination
 	name = "Exiled Werewolf"
 	desc = "A massive, wolf like creature with powerful muscles, razor-sharp claws, and aggression to match. This one has a strange smell for some reason.."
@@ -65,11 +73,11 @@
 
 
 	do_lewd_action(M)
-	addtimer(CALLBACK(src, .proc/do_lewd_action, M), rand(8, 12))
+	addtimer(CALLBACK(src, PROC_REF(do_lewd_action), M), rand(8, 12))
 
 	// Regular sex has an extra action per tick to seem less slow and robotic
 	if(werewolf_mode != "abomination" || M.client?.prefs.unholypref != "Yes")
-		addtimer(CALLBACK(src, .proc/do_lewd_action, M), rand(12, 16))
+		addtimer(CALLBACK(src, PROC_REF(do_lewd_action), M), rand(12, 16))
 
 
 /mob/living/simple_animal/hostile/werewolf/funwolf/proc/pickNewHole(mob/living/M)
@@ -187,7 +195,7 @@
 	refractory_period = world.time + rand(100, 150) // Sex cooldown
 	set_lust(0) // Nuts at 400
 
-	addtimer(CALLBACK(src, .proc/slap, M), 15)
+	addtimer(CALLBACK(src, PROC_REF(slap), M), 15)
 
 
 /mob/living/simple_animal/hostile/werewolf/funwolf/proc/slap(mob/living/M)
@@ -278,11 +286,11 @@
 
 
 	do_lewd_action(M)
-	addtimer(CALLBACK(src, .proc/do_lewd_action, M), rand(8, 12))
+	addtimer(CALLBACK(src, PROC_REF(do_lewd_action), M), rand(8, 12))
 
 	// Regular sex has an extra action per tick to seem less slow and robotic
 	if(werewolf_mode != "abomination" || M.client?.prefs.unholypref != "Yes")
-		addtimer(CALLBACK(src, .proc/do_lewd_action, M), rand(12, 16))
+		addtimer(CALLBACK(src, PROC_REF(do_lewd_action), M), rand(12, 16))
 
 
 /mob/living/simple_animal/hostile/ice_wolf/funwolf/proc/pickNewHole(mob/living/M)
@@ -400,7 +408,7 @@
 	refractory_period = world.time + rand(100, 150) // Sex cooldown
 	set_lust(0) // Nuts at 400
 
-	addtimer(CALLBACK(src, .proc/slap, M), 15)
+	addtimer(CALLBACK(src, PROC_REF(slap), M), 15)
 
 
 /mob/living/simple_animal/hostile/ice_wolf/funwolf/proc/slap(mob/living/M)
@@ -492,11 +500,11 @@
 
 
 	do_lewd_action(M)
-	addtimer(CALLBACK(src, .proc/do_lewd_action, M), rand(8, 12))
+	addtimer(CALLBACK(src, PROC_REF(do_lewd_action), M), rand(8, 12))
 
 	// Regular sex has an extra action per tick to seem less slow and robotic
 	if(werewolf_mode != "abomination" || M.client?.prefs.unholypref != "Yes")
-		addtimer(CALLBACK(src, .proc/do_lewd_action, M), rand(12, 16))
+		addtimer(CALLBACK(src, PROC_REF(do_lewd_action), M), rand(12, 16))
 
 
 /mob/living/simple_animal/hostile/hellhound/funwolf/proc/pickNewHole(mob/living/M)
@@ -614,7 +622,7 @@
 	refractory_period = world.time + rand(100, 150) // Sex cooldown
 	set_lust(0) // Nuts at 400
 
-	addtimer(CALLBACK(src, .proc/slap, M), 15)
+	addtimer(CALLBACK(src, PROC_REF(slap), M), 15)
 
 
 /mob/living/simple_animal/hostile/hellhound/funwolf/proc/slap(mob/living/M)
@@ -706,11 +714,11 @@
 
 
 	do_lewd_action(M)
-	addtimer(CALLBACK(src, .proc/do_lewd_action, M), rand(8, 12))
+	addtimer(CALLBACK(src, PROC_REF(do_lewd_action), M), rand(8, 12))
 
 	// Regular sex has an extra action per tick to seem less slow and robotic
 	if(werewolf_mode != "abomination" || M.client?.prefs.unholypref != "Yes")
-		addtimer(CALLBACK(src, .proc/do_lewd_action, M), rand(12, 16))
+		addtimer(CALLBACK(src, PROC_REF(do_lewd_action), M), rand(12, 16))
 
 
 /mob/living/simple_animal/hostile/the_mosley/funwolf/proc/pickNewHole(mob/living/M)
@@ -828,7 +836,7 @@
 	refractory_period = world.time + rand(100, 150) // Sex cooldown
 	set_lust(0) // Nuts at 400
 
-	addtimer(CALLBACK(src, .proc/slap, M), 15)
+	addtimer(CALLBACK(src, PROC_REF(slap), M), 15)
 
 
 /mob/living/simple_animal/hostile/the_mosley/funwolf/proc/slap(mob/living/M)

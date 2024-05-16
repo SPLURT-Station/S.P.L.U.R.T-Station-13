@@ -217,7 +217,7 @@
 		LB.brainmob = brainmob
 		brainmob = null
 		LB.brainmob.forceMove(LB)
-		LB.brainmob.stat = DEAD
+		LB.brainmob.set_stat(DEAD)
 
 /obj/item/organ/eyes/transfer_to_limb(obj/item/bodypart/head/LB, mob/living/carbon/human/C)
 	LB.eyes = src
@@ -392,8 +392,7 @@
 		H.hair_style = hair_style
 		H.facial_hair_color = facial_hair_color
 		H.facial_hair_style = facial_hair_style
-		H.lip_style = lip_style
-		H.lip_color = lip_color
+		H.update_lips(lip_style, lip_color, stored_lipstick_trait)
 	if(real_name)
 		C.real_name = real_name
 	real_name = ""

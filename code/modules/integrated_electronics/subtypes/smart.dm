@@ -150,45 +150,48 @@
 
 	var/obj/item/mmi/installed_brain
 
-/obj/item/integrated_circuit/input/mmi_tank/attackby(var/obj/item/mmi/O, var/mob/user)
-	if(!istype(O,/obj/item/mmi))
-		to_chat(user,"<span class='warning'>You can't put that inside.</span>")
+/obj/item/integrated_circuit/input/mmi_tank/attackby(obj/item/mmi/O, mob/user)
+	if(!istype(O, /obj/item/mmi))
+		to_chat(user, span_warning("You can't put that inside."))
 		return
 	if(installed_brain)
-		to_chat(user,"<span class='warning'>There's already a brain inside.</span>")
+		to_chat(user, span_warning("There's already a brain inside."))
 		return
-	user.transferItemToLoc(O,src)
+	user.transferItemToLoc(O, src)
 	installed_brain = O
 	can_be_asked_input = FALSE
-	to_chat(user, "<span class='notice'>You gently place \the man-machine interface inside the tank.</span>")
-	to_chat(O, "<span class='notice'>You are slowly being placed inside the man-machine-interface tank.</span>")
-	O.brainmob.remote_control=src
+	to_chat(user, span_notice("You gently place \the man-machine interface inside the tank."))
+	to_chat(O, span_notice("You are slowly being placed inside the man-machine-interface tank."))
+	O.brainmob.remote_control = src
 	set_pin_data(IC_OUTPUT, 1, O)
+	push_data()
 
-/obj/item/integrated_circuit/input/mmi_tank/attack_self(var/mob/user)
+/obj/item/integrated_circuit/input/mmi_tank/attack_self(mob/user)
 	if(installed_brain)
 		RemoveBrain()
-		to_chat(user, "<span class='notice'>You slowly lift [installed_brain] out of the MMI tank.</span>")
+		to_chat(user, span_notice("You slowly lift [installed_brain] out of the MMI tank."))
 		playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
-		installed_brain = null
-		push_data()
 	else
-		to_chat(user, "<span class='notice'>You don't see any brain swimming in the tank.</span>")
+		to_chat(user, span_notice("You don't see any brain swimming in the tank."))
 
 /obj/item/integrated_circuit/input/mmi_tank/Destroy()
 	RemoveBrain()
 	return ..()
 
-/obj/item/integrated_circuit/input/mmi_tank/relaymove(var/n,var/dir)
+/obj/item/integrated_circuit/input/mmi_tank/relaymove(n, dir)
 	set_pin_data(IC_OUTPUT, 2, dir)
 	do_work(1)
 	switch(dir)
-		if(8)	activate_pin(2)
-		if(4)	activate_pin(3)
-		if(1)	activate_pin(4)
-		if(2)	activate_pin(5)
+		if(WEST)
+			activate_pin(2)
+		if(EAST)
+			activate_pin(3)
+		if(NORTH)
+			activate_pin(4)
+		if(SOUTH)
+			activate_pin(5)
 
-/obj/item/integrated_circuit/input/mmi_tank/do_work(var/n)
+/obj/item/integrated_circuit/input/mmi_tank/do_work(n)
 	push_data()
 	activate_pin(n)
 
@@ -197,9 +200,10 @@
 		can_be_asked_input = TRUE
 		installed_brain.forceMove(drop_location())
 		set_pin_data(IC_OUTPUT, 1, WEAKREF(null))
+		push_data()
 		if(installed_brain.brainmob)
 			installed_brain.brainmob.remote_control = null
-
+		installed_brain = null
 
 //Brain changes
 /mob/living/brain/var/check_bot_self = FALSE
@@ -279,56 +283,60 @@
 
 	var/obj/item/paicard/installed_pai
 
-/obj/item/integrated_circuit/input/pAI_connector/attackby(var/obj/item/paicard/O, var/mob/user)
-	if(!istype(O,/obj/item/paicard))
-		to_chat(user,"<span class='warning'>You can't put that inside.</span>")
+/obj/item/integrated_circuit/input/pAI_connector/attackby(obj/item/paicard/O, mob/user)
+	if(!istype(O, /obj/item/paicard))
+		to_chat(user, span_warning("You can't put that inside."))
 		return
 	if(installed_pai)
-		to_chat(user,"<span class='warning'>There's already a pAI connected to this.</span>")
+		to_chat(user, span_warning("There's already a pAI connected to this."))
 		return
-	user.transferItemToLoc(O,src)
+	user.transferItemToLoc(O, src)
 	installed_pai = O
 	can_be_asked_input = FALSE
-	to_chat(user, "<span class='notice'>You slowly connect the circuit's pins to the [installed_pai].</span>")
-	to_chat(O, "<span class='notice'>You are slowly being connected to the pAI connector.</span>")
-	O.pai.remote_control=src
+	to_chat(user, span_notice("You slowly connect the circuit's pins to the [installed_pai]."))
+	to_chat(O, span_notice("You are slowly being connected to the pAI connector."))
+	O.pai.remote_control = src
 	set_pin_data(IC_OUTPUT, 1, O)
+	push_data()
 
-/obj/item/integrated_circuit/input/pAI_connector/attack_self(var/mob/user)
+/obj/item/integrated_circuit/input/pAI_connector/attack_self(mob/user)
 	if(installed_pai)
 		RemovepAI()
-		to_chat(user, "<span class='notice'>You slowly disconnect the circuit's pins from the [installed_pai].</span>")
+		to_chat(user, span_notice("You slowly disconnect the circuit's pins from the [installed_pai]."))
 		playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
-		installed_pai = null
-		push_data()
 	else
-		to_chat(user, "<span class='notice'>The connection port is empty.</span>")
-
-/obj/item/integrated_circuit/input/pAI_connector/relaymove(var/n,var/dir)
-	set_pin_data(IC_OUTPUT, 2, dir)
-	do_work(1)
-	switch(dir)
-		if(8)	activate_pin(2)
-		if(4)	activate_pin(3)
-		if(1)	activate_pin(4)
-		if(2)	activate_pin(5)
-
-/obj/item/integrated_circuit/input/pAI_connector/do_work(var/n)
-	push_data()
-	activate_pin(n)
-
+		to_chat(user, span_notice("The connection port is empty."))
 
 /obj/item/integrated_circuit/input/pAI_connector/Destroy()
 	RemovepAI()
 	return ..()
+
+/obj/item/integrated_circuit/input/pAI_connector/relaymove(n, dir)
+	set_pin_data(IC_OUTPUT, 2, dir)
+	do_work(1)
+	switch(dir)
+		if(WEST)
+			activate_pin(2)
+		if(EAST)
+			activate_pin(3)
+		if(NORTH)
+			activate_pin(4)
+		if(SOUTH)
+			activate_pin(5)
+
+/obj/item/integrated_circuit/input/pAI_connector/do_work(n)
+	push_data()
+	activate_pin(n)
 
 /obj/item/integrated_circuit/input/pAI_connector/proc/RemovepAI()
 	if(installed_pai)
 		can_be_asked_input = TRUE
 		installed_pai.forceMove(drop_location())
 		set_pin_data(IC_OUTPUT, 1, WEAKREF(null))
-		installed_pai.pai.remote_control = null
-
+		push_data()
+		if(installed_pai.pai)
+			installed_pai.pai.remote_control = null
+		installed_pai = null
 
 //pAI changes
 /mob/living/silicon/pai/var/check_bot_self = FALSE

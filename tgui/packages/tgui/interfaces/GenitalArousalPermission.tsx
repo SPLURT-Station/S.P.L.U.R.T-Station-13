@@ -1,6 +1,6 @@
 /* eslint-disable indent */
 import { useBackend } from "../backend";
-import { Button, Flex, Section, Tooltip, Box } from "../components";
+import { Box, Button, Flex, Section, Tooltip } from "../components";
 import { Window } from "../layouts";
 
 type ChastityHypno = {

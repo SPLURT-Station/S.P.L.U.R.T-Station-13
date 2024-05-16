@@ -59,6 +59,7 @@
 	weapon_weight = WEAPON_MEDIUM
 	fire_sound = 'sound/weapons/gun/shotgun/shot.ogg'
 	mag_type = /obj/item/ammo_box/magazine/rrcmag
+	automatic_burst_overlay = FALSE
 
 /obj/item/gun/ballistic/shotgun/eshotgun
 	name = "Energy Shotgun"

@@ -246,7 +246,7 @@
 /obj/item/shield/riot/on_shield_block(mob/living/owner, atom/object, damage, attack_text, attack_type, armour_penetration, mob/attacker, def_zone, final_block_chance, list/block_return)
 	var/final_damage = damage
 
-	if(attack_type & ATTACK_TYPE_MELEE)
+	if(attack_type & (ATTACK_TYPE_MELEE | ATTACK_TYPE_THROWN))
 		if(istype(object, /obj))	//Assumption: non-object attackers are a meleeing mob. Therefore: Assuming physical attack in this case.
 			var/obj/hittingthing = object
 			if(hittingthing.damtype == BURN)
@@ -269,15 +269,15 @@
 			else if((shield_flags & SHIELD_KINETIC_STRONG))
 				final_damage *= 0.5
 
-	if(attack_type & ATTACK_TYPE_PROJECTILE)
-		var/obj/item/projectile/shootingthing = object
+	var/obj/item/projectile/shootingthing = object
+	if(attack_type & ATTACK_TYPE_PROJECTILE && istype(shootingthing))
 		if(is_energy_reflectable_projectile(shootingthing))
 			if((shield_flags & SHIELD_ENERGY_WEAK))
 				final_damage *= 2
 			else if((shield_flags & SHIELD_ENERGY_STRONG))
 				final_damage *= 0.5
 
-		if(!is_energy_reflectable_projectile(object))
+		if(!is_energy_reflectable_projectile(shootingthing))
 			if((shield_flags & SHIELD_KINETIC_WEAK))
 				final_damage *= 2
 			else if((shield_flags & SHIELD_KINETIC_STRONG))
@@ -530,7 +530,7 @@
 /obj/item/shield/riot/implant/Moved()
 	. = ..()
 	if(istype(loc, /obj/item/organ/cyberimp/arm/shield))
-		recharge_timerid = addtimer(CALLBACK(src, .proc/recharge), recharge_delay, flags = TIMER_STOPPABLE)
+		recharge_timerid = addtimer(CALLBACK(src, PROC_REF(recharge)), recharge_delay, flags = TIMER_STOPPABLE)
 	else		//extending
 		if(recharge_timerid)
 			deltimer(recharge_timerid)

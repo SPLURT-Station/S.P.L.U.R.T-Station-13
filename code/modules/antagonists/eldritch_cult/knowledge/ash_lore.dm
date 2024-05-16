@@ -2,7 +2,7 @@
 	name = "Nightwatcher's Secret"
 	desc = "Inducts you into the Path of Ash. Allows you to transmute a match with a spear into an ashen blade."
 	gain_text = "The City Guard know their watch. If you ask them at night, they may tell you about the ashy lantern."
-	banned_knowledge = list(/datum/eldritch_knowledge/base_rust,/datum/eldritch_knowledge/base_flesh,/datum/eldritch_knowledge/final/rust_final,/datum/eldritch_knowledge/final/flesh_final,/datum/eldritch_knowledge/final/void_final,/datum/eldritch_knowledge/base_void)
+	banned_knowledge = list(/datum/eldritch_knowledge/base_rust,/datum/eldritch_knowledge/base_flesh,/datum/eldritch_knowledge/final_eldritch/rust_final,/datum/eldritch_knowledge/final_eldritch/flesh_final,/datum/eldritch_knowledge/final_eldritch/void_final,/datum/eldritch_knowledge/base_void)
 	next_knowledge = list(/datum/eldritch_knowledge/ashen_grasp)
 	required_atoms = list(/obj/item/spear,/obj/item/match)
 	result_atoms = list(/obj/item/melee/sickly_blade/ash)
@@ -111,7 +111,7 @@
 	cost = 2
 	sacs_needed = 3
 	spell_to_add = /obj/effect/proc_holder/spell/pointed/nightwatchers_rite
-	next_knowledge = list(/datum/eldritch_knowledge/final/ash_final)
+	next_knowledge = list(/datum/eldritch_knowledge/final_eldritch/ash_final)
 	route = PATH_ASH
 
 /datum/eldritch_knowledge/spell/nightwatchers_rite/on_gain(mob/user)
@@ -180,7 +180,7 @@
 	spell_to_add = /obj/effect/proc_holder/spell/pointed/cleave
 	next_knowledge = list(/datum/eldritch_knowledge/spell/entropic_plume,/datum/eldritch_knowledge/spell/flame_birth)
 
-/datum/eldritch_knowledge/final/ash_final
+/datum/eldritch_knowledge/final_eldritch/ash_final
 	name = "Ashlord's Rite"
 	gain_text = "The Nightwatcher found the rite and shared it amongst mankind! For now I am one with the fire, WITNESS MY ASCENSION!"
 	desc = "Bring 3 corpses onto a transmutation rune, you will become immune to fire, the vacuum of space, cold and other enviromental hazards and become overall sturdier to all other damages. You will gain a spell that passively creates ring of fire around you as well ,as you will gain a powerful ability that lets you create a wave of flames all around you."
@@ -190,7 +190,7 @@
 	route = PATH_ASH
 	var/list/trait_list = list(TRAIT_NOBREATH,TRAIT_RESISTCOLD,TRAIT_RESISTHIGHPRESSURE,TRAIT_RESISTLOWPRESSURE)
 
-/datum/eldritch_knowledge/final/ash_final/on_finished_recipe(mob/living/user, list/atoms, loc)
+/datum/eldritch_knowledge/final_eldritch/ash_final/on_finished_recipe(mob/living/user, list/atoms, loc)
 	priority_announce("$^@&#*$^@(#&$(@&#^$&#^@# Fear the blaze, for the Ashlord, [user.real_name] has ascended! The flames shall consume all! $^@&#*$^@(#&$(@&#^$&#^@#","#$^@&#*$^@(#&$(@&#^$&#^@#", 'sound/announcer/classic/spanomalies.ogg')
 	user.mind.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/fire_cascade/big)
 	user.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/fire_sworn)

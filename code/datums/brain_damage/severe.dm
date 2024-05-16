@@ -173,6 +173,12 @@
 /datum/brain_trauma/severe/monophobia/proc/check_alone()
 //SANDSTORM EDIT
 	var/check_radius = 7
+//SPLURT EDIT - (Fix monophobia if picked up by a macro character)
+	if(!owner)
+		return FALSE
+	if(istype(owner.loc, /obj/item/clothing/head/mob_holder/micro))
+		return FALSE
+//SPLURT EDIT End
 	if(istype(owner.loc, /obj/belly))
 		return FALSE
 	if(HAS_TRAIT(owner, TRAIT_BLIND))
@@ -196,7 +202,7 @@
 				to_chat(owner, "<span class='warning'>You feel sick...</span>")
 			else
 				to_chat(owner, "<span class='warning'>You feel really sick at the thought of being alone!</span>")
-			addtimer(CALLBACK(owner, /mob/living/carbon.proc/vomit, high_stress), 50) //blood vomit if high stress
+			addtimer(CALLBACK(owner, TYPE_PROC_REF(/mob/living/carbon, vomit), high_stress), 50) //blood vomit if high stress
 		if(2)
 			if(!high_stress)
 				to_chat(owner, "<span class='warning'>You can't stop shaking...</span>")
@@ -271,7 +277,7 @@
 	var/min_hypno_duration = 6000
 	var/max_hypno_duration = 12000
 	var/hypno_duration = -1 // 0 or some world time limits, whereas -1 has old behavior
-	
+
 /datum/brain_trauma/severe/hypnotic_stupor/on_gain()
 	..()
 	min_hypno_duration = CONFIG_GET(number/min_stupor_hypno_duration) // 6000
@@ -287,7 +293,7 @@
 	if(prob(1) && !owner.has_status_effect(/datum/status_effect/trance))
 		if (world.time > hypno_duration) // Only re-trance every so often
 			owner.apply_status_effect(/datum/status_effect/trance, rand(100,300), FALSE, hypno_duration > -1)
-			
+
 /datum/brain_trauma/severe/hypnotic_stupor/proc/on_hypnosis()
 	if (hypno_duration > -1)
 		hypno_duration = world.time + rand(min_hypno_duration, max_hypno_duration)
@@ -319,7 +325,7 @@
 	var/regex/reg = new("(\\b[REGEX_QUOTE(trigger_phrase)]\\b)","ig")
 
 	if(findtext(hearing_args[HEARING_RAW_MESSAGE], reg))
-		addtimer(CALLBACK(src, .proc/hypnotrigger), 10) //to react AFTER the chat message
+		addtimer(CALLBACK(src, PROC_REF(hypnotrigger)), 10) //to react AFTER the chat message
 		hearing_args[HEARING_RAW_MESSAGE] = reg.Replace(hearing_args[HEARING_RAW_MESSAGE], "<span class='hypnophrase'>*********</span>")
 
 /datum/brain_trauma/severe/hypnotic_trigger/proc/hypnotrigger()

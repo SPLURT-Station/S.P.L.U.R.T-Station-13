@@ -113,7 +113,7 @@
 	do_femlewd_action(M)
 
 	for(var/i in 1 to extra_sexxo)
-		addtimer(CALLBACK(src, .proc/do_femlewd_action, M), rand(12, 16))
+		addtimer(CALLBACK(src, PROC_REF(do_femlewd_action), M), rand(12, 16))
 
 
 /mob/living/simple_animal/hostile/deathclaw/funclaw/femclaw/proc/pickNewFemHole(mob/living/M)

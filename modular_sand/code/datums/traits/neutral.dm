@@ -48,11 +48,11 @@
 
 /datum/quirk/estrous_active/add()
 	// Add examine hook
-	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/quirk_examine_estrous_active)
+	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, PROC_REF(quirk_examine_estrous_active))
 
 	// Add organ change hooks
-	RegisterSignal(quirk_holder, COMSIG_MOB_ORGAN_ADD, .proc/update_heat_type)
-	RegisterSignal(quirk_holder, COMSIG_MOB_ORGAN_REMOVE, .proc/update_heat_type)
+	RegisterSignal(quirk_holder, COMSIG_MOB_ORGAN_ADD, PROC_REF(update_heat_type))
+	RegisterSignal(quirk_holder, COMSIG_MOB_ORGAN_REMOVE, PROC_REF(update_heat_type))
 
 /datum/quirk/estrous_active/remove()
 	// Remove signals

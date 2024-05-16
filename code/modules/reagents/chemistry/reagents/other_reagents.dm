@@ -677,7 +677,7 @@
 	to_chat(H, "<span class='warning'><b>You crumple in agony as your flesh wildly morphs into new forms!</b></span>")
 	H.visible_message("<b>[H]</b> falls to the ground and screams as [H.p_their()] skin bubbles and froths!") //'froths' sounds painful when used with SKIN.
 	H.DefaultCombatKnockdown(60)
-	addtimer(CALLBACK(src, .proc/mutate, H), 30)
+	addtimer(CALLBACK(src, PROC_REF(mutate), H), 30)
 	return
 
 /datum/reagent/mutationtoxin/proc/mutate(mob/living/carbon/human/H)
@@ -1249,7 +1249,7 @@
 		to_chat(M, "<span class='warning'>You feel unstable...</span>")
 		M.Jitter(2)
 		current_cycle = 1
-		addtimer(CALLBACK(M, /mob/living/proc/bluespace_shuffle), 30)
+		addtimer(CALLBACK(M, TYPE_PROC_REF(/mob/living, bluespace_shuffle)), 30)
 	..()
 
 /mob/living/proc/bluespace_shuffle()
@@ -2494,7 +2494,7 @@
 /datum/reagent/gravitum/reaction_obj(obj/O, volume)
 	O.AddElement(/datum/element/forced_gravity, 0)
 
-	addtimer(CALLBACK(O, .proc/_RemoveElement, /datum/element/forced_gravity, 0), volume * time_multiplier)
+	addtimer(CALLBACK(O, PROC_REF(_RemoveElement), /datum/element/forced_gravity, 0), volume * time_multiplier)
 
 /datum/reagent/gravitum/on_mob_add(mob/living/L)
 	L.AddElement(/datum/element/forced_gravity, 0) //0 is the gravity, and in this case weightless
@@ -2568,6 +2568,8 @@
 
 /obj/effect/decal/cleanable/semen/update_icon()
 	. = ..()
+	if(QDELETED(src) || !reagents)
+		return
 	add_atom_colour(mix_color_from_reagents(reagents.reagent_list), FIXED_COLOUR_PRIORITY)
 
 /datum/reagent/consumable/semen/femcum
@@ -2707,7 +2709,7 @@
 /datum/reagent/red_ichor
 	name = "Red Ichor"
 	can_synth = FALSE
-	description = "A unknown red liquid, linked to healing of most moral wounds."
+	description = "An unknown red liquid, linked to healing of most moral wounds."
 	color = "#c10000"
 	metabolization_rate = REAGENTS_METABOLISM * 2.5
 	chemical_flags = REAGENT_ALL_PROCESS
@@ -2725,7 +2727,7 @@
 /datum/reagent/green_ichor
 	name = "Green Ichor"
 	can_synth = FALSE
-	description = "A unknown green liquid, linked to healing of most internal wounds."
+	description = "An unknown green liquid, linked to healing of most internal wounds."
 	color = "#158c00"
 	metabolization_rate = REAGENTS_METABOLISM * 2.5
 	chemical_flags = REAGENT_ALL_PROCESS
@@ -2743,7 +2745,7 @@
 /datum/reagent/blue_ichor
 	name = "Blue Ichor"
 	can_synth = FALSE
-	description = "A unknown blue liquid, linked to healing the mind."
+	description = "An unknown blue liquid, linked to healing the mind."
 	color = "#0914e0"
 	metabolization_rate = REAGENTS_METABOLISM * 2.5
 	chemical_flags = REAGENT_ALL_PROCESS

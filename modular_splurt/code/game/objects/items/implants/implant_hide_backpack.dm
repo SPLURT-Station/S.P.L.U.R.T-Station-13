@@ -48,10 +48,9 @@
 
 // Runs on losing the ability
 /datum/action/item_action/hide_backpack/Remove(mob/user)
-	. = ..()
-
-	// Remove the trait
+	// Remove the trait (must be done before removal so that owner still exists)
 	adjust_trait(FALSE)
+	return ..()
 
 // Function to update trait
 /datum/action/item_action/hide_backpack/proc/adjust_trait(state)
@@ -89,7 +88,7 @@
 		button_icon_state = "backpack"
 
 	// Update icon state
-	UpdateButtonIcon()
+	UpdateButtons()
 
 	// Display fake sparks to match flavor text
 	do_fake_sparks(2,FALSE,action_owner)

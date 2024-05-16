@@ -132,7 +132,7 @@ Judgement 80k power or nine converts
 
 /datum/clockwork_scripture/proc/check_offstation_penalty()//don't cast spells away from the station
 	var/turf/T = get_turf(invoker)
-	if(!T || (!is_centcom_level(T.z) && !is_station_level(T.z) && !is_mining_level(T.z) && !is_reebe(T.z)))
+	if(!T || (!is_centcom_level(T.z) && !is_station_level(T.z) && !is_mining_level(T.z) && !is_reebe(T.z) && !is_away_level(T.z))) //Added is_away_level to help spells work properly on AGRComplex, or any future gateways that use cultists.))
 		channel_time *= 3
 		power_cost *= 3
 		return TRUE
@@ -154,7 +154,7 @@ Judgement 80k power or nine converts
 	if(!channel_time)
 		return TRUE
 	chant()
-	if(!do_after(invoker, channel_time, target = invoker, extra_checks = CALLBACK(src, .proc/check_special_requirements)))
+	if(!do_after(invoker, channel_time, target = invoker, extra_checks = CALLBACK(src, PROC_REF(check_special_requirements))))
 		slab.busy = null
 		chanting = FALSE
 		scripture_fail()
@@ -201,7 +201,7 @@ Judgement 80k power or nine converts
 
 /datum/clockwork_scripture/channeled/scripture_effects()
 	for(var/i in 1 to chant_amount)
-		if(!do_after(invoker, chant_interval, target = invoker, extra_checks = CALLBACK(src, .proc/can_recite)))
+		if(!do_after(invoker, chant_interval, target = invoker, extra_checks = CALLBACK(src, PROC_REF(can_recite))))
 			break
 		clockwork_say(invoker, text2ratvar(pick(chant_invocations)), whispered)
 		if(multiple_invokers_used)

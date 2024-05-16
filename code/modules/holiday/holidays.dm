@@ -12,6 +12,9 @@
 	var/year_offset = 0
 	var/obj/item/drone_hat //If this is defined, drones without a default hat will spawn with this one during the holiday; check drones_as_items.dm to see this used
 
+	// Special things to be given during this!
+	var/list/mail_goodies
+
 // This proc gets run before the game starts when the holiday is activated. Do festive shit here.
 /datum/holiday/proc/celebrate()
 	return
@@ -26,7 +29,7 @@
 	var/i = findtext(name," ")
 	return copytext(name, 1, i)
 
-// Return 1 if this holiday should be celebrated today
+// return TRUE if this holiday should be celebrated today
 /datum/holiday/proc/shouldCelebrate(dd, mm, yy, ww, ddd)
 	if(always_celebrate)
 		return TRUE
@@ -318,11 +321,11 @@
 	if(mm == 9)
 		if(yy/4 == round(yy/4)) //Note: Won't work right on September 12th, 2200 (at least it's a Friday!)
 			if(dd == 12)
-				return 1
+				return TRUE
 		else
 			if(dd == 13)
-				return 1
-	return 0
+				return TRUE
+	return FALSE
 
 /datum/holiday/programmers/getStationPrefix()
 	return pick("span>","DEBUG: ","null","/list","EVENT PREFIX NOT FOUND") //Portability
@@ -391,6 +394,11 @@
 	begin_month = OCTOBER
 	end_day = 2
 	end_month = NOVEMBER
+
+	mail_goodies = list(
+		/obj/item/reagent_containers/food/snacks/lollipop = 10,
+		/obj/item/reagent_containers/food/snacks/chocolatebar = 10
+	)
 
 /datum/holiday/halloween/greet()
 	return "Have a spooky Halloween!"
@@ -602,7 +610,7 @@ This used to be a comment about ramadan but it got deleted because we don't prea
 	return "Have a merry Christmas!"
 
 /datum/holiday/xmas/celebrate()
-	SSticker.OnRoundstart(CALLBACK(src, .proc/roundstart_celebrate))
+	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(roundstart_celebrate)))
 
 /datum/holiday/xmas/proc/roundstart_celebrate()
 	for(var/obj/machinery/computer/security/telescreen/entertainment/Monitor in GLOB.machines)

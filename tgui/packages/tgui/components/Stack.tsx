@@ -5,6 +5,7 @@
  */
 
 import { classes } from 'common/react';
+
 import { Flex, FlexItemProps, FlexProps } from './Flex';
 
 interface StackProps extends FlexProps {

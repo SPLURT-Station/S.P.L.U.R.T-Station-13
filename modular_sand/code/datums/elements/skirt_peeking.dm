@@ -6,8 +6,8 @@
 	if(!ishuman(peeked))
 		return ELEMENT_INCOMPATIBLE
 
-	RegisterSignal(peeked, COMSIG_PARENT_EXAMINE, .proc/on_examine)
-	RegisterSignal(peeked, COMSIG_PARENT_EXAMINE_MORE, .proc/on_closer_look)
+	RegisterSignal(peeked, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
+	RegisterSignal(peeked, COMSIG_PARENT_EXAMINE_MORE, PROC_REF(on_closer_look))
 
 /datum/element/skirt_peeking/proc/can_skirt_peek(mob/living/carbon/human/peeked, mob/peeker)
 	var/mob/living/living_peeker = peeker
@@ -105,7 +105,7 @@
 
 		examine_content += span_purple(string)
 		// Let's see if we caught them, addtimer so it appears after the peek.
-		addtimer(CALLBACK(src, .proc/try_notice, peeked, peeker), 1)
+		addtimer(CALLBACK(src, PROC_REF(try_notice), peeked, peeker), 1)
 
 /// Alright, they've peeked us and everything, did we notice it though?
 /datum/element/skirt_peeking/proc/try_notice(mob/living/carbon/human/peeked, mob/living/peeker)

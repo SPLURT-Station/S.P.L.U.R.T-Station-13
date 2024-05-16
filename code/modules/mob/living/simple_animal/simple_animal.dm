@@ -197,7 +197,7 @@
 		if(health <= 0)
 			death()
 		else
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 	med_hud_set_status()
 
 /mob/living/simple_animal/proc/handle_automated_action()
@@ -215,7 +215,7 @@
 					if(Process_Spacemove(anydir))
 						Move(get_step(src, anydir), anydir)
 						turns_since_move = 0
-			return 1
+			return TRUE
 
 /mob/living/simple_animal/proc/handle_automated_speech(var/override)
 	set waitfor = FALSE

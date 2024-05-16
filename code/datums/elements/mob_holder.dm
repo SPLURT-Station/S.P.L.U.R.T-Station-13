@@ -23,10 +23,9 @@
 	src.proctype = proctype
 	src.escape_on_find = escape_on_find
 
-	RegisterSignal(target, COMSIG_ATOM_REQUESTING_CONTEXT_FROM_ITEM, .proc/on_requesting_context_from_item)
-	RegisterSignal(target, COMSIG_CLICK_ALT, .proc/mob_try_pickup)
-	RegisterSignal(target, COMSIG_PARENT_EXAMINE, .proc/on_examine)
-	RegisterSignal(target, COMSIG_ATOM_REQUESTING_CONTEXT_FROM_ITEM, .proc/on_requesting_context_from_item, TRUE)
+	RegisterSignal(target, COMSIG_ATOM_REQUESTING_CONTEXT_FROM_ITEM, PROC_REF(on_requesting_context_from_item))
+	RegisterSignal(target, COMSIG_CLICK_ALT, PROC_REF(mob_try_pickup))
+	RegisterSignal(target, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine))
 
 /datum/element/mob_holder/Detach(datum/source, force)
 	. = ..()
@@ -183,9 +182,9 @@
 	return TRUE
 
 /obj/item/clothing/head/mob_holder/relaymove(mob/living/user, direction)
-	container_resist()
+	container_resist(user)
 
-/obj/item/clothing/head/mob_holder/container_resist()
+/obj/item/clothing/head/mob_holder/container_resist(mob/living/user)
 	if(isliving(loc))
 		var/mob/living/L = loc
 		L.visible_message("<span class='warning'>[held_mob] escapes from [L]!</span>", "<span class='warning'>[held_mob] escapes your grip!</span>")

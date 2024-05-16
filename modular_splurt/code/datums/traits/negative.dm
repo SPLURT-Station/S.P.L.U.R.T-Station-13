@@ -6,7 +6,7 @@
 
 /datum/quirk/social_anxiety/add()
 	. = ..()
-	RegisterSignal(quirk_holder, COMSIG_MOB_SAY, .proc/handle_speech)
+	RegisterSignal(quirk_holder, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
 /datum/quirk/social_anxiety/remove()
 	. = ..()
@@ -137,7 +137,7 @@
 
 /datum/quirk/dumb4cum/add()
 	// Set timer
-	timer = addtimer(CALLBACK(src, .proc/crave), timer_trigger, TIMER_STOPPABLE)
+	timer = addtimer(CALLBACK(src, PROC_REF(crave)), timer_trigger, TIMER_STOPPABLE)
 
 /datum/quirk/dumb4cum/remove()
 	// Remove status trait
@@ -198,7 +198,7 @@
 	timer = null
 
 	// Add new timer
-	timer = addtimer(CALLBACK(src, .proc/crave), timer_trigger, TIMER_STOPPABLE)
+	timer = addtimer(CALLBACK(src, PROC_REF(crave)), timer_trigger, TIMER_STOPPABLE)
 
 // Small issue with this. If the quirk holder has NO_HUNGER or NO_THIRST, this trait can still be taken and they will still get the benefits of it.
 // It's unlikely that someone will be both, especially at round start, but vampirism makes me wary of having these separate.

@@ -17,7 +17,7 @@
 	wires = new /datum/wires/robot(src)
 	AddElement(/datum/element/empprotection, EMP_PROTECT_WIRES)
 	// AddElement(/datum/element/ridable, /datum/component/riding/creature/cyborg)
-	RegisterSignal(src, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, .proc/charge)
+	RegisterSignal(src, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, PROC_REF(charge))
 
 	robot_modules_background = new()
 	robot_modules_background.icon_state = "block"
@@ -82,7 +82,7 @@
 			mmi.brainmob.container = mmi
 			mmi.update_appearance()
 
-	INVOKE_ASYNC(src, .proc/updatename)
+	INVOKE_ASYNC(src, PROC_REF(updatename))
 
 	aicamera = new/obj/item/camera/siliconcam/robot_camera(src)
 	toner = tonermax
@@ -257,7 +257,7 @@
 	if(source.z != z)
 		return
 	if(stat == DEAD)
-		return 1
+		return TRUE
 	var/list/our_sort = alarms[class]
 	for(var/areaname in our_sort)
 		if (areaname == home.name)
@@ -265,7 +265,7 @@
 			var/list/sources = alarm[3]
 			if (!(source in sources))
 				sources += source
-			return 1
+			return TRUE
 
 	var/obj/machinery/camera/cam = null
 	var/list/our_cams = null
@@ -749,7 +749,7 @@
 	. = ..()
 	radio = new /obj/item/radio/borg/syndicate(src)
 	laws = new /datum/ai_laws/syndicate_override()
-	addtimer(CALLBACK(src, .proc/show_playstyle), 5)
+	addtimer(CALLBACK(src, PROC_REF(show_playstyle)), 5)
 
 /mob/living/silicon/robot/modules/syndicate/create_modularInterface()
 	if(!modularInterface)
@@ -916,9 +916,9 @@
 			toggle_headlamp(1)
 			return
 		if(IsUnconscious() || IsStun() || IsKnockdown() || IsParalyzed() || getOxyLoss() > maxHealth * 0.5)
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 		else
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 		update_mobility()
 	diag_hud_set_status()
 	diag_hud_set_health()
@@ -968,7 +968,7 @@
 	ionpulse = FALSE
 	revert_shell()
 
-	return 1
+	return TRUE
 
 /mob/living/silicon/robot/proc/has_module()
 	if(!module || module.type == /obj/item/robot_module)
@@ -995,7 +995,7 @@
 	hat_offset = module.hat_offset
 
 	magpulse = module.magpulsing
-	INVOKE_ASYNC(src, .proc/updatename)
+	INVOKE_ASYNC(src, PROC_REF(updatename))
 
 
 /mob/living/silicon/robot/proc/place_on_head(obj/item/new_hat)
@@ -1292,7 +1292,7 @@
 	switch(choice)
 		if("Resting")
 			update_icons()
-			return 0
+			return FALSE
 		if("Sitting")
 			sitting = 1
 		if("Belly up")

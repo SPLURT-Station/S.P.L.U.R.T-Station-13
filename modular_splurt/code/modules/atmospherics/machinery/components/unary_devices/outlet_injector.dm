@@ -2,7 +2,7 @@
 
 /obj/machinery/atmospherics/components/unary/outlet_injector/hilbertshotel/Initialize()
 	. = ..()
-	addtimer(CALLBACK(src, .proc/turn_on), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(turn_on)), 3 SECONDS)
 
 /obj/machinery/atmospherics/components/unary/outlet_injector/hilbertshotel/proc/turn_on()
 	on = TRUE

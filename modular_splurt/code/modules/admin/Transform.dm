@@ -124,4 +124,4 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 
 	if (M == adminMob)
 		adminMob = newMob
-	addtimer(CALLBACK(newMob.mob_panel, /datum.proc/ui_interact, adminMob), 0.1 SECONDS)
+	addtimer(CALLBACK(newMob.mob_panel, TYPE_PROC_REF(/datum, ui_interact), adminMob), 0.1 SECONDS)

@@ -13,6 +13,7 @@
 	flight_x_offset = 15
 	flight_y_offset = 9
 	automatic_charge_overlays = FALSE
+	var/has_empty_icon = TRUE
 	var/overheat_time = 16
 	var/holds_charge = FALSE
 	var/unique_frequency = FALSE // modified by KA modkits
@@ -137,7 +138,7 @@
 	if(!QDELING(src) && !holds_charge)
 		// Put it on a delay because moving item from slot to hand
 		// calls dropped().
-		addtimer(CALLBACK(src, .proc/empty_if_not_held), 2)
+		addtimer(CALLBACK(src, PROC_REF(empty_if_not_held)), 2)
 
 /obj/item/gun/energy/kinetic_accelerator/proc/empty_if_not_held()
 	if(!ismob(loc) && !istype(loc, /obj/item/integrated_circuit))
@@ -168,7 +169,7 @@
 		carried = 1
 
 	deltimer(recharge_timerid)
-	recharge_timerid = addtimer(CALLBACK(src, .proc/reload), recharge_time * carried, TIMER_STOPPABLE)
+	recharge_timerid = addtimer(CALLBACK(src, PROC_REF(reload)), recharge_time * carried, TIMER_STOPPABLE)
 
 /obj/item/gun/energy/kinetic_accelerator/emp_act(severity)
 	return
@@ -185,7 +186,7 @@
 
 /obj/item/gun/energy/kinetic_accelerator/update_overlays()
 	. = ..()
-	if(!can_shoot())
+	if(!can_shoot() && has_empty_icon)
 		. += "[icon_state]_empty"
 
 //Casing
@@ -203,7 +204,7 @@
 
 /obj/item/gun/energy/kinetic_accelerator/getstamcost(mob/living/carbon/user)
 	if(user && !lavaland_equipment_pressure_check(get_turf(user)))
-		return 0
+		return FALSE
 	else
 		return ..()
 

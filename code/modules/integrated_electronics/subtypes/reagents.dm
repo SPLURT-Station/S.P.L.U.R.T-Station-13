@@ -136,7 +136,7 @@
 			L.visible_message("<span class='danger'>[acting_object] is trying to inject [L]!</span>", \
 								"<span class='userdanger'>[acting_object] is trying to inject you!</span>")
 			busy = TRUE
-			if(do_atom(src, L, extra_checks=CALLBACK(L, /mob/living/proc/can_inject,null,0)))
+			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0)))
 				var/fraction = min(transfer_amount/reagents.total_volume, 1)
 				reagents.reaction(L, INJECT, fraction)
 				reagents.trans_to(L, transfer_amount)
@@ -165,7 +165,7 @@
 			L.visible_message("<span class='danger'>[acting_object] is trying to take a blood sample from [L]!</span>", \
 								"<span class='userdanger'>[acting_object] is trying to take a blood sample from you!</span>")
 			busy = TRUE
-			if(do_atom(src, L, extra_checks=CALLBACK(L, /mob/living/proc/can_inject,null,0)))
+			if(do_atom(src, L, extra_checks=CALLBACK(L, TYPE_PROC_REF(/mob/living, can_inject),null,0)))
 				if(L.transfer_blood_to(src, tramount))
 					L.visible_message("<span class='danger'>[acting_object] takes a blood sample from [L]!</span>", \
 					"<span class='userdanger'>[acting_object] takes a blood sample from you!</span>")
@@ -268,14 +268,14 @@
 		"volume used" = IC_PINTYPE_NUMBER,
 		"self reference" = IC_PINTYPE_SELFREF
 		)
-	activators = list("push ref" = IC_PINTYPE_PULSE_OUT)
+	activators = list("push ref" = IC_PINTYPE_PULSE_IN)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
 
 /obj/item/integrated_circuit/reagent/storage/Initialize(mapload)
 	. = ..()
 	reagents.reagents_holder_flags |= OPENCONTAINER
 
-/obj/item/integrated_circuit/reagent/storage/do_work()
+/obj/item/integrated_circuit/reagent/storage/do_work(ord)
 	set_pin_data(IC_OUTPUT, 2, WEAKREF(src))
 	push_data()
 
@@ -677,7 +677,7 @@
 		reagents.trans_to(W,1)
 
 	//Make em move dat ass, hun
-	addtimer(CALLBACK(src, /obj/item/integrated_circuit/reagent/extinguisher/proc/move_particles, water_particles), 2)
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/integrated_circuit/reagent/extinguisher, move_particles), water_particles), 2)
 
 //This whole proc is a loop
 /obj/item/integrated_circuit/reagent/extinguisher/proc/move_particles(var/list/particles, var/repetitions=0)
@@ -699,7 +699,7 @@
 			break
 	if(repetitions < 4)
 		repetitions++	//Can't have math operations in addtimer(CALLBACK())
-		addtimer(CALLBACK(src, /obj/item/integrated_circuit/reagent/extinguisher/proc/move_particles, particles, repetitions), 2)
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/item/integrated_circuit/reagent/extinguisher, move_particles), particles, repetitions), 2)
 	else
 		push_data()
 		activate_pin(2)
@@ -723,7 +723,7 @@
 	activators = list(
 		"on insert" = IC_PINTYPE_PULSE_OUT,
 		"on remove" = IC_PINTYPE_PULSE_OUT,
-		"push ref" = IC_PINTYPE_PULSE_OUT
+		"push ref" = IC_PINTYPE_PULSE_IN
 		)
 
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
@@ -733,6 +733,11 @@
 
 	var/obj/item/reagent_containers/glass/beaker/current_beaker
 
+/obj/item/integrated_circuit/input/beaker_connector/do_work(ord)
+	switch(ord)
+		if(3)
+			set_pin_data(IC_OUTPUT, 2, WEAKREF(current_beaker))
+			push_data()
 
 /obj/item/integrated_circuit/input/beaker_connector/attackby(var/obj/item/reagent_containers/I, var/mob/living/user)
 	//Check if it truly is a reagent container
@@ -761,7 +766,6 @@
 
 /obj/item/integrated_circuit/input/beaker_connector/ask_for_input(mob/user)
 	attack_self(user)
-
 
 /obj/item/integrated_circuit/input/beaker_connector/attack_self(mob/user)
 	//Check if no beaker attached

@@ -39,17 +39,19 @@
 	attached_atoms[target]++
 
 /datum/element/photosynthesis/Detach(datum/target)
-	attached_atoms[target]--
-	if(!attached_atoms[target])
-		attached_atoms -= target
-		if(!length(attached_atoms))
-			STOP_PROCESSING(SSobj, src)
-			attached_atoms = null
+	if(attached_atoms && LAZYLEN(attached_atoms))
+		attached_atoms[target]--
+		if(!attached_atoms[target])
+			attached_atoms -= target
+			if(!length(attached_atoms))
+				STOP_PROCESSING(SSobj, src)
+				attached_atoms = null
 	return ..()
 
 /datum/element/photosynthesis/process()
-	for(var/A in attached_atoms)
-		var/atom/movable/AM = A
+	for(var/atom/movable/AM as anything in attached_atoms)
+		if(isnull(AM))
+			continue
 		var/light_amount = 0 //how much light there is in the place, affects receiving nutrition and healing
 		if(isturf(AM.loc)) //else, there's considered to be no light
 			var/turf/T = AM.loc

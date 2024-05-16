@@ -34,7 +34,7 @@
 
 /datum/component/interaction_menu_granter/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_MOB_CTRLSHIFTCLICKON, .proc/open_menu)
+	RegisterSignal(parent, COMSIG_MOB_CTRLSHIFTCLICKON, PROC_REF(open_menu))
 
 /datum/component/interaction_menu_granter/Destroy(force, ...)
 	target = null
@@ -58,7 +58,7 @@
 	if(target)
 		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
 	target = clicked
-	RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/on_target_deleted)
+	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(on_target_deleted))
 	ui_interact(clicker)
 	return COMSIG_MOB_CANCEL_CLICKON
 

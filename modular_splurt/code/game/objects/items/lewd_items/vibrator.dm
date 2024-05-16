@@ -21,8 +21,8 @@
 /obj/item/electropack/vibrator/ComponentInitialize()
 	. = ..()
 	var/list/procs_list = list(
-		"before_inserting" = CALLBACK(src, .proc/item_inserting),
-		"after_inserting" = CALLBACK(src, .proc/item_inserted),
+		"before_inserting" = CALLBACK(src, PROC_REF(item_inserting)),
+		"after_inserting" = CALLBACK(src, PROC_REF(item_inserted)),
 	)
 	AddComponent(/datum/component/genital_equipment, list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_ANUS, ORGAN_SLOT_PENIS, ORGAN_SLOT_BREASTS, ORGAN_SLOT_BUTT, ORGAN_SLOT_BELLY), procs_list)
 

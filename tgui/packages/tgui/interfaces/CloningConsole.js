@@ -1,4 +1,3 @@
-import { map } from 'common/collections';
 import { useBackend } from '../backend';
 import { Box, Button, Collapsible, NoticeBox, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';

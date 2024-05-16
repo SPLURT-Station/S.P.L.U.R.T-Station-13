@@ -15,9 +15,11 @@ WEIGHTED_STATION_TRAITS
 # default is 24
 #BASE_SAVE_SLOTS 24
 
-# SM delamination
-# Comment to make the SM not explode
-SM_DELAMINATION
+# SM delamination cooldown
+# Configures tha amount of rounds that need to pass from the previous delam for another to happen again
+# If commented or 0 will enable delaminations every round
+# If -1 disables delams indefinitely
+#SM_DELAMINATION_COOLDOWN 0
 
 # Protolathe access
 # Comment to make protolathes and mechfabs use their access locks

@@ -94,7 +94,7 @@
 	act_hypno.Grant(quirk_mob)
 
 	// Add examine text
-	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/on_examine_holder)
+	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine_holder))
 
 /datum/quirk/Hypnotic_gaze/remove()
 	// Define quirk mob
@@ -255,7 +255,7 @@
 
 /datum/quirk/well_trained/add()
 	. = ..()
-	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/on_examine_holder)
+	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, PROC_REF(on_examine_holder))
 
 /datum/quirk/well_trained/remove()
 	. = ..()
@@ -573,8 +573,8 @@
 
 /datum/quirk/nudist/add()
 	// Register signal handlers
-	RegisterSignal(quirk_holder, COMSIG_MOB_UPDATE_GENITALS, .proc/check_outfit)
-	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, .proc/quirk_examine_nudist)
+	RegisterSignal(quirk_holder, COMSIG_MOB_UPDATE_GENITALS, PROC_REF(check_outfit))
+	RegisterSignal(quirk_holder, COMSIG_PARENT_EXAMINE, PROC_REF(quirk_examine_nudist))
 
 /datum/quirk/nudist/remove()
 	// Remove mood event
@@ -722,3 +722,12 @@
 	gain_text = span_lewd("You feel like covering something in layer of your fluids.")
 	lose_text = span_notice("You don't feel 'messy' anymore.")
 	medical_record_text = "Had to be sedated after covering entire hospital wing with cum."
+
+/datum/quirk/kiss_slut
+	name = "Kiss Slut"
+	desc = "The sheer thought of kissing someone makes you blush and overheat, effectively increasing your arousal with each smooch."
+	value = 0
+	mob_trait = TRAIT_KISS_SLUT
+	gain_text = span_lewd("You feel like kissing someone...")
+	lose_text = span_notice("You don't feel like kissing someone anymore...")
+	medical_record_text = "Patient seems to demonstrate an extraordinary liking in kissing."

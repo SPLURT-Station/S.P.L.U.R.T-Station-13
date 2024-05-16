@@ -97,7 +97,7 @@
 			return ITALICS | REDUCE_RANGE
 		//
 
-	return 0
+	return FALSE
 
 /mob/living/carbon/human/get_alt_name()
 	if(name != GetVoice())

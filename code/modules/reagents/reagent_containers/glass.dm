@@ -7,13 +7,10 @@
 	spillable = TRUE
 	resistance_flags = ACID_PROOF
 	container_HP = 2
+	var/gulp_size = 5
+	var/beingChugged = FALSE
 
 /obj/item/reagent_containers/glass/attack(mob/M, mob/user, obj/target)
-	// WARNING: This entire section is shitcode and prone to breaking at any time.
-	INVOKE_ASYNC(src, .proc/attempt_feed, M, user, target)		// for example, the arguments in this proc are wrong
-	// but i don't have time to properly fix it right now.
-
-/obj/item/reagent_containers/glass/proc/attempt_feed(mob/M, mob/user, obj/target)
 	if(!canconsume(M, user))
 		return
 
@@ -24,6 +21,8 @@
 		to_chat(user, "<span class='warning'>[src] is empty!</span>")
 		return
 
+	var/gulp_amount = gulp_size
+	var/self_fed = M == user
 	if(istype(M))
 		if(user.a_intent == INTENT_HARM)
 			M.visible_message("<span class='danger'>[user] splashes the contents of [src] onto [M]!</span>", \
@@ -41,8 +40,26 @@
 			log_reagent("SPLASH: attack(target mob [key_name(M)] at [AREACOORD(MT)], from user [key_name(user)] at [AREACOORD(UT)], target object [target] at [AREACOORD(OT)]) - [R]")
 			reagents.clear_reagents()
 		else
-			var/self_fed = M == user
-			if(!self_fed)
+			if(self_fed)
+				if(user.zone_selected == BODY_ZONE_PRECISE_MOUTH && !beingChugged)
+					beingChugged = TRUE
+					user.visible_message("<span class='notice'>[user] starts chugging [src].</span>", \
+						"<span class='notice'>You start chugging [src].</span>")
+					if(!do_mob(user, M))
+						beingChugged = FALSE
+						return
+					if(!reagents || !reagents.total_volume)
+						beingChugged = FALSE
+						return
+					gulp_amount = 50
+					user.visible_message(span_notice("[user] chugs [src]."), \
+						span_notice("You chug [src]."))
+					beingChugged = FALSE
+				else
+					var/turf/T = get_turf(user)
+					to_chat(user, "<span class='notice'>You swallow a gulp of [src].</span>")
+					log_reagent("INGESTION: SELF: [key_name(user)] (loc [user.loc] at [AREACOORD(T)]) - [reagents.log_list()]")
+			else
 				M.visible_message("<span class='danger'>[user] attempts to feed something to [M].</span>", \
 							"<span class='userdanger'>[user] attempts to feed something to you.</span>")
 				log_combat(user, M, "is attempting to feed", reagents.log_list())
@@ -55,14 +72,11 @@
 				M.visible_message("<span class='danger'>[user] feeds something to [M].</span>", "<span class='userdanger'>[user] feeds something to you.</span>")
 				log_combat(user, M, "fed", reagents.log_list())
 				log_reagent("INGESTION: FED BY: [key_name(user)] (loc [user.loc] at [AREACOORD(UT)]) -> [key_name(M)] (loc [M.loc] at [AREACOORD(MT)]) - [reagents.log_list()]")
-			else
-				var/turf/T = get_turf(user)
-				to_chat(user, "<span class='notice'>You swallow a gulp of [src].</span>")
-				log_reagent("INGESTION: SELF: [key_name(user)] (loc [user.loc] at [AREACOORD(T)]) - [reagents.log_list()]")
-			var/fraction = min(5/reagents.total_volume, 1)
+			var/fraction = min(gulp_amount/reagents.total_volume, 1)
 			reagents.reaction(M, INGEST, fraction)
-			addtimer(CALLBACK(reagents, /datum/reagents.proc/trans_to, M, 5, null, null, null, self_fed? "self swallowed" : "fed by [user]"), 5)
+			reagents.trans_to(M, gulp_amount, log = TRUE)
 			playsound(M.loc,'sound/items/drink.ogg', rand(10,50), 1)
+			return TRUE
 
 /obj/item/reagent_containers/glass/afterattack(obj/target, mob/user, proximity)
 	. = ..()

@@ -493,7 +493,7 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 /mob/living/simple_animal/pet/dog/corgi/Ian/BiologicalLife()
 	if(!(. = ..()))
 		return
-	INVOKE_ASYNC(src, .proc/corgi_ai_behavior)
+	INVOKE_ASYNC(src, PROC_REF(corgi_ai_behavior))
 
 /mob/living/simple_animal/pet/dog/corgi/Ian/proc/corgi_ai_behavior()
 	//Feeding, chasing food, FOOOOODDDD
@@ -669,7 +669,7 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 	vocal_pitch = 0.6
 
 /mob/living/simple_animal/pet/dog/corgi/puppy/void/Process_Spacemove(movement_dir = 0)
-	return 1	//Void puppies can navigate space.
+	return TRUE	//Void puppies can navigate space.
 
 
 //LISA! SQUEEEEEEEEE~

@@ -4028,10 +4028,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(findtext(usr_input, "discordapp"))
 						to_chat(usr, span_admin("You cannot use Discord images, as they are auto-deleted regularly! Try Catbox.moe or Gyazo instead!"))
 						return
+					// Discord will auto-delete images often, meaning users will see their headshot show up, think all is fine, but three days later their link will be broken.
 
 					if(findtext(usr_input, "imgur"))
-						to_chat(usr, span_warning("Please only use Imgur links if your image is SFW! Imgur will delete NSFW images!"))
-						// Don't return! It's fine, just tell the user that this is kinda iffy.
+						to_chat(usr, span_admin("You cannot use Imgur images, as they regularly delete NSFW images as well as many borderline SFW too! Try Catbox.moe or Gyazo instead!"))
+						return
+					// Whilst Imgur does not ban SFW images, many SFW images that look questionable will be nuked.
 
 					if(!findtext(usr_input, end_regex, -8))
 						to_chat(usr, span_warning("You need either \".png\", \".jpg\", or \".jpeg\" in the link!"))

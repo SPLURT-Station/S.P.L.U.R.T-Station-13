@@ -1395,7 +1395,7 @@
 
 /datum/action/cooldown/symbiote/transform
 	name = "Toggle Symbiote Form"
-	desc = "Transform in or out of your wolf form."
+	desc = "Become one with your symbiote form."
 	var/transformed = FALSE
 	var/species_changed = FALSE
 	var/symbiote_gender = "Lycan"

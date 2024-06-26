@@ -486,7 +486,7 @@
 	quirk_action.Remove(quirk_holder)
 
 /datum/quirk/symbiote //adds the symbiote quirk
-	name = "symbiote"
+	name = "Symbiote"
 	desc = "An alien parasite resides within you, allowing you to swap between a human and slime like appearance."
 	value = 0
 	mob_trait = TRAIT_SYMBIOTE
@@ -510,7 +510,7 @@
 	old_features["bark"] = quirk_mob.vocal_bark_id
 	old_features["taur"] = quirk_mob.dna.features["taur"]
 	old_features["eye_type"] = quirk_mob.dna.species.eye_type
-
+	old_features["color"] = quirk_mob.dna.species.mutant_color
 /datum/quirk/symbiote/post_add()
 	// Define quirk action
 	var/datum/action/cooldown/symbiote/transform/quirk_action = new

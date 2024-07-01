@@ -36,6 +36,7 @@
 		"blank"				= list("icon_state" = "pin_blank"),
 		"green"				= list("icon_state" = "pin_green"),
 		"yellow"			= list("icon_state" = "pin_yellow"),
+		"purple"			= list("icon_state" = "pin_purple"),
 		"mute"				= list("icon_state" = "pin_mute"),
 		"xenophilia"		= list("icon_state" = "pin_xenophilia"),
 		"peace"				= list("icon_state" = "pin_peace"),

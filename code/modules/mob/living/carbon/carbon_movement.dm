@@ -51,3 +51,15 @@
 		return
 	if(!other.lying && lying)		//they're up, we're down.
 		return FALSE
+
+// SPLURT EDIT - FERALS
+/mob/living/carbon/update_resting(update_mobility = TRUE)
+	. = ..()
+	if(!update_mobility && IsFeral())//Update mobility will do it for us otherwise.
+		update_body()
+
+/mob/living/carbon/update_mobility()
+	. = ..()
+	if(IsFeral())
+		update_body()
+// SPLURT EDIT END

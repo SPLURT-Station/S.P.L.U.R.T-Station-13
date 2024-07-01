@@ -13,6 +13,16 @@
 	var/icon_suit
 	var/icon_uniform
 
+	var/rotate_on_lying = TRUE
+	/// The icon file to use if your species has a non-humanoid body. (FERAL species trait)
+	var/simple_icon
+	/// The width of the simple_icon file. Used to auto-center your sprite.
+	var/simple_icon_width = 32
+	/// This is appended to the end of the "id" variable in order to set the DEAD icon state of species that use the simple_icon
+	var/icon_dead_suffix
+	/// This is appended to the end of the "id" variable in order to set the RESTING/PRONE icon state of species that use the simple_icon
+	var/icon_rest_suffix
+
 
 /datum/species/althelp(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	if(user == target && istype(user))

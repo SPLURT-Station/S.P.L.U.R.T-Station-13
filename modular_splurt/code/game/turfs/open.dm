@@ -23,9 +23,8 @@
 /turf/open/floor/grass/layeniasand/burn_tile()
 	return
 
-/turf/open/floor/grass/layeniasand/acid_act(acidpwr, acid_volume)
-	acidpwr = min(acidpwr, 50)
-	. = ..()
+/turf/open/floor/grass/layeniasand/acid_act()
+	return
 
 /turf/closed/mineral/ash_rock/layenia
 	name = "crimson rock"
@@ -59,8 +58,7 @@
 	return
 
 /turf/open/floor/plating/layeniaredder/acid_act(acidpwr, acid_volume)
-	acidpwr = min(acidpwr, 50)
-	. = ..()
+	return
 
 /turf/open/openspace
 	heat_capacity = INFINITY

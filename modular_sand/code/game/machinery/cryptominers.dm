@@ -302,10 +302,10 @@
 	icon_state = "off_nano"
 	density = TRUE
 	use_power = IDLE_POWER_USE
-	idle_power_usage = 1
-	active_power_usage = 1
-	miningtime = 600000
-	miningpoints = 1000
+	idle_power_usage = 5
+	active_power_usage = 50
+	miningtime = 12000
+	miningpoints = 200
 	radio_snitch = FALSE // None of cargo's business!
 
 /obj/machinery/cryptominer/nanotrasen/update_icon()

@@ -14,6 +14,14 @@
 	design_ids = list("cryptominersyndie")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 
+/datum/techweb_node/cryptominernanotrasen
+	id = "cryptominernanotrasen"
+	display_name = "Void Cryptocurrency Mining"
+	description = "Harness the power of void to make credits for Cargo-- slowly."
+	prereq_ids = list("cryptominer","syndicate_basic","cryptominersyndie","alien_stockparts")
+	design_ids = list("cryptominernanotrasen")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 25000)
+
 /datum/techweb_node/computermath
 	id = "computermath"
 	display_name = "Problem Computer"

@@ -49,6 +49,14 @@
 	category = list("Misc. Machinery")
 	departmental_flags = DEPARTMENTAL_FLAG_CARGO
 
+/datum/design/board/cryptominer/nanotrasen
+	name = "Machine Design (Nanotrasen Cryptocurrency Miner)"
+	desc = "The circuit board for a Nanotrasen Cryptocurrency Miner."
+	id = "cryptominernanotrasen"
+	build_path = /obj/item/circuitboard/machine/cryptominer/nanotrasen
+	category = list("Misc. Machinery")
+	departmental_flags = DEPARTMENTAL_FLAG_CARGO
+
 //BS miner
 /datum/design/board/bluespace_miner
 	name = "Machine Design (Bluespace Miner)"

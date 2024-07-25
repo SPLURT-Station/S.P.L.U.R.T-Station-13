@@ -147,7 +147,7 @@
 			new /obj/item/storage/belt/champion(src)
 			new /obj/item/clothing/mask/luchador(src)
 		if(100)
-			new /obj/item/clothing/head/bearpelt(src)
+			new /obj/item/stack/spacecash/c10000(src, 100)
 
 /obj/structure/closet/crate/secure/loot/on_attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
 	if(locked)

@@ -304,8 +304,8 @@
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 1
 	active_power_usage = 1
-	miningtime = 18000
-	miningpoints = 300
+	miningtime = 12000
+	miningpoints = 200
 	radio_snitch = FALSE // None of cargo's business!
 
 /obj/machinery/cryptominer/nanotrasen/update_icon()

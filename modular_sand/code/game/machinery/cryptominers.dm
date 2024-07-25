@@ -297,15 +297,15 @@
 		icon_state = "on_syndie"
 
 /obj/machinery/cryptominer/nanotrasen
-	name = "nanotrasen cryptocurrency miner"
+	name = "void cryptocurrency miner"
 	desc = "This handy-dandy machine will produce credits for your enjoyment. This doesn't turn off easily."
 	icon_state = "off_nano"
 	density = TRUE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 1
 	active_power_usage = 1
-	miningtime = 600000
-	miningpoints = 1000
+	miningtime = 18000
+	miningpoints = 300
 	radio_snitch = FALSE // None of cargo's business!
 
 /obj/machinery/cryptominer/nanotrasen/update_icon()

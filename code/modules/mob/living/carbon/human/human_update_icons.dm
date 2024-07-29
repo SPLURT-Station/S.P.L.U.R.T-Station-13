@@ -67,7 +67,8 @@ There are several things that need to be remembered:
 		remove_overlay(BODY_LAYER)
 		dna.species.handle_body(src, block_recursive_calls)
 		..()
-		if(update_genitals)
+		//if(update_genitals)
+		if(update_genitals && !IsFeral()) // SPLURT EDIT - FERALS
 			update_genitals()
 
 /mob/living/carbon/human/update_fire()
@@ -145,6 +146,10 @@ There are several things that need to be remembered:
 				if(hud_used.inventory_shown)
 					client.screen += w_uniform
 			update_observer_view(w_uniform,1)
+			// SPLURT EDIT - FERALS
+			if(IsFeral())
+				return
+			// SPLURT EDIT END
 
 			if(wear_suit && (wear_suit.flags_inv & HIDEJUMPSUIT))
 				return
@@ -349,6 +354,10 @@ There are several things that need to be remembered:
 			if(client && hud_used && hud_used.hud_shown)
 				client.screen += wear_id
 			update_observer_view(wear_id)
+			// SPLURT EDIT - FERALS
+			if(IsFeral())
+				return
+			// SPLURT EDIT END
 
 			//TODO: add an icon file for ID slot stuff, so it's less snowflakey
 			id_overlay = wear_id.build_worn_icon(default_layer = ID_LAYER, default_icon_file = 'icons/mob/mob.dmi', override_state = wear_id.item_state)
@@ -367,7 +376,8 @@ There are several things that need to be remembered:
 			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_GLOVES) + 1]
 			inv.update_icon()
 
-		if(!gloves && bloody_hands)
+		//if(!gloves && bloody_hands)
+		if(!gloves && bloody_hands && !IsFeral()) // SPLURT EDIT - FERALS
 			var/mutable_appearance/bloody_overlay = mutable_appearance('icons/effects/blood.dmi', "bloodyhands", -GLOVES_LAYER, color = blood_DNA_to_color(), blend_mode = blood_DNA_to_blend())
 			if(get_num_arms(FALSE) < 2)
 				if(has_left_hand(FALSE))
@@ -378,7 +388,8 @@ There are several things that need to be remembered:
 			overlays_standing[GLOVES_LAYER] = bloody_overlay
 
 		var/mutable_appearance/gloves_overlay = overlays_standing[GLOVES_LAYER]
-		if(gloves)
+		//if(gloves)
+		if(!IsFeral() && gloves) // SPLURT EDIT - FERALS
 			gloves.screen_loc = ui_gloves
 			if(client && hud_used && hud_used.hud_shown)
 				if(hud_used.inventory_shown)
@@ -447,17 +458,18 @@ There are several things that need to be remembered:
 				if(hud_used.inventory_shown)			//if the inventory is open ...
 					client.screen += glasses				//Either way, add the item to the HUD
 			update_observer_view(glasses,1)
-			if(!(head && (head.flags_inv & HIDEEYES)) && !(wear_mask && (wear_mask.flags_inv & HIDEEYES)))
-				var/icon_chosen = 'icons/mob/clothing/eyes.dmi'
-				if(dna.species.icon_eyes)
-					icon_chosen = dna.species.icon_eyes
-				overlays_standing[GLASSES_LAYER] = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = icon_chosen, override_state = glasses.icon_state)
-			var/mutable_appearance/glasses_overlay = overlays_standing[GLASSES_LAYER]
-			if(glasses_overlay)
-				if(OFFSET_GLASSES in dna.species.offset_features)
-					glasses_overlay.pixel_x += dna.species.offset_features[OFFSET_GLASSES][1]
-					glasses_overlay.pixel_y += dna.species.offset_features[OFFSET_GLASSES][2]
-				overlays_standing[GLASSES_LAYER] = glasses_overlay
+			if(!IsFeral()) // SPLURT EDIT - FERALS
+				if(!(head && (head.flags_inv & HIDEEYES)) && !(wear_mask && (wear_mask.flags_inv & HIDEEYES)))
+					var/icon_chosen = 'icons/mob/clothing/eyes.dmi'
+					if(dna.species.icon_eyes)
+						icon_chosen = dna.species.icon_eyes
+					overlays_standing[GLASSES_LAYER] = glasses.build_worn_icon(default_layer = GLASSES_LAYER, default_icon_file = icon_chosen, override_state = glasses.icon_state)
+				var/mutable_appearance/glasses_overlay = overlays_standing[GLASSES_LAYER]
+				if(glasses_overlay)
+					if(OFFSET_GLASSES in dna.species.offset_features)
+						glasses_overlay.pixel_x += dna.species.offset_features[OFFSET_GLASSES][1]
+						glasses_overlay.pixel_y += dna.species.offset_features[OFFSET_GLASSES][2]
+					overlays_standing[GLASSES_LAYER] = glasses_overlay
 		apply_overlay(GLASSES_LAYER)
 
 /mob/living/carbon/human/update_inv_ears()
@@ -477,6 +489,10 @@ There are several things that need to be remembered:
 				if(hud_used.inventory_shown)			//if the inventory is open
 					client.screen += ears					//add it to the client's screen
 			update_observer_view(ears,1)
+			// SPLURT EDIT - FERALS
+			if(IsFeral())
+				return
+			// SPLURT EDIT END
 			var/icon_chosen = 'modular_sand/icons/mob/clothing/ears.dmi'
 			if(dna.species.icon_ears)
 				icon_chosen = dna.species.icon_ears
@@ -539,6 +555,10 @@ There are several things that need to be remembered:
 				if(hud_used.inventory_shown)			//if the inventory is open
 					client.screen += shoes					//add it to client's screen
 			update_observer_view(shoes,1)
+			// SPLURT EDIT - FERALS
+			if(IsFeral())
+				return
+			// SPLURT EDIT END
 
 			var/alt_icon = S.mob_overlay_icon || 'icons/mob/clothing/feet.dmi'
 			if(dna.species.icon_feet)
@@ -569,6 +589,10 @@ There are several things that need to be remembered:
 			if(client && hud_used && hud_used.hud_shown)
 				client.screen += s_store
 			update_observer_view(s_store)
+			// SPLURT EDIT - FERALS
+			if(IsFeral())
+				return
+			// SPLURT EDIT END
 			var/t_state = s_store.item_state
 			if(!t_state)
 				t_state = s_store.icon_state
@@ -583,6 +607,10 @@ There are several things that need to be remembered:
 				s_store_overlay.pixel_x += dna.species.offset_features[OFFSET_S_STORE][1]
 				s_store_overlay.pixel_y += dna.species.offset_features[OFFSET_S_STORE][2]
 			overlays_standing[SUIT_STORE_LAYER] = s_store_overlay
+		// SPLURT EDIT - FERALS
+		if(IsFeral())
+			return
+		// SPLURT EDIT END
 		apply_overlay(SUIT_STORE_LAYER)
 
 /mob/living/carbon/human/update_inv_head(block_recursive_calls = FALSE)
@@ -603,6 +631,10 @@ There are several things that need to be remembered:
 					client.screen += head
 			update_observer_view(head,1)
 			remove_overlay(HEAD_LAYER)
+			// SPLURT EDIT - FERALS
+			if(IsFeral())
+				return
+			// SPLURT EDIT END
 			var/obj/item/clothing/head/H = head
 			var/alt_icon = H.mob_overlay_icon || 'icons/mob/clothing/head.dmi'
 			if(dna.species.icon_head)
@@ -640,6 +672,10 @@ There are several things that need to be remembered:
 			if(client && hud_used && hud_used.hud_shown)
 				client.screen += belt
 			update_observer_view(belt)
+			// SPLURT EDIT - FERALS
+			if(IsFeral())
+				return
+			// SPLURT EDIT END
 			var/icon_chosen = 'icons/mob/clothing/belt.dmi'
 			if(dna.species.icon_belt)
 				icon_chosen = dna.species.icon_belt
@@ -666,6 +702,10 @@ There are several things that need to be remembered:
 				if(hud_used.inventory_shown)
 					client.screen += wear_suit
 			update_observer_view(wear_suit,1)
+			// SPLURT EDIT - FERALS
+			if(IsFeral())
+				return
+			// SPLURT EDIT END
 
 			var/worn_icon = wear_suit.mob_overlay_icon || 'icons/mob/clothing/suit.dmi'
 			if(dna.species.icon_suit)
@@ -757,6 +797,10 @@ There are several things that need to be remembered:
 				if(hud_used.inventory_shown)
 					client.screen += wear_mask
 			update_observer_view(wear_mask,1)
+			// SPLURT EDIT - FERALS
+			if(IsFeral())
+				return
+			// SPLURT EDIT END
 			var/obj/item/clothing/mask/M = wear_mask
 			remove_overlay(FACEMASK_LAYER)
 			var/alt_icon = M.mob_overlay_icon || 'icons/mob/clothing/mask.dmi'
@@ -937,6 +981,7 @@ use_mob_overlay_icon: if FALSE, it will always use the default_icon_file even if
 	. = "[dna.species.mutant_bodyparts["limbs_id"]]"
 	. += "[dna.features["color_scheme"]]"
 
+	/*
 	if(dna.check_mutation(HULK))
 		. += "-coloured-hulk"
 	else if(dna.species.use_skintones)
@@ -947,6 +992,22 @@ use_mob_overlay_icon: if FALSE, it will always use the default_icon_file even if
 		. += "-coloured-[dna.features["mcolor"]]-[dna.features["mcolor2"]]-[dna.features["mcolor3"]]"
 	else
 		. += "-not_coloured"
+	*/
+	// SPLURT EDIT - FERALS
+	if(!IsFeral())
+		if(dna.check_mutation(HULK))
+			. += "-coloured-hulk"
+		else if(dna.species.use_skintones)
+			. += "-coloured-[skin_tone]"
+		else if(dna.species.fixed_mut_color)
+			. += "-coloured-[dna.species.fixed_mut_color]"
+		else if(dna.features["mcolor"])
+			. += "-coloured-[dna.features["mcolor"]]-[dna.features["mcolor2"]]-[dna.features["mcolor3"]]"
+		else
+			. += "-not_coloured"
+	else
+		. += "-not_coloured"
+	// SPLURT EDIT END
 
 	. += "-[dna.features["body_model"]]"
 
@@ -1022,7 +1083,8 @@ use_mob_overlay_icon: if FALSE, it will always use the default_icon_file even if
 	add_overlay(HD.get_limb_icon())
 	update_damage_overlays()
 
-	if(HD && !(HAS_TRAIT(src, TRAIT_HUSK)))
+	//if(HD && !(HAS_TRAIT(src, TRAIT_HUSK)))
+	if(HD && !(HAS_TRAIT(src, TRAIT_HUSK)) && !IsFeral()) // SPLURT EDIT - FERALS
 		// lipstick
 		if(lip_style && (LIPS in dna.species.species_traits))
 			var/mutable_appearance/lip_overlay = mutable_appearance('icons/mob/lips.dmi', "lips_[lip_style]", -BODY_LAYER)

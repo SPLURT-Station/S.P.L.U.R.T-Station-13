@@ -107,7 +107,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "beacon"
 	template_id = "reactor"
-	
+
 //Pod objects
 
 //Window
@@ -310,6 +310,15 @@
 	name = "air flow blocker"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	invisibility = INVISIBILITY_ABSTRACT
+
+// SPLURT Edit: (Added Forcefield fan)
+/obj/structure/fans/tiny/shield
+	icon = 'modular_splurt/icons/obj/machinery/atmos_fans.dmi'
+	icon_state = "fan_tiny_shield"
+	name = "Atmospheric Forcefield"
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+
+// SPLURT Edit End
 
 //Signs
 /obj/structure/sign/mining

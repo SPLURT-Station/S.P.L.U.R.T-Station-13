@@ -115,6 +115,7 @@ SUBSYSTEM_DEF(mapping)
 		for (var/lava_z in lava_ruins)
 			spawn_rivers(lava_z)
 
+	//Added by SPLURT (Xenoarcheology Z-Level)
 	var/list/lava_jungle_ruins = levels_by_trait(ZTRAIT_LAVA_JUNGLE_RUINS)
 	if (lava_jungle_ruins.len)
 		for (var/lava_z in lava_jungle_ruins)

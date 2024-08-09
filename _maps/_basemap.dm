@@ -18,6 +18,7 @@
 		#include "map_files\SyndicateStation\SyndicateBoxStation.dmm"
 		#include "splurt_maps\map_files\Smexistation\Snaxi_Splurt.dmm"
 		#include "map_files\BoxedInStation\BoxedInStation.dmm"
+		#include "map_files\splurt_maps\map_files\4Nal_station.dmm"
 
 		#ifdef CIBUILDING
 			#include "templates.dm"

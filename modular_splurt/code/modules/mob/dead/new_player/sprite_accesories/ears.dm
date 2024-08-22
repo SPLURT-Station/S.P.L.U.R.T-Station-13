@@ -139,3 +139,18 @@
 	icon_state = "renamon"
 	matrixed_sections = MATRIX_ALL
 	icon = 'modular_splurt/icons/mob/mam_ears.dmi'
+
+
+/datum/sprite_accessory/ears/human/bunnylarge
+	name = "Hare (Tall)"
+	icon = 'modular_splurt/icons/mob/32x64_mam_ears.dmi'
+	icon_state = "hare"
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_RED_GREEN
+
+/datum/sprite_accessory/ears/mam_ears/bunnylarge
+	name = "Hare (Tall)"
+	icon = 'modular_splurt/icons/mob/32x64_mam_ears.dmi'
+	icon_state = "hare"
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_RED_GREEN

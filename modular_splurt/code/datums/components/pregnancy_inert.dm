@@ -62,8 +62,11 @@
 		eggs_stored += 1
 		eggs_stored = min(3, eggs_stored)
 
-/datum/component/ovipositor/proc/on_climax(datum/source, datum/reagents/senders_cum, atom/target, obj/item/organ/genital/sender, obj/item/organ/genital/receiver, spill)
+/datum/component/ovipositor/proc/on_climax(datum/source, datum/reagents/senders_cum, atom/target, obj/item/organ/genital/sender, obj/item/organ/genital/receiver, spill, anonymous)
 	SIGNAL_HANDLER
+
+	if(prob(30))
+		return FALSE
 
 	var/obj/item/organ/genital/stuff = parent
 	if(stuff != sender && stuff.linked_organ != sender)
@@ -74,14 +77,11 @@
 
 	if(receiver && isliving(target))
 		if(CHECK_BITFIELD(receiver.genital_flags, GENITAL_CAN_STUFF))
-			return lay_eg(receiver, senders_cum)
-	return lay_eg(get_turf(carrier), senders_cum)
+			return lay_eg(receiver, senders_cum, anonymous)
+	return lay_eg(get_turf(carrier), senders_cum, anonymous)
 
-/datum/component/ovipositor/proc/lay_eg(atom/location, datum/reagents/senders_cum)
+/datum/component/ovipositor/proc/lay_eg(atom/location, datum/reagents/senders_cum, anonymous)
 	to_chat(carrier, span_userlove("You feel your egg sliding slowly inside!"))
-
-	if(prob(30))
-		return FALSE
 
 	if(isorgan(location))
 		var/obj/item/organ/recv = location
@@ -104,8 +104,14 @@
 		var/obj/item/organ/recv = location
 		var/datum/component/genital_equipment/equipment = eggo.GetComponent(/datum/component/genital_equipment)
 		equipment.holder_genital = recv
-		carrier.visible_message(span_userlove("[carrier] laid an egg!"), \
-			span_userlove("You laid an egg inside [recv.owner]'s [recv]"))
+		if(anonymous)
+			carrier.visible_message(span_userlove("[carrier] laid an egg!"), \
+				span_userlove("You laid an egg inside someone's [recv]"))
+			to_chat(recv, span_userlove("Someone laid an egg in you!"))
+		else
+			carrier.visible_message(span_userlove("[carrier] laid an egg!"), \
+				span_userlove("You laid an egg inside [recv.owner]'s [recv]"))
+			to_chat(recv, span_userlove("[carrier] laid an egg in you!"))
 	else
 		carrier.visible_message(span_notice("[carrier] laid an egg!"), \
 			span_nicegreen("The egg came out!"))

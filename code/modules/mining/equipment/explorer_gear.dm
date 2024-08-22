@@ -2,8 +2,8 @@
 /obj/item/clothing/suit/hooded/explorer
 	name = "explorer suit"
 	desc = "An armoured suit for exploring harsh environments."
-	icon_state = "explorer"
-	item_state = "explorer"
+	icon_state = "explorer-normal"
+	item_state = "explorer-normal"
 	var/suit_type = "normal"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	cold_protection = CHEST|GROIN|LEGS|ARMS

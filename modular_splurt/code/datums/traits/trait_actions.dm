@@ -1473,6 +1473,8 @@
 	// Thickness of glow outline
 	var/glow_range
 
+	// Alpha of the glow outline
+	var/glow_intensity
 
 /datum/action/cosglow/update_glow/Grant()
 	. = ..()
@@ -1480,9 +1482,12 @@
 	// Define user mob
 	var/mob/living/carbon/human/action_mob = owner
 
+	// Default glow intensity to 48 (in decimal)
+	glow_intensity = "30"
+
 	// Add outline effect
 	if(glow_color && glow_range)
-		action_mob.add_filter("rad_fiend_glow", 1, list("type" = "outline", "color" = glow_color+"30", "size" = glow_range))
+		action_mob.add_filter("rad_fiend_glow", 1, list("type" = "outline", "color" = glow_color + glow_intensity, "size" = glow_range))
 
 /datum/action/cosglow/update_glow/Remove()
 	. = ..()
@@ -1515,9 +1520,19 @@
 	// Input is clamped in the 0-4 range
 	glow_range = isnull(input_range) ? glow_range : clamp(input_range, 0, 4) //More customisable, so you know when you're looking at someone with Radfiend (doom) or a normal player.
 
+	// Ask user for intensity input
+	var/input_intensity = input(action_mob, "How intense is your glow? Value may range between 0 to 255. 0 disables glow.", "Select Glow Intensity", hex2num(glow_intensity)) as num|null
+
+	// Check if intensity input was given and clamp it
+	// If no input is given, reset to stored intensity
+	var/intensity_clamped = isnull(input_intensity) ? hex2num(glow_intensity) : clamp(input_intensity, 0, 255)
+
+	// Update glow intensity
+	glow_intensity = num2hex(intensity_clamped)
+
 	// Update outline effect
 	if(glow_range && glow_color)
-		action_mob.add_filter("rad_fiend_glow", 1, list("type" = "outline", "color" = glow_color+"30", "size" = glow_range))
+		action_mob.add_filter("rad_fiend_glow", 1, list("type" = "outline", "color" = glow_color + glow_intensity, "size" = glow_range))
 	else
 		action_mob.remove_filter("rad_fiend_glow")
 

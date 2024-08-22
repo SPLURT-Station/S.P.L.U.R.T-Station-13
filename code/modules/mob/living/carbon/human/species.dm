@@ -1618,8 +1618,19 @@ GLOBAL_LIST_EMPTY(roundstart_race_names)
 			//
 			H.update_inv_wear_suit()
 
+
+	//SPLURT: If you haven't walked into a different tile in 5 minutes, don't drain hunger/thirst.
+	if(H.client && (((world.time - H.client?.last_move)) > 5 MINUTES))
+		if(!H.insanelycomfy)
+			to_chat(H, span_notice("You feel comfy."))
+			H.insanelycomfy = TRUE
+	else if(H.insanelycomfy)
+		to_chat(H, span_notice("You no longer feel comfy."))
+		H.insanelycomfy = FALSE
+	//SPLURT ADDITION
+
 	// nutrition decrease and satiety
-	if (H.nutrition > 0 && H.stat != DEAD && !HAS_TRAIT(H, TRAIT_NOHUNGER))
+	if (H.nutrition > 0 && H.stat != DEAD && !HAS_TRAIT(H, TRAIT_NOHUNGER) && !H.insanelycomfy)
 		// THEY HUNGER
 		var/hunger_rate = HUNGER_FACTOR
 		var/datum/component/mood/mood = H.GetComponent(/datum/component/mood)

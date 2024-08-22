@@ -55,6 +55,10 @@
 	destination.dna.features = features.Copy()
 	destination.set_species(species.type, icon_update=0)
 	destination.dna.species.say_mod = species.say_mod
+	// Added by SPLURT (Custom Blood Color)
+	destination.dna.species.exotic_blood_color = species.exotic_blood_color
+	destination.dna.species.exotic_blood_blend_mode = species.exotic_blood_blend_mode
+	// SPLURT Edit end
 	destination.dna.real_name = real_name
 	destination.dna.nameless = nameless
 	destination.dna.custom_species = custom_species

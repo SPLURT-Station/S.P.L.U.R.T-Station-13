@@ -748,9 +748,9 @@
 	description = "Give them a thighjob."
 	require_user_legs = REQUIRE_ANY
 	require_user_num_legs = 2
-	required_from_target_exposed = NONE
+	required_from_target_exposed = INTERACTION_REQUIRE_PENIS
 	required_from_target_unexposed = NONE
-	required_from_user_exposed = INTERACTION_REQUIRE_PENIS
+	required_from_user_exposed = NONE
 	required_from_user_unexposed = NONE
 	write_log_user = "Gave a thighjob"
 	write_log_target = "Got a thighjob from"

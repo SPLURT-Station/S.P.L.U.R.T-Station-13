@@ -144,8 +144,8 @@
 /obj/effect/gibspawner/slime
 	gibtypes = list(/obj/effect/decal/cleanable/blood/gibs/slime/up, /obj/effect/decal/cleanable/blood/gibs/slime/down, /obj/effect/decal/cleanable/blood/gibs/slime, /obj/effect/decal/cleanable/blood/gibs/slime, /obj/effect/decal/cleanable/blood/gibs/slime/body, /obj/effect/decal/cleanable/blood/gibs/slime/limb, /obj/effect/decal/cleanable/blood/gibs/slime/core)
 	gibamounts = list(1, 1, 1, 1, 1, 1, 1)
-	gib_mob_type = /mob/living/carbon/human/species/roundstartslime
-	gib_mob_species = /datum/species/jelly/roundstartslime
+	gib_mob_type = /mob/living/carbon/human/species/slime/roundstartslime
+	gib_mob_species = /datum/species/jelly/slime/roundstartslime
 	sound_vol = 50
 
 /obj/effect/gibspawner/slime/Initialize(mapload)

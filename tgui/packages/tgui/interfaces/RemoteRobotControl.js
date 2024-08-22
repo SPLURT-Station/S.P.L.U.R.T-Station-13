@@ -21,6 +21,7 @@ export const RemoteRobotControlContent = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     robots = [],
+    commandeering,
   } = data;
   if (!robots.length) {
     return (
@@ -47,6 +48,7 @@ export const RemoteRobotControlContent = (props, context) => {
             <Button
               icon="phone-alt"
               content="Call"
+              selected={robot.ref === commandeering}
               onClick={() => act('callbot', {
                 ref: robot.ref,
               })} />

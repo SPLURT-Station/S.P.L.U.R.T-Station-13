@@ -342,6 +342,20 @@
 	center = TRUE
 	matrixed_sections = MATRIX_RED_GREEN
 
+/datum/sprite_accessory/tails/mam_tails/leopard
+	name = "Leopard Tail"
+	icon_state = "leopard"
+	color_src = MATRIXED
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	matrixed_sections = MATRIX_RED_BLUE
+
+/datum/sprite_accessory/tails_animated/mam_tails_animated/leopard
+	name = "Leopard Tail"
+	icon_state = "leopard"
+	color_src = MATRIXED
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	matrixed_sections = MATRIX_RED_BLUE
+
 //Human tails
 /datum/sprite_accessory/tails/human/deer
 	name = "Deer"
@@ -472,3 +486,19 @@
 	icon_state = "spade"
 	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
 	matrixed_sections = MATRIX_RED
+
+/datum/sprite_accessory/tails/human/leopard
+	name = "Leopard Tail"
+	icon_state = "leopard"
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_RED_BLUE
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
+
+/datum/sprite_accessory/tails_animated/human/leopard
+	name = "Leopard Tail"
+	icon_state = "leopard"
+	color_src = MATRIXED
+	matrixed_sections = MATRIX_RED_BLUE
+	icon = 'modular_splurt/icons/mob/mam_tails.dmi'
+	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)

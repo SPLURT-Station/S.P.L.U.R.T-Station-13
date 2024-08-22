@@ -1,3 +1,16 @@
+/datum/preferences
+	/// My favorites! they show up in their own tab inside the ui.
+	var/list/favorite_interactions
+
+	/// Enable the 'arousal_multiplier' to be applied to lust amount
+	var/use_arousal_multiplier = FALSE
+	/// A separate arousal multiplier that the user has control of (although we could just tap into lust or replace it.)
+	var/arousal_multiplier = 100
+	/// Enable the 'moaning_multiplier' to be used as a % chance of moaning instead of default calculation.
+	var/use_moaning_multiplier = FALSE
+	/// Chance of moaning during an interaction
+	var/moaning_multiplier = 65
+
 //SANDSTORM EDIT - extra language
 /datum/preferences/proc/SetLanguage(mob/user)
 	var/list/dat = list()

@@ -92,6 +92,9 @@
 		VC = new /obj/effect/proc_holder/silicon/cyborg/vtecControl
 		R.AddAbility(VC)
 		R.cansprint = 0
+		var/datum/hud/robot/robohud = R.hud_used
+		if(istype(robohud))
+			robohud.assert_move_intent_ui()
 
 /obj/item/borg/upgrade/vtec/deactivate(mob/living/silicon/robot/R, user = usr)
 	. = ..()
@@ -99,6 +102,9 @@
 		R.RemoveAbility(VC)
 		R.vtec = initial(R.vtec)
 		R.cansprint = 1
+		var/datum/hud/robot/robohud = R.hud_used
+		if(istype(robohud))
+			robohud.assert_move_intent_ui()
 
 /obj/item/borg/upgrade/disablercooler
 	name = "cyborg rapid energy blaster cooling module"
@@ -220,7 +226,7 @@
 	icon_state = "cyborg_upgrade3"
 	require_module = TRUE
 	module_type = list(/obj/item/robot_module/miner)
-	module_flags = BORG_MODULE_MINER // SANDSTORM EDIT
+	module_flags = BORG_MODULE_MINER
 
 /obj/item/borg/upgrade/premiumka/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()

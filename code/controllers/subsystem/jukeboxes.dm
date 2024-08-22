@@ -13,6 +13,16 @@
 #define JUKE_FALLOFF 4
 #define JUKE_SOUND 5
 
+// Track data
+/// Name of the track
+#define TRACK_NAME 1
+/// Length of the track (in deciseconds)
+#define TRACK_LENGTH 2
+/// BPM of the track (in deciseconds)
+#define TRACK_BEAT 3
+/// Unique code-facing identifier for this track
+#define TRACK_ID 4
+
 
 SUBSYSTEM_DEF(jukeboxes)
 	name = "Jukeboxes"
@@ -105,6 +115,8 @@ SUBSYSTEM_DEF(jukeboxes)
 	return FALSE
 
 /datum/controller/subsystem/jukeboxes/Initialize()
+	init_channels()
+
 	var/list/tracks = flist("config/jukebox_music/sounds/")
 	//SPLURT EDIT
 	var/max_tracks = CONFIG_GET(number/max_jukebox_songs)
@@ -112,18 +124,57 @@ SUBSYSTEM_DEF(jukeboxes)
 		while(tracks.len > max_tracks)
 			LAZYREMOVE(tracks, pick(tracks))
 	//SPLURT EDIT END
-	for(var/S in tracks)
-		var/datum/track/T = new()
-		T.song_path = file("config/jukebox_music/sounds/[S]")
-		var/list/L = splittext(S,"+")
-		T.song_name = L[1]
-		T.song_length = text2num(L[2])
-		T.song_beat = text2num(L[3])
-		T.song_associated_id = L[4]
-		songs |= T
+	for(var/track in tracks)
+		var/datum/track/track_datum = add_track(track)
+		if(!track_datum)
+			continue
+		songs |= track_datum
+
+	return ..()
+
+/// Creates audio channels for jukeboxes to use, run first to prevent init failing to fill this
+/datum/controller/subsystem/jukeboxes/proc/init_channels()
 	for(var/i in CHANNEL_JUKEBOX_START to CHANNEL_JUKEBOX)
 		freejukeboxchannels |= i
-	return ..()
+
+/datum/controller/subsystem/jukeboxes/proc/add_track(track)
+	var/datum/track/track_datum = new()
+	track_datum.song_path = file("config/jukebox_music/sounds/[track]")
+
+	var/list/track_data = splittext(track,"+")
+	if(!LAZYLEN(track_data))
+		stack_trace("Invalid track: [track]")
+		return FALSE
+	var/track_name = LAZYACCESS(track_data, TRACK_NAME)
+	if(!track_name)
+		stack_trace("Track [track] lacks name???")
+		return FALSE
+	track_datum.song_name = track_name
+	var/track_length = LAZYACCESS(track_data, TRACK_LENGTH)
+	if(!track_length)
+		stack_trace("Track [track] lacks length.")
+		return FALSE
+	track_length = text2num(track_length)
+	if(!isnum(track_length))
+		stack_trace("Track [track]'s length value is not a number")
+		return FALSE
+	track_datum.song_length = track_length
+	var/track_beat = LAZYACCESS(track_data, TRACK_BEAT)
+	if(!track_beat)
+		stack_trace("Track [track] lacks BPM.")
+		return FALSE
+	track_beat = text2num(track_beat)
+	if(!isnum(track_beat))
+		stack_trace("Track [track]'s beat value is not a number")
+		return FALSE
+	track_datum.song_beat = track_beat
+	var/track_id = LAZYACCESS(track_data, TRACK_ID)
+	if(!track_id)
+		stack_trace("Track [track] lacks an unique identifier.")
+		return FALSE
+	track_datum.song_associated_id = track_id
+	return track_datum
+
 
 /datum/controller/subsystem/jukeboxes/fire()
 	if(!activejukeboxes.len)
@@ -197,6 +248,11 @@ SUBSYSTEM_DEF(jukeboxes)
 			SEND_SOUND(M, song_played)
 			CHECK_TICK
 	return
+
+#undef TRACK_NAME
+#undef TRACK_LENGTH
+#undef TRACK_BEAT
+#undef TRACK_ID
 
 #undef JUKE_TRACK
 #undef JUKE_CHANNEL

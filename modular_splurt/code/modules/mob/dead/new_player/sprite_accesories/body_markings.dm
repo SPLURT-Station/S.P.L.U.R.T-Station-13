@@ -173,6 +173,12 @@
 	icon_state = "blushsmallALT"
 	covered_limbs = list("Head" = MATRIX_BLUE)
 
+/datum/sprite_accessory/mam_body_markings/animeeyes
+	name = "Anime Eyes"
+	icon = 'modular_splurt/icons/mob/mam_markings.dmi'
+	icon_state = "animeeyes"
+	covered_limbs = list("Head" = MATRIX_RED_BLUE)
+
 /******************************************
 ************* Insect Markings *************
 *******************************************/

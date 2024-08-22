@@ -13,9 +13,38 @@
 	screen_loc = ui_hunger_thirst
 
 /atom/movable/screen/healthdoll/Click(location, control, params)
-	var/mob/living/L = usr
-	usr.Click(L, control, params)
-	return FALSE	//The health doll doesn't really do anything on it's own, change this if you need to
+	if(hud?.mymob)
+		return hud.mymob.Click(arglist(args))
+
+/atom/movable/screen/healthdoll/examine(mob/user)
+	if(hud?.mymob)
+		return hud.mymob.examine(arglist(args))
+
+/atom/movable/screen/healthdoll/examine_more(mob/user)
+	if(hud?.mymob)
+		return hud.mymob.examine_more(arglist(args))
+
+/atom/movable/screen/healthdoll/MouseEntered(location, control, params)
+	if(hud?.mymob)
+		return hud.mymob.MouseEntered(arglist(args))
+
+/atom/movable/screen/healthdoll/MouseExited(location, control, params)
+	if(hud?.mymob)
+		return hud.mymob.MouseExited(arglist(args))
+
+/atom/movable/screen/healthdoll/MouseDown(location, control, params)
+	if(hud?.mymob)
+		return hud.mymob.MouseDown(arglist(args))
+
+/atom/movable/screen/healthdoll/MouseUp(location, control, params)
+	if(hud?.mymob)
+		return hud.mymob.MouseUp(arglist(args))
+
+/atom/movable/screen/healthdoll/MouseDrag(over_object, src_location, over_location, src_control, over_control, params)
+	if(hud?.mymob)
+		return hud.mymob.MouseDrag(arglist(args))
+
+// Mousedrop won't work, behavior is usually defined on the thing that MouseDrag started on
 
 /atom/movable/screen/sanity
 	name = "sanity"

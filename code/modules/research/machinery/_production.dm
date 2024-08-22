@@ -305,6 +305,9 @@
 			l += "<A href='?src=[REF(src)];build=[D.id];amount=5'>x5</A>[RDSCREEN_NOBREAK]"
 		if(c >= 10)
 			l += "<A href='?src=[REF(src)];build=[D.id];amount=10'>x10</A>[RDSCREEN_NOBREAK]"
+		//SPLURT EDIT: Print x30 stock parts at once
+		if(c >= 30 && selected_category == "Stock Parts")
+			l += "<A href='?src=[REF(src)];build=[D.id];amount=30'>x30</A>[RDSCREEN_NOBREAK]"
 		l += "[temp_material][sec_text][RDSCREEN_NOBREAK]"
 	else
 		l += "<span class='linkOff'>[D.name]</span>[temp_material][sec_text][RDSCREEN_NOBREAK]"

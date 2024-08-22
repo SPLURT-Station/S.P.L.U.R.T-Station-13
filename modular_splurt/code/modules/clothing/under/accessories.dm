@@ -24,3 +24,26 @@
 	icon_state = "formalcrop"
 	item_state = "formalcrop"
 	minimize_when_attached = FALSE
+
+/obj/item/clothing/accessory/pride/other
+	name = "blank pin"
+	desc = "A holographic pin for showing off anything you wish. Comes with some basic selection."
+	icon = 'modular_splurt/icons/obj/clothing/accessories.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/accessories.dmi'
+	icon_state = "pin_blank"
+	always_reskinnable = TRUE
+	unique_reskin = list(
+		"blank"				= list("icon_state" = "pin_blank"),
+		"green"				= list("icon_state" = "pin_green"),
+		"yellow"			= list("icon_state" = "pin_yellow"),
+		"purple"			= list("icon_state" = "pin_purple"),
+		"mute"				= list("icon_state" = "pin_mute"),
+		"xenophilia"		= list("icon_state" = "pin_xenophilia"),
+		"isolation"			= list("icon_state" = "pin_isolation"),
+		"peace"				= list("icon_state" = "pin_peace"),
+		"shy"				= list("icon_state" = "pin_shy"),
+		"sub"				= list("icon_state" = "pin_sub"),
+		"dom"				= list("icon_state" = "pin_dom"),
+		"switch"			= list("icon_state" = "pin_switch"),
+		"missing texture"	= list("icon_state" = "pin_css")
+	)

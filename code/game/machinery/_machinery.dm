@@ -142,6 +142,9 @@ Class Procs:
 	///Boolean on whether this machines interact with atmos
 	var/atmos_processing = FALSE
 
+	var/allow_oversized_characters = FALSE //SPLURT EDIT - To allow large characters to fit inside machinery
+
+
 /obj/machinery/Initialize(mapload)
 	if(!armor)
 		armor = list(MELEE = 25, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 50, ACID = 70)
@@ -244,7 +247,7 @@ Class Procs:
 				continue
 			if(isliving(AM))
 				var/mob/living/L = am
-				if(L.buckled || L.mob_size >= MOB_SIZE_LARGE)
+				if(L.buckled || (!allow_oversized_characters && L.mob_size >= MOB_SIZE_LARGE)) // SPLURT EDIT - added allow_oversized_characters
 					continue
 			target = am
 
@@ -255,6 +258,12 @@ Class Procs:
 		target.setDir(new_occupant_dir)
 	updateUsrDialog()
 	update_icon()
+
+/obj/machinery/proc/set_occupant(atom/movable/new_occupant)
+	SHOULD_CALL_PARENT(TRUE)
+
+	SEND_SIGNAL(src, COMSIG_MACHINERY_SET_OCCUPANT, new_occupant)
+	occupant = new_occupant
 
 /obj/machinery/proc/auto_use_power()
 	if(!powered(power_channel))

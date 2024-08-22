@@ -29,31 +29,37 @@
 	return ..()
 
 /atom/movable/screen/movable/action_button/proc/can_use(mob/user)
-	if (linked_action)
+	if(isobserver(user))
+		var/mob/dead/observer/dead_mob = user
+		if(dead_mob.observetarget) // Observers can only click on action buttons if they're not observing something
+			return FALSE
+
+	if(linked_action)
 		if(linked_action.viewers[user.hud_used])
 			return TRUE
 		return FALSE
-	else if (isobserver(user))
-		var/mob/dead/observer/O = user
-		return !O.observetarget
-	else
-		return TRUE
+
+	return TRUE
 
 /atom/movable/screen/movable/action_button/Click(location,control,params)
 	if (!can_use(usr))
 		return
 
 	var/list/modifiers = params2list(params)
-	if(modifiers["shift"])
+	if(LAZYACCESS(modifiers, SHIFT_CLICK))
 		var/datum/hud/our_hud = usr.hud_used
 		our_hud.position_action(src, SCRN_OBJ_DEFAULT)
 		return TRUE
+	var/mob/clicker = usr
+	if(!clicker.CheckActionCooldown())
+		return
+	clicker.DelayNextAction(1)
 	linked_action.Trigger()
 	return TRUE
 
 // Entered and Exited won't fire while you're dragging something, because you're still "holding" it
 // Very much byond logic, but I want nice behavior, so we fake it with drag
-/atom/movable/screen/movable/action_button/MouseDrag(atom/over_object, src_location, over_location, src_control, over_control, params)
+/atom/movable/screen/movable/action_button/MouseDrag(atom/over_object, atom/src_location, atom/over_location, src_control, over_control, params)
 	. = ..()
 	if(!can_use(usr))
 		return
@@ -70,6 +76,9 @@
 	if(old_object)
 		old_object.MouseExited(over_location, over_control, params)
 
+	if(QDELETED(over_location))
+		last_hovored_ref = null
+		return
 	last_hovored_ref = WEAKREF(over_object)
 	over_object.MouseEntered(over_location, over_control, params)
 
@@ -82,7 +91,7 @@
 	closeToolTip(usr)
 	return ..()
 
-/atom/movable/screen/movable/action_button/MouseDrop(over_object)
+/atom/movable/screen/movable/action_button/MouseDrop(atom/over_object, mob/user, src_location, over_location, params)
 	last_hovored_ref = null
 	if(!can_use(usr))
 		return
@@ -141,6 +150,12 @@
 	user.client.prefs.action_buttons_screen_locs -= "[name]_[id]"
 	user.client.prefs.queue_save_pref(1 SECONDS, TRUE)
 
+/**
+ * This is a silly proc used in hud code code to determine what icon and icon state we should be using
+ * for hud elements (such as action buttons) that don't have their own icon and icon state set.
+ *
+ * It returns a list, which is pretty much just a struct of info
+ */
 /datum/hud/proc/get_action_buttons_icons()
 	. = list()
 	.["bg_icon"] = ui_style
@@ -153,8 +168,15 @@
 		var/datum/action/A = X
 		A.UpdateButtons(status_only)
 
-//This is the proc used to update all the action buttons.
-/mob/proc/update_action_buttons(reload_screen)
+/**
+ * This proc handles adding all of the mob's actions to their screen
+ *
+ * If you just need to update existing buttons, use [/mob/proc/update_mob_action_buttons]!
+ *
+ * Arguments:
+ * * update_flags - reload_screen - bool, if TRUE, this proc will add the button to the screen of the passed mob as well
+ */
+/mob/proc/update_action_buttons(reload_screen = FALSE)
 	if(!hud_used || !client)
 		return
 

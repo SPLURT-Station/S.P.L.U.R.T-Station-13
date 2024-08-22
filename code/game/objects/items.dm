@@ -696,9 +696,10 @@ GLOBAL_VAR_INIT(embedpocalypse, FALSE) // if true, all items will be able to emb
 
 /obj/item/clean_blood()
 	. = ..()
-	if(.)
-		if(blood_splatter_icon)
-			cut_overlay(blood_splatter_icon)
+	// Quick fix for shoes being clean but the blood splatter was still on them, I suspect it is blood_dna on shoes were setting to null before the if (maybe it is a racing condition)
+	if(. || blood_splatter_icon)
+		cut_overlay(blood_splatter_icon)
+		blood_splatter_icon = null
 
 /obj/item/clothing/gloves/clean_blood()
 	. = ..()

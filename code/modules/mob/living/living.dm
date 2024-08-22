@@ -1349,10 +1349,10 @@
 			return FALSE
 		if(NAMEOF(src, resize))
 			update_size(var_value)
-			return FALSE
+			return TRUE
 		if(NAMEOF(src, size_multiplier))
 			update_size(var_value)
-			return FALSE
+			return TRUE
 	. = ..()
 	switch(var_name)
 		if(NAMEOF(src, eye_blind))

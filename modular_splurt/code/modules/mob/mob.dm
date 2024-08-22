@@ -1,5 +1,9 @@
 #define PROTOLOCK_ALL_ACCESS CONFIG_GET(flag/protolock_all_access)
 
+/mob/living/carbon/human
+	///This player has been standing still for very long and are probably roleplaying. They won't use up nutrition/thirst until they start moving again.
+	var/insanelycomfy = FALSE
+
 /mob/Initialize()
 	. = ..()
 	create_player_panel()

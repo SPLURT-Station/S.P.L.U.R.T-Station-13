@@ -50,3 +50,16 @@
 		return
 	user.nextsoundemote = world.time + 7
 	playsound(user, 'modular_citadel/sound/voice/peep.ogg', 50, 1, -1)
+
+/datum/emote/living/carbon/moan
+	emote_type = EMOTE_OMNI
+	stat_allowed = CONSCIOUS
+
+/datum/emote/living/carbon/moan/run_emote(mob/living/user, params, type_override, intentional)
+	. = TRUE
+	if(!can_run_emote(user, TRUE, intentional))
+		return FALSE
+	if(!COOLDOWN_FINISHED(user, nextsoundemote))
+		return FALSE
+	COOLDOWN_START(user, nextsoundemote, 7)
+	user.moan()

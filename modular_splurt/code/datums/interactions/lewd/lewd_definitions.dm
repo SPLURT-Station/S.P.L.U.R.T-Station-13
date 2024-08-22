@@ -72,14 +72,14 @@ GLOBAL_LIST_INIT(anus_traits, list("[TRAIT_HYPERSENS_ANUS]" = 3, "[TRAIT_OVERSTI
 */
 /mob/living/proc/check_orgasm(datum/source, R, target, obj/item/organ/genital/sender, receiver, spill)
 	SIGNAL_HANDLER
-	
+
 	if(CHECK_BITFIELD(sender.genital_flags, GENITAL_IMPOTENT) || CHECK_BITFIELD(sender.genital_flags, GENITAL_DISAPPOINTING))
 		emote("sigh")
 		to_chat(src, "<span class='hypnophrase'>[pick("Ugh, that was embarassing...", "I could've done it better...")]</span>")
 		return TRUE
 	return FALSE
 
-/mob/living/carbon/handle_post_sex(amount, orifice, mob/living/partner, organ = null)
+/mob/living/carbon/handle_post_sex(amount, orifice, mob/living/partner, organ = null, cum_inside = FALSE, anonymous = FALSE)
 	if(organ)
 		amount = check_stimulation(amount, organ)
 

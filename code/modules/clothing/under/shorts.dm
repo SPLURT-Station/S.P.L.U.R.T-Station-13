@@ -36,7 +36,7 @@
 	desc = "95% Polychrome, 5% Spandex!"
 	icon_state = "polyshortpants"
 	item_state = "rainbow"
-	mutantrace_variation = NONE
+	mutantrace_variation = STYLE_DIGITIGRADE
 	var/list/poly_colors = list("#FFFFFF", "#F08080")
 
 /obj/item/clothing/under/shorts/polychromic/ComponentInitialize()

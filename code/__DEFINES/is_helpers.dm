@@ -7,7 +7,20 @@
 
 #define isatom(A) (isloc(A))
 
+#define isdatum(thing) (istype(thing, /datum))
+
 #define isweakref(D) (istype(D, /datum/weakref))
+
+#define isimage(thing) (istype(thing, /image))
+
+GLOBAL_VAR_INIT(magic_appearance_detecting_image, new /image) // appearances are awful to detect safely, but this seems to be the best way ~ninjanomnom
+#define isappearance(thing) (!isimage(thing) && !ispath(thing) && istype(GLOB.magic_appearance_detecting_image, thing))
+
+// The filters list has the same ref type id as a filter, but isnt one and also isnt a list, so we have to check if the thing has Cut() instead
+GLOBAL_VAR_INIT(refid_filter, TYPEID(filter(type="angular_blur")))
+#define isfilter(thing) (!hascall(thing, "Cut") && TYPEID(thing) == GLOB.refid_filter)
+
+#define isgenerator(A) (istype(A, /generator))
 
 //Turfs
 //#define isturf(A) (istype(A, /turf)) This is actually a byond built-in. Added here for completeness sake.
@@ -86,7 +99,7 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 #define ismammal(A) (is_species(A, /datum/species/mammal))
 #define isinsect(A) (is_species(A, /datum/species/insect))
 #define isxenoperson(A) (is_species(A, /datum/species/xeno))
-#define isstartjelly(A) (is_species(A, /datum/species/jelly/roundstartslime))
+#define isstartjelly(A) (is_species(A, /datum/species/jelly/slime/roundstartslime))
 #define isarachnid(A) (is_species(A, /datum/species/arachnid) || HAS_TRAIT(A, TRAIT_ARACHNID)) // SPLURT Edit: for the Arachnid trait
 
 //more carbon mobs

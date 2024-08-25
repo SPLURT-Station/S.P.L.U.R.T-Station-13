@@ -49,6 +49,10 @@
 			gear = driver.a_intent
 	start_engine()
 	to_chat(M, "<span class='big notice'>How to drive:</span> \n<span class='notice'><i>Hold wasd to gain speed in a direction, c to enable/disable the clutch, 1 2 3 4 to change gears while holding a direction (make sure the clutch is enabled when you change gears, you should hear a sound when you've successfully changed gears), r to toggle handbrake, hold alt for brake and press shift for boost (the machine will beep when the boost is recharged)! If you hear an ebbing sound like \"brbrbrbrbr\" you need to gear down, the whining sound means you need to gear up. Hearing a pleasant \"whumwhumwhum\" is optimal gearage! It can be a lil slow to start, so make sure you're in the 1st gear.\n</i></span>")
+	// SPLURT Edit: Grant pressure resistance traits when entering
+	ADD_TRAIT(M, TRAIT_RESISTLOWPRESSURE, "vectorcraft")
+	ADD_TRAIT(M, TRAIT_RESISTHIGHPRESSURE, "vectorcraft")
+	//
 	return ..()
 
 /obj/vehicle/sealed/vectorcraft/mob_exit(mob/living/M)
@@ -65,6 +69,11 @@
 		driver = null
 		gear = initial(gear)
 	stop_engine()
+
+	// SPLURT Edit: Remove pressure resistance traits when exiting
+	REMOVE_TRAIT(M, TRAIT_RESISTLOWPRESSURE, "vectorcraft")
+	REMOVE_TRAIT(M, TRAIT_RESISTHIGHPRESSURE, "vectorcraft")
+	//
 
 
 //////////////////////////////////////////////////////////////
@@ -321,10 +330,8 @@
 
 	if(obj_integrity <= 0)
 		mob_exit(driver)
-		var/datum/effect_system/reagents_explosion/e = new()
 		var/turf/T = get_turf(src)
-		e.set_up(1, T, 1, 3)
-		e.start()
+		explosion(T, devastation_range = 0, heavy_impact_range = 1, light_impact_range = 2, flash_range = 2, flame_range = 3)
 		visible_message("The [src] explodes from taking too much damage!")
 		qdel(src)
 	if(obj_integrity > max_integrity)

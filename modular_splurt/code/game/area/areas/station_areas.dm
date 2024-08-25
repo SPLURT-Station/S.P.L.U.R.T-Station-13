@@ -9,3 +9,6 @@
 
 /area/engineering/break_room/atmos
 	name = "Atmospherics Break Room"
+
+/area/service/chapel/morgue
+	name = "Crematorium"

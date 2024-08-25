@@ -123,8 +123,6 @@
 	name = "air floor"
 	initial_gas_mix = ATMOS_TANK_AIRMIX
 
-
-
 /turf/open/floor/engine/cult
 	name = "engraved floor"
 	desc = "The air smells strangely over this sinister flooring."

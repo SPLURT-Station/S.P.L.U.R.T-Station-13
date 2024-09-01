@@ -256,4 +256,4 @@
 /obj/structure/closet/crate/secure/loot/deconstruct(disassembled = TRUE)
 	if(!locked && disassembled)
 		return ..()
-	boom()
+	pop_burst()

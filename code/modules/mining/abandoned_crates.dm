@@ -10,6 +10,7 @@
 	var/attempts = 10
 	var/codelen = 4
 	tamperproof = 90
+	var/ash_type = /obj/effect/decal/cleanable/ash
 
 /obj/structure/closet/crate/secure/loot/Initialize(mapload)
 	. = ..()
@@ -149,6 +150,16 @@
 		if(100)
 			new /obj/item/clothing/head/bearpelt(src)
 
+/obj/structure/closet/crate/secure/loot/proc/pop_burst(var/n=3, var/c=1)
+	var/datum/effect_system/spark_spread/s = new()
+	s.set_up(n, c, src)
+	s.start()
+	new ash_type(loc)
+	visible_message("<span class='warning'>[src] explodes!</span>",
+		"<span class='italics'>You hear a snap!</span>")
+	playsound(src, 'sound/effects/snap.ogg', 50, 1)
+	qdel(src)
+
 /obj/structure/closet/crate/secure/loot/on_attack_hand(mob/user, act_intent = user.a_intent, unarmed_attack_flags)
 	if(locked)
 		to_chat(user, "<span class='notice'>The crate is locked with a Deca-code lock.</span>")
@@ -178,7 +189,7 @@
 				lastattempt = input
 				attempts--
 				if(attempts == 0)
-					boom(user)
+					pop_burst(user)
 	else
 		return ..()
 
@@ -233,12 +244,12 @@
 	. = SEND_SIGNAL(src, COMSIG_ATOM_EMAG_ACT)
 	if(!locked)
 		return
-	boom(user)
+	pop_burst(user)
 	return TRUE
 
 /obj/structure/closet/crate/secure/loot/togglelock(mob/user)
 	if(locked)
-		boom(user)
+		pop_burst(user)
 	else
 		..()
 

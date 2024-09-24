@@ -18,3 +18,13 @@
 
 /datum/config_entry/number/max_jukebox_songs
 	default = -1
+
+/datum/config_entry/flag/vote_mode_exemption
+
+/datum/config_entry/number/vote_exemption_days
+	default = 2
+	min_val = 1
+
+/datum/config_entry/number/vote_exemption_rounds
+	default = 2
+	min_val = 1

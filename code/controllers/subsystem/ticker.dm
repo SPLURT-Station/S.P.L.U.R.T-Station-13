@@ -195,7 +195,7 @@ SUBSYSTEM_DEF(ticker)
 
 			if(!modevoted)
 				var/forcemode = CONFIG_GET(string/force_gamemode)
-				if(forcemode)
+				if(forcemode && !check_forced_exemption()) //SPLURT EDIT - Allow for rounds with votes even when a gamemode is forced
 					force_gamemode(forcemode)
 				if(!forcemode || (GLOB.master_mode == "dynamic" && CONFIG_GET(flag/dynamic_voting)))
 					send_gamemode_vote()

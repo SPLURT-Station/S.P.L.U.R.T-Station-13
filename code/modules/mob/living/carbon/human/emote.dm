@@ -99,7 +99,7 @@
 	else
 		H.dna.species.stop_wagging_tail(H)
 
-/datum/emote/living/carbon/human/wag/can_run_emote(mob/user, status_check = TRUE)
+/datum/emote/living/carbon/human/wag/can_run_emote(mob/user, status_check = TRUE, intentional = FALSE)
 	if(!..() || !ishuman(user))
 		return FALSE
 	var/mob/living/carbon/human/H = user
@@ -135,7 +135,7 @@
 	else
 		. = "closes " + message
 
-/datum/emote/living/carbon/human/wing/can_run_emote(mob/user, status_check = TRUE)
+/datum/emote/living/carbon/human/wing/can_run_emote(mob/user, status_check = TRUE, intentional = FALSE)
 	if(!..() || !ishuman(user))
 		return FALSE
 	var/mob/living/carbon/human/H = user
@@ -162,7 +162,7 @@
 		T.Entered(src)
 
 /datum/emote/sound/human
-	mob_type_allowed_typecache = list(/mob/living/carbon/human)
+	mob_type_allowed_typecache = list(/mob/living/) // /sound/human/ became the global emote type, so this is now the only valid typecache
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/sound/human/buzz
@@ -247,6 +247,7 @@
 
 //the actual emotes
 /datum/emote/living/carbon/human/rockpaperscissors
+	key = "rps" // Give rockpaperscissors a key so it STOPS RUNTIMING
 	message = "is attempting to play rock paper scissors!"
 
 /datum/emote/living/carbon/human/rockpaperscissors/rock

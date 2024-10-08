@@ -1,6 +1,7 @@
 /datum/emote
 	var/key = "" //What calls the emote
 	var/key_third_person = "" //This will also call the emote
+	var/name = "" // Needed for more user-friendly emote names, so emotes with keys like "aflap" will show as "flap angry". Defaulted to key.
 	var/message = "" //Message displayed when emote is used
 	var/message_mime = "" //Message displayed if the user is a mime
 	var/message_alien = "" //Message displayed if the user is a grown alien
@@ -11,21 +12,19 @@
 	var/message_simple = "" //Message to display if the user is a simple_animal
 	var/message_param = "" //Message to display if a param was given
 	var/emote_type = EMOTE_VISIBLE //Whether the emote is visible or audible
+	var/sound
 	var/restraint_check = FALSE //Checks if the mob is restrained before performing the emote
 	var/muzzle_ignore = FALSE //Will only work if the emote is EMOTE_AUDIBLE
 	var/list/mob_type_allowed_typecache = /mob //Types that are allowed to use that emote
 	var/list/mob_type_blacklist_typecache //Types that are NOT allowed to use that emote
 	var/list/mob_type_ignore_stat_typecache
 	var/stat_allowed = CONSCIOUS
-	var/static/list/emote_list = list()
 	var/static/regex/stop_bad_mime = regex(@"says|exclaims|yells|asks")
 
 	var/chat_popup = TRUE //Skyrat edit
 	var/image_popup
 
 /datum/emote/New()
-	if(key_third_person)
-		emote_list[key_third_person] = src
 	if (ispath(mob_type_allowed_typecache))
 		switch (mob_type_allowed_typecache)
 			if (/mob)
@@ -38,6 +37,9 @@
 		mob_type_allowed_typecache = typecacheof(mob_type_allowed_typecache)
 	mob_type_blacklist_typecache = typecacheof(mob_type_blacklist_typecache)
 	mob_type_ignore_stat_typecache = typecacheof(mob_type_ignore_stat_typecache)
+
+	if(!name)
+		name = key
 
 /datum/emote/proc/run_emote(mob/user, params, type_override, intentional = FALSE)
 	. = TRUE
@@ -80,6 +82,9 @@
 	if(image_popup)
 		flick_emote_popup_on_mob(user, image_popup, 40)
 	//End of skyrat changes
+
+/datum/emote/proc/get_sound(mob/living/user)
+	return sound //by default just return this var.
 
 /datum/emote/proc/replace_pronoun(mob/user, message)
 	if(findtext(message, "their"))
@@ -149,12 +154,61 @@
 			return FALSE
 
 /datum/emote/sound
-	var/sound //Sound to play when emote is called
 	var/vary = FALSE	//used for the honk borg emote
 	var/volume = 50
+	// Default time before using another audio emote
+	var/emote_cooldown = 1 SECONDS
+
+	// Default volume of the emote
+	var/emote_volume = 50
+
+	// Default range modifier
+	var/emote_range = -1
+	var/emote_distance_multiplier = SOUND_DEFAULT_DISTANCE_MULTIPLIER
+	var/emote_distance_multiplier_min_range = SOUND_DEFAULT_MULTIPLIER_EFFECT_RANGE
+
+	// Default pitch variance
+	var/emote_pitch_variance = 1
+
+	// Default audio falloff settings
+	var/emote_falloff_exponent = SOUND_FALLOFF_EXPONENT
+	var/emote_falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE
+
+	// Default frequency
+	var/emote_frequency = null
+
+	// Default channel
+	var/emote_channel = 0
+
+	// Should the emote consider atmospheric pressure?
+	var/emote_check_pressure = TRUE
+
+	// Should the emote ignore walls?
+	var/emote_ignore_walls = FALSE
+
+	// Default wet and dry settings (???)
+	var/emote_wetness = -10000
+	var/emote_dryness = 0
 	mob_type_allowed_typecache = list(/mob/living/brain, /mob/living/silicon, /mob/camera/aiEye)
+
+/datum/emote/sound/can_run_emote(mob/living/user, status_check, intentional = FALSE)
+	. = ..()
+
+	// Check parent return
+	if(!.)
+		return FALSE
+
+	// Check cooldown
+	if(user?.nextsoundemote >= world.time)
+		return FALSE
+
+	// Allow use
+	return TRUE
 
 /datum/emote/sound/run_emote(mob/user, params)
 	. = ..()
 	if(.)
-		playsound(user.loc, sound, volume, vary)
+		playsound(user.loc, sound, emote_volume, emote_pitch_variance, emote_range, emote_falloff_exponent, emote_frequency, emote_channel, emote_check_pressure, emote_ignore_walls, emote_falloff_distance, emote_wetness, emote_dryness, emote_distance_multiplier, emote_distance_multiplier_min_range)
+
+		//Cooldown.
+		user.nextsoundemote = world.time + emote_cooldown

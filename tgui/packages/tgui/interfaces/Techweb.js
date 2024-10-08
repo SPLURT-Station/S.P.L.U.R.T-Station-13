@@ -1,8 +1,9 @@
 import { filter, map, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
+
 import { useBackend, useLocalState } from '../backend';
-import { Button, Section, Modal, Dropdown, Tabs, Box, Input, Flex, ProgressBar, Collapsible, Icon, Divider } from '../components';
-import { Window, NtosWindow } from '../layouts';
+import { Box, Button, Divider, Dropdown, Flex, Input, Modal, ProgressBar, Section, Tabs } from '../components';
+import { NtosWindow, Window } from '../layouts';
 
 // Data reshaping / ingestion (thanks stylemistake for the help, very cool!)
 // This is primarily necessary due to measures that are taken to reduce the size
@@ -770,7 +771,7 @@ const TechNode = (props, context) => {
       {tier !== 0 && !!compact && !destructive && (
         <Flex className="Techweb__NodeProgress">
           {!!costs && Object.keys(costs).map(key => {
-            const cost = costs[key]
+            const cost = costs[key];
             const reqPts = Math.max(0, cost);
             const nodeProg = Math.min(reqPts, points[key]) || 0;
             return (

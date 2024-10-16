@@ -347,3 +347,6 @@
 
 /datum/config_entry/str_list/randomizing_station_name_message
 	default = list()
+
+/// Gives the ability to send players a maptext popup.
+/datum/config_entry/flag/popup_admin_pm

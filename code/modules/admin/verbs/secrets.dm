@@ -567,20 +567,21 @@
 			message_admins("[key_name_admin(holder)] has removed everyone from \
 				purrbation.")
 			log_admin("[key_name(holder)] has removed everyone from purrbation.")
-		// if("massimmerse") // my immursion is ruinned :(
-		// 	if(!is_funmin)
-		// 		return
-		// 	mass_immerse()
-		// 	message_admins("[key_name_admin(holder)] has Fully Immersed
-		// 		everyone!")
-		// 	log_admin("[key_name(holder)] has Fully Immersed everyone.")
-		// if("unmassimmerse")
-		// 	if(!is_funmin)
-		// 		return
-		// 	mass_immerse(remove=TRUE)
-		// 	message_admins("[key_name_admin(holder)] has Un-Fully Immersed
-		// 		everyone!")
-		// 	log_admin("[key_name(holder)] has Un-Fully Immersed everyone.")
+		// Shh!! Don't let badmins know this isn't actually a button!
+		if("massimmerse")
+			if(!is_funmin)
+				return
+			mass_immerse()
+			message_admins("[key_name_admin(holder)] has Fully Immersed \
+				everyone!")
+			log_admin("[key_name(holder)] has Fully Immersed everyone.")
+		if("unmassimmerse")
+			if(!is_funmin)
+				return
+			mass_immerse(remove=TRUE)
+			message_admins("[key_name_admin(holder)] has Un-Fully Immersed \
+				everyone!")
+			log_admin("[key_name(holder)] has Un-Fully Immersed everyone.")
 	if(E)
 		E.processing = FALSE
 		if(E.announce_when>0)

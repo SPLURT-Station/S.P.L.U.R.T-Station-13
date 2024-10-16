@@ -712,3 +712,11 @@
 #define COMSIG_ALARM_TRIGGERED "comsig_alarm_triggered"
 ///Send when an alarm source is cleared (alarm_type, area/source_area)
 #define COMSIG_ALARM_CLEARED "comsig_alarm_clear"
+
+/// Admin helps
+/// From /datum/admin_help/RemoveActive().
+/// Fired when an adminhelp is made inactive either due to closing or resolving.
+#define COMSIG_ADMIN_HELP_MADE_INACTIVE "admin_help_made_inactive"
+
+/// Called when the player replies. From /client/proc/cmd_admin_pm().
+#define COMSIG_ADMIN_HELP_REPLIED "admin_help_replied"

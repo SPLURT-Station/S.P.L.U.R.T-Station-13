@@ -60,15 +60,15 @@
 	emote_type = EMOTE_AUDIBLE
 
 
-/datum/emote/living/audio/vox/shriek
+/datum/emote/sound/vox/shriek
 	key = "shriek"
 	key_third_person = "shrieks"
 	message = "shrieks!"
 	message_mime = "lets out an <b>inaudible</b> shriek!"
-	emote_sound = 'modular_splurt/sound/voice/shriek1.ogg' // Copyright CC BY 3.0 InspectorJ (freesound.org) for the source audio.
+	sound = 'modular_splurt/sound/voice/shriek1.ogg' // Copyright CC BY 3.0 InspectorJ (freesound.org) for the source audio.
 	emote_cooldown = 2.1 SECONDS
 
-/datum/emote/living/audio/vox/shriek/run_emote(mob/user, params)
+/datum/emote/sound/vox/shriek/run_emote(mob/user, params)
 	var/datum/dna/D = user.has_dna()
 	if(D.species.name != "Vox")
 		return

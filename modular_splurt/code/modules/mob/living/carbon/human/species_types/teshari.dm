@@ -61,60 +61,60 @@
 
 /datum/language/schechi
 
-/datum/emote/living/audio/teshari/teshsqueak
+/datum/emote/sound/teshari/teshsqueak
 	key = "surprised"
 	key_third_person = "surprised"
 	message = "chirps in surprise!"
 	message_mime = "lets out an <b>inaudible</b> chirp!"
-	emote_sound = 'modular_splurt/sound/voice/teshsqueak.ogg' // Copyright CC BY 3.0 InspectorJ (freesound.org) for the source audio.
+	sound = 'modular_splurt/sound/voice/teshsqueak.ogg' // Copyright CC BY 3.0 InspectorJ (freesound.org) for the source audio.
 	emote_cooldown = 2.1 SECONDS
 
-/datum/emote/living/audio/teshari/teshsqueak/run_emote(mob/user, params)
+/datum/emote/sound/teshari/teshsqueak/run_emote(mob/user, params)
 	var/datum/dna/D = user.has_dna()
 	if(D.species.name != "Teshari")
 		return
 	// Return normally
 	. = ..()
 
-/datum/emote/living/audio/teshari/teshchirp
+/datum/emote/sound/teshari/teshchirp
 	key = "tchirp"
 	key_third_person = "tchirp"
 	message = "chirps!"
 	message_mime = "lets out an <b>inaudible</b> chirp!"
-	emote_sound = 'modular_splurt/sound/voice/teshchirp.ogg' // Copyright CC BY 3.0 InspectorJ (freesound.org) for the source audio.
+	sound = 'modular_splurt/sound/voice/teshchirp.ogg' // Copyright CC BY 3.0 InspectorJ (freesound.org) for the source audio.
 	emote_cooldown = 2.1 SECONDS
 
-/datum/emote/living/audio/teshari/teshchirp/run_emote(mob/user, params)
+/datum/emote/sound/teshari/teshchirp/run_emote(mob/user, params)
 	var/datum/dna/D = user.has_dna()
 	if(D.species.name != "Teshari")
 		return
 	// Return normally
 	. = ..()
 
-/datum/emote/living/audio/teshari/trill
+/datum/emote/sound/teshari/trill
 	key = "trill"
 	key_third_person = "trill"
 	message = "trills!"
 	message_mime = "lets out an <b>inaudible</b> chirp!"
-	emote_sound = 'modular_splurt/sound/voice/teshtrill.ogg' // Copyright CC BY 3.0 InspectorJ (freesound.org) for the source audio.
+	sound = 'modular_splurt/sound/voice/teshtrill.ogg' // Copyright CC BY 3.0 InspectorJ (freesound.org) for the source audio.
 	emote_cooldown = 2.1 SECONDS
 
-/datum/emote/living/audio/teshari/trill/run_emote(mob/user, params)
+/datum/emote/sound/teshari/trill/run_emote(mob/user, params)
 	var/datum/dna/D = user.has_dna()
 	if(D.species.name != "Teshari")
 		return
 	// Return normally
 	. = ..()
 
-/datum/emote/living/audio/teshari/teshscream
+/datum/emote/sound/teshari/teshscream
 	key = "teshscream"
 	key_third_person = "teshscream"
 	message = "screams!"
 	message_mime = "lets out an <b>inaudible</b> screams!"
-	emote_sound = 'modular_splurt/sound/voice/teshscream.ogg' // Copyright CC BY 3.0 InspectorJ (freesound.org) for the source audio.
+	sound = 'modular_splurt/sound/voice/teshscream.ogg' // Copyright CC BY 3.0 InspectorJ (freesound.org) for the source audio.
 	emote_cooldown = 2.1 SECONDS
 
-/datum/emote/living/audio/teshari/teshscream/run_emote(mob/user, params)
+/datum/emote/sound/teshari/teshscream/run_emote(mob/user, params)
 	var/datum/dna/D = user.has_dna()
 	if(D.species.name != "Teshari")
 		return

@@ -7,12 +7,16 @@
 		param = copytext(act, custom_param + length(act[custom_param]))
 		act = copytext(act, 1, custom_param)
 
-	var/datum/emote/E
-	E = E.emote_list[act]
-	if(!E)
-		to_chat(src, "<span class='notice'>Unusable emote '[act]'. Say *help for a list.</span>")
+	var/list/key_emotes = GLOB.emote_list[act]
+	for(var/datum/emote/emote in key_emotes)
+		if(!emote.can_run_emote(src, TRUE, intentional, param))
+			continue
+		if(emote.run_emote(src, param, m_type, intentional))
+			SEND_SIGNAL(src, COMSIG_MOB_EMOTE, emote, act, m_type, message, intentional)
+			return TRUE
+	if(!key_emotes)
+		to_chat(src, span_notice("Unusable emote '[act]'. Say *help for a list."))
 		return
-	E.run_emote(src, param, m_type, intentional)
 
 /datum/emote/flip
 	key = "flip"

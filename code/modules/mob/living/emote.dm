@@ -222,7 +222,7 @@
 /datum/emote/living/audio_emote
 	emote_type = EMOTE_AUDIBLE
 
-/datum/emote/living/audio_emote/can_run_emote(mob/living/user, status_check = TRUE)
+/datum/emote/living/audio_emote/can_run_emote(mob/living/user, status_check = TRUE, intentional = FALSE)
 	. = ..()
 	if(. && iscarbon(user))
 		var/mob/living/carbon/C = user
@@ -508,14 +508,12 @@
 	var/list/keys = list()
 	var/list/message = list("Available emotes, you can use them with say \"*emote\": ")
 
-	var/datum/emote/E
-	var/list/emote_list = E.emote_list
-	for(var/e in emote_list)
-		if(e in keys)
-			continue
-		E = emote_list[e]
-		if(E.can_run_emote(user, status_check = FALSE))
-			keys += E.key
+	for(var/key in GLOB.emote_list)
+		for(var/datum/emote/emote_action in GLOB.emote_list[key])
+			if(emote_action.key in keys)
+				continue
+			if(emote_action.can_run_emote(user, status_check = FALSE , intentional = TRUE))
+				keys += emote_action.key
 
 	keys = sort_list(keys)
 
@@ -595,3 +593,12 @@
 		var/mob/living/carbon/C = user
 		if(isjellyperson(C))
 			pick(playsound(C, 'sound/effects/meatslap.ogg', 50, 1),playsound(C, 'sound/effects/gib_step.ogg', 50, 1))
+
+/datum/emote/inhale
+	key = "inhale"
+	key_third_person = "inhales"
+	message = "breathes in."
+/datum/emote/exhale
+	key = "exhale"
+	key_third_person = "exhales"
+	message = "breathes out."

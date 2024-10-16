@@ -1,5 +1,5 @@
 import { useBackend } from '../../backend';
-import { BlockQuote, Button, Icon, ProgressBar, Section, Stack, Slider, Tooltip } from '../../components';
+import { BlockQuote, Button, Icon, ProgressBar, Section, Slider, Stack, Tooltip } from '../../components';
 
 type HeaderInfo = {
   isTargetSelf: boolean;

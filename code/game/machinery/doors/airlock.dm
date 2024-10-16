@@ -1229,9 +1229,9 @@
 			if(obj_integrity < max_integrity)
 				if(!W.tool_start_check(user, amount=0))
 					return
-				user.visible_message("[user] чинит шлюз сваркой.", \
-								"<span class='notice'>Вы начинаете чинить шлюз...</span>", \
-								"<span class='italics'>Вы слышите звук сварки.</span>")
+				user.visible_message("[user] is welding the airlock.", \
+								"<span class='notice'>You begin repairing the airlock...</span>", \
+								"<span class='italics'>You hear welding.</span>")
 				if(W.use_tool(src, user, 40, volume=50, extra_checks = CALLBACK(src, PROC_REF(weld_checks), W, user)))
 					obj_integrity = max_integrity
 					machine_stat &= ~BROKEN

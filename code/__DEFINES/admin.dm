@@ -69,27 +69,6 @@
 #define ADMIN_VERBOSEJMP(src) "[src ? "[AREACOORD(src)] [ADMIN_JMP(src)]" : "nonexistent location"]"
 #define ADMIN_INDIVIDUALLOG(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];individuallog=[REF(user)]'>LOGS</a>)"
 
-#define ADMIN_PUNISHMENT_LIGHTNING "Lightning bolt"
-#define ADMIN_PUNISHMENT_BRAINDAMAGE "Brain damage"
-#define ADMIN_PUNISHMENT_GIB "Gib"
-#define ADMIN_PUNISHMENT_BSA "Bluespace Artillery Device"
-#define ADMIN_PUNISHMENT_FIREBALL "Fireball"
-#define ADMIN_PUNISHMENT_ROD "Immovable Rod"
-#define ADMIN_PUNISHMENT_SUPPLYPOD_QUICK "Supply Pod (Quick)"
-#define ADMIN_PUNISHMENT_SUPPLYPOD "Supply Pod"
-#define ADMIN_PUNISHMENT_MAZING "Puzzle"
-#define ADMIN_PUNISHMENT_PIE "Cream Pie"
-#define ADMIN_PUNISHMENT_CUSTOM_PIE "Custom Cream Pie"
-#define ADMIN_PUNISHMENT_SHOES "Knot Shoes"
-#define ADMIN_PUNISHMENT_CRACK ":B:oneless"
-#define ADMIN_PUNISHMENT_BLEED ":B:loodless"
-#define ADMIN_PUNISHMENT_SCARIFY "Scarify"
-#define ADMIN_PUNISHMENT_PICKLE "Pickle-ify"
-#define ADMIN_PUNISHMENT_FRY "Fry"
-#define ADMIN_PUNISHMENT_PERFORATE ":B:erforate"
-#define ADMIN_PUNISHMENT_CLUWNE "Cluwne"
-#define ADMIN_PUNISHMENT_GOODBYE "Their final message" //sandstorm
-
 #define AHELP_ACTIVE 1
 #define AHELP_CLOSED 2
 #define AHELP_RESOLVED 3

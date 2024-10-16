@@ -474,26 +474,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Add Custom AI Law") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_rejuvenate(mob/living/M in GLOB.mob_list)
-	set category = "Special Verbs"
-	set name = "Rejuvenate"
-
-	if(!check_rights(R_ADMIN))
-		return
-
-	if(!mob)
-		return
-	if(!istype(M))
-		alert("Cannot revive a ghost")
-		return
-	M.revive(full_heal = 1, admin_revive = 1)
-
-	log_admin("[key_name(usr)] healed / revived [key_name(M)]")
-	var/msg = "<span class='danger'>Admin [key_name_admin(usr)] healed / revived [ADMIN_LOOKUPFLW(M)]!</span>"
-	message_admins(msg)
-	admin_ticket_log(M, msg)
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Rejuvinate") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
 /client/proc/cmd_admin_create_centcom_report()
 	set category = "Admin.Events"
 	set name = "Create Command Report"
@@ -1283,266 +1263,34 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	busy_toggling_fov = FALSE
 
-/client/proc/smite(mob/living/carbon/human/target as mob)
+/client/proc/smite(mob/living/target as mob)
 	set name = "Smite"
 	set category = "Admin.Fun"
 	if(!check_rights(R_ADMIN) || !check_rights(R_FUN))
 		return
 
-	var/list/punishment_list = list(
-		ADMIN_PUNISHMENT_PIE,
-		ADMIN_PUNISHMENT_CUSTOM_PIE,
-		ADMIN_PUNISHMENT_FIREBALL,
-		ADMIN_PUNISHMENT_LIGHTNING,
-		ADMIN_PUNISHMENT_BRAINDAMAGE,
-		ADMIN_PUNISHMENT_BSA,
-		ADMIN_PUNISHMENT_GIB,
-		ADMIN_PUNISHMENT_SUPPLYPOD_QUICK,
-		ADMIN_PUNISHMENT_SUPPLYPOD,
-		ADMIN_PUNISHMENT_MAZING,
-		ADMIN_PUNISHMENT_ROD,
-		ADMIN_PUNISHMENT_SHOES,
-		ADMIN_PUNISHMENT_PICKLE,
-		ADMIN_PUNISHMENT_FRY,
-		ADMIN_PUNISHMENT_CRACK,
-		ADMIN_PUNISHMENT_BLEED,
-		ADMIN_PUNISHMENT_SCARIFY,
-		ADMIN_PUNISHMENT_CLUWNE,
-		ADMIN_PUNISHMENT_GOODBYE,
-		ADMIN_PUNISHMENT_TABLETIDESTATIONWIDE,
-		ADMIN_PUNISHMENT_FAKEBWOINK,
-		ADMIN_PUNISHMENT_NUGGET,
-		ADMIN_PUNISHMENT_BREADIFY,
-		ADMIN_PUNISHMENT_BOOKIFY,
-		ADMIN_PUNISHMENT_BONK)
 
-	var/punishment = tgui_input_list(usr, "Choose a punishment", "Divine Smiting", punishment_list)
+	var/punishment = tgui_input_list(usr, "Choose a punishment", "DIVINE SMITING", GLOB.smites)
 
 	if(QDELETED(target) || !punishment)
 		return
 
-	switch(punishment)
-		if(ADMIN_PUNISHMENT_LIGHTNING)
-			if(prob(75))
-				playsound(target, 'modular_splurt/sound/misc/NOW.ogg', 75, FALSE)
-				sleep(4 SECONDS)
-			var/turf/T = get_step(get_step(target, NORTH), NORTH)
-			T.Beam(target, icon_state="lightning[rand(1,12)]", time = 5)
-			target.adjustFireLoss(75)
-			target.electrocution_animation(40)
-			to_chat(target, "<span class='userdanger'>The gods have punished you for your sins!</span>")
-		if(ADMIN_PUNISHMENT_BRAINDAMAGE)
-			target.adjustOrganLoss(ORGAN_SLOT_BRAIN, 199, 199)
-		if(ADMIN_PUNISHMENT_GIB)
-			target.gib(FALSE)
-		if(ADMIN_PUNISHMENT_BSA)
-			bluespace_artillery(target)
-		if(ADMIN_PUNISHMENT_FIREBALL)
-			new /obj/effect/temp_visual/target(get_turf(target))
-		if(ADMIN_PUNISHMENT_ROD)
-			var/turf/T = get_turf(target)
-			var/startside = pick(GLOB.cardinals)
-			var/turf/startT = spaceDebrisStartLoc(startside, T.z)
-			var/turf/endT = spaceDebrisFinishLoc(startside, T.z)
-			new /obj/effect/immovablerod(startT, endT,target)
-		if(ADMIN_PUNISHMENT_SUPPLYPOD_QUICK)
-			var/target_path = input(usr,"Enter typepath of an atom you'd like to send with the pod (type \"empty\" to send an empty pod):" ,"Typepath","/obj/item/reagent_containers/food/snacks/grown/harebell") as null|text
-			var/area/pod_storage_area = locate(/area/centcom/supplypod/podStorage) in GLOB.sortedAreas
-			var/obj/structure/closet/supplypod/centcompod/pod = new(pick(get_area_turfs(pod_storage_area))) //Lets not runtime
-			pod.damage = 40
-			pod.explosionSize = list(0,0,0,2)
-			pod.effectStun = TRUE
-			if (isnull(target_path)) //The user pressed "Cancel"
-				return
-			if (target_path != "empty")//if you didn't type empty, we want to load the pod with a delivery
-				var/delivery = text2path(target_path)
-				if(!ispath(delivery))
-					delivery = pick_closest_path(target_path)
-					if(!delivery)
-						alert("ERROR: Incorrect / improper path given.")
-				new delivery(pod)
-			new /obj/effect/pod_landingzone(get_turf(target), pod)
-		if(ADMIN_PUNISHMENT_SUPPLYPOD)
-			var/datum/centcom_podlauncher/plaunch  = new(usr)
-			if(!holder)
-				return
-			plaunch.specificTarget = target
-			plaunch.launchChoice = 0
-			plaunch.damageChoice = 1
-			plaunch.explosionChoice = 1
-			plaunch.temp_pod.damage = 40//bring the mother fuckin ruckus
-			plaunch.temp_pod.explosionSize = list(0,0,0,2)
-			plaunch.temp_pod.effectStun = TRUE
-			return //We return here because punish_log() is handled by the centcom_podlauncher datum
+	var/smite_path = GLOB.smites[punishment]
+	var/datum/smite/smite = new smite_path
+	var/configuration_success = smite.configure(usr)
+	if (configuration_success == FALSE)
+		return
+	smite.effect(src, target)
 
-		if(ADMIN_PUNISHMENT_MAZING)
-			if(!puzzle_imprison(target))
-				to_chat(usr,"<span class='warning'>Imprisonment failed!</span>")
-				return
-		if(ADMIN_PUNISHMENT_PIE)
-			var/obj/item/reagent_containers/food/snacks/pie/cream/nostun/creamy = new(get_turf(target))
-			creamy.splat(target)
-		if(ADMIN_PUNISHMENT_CUSTOM_PIE)
-			var/obj/item/reagent_containers/food/snacks/pie/cream/nostun/A = new()
-			if(!A.reagents)
-				var/amount = input(usr, "Specify the reagent size of [A]", "Set Reagent Size", 50) as num|null
-				if(amount)
-					A.create_reagents(amount)
-			if(A.reagents)
-				var/chosen_id = choose_reagent_id(usr)
-				if(chosen_id)
-					var/amount = input(usr, "Choose the amount to add.", "Choose the amount.", A.reagents.maximum_volume) as num|null
-					if(amount)
-						A.reagents.add_reagent(chosen_id, amount)
-						A.splat(target)
-		if(ADMIN_PUNISHMENT_CRACK)
-			if(!iscarbon(target))
-				to_chat(usr,"<span class='warning'>This must be used on a carbon mob.</span>", confidential = TRUE)
-				return
-			var/mob/living/carbon/C = target
-			for(var/i in C.bodyparts)
-				var/obj/item/bodypart/squish_part = i
-				var/type_wound = pick(list(/datum/wound/blunt/critical, /datum/wound/blunt/severe, /datum/wound/blunt/critical, /datum/wound/blunt/severe, /datum/wound/blunt/moderate))
-				squish_part.force_wound_upwards(type_wound, smited=TRUE)
-		if(ADMIN_PUNISHMENT_BLEED)
-			if(!iscarbon(target))
-				to_chat(usr,"<span class='warning'>This must be used on a carbon mob.</span>", confidential = TRUE)
-				return
-			var/mob/living/carbon/C = target
-			for(var/i in C.bodyparts)
-				var/obj/item/bodypart/slice_part = i
-				var/type_wound = pick(list(/datum/wound/slash/severe, /datum/wound/slash/moderate))
-				slice_part.force_wound_upwards(type_wound, smited=TRUE)
-				type_wound = pick(list(/datum/wound/slash/critical, /datum/wound/slash/severe, /datum/wound/slash/moderate))
-				slice_part.force_wound_upwards(type_wound, smited=TRUE)
-				type_wound = pick(list(/datum/wound/slash/critical, /datum/wound/slash/severe))
-				slice_part.force_wound_upwards(type_wound, smited=TRUE)
-		if(ADMIN_PUNISHMENT_SCARIFY)
-			if(!iscarbon(target))
-				to_chat(usr,"<span class='warning'>This must be used on a carbon mob.</span>", confidential = TRUE)
-				return
-			var/mob/living/carbon/dude = target
-			dude.generate_fake_scars(rand(1, 4))
-			to_chat(dude, "<span class='warning'>You feel your body grow jaded and torn...</span>")
-		if(ADMIN_PUNISHMENT_PERFORATE)
-			if(!iscarbon(target))
-				to_chat(usr,"<span class='warning'>This must be used on a carbon mob.</span>", confidential = TRUE)
-				return
 
-			var/list/how_fucked_is_this_dude = list("A little", "A lot", "So fucking much", "FUCK THIS DUDE")
-			var/hatred = input("How much do you hate this guy?") in how_fucked_is_this_dude
-			var/repetitions
-			var/shots_per_limb_per_rep = 2
-			var/damage
-			switch(hatred)
-				if("A little")
-					repetitions = 1
-					damage = 5
-				if("A lot")
-					repetitions = 2
+/proc/breadify(atom/movable/target)
+	var/obj/item/reagent_containers/food/snacks/store/bread/plain/funnyBread = new(get_turf(target))
+	target.forceMove(funnyBread)
 
-					damage = 8
-				if("So fucking much")
-					repetitions = 3
-					damage = 10
-				if("FUCK THIS DUDE")
-					repetitions = 4
-					damage = 10
-
-			var/mob/living/carbon/dude = target
-			var/list/open_adj_turfs = get_adjacent_open_turfs(dude)
-			var/list/wound_bonuses = list(15, 70, 110, 250)
-
-			var/delay_per_shot = 1
-			var/delay_counter = 1
-
-			dude.Immobilize(5 SECONDS)
-			for(var/wound_bonus_rep in 1 to repetitions)
-				for(var/i in dude.bodyparts)
-					var/obj/item/bodypart/slice_part = i
-					var/shots_this_limb = 0
-					for(var/t in shuffle(open_adj_turfs))
-						var/turf/iter_turf = t
-						addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(firing_squad), dude, iter_turf, slice_part.body_zone, wound_bonuses[wound_bonus_rep], damage), delay_counter)
-						delay_counter += delay_per_shot
-						shots_this_limb++
-						if(shots_this_limb > shots_per_limb_per_rep)
-							break
-		if(ADMIN_PUNISHMENT_PICKLE)
-			target.turn_into_pickle()
-		if(ADMIN_PUNISHMENT_FRY)
-			target.fry()
-
-		if(ADMIN_PUNISHMENT_SHOES)
-			if(!iscarbon(target))
-				to_chat(usr,"<span class='warning'>This must be used on a carbon mob.</span>")
-				return
-			var/mob/living/carbon/C = target
-			var/obj/item/clothing/shoes/sick_kicks = C.shoes
-			if(!sick_kicks?.can_be_tied)
-				to_chat(usr,"<span class='warning'>[C] does not have knottable shoes!</span>")
-				return
-			sick_kicks.adjust_laces(SHOES_KNOTTED)
-		if(ADMIN_PUNISHMENT_CLUWNE)
-			if(!iscarbon(target))
-				to_chat(usr,"<span class='warning'>This must be used on a carbon mob.</span>")
-				return
-			target.cluwneify()
-		if(ADMIN_PUNISHMENT_GOODBYE) //sandstorm punish :) it starts here
-			var/mob/living/C = target
-			if(C.stat == DEAD)
-				to_chat(usr, "<span class='warning'>[C] is dead!")
-				return
-			else
-				C.goodbye() //sandstorm punish and ends here.
-		if(ADMIN_PUNISHMENT_TABLETIDESTATIONWIDE) //SPLURT punishments start here
-			priority_announce(html_decode("[target] has brought the wrath of the gods upon themselves and is now being tableslammed across the station. Please stand by."), null, 'sound/misc/announce.ogg', "CentCom")
-			var/list/areas = list()
-			for(var/area/A in world)
-				if(A.z == SSmapping.station_start)
-					areas += A
-			SEND_SOUND(target, sound('modular_splurt/sound/misc/slamofthenorthstar.ogg',volume=60))
-			for(var/area/A in areas)
-				for(var/obj/structure/table/T in A)
-					T.tablepush(target, target)
-					sleep(1)
-		if(ADMIN_PUNISHMENT_FAKEBWOINK)
-			SEND_SOUND(target, 'sound/effects/adminhelp.ogg')
-		if(ADMIN_PUNISHMENT_NUGGET)
-			if (!iscarbon(target))
-				return
-			var/mob/living/carbon/carbon_target = target
-			var/timer = 2 SECONDS
-			for (var/_limb in carbon_target.bodyparts)
-				var/obj/item/bodypart/limb = _limb
-				if (limb.body_part == HEAD || limb.body_part == CHEST)
-					continue
-				addtimer(CALLBACK(limb, TYPE_PROC_REF(/obj/item/bodypart, dismember)), timer)
-				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound), carbon_target, 'modular_splurt/sound/effects/cartoon_pop.ogg', 70), timer)
-				addtimer(CALLBACK(carbon_target, TYPE_PROC_REF(/mob/living, spin), 4, 1), timer - 0.4 SECONDS)
-				timer += 2 SECONDS
-		if(ADMIN_PUNISHMENT_BREADIFY)
-			#define BREADIFY_TIME (5 SECONDS)
-			var/mutable_appearance/bread_appearance = mutable_appearance('icons/obj/food/burgerbread.dmi', "bread")
-			var/mutable_appearance/transform_scanline = mutable_appearance('modular_splurt/icons/effects/effects.dmi', "transform_effect")
-			target.transformation_animation(bread_appearance, time = BREADIFY_TIME, transform_overlay=transform_scanline, reset_after=TRUE)
-			addtimer(CALLBACK(src, PROC_REF(breadify), target), BREADIFY_TIME)
-			#undef BREADIFY_TIME
-		if(ADMIN_PUNISHMENT_BOOKIFY)
-			#define BOOKIFY_TIME (2 SECONDS)
-			var/mutable_appearance/book_appearance = mutable_appearance('icons/obj/library.dmi', "book")
-			var/mutable_appearance/transform_scanline = mutable_appearance('modular_splurt/icons/effects/effects.dmi', "transform_effect")
-			target.transformation_animation(book_appearance, time = BOOKIFY_TIME, transform_overlay=transform_scanline, reset_after=TRUE)
-			addtimer(CALLBACK(src, PROC_REF(bookify), target), BOOKIFY_TIME)
-			playsound(target, 'modular_splurt/sound/misc/bookify.ogg', 60, 1)
-			#undef BOOKIFY_TIME
-		if(ADMIN_PUNISHMENT_BONK)
-			playsound(target, 'modular_splurt/sound/misc/bonk.ogg', 100, 1)
-			target.AddElement(/datum/element/squish, 60 SECONDS)
-			to_chat(target, "<span class='warning big'>Bonk.</span>")
-
-	punish_log(target, punishment)
-
+/proc/bookify(atom/movable/target)
+	var/obj/item/reagent_containers/food/snacks/store/book/funnyBook = new(get_turf(target))
+	target.forceMove(funnyBook)
+	funnyBook.name = "Book of " + target.name
 /**
   * firing_squad is a proc for the :B:erforate smite to shoot each individual bullet at them, so that we can add actual delays without sleep() nonsense
   *
@@ -1569,10 +1317,10 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	divine_wrath.fire()
 
 /client/proc/punish_log(var/whom, var/punishment)
-	var/msg = "[key_name_admin(usr)] punished [key_name_admin(whom)] with [punishment]."
+	var/msg = "[key_name_admin(src)] punished [key_name_admin(whom)] with [punishment]."
 	message_admins(msg)
 	admin_ticket_log(whom, msg)
-	log_admin("[key_name(usr)] punished [key_name(whom)] with [punishment].")
+	log_admin("[key_name(src)] punished [key_name(whom)] with [punishment].")
 
 /client/proc/trigger_centcom_recall()
 	if(!check_rights(R_ADMIN))
@@ -1747,3 +1495,19 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	log_admin("[key_name(usr)] spawned floor cluwne.")
 	message_admins("[key_name(usr)] spawned floor cluwne.")
 */
+
+/// "Immerse", or how I made the entire playerbase quit the game.
+/proc/immerse_player(mob/living/carbon/target, toggle=TRUE, remove=FALSE)
+	var/list/immersion_components = list(/datum/component/manual_breathing, /datum/component/manual_blinking)
+
+	for(var/immersies in immersion_components)
+		var/has_component = target.GetComponent(immersies)
+
+		if(has_component && (toggle || remove))
+			qdel(has_component)
+		else if(toggle || !remove)
+			target.AddComponent(immersies)
+
+/proc/mass_immerse(remove=FALSE)
+	for(var/mob/living/carbon/M in GLOB.mob_list)
+		immerse_player(M, toggle=FALSE, remove=remove)

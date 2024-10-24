@@ -42,11 +42,12 @@
 							observers = null
 							break
 
-		var/icon_file = I.lefthand_file
-		if(get_held_index_of_item(I) % 2 == 0)
-			icon_file = I.righthand_file
+		if(!IsFeral()) // SPLURT EDIT - FERALS
+			var/icon_file = I.lefthand_file
+			if(get_held_index_of_item(I) % 2 == 0)
+				icon_file = I.righthand_file
 
-		hands += I.build_worn_icon(default_layer = HANDS_LAYER, default_icon_file = icon_file, isinhands = TRUE)
+			hands += I.build_worn_icon(default_layer = HANDS_LAYER, default_icon_file = icon_file, isinhands = TRUE)
 
 	overlays_standing[HANDS_LAYER] = hands
 	apply_overlay(HANDS_LAYER)
@@ -109,7 +110,8 @@
 		inv.update_icon()
 
 	if(wear_neck)
-		if(!(head && (head.flags_inv & HIDENECK)))
+		//if(!(head && (head.flags_inv & HIDENECK)))
+		if(!(head && (head.flags_inv & HIDENECK)) && !IsFeral()) // SPLURT EDIT - FERALS
 			var/chosen_icon = 'icons/mob/clothing/neck.dmi'
 			if(dna.species.icon_neck)
 				chosen_icon = dna.species.icon_neck
@@ -126,10 +128,11 @@
 		inv?.update_icon()
 
 	if(back)
-		var/chosen_icon = 'icons/mob/clothing/back.dmi'
-		if(dna.species.icon_back)
-			chosen_icon = dna.species.icon_back
-		overlays_standing[BACK_LAYER] = back.build_worn_icon(default_layer = BACK_LAYER, default_icon_file = chosen_icon, override_state = back.icon_state)
+		if(!IsFeral()) // SPLURT EDIT - FERALS
+			var/chosen_icon = 'icons/mob/clothing/back.dmi'
+			if(dna.species.icon_back)
+				chosen_icon = dna.species.icon_back
+			overlays_standing[BACK_LAYER] = back.build_worn_icon(default_layer = BACK_LAYER, default_icon_file = chosen_icon, override_state = back.icon_state)
 		update_hud_back(back)
 
 	apply_overlay(BACK_LAYER)
@@ -219,22 +222,23 @@
 		var/obj/item/bodypart/BP = X
 		BP.update_limb()
 
-	//LOAD ICONS
-	if(limb_icon_cache[icon_render_key])
-		load_limb_from_cache()
-		return
+	if(!IsFeral()) // SPLURT EDIT - FERALS
+		//LOAD ICONS
+		if(limb_icon_cache[icon_render_key])
+			load_limb_from_cache()
+			return
 
-	//GENERATE NEW LIMBS
-	var/static/list/leg_day = typecacheof(list(/obj/item/bodypart/r_leg, /obj/item/bodypart/l_leg))
-	var/list/new_limbs = list()
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/BP = X
-		if(is_taur && leg_day[BP.type])
-			continue
-		new_limbs += BP.get_limb_icon()
-	if(new_limbs.len)
-		overlays_standing[BODYPARTS_LAYER] = new_limbs
-		limb_icon_cache[icon_render_key] = new_limbs
+		//GENERATE NEW LIMBS
+		var/static/list/leg_day = typecacheof(list(/obj/item/bodypart/r_leg, /obj/item/bodypart/l_leg))
+		var/list/new_limbs = list()
+		for(var/X in bodyparts)
+			var/obj/item/bodypart/BP = X
+			if(is_taur && leg_day[BP.type])
+				continue
+			new_limbs += BP.get_limb_icon()
+		if(new_limbs.len)
+			overlays_standing[BODYPARTS_LAYER] = new_limbs
+			limb_icon_cache[icon_render_key] = new_limbs
 
 	apply_overlay(BODYPARTS_LAYER)
 	update_damage_overlays()

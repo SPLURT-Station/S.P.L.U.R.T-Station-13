@@ -239,3 +239,33 @@
 	if(H)
 		var/datum/physiology/P = H.physiology
 		P.thirst_mod /= 2
+
+/datum/quirk/ghost_hunted
+	name = "Paranormal Pursuit"
+	desc = "An otherworldly force has marked you for death, and will stop at nothing to see it through. Luckily, it moves slow enough to avoid with a brisk walk."
+	// Gain and lose text are redundant, since this adds a trauma.
+	gain_text = "<span class='warning'>You're not safe here. It's coming.</span>"
+	lose_text = "<span class='nicegreen'>Your otherworldly pursuer fades, for now...</span>"
+	medical_record_text = "Patient claims to be threatened by an evil spirit."
+	value = -2
+	
+	// Trauma to be used
+	var/quirk_trauma = /datum/brain_trauma/magic/stalker
+
+/datum/quirk/ghost_hunted/add()
+	. = ..()
+
+	// Define owner
+	var/mob/living/carbon/quirk_mob = quirk_holder
+
+	// Grant the trauma
+	quirk_mob.gain_trauma(quirk_trauma, TRAUMA_RESILIENCE_ABSOLUTE)
+
+/datum/quirk/ghost_hunted/remove()
+	. = ..()
+
+	// Define owner
+	var/mob/living/carbon/quirk_mob = quirk_holder
+
+	// Remove the trauma
+	quirk_mob.cure_trauma_type(quirk_trauma, TRAUMA_RESILIENCE_ABSOLUTE)

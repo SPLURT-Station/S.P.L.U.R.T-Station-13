@@ -115,7 +115,7 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 				if(L.client.prefs.extremepref == "Yes")
 					content += "<br><b>Extreme content:</b> [L.client.prefs.extremepref] <b>| Extreme content harm:</b> [L.client.prefs.extremeharm]\n"
 
-				if(L.client.prefs.be_victim == BEVICTIM_ASK || L.client.prefs.be_victim == BEVICTIM_YES)
+				if((L.client.prefs.be_victim == BEVICTIM_ASK || L.client.prefs.be_victim == BEVICTIM_YES) && GLOB.master_mode == "extended")
 					content += "<br><b>Be antag victim:</b> [L.client.prefs.be_victim]\n"
 
 				content += "\n"

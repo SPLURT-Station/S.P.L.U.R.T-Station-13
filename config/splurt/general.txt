@@ -33,3 +33,16 @@ CHARACTER_COLOR_LIMITS
 # Max amount of songs that can be added to the jukebox each round.
 # -1 or comment to unlimit
 #MAX_JUKEBOX_SONGS -1
+
+# Vote mode exemption
+# Toggles the system to run a dynamic/extended vote mode every few rounds and days according to the config
+# Useless without a forced mode
+#VOTE_MODE_EXEMPTION
+
+# Vote exemption days
+# The VOTE exemption clause will be available every X days
+#VOTE_EXEMPTION_DAYS 2
+
+# Vote exemption rounds
+# The VOTE exemption clause will be available every X rounds
+#VOTE_EXEMPTION_ROUNDS 2

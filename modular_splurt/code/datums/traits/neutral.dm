@@ -485,6 +485,47 @@
 	// Revoke quirk action
 	quirk_action.Remove(quirk_holder)
 
+/datum/quirk/symbiote //adds the symbiote quirk
+	name = "Symbiote"
+	desc = "An alien parasite resides within you, allowing you to swap between a human and slime like appearance."
+	value = 0
+	mob_trait = TRAIT_SYMBIOTE
+	gain_text = span_notice("You feel a sense of symbiosis.")
+	lose_text = span_notice("The you are no longer we.")
+	medical_record_text = "Patient has been reported howling at the night sky."
+	var/list/old_features
+
+/datum/quirk/symbiote/add()
+	// Define old features
+	old_features = list("species" = SPECIES_HUMAN, "legs" = "Plantigrade", "size" = 1, "bark")
+
+	// Define quirk mob
+	var/mob/living/carbon/human/quirk_mob = quirk_holder
+
+	// Record features
+	old_features = quirk_mob.dna.features.Copy()
+	old_features["species"] = quirk_mob.dna.species.type
+	old_features["custom_species"] = quirk_mob.custom_species
+	old_features["size"] = get_size(quirk_mob)
+	old_features["bark"] = quirk_mob.vocal_bark_id
+	old_features["taur"] = quirk_mob.dna.features["taur"]
+	old_features["eye_type"] = quirk_mob.dna.species.eye_type
+	old_features["color"] = quirk_mob.dna.species.mutant_color
+/datum/quirk/symbiote/post_add()
+	// Define quirk action
+	var/datum/action/cooldown/symbiote/transform/quirk_action = new
+
+	// Grant quirk action
+	quirk_action.Grant(quirk_holder)
+
+/datum/quirk/symbiote/remove()
+	// Define quirk action
+	var/datum/action/cooldown/symbiote/transform/quirk_action = locate() in quirk_holder.actions
+
+	// Revoke quirk action
+	quirk_action.Remove(quirk_holder)
+
+
 /datum/quirk/gargoyle //Mmmm yes stone time
 	name = "Gargoyle"
 	desc = "You are some form of gargoyle! You can only leave your stone form for so long, and will have to return to it to regain energy. On the bright side, you heal in statue form!"

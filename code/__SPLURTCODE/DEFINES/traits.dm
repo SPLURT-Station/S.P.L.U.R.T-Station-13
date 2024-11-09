@@ -51,3 +51,4 @@
 #define TRAIT_MESSY				"messy"
 #define TRAIT_RESTORATIVE_METABOLISM   "restorative_metabolism"
 #define TRAIT_KISS_SLUT			"kiss_slut"
+#define TRAIT_SYMBIOTE			"symbiote"

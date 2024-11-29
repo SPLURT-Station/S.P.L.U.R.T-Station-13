@@ -240,8 +240,8 @@
 /obj/item/tank/return_air()
 	return air_contents
 
-// /obj/item/tank/return_analyzable_air()
-// 	return air_contents
+/obj/item/tank/return_analyzable_air()
+	return air_contents
 
 /obj/item/tank/assume_air(datum/gas_mixture/giver)
 	air_contents.merge(giver)

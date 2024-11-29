@@ -345,7 +345,7 @@
 				M.electrocute_act(80, src, null, SHOCK_ILLUSION)
 		qdel(src)
 
-/obj/item/spellpacket/lightningbolt/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback)
+/obj/item/spellpacket/lightningbolt/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, quickstart = TRUE)
 	. = ..()
 	if(ishuman(thrower))
 		var/mob/living/carbon/human/H = thrower

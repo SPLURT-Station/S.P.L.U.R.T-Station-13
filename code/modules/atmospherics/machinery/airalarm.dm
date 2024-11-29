@@ -78,6 +78,8 @@
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 100, BOMB = 0, BIO = 100, RAD = 100, FIRE = 90, ACID = 30)
 	resistance_flags = FIRE_PROOF
 
+	COOLDOWN_DECLARE(decomp_alarm)
+
 	var/danger_level = 0
 	var/mode = AALARM_MODE_SCRUBBING
 
@@ -947,6 +949,14 @@
 			I.obj_integrity = I.max_integrity * 0.5
 		new /obj/item/stack/cable_coil(loc, 3)
 	qdel(src)
+
+/obj/machinery/airalarm/proc/handle_decomp_alarm()
+	if(!is_operational() || !COOLDOWN_FINISHED(src, decomp_alarm))
+		return
+	var/area/A = get_base_area(src)
+	A.firealert(src)
+	playsound(loc, 'goon/sound/machinery/FireAlarm.ogg', 75)
+	COOLDOWN_START(src, decomp_alarm, 1 SECONDS)
 
 #undef AALARM_MODE_SCRUBBING
 #undef AALARM_MODE_VENTING

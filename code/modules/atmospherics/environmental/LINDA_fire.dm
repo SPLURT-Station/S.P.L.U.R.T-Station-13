@@ -10,7 +10,9 @@
 
 
 /turf/open/hotspot_expose(exposed_temperature, exposed_volume, soh)
-	if(!air)
+	//If the air doesn't exist we just return false
+	var/list/air_gases = air?.get_gases()
+	if(!air_gases)
 		return
 
 	if (air.get_oxidation_power(exposed_temperature) < 0.5 || air.get_moles(GAS_HYPERNOB) > 5)
@@ -35,9 +37,11 @@
 	icon = 'icons/effects/fire.dmi'
 	icon_state = "1"
 	layer = GASFIRE_LAYER
-	light_range = LIGHT_RANGE_FIRE
-	light_color = LIGHT_COLOR_FIRE
 	blend_mode = BLEND_ADD
+	// light_system = MOVABLE_LIGHT
+	light_range = LIGHT_RANGE_FIRE
+	light_power = 1
+	light_color = LIGHT_COLOR_FIRE
 
 	var/volume = 125
 	var/temperature = FIRE_MINIMUM_TEMPERATURE_TO_EXIST
@@ -55,6 +59,11 @@
 	setDir(pick(GLOB.cardinals))
 	air_update_turf()
 
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 /obj/effect/hotspot/proc/perform_exposure()
 	var/turf/open/location = loc
 	if(!istype(location) || !(location.air))
@@ -62,15 +71,18 @@
 
 	location.active_hotspot = src
 
-	bypassing = volume > CELL_VOLUME*0.95
+	bypassing = volume > CELL_VOLUME*0.95 || location.air.return_temperature() >= FUSION_TEMPERATURE_THRESHOLD
 
 	if(bypassing)
+		if(temperature > location.air.return_temperature())
+			location.air.set_temperature(temperature) //now actually starts fires like intended
 		volume = location.air.reaction_results["fire"]*FIRE_GROWTH_RATE
 		temperature = location.air.return_temperature()
 	else
 		var/datum/gas_mixture/affected = location.air.remove_ratio(volume/location.air.return_volume())
 		if(affected) //in case volume is 0
-			affected.set_temperature(temperature)
+			if(temperature > affected.return_temperature())
+				affected.set_temperature(temperature) //don't set the temperature lower than what it was
 			affected.react(src)
 			temperature = affected.return_temperature()
 			volume = affected.reaction_results["fire"]*FIRE_GROWTH_RATE
@@ -131,7 +143,7 @@
 		add_overlay(fusion_overlay)
 		add_overlay(rainbow_overlay)
 
-	set_light(l_color = rgb(LERP(250,heat_r,greyscale_fire),LERP(160,heat_g,greyscale_fire),LERP(25,heat_b,greyscale_fire)))
+	set_light_color(rgb(LERP(250, heat_r, greyscale_fire), LERP(160, heat_g, greyscale_fire), LERP(25, heat_b, greyscale_fire)))
 
 	heat_r /= 255
 	heat_g /= 255
@@ -210,8 +222,8 @@
 				T.to_be_destroyed = FALSE
 				T.max_fire_temperature_sustained = 0
 
-/obj/effect/hotspot/Crossed(atom/movable/AM, oldLoc)
-	..()
+/obj/effect/hotspot/proc/on_entered(datum/source, atom/movable/AM, oldLoc)
+	SIGNAL_HANDLER
 	if(isliving(AM))
 		var/mob/living/L = AM
 		L.fire_act(temperature, volume)

@@ -1,5 +1,4 @@
 /turf
-	//used for temperature calculations
 	//conductivity is divided by 10 when interacting with air for balance purposes
 	var/thermal_conductivity = 0.05
 	var/heat_capacity = 1
@@ -21,24 +20,18 @@
 	var/pressure_direction = 0
 	var/turf/pressure_specific_target
 
-	var/datum/gas_mixture/turf/air
+	var/datum/gas_mixture/air
 
 	var/obj/effect/hotspot/active_hotspot
 	var/planetary_atmos = FALSE //air will revert to initial_gas_mix over time
 
 	var/list/atmos_overlay_types //gas IDs of current active gas overlays
 
-/turf/open/Initialize(mapload)
-	if(!blocks_air)
-		air = new(2500,src)
-		air.copy_from_turf(src)
-		if(planetary_atmos && !(initial_gas_mix in SSair.planetary))
-			var/datum/gas_mixture/mix = new
-			mix.parse_gas_string(initial_gas_mix)
-			mix.mark_immutable()
-			SSair.planetary[initial_gas_mix] = mix
-		update_air_ref(planetary_atmos ? 1 : 2)
-	. = ..()
+/turf/open/Initialize(mapload, inherited_virtual_z)
+	air = new(2500,src)
+	air.copy_from_turf(src)
+	update_air_ref(planetary_atmos ? AIR_REF_PLANETARY_TURF : AIR_REF_OPEN_TURF)
+	return ..()
 
 /turf/open/Destroy()
 	if(active_hotspot)
@@ -102,9 +95,13 @@
 	RETURN_TYPE(/datum/gas_mixture)
 	return air
 
+/turf/open/return_analyzable_air()
+	return return_air()
+
 /turf/temperature_expose()
 	if(return_temperature() > heat_capacity)
 		to_be_destroyed = TRUE
+
 
 /turf/open/proc/eg_reset_cooldowns()
 /turf/open/proc/eg_garbage_collect()
@@ -126,6 +123,7 @@
 				vis_contents -= overlay
 			src.atmos_overlay_types = null
 		return
+
 
 	for(var/id in air.get_gases())
 		if (nonoverlaying_gases[id])
@@ -169,92 +167,79 @@
 
 /////////////////////////////SIMULATION///////////////////////////////////
 
-/*#define LAST_SHARE_CHECK \
-	var/last_share = our_air.get_last_share();\
-	if(last_share > MINIMUM_AIR_TO_SUSPEND){\
-		our_excited_group.reset_cooldowns();\
-		cached_atmos_cooldown = 0;\
-	} else if(last_share > MINIMUM_MOLES_DELTA_TO_MOVE) {\
-		our_excited_group.dismantle_cooldown = 0;\
-		cached_atmos_cooldown = 0;\
-	}
-*/
 /turf/proc/process_cell(fire_count)
-
 /turf/open/proc/equalize_pressure_in_zone(cyclenum)
-/turf/open/proc/consider_firelocks(turf/T2)
-	var/reconsider_adj = FALSE
-	for(var/obj/machinery/door/firedoor/FD in T2)
-		if((FD.flags_1 & ON_BORDER_1) && get_dir(T2, src) != FD.dir)
-			continue
-		FD.emergency_pressure_stop()
-		reconsider_adj = TRUE
+
+/turf/proc/consider_firelocks(turf/T2) //TODO: Find out why this sometimes gets called. Possibly to do with atmos adjacency not being updated in auxmos?
+/turf/open/consider_firelocks(turf/T2)
+	if(blocks_air)
+		return
+	for(var/obj/machinery/airalarm/alarm in src)
+		alarm.handle_decomp_alarm()
 	for(var/obj/machinery/door/firedoor/FD in src)
-		if((FD.flags_1 & ON_BORDER_1) && get_dir(src, T2) != FD.dir)
-			continue
 		FD.emergency_pressure_stop()
-		reconsider_adj = TRUE
-	if(reconsider_adj)
-		T2.ImmediateCalculateAdjacentTurfs() // We want those firelocks closed yesterday.
+	for(var/obj/machinery/door/firedoor/FD in T2)
+		FD.emergency_pressure_stop()
 
 /turf/proc/handle_decompression_floor_rip()
+
 /turf/open/floor/handle_decompression_floor_rip(sum)
-	if(sum > 20 && prob(clamp(sum / 10, 0, 30)))
+	if(!blocks_air && sum > 20 && prob(clamp(sum / 10, 0, 30)))
 		remove_tile()
 
 /turf/open/process_cell(fire_count)
 
 //////////////////////////SPACEWIND/////////////////////////////
 
-/turf/proc/consider_pressure_difference()
+/turf/proc/consider_pressure_difference(turf/T, difference)
 	return
 
 /turf/open/consider_pressure_difference(turf/T, difference)
+	SSair.high_pressure_delta |= src
 	if(difference > pressure_difference)
 		pressure_direction = get_dir(src, T)
 		pressure_difference = difference
-		SSair.high_pressure_delta[src] = TRUE
 
 /turf/open/proc/high_pressure_movements()
-	var/atom/movable/M
+	if(blocks_air)
+		return
 	var/multiplier = 1
 	if(locate(/obj/structure/rack) in src)
 		multiplier *= 0.1
 	else if(locate(/obj/structure/table) in src)
 		multiplier *= 0.2
-	for(var/thing in src)
-		M = thing
-		if (!M.anchored && !M.pulledby && M.last_high_pressure_movement_air_cycle < SSair.times_fired)
+	for(var/atom/movable/M as anything in src)
+		if(!M.anchored && !M.pulledby && M.last_high_pressure_movement_air_cycle < SSair.times_fired && (M.flags_1 & INITIALIZED_1) && !QDELETED(M))
 			M.experience_pressure_difference(pressure_difference * multiplier, pressure_direction, 0, pressure_specific_target)
 
 	if(pressure_difference > 100)
 		new /obj/effect/temp_visual/dir_setting/space_wind(src, pressure_direction, clamp(round(sqrt(pressure_difference) * 2), 10, 255))
 
-
 /atom/movable/var/pressure_resistance = 10
 /atom/movable/var/last_high_pressure_movement_air_cycle = 0
 
 /atom/movable/proc/experience_pressure_difference(pressure_difference, direction, pressure_resistance_prob_delta = 0, throw_target)
-	set waitfor = FALSE
-	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_PRESSURE_PUSH) & COMSIG_MOVABLE_BLOCKS_PRESSURE)
-		return
-
 	var/const/PROBABILITY_OFFSET = 40
 	var/const/PROBABILITY_BASE_PRECENT = 10
 	var/max_force = sqrt(pressure_difference)*(MOVE_FORCE_DEFAULT / 5)
+	set waitfor = 0
 	var/move_prob = 100
-	if(pressure_resistance > 0)
+	if (pressure_resistance > 0)
 		move_prob = (pressure_difference/pressure_resistance*PROBABILITY_BASE_PRECENT)-PROBABILITY_OFFSET
 	move_prob += pressure_resistance_prob_delta
-	if(move_prob > PROBABILITY_OFFSET && prob(move_prob) && (move_resist != INFINITY) && (!anchored && (max_force >= (move_resist * MOVE_FORCE_PUSH_RATIO))) || (anchored && (max_force >= (move_resist * MOVE_FORCE_FORCEPUSH_RATIO))))
+	if (move_prob > PROBABILITY_OFFSET && prob(move_prob) && (move_resist != INFINITY) && (!anchored && (max_force >= (move_resist * MOVE_FORCE_PUSH_RATIO))) || (anchored && (max_force >= (move_resist * MOVE_FORCE_FORCEPUSH_RATIO))))
 		var/move_force = max_force * clamp(move_prob, 0, 100) / 100
+		if(ismob(src))
+			var/mob/M = src
+			if(M.mob_negates_gravity())
+				move_force = 0
 		if(move_force > 6000)
 			// WALLSLAM HELL TIME OH BOY
 			var/turf/throw_turf = get_ranged_target_turf(get_turf(src), direction, round(move_force / 2000))
 			if(throw_target && (get_dir(src, throw_target) & direction))
 				throw_turf = get_turf(throw_target)
 			var/throw_speed = clamp(round(move_force / 3000), 1, 10)
-			throw_at(throw_turf, move_force / 3000, throw_speed)
-		else
+			throw_at(throw_turf, move_force / 3000, throw_speed, quickstart = FALSE)
+		else if(move_force > 0)
 			step(src, direction)
 		last_high_pressure_movement_air_cycle = SSair.times_fired

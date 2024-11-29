@@ -34,8 +34,8 @@
 		if(manifest)
 			. += "manifest"
 
-/obj/structure/closet/crate/critter/return_air()
+/obj/structure/closet/crate/critter/return_analyzable_air()
 	if(tank)
-		return tank.air_contents
+		return tank.return_analyzable_air()
 	else
-		return loc.return_air()
+		return null

@@ -725,16 +725,21 @@ GENETICS SCANNER
 			amount += inaccurate
 	return DisplayTimeText(max(1,amount))
 
-/proc/atmosanalyzer_scan(mixture, mob/living/user, atom/target = src, visible = TRUE)
+/proc/atmosanalyzer_scan(mixture, mob/living/user, atom/target = src, silent = FALSE)
+	mixture = target.return_analyzable_air()
+	if(!mixture)
+		return FALSE
+
 	var/icon = target
-	if(visible)
-		user.visible_message("[user] has used the analyzer on [icon2html(icon, viewers(user))] [target].", "<span class='notice'>You use the analyzer on [icon2html(icon, user)] [target].</span>")
-	var/results = "<span class='boldnotice'>Results of analysis of [icon2html(icon, user)] [target].</span>"
+	var/render_list = list()
+	if(!silent && isliving(user))
+		user.visible_message("<span class='notice'>[user] uses the analyzer on [icon2html(icon, viewers(user))] [target].</span>", "<span class='notice'>You use the analyzer on [icon2html(icon, user)] [target].</span>")
+	render_list += "<span class='boldnotice'>Results of analysis of [icon2html(icon, user)] [target].</span>"
 
 	var/list/airs = islist(mixture) ? mixture : list(mixture)
 	for(var/g in airs)
 		if(airs.len > 1) //not a unary gas mixture
-			results += "\n<span class='boldnotice'>Node [airs.Find(g)]</span>"
+			render_list += "<span class='boldnotice'>Node [airs.Find(g)]</span>"
 		var/datum/gas_mixture/air_contents = g
 
 		var/total_moles = air_contents.total_moles()
@@ -744,30 +749,27 @@ GENETICS SCANNER
 		var/cached_scan_results = air_contents.analyzer_results
 
 		if(total_moles > 0)
-			results += "\n<span class='notice'>Moles: [round(total_moles, 0.01)] mol</span>"
-			results += "\n<span class='notice'>Volume: [volume] L</span>"
-			results += "\n<span class='notice'>Pressure: [round(pressure,0.01)] kPa</span>"
+			//WS Start -- Atmos Analyzer Reformat (Issue #419)
+			render_list += "<span class='notice'>Moles: [round(total_moles, 0.01)] mol</span>\
+							\n<span class='notice'>Volume: [volume] L</span>\
+							\n<span class='notice'>Pressure: [round(pressure,0.01)] kPa</span>\
+							\n<span class='notice'>Temperature: [round(temperature - T0C,0.01)] &deg;C ([round(temperature, 0.01)] K)</span>"
+			//WS End
 
 			for(var/id in air_contents.get_gases())
-				if(air_contents.get_moles(id) >= 0.005)
-					var/gas_concentration = air_contents.get_moles(id)/total_moles
-					results += "\n<span class='notice'>[GLOB.gas_data.names[id]]: [round(gas_concentration*100, 0.01)] % ([round(air_contents.get_moles(id), 0.01)] mol)</span>"
-			results += "\n<span class='notice'>Temperature: [round(temperature - T0C,0.01)] &deg;C ([round(temperature, 0.01)] K)</span>"
+				var/gas_concentration = air_contents.get_moles(id)/total_moles
+				render_list += "<span class='notice'>[GLOB.gas_data.names[id]]: [round(gas_concentration*100, 0.01)] % ([round(air_contents.get_moles(id), 0.01)] mol)</span>"  //WS Edit -- Atmos Analyzer Reformat (Issue #419)
 
 		else
-			if(airs.len > 1)
-				results += "\n<span class='notice'>This node is empty!</span>"
-			else
-				results += "\n<span class='notice'>[target] is empty!</span>"
+			render_list += airs.len > 1 ? "<span class='notice'>This node is empty!</span>" : "<span class='notice'>[target] is empty!</span>"
 
 		if(cached_scan_results && cached_scan_results["fusion"]) //notify the user if a fusion reaction was detected
-			var/instability = round(cached_scan_results["fusion"], 0.01)
-			var/tier = instability2text(instability)
-			results += "\n<span class='boldnotice'>Large amounts of free neutrons detected in the air indicate that a fusion reaction took place.</span>"
-			results += "\n<span class='notice'>Instability of the last fusion reaction: [instability]\n This indicates it was [tier]</span>"
+			render_list += "<span class='boldnotice'>Large amounts of free neutrons detected in the air indicate that a fusion reaction took place.</span>\
+						\n<span class='notice'>Instability of the last fusion reaction: [round(cached_scan_results["fusion"], 0.01)].</span>"
 
-	to_chat(user, examine_block(results))
-	return
+	// we let the join apply newlines so we do need handholding
+	to_chat(user, examine_block(jointext(render_list, "\n")), type = MESSAGE_TYPE_INFO)
+	return TRUE
 
 /obj/item/analyzer/proc/scan_turf(mob/user, turf/location)
 

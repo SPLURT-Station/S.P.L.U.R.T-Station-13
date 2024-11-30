@@ -28,3 +28,6 @@
 	value_mode = VALUE_MODE_TYPE
 	splitter = " | "
 	lowercase_key = FALSE
+
+/datum/config_entry/number/roundstart_ai_shells // Per AI, if you ever do get a triumvirate!
+	min_val = 0

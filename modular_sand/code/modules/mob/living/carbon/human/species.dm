@@ -3,7 +3,12 @@
 		return
 
 	//Put more things here if you plan on adding more things. I know this proc is a bit empty at the moment
-	H.adjust_thirst(-THIRST_FACTOR)
+	if (H.client)
+		H.adjust_thirst(-THIRST_FACTOR)
+	else
+		// Do not allow SSD players to too thirsty.
+		if (H.thirst >= THIRST_LEVEL_QUENCHED)
+			H.adjust_thirst(-THIRST_FACTOR)
 
 /*	switch(get_thirst(src))
 		if(THIRST_LEVEL_THIRSTY to INFINITY)

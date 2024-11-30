@@ -560,6 +560,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	. += lighter_overlay
 
 /obj/item/lighter/ignition_effect(atom/A, mob/user)
+	playsound(src, 'modular_sand/sound/items/lighter/light.ogg', 50, 0)
 	if(get_temperature())
 		. = "<span class='rose'>With a single flick of [user.p_their()] wrist, [user] smoothly lights [A] with [src]. Damn [user.p_theyre()] cool.</span>"
 
@@ -583,6 +584,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/lighter/attack_self(mob/living/user)
 	if(user.is_holding(src))
 		if(!lit)
+			// SANDSTORM EDIT
+			playsound(src, 'modular_sand/sound/items/lighter/open.ogg', 50, 0)
+			// End of edit
 			set_lit(TRUE)
 			if(fancy)
 				user.visible_message("Without even breaking stride, [user] flips open and lights [src] in one smooth movement.", "<span class='notice'>Without even breaking stride, you flip open and light [src] in one smooth movement.</span>")
@@ -606,6 +610,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 					SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "burnt_thumb", /datum/mood_event/burnt_thumb)
 
 		else
+			// SANDSTORM EDIT
+			playsound(src, 'modular_sand/sound/items/lighter/close.ogg', 50, 0)
+			// Edit end
 			set_lit(FALSE)
 			if(fancy)
 				user.visible_message("You hear a quiet click, as [user] shuts off [src] without even looking at what [user.p_theyre()] doing. Wow.", "<span class='notice'>You quietly shut off [src] without even looking at what you're doing. Wow.</span>")

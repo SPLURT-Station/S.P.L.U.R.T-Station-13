@@ -480,7 +480,7 @@ SUBSYSTEM_DEF(job)
 	var/display_rank = rank
 	if(M.client && M.client.prefs && M.client?.prefs?.alt_titles_preferences[rank])
 		display_rank = M.client?.prefs?.alt_titles_preferences[rank]
-	to_chat(M, "<b>Вы [display_rank].</b>")
+	to_chat(M, "<b>You are the [display_rank].</b>")
 	if(job)
 		to_chat(M, "<b>As the [display_rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>") //Skyrat change
 		job.radio_help_message(M)

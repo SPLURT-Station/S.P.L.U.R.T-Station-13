@@ -120,3 +120,53 @@
 /area/ruin/unpowered/ylvaturf
 	name = "Ylva Outskirts"
 	icon_state = "spacecontent26"
+
+//V2 Snaxi
+
+/area/maintenance/central/frozen
+	name = "Maintenance Frozen Tunnel"
+	icon_state = "maintcentral"
+
+/area/maintenance/central/frozen/lower
+	name = "Lower Maintenance Frozen Tunnel"
+	icon_state = "maintcentral"
+
+/area/maintenance/central/frozen/upper
+	name = "Upper Maintenance Frozen Tunnel"
+	icon_state = "maintcentral"
+
+/area/engineering/substation/scimed
+	name = "Science Medical Wing Engineering Substation"
+	icon_state = "engine"
+
+/area/engineering/substation/scimed/lower
+	name = "Lower Science Medical Wing Engineering Substation"
+	icon_state = "engine"
+
+/area/engineering/substation/scimed/upper
+	name = "Upper Sci-Med Wing Engineering Substation"
+	icon_state = "engine"
+
+/area/engineering/substation/service
+	name = "Service Wing Engineering Substation"
+	icon_state = "engine"
+
+/area/engineering/substation/service/lower
+	name = "Lower Service Wing Engineering Substation"
+	icon_state = "engine"
+
+/area/engineering/substation/service/upper
+	name = "Upper Service Wing Engineering Substation"
+	icon_state = "engine"
+
+/area/engineering/substation/commandsec
+	name = "Command-Sec Wing Engineering Substation"
+	icon_state = "engine"
+
+/area/engineering/substation/commandsec/lower
+	name = "Lower Command-Sec Wing Engineering Substation"
+	icon_state = "engine"
+
+/area/engineering/substation/commandsec/upper
+	name = "Upper Command-Sec Wing Engineering Substation"
+	icon_state = "engine"

@@ -1034,3 +1034,59 @@
 	id = "halloween"
 	suffix = "10x10_halloween.dmm"
 	name = "Maint halloween"
+
+//Snaxi remake edits
+
+/datum/map_template/ruin/station/maint/smexi1
+	prefix = "_maps/RandomRuins/StationRuins/maint/icemaint_center/"
+
+/datum/map_template/ruin/station/maint/smexi1/icemaint_center_boring
+	id = "center_boring"
+	suffix = "icemaint_center_boring.dmm"
+	name = "Icemaint Center Boring"
+
+/datum/map_template/ruin/station/maint/smexi1/icemaint_center_danger
+	id = "center_danger"
+	suffix = "icemaint_center_danger.dmm"
+	name = "Icemaint Center Danger"
+
+/datum/map_template/ruin/station/maint/smexi1/icemaint_center_frosty
+	id = "center_frosty"
+	suffix = "icemaint_center_frosty.dmm"
+	name = "Icemaint Center Frosty"
+
+/datum/map_template/ruin/station/maint/smexi2
+	prefix = "_maps/RandomRuins/StationRuins/maint/icemaint_west/"
+
+/datum/map_template/ruin/station/maint/smexi2/icemaint_west_boring
+	id = "icemaint_west_boring"
+	suffix = "icemaint_west_boring.dmm"
+	name = "Icemaint West Boring"
+
+/datum/map_template/ruin/station/maint/smexi3
+	prefix = "_maps/RandomRuins/StationRuins/maint/icemaint_east/"
+
+/datum/map_template/ruin/station/maint/smexi3/icemaint_east_boring
+	id = "east_boring"
+	suffix = "icemaint_east_boring.dmm"
+	name = "Icemaint East Boring"
+
+/datum/map_template/ruin/station/maint/smexi3/icemaint_east_danger
+	id = "east_danger"
+	suffix = "icemaint_east_danger.dmm"
+	name = "Icemaint East Danger"
+
+/datum/map_template/ruin/station/maint/smexi3/icemaint_east_knotways
+	id = "east_knotways"
+	suffix = "icemaint_east_knotways.dmm"
+	name = "Icemaint East Knotways"
+
+/datum/map_template/ruin/station/maint/smexi3/icemaint_east_icering
+	id = "east_icering"
+	suffix = "icemaint_east_icering.dmm"
+	name = "Icemaint East Icering"
+
+/datum/map_template/ruin/station/maint/smexi3/icemaint_east_maze
+	id = "east_maze"
+	suffix = "icemaint_east_maze.dmm"
+	name = "Icemaint East Maze"

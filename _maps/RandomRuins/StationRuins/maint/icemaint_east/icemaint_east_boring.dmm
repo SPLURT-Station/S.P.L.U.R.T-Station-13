@@ -1,0 +1,2021 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"as" = (
+/obj/machinery/door/window/northleft{
+	dir = 8;
+	name = "Atmos Monitoring";
+	req_access_txt = "12; 24"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/open/floor/plating,
+/area/engineering/substation/service/lower)
+"ay" = (
+/obj/machinery/door/airlock/atmos/abandoned{
+	name = "Atmospherics Maintenance";
+	req_access_txt = "12;24"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/engineering/substation/service/lower)
+"aA" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"co" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 10
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/engineering/substation/service/lower)
+"ed" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/engineering/substation/service/lower)
+"ek" = (
+/obj/effect/spawner/lootdrop/druggie_pill,
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"fl" = (
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"fs" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/engineering/substation/service/lower)
+"ga" = (
+/turf/open/floor/plasteel,
+/area/engineering/substation/service/lower)
+"gx" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"hp" = (
+/obj/machinery/camera{
+	c_tag = "Northwestern Engineering Post";
+	dir = 1
+	},
+/obj/machinery/light,
+/obj/structure/disposalpipe/trunk/multiz{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/engineering/substation/service/lower)
+"hX" = (
+/obj/structure/disposalpipe/trunk/multiz/down{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 6
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"iW" = (
+/turf/closed/wall/mineral/snow,
+/area/maintenance/central/frozen/upper)
+"ky" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/spawner/lootdrop/grille_or_trash,
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"lt" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/engineering/substation/service/lower)
+"mP" = (
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 5
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"ob" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/engineering/substation/service/lower)
+"pI" = (
+/turf/open/floor/plating,
+/area/maintenance/central/frozen/upper)
+"pT" = (
+/obj/item/radio/intercom{
+	pixel_x = -30
+	},
+/turf/open/floor/plasteel,
+/area/engineering/substation/service/lower)
+"qc" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"qy" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/spawner/lootdrop/glowstick,
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"qD" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/engineering/substation/service/lower)
+"qV" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/engineering/substation/service/lower)
+"ra" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"rp" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/engineering/substation/service/lower)
+"ru" = (
+/turf/open/openspace,
+/area/maintenance/central/frozen/upper)
+"rN" = (
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"sc" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"sZ" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"uq" = (
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/plasteel,
+/area/engineering/substation/service/lower)
+"uK" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plating,
+/area/engineering/substation/service/lower)
+"uR" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"uU" = (
+/obj/machinery/power/deck_relay,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"vo" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/door/airlock/external{
+	name = "External Access";
+	req_access_txt = "13"
+	},
+/turf/open/floor/plating,
+/area/maintenance/central/frozen/upper)
+"xn" = (
+/obj/machinery/light/floor,
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"xp" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"xH" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"xU" = (
+/obj/structure/disposalpipe/trunk/multiz/down,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 6
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"yr" = (
+/obj/structure/disposalpipe/trunk/multiz{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/engineering/substation/service/lower)
+"yP" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"ze" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"Ao" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/engineering/substation/service/lower)
+"Ay" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/spawner/lootdrop/maintenance,
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"AB" = (
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"CD" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/light/floor,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"CL" = (
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/camera{
+	c_tag = "Southern Engineering Post"
+	},
+/obj/machinery/power/apc{
+	areastring = "/area/engineering/substation/service/lower";
+	name = "Lower East Engineering Post APC";
+	pixel_x = -24
+	},
+/turf/open/floor/plasteel,
+/area/engineering/substation/service/lower)
+"CT" = (
+/turf/closed/mineral/random/snow,
+/area/icemoon/underground/unexplored/rivers)
+"DC" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/openspace,
+/area/maintenance/central/frozen/upper)
+"EF" = (
+/obj/machinery/atmospherics/pipe/simple/multiz{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/engineering/substation/service/lower)
+"Fw" = (
+/obj/machinery/atmospherics/pipe/simple/multiz{
+	dir = 8;
+	piping_layer = 3
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"FY" = (
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"Gg" = (
+/obj/effect/spawner/lootdrop/trashbin,
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"Gl" = (
+/turf/open/floor/plating,
+/area/engineering/substation/service/lower)
+"Gm" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"Jq" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/engineering/substation/service/lower)
+"JA" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/engineering/substation/service/lower)
+"KE" = (
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/engineering/substation/service/lower)
+"Ly" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"LX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/effect/spawner/lootdrop/tool_box,
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"Mc" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 9
+	},
+/obj/effect/spawner/lootdrop/glowstick,
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"NA" = (
+/obj/machinery/atmospherics/components/binary/valve/digital/on{
+	name = "Digital Valve"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/engineering/substation/service/lower)
+"NU" = (
+/obj/machinery/power/deck_relay,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plating,
+/area/engineering/substation/service/lower)
+"Ol" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"Oq" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/effect/spawner/lootdrop/low_tools,
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"PH" = (
+/obj/machinery/atmospherics/pipe/simple/multiz{
+	dir = 8;
+	piping_layer = 1
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"Rl" = (
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"RR" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"RU" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/engineering/substation/service/lower)
+"Sf" = (
+/obj/effect/spawner/lootdrop/tool_box,
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"Td" = (
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1{
+	dir = 4
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+"TD" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/machinery/door/airlock/external{
+	name = "External Access";
+	req_access_txt = "13"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/maintenance/central/frozen/upper)
+"Vf" = (
+/turf/closed/mineral/random/snow,
+/area/icemoon/surface/outdoors)
+"WA" = (
+/turf/closed/wall/r_wall,
+/area/engineering/substation/service/lower)
+"Yl" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/multiz,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
+/area/engineering/substation/service/lower)
+"Yy" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/layer_manifold,
+/turf/open/floor/plating,
+/area/engineering/substation/service/lower)
+"ZB" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/snowed/smoothed/warmer,
+/area/maintenance/central/frozen/upper)
+
+(1,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(2,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(3,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+Vf
+iW
+iW
+iW
+iW
+iW
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(4,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+iW
+iW
+Rl
+Gg
+DC
+ru
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(5,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+iW
+ek
+Rl
+Rl
+DC
+ru
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(6,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+iW
+AB
+hX
+xU
+ra
+mP
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(7,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+iW
+qc
+Fw
+PH
+ky
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(8,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+iW
+rN
+fl
+uU
+xn
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(9,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+iW
+iW
+rN
+yP
+xp
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(10,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+Vf
+iW
+iW
+iW
+xH
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(11,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+Vf
+Vf
+iW
+ZB
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(12,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+Vf
+Vf
+iW
+qy
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(13,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+iW
+ZB
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(14,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+iW
+ZB
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(15,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+iW
+CD
+Oq
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(16,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+iW
+ZB
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(17,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+iW
+Ay
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(18,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+iW
+ZB
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(19,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+iW
+ZB
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(20,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+iW
+ZB
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(21,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Gm
+Gm
+iW
+ZB
+Ly
+iW
+Gm
+Gm
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(22,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+vo
+pI
+TD
+CD
+Ly
+vo
+pI
+TD
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(23,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Gm
+Gm
+iW
+ZB
+Ly
+iW
+Gm
+Gm
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(24,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+iW
+ZB
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(25,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+iW
+ZB
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(26,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+iW
+ZB
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(27,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+iW
+ZB
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(28,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+iW
+ZB
+LX
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(29,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+iW
+CD
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(30,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+iW
+ZB
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(31,1,1) = {"
+CT
+CT
+CT
+CT
+CT
+CT
+Vf
+Vf
+iW
+iW
+iW
+iW
+iW
+ZB
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(32,1,1) = {"
+CT
+CT
+CT
+CT
+Vf
+Vf
+Vf
+Vf
+iW
+Rl
+AB
+Ol
+Ol
+FY
+Ly
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(33,1,1) = {"
+CT
+CT
+CT
+CT
+Vf
+Vf
+Vf
+Vf
+iW
+Rl
+qc
+AB
+Ol
+RR
+Td
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(34,1,1) = {"
+CT
+CT
+CT
+CT
+Vf
+Vf
+WA
+WA
+WA
+WA
+Ao
+Ao
+qV
+gx
+sc
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(35,1,1) = {"
+CT
+CT
+CT
+CT
+Vf
+Vf
+WA
+uq
+CL
+pT
+fs
+KE
+ay
+uR
+sc
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(36,1,1) = {"
+CT
+CT
+CT
+CT
+Vf
+Vf
+WA
+ga
+qD
+ga
+lt
+JA
+qV
+Rl
+sc
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(37,1,1) = {"
+CT
+CT
+CT
+CT
+Vf
+Vf
+WA
+rp
+as
+Yl
+ed
+ob
+Yy
+sZ
+aA
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(38,1,1) = {"
+CT
+CT
+CT
+CT
+Vf
+Vf
+WA
+Gl
+co
+Jq
+NA
+RU
+Yy
+ze
+Mc
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(39,1,1) = {"
+CT
+CT
+CT
+CT
+Vf
+Vf
+WA
+NU
+uK
+EF
+yr
+hp
+qV
+Rl
+Rl
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(40,1,1) = {"
+CT
+CT
+CT
+CT
+iW
+iW
+WA
+WA
+WA
+qV
+qV
+qV
+WA
+Rl
+Rl
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(41,1,1) = {"
+CT
+CT
+CT
+CT
+iW
+Rl
+Rl
+Rl
+Rl
+Rl
+Sf
+Rl
+Rl
+Rl
+Rl
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(42,1,1) = {"
+CT
+CT
+CT
+CT
+iW
+Rl
+Rl
+Rl
+iW
+iW
+iW
+iW
+iW
+iW
+iW
+iW
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(43,1,1) = {"
+CT
+CT
+CT
+CT
+iW
+Rl
+Rl
+Rl
+iW
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(44,1,1) = {"
+CT
+CT
+CT
+CT
+iW
+Rl
+Rl
+Rl
+iW
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+Vf
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}
+(45,1,1) = {"
+CT
+CT
+CT
+CT
+iW
+Rl
+Rl
+Rl
+iW
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+CT
+"}

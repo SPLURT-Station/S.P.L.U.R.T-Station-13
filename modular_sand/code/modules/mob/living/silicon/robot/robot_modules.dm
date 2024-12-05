@@ -83,7 +83,8 @@
 		"Meka" = image(icon = 'modular_splurt/icons/mob/robots_32x64.dmi', icon_state = "mekasyndi"), // SPLURT Addon (Bubbers Port)
 		"M-Meka" = image(icon = 'modular_splurt/icons/mob/robots_32x64.dmi', icon_state = "mmekasyndi"), // SPLURT Addon (Bubbers Port)
 		"F-Meka" = image(icon = 'modular_splurt/icons/mob/robots_32x64.dmi', icon_state = "fmekasyndi"), // SPLURT Addon (Bubbers Port)
-		"K4T" = image(icon = 'modular_splurt/icons/mob/robots_32x64.dmi', icon_state = "k4tsyndi") // SPLURT Addon (Bubbers Port)
+		"K4T" = image(icon = 'modular_splurt/icons/mob/robots_32x64.dmi', icon_state = "k4tsyndi"), // SPLURT Addon (Bubbers Port)
+		"Dullahan" = image(icon = 'modular_splurt/icons/mob/robots_32x64.dmi', icon_state = "dullahansyndi")
 		))
 	var/syndiejack_icon = show_radial_menu(R, R , syndicatejack_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), R), radius = 42, require_near = TRUE)
 	switch(syndiejack_icon)
@@ -134,6 +135,11 @@
 			hasrest = TRUE
 		if("K4T")
 			cyborg_base_icon = "k4tsyndi"
+			cyborg_icon_override = 'modular_splurt/icons/mob/robots_32x64.dmi'
+			hat_offset = 3
+			hasrest = TRUE
+		if("Dullahan")
+			cyborg_base_icon = "dullahansyndi"
 			cyborg_icon_override = 'modular_splurt/icons/mob/robots_32x64.dmi'
 			hat_offset = 3
 			hasrest = TRUE

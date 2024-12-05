@@ -178,6 +178,12 @@
 		loaded_tank.analyzer_act(user, I)
 	return TRUE
 
+/obj/machinery/power/rad_collector/return_analyzable_air()
+	if(loaded_tank)
+		return loaded_tank.return_analyzable_air()
+	else
+		return null
+
 /obj/machinery/power/rad_collector/examine(mob/user)
 	. = ..()
 	if(active)

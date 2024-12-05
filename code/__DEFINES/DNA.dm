@@ -153,6 +153,7 @@
 /// Used for determining which wounds are applicable to this species.
 #define HAS_FLESH	29 /// if we have flesh (can suffer slash/piercing/burn wounds, requires they don't have NOBLOOD)
 #define HAS_BONE	30 /// if we have bones (can suffer bone wounds)
+#define FERAL	31 /// doesnt display clothes or most external organs, uses simple_icon for species sprites
 
 //organ slots
 #define ORGAN_SLOT_BRAIN "brain"

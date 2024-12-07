@@ -11,7 +11,8 @@
 		"Senator",
 		"Consul",
 		"Cap-Slut",
-		"Condom"
+		"Condom",
+		"Catpain"
 	)
 	LAZYADD(alt_titles, extra_titles)
 	. = ..()

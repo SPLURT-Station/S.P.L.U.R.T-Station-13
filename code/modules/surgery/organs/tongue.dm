@@ -38,6 +38,7 @@
 		/datum/language/modular_sand/technorussian, //Skyrat change - russian stereotype language
 		/datum/language/modular_sand/sergal, //Sandstorm change
 		/datum/language/modular_splurt/avian, //SPLURT change - peep peep!
+		/datum/language/modular_splurt/nyanese, //SPLURT change - meow meow!
 	))
 	healing_factor = STANDARD_ORGAN_HEALING*5 //Fast!!
 	decay_factor = STANDARD_ORGAN_DECAY/2

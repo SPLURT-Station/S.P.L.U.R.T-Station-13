@@ -192,3 +192,15 @@
 		icon_state = "bean_bagopen"
 	else
 		icon_state = "bean_bag"
+		
+/obj/item/reagent_containers/food/snacks/sfseeds
+	name = "\improper Old Glory sunflower seeds"
+	icon_state = "sfseeds"
+	icon = 'modular_splurt/icons/obj/food/food.dmi'
+	desc = "Sunflower seeds grown in the land of the free."
+	trash = /obj/item/trash/sfseeds
+	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/sodiumchloride = 3)
+	junkiness = 20
+	filling_color = "##BCAAA4"
+	tastes = list("americana" = 1)
+	foodtype = JUNKFOOD

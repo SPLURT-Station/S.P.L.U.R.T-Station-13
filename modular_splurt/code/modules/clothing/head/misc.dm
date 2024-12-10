@@ -133,3 +133,11 @@
 	item_state = "hoodcowl"
 	flags_inv = HIDEHAIR
 	dynamic_hair_suffix = ""
+
+/obj/item/clothing/head/outragecowhat
+	name = "Outrageous Cowboy Hat"
+	desc = "A stupidly long cowboy hat, makes you want to s-stutter."
+	icon = 'modular_splurt/icons/obj/clothing/head.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/bighats.dmi'
+	icon_state = "outragecowhat"
+	item_state = "outragecowhat"

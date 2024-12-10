@@ -165,12 +165,31 @@
 	. = ..()
 	languages_possible = languages_possible_alien
 
-/obj/item/organ/tongue/alien/hybrid
+/obj/item/organ/tongue/hybrid
 	name = "xenohybrid tongue"
-
-/obj/item/organ/tongue/alien/hybrid/Initialize(mapload)
+	desc = "According to leading xenobiologists the evolutionary benefit of having a second mouth in your mouth is \"that it looks badass\"."
+	icon_state = "tonguexeno"
+	say_mod = "hisses"
+	taste_sensitivity = 10 // LIZARDS ARE ALIENS CONFIRMED (OLD CODEEEE!!!)
+	maxHealth = 500 //They've a little mouth for a tongue, so it's pretty robust
+	var/static/list/languages_possible_hybrid = typecacheof(list(
+		/datum/language/xenocommon,
+		/datum/language/common,
+		/datum/language/draconic,
+		/datum/language/ratvar,
+		/datum/language/monkey,
+		/datum/language/aphasia,
+		/datum/language/slime,
+		/datum/language/vampiric,
+		/datum/language/dwarf,
+		/datum/language/signlanguage,
+		/datum/language/modular_sand/solcommon, //Skyrat change - sol common blah blah
+		/datum/language/modular_sand/technorussian,  //Skyrat change - russian stereotype language))
+		/datum/language/codespeak
+	))
+/obj/item/organ/tongue/hybrid/Initialize(mapload)
 	. = ..()
-	languages_possible = languages_possible_base
+	languages_possible = languages_possible_hybrid
 
 /obj/item/organ/tongue/bone
 	name = "bone \"tongue\""

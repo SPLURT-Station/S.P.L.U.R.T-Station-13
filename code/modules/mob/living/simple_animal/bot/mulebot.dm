@@ -21,6 +21,7 @@
 	a_intent = INTENT_HARM //No swapping
 	buckle_lying = 0
 	mob_size = MOB_SIZE_LARGE
+	buckle_prevents_pull = TRUE	//no mass destruction caused by pulling the mulebot with avoidance wire snipped :3
 
 	radio_key = /obj/item/encryptionkey/headset_cargo
 	radio_channel = RADIO_CHANNEL_SUPPLY
@@ -131,11 +132,12 @@
 	else
 		icon_state = "[base_icon][wires.is_cut(WIRE_AVOIDANCE)]"
 	cut_overlays()
-	if(load && !ismob(load))//buckling handles the mob offsets
+	if(load)//buckling handles the mob offsets
 		load.pixel_y = initial(load.pixel_y) + 9
 		if(load.layer < layer)
 			load.layer = layer + 0.01
-		add_overlay(load)
+		if(!ismob(load))	//doesn't look great if there are two people
+			add_overlay(load)
 	return
 
 /mob/living/simple_animal/bot/mulebot/ex_act(severity, target, origin)
@@ -159,7 +161,7 @@
 			visible_message("<span class='danger'>Something shorts out inside [src]!</span>")
 			wires.cut_random()
 
-/mob/living/simple_animal/bot/mulebot/interact(mob/user)
+/mob/living/simple_animal/bot/mulebot/attack_hand(mob/user)
 	if(open && !isAI(user))
 		wires.interact(user)
 	else
@@ -201,7 +203,8 @@
 	return data
 
 /mob/living/simple_animal/bot/mulebot/ui_act(action, params)
-	if(..() || (locked && hasSiliconAccessInArea(usr)))
+	. = ..()
+	if(..() || (locked && !hasSiliconAccessInArea(usr)))
 		return
 	switch(action)
 		if("lock")
@@ -350,16 +353,18 @@
 		can_buckle = FALSE
 		return TRUE
 	return FALSE
-
-/mob/living/simple_animal/bot/mulebot/post_buckle_mob(mob/living/M)
+/*
+/mob/living/simple_animal/bot/mulebot/post_buckle_mob(mob/living/M)	//already in update_icon
 	M.pixel_y = initial(M.pixel_y) + 9
 	if(M.layer < layer)
 		M.layer = layer + 0.01
+*/
 
 /mob/living/simple_animal/bot/mulebot/post_unbuckle_mob(mob/living/M)
 		load = null
 		M.layer = initial(M.layer)
 		M.pixel_y = initial(M.pixel_y)
+
 
 // called to unload the bot
 // argument is optional direction to unload
@@ -473,6 +478,8 @@
 					if(cell)
 						cell.use(1)
 					if(moved && oldloc!=loc)	// successful move
+						if(load && ismob(load))	//for mobs and to prevent runtimes if there isn't any load
+							load.pixel_y = initial(load.pixel_y) + 9	//for mobs to not default to their original y
 						blockcount = 0
 						path -= loc
 
@@ -483,6 +490,8 @@
 
 					else		// failed to move
 
+						if(load && ismob(load))	//for mobs and to prevent runtimes if there isn't any load
+							load.pixel_y = initial(load.pixel_y) + 9	//for mobs to not default to their original y
 						blockcount++
 						mode = BOT_BLOCKED
 						if(blockcount == 3)

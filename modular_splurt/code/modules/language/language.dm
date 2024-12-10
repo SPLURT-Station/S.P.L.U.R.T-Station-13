@@ -19,3 +19,27 @@
 	flags = TONGUELESS_SPEECH
 	icon_state = "birb"
 	restricted = FALSE
+
+/datum/language/modular_splurt/nyanese
+	name = "Nyanese"
+	desc = "The intergalatic language of felines, often used to annoy gods."
+	speech_verb = "meows"
+	ask_verb = "mrrps"
+	exclaim_verb = "mrowls"
+	key = "m"
+	flags = TONGUELESS_SPEECH
+	space_chance = 100
+	syllables = list(
+		"Meow", "Meow", "Meow", "Meow", "Meow", "Meow", "Meow", "Meow", "Meow", "Meow", "Mrrp", "Hiss", "Prrr", "Myaa", "Mrow", "Nyah", "Rrrt", "Purr", "Yow",
+"Murrr", "Meow",  "Nyaa", "Meow",  "Mii", "Meeoo", "Meow",  "Rrraow", "Chrr", "Mrrrr", "Myaow", "Mrawr", "Mrowl",
+"Meeeow", "Nyrrrr", "Rrrrrooo", "Meow",  "Hrrrrt", "Meeew","Meow",  "Mieow", "Raaow", "Meerp", "Meow",  "Ryaa", "Meow",  "Hrrrawr",
+"Meow", "Meow", "Meow", "Meow", "Meow", "Meow", "Meow", "Meow", "Meow", "Meow", "Meow", "Meow", "Meow",
+"Meow", "Meow", "Meow", "Meow", "Meow", "Meow", "Meow", "Meow", "Meow", "Meow", "Meow", "Meow", "Meow",
+"Meow", "Meow", "Meow", "Meow", "Meow", "Meow", "Meow"
+
+	)
+	icon_state = "feline"
+	icon = 'modular_splurt/icons/misc/language.dmi'
+	default_priority = 75
+	//SKYRAT CHANGE - language restriction
+	restricted = FALSE

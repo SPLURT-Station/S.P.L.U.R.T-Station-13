@@ -156,3 +156,10 @@
 	)
 	LAZYADD(products, extra_premium)
 	. = ..()
+
+/obj/machinery/vending/wardrobe/cap_wardrobe/Initialize(mapload)
+	var/list/extra_contraband = list(
+		/obj/item/clothing/head/outragecowhat = 1,
+	)
+	LAZYADD(contraband, extra_contraband)
+	. = ..()

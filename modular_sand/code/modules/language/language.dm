@@ -62,7 +62,7 @@
 	ask_verb = "queries"
 	exclaim_verb = "declares"
 	whisper_verb = "hushes"
-	key = "v"
+	key = "5"  //SPLURT EDIT, langs must have unique tags. Initialized languages come first. V was taken by voltaic.
 	space_chance = 30
 	flags = TONGUELESS_SPEECH
 	syllables = list(

@@ -40,6 +40,9 @@
 	var/turf/target				// this is turf to navigate to (location of beacon)
 	var/loaddir = 0				// this the direction to unload onto/load from
 	var/home_destination = "" 	// tag of home beacon
+	var/old_mule_z = null		// for orientation if destination is at different z level
+	var/stair_dir = null		// used to determine which direction should bot move if stairs are leading up
+	var/z_destination			// nearest stairs location
 
 	var/reached_target = 1 	//true if already reached the target
 
@@ -445,6 +448,12 @@
 			return
 
 		if(BOT_DELIVER, BOT_GO_HOME, BOT_BLOCKED) // navigating to deliver,home, or blocked
+			if(loc == z_destination)
+				//z++	//mulebots somehow won't climb the stairs
+				step(src,stair_dir)
+				load(load)
+				old_mule_z = z
+				get_nav()
 			if(loc == target) // reached target
 				at_target()
 				return
@@ -489,7 +498,6 @@
 							mode = BOT_DELIVER
 
 					else		// failed to move
-
 						if(load && ismob(load))	//for mobs and to prevent runtimes if there isn't any load
 							load.pixel_y = initial(load.pixel_y) + 9	//for mobs to not default to their original y
 						blockcount++
@@ -503,7 +511,15 @@
 							mode = BOT_WAIT_FOR_NAV
 							blockcount = 0
 							addtimer(CALLBACK(src, PROC_REF(process_blocked), next), 2 SECONDS)
-							return
+						if(old_mule_z != z)	//has mulebot gone down (accidentally)
+							var/list/random_direction = GLOB.cardinals
+							calc_path()	//for the stair_dir
+							z++	//mulebots somehow won't climb the stairs
+							step(src,stair_dir)	//to prevent bot from accidentally going into stairs
+							random_direction -= turn(stair_dir, 180)	//we don't want to go back
+							step(src,pick(random_direction))	//picks random direction
+							old_mule_z = z
+
 						return
 				else
 					buzz(ANNOYED)
@@ -539,7 +555,15 @@
 // calculates a path to the current destination
 // given an optional turf to avoid
 /mob/living/simple_animal/bot/mulebot/calc_path(turf/avoid = null)
-	path = get_path_to(src, target, 250, id=access_card, exclude=avoid)
+	if(z != target.z)
+		if(z > target.z)
+			z_destination = get_stairs(DOWN, avoid)
+		else
+			z_destination = get_stairs(UP, avoid)
+
+		path = get_path_to(src, z_destination, 250, id=access_card, exclude=avoid)
+	else
+		path = get_path_to(src, target, 250, id=access_card, exclude=avoid)
 
 // sets the current destination
 // signals all beacons matching the delivery code
@@ -558,6 +582,26 @@
 		mode = BOT_DELIVER
 	update_icon()
 	get_nav()
+
+//gets nearest path to stairs if destination is on different z level
+/mob/living/simple_animal/bot/mulebot/proc/get_stairs(direction, turf/stairs_avoid = null)
+	var/stairs_destination
+
+	for(var/obj/structure/stairs/stairs_bro in GLOB.stairs)	//copied from modular_splurt/code/modules/mob/navigation.dm
+		if(stairs_avoid == stairs_bro)	//to not get stuck trying to reach forbidden stairs
+			continue
+		if(direction == UP && stairs_bro.z != z) //if we're going up, we need to find stairs on our z level
+			continue
+		if(direction == DOWN && stairs_bro.z != z - 1) //if we're going down, we need to find stairs on the z level beneath us
+			continue
+		if(!stairs_destination)
+			stairs_destination = stairs_bro.z == z ? stairs_bro : get_step_multiz(stairs_bro, UP) //if the stairs aren't on our z level, get the turf above them (on our zlevel) to path to instead
+			continue
+		if(get_dist_euclidian(stairs_bro, src) > get_dist_euclidian(stairs_destination, src))
+			continue
+		stairs_destination = stairs_bro.z == z ? stairs_bro : get_step_multiz(stairs_bro, UP)
+		stair_dir = stairs_bro.dir
+	return stairs_destination
 
 // starts bot moving to home
 // sends a beacon query to find
@@ -667,6 +711,7 @@
 	if(!on || wires.is_cut(WIRE_BEACON))
 		return
 
+	old_mule_z = z	//for dealing with z levels
 	for(var/obj/machinery/navbeacon/NB in GLOB.deliverybeacons)
 		if(NB.location == new_destination)	// if the beacon location matches the set destination
 									// the we will navigate there

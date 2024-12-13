@@ -5,7 +5,7 @@
 	var/default_name = "prisoner closet"
 	req_access = list(ACCESS_BRIG)
 	var/obj/item/card/id/prisoner/registered_id = null
-	icon_state = "prisoner"
+	icon_state = "secure"
 	locked = FALSE
 	anchored = TRUE
 	opened = TRUE
@@ -46,7 +46,7 @@
 	var/sentence_length = input(user, "Please input the length of their sentence in minutes (0 for perma).", "Sentence Length", registered_id.sentence) as num|null
 	if(sentence_length == null | !user.Adjacent(src))
 		return FALSE
-	var/crimes = sanitize(input(user, "Please input their crimes.", "Crimes", registered_id.crime) as text|null) 
+	var/crimes = sanitize(input(user, "Please input their crimes.", "Crimes", registered_id.crime) as text|null)
 	if(crimes == null | !user.Adjacent(src))
 		return FALSE
 
@@ -107,7 +107,7 @@
 			locked = TRUE
 			update_icon()
 			registered_id.forceMove(src.loc)
-			new /obj/item/clothing/under/rank/prisoner(src.loc)
+			//new /obj/item/clothing/under/rank/prisoner(src.loc)
 		else
 			qdel(registered_id)
 			registered_id = null

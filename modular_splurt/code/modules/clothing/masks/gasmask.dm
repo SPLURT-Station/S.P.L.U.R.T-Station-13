@@ -43,3 +43,17 @@
 	clothing_flags = NONE
 	gas_transfer_coefficient = 0
 	permeability_coefficient = 0
+
+//Dr. K's Mask
+/obj/item/clothing/mask/gas/tscmask
+	name = "TSC mask"
+	desc = "An old mask from a lost time. Does not guarantee protection against transfurmation."
+	icon = 'modular_splurt/icons/obj/clothing/masks.dmi'
+	mob_overlay_icon = 'modular_splurt/icons/mob/clothing/mask.dmi'
+	anthro_mob_worn_overlay = 'modular_splurt/icons/mob/clothing/mask_muzzle.dmi'
+	icon_state = "tscmask"
+	item_state = "tscmask"
+	gas_transfer_coefficient = 0.2
+	permeability_coefficient = 0.2
+	flags_inv = HIDEFACE | HIDEFACIALHAIR | HIDESNOUT | HIDEEYES
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 20, "rad" = 10, "fire" = 10, "acid" = 20)

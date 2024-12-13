@@ -119,7 +119,7 @@
 /mob/living/carbon/human/Crossed(atom/movable/AM)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_CROSSED, AM)
 	var/mob/living/simple_animal/bot/mulebot/MB = AM
-	if(istype(MB) && HAS_TRAIT(src,TRAIT_FLOORED))	//no damage from if you are not resting
+	if(istype(MB) && src.resting)	//no damage from if you are not resting
 		MB.RunOver(src)
 
 	//Hyper Change - Step on people

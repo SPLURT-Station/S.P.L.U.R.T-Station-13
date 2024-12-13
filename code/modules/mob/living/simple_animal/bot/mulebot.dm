@@ -38,11 +38,11 @@
 	var/atom/movable/load = null
 	var/mob/living/passenger = null
 	var/turf/target				// this is turf to navigate to (location of beacon)
+	var/turf/z_destination			// nearest stairs location
 	var/loaddir = 0				// this the direction to unload onto/load from
 	var/home_destination = "" 	// tag of home beacon
 	var/old_mule_z = null		// for orientation if destination is at different z level
 	var/stair_dir = null		// used to determine which direction should bot move if stairs are leading up
-	var/z_destination			// nearest stairs location
 
 	var/reached_target = 1 	//true if already reached the target
 
@@ -368,7 +368,6 @@
 		M.layer = initial(M.layer)
 		M.pixel_y = initial(M.pixel_y)
 
-
 // called to unload the bot
 // argument is optional direction to unload
 // if zero, unload at bot's location
@@ -394,8 +393,6 @@
 				step(load, dirn)
 		load = null
 
-
-
 /mob/living/simple_animal/bot/mulebot/get_status_tab_items()
 	. = ..()
 	if(cell)
@@ -404,7 +401,6 @@
 		. += text("No Cell Inserted!")
 	if(load)
 		. += "Current Load: [load.name]"
-
 
 /mob/living/simple_animal/bot/mulebot/call_bot()
 	..()
@@ -448,12 +444,6 @@
 			return
 
 		if(BOT_DELIVER, BOT_GO_HOME, BOT_BLOCKED) // navigating to deliver,home, or blocked
-			if(loc == z_destination)
-				//z++	//mulebots somehow won't climb the stairs
-				step(src,stair_dir)
-				load(load)
-				old_mule_z = z
-				get_nav()
 			if(loc == target) // reached target
 				at_target()
 				return
@@ -512,15 +502,30 @@
 							blockcount = 0
 							addtimer(CALLBACK(src, PROC_REF(process_blocked), next), 2 SECONDS)
 						if(old_mule_z != z)	//has mulebot gone down (accidentally)
-							var/list/random_direction = GLOB.cardinals
+							if(z >= target.z)
+								old_mule_z = z
+								return
 							calc_path()	//for the stair_dir
-							z++	//mulebots somehow won't climb the stairs
-							step(src,stair_dir)	//to prevent bot from accidentally going into stairs
-							random_direction -= turn(stair_dir, 180)	//we don't want to go back
-							step(src,pick(random_direction))	//picks random direction
-							old_mule_z = z
+							move_up()
+							calc_path()	//recalculate the path when up
+							if(stair_dir == 1 || stair_dir == 2)	//north or south
+								if(path[1].x > x)	//east
+									step(src,EAST)
+								else if(path[1] < x)	//west
+									step(src,WEST)
+								else	//is something gets fucked up
+									calc_path(next)	//ignores the empty space
 
-						return
+							if(stair_dir == 4 || stair_dir == 8)	//east or west
+								if(path[1].y > y)	//north
+									step(src, NORTH)
+								else if(path[1] < y)	//south
+									step(src, SOUTH)
+								else
+									calc_path(next)
+
+							return
+
 				else
 					buzz(ANNOYED)
 					mode = BOT_NAV
@@ -532,6 +537,12 @@
 		if(BOT_NAV)	// calculate new path
 			mode = BOT_WAIT_FOR_NAV
 			INVOKE_ASYNC(src, PROC_REF(process_nav))
+		if(BOT_NO_ROUTE)
+			if(target.z > z)
+				move_up()	//moves bot up the stairs
+				old_mule_z = z
+				mode = BOT_BLOCKED
+				start()
 
 /mob/living/simple_animal/bot/mulebot/proc/process_blocked(turf/next)
 	calc_path(avoid=next)
@@ -561,9 +572,9 @@
 		else
 			z_destination = get_stairs(UP, avoid)
 
-		path = get_path_to(src, z_destination, 250, id=access_card, exclude=avoid)
+		path = get_path_to(src, z_destination, 350, id=access_card, exclude=avoid)
 	else
-		path = get_path_to(src, target, 250, id=access_card, exclude=avoid)
+		path = get_path_to(src, target, 350, id=access_card, exclude=avoid)
 
 // sets the current destination
 // signals all beacons matching the delivery code
@@ -572,6 +583,17 @@
 	new_destination = new_dest
 	get_nav()
 
+//moves bot up
+/mob/living/simple_animal/bot/mulebot/proc/move_up()
+	switch(stair_dir)
+		if(1)//North
+			src.loc = locate(src.x, src.y+1, src.z+1)
+		if(2)//South
+			src.loc = locate(src.x, src.y-1, src.z+1)
+		if(4)//East
+			src.loc = locate(src.x+1, src.y, src.z+1)
+		if(8)//West
+			src.loc = locate(src.x-1, src.y, src.z+1)
 // starts bot moving to current destination
 /mob/living/simple_animal/bot/mulebot/proc/start()
 	if(!on)
@@ -579,6 +601,7 @@
 	if(destination == home_destination)
 		mode = BOT_GO_HOME
 	else
+		old_mule_z = z
 		mode = BOT_DELIVER
 	update_icon()
 	get_nav()

@@ -450,6 +450,7 @@
 
 			else if(path.len > 0 && target) // valid path
 				var/turf/next = path[1]
+				var/turf/znext = path[1]
 				reached_target = 0
 				if(next == loc)
 					path -= next
@@ -509,17 +510,17 @@
 							move_up()
 							calc_path()	//recalculate the path when up
 							if(stair_dir == 1 || stair_dir == 2)	//north or south
-								if(path[1].x > x)	//east
+								if(znext.x > x)	//east
 									step(src,EAST)
-								else if(path[1] < x)	//west
+								else if(znext.x < x)	//west
 									step(src,WEST)
 								else	//is something gets fucked up
 									calc_path(next)	//ignores the empty space
 
 							if(stair_dir == 4 || stair_dir == 8)	//east or west
-								if(path[1].y > y)	//north
+								if(znext.y > y)	//north
 									step(src, NORTH)
-								else if(path[1] < y)	//south
+								else if(znext.y < y)	//south
 									step(src, SOUTH)
 								else
 									calc_path(next)
@@ -594,6 +595,7 @@
 			src.loc = locate(src.x+1, src.y, src.z+1)
 		if(8)//West
 			src.loc = locate(src.x-1, src.y, src.z+1)
+
 // starts bot moving to current destination
 /mob/living/simple_animal/bot/mulebot/proc/start()
 	if(!on)
@@ -727,7 +729,6 @@
 		return
 	if(load == user)
 		unload(0)
-
 
 //Update navigation data. Called when commanded to deliver, return home, or a route update is needed...
 /mob/living/simple_animal/bot/mulebot/proc/get_nav()

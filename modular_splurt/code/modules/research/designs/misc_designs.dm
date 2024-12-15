@@ -26,3 +26,12 @@
 	category = list("Misc", "Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_SERVICE
 
+/datum/design/msc
+	name = "Memory Scanner"
+	desc = "A hand-held mind scanner able to penetrate the surface mind of a target."
+	id = "memory_scanner"
+	build_type = PROTOLATHE
+	materials = list(/datum/material/iron = 20000, /datum/material/glass = 10000, /datum/material/plasma = 2000, /datum/material/gold = 2000)
+	build_path = /obj/item/memoryscanner
+	category = list("Tool Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE

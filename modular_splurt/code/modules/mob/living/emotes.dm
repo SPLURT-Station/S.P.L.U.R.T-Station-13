@@ -1628,6 +1628,15 @@ To add randomization to your emote, copy and paste this line of code:
 	vary = FALSE
 	volume = 30
 
+/datum/emote/sound/human/oof
+	key = "oof"
+	key_third_person = "oofs!"
+	message = "oof!"
+	sound = 'sound/voice/oof.ogg'
+	emote_cooldown = 12 SECONDS
+	vary = FALSE
+	volume = 45
+
 /datum/emote/sound/human/malaysia
 	key = "malaysia"
 	key_third_person = "admits to blowing up Malaysia!"

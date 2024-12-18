@@ -398,4 +398,3 @@ GLOBAL_LIST(topic_status_cache)
 	var/init_result = call_ext(library, "init")("block")
 	if (init_result != "0")
 		CRASH("Error initializing byond-tracy: [init_result]")
-

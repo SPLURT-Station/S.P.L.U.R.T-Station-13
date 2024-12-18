@@ -352,3 +352,6 @@ GLOBAL_LIST_INIT(pipe_paint_colors, list(
 		"violet" = rgb(64,0,128),
 		"yellow" = rgb(255,198,0)
 ))
+
+#define AIR_REF_PLANETARY_TURF (1<<0) //SIMULATION_DIFFUSE 0b1
+#define AIR_REF_OPEN_TURF (1<<1) //SIMULATION_ALL 0b10

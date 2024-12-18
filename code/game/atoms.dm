@@ -1590,3 +1590,7 @@
 	else
 		//We inline a MAPTEXT() here, because there's no good way to statically add to a string like this
 		active_hud.screentip_text.maptext = "<span class='context' style='text-align: center; color: [user.client.prefs.screentip_color]'>[name][extra_context]</span>"
+
+///Return the air if we can analyze it
+/atom/proc/return_analyzable_air()
+	return null

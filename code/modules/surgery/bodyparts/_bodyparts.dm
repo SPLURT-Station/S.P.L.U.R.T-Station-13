@@ -754,6 +754,11 @@
 	else if(animal_origin == MONKEY_BODYPART) //currently monkeys are the only non human mob to have damage overlays.
 		dmg_overlay_type = animal_origin
 
+	// SPLURT EDIT - FERALS
+	if(source?.IsFeral() || owner?.IsFeral())
+		dmg_overlay_type = null
+	// SPLURT EDIT END
+
 	if(is_robotic_limb())
 		dmg_overlay_type = "robotic"
 		if(is_robotic_limb(FALSE))

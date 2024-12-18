@@ -642,3 +642,12 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 /obj/effect/landmark/stationroom/maint/tenxten
 	template_names = list("Maint aquarium", "Maint bigconstruction", "Maint bigtheatre", "Maint deltalibrary", "Maint graffitiroom", "Maint junction", "Maint podrepairbay", "Maint pubbybar", "Maint roosterdome", "Maint sanitarium", "Maint snakefighter", "Maint vault", "Maint ward", "Maint assaultpod", "Maint maze", "Maint maze2", "Maint boxfactory",
 	"Maint sixsectorsdown", "Maint advbotany", "Maint beach", "Maint botany_apiary", "Maint gamercave", "Maint ladytesla_altar", "Maint olddiner", "Maint smallmagician", "Maint fourshops", "Maint fishinghole", "Maint fakewalls", "Maint wizard", "Maint halloween")
+
+/obj/effect/landmark/stationroom/maint/smexi1
+	template_names = list("Icemaint Center Boring", "Icemaint Center Danger", "Icemaint Center Frosty")
+
+/obj/effect/landmark/stationroom/maint/smexi2
+	template_names = list("Icemaint West Boring")
+
+/obj/effect/landmark/stationroom/maint/smexi3
+	template_names = list("Icemaint East Boring", "Icemaint East Danger", "Icemaint East Knotways", "Icemaint East Icering", "Icemaint East Maze")

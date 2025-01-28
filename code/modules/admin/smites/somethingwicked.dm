@@ -1,7 +1,3 @@
-
-
-
-/// "Fully immerses" the player, making them manually breathe and blink
 /datum/smite/wicked
 	name = "0-S: Something Wicked"
 

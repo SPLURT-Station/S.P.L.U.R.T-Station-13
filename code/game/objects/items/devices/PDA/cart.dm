@@ -734,7 +734,7 @@ Code:
 	if(href_list["mule"]) //MULEbots are special snowflakes, and need different args due to how they work.
 		var/mob/living/simple_animal/bot/mulebot/mule = active_bot
 		if (istype(mule))
-			active_bot.bot_control(href_list["mule"], usr, TRUE)
+			active_bot.bot_control(href_list["mule"], usr, null, TRUE)
 
 	if(!host_pda)
 		return

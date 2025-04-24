@@ -21,6 +21,7 @@
 	a_intent = INTENT_HARM //No swapping
 	buckle_lying = 0
 	mob_size = MOB_SIZE_LARGE
+	buckle_prevents_pull = TRUE	//no mass destruction caused by pulling the mulebot with avoidance wire snipped :3
 
 	radio_key = /obj/item/encryptionkey/headset_cargo
 	radio_channel = RADIO_CHANNEL_SUPPLY
@@ -37,8 +38,11 @@
 	var/atom/movable/load = null
 	var/mob/living/passenger = null
 	var/turf/target				// this is turf to navigate to (location of beacon)
+	var/turf/z_destination			// nearest stairs location
 	var/loaddir = 0				// this the direction to unload onto/load from
 	var/home_destination = "" 	// tag of home beacon
+	var/old_mule_z = null		// for orientation if destination is at different z level
+	var/stair_dir = null		// used to determine which direction should bot move if stairs are leading up
 
 	var/reached_target = 1 	//true if already reached the target
 
@@ -131,11 +135,12 @@
 	else
 		icon_state = "[base_icon][wires.is_cut(WIRE_AVOIDANCE)]"
 	cut_overlays()
-	if(load && !ismob(load))//buckling handles the mob offsets
+	if(load)//buckling handles the mob offsets
 		load.pixel_y = initial(load.pixel_y) + 9
 		if(load.layer < layer)
 			load.layer = layer + 0.01
-		add_overlay(load)
+		if(!ismob(load))	//doesn't look great if there are two people
+			add_overlay(load)
 	return
 
 /mob/living/simple_animal/bot/mulebot/ex_act(severity, target, origin)
@@ -159,7 +164,7 @@
 			visible_message("<span class='danger'>Something shorts out inside [src]!</span>")
 			wires.cut_random()
 
-/mob/living/simple_animal/bot/mulebot/interact(mob/user)
+/mob/living/simple_animal/bot/mulebot/attack_hand(mob/user)
 	if(open && !isAI(user))
 		wires.interact(user)
 	else
@@ -201,7 +206,8 @@
 	return data
 
 /mob/living/simple_animal/bot/mulebot/ui_act(action, params)
-	if(..() || (locked && hasSiliconAccessInArea(usr)))
+	. = ..()
+	if(..() || (locked && !hasSiliconAccessInArea(usr)))
 		return
 	switch(action)
 		if("lock")
@@ -350,11 +356,12 @@
 		can_buckle = FALSE
 		return TRUE
 	return FALSE
-
-/mob/living/simple_animal/bot/mulebot/post_buckle_mob(mob/living/M)
+/*
+/mob/living/simple_animal/bot/mulebot/post_buckle_mob(mob/living/M)	//already in update_icon
 	M.pixel_y = initial(M.pixel_y) + 9
 	if(M.layer < layer)
 		M.layer = layer + 0.01
+*/
 
 /mob/living/simple_animal/bot/mulebot/post_unbuckle_mob(mob/living/M)
 		load = null
@@ -386,8 +393,6 @@
 				step(load, dirn)
 		load = null
 
-
-
 /mob/living/simple_animal/bot/mulebot/get_status_tab_items()
 	. = ..()
 	if(cell)
@@ -396,7 +401,6 @@
 		. += text("No Cell Inserted!")
 	if(load)
 		. += "Current Load: [load.name]"
-
 
 /mob/living/simple_animal/bot/mulebot/call_bot()
 	..()
@@ -446,6 +450,7 @@
 
 			else if(path.len > 0 && target) // valid path
 				var/turf/next = path[1]
+				var/turf/znext = path[1]
 				reached_target = 0
 				if(next == loc)
 					path -= next
@@ -473,6 +478,8 @@
 					if(cell)
 						cell.use(1)
 					if(moved && oldloc!=loc)	// successful move
+						if(load && ismob(load))	//for mobs and to prevent runtimes if there isn't any load
+							load.pixel_y = initial(load.pixel_y) + 9	//for mobs to not default to their original y
 						blockcount = 0
 						path -= loc
 
@@ -482,7 +489,8 @@
 							mode = BOT_DELIVER
 
 					else		// failed to move
-
+						if(load && ismob(load))	//for mobs and to prevent runtimes if there isn't any load
+							load.pixel_y = initial(load.pixel_y) + 9	//for mobs to not default to their original y
 						blockcount++
 						mode = BOT_BLOCKED
 						if(blockcount == 3)
@@ -494,8 +502,31 @@
 							mode = BOT_WAIT_FOR_NAV
 							blockcount = 0
 							addtimer(CALLBACK(src, PROC_REF(process_blocked), next), 2 SECONDS)
+						if(old_mule_z != z)	//has mulebot gone down (accidentally)
+							if(z >= target.z)
+								old_mule_z = z
+								return
+							calc_path()	//for the stair_dir
+							move_up()
+							calc_path()	//recalculate the path when up
+							if(stair_dir == 1 || stair_dir == 2)	//north or south
+								if(znext.x > x)	//east
+									step(src,EAST)
+								else if(znext.x < x)	//west
+									step(src,WEST)
+								else	//is something gets fucked up
+									calc_path(next)	//ignores the empty space
+
+							if(stair_dir == 4 || stair_dir == 8)	//east or west
+								if(znext.y > y)	//north
+									step(src, NORTH)
+								else if(znext.y < y)	//south
+									step(src, SOUTH)
+								else
+									calc_path(next)
+
 							return
-						return
+
 				else
 					buzz(ANNOYED)
 					mode = BOT_NAV
@@ -507,6 +538,12 @@
 		if(BOT_NAV)	// calculate new path
 			mode = BOT_WAIT_FOR_NAV
 			INVOKE_ASYNC(src, PROC_REF(process_nav))
+		if(BOT_NO_ROUTE)
+			if(target.z > z)
+				move_up()	//moves bot up the stairs
+				old_mule_z = z
+				mode = BOT_BLOCKED
+				start()
 
 /mob/living/simple_animal/bot/mulebot/proc/process_blocked(turf/next)
 	calc_path(avoid=next)
@@ -530,7 +567,15 @@
 // calculates a path to the current destination
 // given an optional turf to avoid
 /mob/living/simple_animal/bot/mulebot/calc_path(turf/avoid = null)
-	path = get_path_to(src, target, 250, id=access_card, exclude=avoid)
+	if(z != target.z)
+		if(z > target.z)
+			z_destination = get_stairs(DOWN, avoid)
+		else
+			z_destination = get_stairs(UP, avoid)
+
+		path = get_path_to(src, z_destination, 350, id=access_card, exclude=avoid)
+	else
+		path = get_path_to(src, target, 350, id=access_card, exclude=avoid)
 
 // sets the current destination
 // signals all beacons matching the delivery code
@@ -539,6 +584,18 @@
 	new_destination = new_dest
 	get_nav()
 
+//moves bot up
+/mob/living/simple_animal/bot/mulebot/proc/move_up()
+	switch(stair_dir)
+		if(1)//North
+			src.loc = locate(src.x, src.y+1, src.z+1)
+		if(2)//South
+			src.loc = locate(src.x, src.y-1, src.z+1)
+		if(4)//East
+			src.loc = locate(src.x+1, src.y, src.z+1)
+		if(8)//West
+			src.loc = locate(src.x-1, src.y, src.z+1)
+
 // starts bot moving to current destination
 /mob/living/simple_animal/bot/mulebot/proc/start()
 	if(!on)
@@ -546,9 +603,30 @@
 	if(destination == home_destination)
 		mode = BOT_GO_HOME
 	else
+		old_mule_z = z
 		mode = BOT_DELIVER
 	update_icon()
 	get_nav()
+
+//gets nearest path to stairs if destination is on different z level
+/mob/living/simple_animal/bot/mulebot/proc/get_stairs(direction, turf/stairs_avoid = null)
+	var/stairs_destination
+
+	for(var/obj/structure/stairs/stairs_bro in GLOB.stairs)	//copied from modular_splurt/code/modules/mob/navigation.dm
+		if(stairs_avoid == stairs_bro)	//to not get stuck trying to reach forbidden stairs
+			continue
+		if(direction == UP && stairs_bro.z != z) //if we're going up, we need to find stairs on our z level
+			continue
+		if(direction == DOWN && stairs_bro.z != z - 1) //if we're going down, we need to find stairs on the z level beneath us
+			continue
+		if(!stairs_destination)
+			stairs_destination = stairs_bro.z == z ? stairs_bro : get_step_multiz(stairs_bro, UP) //if the stairs aren't on our z level, get the turf above them (on our zlevel) to path to instead
+			continue
+		if(get_dist_euclidian(stairs_bro, src) > get_dist_euclidian(stairs_destination, src))
+			continue
+		stairs_destination = stairs_bro.z == z ? stairs_bro : get_step_multiz(stairs_bro, UP)
+		stair_dir = stairs_bro.dir
+	return stairs_destination
 
 // starts bot moving to home
 // sends a beacon query to find
@@ -652,12 +730,12 @@
 	if(load == user)
 		unload(0)
 
-
 //Update navigation data. Called when commanded to deliver, return home, or a route update is needed...
 /mob/living/simple_animal/bot/mulebot/proc/get_nav()
 	if(!on || wires.is_cut(WIRE_BEACON))
 		return
 
+	old_mule_z = z	//for dealing with z levels
 	for(var/obj/machinery/navbeacon/NB in GLOB.deliverybeacons)
 		if(NB.location == new_destination)	// if the beacon location matches the set destination
 									// the we will navigate there

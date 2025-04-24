@@ -98,7 +98,7 @@
 	if(vibrator && enabled)
 		throwforce = 60
 
-/obj/item/toy/beach_ball/syndicate/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback)
+/obj/item/toy/beach_ball/syndicate/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, quickstart = TRUE)
 	if(ishuman(thrower))
 		throwforce = 0
 	. = ..()

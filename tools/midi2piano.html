@@ -1,0 +1,34 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><base href="../"><link rel="stylesheet" href="dmdoc.css"><title>tools/midi2piano/README.txt - SPLURT Station 13</title></head><body><header><a href="index.html">SPLURT Station 13</a> - <a href="index.html#modules">Modules</a> - <a href="index.html#types">Types</a></header><main><h1>tools/midi2piano/README.txt <a href="https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/blob/24c0a1314f8a102a63eb6843105a410c67fc63d3/tools/midi2piano/README.txt0"><img src="git.png" width="16" height="16" title="tools/midi2piano/README.txt0"></a></h1><table class="summary" cellspacing="0"><tr><td colspan="2"><pre><code>This is a remake of 2013 midi2piano tool.
+
+Requirements:
+  Python 3
+
+Simply run midi2piano.py and choose midi file you want to convert.
+The &quot;sheet music&quot; will be copied to the clipboard.
+
+There are some constants defined at the top of midi2piano.py.
+
+TICK_LAG - CHANGE THIS VALUE TO TICK LAG OF YOUR SERVER!
+
+Change their value if needed.
+
+LINE_LENGTH_LIM - max length of line allowed in the sheet music
+LINES_LIMIT - max amount of lines allowed in the sheet music. Extra lines will be cropped.
+
+OVERALL_IMPORT_LIM - max amount of characters allowed in the sheet music.
+
+
+You can also transpose music if you need to
+OCTAVE_TRANSPOSE - amount of octaves you melody will be shifted by
+FLOAT_PRECISION - read comment
+
+Additional notes:
+1. Unlike previous midi2piano, this tool optimizes sheet music to fit more in less lines. 
+2. If two notes are less than 50 ms apart, they are chorded. BYOND works in  1/10th of a second so 50 ms is time quanta.
+4. MIDI event set_tempo is NOT supported. If your MIDI file uses set_tempo to change BPM significantly, consider using some other midi file.
+
+This tool is considered final.
+
+Made by EditorRUS/Delta Epsilon from Animus Station, ss13.ru
+Contact me in Discord if you find any major issues: DeltaEpsilon#7787```
+</code></pre></td></tr></table></main><footer>tgstation.dme <a href="https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/tree/24c0a1314f8a102a63eb6843105a410c67fc63d3">24c0a13</a> (master) — <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.9.0</a></footer></body></html>

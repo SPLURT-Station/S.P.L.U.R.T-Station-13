@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><base href="../"><link rel="stylesheet" href="dmdoc.css"><title>tools/mapmerge2/README.md - SPLURT Station 13</title></head><body><header><a href="index.html">SPLURT Station 13</a> - <a href="index.html#modules">Modules</a> - <a href="index.html#types">Types</a></header><main><h1>Map Merger <aside>tools/mapmerge2/README.md</aside> <a href="https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/blob/24c0a1314f8a102a63eb6843105a410c67fc63d3/tools/mapmerge2/README.md0"><img src="git.png" width="16" height="16" title="tools/mapmerge2/README.md0"></a></h1><table class="summary" cellspacing="0"><tr><td colspan="2"><p>The <strong>Map Merger</strong> is a collection of scripts that keep this repository's maps
+in a format which is easier to track in Git and less likely to cause merge
+conflicts. When merge conflicts do occur, it can sometimes resolve them.</p>
+<p>For detailed troubleshooting instructions and other tips, visit the
+<a href="https://tgstation13.org/wiki/Map_Merger">Map Merger</a> wiki article.</p>
+<h2 id="installation">Installation</h2>
+<p>To install the <a href="../hooks/README.md">Git hooks</a>, open the <code>tools/hooks/</code> folder and double-click
+<code>Install.bat</code>. Linux users run <code>tools/hooks/install.sh</code>.</p>
+<h2 id="manual-use">Manual Use</h2>
+<p>If using a Git GUI which is not compatible with the hooks:</p>
+<ul>
+<li>Before committing, double-click <code>Run Before Committing.bat</code></li>
+<li>When a merge has map conflicts, double-click <code>Resolve Map Conflicts.bat</code></li>
+</ul>
+<p>The console will show whether the operation succeeded.</p>
+<p>For more details, see the <a href="https://tgstation13.org/wiki/Map_Merger">Map Merger</a> wiki article.</p>
+<h2 id="what-map-merging-is">What Map Merging Is</h2>
+<p>The &quot;map merge&quot; operation describes the process of rewriting a map file written
+by the DreamMaker map editor to A) use a format more amenable to Git's conflict
+resolution and B) differ in the least amount textually from the previous
+version of the map while maintaining all the actual changes. It requires an old
+version of the map to use as a reference and a new version of the map which
+contains the desired changes.</p>
+<p>Map Merge 2 adds multi-Z support, automatic handling of key overflow, better
+merge conflict prevention, and a real merge conflict resolver.</p>
+<h2 id="code-structure">Code Structure</h2>
+<p>Frontend scripts are meant to be run directly. They obey the environment
+variables <code>TGM</code> to set whether files are saved in TGM (1) or DMM (0) format,
+and <code>MAPROOT</code> to determine where maps are kept. By default, TGM is used and
+the map root is autodetected. Each script may either prompt for the desired map
+or be run with command-line parameters indicating which maps to act on. The
+scripts include:</p>
+<ul>
+<li><code>convert.py</code> for converting maps to and from the TGM format. Used by
+<code>tgm2dmm.bat</code> and <code>dmm2tgm.bat</code>.</li>
+<li><code>mapmerge.py</code> for running the map merge on map backups saved by
+<code>Prepare Maps.bat</code>. Used by <code>mapmerge.bat</code></li>
+</ul>
+<p>Implementation modules:</p>
+<ul>
+<li><code>dmm.py</code> includes the map reader and writer.</li>
+<li><code>mapmerge.py</code> includes the implementation of the map merge operation.</li>
+<li><code>frontend.py</code> includes the common code for the frontend scripts.</li>
+</ul>
+<p><code>precommit.py</code> is run by the <a href="../hooks/README.md">Git hooks</a> if installed, and merges the new
+version of any map saved in the index (<code>git add</code>ed) with the old version stored
+in Git when run.</p></td></tr></table></main><footer>tgstation.dme <a href="https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/tree/24c0a1314f8a102a63eb6843105a410c67fc63d3">24c0a13</a> (master) — <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.9.0</a></footer></body></html>

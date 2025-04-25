@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><base href="../"><link rel="stylesheet" href="dmdoc.css"><title>tools/hooks/README.md - SPLURT Station 13</title></head><body><header><a href="index.html">SPLURT Station 13</a> - <a href="index.html#modules">Modules</a> - <a href="index.html#types">Types</a></header><main><h1>Git Integration Hooks <aside>tools/hooks/README.md</aside> <a href="https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/blob/24c0a1314f8a102a63eb6843105a410c67fc63d3/tools/hooks/README.md0"><img src="git.png" width="16" height="16" title="tools/hooks/README.md0"></a></h1><table class="summary" cellspacing="0"><tr><td colspan="2"><p>This folder contains installable scripts for Git <a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">hooks</a> and <a href="https://git-scm.com/docs/gitattributes#_performing_a_three_way_merge">merge drivers</a>.
+Use of these hooks and drivers is optional and they must be installed
+explicitly before they take effect.</p>
+<p>To install the current set of hooks, or update if new hooks are added, run
+<code>Install.bat</code> (Windows) or <code>tools/hooks/install.sh</code> (Unix-like) as appropriate.</p>
+<p>If your Git GUI does not support a given hook, there is usually a <code>.bat</code> file
+or other script you can run instead - see the links below for details.</p>
+<h2 id="hooks">Hooks</h2>
+<ul>
+<li><strong>Pre-commit</strong>: Runs <a href="../mapmerge2/README.md">mapmerge2</a> to reduce the diff on any changed maps.</li>
+<li><strong>DMI merger</strong>: Attempts to <a href="https://tgstation13.org/wiki/Resolving_icon_conflicts">fix icon conflicts</a> when performing a Git merge.</li>
+<li><strong>DMM merger</strong>: Attempts to <a href="https://tgstation13.org/wiki/Map_Merger">fix map conflicts</a> when performing a Git merge.</li>
+</ul>
+<h2 id="adding-new-hooks">Adding New Hooks</h2>
+<p>New Git <a href="https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks">hooks</a> may be added by creating a file named <code>&lt;hook-name&gt;.hook</code> in
+this directory. Git determines what hooks are available and what their names
+are.</p>
+<p>New Git <a href="https://git-scm.com/docs/gitattributes#_performing_a_three_way_merge">merge drivers</a> may be added by adding a shell script named <code>&lt;ext&gt;.merge</code>
+and updating <code>.gitattributes</code> in the root of the repository to include the line
+<code>*.&lt;ext&gt; merge=&lt;ext&gt;</code>.</p>
+<p>Adding or removing hooks or merge drivers requires running the install script
+again, but modifying them does not. See existing <code>.hook</code> and <code>.merge</code> files for examples.</p></td></tr></table></main><footer>tgstation.dme <a href="https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/tree/24c0a1314f8a102a63eb6843105a410c67fc63d3">24c0a13</a> (master) — <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.9.0</a></footer></body></html>

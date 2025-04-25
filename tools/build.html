@@ -1,0 +1,25 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><base href="../"><link rel="stylesheet" href="dmdoc.css"><title>tools/build/README.md - SPLURT Station 13</title></head><body><header><a href="index.html">SPLURT Station 13</a> - <a href="index.html#modules">Modules</a> - <a href="index.html#types">Types</a></header><main><h1>/tg/station build script <aside>tools/build/README.md</aside> <a href="https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/blob/24c0a1314f8a102a63eb6843105a410c67fc63d3/tools/build/README.md0"><img src="git.png" width="16" height="16" title="tools/build/README.md0"></a></h1><table class="summary" cellspacing="0"><tr><td colspan="2"><p>This build script is the recommended way to compile the game, including not only the DM code but also the JavaScript and any other dependencies.</p>
+<ul>
+<li>VSCode:
+a) Press <code>Ctrl+Shift+B</code> to build.
+b) Press <code>F5</code> to build and run with debugger attached.</li>
+<li>Windows:
+a) Double-click <code>BUILD.bat</code> in the repository root to build (will wait for a key press before it closes).
+b) Double-click <code>tools/build/build.bat</code> to build (will exit as soon as it finishes building).</li>
+<li>Linux:
+a) Run <code>tools/build/build</code> from the repository root.</li>
+</ul>
+<p>The script will skip build steps whose inputs have not changed since the last run.</p>
+<h2 id="getting-list-of-available-targets">Getting list of available targets</h2>
+<p>You can get a list of all targets that you can build by running the following command:</p>
+<pre><code>tools/build/build --help
+</code></pre>
+<h2 id="dependencies">Dependencies</h2>
+<ul>
+<li>On Windows, <code>BUILD.bat</code> will automatically install a private (vendored) copy of Node.</li>
+<li>On Linux, install Node using your package manager or from <a href="https://nodejs.org/en/download/">https://nodejs.org/en/download/</a>.</li>
+<li>On Linux , unless using tgs4 or later you will need to compile rust-g on the server and obtain a .so file, for instructions see https://github.com/tgstation/rust-g</li>
+</ul>
+<h2 id="why">Why?</h2>
+<p>We used to include compiled versions of the tgui JavaScript code in the Git repository so that the project could be compiled using BYOND only. These pre-compiled files tended to have merge conflicts for no good reason. Using a build script lets us avoid this problem, while keeping builds convenient for people who are not modifying tgui.</p>
+<p>This build script is based on <a href="https://github.com/stylemistake/juke-build">Juke Build</a> - please follow the link and read the documentation for the project to understand how it works and how to contribute to this build script.</p></td></tr></table></main><footer>tgstation.dme <a href="https://github.com/SPLURT-Station/S.P.L.U.R.T-Station-13/tree/24c0a1314f8a102a63eb6843105a410c67fc63d3">24c0a13</a> (master) — <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/crates/dmdoc/README.md">dmdoc 1.9.0</a></footer></body></html>

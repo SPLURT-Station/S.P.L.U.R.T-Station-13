@@ -42,6 +42,10 @@
 	icon_uniform = 'modular_splurt/icons/mob/clothing/species/vox/uniform.dmi'
 	icon_suit = 'modular_splurt/icons/mob/clothing/species/vox/suit.dmi'
 
+/datum/species/sangheili
+	limbs_id = SPECIES_SANGHEILI
+	icon_limbs = 'modular_splurt/icons/mob/sangheili.dmi'
+
 /datum/species/mammal/shadekin
 	limbs_id = SPECIES_SHADEKIN
 	icon_limbs = 'modular_splurt/icons/mob/human_parts_greyscale.dmi'

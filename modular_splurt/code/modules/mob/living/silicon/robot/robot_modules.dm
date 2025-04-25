@@ -24,7 +24,7 @@
 			"Handy" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "handy"),
 			"Robo-Brain" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "robobrain"),
 			"Cyclone" = image(icon = 'modular_splurt/icons/mob/robots.dmi', icon_state = "cyclone"),
-			"SmollRaptor" = image(icon = 'modular_zubbers/icons/mob/smolraptor.dmi', icon_state = "smolraptor-b"), // BubberStation Port; Made by aKhro/@aKromatopzia (GitHub)
+			"SmollRaptor" = image(icon = 'modular_splurt/icons/mob/smolraptor.dmi', icon_state = "smolraptor-b"), // BubberStation Port; Made by aKhro/@aKromatopzia (GitHub)
 			"Dullahan" = image(icon = 'modular_splurt/icons/mob/robots_32x64.dmi', icon_state = "dullahanclown")
 			)
 		stand_icons = sort_list(stand_icons)
@@ -94,7 +94,7 @@
 			hat_offset = 3
 		if("SmollRaptor") // BubberStation Port; Made by aKhro/@aKromatopzia (GitHub)
 			cyborg_base_icon = "smolraptor"
-			cyborg_icon_override = 'modular_zubbers/icons/mob/smolraptor.dmi'
+			cyborg_icon_override = 'modular_splurt/icons/mob/smolraptor.dmi'
 			dogborg = TRUE
 		if("Dullahan")
 			cyborg_base_icon = "dullahanclown"
@@ -205,7 +205,7 @@
 		"K4T" = image(icon = 'modular_splurt/icons/mob/robots_32x64.dmi', icon_state = "k4tcargo"), // SPLURT Addon
 		"K4T (alt)" = image(icon = 'modular_splurt/icons/mob/robots_32x64.dmi', icon_state = "k4tcargo_alt1"), // SPLURT Addon
 		"Raptor V-4" = image(icon = 'modular_splurt/icons/mob/robots_64x45.dmi', icon_state = "caraptor-b"), // ChompS Port (base); Additional spriting by @ertyuk421
-		"SmollRaptor" = image(icon = 'modular_zubbers/icons/mob/smolraptor.dmi', icon_state = "smolraptor_crg-b"), // BubberStation Port; Made by aKhro/@aKromatopzia (GitHub)
+		"SmollRaptor" = image(icon = 'modular_splurt/icons/mob/smolraptor.dmi', icon_state = "smolraptor_crg-b"), // BubberStation Port; Made by aKhro/@aKromatopzia (GitHub)
 		"Dullahan" = image(icon = 'modular_splurt/icons/mob/robots_32x64.dmi', icon_state = "dullahancargo")
 		)
 		var/list/L = list("Cargohound" = "cargohound", "Cargohound Dark" = "cargohounddark", "Vale" = "valecargo", "Feline" = "vixcargo")
@@ -290,7 +290,7 @@
 			dogborg = TRUE
 		if("SmollRaptor") // BubberStation Port; Made by aKhro/@aKromatopzia (GitHub)
 			cyborg_base_icon = "smolraptor_crg"
-			cyborg_icon_override = 'modular_zubbers/icons/mob/smolraptor.dmi'
+			cyborg_icon_override = 'modular_splurt/icons/mob/smolraptor.dmi'
 			dogborg = TRUE
 		if("Dullahan")
 			cyborg_base_icon = "dullahancargo"

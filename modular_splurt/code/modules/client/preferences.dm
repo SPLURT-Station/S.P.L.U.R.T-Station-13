@@ -14,6 +14,7 @@
 	var/directory_erptag = "Unset"	//ditto, but for non-vore scenes
 	var/directory_ad = ""		//Advertisement stuff to show in character directory.
 	var/fuzzy = FALSE			//Fuzzy scaling
+	var/list/bodymorpher_presets = list() // Body morpher presets for saving/loading configurations
 
 /datum/preferences/New(client/C)
 	// Check if readable fluids list exists

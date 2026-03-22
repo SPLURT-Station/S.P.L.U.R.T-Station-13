@@ -23,7 +23,7 @@
 /datum/action/innate/ability/humanoid_customization/proc/change_form()
 	var/mob/living/carbon/human/H = owner
 
-	var/select_alteration = input(owner, "Select what part of your form to alter", "Form Alteration", "cancel") in list("Body Color", "Eye Color","Hair Style", "Genitals", "Tail", "Snout", "Wings", "Markings", "Ears", "Taur body", "Penis", "Vagina", "Penis Length", "Breast Size", "Breast Shape", "Butt Size", "Belly Size", "Body Size", "Genital Color", "Horns", "Hair Color", "Skin Tone (Non-Mutant)", "Gender & Lewd", "Legs", "Cancel")
+	var/select_alteration = input(owner, "Select what part of your form to alter", "Form Alteration", "cancel") in list("Body Color", "Eye Color","Hair Style", "Genitals", "Tail", "Snout", "Wings", "Markings", "Ears", "Taur body", "Penis", "Vagina", "Penis Length", "Breast Size", "Breast Shape", "Butt Size", "Belly Size", "Body Size", "Genital Color", "Horns", "Hair Color", "Skin Tone (Non-Mutant)", "Gender & Lewd", "Legs", "Presets", "Cancel")
 
 	if(select_alteration == "Body Color")
 		var/new_color = input(owner, "Choose your skin color:", "Race change","#"+H.dna.features["mcolor"]) as color|null
@@ -393,6 +393,51 @@
 					H.dna.species.mutant_bodyparts["legs"] = "Digitigrade"
 					H.Digitigrade_Leg_Swap(FALSE)
 			H.update_body()
+
+	else if (select_alteration == "Presets")
+		var/preset_action = input(owner, "Preset Management", "Body Morpher Presets", "cancel") in list("Load Preset", "Save Current as Preset", "Delete Preset", "View Presets", "Cancel")
+		
+		if(preset_action == "Load Preset")
+			var/list/all_presets = H.client?.prefs?.get_bodymorpher_presets()
+			if(!all_presets || !all_presets.len)
+				to_chat(owner, "<span class='warning'>No presets available!</span>")
+				return
+			var/preset_name = input(owner, "Select a preset to load:", "Load Preset") as null|anything in all_presets
+			if(preset_name)
+				H.client?.prefs?.load_bodymorpher_preset(preset_name, H)
+				H.update_body()
+				H.update_hair()
+				H.update_genitals()
+				H.apply_overlay()
+		
+		else if(preset_action == "Save Current as Preset")
+			var/preset_name = input(owner, "Enter a name for this preset:", "Save Preset") as text|null
+			if(preset_name)
+				H.client?.prefs?.save_bodymorpher_preset(preset_name, H)
+		
+		else if(preset_action == "Delete Preset")
+			if(!H.client?.prefs?.bodymorpher_presets || !H.client?.prefs?.bodymorpher_presets.len)
+				to_chat(owner, "<span class='warning'>No custom presets to delete!</span>")
+				return
+			var/preset_name = input(owner, "Select a preset to delete:", "Delete Preset") as null|anything in H.client?.prefs?.bodymorpher_presets
+			if(preset_name)
+				H.client?.prefs?.delete_bodymorpher_preset(preset_name, H)
+		
+		else if(preset_action == "View Presets")
+			var/list/all_presets = H.client?.prefs?.get_bodymorpher_presets()
+			if(!all_presets || !all_presets.len)
+				to_chat(owner, "<span class='warning'>No presets available!</span>")
+				return
+			var/list/preset_info = list("<b>Available Body Morpher Presets:</b><br><br>")
+			preset_info += "<b>--- Base Presets (Cannot be modified) ---</b><br>"
+			for(var/preset_name in GLOB.bodymorpher_base_presets)
+				var/datum/bodymorpher_preset/preset = all_presets[preset_name]
+				preset_info += "• [preset_name]: [preset.description]<br>"
+			if(H.client?.prefs?.bodymorpher_presets && H.client?.prefs?.bodymorpher_presets.len)
+				preset_info += "<br><b>--- Your Custom Presets ---</b><br>"
+				for(var/preset_name in H.client?.prefs?.bodymorpher_presets)
+					preset_info += "• [preset_name]<br>"
+			to_chat(owner, "<span class='notice'>[preset_info.Join()]</span>")
 
 /// SPLURT EDIT END
 	else

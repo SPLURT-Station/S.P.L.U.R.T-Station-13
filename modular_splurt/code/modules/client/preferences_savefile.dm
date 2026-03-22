@@ -15,6 +15,9 @@
 	S["custom_blood_color"] >> custom_blood_color // TRUE/FALSE - If custom blood color is enabled
 	S["blood_color"] >> blood_color // The custom blood color itself
 
+	// Bodymorpher presets
+	S["bodymorpher_presets"] >> bodymorpher_presets
+
 	//sanitize data
 	show_in_directory		= sanitize_integer(show_in_directory, 0, 1, initial(show_in_directory))
 	directory_tag			= sanitize_inlist(directory_tag, GLOB.char_directory_tags, initial(directory_tag))
@@ -24,6 +27,7 @@
 	fuzzy 					= sanitize_integer(fuzzy, 0, 1, initial(fuzzy))
 	custom_blood_color 		= sanitize_integer(custom_blood_color, 0, 1, initial(custom_blood_color))
 	blood_color 			= sanitize_hexcolor(blood_color, 6, 1, initial(blood_color))
+	bodymorpher_presets		= sanitize_islist(bodymorpher_presets, list())
 
 /datum/preferences/proc/splurt_character_pref_save(savefile/S) //TODO: modularize our other savefile edits... maybe?
 	//Character directory
@@ -41,6 +45,12 @@
 	// Custom blood color
 	WRITE_FILE(S["custom_blood_color"], custom_blood_color)
 	WRITE_FILE(S["blood_color"], blood_color)
+
+	// Bodymorpher presets
+	if(length(bodymorpher_presets))
+		WRITE_FILE(S["bodymorpher_presets"], bodymorpher_presets)
+	else
+		WRITE_FILE(S["bodymorpher_presets"], list())
 
 /datum/preferences/update_preferences(current_version, savefile/S)
 	. = ..()

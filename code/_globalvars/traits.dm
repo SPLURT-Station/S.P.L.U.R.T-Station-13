@@ -136,6 +136,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_ANXIOUS" = TRAIT_ANXIOUS,
 		"TRAIT_SPACEWALK" = TRAIT_SPACEWALK,
 		"TRAIT_PRIMITIVE" = TRAIT_PRIMITIVE, //unable to use mechs. Given to Ash Walkers
+		"TRAIT_UWU_SPEECH" = TRAIT_UWU_SPEECH, //adds cutesy speech for cat girls as a quirk they can choose.
 		),
 	/obj/item/bodypart = list(
 		"TRAIT_PARALYSIS" = TRAIT_PARALYSIS

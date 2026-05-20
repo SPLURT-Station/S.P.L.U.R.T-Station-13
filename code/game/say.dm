@@ -141,6 +141,18 @@ GLOBAL_LIST_INIT(freqtospan, list(
 
 #undef ENCODE_HTML_EMPHASIS
 
+/proc/uwuify(message as text)
+	message = replacetext(message, "r", "w")
+	message = replacetext(message, "l", "w")
+	message = replacetext(message, "R", "W")
+	message = replacetext(message, "L", "W")
+	message = replacetext(message, "na", "nya")
+	message = replacetext(message, "ne", "nye")
+	message = replacetext(message, "ni", "nyi")
+	message = replacetext(message, "no", "nyo")
+	message = replacetext(message, "nu", "nyu")
+	return message
+
 /// Quirky citadel proc for our custom sayverbs to strip the verb out. Snowflakey as hell, say rewrite 3.0 when?
 /atom/movable/proc/quoteless_say_quote(input, list/spans = list(speech_span), message_mode)
 	if((input[1] == "!") && (length_char(input) > 1))
@@ -149,17 +161,23 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	return pos? copytext(input, pos + 1) : input
 
 /atom/movable/proc/lang_treat(atom/movable/speaker, datum/language/language, raw_message, list/spans, message_mode, no_quote = FALSE)
+	var/atom/movable/AM = speaker.GetSource()
+	var/atom/movable/real_speaker = AM ? AM : speaker
+
 	if(has_language(language))
-		var/atom/movable/AM = speaker.GetSource()
 		raw_message = say_emphasis(raw_message)
-		if(AM) //Basically means "if the speaker is virtual"
+
+		if(HAS_TRAIT(real_speaker, TRAIT_UWU_SPEECH))
+			raw_message = uwuify(raw_message)
+
+		if(AM)
 			return no_quote ? AM.quoteless_say_quote(raw_message, spans, message_mode) : AM.say_quote(raw_message, spans, message_mode)
 		else
 			return no_quote ? speaker.quoteless_say_quote(raw_message, spans, message_mode) : speaker.say_quote(raw_message, spans, message_mode)
 	else if(language)
-		var/atom/movable/AM = speaker.GetSource()
 		var/datum/language/D = GLOB.language_datum_instances[language]
 		raw_message = D.scramble(raw_message)
+
 		if(AM)
 			return no_quote ? AM.quoteless_say_quote(raw_message, spans, message_mode) : AM.say_quote(raw_message, spans, message_mode)
 		else

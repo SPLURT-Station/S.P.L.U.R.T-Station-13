@@ -224,6 +224,7 @@
 #define TRAIT_SILENT_STEP		"silent_step"
 #define TRAIT_SPEEDY_STEP		"speedy_step"
 #define TRAIT_SPIRITUAL			"spiritual"
+#define TRAIT_UWU_SPEECH       "uwu_speech"
 #define TRAIT_VORACIOUS			"voracious"
 #define TRAIT_SELF_AWARE		"self_aware"
 #define TRAIT_FREERUNNING		"freerunning"
